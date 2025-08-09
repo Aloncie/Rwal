@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/p1rat/code/rwal/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
