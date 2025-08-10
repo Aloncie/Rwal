@@ -9,9 +9,17 @@ find_package(Qt5 REQUIRED COMPONENTS Core DBus)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(main main.cpp)
+add_executable(main 
+	src/main.cpp 
+	src/dbus/PlasmaDBus.cpp
+	src/keywords/keywords.cpp
+	src/net/CurlWrapper.cpp
+)
 
-#add_library(main main.cpp)
+target_include_directories(main PRIVATE
+	${CMAKE_SOURCE_DIR}/src
+)
+
 target_link_libraries(main PRIVATE 
 	CURL::libcurl 
 	nlohmann_json::nlohmann_json 

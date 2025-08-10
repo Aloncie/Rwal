@@ -72,28 +72,76 @@ include CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/codegen:
 .PHONY : CMakeFiles/main.dir/codegen
 
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main.cpp.o: /home/p1rat/code/rwal/main.cpp
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.o -MF CMakeFiles/main.dir/main.cpp.o.d -o CMakeFiles/main.dir/main.cpp.o -c /home/p1rat/code/rwal/main.cpp
+CMakeFiles/main.dir/src/main.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp
+CMakeFiles/main.dir/src/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/main.cpp.o -MF CMakeFiles/main.dir/src/main.cpp.o.d -o CMakeFiles/main.dir/src/main.cpp.o -c /home/p1rat/code/rwal/src/main.cpp
 
-CMakeFiles/main.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/main.cpp > CMakeFiles/main.dir/main.cpp.i
+CMakeFiles/main.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/main.cpp > CMakeFiles/main.dir/src/main.cpp.i
 
-CMakeFiles/main.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/main.cpp -o CMakeFiles/main.dir/main.cpp.s
+CMakeFiles/main.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
+
+CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp
+CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o -MF CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o.d -o CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o -c /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp
+
+CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp > CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.i
+
+CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp -o CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.s
+
+CMakeFiles/main.dir/src/keywords/keywords.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywords/keywords.cpp
+CMakeFiles/main.dir/src/keywords/keywords.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/keywords/keywords.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/keywords/keywords.cpp.o -MF CMakeFiles/main.dir/src/keywords/keywords.cpp.o.d -o CMakeFiles/main.dir/src/keywords/keywords.cpp.o -c /home/p1rat/code/rwal/src/keywords/keywords.cpp
+
+CMakeFiles/main.dir/src/keywords/keywords.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/keywords/keywords.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/keywords/keywords.cpp > CMakeFiles/main.dir/src/keywords/keywords.cpp.i
+
+CMakeFiles/main.dir/src/keywords/keywords.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/keywords/keywords.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/keywords/keywords.cpp -o CMakeFiles/main.dir/src/keywords/keywords.cpp.s
+
+CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o: /home/p1rat/code/rwal/src/net/CurlWrapper.cpp
+CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o -MF CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o.d -o CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o -c /home/p1rat/code/rwal/src/net/CurlWrapper.cpp
+
+CMakeFiles/main.dir/src/net/CurlWrapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/net/CurlWrapper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/net/CurlWrapper.cpp > CMakeFiles/main.dir/src/net/CurlWrapper.cpp.i
+
+CMakeFiles/main.dir/src/net/CurlWrapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/net/CurlWrapper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/net/CurlWrapper.cpp -o CMakeFiles/main.dir/src/net/CurlWrapper.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/main.cpp.o"
+"CMakeFiles/main.dir/src/main.cpp.o" \
+"CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o" \
+"CMakeFiles/main.dir/src/keywords/keywords.cpp.o" \
+"CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
-main: CMakeFiles/main.dir/main.cpp.o
+main: CMakeFiles/main.dir/src/main.cpp.o
+main: CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o
+main: CMakeFiles/main.dir/src/keywords/keywords.cpp.o
+main: CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/compiler_depend.ts
 main: /usr/lib/libcurl.so
@@ -101,7 +149,7 @@ main: /usr/lib/libQt5DBus.so.5.15.17
 main: /usr/lib/libQt5Core.so.5.15.17
 main: /usr/lib/libcurl.so
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -142,29 +142,101 @@ run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
+.PHONY : src/dbus/PlasmaDBus.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/dbus/PlasmaDBus.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o
+.PHONY : src/dbus/PlasmaDBus.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/dbus/PlasmaDBus.i: src/dbus/PlasmaDBus.cpp.i
+.PHONY : src/dbus/PlasmaDBus.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/dbus/PlasmaDBus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.i
+.PHONY : src/dbus/PlasmaDBus.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/dbus/PlasmaDBus.s: src/dbus/PlasmaDBus.cpp.s
+.PHONY : src/dbus/PlasmaDBus.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/dbus/PlasmaDBus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.s
+.PHONY : src/dbus/PlasmaDBus.cpp.s
+
+src/keywords/keywords.o: src/keywords/keywords.cpp.o
+.PHONY : src/keywords/keywords.o
+
+# target to build an object file
+src/keywords/keywords.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/keywords/keywords.cpp.o
+.PHONY : src/keywords/keywords.cpp.o
+
+src/keywords/keywords.i: src/keywords/keywords.cpp.i
+.PHONY : src/keywords/keywords.i
+
+# target to preprocess a source file
+src/keywords/keywords.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/keywords/keywords.cpp.i
+.PHONY : src/keywords/keywords.cpp.i
+
+src/keywords/keywords.s: src/keywords/keywords.cpp.s
+.PHONY : src/keywords/keywords.s
+
+# target to generate assembly for a file
+src/keywords/keywords.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/keywords/keywords.cpp.s
+.PHONY : src/keywords/keywords.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/net/CurlWrapper.o: src/net/CurlWrapper.cpp.o
+.PHONY : src/net/CurlWrapper.o
+
+# target to build an object file
+src/net/CurlWrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o
+.PHONY : src/net/CurlWrapper.cpp.o
+
+src/net/CurlWrapper.i: src/net/CurlWrapper.cpp.i
+.PHONY : src/net/CurlWrapper.i
+
+# target to preprocess a source file
+src/net/CurlWrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/CurlWrapper.cpp.i
+.PHONY : src/net/CurlWrapper.cpp.i
+
+src/net/CurlWrapper.s: src/net/CurlWrapper.cpp.s
+.PHONY : src/net/CurlWrapper.s
+
+# target to generate assembly for a file
+src/net/CurlWrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/CurlWrapper.cpp.s
+.PHONY : src/net/CurlWrapper.cpp.s
 
 # Help Target
 help:
@@ -176,9 +248,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... run"
 	@echo "... main"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/dbus/PlasmaDBus.o"
+	@echo "... src/dbus/PlasmaDBus.i"
+	@echo "... src/dbus/PlasmaDBus.s"
+	@echo "... src/keywords/keywords.o"
+	@echo "... src/keywords/keywords.i"
+	@echo "... src/keywords/keywords.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/net/CurlWrapper.o"
+	@echo "... src/net/CurlWrapper.i"
+	@echo "... src/net/CurlWrapper.s"
 .PHONY : help
 
 
