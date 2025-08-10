@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/main.cpp.o.d"
   "CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o"
   "CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o.d"
+  "CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.o"
+  "CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.o.d"
   "main"
   "main.pdb"
 )

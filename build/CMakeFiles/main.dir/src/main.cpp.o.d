@@ -392,4 +392,5 @@ CMakeFiles/main.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
  /usr/include/qt/QtCore/qshareddata.h /usr/include/qt/QtCore/qset.h \
  /usr/include/qt/QtCore/qcontiguouscache.h \
  /usr/include/qt/QtCore/qsharedpointer.h \
- /usr/include/qt/QtCore/qsharedpointer_impl.h
+ /usr/include/qt/QtCore/qsharedpointer_impl.h \
+ /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h
