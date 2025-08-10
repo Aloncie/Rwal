@@ -4,7 +4,10 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <random>
+#include <cctype>
 
 std::string get_keywords();
 std::vector<std::string> divide_keywords(std::string str);
 std::string choose_keyword(std::vector<std::string> keywords);
+std::string format_str(std::string& str);

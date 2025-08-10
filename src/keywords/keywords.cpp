@@ -12,7 +12,6 @@ std::string get_keywords(){
 			getline(ifile,result);
 			if (result != ""){
 				ifile.close();
-				//std::cout << result;
 				return result;
 			}
 		}
@@ -38,30 +37,6 @@ std::string get_keywords(){
 		return nullptr;
 	}
 
-	/*
-		std::cin.clear();
-		std::cout << "\n Are u end?(y/n): ";
-		while (c[0] != 'y'&&c[0] != 'Y'&& c[0]  != 'n' && c[0]  != 'n'){
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cin >> c;	
-		}
-		if (c[0] == 'y'){
-			ofile->open("keywords.txt");
-			*ofile << result;
-			ofile->close();
-		}
-		else if (c[0] == 'n'){
-			std::cout << "\nWrite keywords again( use ',' to devide them): ";
-			std::cin >> result;
-			std::cin.clear();
-			std::cout << "\n Are u end?(y/n): ";
-			while (c[0] != 'y'&&c[0] != 'Y'&& c[0]  != 'n' && c[0]  != 'n'){
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				std::cin >> c;	
-			}
-		}
-	*/
-
 	return result;
 }
 
@@ -69,13 +44,11 @@ std::vector<std::string> divide_keywords(std::string str){
 	std::vector<std::string> keywords;
 	str += ' ';
 	std::string t = "";
-	//std::cout << str.size() << std::endl;	
 	for (size_t i = 0; i < str.size(); i++) {
 		if (str[i] != ' ')
 			t += str[i];
 		else {
 			keywords.push_back(t);
-			//std::cout << t << std::endl;
 			t = "";
 		}
 	}
@@ -91,4 +64,15 @@ std::string choose_keyword(std::vector<std::string> keywords){
 	return keywords[num];
 }
 
+std::string format_str(std::string& str){
+	for (int i = 0;i < str.size(); i++){
+		if (!std::isalpha(str[i])&&str[i+1] != ' '){
+			str[i] = ' ';
+		}
+		else if (!std::isalpha(str[i])){
+			str.erase(i,1);
+		}
+	}
 
+	return str;	
+}

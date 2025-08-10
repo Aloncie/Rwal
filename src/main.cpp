@@ -1,10 +1,7 @@
 #include <string>
-#include <QCoreApplication>
-#include <QDBusConnection>
-#include <QDBusMessage>
-#include <QVariantMap>
-#include <QDebug>
 #include "net/CurlWrapper.h"
+#include "keywords/keywords.h"
+#include "dbus/PlasmaDBus.h"
 
 class Settings{
 	void see_settings();
@@ -28,27 +25,7 @@ int main(int argc, char *argv[]){
 		}
 	} while (true);	
 
-	QCoreApplication app(argc, argv);
-
-	QString local_q = QString::fromStdString(local);
-
-	QVariantMap params;
-	params.insert(QStringLiteral("Image"), local_q);
-	
-	auto msg = QDBusMessage::createMethodCall(
-		QStringLiteral("org.kde.plasmashell"),
-		QStringLiteral("/PlasmaShell"),
-		QStringLiteral("org.kde.PlasmaShell"),
-		QStringLiteral("setWallpaper")	
-	);
-	msg << QStringLiteral("org.kde.image")
-		<< params
-		<< quint32(0);
-
-	auto reply = QDBusConnection::sessionBus().call(msg);
-	if (reply.type() == QDBusMessage::ErrorMessage) {
-		qWarning() << "Error D-Bus: " << reply.errorMessage();
-	}
+	change_wallpaper(argc, argv, local);
 
 	return 0;
 }
