@@ -14,6 +14,7 @@ add_executable(main
 	src/dbus/PlasmaDBus.cpp
 	src/keywords/keywords.cpp
 	src/net/CurlWrapper.cpp
+	src/wallpaper/WallpaperManager.cpp
 )
 
 target_include_directories(main PRIVATE

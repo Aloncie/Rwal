@@ -238,6 +238,30 @@ src/net/CurlWrapper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/CurlWrapper.cpp.s
 .PHONY : src/net/CurlWrapper.cpp.s
 
+src/wallpaper/WallpaperManager.o: src/wallpaper/WallpaperManager.cpp.o
+.PHONY : src/wallpaper/WallpaperManager.o
+
+# target to build an object file
+src/wallpaper/WallpaperManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.o
+.PHONY : src/wallpaper/WallpaperManager.cpp.o
+
+src/wallpaper/WallpaperManager.i: src/wallpaper/WallpaperManager.cpp.i
+.PHONY : src/wallpaper/WallpaperManager.i
+
+# target to preprocess a source file
+src/wallpaper/WallpaperManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.i
+.PHONY : src/wallpaper/WallpaperManager.cpp.i
+
+src/wallpaper/WallpaperManager.s: src/wallpaper/WallpaperManager.cpp.s
+.PHONY : src/wallpaper/WallpaperManager.s
+
+# target to generate assembly for a file
+src/wallpaper/WallpaperManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.s
+.PHONY : src/wallpaper/WallpaperManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,6 +284,9 @@ help:
 	@echo "... src/net/CurlWrapper.o"
 	@echo "... src/net/CurlWrapper.i"
 	@echo "... src/net/CurlWrapper.s"
+	@echo "... src/wallpaper/WallpaperManager.o"
+	@echo "... src/wallpaper/WallpaperManager.i"
+	@echo "... src/wallpaper/WallpaperManager.s"
 .PHONY : help
 
 

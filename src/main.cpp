@@ -2,6 +2,7 @@
 #include "net/CurlWrapper.h"
 #include "keywords/keywords.h"
 #include "dbus/PlasmaDBus.h"
+#include "wallpaper/WallpaperManager.h"
 
 class Settings{
 	void see_settings();
@@ -26,6 +27,6 @@ int main(int argc, char *argv[]){
 	} while (true);	
 
 	change_wallpaper(argc, argv, local);
-
+	save_wallpaper(local);
 	return 0;
 }

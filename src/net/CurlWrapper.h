@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+namespace fs = std::filesystem;
+
 static size_t callback (void* contents, size_t size, size_t nmemb, void* userp);
 
 class MyCurl{

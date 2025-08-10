@@ -6,6 +6,7 @@ main: \
   CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o \
   CMakeFiles/main.dir/src/keywords/keywords.cpp.o \
   CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o \
+  CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.o \
   /usr/lib/libcurl.so \
   /usr/lib/libQt5DBus.so.5.15.17 \
   /usr/lib/libQt5Core.so.5.15.17 \
@@ -108,6 +109,8 @@ CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o:
 CMakeFiles/main.dir/src/keywords/keywords.cpp.o:
 
 CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o:
+
+CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libcurl.so:
 
