@@ -2,7 +2,10 @@ main: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o \
-  CMakeFiles/main.dir/main.cpp.o \
+  CMakeFiles/main.dir/src/main.cpp.o \
+  CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o \
+  CMakeFiles/main.dir/src/keywords/keywords.cpp.o \
+  CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o \
   /usr/lib/libcurl.so \
   /usr/lib/libQt5DBus.so.5.15.17 \
   /usr/lib/libQt5Core.so.5.15.17 \
@@ -98,7 +101,13 @@ main: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o:
 
-CMakeFiles/main.dir/main.cpp.o:
+CMakeFiles/main.dir/src/main.cpp.o:
+
+CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o:
+
+CMakeFiles/main.dir/src/keywords/keywords.cpp.o:
+
+CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o:
 
 /usr/lib/libcurl.so:
 

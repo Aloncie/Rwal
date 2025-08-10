@@ -1,7 +1,13 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/link.d"
-  "CMakeFiles/main.dir/main.cpp.o"
-  "CMakeFiles/main.dir/main.cpp.o.d"
+  "CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o"
+  "CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o.d"
+  "CMakeFiles/main.dir/src/keywords/keywords.cpp.o"
+  "CMakeFiles/main.dir/src/keywords/keywords.cpp.o.d"
+  "CMakeFiles/main.dir/src/main.cpp.o"
+  "CMakeFiles/main.dir/src/main.cpp.o.d"
+  "CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o"
+  "CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o.d"
   "main"
   "main.pdb"
 )
