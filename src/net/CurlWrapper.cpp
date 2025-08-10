@@ -33,7 +33,6 @@ void MyCurl::get_request(){
 			std::cout << "Http error" << std::endl;
 			return;
 		}
-		//else std::cout << "All good!" << std::endl;
 
 		try {
 			j = nlohmann::json::parse(buffer);
@@ -61,19 +60,19 @@ std::string MyCurl::get_count_pages(){
 
 std::string MyCurl::download_image(const std::string& image_url){
 	//delete old image
-	std::filesystem::path dir_path("/home/p1rat/code/rwal");
+	fs::path dir_path("/home/p1rat/code/rwal");
 	
 	try {
-		for (const auto& item : std::filesystem::directory_iterator(dir_path)){
-			if (std::filesystem::is_regular_file(item.path())){
+		for (const auto& item : fs::directory_iterator(dir_path)){
+			if (fs::is_regular_file(item.path())){
 				auto name = item.path().filename().string();
 				if (name.rfind("wallpaper-", 0) == 0) {
-					std::filesystem::remove(item.path());
+					fs::remove(item.path());
 				}
 			}
 		}
 
-	} catch (const std::filesystem::filesystem_error& e){
+	} catch (const fs::filesystem_error& e){
 		std::cerr << "Error of delete old image: " << e.what() << std::endl;
 	}
 
