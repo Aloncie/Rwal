@@ -17,17 +17,19 @@ std::string Keywords::look_keywords(){
 
 std::string Keywords::get_keywords(){
 	std::string result = "";
-		
+	Keywords k;
+
 	if (std::filesystem::exists("keywords.txt")) {
-		Keywords k;
 		result = k.look_keywords();	
-		if (result != "")
+		if (result != ""){
+			k.format_str(result);
 			return result;
+		}
 	}
 	
 	std::cout << "\nThere is not file with keywords." <<  "\nPlease write keywords to find wallpaper( use ',' to devide them): ";
 	std::getline(std::cin,result);
-	format_str(result);
+	k.format_str(result);
 	std::ofstream ofile;
 
 	ofile.open("keywords.txt");
