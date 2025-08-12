@@ -18,6 +18,7 @@ int main(int argc,char **argv){
 				else 
 					std::cout << "Keywords: " << keywords << std::endl;
 		}
+		x = m.menu();
 	}
 		
 	return 0;
