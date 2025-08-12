@@ -1,32 +1,24 @@
-#include <string>
-#include "net/CurlWrapper.h"
-#include "keywords/keywords.h"
-#include "dbus/PlasmaDBus.h"
 #include "wallpaper/WallpaperManager.h"
+#include "CLI/CLI.h"
+#include "keywords/keywords.h"
 
-class Settings{
-	void see_settings();
-	void edit_keywords(); //Make with setenv("EDITOR", "/usr/bin/vim", 1);
-	void edit_timer();
-};
-
-int main(int argc, char *argv[]){
-	std::string url;
-	std::string local;
-	auto keywords = divide_keywords(get_keywords());
-
-	do {
-		std::string kw = choose_keyword(keywords);
-		MyCurl c("an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
-		c.get_request();
-		url = c.get_image_url();
-		if (!url.empty()) {
-			local = c.download_image(url);
-			break;
+int main(int argc,char **argv){
+	Menu m;
+	int x = m.menu();
+	while (x != 4){
+		if (x == 1)
+		   	refresh_wallpaper(argc,argv); 
+		else if (x == 2)
+			save_wallpaper(where_are_wallpaper()); 
+		else if (x == 3){ 
+				Keywords k;
+				std::string keywords = k.look_keywords();
+				if (keywords == "")
+					std::cout << "The are not keywords, refresh wallpaper and write it\n";
+				else 
+					std::cout << "Keywords: " << keywords << std::endl;
 		}
-	} while (true);	
-
-	change_wallpaper(argc, argv, local);
-	save_wallpaper(local);
+	}
+		
 	return 0;
 }

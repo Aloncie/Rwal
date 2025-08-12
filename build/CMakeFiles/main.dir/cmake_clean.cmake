@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/link.d"
+  "CMakeFiles/main.dir/src/CLI/CLI.cpp.o"
+  "CMakeFiles/main.dir/src/CLI/CLI.cpp.o.d"
   "CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o"
   "CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o.d"
   "CMakeFiles/main.dir/src/keywords/keywords.cpp.o"

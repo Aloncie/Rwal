@@ -142,6 +142,30 @@ run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
+src/CLI/CLI.o: src/CLI/CLI.cpp.o
+.PHONY : src/CLI/CLI.o
+
+# target to build an object file
+src/CLI/CLI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/CLI/CLI.cpp.o
+.PHONY : src/CLI/CLI.cpp.o
+
+src/CLI/CLI.i: src/CLI/CLI.cpp.i
+.PHONY : src/CLI/CLI.i
+
+# target to preprocess a source file
+src/CLI/CLI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/CLI/CLI.cpp.i
+.PHONY : src/CLI/CLI.cpp.i
+
+src/CLI/CLI.s: src/CLI/CLI.cpp.s
+.PHONY : src/CLI/CLI.s
+
+# target to generate assembly for a file
+src/CLI/CLI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/CLI/CLI.cpp.s
+.PHONY : src/CLI/CLI.cpp.s
+
 src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
 .PHONY : src/dbus/PlasmaDBus.o
 
@@ -272,6 +296,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... run"
 	@echo "... main"
+	@echo "... src/CLI/CLI.o"
+	@echo "... src/CLI/CLI.i"
+	@echo "... src/CLI/CLI.s"
 	@echo "... src/dbus/PlasmaDBus.o"
 	@echo "... src/dbus/PlasmaDBus.i"
 	@echo "... src/dbus/PlasmaDBus.s"
