@@ -1,7 +1,6 @@
-CMakeFiles/main.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
- /usr/include/stdc-predef.h \
- /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h \
- /usr/include/c++/15.1.1/string \
+CMakeFiles/main.dir/src/CLI/CLI.cpp.o: \
+ /home/p1rat/code/rwal/src/CLI/CLI.cpp /usr/include/stdc-predef.h \
+ /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.1.1/string \
  /usr/include/c++/15.1.1/bits/requires_hosted.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -109,9 +108,9 @@ CMakeFiles/main.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
  /usr/include/c++/15.1.1/bits/uses_allocator.h \
  /usr/include/c++/15.1.1/bits/uses_allocator_args.h \
  /usr/include/c++/15.1.1/tuple /usr/include/c++/15.1.1/bits/ranges_util.h \
- /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.1.1/iostream \
- /usr/include/c++/15.1.1/ostream /usr/include/c++/15.1.1/bits/ostream.h \
- /usr/include/c++/15.1.1/ios /usr/include/c++/15.1.1/exception \
+ /usr/include/c++/15.1.1/iostream /usr/include/c++/15.1.1/ostream \
+ /usr/include/c++/15.1.1/bits/ostream.h /usr/include/c++/15.1.1/ios \
+ /usr/include/c++/15.1.1/exception \
  /usr/include/c++/15.1.1/bits/exception_ptr.h \
  /usr/include/c++/15.1.1/bits/cxxabi_init_exception.h \
  /usr/include/c++/15.1.1/typeinfo \
@@ -151,66 +150,4 @@ CMakeFiles/main.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
  /usr/include/c++/15.1.1/bits/locale_facets.tcc \
  /usr/include/c++/15.1.1/bits/basic_ios.tcc \
  /usr/include/c++/15.1.1/bits/ostream.tcc /usr/include/c++/15.1.1/istream \
- /usr/include/c++/15.1.1/bits/istream.tcc \
- /home/p1rat/code/rwal/src/keywords/keywords.h \
- /usr/include/c++/15.1.1/filesystem /usr/include/c++/15.1.1/bits/fs_fwd.h \
- /usr/include/c++/15.1.1/cstdint \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/stdint.h \
- /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
- /usr/include/bits/stdint-least.h /usr/include/c++/15.1.1/bits/chrono.h \
- /usr/include/c++/15.1.1/ratio /usr/include/c++/15.1.1/limits \
- /usr/include/c++/15.1.1/ctime \
- /usr/include/c++/15.1.1/bits/parse_numbers.h \
- /usr/include/c++/15.1.1/bits/fs_path.h /usr/include/c++/15.1.1/locale \
- /usr/include/c++/15.1.1/bits/locale_facets_nonio.h \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/time_members.h \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/15.1.1/bits/codecvt.h \
- /usr/include/c++/15.1.1/bits/locale_facets_nonio.tcc \
- /usr/include/c++/15.1.1/bits/locale_conv.h \
- /usr/include/c++/15.1.1/iomanip \
- /usr/include/c++/15.1.1/bits/quoted_string.h \
- /usr/include/c++/15.1.1/sstream /usr/include/c++/15.1.1/bits/sstream.tcc \
- /usr/include/c++/15.1.1/codecvt \
- /usr/include/c++/15.1.1/ext/concurrence.h \
- /usr/include/c++/15.1.1/bits/shared_ptr.h \
- /usr/include/c++/15.1.1/bits/shared_ptr_base.h \
- /usr/include/c++/15.1.1/bits/allocated_ptr.h \
- /usr/include/c++/15.1.1/bits/unique_ptr.h \
- /usr/include/c++/15.1.1/ext/aligned_buffer.h \
- /usr/include/c++/15.1.1/bits/align.h \
- /usr/include/c++/15.1.1/bits/stl_uninitialized.h \
- /usr/include/c++/15.1.1/bits/fs_dir.h \
- /usr/include/c++/15.1.1/bits/fs_ops.h /usr/include/c++/15.1.1/fstream \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/basic_file.h \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/15.1.1/bits/fstream.tcc /usr/include/c++/15.1.1/vector \
- /usr/include/c++/15.1.1/bits/stl_vector.h \
- /usr/include/c++/15.1.1/bits/stl_bvector.h \
- /usr/include/c++/15.1.1/bits/vector.tcc /usr/include/c++/15.1.1/random \
- /usr/include/c++/15.1.1/cmath /usr/include/math.h \
- /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
- /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
- /usr/include/bits/fp-fast.h /usr/include/bits/mathcalls-macros.h \
- /usr/include/bits/mathcalls-helper-functions.h \
- /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
- /usr/include/bits/iscanonical.h /usr/include/c++/15.1.1/bits/specfun.h \
- /usr/include/c++/15.1.1/tr1/gamma.tcc \
- /usr/include/c++/15.1.1/tr1/special_function_util.h \
- /usr/include/c++/15.1.1/tr1/bessel_function.tcc \
- /usr/include/c++/15.1.1/tr1/beta_function.tcc \
- /usr/include/c++/15.1.1/tr1/ell_integral.tcc \
- /usr/include/c++/15.1.1/tr1/exp_integral.tcc \
- /usr/include/c++/15.1.1/tr1/hypergeometric.tcc \
- /usr/include/c++/15.1.1/tr1/legendre_function.tcc \
- /usr/include/c++/15.1.1/tr1/modified_bessel_func.tcc \
- /usr/include/c++/15.1.1/tr1/poly_hermite.tcc \
- /usr/include/c++/15.1.1/tr1/poly_laguerre.tcc \
- /usr/include/c++/15.1.1/tr1/riemann_zeta.tcc \
- /usr/include/c++/15.1.1/bits/random.h \
- /usr/include/c++/15.1.1/bits/uniform_int_dist.h \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/opt_random.h \
- /usr/include/c++/15.1.1/bits/random.tcc /usr/include/c++/15.1.1/numeric \
- /usr/include/c++/15.1.1/bits/stl_numeric.h \
- /usr/include/c++/15.1.1/pstl/glue_numeric_defs.h \
- /usr/include/c++/15.1.1/pstl/execution_defs.h
+ /usr/include/c++/15.1.1/bits/istream.tcc

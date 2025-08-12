@@ -1,24 +1,28 @@
 #include "keywords.h"
 
-std::string get_keywords(){
+std::string Keywords::look_keywords(){
 	std::string result = "";
-	std::string c = "";
 	std::ifstream ifile;
+	ifile.open("keywords.txt");
+	if (ifile.is_open()){
+		getline(ifile,result);
+		ifile.close();
+	}
+	else {
+		std::cerr << "File open error " << std::endl;
+		return nullptr;
+	}
+	return result;
+}
 
-	if (std::filesystem::exists("keywords.txt")) {
+std::string Keywords::get_keywords(){
+	std::string result = "";
 		
-		ifile.open("keywords.txt");
-		if (ifile.is_open()){
-			getline(ifile,result);
-			if (result != ""){
-				ifile.close();
-				return result;
-			}
-		}
-		else {
-			std::cout << "File open error " << std::endl;
-			return nullptr;
-		}
+	if (std::filesystem::exists("keywords.txt")) {
+		Keywords k;
+		result = k.look_keywords();	
+		if (result != "")
+			return result;
 	}
 	
 	std::cout << "\nThere is not file with keywords." <<  "\nPlease write keywords to find wallpaper( use ',' to devide them): ";
@@ -40,7 +44,7 @@ std::string get_keywords(){
 	return result;
 }
 
-std::vector<std::string> divide_keywords(std::string str){
+std::vector<std::string> Keywords::divide_keywords(std::string str){
 	std::vector<std::string> keywords;
 	str += ' ';
 	std::string t = "";
@@ -55,7 +59,7 @@ std::vector<std::string> divide_keywords(std::string str){
 	return keywords;
 }
 
-std::string choose_keyword(std::vector<std::string> keywords){
+std::string Keywords::choose_keyword(std::vector<std::string> keywords){
 	std::random_device rd;
 	std::mt19937 gen(rd());	
 	std::uniform_int_distribution<> distrib(0,keywords.size()-1);
@@ -64,7 +68,7 @@ std::string choose_keyword(std::vector<std::string> keywords){
 	return keywords[num];
 }
 
-std::string format_str(std::string& str){
+std::string Keywords::format_str(std::string& str){
 	for (int i = 0;i < str.size(); i++){
 		if (!std::isalpha(str[i])&&str[i+1] != ' '){
 			str[i] = ' ';

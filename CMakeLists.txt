@@ -15,6 +15,7 @@ add_executable(main
 	src/keywords/keywords.cpp
 	src/net/CurlWrapper.cpp
 	src/wallpaper/WallpaperManager.cpp
+	src/CLI/CLI.cpp
 )
 
 target_include_directories(main PRIVATE
