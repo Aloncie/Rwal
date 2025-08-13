@@ -11,11 +11,8 @@ int Menu::menu(){
 	int choice = 0;
 	std::cin >> choice;
 
-	if (choice == 1||choice == 2||choice == 3)
+	if (choice == 1||choice == 2||choice == 3||choice == 4)
 		return choice;
-	else
-		std::cerr << "Failed input: unknown value\n";
-	
 }
 
 

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <random>
 #include <cctype>
+#include "/home/p1rat/code/rwal/src/logs/logs.h"
 
 class Keywords{
 public:

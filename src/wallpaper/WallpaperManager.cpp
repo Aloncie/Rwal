@@ -10,7 +10,7 @@ namespace fs = std::filesystem;
 
 void save_wallpaper(std::string from){
 	try{
-		std::string to = "/home/p1rat/Pictures/rwall" + from.substr(21,41);
+		std::string to = "/home/p1rat/Pictures/rwall/" + from.substr(21,41);
 		std::cout << to << std::endl;
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
@@ -28,7 +28,7 @@ void refresh_wallpaper(int argc, char *argv[]){
 		std::string kw = k.choose_keyword(keywords);
 		MyCurl c("an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
 		c.get_request();
-		url = c.get_image_url();
+		url = c.get_data("data","path");
 		if (!url.empty()) {
 			local = c.download_image(url);
 			break;
@@ -53,7 +53,8 @@ std::string where_are_wallpaper(){
 		}
 
 	} catch (const fs::filesystem_error& e){
-		std::cerr << "Error of delete old image: " << e.what() << std::endl;
+		Logs l;
+		l.write_logs("Error of delete old image: " + std::string(e.what()));
 		return nullptr;
 	}
 }
