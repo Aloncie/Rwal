@@ -4,6 +4,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 #include <iostream>
+#include "/home/p1rat/code/rwal/src/logs/logs.h"
 
 namespace fs = std::filesystem;
 
@@ -20,7 +21,7 @@ public:
 
 	MyCurl(std::string api_key, std::string keyword);
 	void get_request();
-	std::string get_image_url();
+	std::string get_data(std::string paragraph, std::string str);
 	std::string get_count_pages();
 	std::string download_image(const std::string& image_url);
 

@@ -9,9 +9,13 @@ std::string Keywords::look_keywords(){
 		ifile.close();
 	}
 	else {
-		std::cerr << "File open error " << std::endl;
+		Logs l;
+		l.write_logs("File open error ");
 		return nullptr;
 	}
+	Keywords k;
+	k.format_str(result);
+
 	return result;
 }
 
@@ -39,7 +43,8 @@ std::string Keywords::get_keywords(){
 		ofile.close();
 	}
 	else{ 
-		std::cout << "File create error " << std::endl;
+		Logs l;
+		l.write_logs("File create error ");
 		return nullptr;
 	}
 
@@ -66,7 +71,6 @@ std::string Keywords::choose_keyword(std::vector<std::string> keywords){
 	std::mt19937 gen(rd());	
 	std::uniform_int_distribution<> distrib(0,keywords.size()-1);
 	int num = distrib(gen);
-	std::cout << "The keywords on this time: " <<  keywords[num] << std::endl;
 	return keywords[num];
 }
 
