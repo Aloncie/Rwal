@@ -1,4 +1,4 @@
-CMakeFiles/main.dir/src/logs/logs.cpp.o: \
+CMakeFiles/rwal.dir/src/logs/logs.cpp.o: \
  /home/p1rat/code/rwal/src/logs/logs.cpp /usr/include/stdc-predef.h \
  /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.1.1/memory \
  /usr/include/c++/15.1.1/bits/memoryfwd.h \

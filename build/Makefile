@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles /home/p1rat/code/rwal/build//CMakeFiles/progress.marks
@@ -117,17 +162,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named rwal
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+rwal: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal
+.PHONY : rwal
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+rwal/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
+.PHONY : rwal/fast
 
 #=============================================================================
 # Target rules for targets named run
@@ -147,7 +192,7 @@ src/CLI/CLI.o: src/CLI/CLI.cpp.o
 
 # target to build an object file
 src/CLI/CLI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/CLI/CLI.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o
 .PHONY : src/CLI/CLI.cpp.o
 
 src/CLI/CLI.i: src/CLI/CLI.cpp.i
@@ -155,7 +200,7 @@ src/CLI/CLI.i: src/CLI/CLI.cpp.i
 
 # target to preprocess a source file
 src/CLI/CLI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/CLI/CLI.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/CLI.cpp.i
 .PHONY : src/CLI/CLI.cpp.i
 
 src/CLI/CLI.s: src/CLI/CLI.cpp.s
@@ -163,7 +208,7 @@ src/CLI/CLI.s: src/CLI/CLI.cpp.s
 
 # target to generate assembly for a file
 src/CLI/CLI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/CLI/CLI.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/CLI.cpp.s
 .PHONY : src/CLI/CLI.cpp.s
 
 src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
@@ -171,7 +216,7 @@ src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
 
 # target to build an object file
 src/dbus/PlasmaDBus.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
 .PHONY : src/dbus/PlasmaDBus.cpp.o
 
 src/dbus/PlasmaDBus.i: src/dbus/PlasmaDBus.cpp.i
@@ -179,7 +224,7 @@ src/dbus/PlasmaDBus.i: src/dbus/PlasmaDBus.cpp.i
 
 # target to preprocess a source file
 src/dbus/PlasmaDBus.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.i
 .PHONY : src/dbus/PlasmaDBus.cpp.i
 
 src/dbus/PlasmaDBus.s: src/dbus/PlasmaDBus.cpp.s
@@ -187,7 +232,7 @@ src/dbus/PlasmaDBus.s: src/dbus/PlasmaDBus.cpp.s
 
 # target to generate assembly for a file
 src/dbus/PlasmaDBus.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.s
 .PHONY : src/dbus/PlasmaDBus.cpp.s
 
 src/keywords/keywords.o: src/keywords/keywords.cpp.o
@@ -195,7 +240,7 @@ src/keywords/keywords.o: src/keywords/keywords.cpp.o
 
 # target to build an object file
 src/keywords/keywords.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/keywords/keywords.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o
 .PHONY : src/keywords/keywords.cpp.o
 
 src/keywords/keywords.i: src/keywords/keywords.cpp.i
@@ -203,7 +248,7 @@ src/keywords/keywords.i: src/keywords/keywords.cpp.i
 
 # target to preprocess a source file
 src/keywords/keywords.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/keywords/keywords.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/keywords/keywords.cpp.i
 .PHONY : src/keywords/keywords.cpp.i
 
 src/keywords/keywords.s: src/keywords/keywords.cpp.s
@@ -211,7 +256,7 @@ src/keywords/keywords.s: src/keywords/keywords.cpp.s
 
 # target to generate assembly for a file
 src/keywords/keywords.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/keywords/keywords.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/keywords/keywords.cpp.s
 .PHONY : src/keywords/keywords.cpp.s
 
 src/logs/logs.o: src/logs/logs.cpp.o
@@ -219,7 +264,7 @@ src/logs/logs.o: src/logs/logs.cpp.o
 
 # target to build an object file
 src/logs/logs.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/logs/logs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/logs/logs.cpp.o
 .PHONY : src/logs/logs.cpp.o
 
 src/logs/logs.i: src/logs/logs.cpp.i
@@ -227,7 +272,7 @@ src/logs/logs.i: src/logs/logs.cpp.i
 
 # target to preprocess a source file
 src/logs/logs.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/logs/logs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/logs/logs.cpp.i
 .PHONY : src/logs/logs.cpp.i
 
 src/logs/logs.s: src/logs/logs.cpp.s
@@ -235,7 +280,7 @@ src/logs/logs.s: src/logs/logs.cpp.s
 
 # target to generate assembly for a file
 src/logs/logs.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/logs/logs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/logs/logs.cpp.s
 .PHONY : src/logs/logs.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -243,7 +288,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -251,7 +296,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -259,7 +304,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/net/CurlWrapper.o: src/net/CurlWrapper.cpp.o
@@ -267,7 +312,7 @@ src/net/CurlWrapper.o: src/net/CurlWrapper.cpp.o
 
 # target to build an object file
 src/net/CurlWrapper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o
 .PHONY : src/net/CurlWrapper.cpp.o
 
 src/net/CurlWrapper.i: src/net/CurlWrapper.cpp.i
@@ -275,7 +320,7 @@ src/net/CurlWrapper.i: src/net/CurlWrapper.cpp.i
 
 # target to preprocess a source file
 src/net/CurlWrapper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/CurlWrapper.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.i
 .PHONY : src/net/CurlWrapper.cpp.i
 
 src/net/CurlWrapper.s: src/net/CurlWrapper.cpp.s
@@ -283,7 +328,7 @@ src/net/CurlWrapper.s: src/net/CurlWrapper.cpp.s
 
 # target to generate assembly for a file
 src/net/CurlWrapper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/net/CurlWrapper.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s
 .PHONY : src/net/CurlWrapper.cpp.s
 
 src/wallpaper/WallpaperManager.o: src/wallpaper/WallpaperManager.cpp.o
@@ -291,7 +336,7 @@ src/wallpaper/WallpaperManager.o: src/wallpaper/WallpaperManager.cpp.o
 
 # target to build an object file
 src/wallpaper/WallpaperManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o
 .PHONY : src/wallpaper/WallpaperManager.cpp.o
 
 src/wallpaper/WallpaperManager.i: src/wallpaper/WallpaperManager.cpp.i
@@ -299,7 +344,7 @@ src/wallpaper/WallpaperManager.i: src/wallpaper/WallpaperManager.cpp.i
 
 # target to preprocess a source file
 src/wallpaper/WallpaperManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.i
 .PHONY : src/wallpaper/WallpaperManager.cpp.i
 
 src/wallpaper/WallpaperManager.s: src/wallpaper/WallpaperManager.cpp.s
@@ -307,7 +352,7 @@ src/wallpaper/WallpaperManager.s: src/wallpaper/WallpaperManager.cpp.s
 
 # target to generate assembly for a file
 src/wallpaper/WallpaperManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/wallpaper/WallpaperManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.s
 .PHONY : src/wallpaper/WallpaperManager.cpp.s
 
 # Help Target
@@ -317,9 +362,13 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... run"
-	@echo "... main"
+	@echo "... rwal"
 	@echo "... src/CLI/CLI.o"
 	@echo "... src/CLI/CLI.i"
 	@echo "... src/CLI/CLI.s"
