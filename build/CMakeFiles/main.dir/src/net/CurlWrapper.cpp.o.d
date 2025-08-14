@@ -329,4 +329,14 @@ CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp /usr/include/c++/15.1.1/any \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /usr/include/c++/15.1.1/iostream
+ /usr/include/c++/15.1.1/iostream /home/p1rat/code/rwal/src/logs/logs.h \
+ /usr/include/c++/15.1.1/fstream \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/15.1.1/bits/fstream.tcc /usr/include/c++/15.1.1/chrono \
+ /usr/include/c++/15.1.1/bits/chrono_io.h /usr/include/c++/15.1.1/format \
+ /usr/include/c++/15.1.1/charconv \
+ /usr/include/c++/15.1.1/bits/monostate.h \
+ /usr/include/c++/15.1.1/bits/formatfwd.h \
+ /usr/include/c++/15.1.1/bits/unicode.h \
+ /usr/include/c++/15.1.1/bits/unicode-data.h

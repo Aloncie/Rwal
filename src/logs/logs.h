@@ -1,3 +1,4 @@
+#pragma once
 #include <memory>
 #include <iostream>
 #include <fstream>
@@ -6,7 +7,8 @@
 #include <string>
 
 class Logs{
-public:
+private:
 	std::string get_current_time();
+public:
 	void write_logs(std::string message);
 };
