@@ -1,4 +1,4 @@
-CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o: \
+CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp /usr/include/stdc-predef.h \
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
  /usr/include/qt/QtCore/QCoreApplication \

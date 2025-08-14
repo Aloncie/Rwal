@@ -8,22 +8,35 @@ int main(int argc,char **argv){
 		Logs l;
 		l.write_logs("Starting program");
 	}
+
+	int count = 0;
 	int x = menu();
+
 	while (x != 4){
-		if (x == 1)
+		if (x == 1){
+			count = 0;
 		   	refresh_wallpaper(argc,argv); 
-		else if (x == 2)
+			clear_last_lines(7+count);
+		}
+		else if (x == 2){
 			save_wallpaper(where_are_wallpaper()); 
+			clear_last_lines(7+count);
+			std::cout << "\n  Successful saving image" << std::endl;
+		}
 		else if (x == 3){ 
 				Keywords k;
 				std::string keywords = k.look_keywords();
-				if (keywords == "")
-					std::cout << "The are not keywords, refresh wallpaper and write it\n";
-				else 
-					std::cout << "Keywords: " << keywords << std::endl;
+				clear_last_lines(7+count);
+				int y = keywords_menu();
+				while (y != 2){
+					if (y == 1){
+						k.open_keywords_editor();
+					}
+					y = keywords_menu();
+				}
 		}
 		x = menu();
-		clear_last_lines(7);
+		count=2;
 	}
 	Logs l;
 	l.write_logs("Ending program");	

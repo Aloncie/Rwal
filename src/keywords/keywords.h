@@ -6,6 +6,8 @@
 #include <iostream>
 #include <random>
 #include <cctype>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "/home/p1rat/code/rwal/src/logs/logs.h"
 
 class Keywords{
@@ -15,5 +17,6 @@ public:
 	std::vector<std::string> divide_keywords(std::string str);
 	std::string choose_keyword(std::vector<std::string> keywords);
 	std::string format_str(std::string& str);
+	void open_keywords_editor();
 };
 

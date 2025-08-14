@@ -1,4 +1,4 @@
-CMakeFiles/main.dir/src/CLI/CLI.cpp.o: \
+CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: \
  /home/p1rat/code/rwal/src/CLI/CLI.cpp /usr/include/stdc-predef.h \
  /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.1.1/string \
  /usr/include/c++/15.1.1/bits/requires_hosted.h \
@@ -150,4 +150,107 @@ CMakeFiles/main.dir/src/CLI/CLI.cpp.o: \
  /usr/include/c++/15.1.1/bits/locale_facets.tcc \
  /usr/include/c++/15.1.1/bits/basic_ios.tcc \
  /usr/include/c++/15.1.1/bits/ostream.tcc /usr/include/c++/15.1.1/istream \
- /usr/include/c++/15.1.1/bits/istream.tcc
+ /usr/include/c++/15.1.1/bits/istream.tcc \
+ /home/p1rat/code/rwal/src/keywords/keywords.h \
+ /usr/include/c++/15.1.1/filesystem /usr/include/c++/15.1.1/bits/fs_fwd.h \
+ /usr/include/c++/15.1.1/cstdint \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/bits/stdint-least.h /usr/include/c++/15.1.1/bits/chrono.h \
+ /usr/include/c++/15.1.1/ratio /usr/include/c++/15.1.1/limits \
+ /usr/include/c++/15.1.1/ctime \
+ /usr/include/c++/15.1.1/bits/parse_numbers.h \
+ /usr/include/c++/15.1.1/bits/fs_path.h /usr/include/c++/15.1.1/locale \
+ /usr/include/c++/15.1.1/bits/locale_facets_nonio.h \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/time_members.h \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/15.1.1/bits/codecvt.h \
+ /usr/include/c++/15.1.1/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/15.1.1/bits/locale_conv.h \
+ /usr/include/c++/15.1.1/iomanip \
+ /usr/include/c++/15.1.1/bits/quoted_string.h \
+ /usr/include/c++/15.1.1/sstream /usr/include/c++/15.1.1/bits/sstream.tcc \
+ /usr/include/c++/15.1.1/codecvt \
+ /usr/include/c++/15.1.1/ext/concurrence.h \
+ /usr/include/c++/15.1.1/bits/shared_ptr.h \
+ /usr/include/c++/15.1.1/bits/shared_ptr_base.h \
+ /usr/include/c++/15.1.1/bits/allocated_ptr.h \
+ /usr/include/c++/15.1.1/bits/unique_ptr.h \
+ /usr/include/c++/15.1.1/ext/aligned_buffer.h \
+ /usr/include/c++/15.1.1/bits/align.h \
+ /usr/include/c++/15.1.1/bits/stl_uninitialized.h \
+ /usr/include/c++/15.1.1/bits/fs_dir.h \
+ /usr/include/c++/15.1.1/bits/fs_ops.h /usr/include/c++/15.1.1/fstream \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/15.1.1/bits/fstream.tcc /usr/include/c++/15.1.1/vector \
+ /usr/include/c++/15.1.1/bits/stl_vector.h \
+ /usr/include/c++/15.1.1/bits/stl_bvector.h \
+ /usr/include/c++/15.1.1/bits/vector.tcc /usr/include/c++/15.1.1/random \
+ /usr/include/c++/15.1.1/cmath /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h /usr/include/bits/mathcalls-macros.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h /usr/include/c++/15.1.1/bits/specfun.h \
+ /usr/include/c++/15.1.1/tr1/gamma.tcc \
+ /usr/include/c++/15.1.1/tr1/special_function_util.h \
+ /usr/include/c++/15.1.1/tr1/bessel_function.tcc \
+ /usr/include/c++/15.1.1/tr1/beta_function.tcc \
+ /usr/include/c++/15.1.1/tr1/ell_integral.tcc \
+ /usr/include/c++/15.1.1/tr1/exp_integral.tcc \
+ /usr/include/c++/15.1.1/tr1/hypergeometric.tcc \
+ /usr/include/c++/15.1.1/tr1/legendre_function.tcc \
+ /usr/include/c++/15.1.1/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/15.1.1/tr1/poly_hermite.tcc \
+ /usr/include/c++/15.1.1/tr1/poly_laguerre.tcc \
+ /usr/include/c++/15.1.1/tr1/riemann_zeta.tcc \
+ /usr/include/c++/15.1.1/bits/random.h \
+ /usr/include/c++/15.1.1/bits/uniform_int_dist.h \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/opt_random.h \
+ /usr/include/c++/15.1.1/bits/random.tcc /usr/include/c++/15.1.1/numeric \
+ /usr/include/c++/15.1.1/bits/stl_numeric.h \
+ /usr/include/c++/15.1.1/pstl/glue_numeric_defs.h \
+ /usr/include/c++/15.1.1/pstl/execution_defs.h /usr/include/sys/stat.h \
+ /usr/include/bits/stat.h /usr/include/bits/struct_stat.h \
+ /usr/include/bits/statx.h /usr/include/linux/stat.h \
+ /usr/include/bits/statx-generic.h \
+ /usr/include/bits/types/struct_statx_timestamp.h \
+ /usr/include/bits/types/struct_statx.h /usr/include/unistd.h \
+ /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+ /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
+ /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h /home/p1rat/code/rwal/src/logs/logs.h \
+ /usr/include/c++/15.1.1/memory \
+ /usr/include/c++/15.1.1/bits/stl_tempbuf.h \
+ /usr/include/c++/15.1.1/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/15.1.1/bits/shared_ptr_atomic.h \
+ /usr/include/c++/15.1.1/bits/atomic_base.h \
+ /usr/include/c++/15.1.1/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/15.1.1/bits/atomic_wait.h \
+ /usr/include/c++/15.1.1/climits \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/limits.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/syslimits.h \
+ /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+ /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+ /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+ /usr/include/bits/uio_lim.h /usr/include/syscall.h \
+ /usr/include/sys/syscall.h /usr/include/asm/unistd.h \
+ /usr/include/asm/unistd_64.h /usr/include/bits/syscall.h \
+ /usr/include/c++/15.1.1/bits/std_mutex.h \
+ /usr/include/c++/15.1.1/backward/auto_ptr.h \
+ /usr/include/c++/15.1.1/bits/ranges_uninitialized.h \
+ /usr/include/c++/15.1.1/bits/ranges_algobase.h \
+ /usr/include/c++/15.1.1/pstl/glue_memory_defs.h \
+ /usr/include/c++/15.1.1/chrono /usr/include/c++/15.1.1/bits/stl_algo.h \
+ /usr/include/c++/15.1.1/bits/algorithmfwd.h \
+ /usr/include/c++/15.1.1/bits/stl_heap.h \
+ /usr/include/c++/15.1.1/bits/chrono_io.h /usr/include/c++/15.1.1/format \
+ /usr/include/c++/15.1.1/array /usr/include/c++/15.1.1/charconv \
+ /usr/include/c++/15.1.1/optional \
+ /usr/include/c++/15.1.1/bits/enable_special_members.h \
+ /usr/include/c++/15.1.1/span /usr/include/c++/15.1.1/bits/monostate.h \
+ /usr/include/c++/15.1.1/bits/formatfwd.h \
+ /usr/include/c++/15.1.1/bits/unicode.h \
+ /usr/include/c++/15.1.1/bits/unicode-data.h

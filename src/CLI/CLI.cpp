@@ -21,4 +21,16 @@ void clear_last_lines(int count) {
     std::cout << "\r";
 }
 
+int keywords_menu(){
+	Keywords k;
+	std:: cout << "-------------------------- \n\n";
+	std::cout << k.look_keywords();
+	std::cout << "\n1) Edit keywords\n";
+	std::cout << "2) Quit\n";
+	std:: cout << "-------------------------- \n";
+	
+	int choice = 0;
+	std::cin >> choice;
 
+	return choice;
+}

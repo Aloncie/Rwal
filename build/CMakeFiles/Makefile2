@@ -63,11 +63,11 @@ CMAKE_BINARY_DIR = /home/p1rat/code/rwal/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/main.dir/all
+all: CMakeFiles/rwal.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/main.dir/codegen
+codegen: CMakeFiles/rwal.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,47 +75,47 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/main.dir/clean
+clean: CMakeFiles/rwal.dir/clean
 clean: CMakeFiles/run.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/main.dir
+# Target rules for target CMakeFiles/rwal.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target main"
-.PHONY : CMakeFiles/main.dir/all
+CMakeFiles/rwal.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target rwal"
+.PHONY : CMakeFiles/rwal.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/main.dir/rule: cmake_check_build_system
+CMakeFiles/rwal.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rwal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 0
-.PHONY : CMakeFiles/main.dir/rule
+.PHONY : CMakeFiles/rwal.dir/rule
 
 # Convenience name for target.
-main: CMakeFiles/main.dir/rule
-.PHONY : main
+rwal: CMakeFiles/rwal.dir/rule
+.PHONY : rwal
 
 # codegen rule for target.
-CMakeFiles/main.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target main"
-.PHONY : CMakeFiles/main.dir/codegen
+CMakeFiles/rwal.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target rwal"
+.PHONY : CMakeFiles/rwal.dir/codegen
 
 # clean rule for target.
-CMakeFiles/main.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
-.PHONY : CMakeFiles/main.dir/clean
+CMakeFiles/rwal.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/clean
+.PHONY : CMakeFiles/rwal.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/run.dir
 
 # All Build rule for target.
-CMakeFiles/run.dir/all: CMakeFiles/main.dir/all
+CMakeFiles/run.dir/all: CMakeFiles/rwal.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num= "Built target run"
@@ -133,7 +133,7 @@ run: CMakeFiles/run.dir/rule
 .PHONY : run
 
 # codegen rule for target.
-CMakeFiles/run.dir/codegen: CMakeFiles/main.dir/all
+CMakeFiles/run.dir/codegen: CMakeFiles/rwal.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num= "Finished codegen for target run"
 .PHONY : CMakeFiles/run.dir/codegen
