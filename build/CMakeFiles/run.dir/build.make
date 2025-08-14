@@ -66,8 +66,8 @@ include CMakeFiles/run.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/run.dir/progress.make
 
-CMakeFiles/run: main
-	stdbuf -oL /home/p1rat/code/rwal/build/main
+CMakeFiles/run: rwal
+	stdbuf -oL /home/p1rat/code/rwal/build/rwal
 
 CMakeFiles/run.dir/codegen:
 .PHONY : CMakeFiles/run.dir/codegen

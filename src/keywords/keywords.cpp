@@ -86,3 +86,25 @@ std::string Keywords::format_str(std::string& str){
 
 	return str;	
 }
+
+void Keywords::open_keywords_editor(){
+	std::string filepath = "/home/p1rat/code/rwal/build/keywords.txt";
+
+    Logs l;
+	struct stat buffer;
+    if (stat(filepath.c_str(), &buffer) != 0) {
+		l.write_logs("Error: File doesn't exist or inaccessible: " + filepath);
+        return;
+    }
+
+    if (access(filepath.c_str(), W_OK) != 0) {
+		l.write_logs("Error: No write permissions for file: " + filepath);
+        return;
+    }
+
+	const char* editor = getenv("EDITOR");
+	if (!editor)
+		editor = "nano";
+	std::string command = std::string(editor) + " " + filepath;
+	system(command.c_str());	
+}

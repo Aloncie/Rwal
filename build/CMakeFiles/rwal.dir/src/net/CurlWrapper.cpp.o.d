@@ -1,4 +1,4 @@
-CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o: \
+CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: \
  /home/p1rat/code/rwal/src/net/CurlWrapper.cpp /usr/include/stdc-predef.h \
  /home/p1rat/code/rwal/src/net/CurlWrapper.h /usr/include/curl/curl.h \
  /usr/include/curl/curlver.h /usr/include/curl/system.h \
