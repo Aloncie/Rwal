@@ -2,7 +2,5 @@
 #include <string>
 #include <iostream>
 
-class Menu{
-public:
-	int menu();
-};
+int menu();
+void clear_last_lines(int count);

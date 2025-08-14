@@ -16,6 +16,7 @@ add_executable(main
 	src/net/CurlWrapper.cpp
 	src/wallpaper/WallpaperManager.cpp
 	src/CLI/CLI.cpp
+	src/logs/logs.cpp
 )
 
 target_include_directories(main PRIVATE

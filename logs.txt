@@ -1,0 +1,90 @@
+[2025-08-14 11:42:35] Successful request
+[2025-08-14 11:42:35] Successful parsing
+[2025-08-14 11:42:35] path: https://w.wallhaven.cc/full/4g/wallhaven-4gplm3.jpg
+[2025-08-14 11:42:35] Successful deleting old image
+[2025-08-14 11:42:35] file_type: image/jpeg
+[2025-08-14 11:42:35] Successful init CURL to image download
+[2025-08-14 11:42:35] Successful creating image file
+[2025-08-14 11:42:35] Successful download image/home/p1rat/code/rwal/wallpaper-gplm3.jpeg
+[2025-08-14 11:42:38] Successful request
+[2025-08-14 11:42:38] Successful parsing
+[2025-08-14 11:42:38] path: https://w.wallhaven.cc/full/kw/wallhaven-kw1ky1.jpg
+[2025-08-14 11:42:38] Successful deleting old image
+[2025-08-14 11:42:38] file_type: image/jpeg
+[2025-08-14 11:42:38] Successful init CURL to image download
+[2025-08-14 11:42:38] Successful creating image file
+[2025-08-14 11:42:38] Successful download image/home/p1rat/code/rwal/wallpaper-w1ky1.jpeg
+[2025-08-14 11:42:42] Successful request
+[2025-08-14 11:42:42] Successful parsing
+[2025-08-14 11:42:42] path: https://w.wallhaven.cc/full/j8/wallhaven-j8z795.jpg
+[2025-08-14 11:42:42] Successful deleting old image
+[2025-08-14 11:42:42] file_type: image/jpeg
+[2025-08-14 11:42:42] Successful init CURL to image download
+[2025-08-14 11:42:42] Successful creating image file
+[2025-08-14 11:42:43] Successful download image/home/p1rat/code/rwal/wallpaper-8z795.jpeg
+[2025-08-14 11:48:05] Successful request
+[2025-08-14 11:48:05] Successful parsing
+[2025-08-14 11:48:05] path: https://w.wallhaven.cc/full/4v/wallhaven-4vg8v3.jpg
+[2025-08-14 11:48:05] Successful deleting old image
+[2025-08-14 11:48:05] file_type: image/jpeg
+[2025-08-14 11:48:05] Successful init CURL to image download
+[2025-08-14 11:48:05] Successful creating image file
+[2025-08-14 11:48:05] Successful download image/home/p1rat/code/rwal/wallpaper-vg8v3.jpeg
+[2025-08-14 11:52:08] Successful request
+[2025-08-14 11:52:08] Successful parsing
+[2025-08-14 11:52:08] path: https://w.wallhaven.cc/full/od/wallhaven-od2o8l.png
+[2025-08-14 11:52:08] Successful deleting old image
+[2025-08-14 11:52:08] file_type: image/png
+[2025-08-14 11:52:08] Successful init CURL to image download
+[2025-08-14 11:52:08] Successful creating image file
+[2025-08-14 11:52:08] Successful download image/home/p1rat/code/rwal/wallpaper-d2o8l.png
+[2025-08-14 12:01:19] Successful request
+[2025-08-14 12:01:19] Successful parsing
+[2025-08-14 12:01:19] path: https://w.wallhaven.cc/full/47/wallhaven-47yov9.png
+[2025-08-14 12:01:19] Successful deleting old image
+[2025-08-14 12:01:19] file_type: image/png
+[2025-08-14 12:01:19] Successful init CURL to image download
+[2025-08-14 12:01:19] Successful creating image file
+[2025-08-14 12:01:20] Successful download image/home/p1rat/code/rwal/wallpaper-7yov9.png
+[2025-08-14 12:01:24] Successful request
+[2025-08-14 12:01:24] Successful parsing
+[2025-08-14 12:01:24] path: https://w.wallhaven.cc/full/vm/wallhaven-vmwd6m.png
+[2025-08-14 12:01:24] Successful deleting old image
+[2025-08-14 12:01:24] file_type: image/png
+[2025-08-14 12:01:24] Successful init CURL to image download
+[2025-08-14 12:01:24] Successful creating image file
+[2025-08-14 12:01:25] Successful download image/home/p1rat/code/rwal/wallpaper-mwd6m.png
+[2025-08-14 12:01:28] Successful request
+[2025-08-14 12:01:28] Successful parsing
+[2025-08-14 12:01:28] path: https://w.wallhaven.cc/full/01/wallhaven-01vmw1.jpg
+[2025-08-14 12:01:28] Successful deleting old image
+[2025-08-14 12:01:28] file_type: image/jpeg
+[2025-08-14 12:01:28] Successful init CURL to image download
+[2025-08-14 12:01:28] Successful creating image file
+[2025-08-14 12:01:28] Successful download image/home/p1rat/code/rwal/wallpaper-1vmw1.jpeg
+[2025-08-14 12:01:31] Successful request
+[2025-08-14 12:01:31] Successful parsing
+[2025-08-14 12:01:31] path: https://w.wallhaven.cc/full/3l/wallhaven-3l77r9.png
+[2025-08-14 12:01:31] Successful deleting old image
+[2025-08-14 12:01:31] file_type: image/png
+[2025-08-14 12:01:31] Successful init CURL to image download
+[2025-08-14 12:01:31] Successful creating image file
+[2025-08-14 12:01:31] Successful download image/home/p1rat/code/rwal/wallpaper-l77r9.png
+[2025-08-14 12:01:33] Successful request
+[2025-08-14 12:01:33] Successful parsing
+[2025-08-14 12:01:33] path: https://w.wallhaven.cc/full/47/wallhaven-47zx59.jpg
+[2025-08-14 12:01:33] Successful deleting old image
+[2025-08-14 12:01:33] file_type: image/jpeg
+[2025-08-14 12:01:33] Successful init CURL to image download
+[2025-08-14 12:01:33] Successful creating image file
+[2025-08-14 12:01:34] Successful download image/home/p1rat/code/rwal/wallpaper-7zx59.jpeg
+[2025-08-14 12:15:42] Starting program
+[2025-08-14 12:15:45] Successful request
+[2025-08-14 12:15:45] Successful parsing
+[2025-08-14 12:15:45] path: https://w.wallhaven.cc/full/95/wallhaven-95gp8w.jpg
+[2025-08-14 12:15:45] Successful deleting old image
+[2025-08-14 12:15:45] file_type: image/jpeg
+[2025-08-14 12:15:45] Successful init CURL to image download
+[2025-08-14 12:15:45] Successful creating image file
+[2025-08-14 12:15:46] Successful download image/home/p1rat/code/rwal/wallpaper-5gp8w.jpeg
+[2025-08-14 12:15:53] Ending program

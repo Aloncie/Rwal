@@ -5,6 +5,7 @@
 #include <QVariantMap>
 #include <QDebug>
 #include <string>
+#include <QString>
 #include "/home/p1rat/code/rwal/src/logs/logs.h"
 
 void change_wallpaper(int argc, char** argv,std::string local);

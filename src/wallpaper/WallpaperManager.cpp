@@ -9,12 +9,13 @@
 namespace fs = std::filesystem;
 
 void save_wallpaper(std::string from){
+	Logs l;
 	try{
 		std::string to = "/home/p1rat/Pictures/rwall/" + from.substr(21,41);
-		std::cout << to << std::endl;
+		l.write_logs("Image successful saved: " + to);
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
-		std::cerr << e.what() << std::endl;
+		l.write_logs("Failed to saved image: " + std::string(e.what()));
 	}
 }
 

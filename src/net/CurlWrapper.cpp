@@ -1,5 +1,4 @@
 #include "CurlWrapper.h"
-#include <memory>
 
 static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) {
     size_t realsize = size * nmemb;
@@ -15,6 +14,7 @@ MyCurl::MyCurl(std::string api_key, std::string keyword){
 }
 
 void MyCurl::get_request(){
+	Logs l;
 	CURLcode res;
 	if (curl){
 		curl_easy_setopt(curl,CURLOPT_URL, url.c_str());
@@ -27,18 +27,21 @@ void MyCurl::get_request(){
 		res = curl_easy_perform(curl);
 		curl_easy_getinfo(curl,CURLINFO_RESPONSE_CODE,&http_code);
 
-		std::cout << "Full url: " << url << std::endl;			
-		std::cout << "http code:" << http_code << std::endl;
+		//std::cout << "Full url: " << url << std::endl;			
+		//std::cout << "http code:" << http_code << std::endl;
 
 		if (http_code != 200 || res != CURLE_OK){
-			std::cout << "Http error" << std::endl;
+			l.write_logs("Http error" + http_code);
 			return;
+		}
+		else {
+			l.write_logs("Successful request");
 		}
 
 		try {
 			j = nlohmann::json::parse(buffer);
+			l.write_logs("Successful parsing");
 		} catch (const std::exception& e) {
-			Logs l;
 			l.write_logs("JSON parse error: " + std::string(e.what()));
 			return;
 		}
@@ -53,7 +56,8 @@ std::string MyCurl::get_data(std::string paragraph, std::string str){
 	for (auto& item : j[paragraph]){
 		data = item[str];
 	}	
-	std::cout << str << ": " << data << std::endl;
+	Logs l;
+	l.write_logs(str + ": " + data);
 	return data;
 }
 
@@ -62,6 +66,7 @@ std::string MyCurl::get_count_pages(){
 }
 
 std::string MyCurl::download_image(const std::string& image_url){
+	Logs l;
 	//delete old image
 	fs::path dir_path("/home/p1rat/code/rwal");
 	
@@ -74,37 +79,40 @@ std::string MyCurl::download_image(const std::string& image_url){
 				}
 			}
 		}
+		l.write_logs("Successful deleting old image");
 
 	} catch (const fs::filesystem_error& e){
-		Logs l;
 		l.write_logs("Error of delete old image: " + std::string(e.what()));
 	}
 
 	//create images's name
 	std::string image_name = "/home/p1rat/code/rwal/wallpaper-";
-	std::cout << image_url << std::endl << image_url.size() << std::endl;
 	for (int i = 0;i < 5;i++){
 		image_name+=image_url[42+i];
 	}
 	std::unique_ptr<std::string> t (new std::string);
 	*t = get_data("data","file_type");
-	for (size_t i = 7; i < t->size(); i++){
+	image_name += ".";
+	for (size_t i = 6; i < t->size(); i++){
 		image_name += (*t)[i];
 	}
-	std::cout << image_name << std::endl;
 
 	CURL* image_curl = curl_easy_init();
 	if (!image_curl){
-		Logs l;
 		l.write_logs("Failed to init CURL to image download");
 		return dir_path;
+	}
+	else {
+		l.write_logs("Successful init CURL to image download");
 	}
 	//create image
 	FILE* fp = fopen(image_name.c_str(),"wb");
 	if (!fp){
-		Logs l;
 		l.write_logs("Failed to create image file");
 		return dir_path;
+	}
+	else {
+		l.write_logs("Successful creating image file");
 	}
 	curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
 	curl_easy_setopt(image_curl, CURLOPT_WRITEFUNCTION, NULL);
@@ -114,9 +122,11 @@ std::string MyCurl::download_image(const std::string& image_url){
 	
 	CURLcode res = curl_easy_perform(image_curl);
 	if (res != CURLE_OK){
-		Logs l;
 		l.write_logs("Failed download image: " + std::string(curl_easy_strerror(res)));
 		return dir_path;
+	}
+	else {
+		l.write_logs("Successful download image" + image_name);
 	}
 	fclose(fp);
 	curl_easy_cleanup(image_curl);

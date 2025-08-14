@@ -1,6 +1,6 @@
 #include "CLI.h"
 
-int Menu::menu(){
+int menu(){
 	std:: cout << "-------------------------- \n";
 	std::cout << "1) Refresh wallpaper now\n";
 	std::cout << "2) Save current wallpaper\n";
@@ -11,8 +11,14 @@ int Menu::menu(){
 	int choice = 0;
 	std::cin >> choice;
 
-	if (choice == 1||choice == 2||choice == 3||choice == 4)
-		return choice;
+	return choice;
+}
+
+void clear_last_lines(int count) {
+    for (int i = 0; i < count; ++i) {
+        std::cout << "\033[A\033[2K";
+    }
+    std::cout << "\r";
 }
 
 
