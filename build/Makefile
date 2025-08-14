@@ -214,6 +214,30 @@ src/keywords/keywords.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/keywords/keywords.cpp.s
 .PHONY : src/keywords/keywords.cpp.s
 
+src/logs/logs.o: src/logs/logs.cpp.o
+.PHONY : src/logs/logs.o
+
+# target to build an object file
+src/logs/logs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/logs/logs.cpp.o
+.PHONY : src/logs/logs.cpp.o
+
+src/logs/logs.i: src/logs/logs.cpp.i
+.PHONY : src/logs/logs.i
+
+# target to preprocess a source file
+src/logs/logs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/logs/logs.cpp.i
+.PHONY : src/logs/logs.cpp.i
+
+src/logs/logs.s: src/logs/logs.cpp.s
+.PHONY : src/logs/logs.s
+
+# target to generate assembly for a file
+src/logs/logs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/logs/logs.cpp.s
+.PHONY : src/logs/logs.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -305,6 +329,9 @@ help:
 	@echo "... src/keywords/keywords.o"
 	@echo "... src/keywords/keywords.i"
 	@echo "... src/keywords/keywords.s"
+	@echo "... src/logs/logs.o"
+	@echo "... src/logs/logs.i"
+	@echo "... src/logs/logs.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

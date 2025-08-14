@@ -1,10 +1,14 @@
 #include "wallpaper/WallpaperManager.h"
 #include "CLI/CLI.h"
 #include "keywords/keywords.h"
+#include "logs/logs.h"
 
 int main(int argc,char **argv){
-	Menu m;
-	int x = m.menu();
+	if (true){
+		Logs l;
+		l.write_logs("Starting program");
+	}
+	int x = menu();
 	while (x != 4){
 		if (x == 1)
 		   	refresh_wallpaper(argc,argv); 
@@ -18,8 +22,10 @@ int main(int argc,char **argv){
 				else 
 					std::cout << "Keywords: " << keywords << std::endl;
 		}
-		x = m.menu();
+		x = menu();
+		clear_last_lines(7);
 	}
-		
+	Logs l;
+	l.write_logs("Ending program");	
 	return 0;
 }

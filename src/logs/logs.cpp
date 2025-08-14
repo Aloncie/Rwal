@@ -11,9 +11,9 @@ std::string Logs::get_current_time(){
 
 void Logs::write_logs(std::string message){
 	std::unique_ptr<std::ofstream> f(new std::ofstream);
-	f->open("logs.txt");
+	f->open("/home/p1rat/code/rwal/logs.txt", std::ios::app);
 	if (f->is_open()){
-		*f << get_current_time() << " " << message;
+		*f << get_current_time() << " " << message << "\n";
 	}
 	else
 		std::cerr << "Error create/open logs" << std::endl;

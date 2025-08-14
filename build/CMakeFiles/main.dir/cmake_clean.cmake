@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/dbus/PlasmaDBus.cpp.o.d"
   "CMakeFiles/main.dir/src/keywords/keywords.cpp.o"
   "CMakeFiles/main.dir/src/keywords/keywords.cpp.o.d"
+  "CMakeFiles/main.dir/src/logs/logs.cpp.o"
+  "CMakeFiles/main.dir/src/logs/logs.cpp.o.d"
   "CMakeFiles/main.dir/src/main.cpp.o"
   "CMakeFiles/main.dir/src/main.cpp.o.d"
   "CMakeFiles/main.dir/src/net/CurlWrapper.cpp.o"
