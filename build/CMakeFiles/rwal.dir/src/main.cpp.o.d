@@ -220,7 +220,12 @@ CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
  /usr/include/c++/15.1.1/bits/formatfwd.h \
  /usr/include/c++/15.1.1/bits/unicode.h \
  /usr/include/c++/15.1.1/bits/unicode-data.h \
- /home/p1rat/code/rwal/src/CLI/CLI.h \
+ /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.1.1/map \
+ /usr/include/c++/15.1.1/bits/stl_tree.h \
+ /usr/include/c++/15.1.1/bits/node_handle.h \
+ /usr/include/c++/15.1.1/bits/stl_map.h \
+ /usr/include/c++/15.1.1/bits/stl_multimap.h \
+ /usr/include/c++/15.1.1/bits/erase_if.h \
  /home/p1rat/code/rwal/src/keywords/keywords.h \
  /usr/include/c++/15.1.1/filesystem /usr/include/c++/15.1.1/bits/fs_fwd.h \
  /usr/include/c++/15.1.1/bits/fs_path.h /usr/include/c++/15.1.1/codecvt \

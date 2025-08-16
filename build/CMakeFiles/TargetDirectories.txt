@@ -1,5 +1,4 @@
 /home/p1rat/code/rwal/build/CMakeFiles/rwal.dir
-/home/p1rat/code/rwal/build/CMakeFiles/run.dir
 /home/p1rat/code/rwal/build/CMakeFiles/edit_cache.dir
 /home/p1rat/code/rwal/build/CMakeFiles/rebuild_cache.dir
 /home/p1rat/code/rwal/build/CMakeFiles/list_install_components.dir

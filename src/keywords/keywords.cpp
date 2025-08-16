@@ -1,9 +1,11 @@
 #include "keywords.h"
 
+const std::string keywords_path = "/home/p1rat/code/rwal/build/keywords.txt";
+
 std::string Keywords::look_keywords(){
 	std::string result = "";
 	std::ifstream ifile;
-	ifile.open("keywords.txt");
+	ifile.open(keywords_path);
 	if (ifile.is_open()){
 		getline(ifile,result);
 		ifile.close();
@@ -23,7 +25,7 @@ std::string Keywords::get_keywords(){
 	std::string result = "";
 	Keywords k;
 
-	if (std::filesystem::exists("keywords.txt")) {
+	if (std::filesystem::exists(keywords_path)) {
 		result = k.look_keywords();	
 		if (result != ""){
 			k.format_str(result);
@@ -36,7 +38,7 @@ std::string Keywords::get_keywords(){
 	k.format_str(result);
 	std::ofstream ofile;
 
-	ofile.open("keywords.txt");
+	ofile.open(keywords_path);
 
 	if (ofile.is_open()){
 		ofile << result;
@@ -47,7 +49,6 @@ std::string Keywords::get_keywords(){
 		l.write_logs("File create error ");
 		return nullptr;
 	}
-
 	return result;
 }
 
@@ -88,23 +89,21 @@ std::string Keywords::format_str(std::string& str){
 }
 
 void Keywords::open_keywords_editor(){
-	std::string filepath = "/home/p1rat/code/rwal/build/keywords.txt";
-
     Logs l;
 	struct stat buffer;
-    if (stat(filepath.c_str(), &buffer) != 0) {
-		l.write_logs("Error: File doesn't exist or inaccessible: " + filepath);
+    if (stat(keywords_path.c_str(), &buffer) != 0) {
+		l.write_logs("Error: File doesn't exist or inaccessible: " + keywords_path);
         return;
     }
 
-    if (access(filepath.c_str(), W_OK) != 0) {
-		l.write_logs("Error: No write permissions for file: " + filepath);
+    if (access(keywords_path.c_str(), W_OK) != 0) {
+		l.write_logs("Error: No write permissions for file: " + keywords_path);
         return;
     }
 
 	const char* editor = getenv("EDITOR");
 	if (!editor)
 		editor = "nano";
-	std::string command = std::string(editor) + " " + filepath;
+	std::string command = std::string(editor) + " " + keywords_path;
 	system(command.c_str());	
 }

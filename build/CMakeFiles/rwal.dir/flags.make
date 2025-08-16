@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG
 
-CXX_INCLUDES = -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++
+CXX_INCLUDES = -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++
 
 CXX_FLAGS = -std=gnu++20 -fPIC
 

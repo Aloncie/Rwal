@@ -158,6 +158,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/p1rat/code/rwal/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -173,19 +174,6 @@ rwal: cmake_check_build_system
 rwal/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
 .PHONY : rwal/fast
-
-#=============================================================================
-# Target rules for targets named run
-
-# Build rule for target.
-run: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 run
-.PHONY : run
-
-# fast build rule for target.
-run/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-.PHONY : run/fast
 
 src/CLI/CLI.o: src/CLI/CLI.cpp.o
 .PHONY : src/CLI/CLI.o
@@ -331,6 +319,30 @@ src/net/CurlWrapper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s
 .PHONY : src/net/CurlWrapper.cpp.s
 
+src/startup_flows/startup_flows.o: src/startup_flows/startup_flows.cpp.o
+.PHONY : src/startup_flows/startup_flows.o
+
+# target to build an object file
+src/startup_flows/startup_flows.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o
+.PHONY : src/startup_flows/startup_flows.cpp.o
+
+src/startup_flows/startup_flows.i: src/startup_flows/startup_flows.cpp.i
+.PHONY : src/startup_flows/startup_flows.i
+
+# target to preprocess a source file
+src/startup_flows/startup_flows.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.i
+.PHONY : src/startup_flows/startup_flows.cpp.i
+
+src/startup_flows/startup_flows.s: src/startup_flows/startup_flows.cpp.s
+.PHONY : src/startup_flows/startup_flows.s
+
+# target to generate assembly for a file
+src/startup_flows/startup_flows.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.s
+.PHONY : src/startup_flows/startup_flows.cpp.s
+
 src/wallpaper/WallpaperManager.o: src/wallpaper/WallpaperManager.cpp.o
 .PHONY : src/wallpaper/WallpaperManager.o
 
@@ -367,7 +379,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... run"
 	@echo "... rwal"
 	@echo "... src/CLI/CLI.o"
 	@echo "... src/CLI/CLI.i"
@@ -387,6 +398,9 @@ help:
 	@echo "... src/net/CurlWrapper.o"
 	@echo "... src/net/CurlWrapper.i"
 	@echo "... src/net/CurlWrapper.s"
+	@echo "... src/startup_flows/startup_flows.o"
+	@echo "... src/startup_flows/startup_flows.i"
+	@echo "... src/startup_flows/startup_flows.s"
 	@echo "... src/wallpaper/WallpaperManager.o"
 	@echo "... src/wallpaper/WallpaperManager.i"
 	@echo "... src/wallpaper/WallpaperManager.s"
@@ -401,6 +415,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/p1rat/code/rwal/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
