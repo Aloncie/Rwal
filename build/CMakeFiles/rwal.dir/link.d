@@ -2,13 +2,14 @@ rwal: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o \
-  CMakeFiles/rwal.dir/src/main.cpp.o \
+  CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o \
   CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o \
   CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o \
-  CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o \
-  CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o \
-  CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o \
   CMakeFiles/rwal.dir/src/logs/logs.cpp.o \
+  CMakeFiles/rwal.dir/src/main.cpp.o \
+  CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o \
+  CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o \
+  CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o \
   /usr/lib/libcurl.so \
   /usr/lib/libQt5DBus.so.5.15.17 \
   /usr/lib/libQt5Core.so.5.15.17 \
@@ -104,19 +105,21 @@ rwal: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o:
 
-CMakeFiles/rwal.dir/src/main.cpp.o:
+CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o:
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o:
 
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o:
 
+CMakeFiles/rwal.dir/src/logs/logs.cpp.o:
+
+CMakeFiles/rwal.dir/src/main.cpp.o:
+
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o:
 
+CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o:
+
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
-
-CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o:
-
-CMakeFiles/rwal.dir/src/logs/logs.cpp.o:
 
 /usr/lib/libcurl.so:
 

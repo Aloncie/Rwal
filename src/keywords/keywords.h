@@ -10,6 +10,8 @@
 #include <unistd.h>
 #include "/home/p1rat/code/rwal/src/logs/logs.h"
 
+extern const std::string keywords_path;
+
 class Keywords{
 public:
 	std::string look_keywords();

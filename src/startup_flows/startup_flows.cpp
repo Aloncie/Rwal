@@ -3,11 +3,12 @@
 #include "keywords/keywords.h"
 #include "logs/logs.h"
 
-int main(int argc,char **argv){
+void core(int argc,char **argv){
 	if (true){
 		Logs l;
 		l.write_logs("Starting program");
 	}
+
 	std::map<std::string,int> countStr;
 	
 	countStr.insert({"menu",6});	
@@ -53,5 +54,4 @@ int main(int argc,char **argv){
 	}
 	Logs l;
 	l.write_logs("Ending program");	
-	return 0;
 }
