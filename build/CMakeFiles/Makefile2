@@ -76,7 +76,6 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/rwal.dir/clean
-clean: CMakeFiles/run.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -86,12 +85,12 @@ clean: CMakeFiles/run.dir/clean
 CMakeFiles/rwal.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target rwal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target rwal"
 .PHONY : CMakeFiles/rwal.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rwal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rwal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 0
 .PHONY : CMakeFiles/rwal.dir/rule
@@ -103,7 +102,7 @@ rwal: CMakeFiles/rwal.dir/rule
 # codegen rule for target.
 CMakeFiles/rwal.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target rwal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Finished codegen for target rwal"
 .PHONY : CMakeFiles/rwal.dir/codegen
 
 # clean rule for target.
@@ -112,44 +111,13 @@ CMakeFiles/rwal.dir/clean:
 .PHONY : CMakeFiles/rwal.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/run.dir
-
-# All Build rule for target.
-CMakeFiles/run.dir/all: CMakeFiles/rwal.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num= "Built target run"
-.PHONY : CMakeFiles/run.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/run.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 0
-.PHONY : CMakeFiles/run.dir/rule
-
-# Convenience name for target.
-run: CMakeFiles/run.dir/rule
-.PHONY : run
-
-# codegen rule for target.
-CMakeFiles/run.dir/codegen: CMakeFiles/rwal.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num= "Finished codegen for target run"
-.PHONY : CMakeFiles/run.dir/codegen
-
-# clean rule for target.
-CMakeFiles/run.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/clean
-.PHONY : CMakeFiles/run.dir/clean
-
-#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/p1rat/code/rwal/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

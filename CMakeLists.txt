@@ -12,19 +12,19 @@ find_package(Qt5 REQUIRED COMPONENTS Core DBus)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-add_executable(rwal 
-	src/main.cpp 
-	src/dbus/PlasmaDBus.cpp
-	src/keywords/keywords.cpp
-	src/net/CurlWrapper.cpp
-	src/wallpaper/WallpaperManager.cpp
-	src/CLI/CLI.cpp
-	src/logs/logs.cpp
-)
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "src/*.cpp")
+file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "src/*.h")
+
+add_executable(rwal ${SOURCES} ${HEADERS})
 
 target_include_directories(rwal PRIVATE
-	${CMAKE_SOURCE_DIR}/src
+    ${PROJECT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/src
+    ${CURL_INCLUDE_DIRS}
+    ${Qt5DBus_INCLUDE_DIRS}
+    ${Qt5Core_INCLUDE_DIRS}
 )
 
 target_link_libraries(rwal PRIVATE 
@@ -34,10 +34,7 @@ target_link_libraries(rwal PRIVATE
 	Qt5::Core
 )
 
-add_custom_target(run
-    COMMAND stdbuf -oL $<TARGET_FILE:rwal>
-    DEPENDS rwal
+install(TARGETS rwal
+	RUNTIME DESTINATION bin
 )
 
-install(TARGETS rwal
-	RUNTIME DESTINATION bin)

@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o -c /home/p1rat/code/rwal/src/CLI/CLI.cpp",
+  "file": "/home/p1rat/code/rwal/src/CLI/CLI.cpp",
+  "output": "CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o -c /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp",
+  "file": "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp",
+  "output": "CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o -c /home/p1rat/code/rwal/src/keywords/keywords.cpp",
+  "file": "/home/p1rat/code/rwal/src/keywords/keywords.cpp",
+  "output": "CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/logs/logs.cpp.o -c /home/p1rat/code/rwal/src/logs/logs.cpp",
+  "file": "/home/p1rat/code/rwal/src/logs/logs.cpp",
+  "output": "CMakeFiles/rwal.dir/src/logs/logs.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/main.cpp.o -c /home/p1rat/code/rwal/src/main.cpp",
+  "file": "/home/p1rat/code/rwal/src/main.cpp",
+  "output": "CMakeFiles/rwal.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o -c /home/p1rat/code/rwal/src/net/CurlWrapper.cpp",
+  "file": "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp",
+  "output": "CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o -c /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp",
+  "file": "/home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp",
+  "output": "CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o -c /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp",
+  "file": "/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp",
+  "output": "CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o"
+}
+]

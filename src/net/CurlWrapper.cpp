@@ -17,6 +17,7 @@ void MyCurl::get_request(){
 	Logs l;
 	CURLcode res;
 	if (curl){
+		l.write_logs("Try to request");
 		curl_easy_setopt(curl,CURLOPT_URL, url.c_str());
 		curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION,&callback);
 		curl_easy_setopt(curl,CURLOPT_WRITEDATA,&buffer);
@@ -29,6 +30,7 @@ void MyCurl::get_request(){
 
 		//std::cout << "Full url: " << url << std::endl;			
 		//std::cout << "http code:" << http_code << std::endl;
+		l.write_logs("url of request: " + url);
 
 		if (http_code != 200 || res != CURLE_OK){
 			l.write_logs("Http error" + http_code);
@@ -37,7 +39,8 @@ void MyCurl::get_request(){
 		else {
 			l.write_logs("Successful request");
 		}
-
+		
+		l.write_logs("Try to parse");
 		try {
 			j = nlohmann::json::parse(buffer);
 			l.write_logs("Successful parsing");
@@ -67,9 +70,10 @@ std::string MyCurl::get_count_pages(){
 
 std::string MyCurl::download_image(const std::string& image_url){
 	Logs l;
-	//delete old image
+	l.write_logs("Try to delete old image");
+
 	fs::path dir_path("/home/p1rat/code/rwal");
-	
+	//delete old image
 	try {
 		for (const auto& item : fs::directory_iterator(dir_path)){
 			if (fs::is_regular_file(item.path())){
@@ -87,8 +91,8 @@ std::string MyCurl::download_image(const std::string& image_url){
 
 	//create images's name
 	std::string image_name = "/home/p1rat/code/rwal/wallpaper-";
-	for (int i = 0;i < 5;i++){
-		image_name+=image_url[42+i];
+	for (int i = 0;i < 6;i++){
+		image_name+=image_url[41+i];
 	}
 	std::unique_ptr<std::string> t (new std::string);
 	*t = get_data("data","file_type");
@@ -111,9 +115,9 @@ std::string MyCurl::download_image(const std::string& image_url){
 		l.write_logs("Failed to create image file");
 		return dir_path;
 	}
-	else {
+	else
 		l.write_logs("Successful creating image file");
-	}
+
 	curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
 	curl_easy_setopt(image_curl, CURLOPT_WRITEFUNCTION, NULL);
 	curl_easy_setopt(image_curl, CURLOPT_WRITEDATA, fp);
@@ -125,9 +129,9 @@ std::string MyCurl::download_image(const std::string& image_url){
 		l.write_logs("Failed download image: " + std::string(curl_easy_strerror(res)));
 		return dir_path;
 	}
-	else {
+	else
 		l.write_logs("Successful download image" + image_name);
-	}
+
 	fclose(fp);
 	curl_easy_cleanup(image_curl);
 	return image_name;
