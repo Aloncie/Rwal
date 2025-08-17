@@ -13,6 +13,12 @@
 },
 {
   "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o -c /home/p1rat/code/rwal/src/funcs/funcs.cpp",
+  "file": "/home/p1rat/code/rwal/src/funcs/funcs.cpp",
+  "output": "CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
   "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_NO_DEBUG -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o -c /home/p1rat/code/rwal/src/keywords/keywords.cpp",
   "file": "/home/p1rat/code/rwal/src/keywords/keywords.cpp",
   "output": "CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o"

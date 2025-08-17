@@ -110,19 +110,26 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/c++/15.1.1/bits/uses_allocator.h \
  /usr/include/c++/15.1.1/bits/uses_allocator_args.h \
  /usr/include/c++/15.1.1/tuple /usr/include/c++/15.1.1/bits/ranges_util.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.1.1/memory \
- /usr/include/c++/15.1.1/bits/stl_tempbuf.h \
- /usr/include/c++/15.1.1/bits/stl_uninitialized.h \
- /usr/include/c++/15.1.1/bits/stl_raw_storage_iter.h \
- /usr/include/c++/15.1.1/bits/align.h \
- /usr/include/c++/15.1.1/bits/unique_ptr.h \
- /usr/include/c++/15.1.1/bits/ostream.h /usr/include/c++/15.1.1/ios \
  /usr/include/c++/15.1.1/exception \
  /usr/include/c++/15.1.1/bits/exception_ptr.h \
  /usr/include/c++/15.1.1/bits/cxxabi_init_exception.h \
  /usr/include/c++/15.1.1/typeinfo \
  /usr/include/c++/15.1.1/bits/nested_exception.h \
- /usr/include/c++/15.1.1/bits/ios_base.h \
+ /usr/include/c++/15.1.1/filesystem /usr/include/c++/15.1.1/bits/fs_fwd.h \
+ /usr/include/c++/15.1.1/system_error \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/error_constants.h \
+ /usr/include/c++/15.1.1/stdexcept /usr/include/c++/15.1.1/cstdint \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/bits/stdint-least.h /usr/include/c++/15.1.1/bits/chrono.h \
+ /usr/include/c++/15.1.1/ratio /usr/include/c++/15.1.1/limits \
+ /usr/include/c++/15.1.1/ctime /usr/include/time.h \
+ /usr/include/bits/time.h /usr/include/bits/timex.h \
+ /usr/include/bits/types/struct_tm.h \
+ /usr/include/bits/types/struct_itimerspec.h \
+ /usr/include/c++/15.1.1/bits/parse_numbers.h \
+ /usr/include/c++/15.1.1/bits/fs_path.h /usr/include/c++/15.1.1/locale \
+ /usr/include/c++/15.1.1/bits/locale_classes.h \
  /usr/include/c++/15.1.1/ext/atomicity.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/gthr.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/gthr-default.h \
@@ -134,41 +141,55 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/linux/stddef.h /usr/include/asm/posix_types.h \
  /usr/include/asm/posix_types_64.h /usr/include/asm-generic/posix_types.h \
  /usr/include/bits/types/struct_sched_param.h /usr/include/bits/cpu-set.h \
- /usr/include/time.h /usr/include/bits/time.h /usr/include/bits/timex.h \
- /usr/include/bits/types/struct_tm.h \
- /usr/include/bits/types/struct_itimerspec.h /usr/include/bits/setjmp.h \
+ /usr/include/bits/setjmp.h \
  /usr/include/bits/types/struct___jmp_buf_tag.h \
  /usr/include/bits/pthread_stack_min-dynamic.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
  /usr/include/sys/single_threaded.h \
- /usr/include/c++/15.1.1/bits/locale_classes.h \
  /usr/include/c++/15.1.1/bits/locale_classes.tcc \
- /usr/include/c++/15.1.1/system_error \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/error_constants.h \
- /usr/include/c++/15.1.1/stdexcept /usr/include/c++/15.1.1/streambuf \
- /usr/include/c++/15.1.1/bits/streambuf.tcc \
- /usr/include/c++/15.1.1/bits/basic_ios.h \
  /usr/include/c++/15.1.1/bits/locale_facets.h \
  /usr/include/c++/15.1.1/cwctype /usr/include/wctype.h \
  /usr/include/bits/wctype-wchar.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
+ /usr/include/c++/15.1.1/bits/ios_base.h \
+ /usr/include/c++/15.1.1/streambuf \
+ /usr/include/c++/15.1.1/bits/streambuf.tcc \
  /usr/include/c++/15.1.1/bits/streambuf_iterator.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/ctype_inline.h \
  /usr/include/c++/15.1.1/bits/locale_facets.tcc \
+ /usr/include/c++/15.1.1/bits/locale_facets_nonio.h \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/time_members.h \
+ /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/15.1.1/bits/codecvt.h \
+ /usr/include/c++/15.1.1/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/15.1.1/bits/locale_conv.h \
+ /usr/include/c++/15.1.1/iomanip \
+ /usr/include/c++/15.1.1/bits/quoted_string.h \
+ /usr/include/c++/15.1.1/sstream /usr/include/c++/15.1.1/istream \
+ /usr/include/c++/15.1.1/ios /usr/include/c++/15.1.1/bits/basic_ios.h \
  /usr/include/c++/15.1.1/bits/basic_ios.tcc \
+ /usr/include/c++/15.1.1/ostream /usr/include/c++/15.1.1/bits/ostream.h \
+ /usr/include/c++/15.1.1/bits/ostream.tcc \
+ /usr/include/c++/15.1.1/bits/istream.tcc \
+ /usr/include/c++/15.1.1/bits/sstream.tcc /usr/include/c++/15.1.1/codecvt \
+ /usr/include/c++/15.1.1/ext/concurrence.h \
  /usr/include/c++/15.1.1/bits/shared_ptr.h \
  /usr/include/c++/15.1.1/bits/shared_ptr_base.h \
  /usr/include/c++/15.1.1/bits/allocated_ptr.h \
+ /usr/include/c++/15.1.1/bits/unique_ptr.h \
  /usr/include/c++/15.1.1/ext/aligned_buffer.h \
- /usr/include/c++/15.1.1/ext/concurrence.h \
+ /usr/include/c++/15.1.1/bits/align.h \
+ /usr/include/c++/15.1.1/bits/stl_uninitialized.h \
+ /usr/include/c++/15.1.1/bits/fs_dir.h \
+ /usr/include/c++/15.1.1/bits/fs_ops.h \
+ /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.1.1/memory \
+ /usr/include/c++/15.1.1/bits/stl_tempbuf.h \
+ /usr/include/c++/15.1.1/bits/stl_raw_storage_iter.h \
  /usr/include/c++/15.1.1/bits/shared_ptr_atomic.h \
  /usr/include/c++/15.1.1/bits/atomic_base.h \
  /usr/include/c++/15.1.1/bits/atomic_lockfree_defines.h \
  /usr/include/c++/15.1.1/bits/atomic_wait.h \
- /usr/include/c++/15.1.1/cstdint \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/stdint.h \
- /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
- /usr/include/bits/stdint-least.h /usr/include/c++/15.1.1/climits \
+ /usr/include/c++/15.1.1/climits \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/limits.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/syslimits.h \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
@@ -187,17 +208,10 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/c++/15.1.1/bits/ranges_algobase.h \
  /usr/include/c++/15.1.1/pstl/glue_memory_defs.h \
  /usr/include/c++/15.1.1/pstl/execution_defs.h \
- /usr/include/c++/15.1.1/iostream /usr/include/c++/15.1.1/ostream \
- /usr/include/c++/15.1.1/bits/ostream.tcc /usr/include/c++/15.1.1/istream \
- /usr/include/c++/15.1.1/bits/istream.tcc /usr/include/c++/15.1.1/fstream \
- /usr/include/c++/15.1.1/bits/codecvt.h \
+ /usr/include/c++/15.1.1/iostream /usr/include/c++/15.1.1/fstream \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.1.1/bits/fstream.tcc /usr/include/c++/15.1.1/chrono \
- /usr/include/c++/15.1.1/bits/chrono.h /usr/include/c++/15.1.1/ratio \
- /usr/include/c++/15.1.1/limits /usr/include/c++/15.1.1/ctime \
- /usr/include/c++/15.1.1/bits/parse_numbers.h \
- /usr/include/c++/15.1.1/sstream /usr/include/c++/15.1.1/bits/sstream.tcc \
  /usr/include/c++/15.1.1/vector /usr/include/c++/15.1.1/bits/stl_vector.h \
  /usr/include/c++/15.1.1/bits/stl_bvector.h \
  /usr/include/c++/15.1.1/bits/vector.tcc \
@@ -205,17 +219,9 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/c++/15.1.1/bits/algorithmfwd.h \
  /usr/include/c++/15.1.1/bits/stl_heap.h \
  /usr/include/c++/15.1.1/bits/uniform_int_dist.h \
- /usr/include/c++/15.1.1/bits/chrono_io.h /usr/include/c++/15.1.1/iomanip \
- /usr/include/c++/15.1.1/locale \
- /usr/include/c++/15.1.1/bits/locale_facets_nonio.h \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/time_members.h \
- /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/messages_members.h \
- /usr/include/libintl.h \
- /usr/include/c++/15.1.1/bits/locale_facets_nonio.tcc \
- /usr/include/c++/15.1.1/bits/locale_conv.h \
- /usr/include/c++/15.1.1/bits/quoted_string.h \
- /usr/include/c++/15.1.1/format /usr/include/c++/15.1.1/array \
- /usr/include/c++/15.1.1/charconv /usr/include/c++/15.1.1/optional \
+ /usr/include/c++/15.1.1/bits/chrono_io.h /usr/include/c++/15.1.1/format \
+ /usr/include/c++/15.1.1/array /usr/include/c++/15.1.1/charconv \
+ /usr/include/c++/15.1.1/optional \
  /usr/include/c++/15.1.1/bits/enable_special_members.h \
  /usr/include/c++/15.1.1/span /usr/include/c++/15.1.1/bits/monostate.h \
  /usr/include/c++/15.1.1/bits/formatfwd.h \
@@ -311,10 +317,6 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/strings.h \
  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
  /usr/include/nlohmann/detail/meta/std_fs.hpp \
- /usr/include/c++/15.1.1/filesystem /usr/include/c++/15.1.1/bits/fs_fwd.h \
- /usr/include/c++/15.1.1/bits/fs_path.h /usr/include/c++/15.1.1/codecvt \
- /usr/include/c++/15.1.1/bits/fs_dir.h \
- /usr/include/c++/15.1.1/bits/fs_ops.h \
  /usr/include/nlohmann/detail/conversions/to_json.hpp \
  /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
  /usr/include/c++/15.1.1/ranges \
@@ -399,4 +401,5 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/qt/QtCore/qcontiguouscache.h \
  /usr/include/qt/QtCore/qsharedpointer.h \
  /usr/include/qt/QtCore/qsharedpointer_impl.h \
- /usr/include/qt/QtCore/QString /usr/include/qt/QtCore/qstring.h
+ /usr/include/qt/QtCore/QString /usr/include/qt/QtCore/qstring.h \
+ /home/p1rat/code/rwal/src/funcs/funcs.h

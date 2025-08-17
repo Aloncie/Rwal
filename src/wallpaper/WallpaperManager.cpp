@@ -1,10 +1,10 @@
 #include "WallpaperManager.h"
-#include "/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h"
-#include "/home/p1rat/code/rwal/src/net/CurlWrapper.h"
-#include "/home/p1rat/code/rwal/src/keywords/keywords.h"
-#include "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h"
+#include "net/CurlWrapper.h"
+#include "keywords/keywords.h"
+#include "dbus/PlasmaDBus.h"
+#include "funcs/funcs.h"
+#include "logs/logs.h"
 #include <exception>
-#include <filesystem>
 
 namespace fs = std::filesystem;
 
@@ -19,19 +19,32 @@ void save_wallpaper(std::string from){
 	}
 }
 
-void refresh_wallpaper(int argc, char *argv[]){
-	std::string url;
-	std::string local;
+void refresh_wallpaper(int argc, char *argv[],int& count){
+	Logs l;
+	std::string url, local, page, pageCount;
+	int last_page = 1;
 	Keywords k;
-	auto keywords = k.divide_keywords(k.get_keywords());
-
+	auto keywords = k.divide_keywords(k.get_keywords(count));
+	
 	do {
-		std::string kw = k.choose_keyword(keywords);
-		MyCurl c("an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
+		std::string kw = keywords[random(keywords.size()-1)];
+		MyCurl c("apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
 		c.get_request();
-		url = c.get_data("data","path");
+		pageCount = c.get_data("meta","last_page");
+		try {
+			last_page = std::stoi(pageCount);
+		} catch(std::exception& e){
+			Logs l;
+			l.write_logs("Failed to stoi pageCount: " + std::string(e.what()));
+			last_page = 1;
+		}
+		page = std::to_string(random(last_page)+1);
+
+		MyCurl v("page=" + page + "&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",kw);
+		v.get_request();
+		url = v.get_data("data","path");
 		if (!url.empty()) {
-			local = c.download_image(url);
+			local = v.download_image(url);
 			break;
 		}
 	} while (true);	

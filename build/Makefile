@@ -223,6 +223,30 @@ src/dbus/PlasmaDBus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.s
 .PHONY : src/dbus/PlasmaDBus.cpp.s
 
+src/funcs/funcs.o: src/funcs/funcs.cpp.o
+.PHONY : src/funcs/funcs.o
+
+# target to build an object file
+src/funcs/funcs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o
+.PHONY : src/funcs/funcs.cpp.o
+
+src/funcs/funcs.i: src/funcs/funcs.cpp.i
+.PHONY : src/funcs/funcs.i
+
+# target to preprocess a source file
+src/funcs/funcs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/funcs/funcs.cpp.i
+.PHONY : src/funcs/funcs.cpp.i
+
+src/funcs/funcs.s: src/funcs/funcs.cpp.s
+.PHONY : src/funcs/funcs.s
+
+# target to generate assembly for a file
+src/funcs/funcs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/funcs/funcs.cpp.s
+.PHONY : src/funcs/funcs.cpp.s
+
 src/keywords/keywords.o: src/keywords/keywords.cpp.o
 .PHONY : src/keywords/keywords.o
 
@@ -386,6 +410,9 @@ help:
 	@echo "... src/dbus/PlasmaDBus.o"
 	@echo "... src/dbus/PlasmaDBus.i"
 	@echo "... src/dbus/PlasmaDBus.s"
+	@echo "... src/funcs/funcs.o"
+	@echo "... src/funcs/funcs.i"
+	@echo "... src/funcs/funcs.s"
 	@echo "... src/keywords/keywords.o"
 	@echo "... src/keywords/keywords.i"
 	@echo "... src/keywords/keywords.s"

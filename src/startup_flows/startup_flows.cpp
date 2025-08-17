@@ -2,8 +2,9 @@
 #include "CLI/CLI.h"
 #include "keywords/keywords.h"
 #include "logs/logs.h"
+#include "startup_flows.h"
 
-void core(int argc,char **argv){
+void Flows::core(int argc,char **argv){
 	if (true){
 		Logs l;
 		l.write_logs("Starting program");
@@ -20,7 +21,7 @@ void core(int argc,char **argv){
 
 	while (x != 'q'){
 		if (x == '1'){
-		   	refresh_wallpaper(argc,argv); 
+		   	refresh_wallpaper(argc,argv,count); 
 			count += countStr.find("menu")->second;
 			clear_last_lines(count);		
 		}
