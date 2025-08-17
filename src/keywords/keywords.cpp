@@ -21,7 +21,7 @@ std::string Keywords::look_keywords(){
 	return result;
 }
 
-std::string Keywords::get_keywords(){
+std::string Keywords::get_keywords(int& count){
 	std::string result = "";
 	Keywords k;
 
@@ -34,7 +34,10 @@ std::string Keywords::get_keywords(){
 	}
 	
 	std::cout << "\nThere is not file with keywords." <<  "\nPlease write keywords to find wallpaper( use ',' to devide them): ";
-	std::getline(std::cin,result);
+	count+=3;
+	while (result == "")
+		std::getline(std::cin,result);
+	//std::cin >> result;
 	k.format_str(result);
 	std::ofstream ofile;
 
@@ -65,14 +68,6 @@ std::vector<std::string> Keywords::divide_keywords(std::string str){
 		}
 	}
 	return keywords;
-}
-
-std::string Keywords::choose_keyword(std::vector<std::string> keywords){
-	std::random_device rd;
-	std::mt19937 gen(rd());	
-	std::uniform_int_distribution<> distrib(0,keywords.size()-1);
-	int num = distrib(gen);
-	return keywords[num];
 }
 
 std::string Keywords::format_str(std::string& str){

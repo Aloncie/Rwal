@@ -4,6 +4,7 @@ rwal: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o \
   CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o \
   CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o \
+  CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o \
   CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o \
   CMakeFiles/rwal.dir/src/logs/logs.cpp.o \
   CMakeFiles/rwal.dir/src/main.cpp.o \
@@ -108,6 +109,8 @@ rwal: \
 CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o:
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o:
+
+CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o:
 
