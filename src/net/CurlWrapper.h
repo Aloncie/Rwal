@@ -4,7 +4,6 @@
 #include <nlohmann/json.hpp>
 #include <string>
 #include <iostream>
-#include "/home/p1rat/code/rwal/src/logs/logs.h"
 
 namespace fs = std::filesystem;
 

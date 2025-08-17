@@ -6,6 +6,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/p1rat/code/rwal/src/*.c
 set(OLD_GLOB
   "/home/p1rat/code/rwal/src/CLI/CLI.cpp"
   "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp"
+  "/home/p1rat/code/rwal/src/funcs/funcs.cpp"
   "/home/p1rat/code/rwal/src/keywords/keywords.cpp"
   "/home/p1rat/code/rwal/src/logs/logs.cpp"
   "/home/p1rat/code/rwal/src/main.cpp"
@@ -23,9 +24,11 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/p1rat/code/rwal/src/*.h
 set(OLD_GLOB
   "/home/p1rat/code/rwal/src/CLI/CLI.h"
   "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h"
+  "/home/p1rat/code/rwal/src/funcs/funcs.h"
   "/home/p1rat/code/rwal/src/keywords/keywords.h"
   "/home/p1rat/code/rwal/src/logs/logs.h"
   "/home/p1rat/code/rwal/src/net/CurlWrapper.h"
+  "/home/p1rat/code/rwal/src/startup_flows/startup_flows.h"
   "/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

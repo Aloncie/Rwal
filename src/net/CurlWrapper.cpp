@@ -1,4 +1,6 @@
 #include "CurlWrapper.h"
+#include "logs/logs.h"
+#include <exception>
 
 static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) {
     size_t realsize = size * nmemb;
@@ -7,9 +9,8 @@ static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) 
 	return realsize;
 }
 
-MyCurl::MyCurl(std::string api_key, std::string keyword){
-	url += keyword + "&purity=100%20&sorting=random&resolutions=1920x1080&page=1&apikey=" + api_key;
-	//distrib.param(decltype(distrib)::param_type{1,});
+MyCurl::MyCurl(std::string str, std::string keyword){
+	url += keyword + "&purity=100%20&sorting=random&resolutions=1920x1080&" + str;
 	curl = curl_easy_init();
 }
 
@@ -28,8 +29,6 @@ void MyCurl::get_request(){
 		res = curl_easy_perform(curl);
 		curl_easy_getinfo(curl,CURLINFO_RESPONSE_CODE,&http_code);
 
-		//std::cout << "Full url: " << url << std::endl;			
-		//std::cout << "http code:" << http_code << std::endl;
 		l.write_logs("url of request: " + url);
 
 		if (http_code != 200 || res != CURLE_OK){
@@ -43,7 +42,7 @@ void MyCurl::get_request(){
 		l.write_logs("Try to parse");
 		try {
 			j = nlohmann::json::parse(buffer);
-			l.write_logs("Successful parsing");
+			l.write_logs("Successful parse JSON");
 		} catch (const std::exception& e) {
 			l.write_logs("JSON parse error: " + std::string(e.what()));
 			return;
@@ -54,18 +53,36 @@ void MyCurl::get_request(){
 }
 
 std::string MyCurl::get_data(std::string paragraph, std::string str){
-	std::string data;
+	if (!j.contains(paragraph)){
+		Logs l;
+		l.write_logs("Error: paragraph " + paragraph + " not found in JSON");
+		return "";
+	}
+	try {
+		if (j[paragraph].is_array()){
+			for (auto& item : j[paragraph]){
+				if (item.contains(str)){
+					if (item[str].is_string()){
+						return item[str].get<std::string>();
+					}
+					return std::to_string(item[str].get<int>());
+				}
+			}
+		}
 
-	for (auto& item : j[paragraph]){
-		data = item[str];
-	}	
-	Logs l;
-	l.write_logs(str + ": " + data);
-	return data;
-}
-
-std::string MyCurl::get_count_pages(){
-	return "";		
+		else if (j[paragraph].is_object()){
+			if (j[paragraph].contains(str)){
+				if (j[paragraph][str].is_string()){
+					return j[paragraph][str].get<std::string>();
+				}
+				return std::to_string(j[paragraph][str].get<int>());
+			}
+		}
+	} catch (const std::exception& e){
+		Logs l;
+		l.write_logs("JSON parsing error: " + std::string(e.what()));
+	}
+	return "";
 }
 
 std::string MyCurl::download_image(const std::string& image_url){

@@ -4,20 +4,18 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <random>
 #include <cctype>
 #include <sys/stat.h>
 #include <unistd.h>
-#include "/home/p1rat/code/rwal/src/logs/logs.h"
+#include "logs/logs.h"
 
 extern const std::string keywords_path;
 
 class Keywords{
 public:
 	std::string look_keywords();
-	std::string get_keywords();
+	std::string get_keywords(int& count);
 	std::vector<std::string> divide_keywords(std::string str);
-	std::string choose_keyword(std::vector<std::string> keywords);
 	std::string format_str(std::string& str);
 	void open_keywords_editor();
 };
