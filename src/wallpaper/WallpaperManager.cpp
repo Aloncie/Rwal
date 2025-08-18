@@ -4,7 +4,6 @@
 #include "dbus/PlasmaDBus.h"
 #include "funcs/funcs.h"
 #include "logs/logs.h"
-#include <exception>
 
 namespace fs = std::filesystem;
 
@@ -19,18 +18,24 @@ void save_wallpaper(std::string from){
 	}
 }
 
-void refresh_wallpaper(int argc, char *argv[],int& count){
+void refresh_wallpaper(int argc, char *argv[],std::string mode,int count){
 	Logs l;
 	std::string url, local, page, pageCount;
 	int last_page = 1;
 	Keywords k;
-	auto keywords = k.divide_keywords(k.get_keywords(count));
-	
+	std::vector<std::string> keywords;
+	if (mode == "change")
+		keywords = k.divide_keywords(k.look_keywords());
+	else if (mode == "core")
+		keywords = k.divide_keywords(k.get_keywords(count));
+
 	do {
 		std::string kw = keywords[random(keywords.size()-1)];
+		//get page count for request
 		MyCurl c("apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
 		c.get_request();
 		pageCount = c.get_data("meta","last_page");
+
 		try {
 			last_page = std::stoi(pageCount);
 		} catch(std::exception& e){
@@ -38,6 +43,7 @@ void refresh_wallpaper(int argc, char *argv[],int& count){
 			l.write_logs("Failed to stoi pageCount: " + std::string(e.what()));
 			last_page = 1;
 		}
+
 		page = std::to_string(random(last_page)+1);
 
 		MyCurl v("page=" + page + "&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",kw);

@@ -107,3 +107,1349 @@
 [2025-08-17 23:25:49] Successful creating image file
 [2025-08-17 23:25:50] Successful download image/home/p1rat/code/rwal/wallpaper-g7rdr7.png
 [2025-08-17 23:25:52] Ending program
+[2025-08-18 10:35:33] Starting program
+[2025-08-18 10:35:48] Try to request
+[2025-08-18 10:35:49] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:35:49] Successful request
+[2025-08-18 10:35:49] Try to parse
+[2025-08-18 10:35:49] Successful parse JSON
+[2025-08-18 10:35:49] Try to request
+[2025-08-18 10:35:49] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=1401&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:35:49] Successful request
+[2025-08-18 10:35:49] Try to parse
+[2025-08-18 10:35:49] Successful parse JSON
+[2025-08-18 10:35:49] Try to delete old image
+[2025-08-18 10:35:49] Successful deleting old image
+[2025-08-18 10:35:49] Successful init CURL to image download
+[2025-08-18 10:35:49] Successful creating image file
+[2025-08-18 10:35:50] Successful download image/home/p1rat/code/rwal/wallpaper-2yle2x.png
+[2025-08-18 10:35:52] Try to request
+[2025-08-18 10:35:53] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:35:53] Successful request
+[2025-08-18 10:35:53] Try to parse
+[2025-08-18 10:35:53] Successful parse JSON
+[2025-08-18 10:35:53] Try to request
+[2025-08-18 10:35:53] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=222&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:35:53] Successful request
+[2025-08-18 10:35:53] Try to parse
+[2025-08-18 10:35:53] Successful parse JSON
+[2025-08-18 10:35:53] Try to delete old image
+[2025-08-18 10:35:53] Successful deleting old image
+[2025-08-18 10:35:53] Successful init CURL to image download
+[2025-08-18 10:35:53] Successful creating image file
+[2025-08-18 10:35:54] Successful download image/home/p1rat/code/rwal/wallpaper-q23j3q.jpeg
+[2025-08-18 10:35:57] Ending program
+[2025-08-18 10:36:03] Starting program
+[2025-08-18 10:36:07] Try to request
+[2025-08-18 10:36:07] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:07] Successful request
+[2025-08-18 10:36:07] Try to parse
+[2025-08-18 10:36:08] Successful parse JSON
+[2025-08-18 10:36:08] Try to request
+[2025-08-18 10:36:08] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1561&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:08] Successful request
+[2025-08-18 10:36:08] Try to parse
+[2025-08-18 10:36:08] Successful parse JSON
+[2025-08-18 10:36:08] Try to delete old image
+[2025-08-18 10:36:08] Successful deleting old image
+[2025-08-18 10:36:08] Successful init CURL to image download
+[2025-08-18 10:36:08] Successful creating image file
+[2025-08-18 10:36:08] Successful download image/home/p1rat/code/rwal/wallpaper-0wvrk6.jpeg
+[2025-08-18 10:36:14] Try to request
+[2025-08-18 10:36:14] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:14] Successful request
+[2025-08-18 10:36:14] Try to parse
+[2025-08-18 10:36:14] Successful parse JSON
+[2025-08-18 10:36:14] Try to request
+[2025-08-18 10:36:15] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=873&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:15] Successful request
+[2025-08-18 10:36:15] Try to parse
+[2025-08-18 10:36:15] Successful parse JSON
+[2025-08-18 10:36:15] Try to delete old image
+[2025-08-18 10:36:15] Successful deleting old image
+[2025-08-18 10:36:15] Successful init CURL to image download
+[2025-08-18 10:36:15] Successful creating image file
+[2025-08-18 10:36:16] Successful download image/home/p1rat/code/rwal/wallpaper-zxvj3w.png
+[2025-08-18 10:36:22] Try to request
+[2025-08-18 10:36:22] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:22] Successful request
+[2025-08-18 10:36:22] Try to parse
+[2025-08-18 10:36:22] Successful parse JSON
+[2025-08-18 10:36:22] Try to request
+[2025-08-18 10:36:23] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=1192&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:23] Successful request
+[2025-08-18 10:36:23] Try to parse
+[2025-08-18 10:36:23] Successful parse JSON
+[2025-08-18 10:36:23] Try to delete old image
+[2025-08-18 10:36:23] Successful deleting old image
+[2025-08-18 10:36:23] Successful init CURL to image download
+[2025-08-18 10:36:23] Successful creating image file
+[2025-08-18 10:36:23] Successful download image/home/p1rat/code/rwal/wallpaper-6qdky6.jpeg
+[2025-08-18 10:36:25] Try to request
+[2025-08-18 10:36:25] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:25] Successful request
+[2025-08-18 10:36:25] Try to parse
+[2025-08-18 10:36:25] Successful parse JSON
+[2025-08-18 10:36:25] Try to request
+[2025-08-18 10:36:26] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1318&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:26] Successful request
+[2025-08-18 10:36:26] Try to parse
+[2025-08-18 10:36:26] Successful parse JSON
+[2025-08-18 10:36:26] Try to delete old image
+[2025-08-18 10:36:26] Successful deleting old image
+[2025-08-18 10:36:26] Successful init CURL to image download
+[2025-08-18 10:36:26] Successful creating image file
+[2025-08-18 10:36:26] Successful download image/home/p1rat/code/rwal/wallpaper-8o59kk.jpeg
+[2025-08-18 10:36:29] Try to request
+[2025-08-18 10:36:29] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:29] Successful request
+[2025-08-18 10:36:29] Try to parse
+[2025-08-18 10:36:29] Successful parse JSON
+[2025-08-18 10:36:29] Try to request
+[2025-08-18 10:36:30] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=1237&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:30] Successful request
+[2025-08-18 10:36:30] Try to parse
+[2025-08-18 10:36:30] Successful parse JSON
+[2025-08-18 10:36:30] Try to delete old image
+[2025-08-18 10:36:30] Successful deleting old image
+[2025-08-18 10:36:30] Successful init CURL to image download
+[2025-08-18 10:36:30] Successful creating image file
+[2025-08-18 10:36:30] Successful download image/home/p1rat/code/rwal/wallpaper-gjz51q.jpeg
+[2025-08-18 10:36:31] Try to request
+[2025-08-18 10:36:32] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:32] Successful request
+[2025-08-18 10:36:32] Try to parse
+[2025-08-18 10:36:32] Successful parse JSON
+[2025-08-18 10:36:32] Try to request
+[2025-08-18 10:36:32] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=1187&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:36:32] Successful request
+[2025-08-18 10:36:32] Try to parse
+[2025-08-18 10:36:32] Successful parse JSON
+[2025-08-18 10:36:32] Try to delete old image
+[2025-08-18 10:36:32] Successful deleting old image
+[2025-08-18 10:36:32] Successful init CURL to image download
+[2025-08-18 10:36:32] Successful creating image file
+[2025-08-18 10:36:33] Successful download image/home/p1rat/code/rwal/wallpaper-43m1mv.jpeg
+[2025-08-18 10:36:37] Ending program
+[2025-08-18 10:44:49] Starting program
+[2025-08-18 10:44:51] Try to request
+[2025-08-18 10:44:52] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:44:52] Successful request
+[2025-08-18 10:44:52] Try to parse
+[2025-08-18 10:44:52] Successful parse JSON
+[2025-08-18 10:44:52] Data of JSON: 2405
+[2025-08-18 10:44:52] Try to request
+[2025-08-18 10:44:52] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=990&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:44:52] Successful request
+[2025-08-18 10:44:52] Try to parse
+[2025-08-18 10:44:52] Successful parse JSON
+[2025-08-18 10:44:52] Data of JSON: https://w.wallhaven.cc/full/0q/wallhaven-0q2orl.jpg
+[2025-08-18 10:44:52] Try to delete old image
+[2025-08-18 10:44:52] Successful deleting old image
+[2025-08-18 10:44:52] Data of JSON: image/jpeg
+[2025-08-18 10:44:52] Successful init CURL to image download
+[2025-08-18 10:44:52] Successful creating image file
+[2025-08-18 10:44:53] Successful download image/home/p1rat/code/rwal/wallpaper-0q2orl.jpeg
+[2025-08-18 10:45:14] Try to request
+[2025-08-18 10:45:15] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:15] Successful request
+[2025-08-18 10:45:15] Try to parse
+[2025-08-18 10:45:15] Successful parse JSON
+[2025-08-18 10:45:15] Data of JSON: 2405
+[2025-08-18 10:45:15] Try to request
+[2025-08-18 10:45:16] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=2018&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:16] Successful request
+[2025-08-18 10:45:16] Try to parse
+[2025-08-18 10:45:16] Successful parse JSON
+[2025-08-18 10:45:16] Data of JSON: https://w.wallhaven.cc/full/ym/wallhaven-ymg8vk.jpg
+[2025-08-18 10:45:16] Try to delete old image
+[2025-08-18 10:45:16] Successful deleting old image
+[2025-08-18 10:45:16] Data of JSON: image/jpeg
+[2025-08-18 10:45:16] Successful init CURL to image download
+[2025-08-18 10:45:16] Successful creating image file
+[2025-08-18 10:45:16] Successful download image/home/p1rat/code/rwal/wallpaper-ymg8vk.jpeg
+[2025-08-18 10:45:19] Try to request
+[2025-08-18 10:45:19] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:19] Successful request
+[2025-08-18 10:45:19] Try to parse
+[2025-08-18 10:45:19] Successful parse JSON
+[2025-08-18 10:45:19] Data of JSON: 2405
+[2025-08-18 10:45:19] Try to request
+[2025-08-18 10:45:20] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1114&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:20] Successful request
+[2025-08-18 10:45:20] Try to parse
+[2025-08-18 10:45:20] Successful parse JSON
+[2025-08-18 10:45:20] Data of JSON: https://w.wallhaven.cc/full/od/wallhaven-odz5r7.jpg
+[2025-08-18 10:45:20] Try to delete old image
+[2025-08-18 10:45:20] Successful deleting old image
+[2025-08-18 10:45:20] Data of JSON: image/jpeg
+[2025-08-18 10:45:20] Successful init CURL to image download
+[2025-08-18 10:45:20] Successful creating image file
+[2025-08-18 10:45:20] Successful download image/home/p1rat/code/rwal/wallpaper-odz5r7.jpeg
+[2025-08-18 10:45:22] Try to request
+[2025-08-18 10:45:23] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:23] Successful request
+[2025-08-18 10:45:23] Try to parse
+[2025-08-18 10:45:23] Successful parse JSON
+[2025-08-18 10:45:23] Data of JSON: 2405
+[2025-08-18 10:45:23] Try to request
+[2025-08-18 10:45:23] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=756&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:23] Successful request
+[2025-08-18 10:45:23] Try to parse
+[2025-08-18 10:45:23] Successful parse JSON
+[2025-08-18 10:45:23] Data of JSON: https://w.wallhaven.cc/full/4y/wallhaven-4y661d.jpg
+[2025-08-18 10:45:23] Try to delete old image
+[2025-08-18 10:45:23] Successful deleting old image
+[2025-08-18 10:45:23] Data of JSON: image/jpeg
+[2025-08-18 10:45:23] Successful init CURL to image download
+[2025-08-18 10:45:23] Successful creating image file
+[2025-08-18 10:45:24] Successful download image/home/p1rat/code/rwal/wallpaper-4y661d.jpeg
+[2025-08-18 10:45:26] Try to request
+[2025-08-18 10:45:26] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:26] Successful request
+[2025-08-18 10:45:26] Try to parse
+[2025-08-18 10:45:26] Successful parse JSON
+[2025-08-18 10:45:26] Data of JSON: 2405
+[2025-08-18 10:45:26] Try to request
+[2025-08-18 10:45:27] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=144&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:27] Successful request
+[2025-08-18 10:45:27] Try to parse
+[2025-08-18 10:45:27] Successful parse JSON
+[2025-08-18 10:45:27] Data of JSON: https://w.wallhaven.cc/full/0q/wallhaven-0qk7dl.jpg
+[2025-08-18 10:45:27] Try to delete old image
+[2025-08-18 10:45:27] Successful deleting old image
+[2025-08-18 10:45:27] Data of JSON: image/jpeg
+[2025-08-18 10:45:27] Successful init CURL to image download
+[2025-08-18 10:45:27] Successful creating image file
+[2025-08-18 10:45:27] Successful download image/home/p1rat/code/rwal/wallpaper-0qk7dl.jpeg
+[2025-08-18 10:45:29] Try to request
+[2025-08-18 10:45:29] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:29] Successful request
+[2025-08-18 10:45:29] Try to parse
+[2025-08-18 10:45:29] Successful parse JSON
+[2025-08-18 10:45:29] Data of JSON: 1497
+[2025-08-18 10:45:29] Try to request
+[2025-08-18 10:45:29] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=265&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:29] Successful request
+[2025-08-18 10:45:29] Try to parse
+[2025-08-18 10:45:29] Successful parse JSON
+[2025-08-18 10:45:29] Data of JSON: https://w.wallhaven.cc/full/0j/wallhaven-0jo2dw.jpg
+[2025-08-18 10:45:29] Try to delete old image
+[2025-08-18 10:45:29] Successful deleting old image
+[2025-08-18 10:45:29] Data of JSON: image/jpeg
+[2025-08-18 10:45:29] Successful init CURL to image download
+[2025-08-18 10:45:29] Successful creating image file
+[2025-08-18 10:45:30] Successful download image/home/p1rat/code/rwal/wallpaper-0jo2dw.jpeg
+[2025-08-18 10:45:36] Try to request
+[2025-08-18 10:45:37] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:37] Successful request
+[2025-08-18 10:45:37] Try to parse
+[2025-08-18 10:45:37] Successful parse JSON
+[2025-08-18 10:45:37] Data of JSON: 1497
+[2025-08-18 10:45:37] Try to request
+[2025-08-18 10:45:37] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=55&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:45:37] Successful request
+[2025-08-18 10:45:37] Try to parse
+[2025-08-18 10:45:37] Successful parse JSON
+[2025-08-18 10:45:37] Data of JSON: https://w.wallhaven.cc/full/r7/wallhaven-r76y9w.png
+[2025-08-18 10:45:37] Try to delete old image
+[2025-08-18 10:45:37] Successful deleting old image
+[2025-08-18 10:45:37] Data of JSON: image/png
+[2025-08-18 10:45:37] Successful init CURL to image download
+[2025-08-18 10:45:37] Successful creating image file
+[2025-08-18 10:45:38] Successful download image/home/p1rat/code/rwal/wallpaper-r76y9w.png
+[2025-08-18 10:45:46] Ending program
+[2025-08-18 10:47:15] Starting program
+[2025-08-18 10:47:16] Try to request
+[2025-08-18 10:47:16] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:47:16] Successful request
+[2025-08-18 10:47:16] Try to parse
+[2025-08-18 10:47:16] Successful parse JSON
+[2025-08-18 10:47:16] Data of JSON: 2405
+[2025-08-18 10:47:16] Try to request
+[2025-08-18 10:47:17] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=85&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:47:17] Successful request
+[2025-08-18 10:47:17] Try to parse
+[2025-08-18 10:47:17] Successful parse JSON
+[2025-08-18 10:47:17] Data of JSON: https://w.wallhaven.cc/full/43/wallhaven-43lp2y.jpg
+[2025-08-18 10:47:17] Try to delete old image
+[2025-08-18 10:47:17] Successful deleting old image
+[2025-08-18 10:47:17] Data of JSON: image/jpeg
+[2025-08-18 10:47:17] Successful init CURL to image download
+[2025-08-18 10:47:17] Successful creating image file
+[2025-08-18 10:47:17] Successful download image/home/p1rat/code/rwal/wallpaper-43lp2y.jpeg
+[2025-08-18 10:47:19] Try to request
+[2025-08-18 10:47:20] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:47:20] Successful request
+[2025-08-18 10:47:20] Try to parse
+[2025-08-18 10:47:20] Successful parse JSON
+[2025-08-18 10:47:20] Data of JSON: 1497
+[2025-08-18 10:47:20] Try to request
+[2025-08-18 10:47:21] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=619&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:47:21] Successful request
+[2025-08-18 10:47:21] Try to parse
+[2025-08-18 10:47:21] Successful parse JSON
+[2025-08-18 10:47:21] Data of JSON: https://w.wallhaven.cc/full/95/wallhaven-95lj81.png
+[2025-08-18 10:47:21] Try to delete old image
+[2025-08-18 10:47:21] Successful deleting old image
+[2025-08-18 10:47:21] Data of JSON: image/png
+[2025-08-18 10:47:21] Successful init CURL to image download
+[2025-08-18 10:47:21] Successful creating image file
+[2025-08-18 10:47:22] Successful download image/home/p1rat/code/rwal/wallpaper-95lj81.png
+[2025-08-18 10:47:24] Ending program
+[2025-08-18 10:48:36] Starting program
+[2025-08-18 10:48:38] Try to request
+[2025-08-18 10:48:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:48:39] Successful request
+[2025-08-18 10:48:39] Try to parse
+[2025-08-18 10:48:39] Successful parse JSON
+[2025-08-18 10:48:39] Data of JSON: 2405
+[2025-08-18 10:48:39] Try to request
+[2025-08-18 10:48:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=94&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:48:39] Successful request
+[2025-08-18 10:48:39] Try to parse
+[2025-08-18 10:48:39] Successful parse JSON
+[2025-08-18 10:48:39] Data of JSON: https://w.wallhaven.cc/full/nm/wallhaven-nmje3m.jpg
+[2025-08-18 10:48:39] Try to delete old image
+[2025-08-18 10:48:39] Successful deleting old image
+[2025-08-18 10:48:39] Data of JSON: image/jpeg
+[2025-08-18 10:48:39] Successful init CURL to image download
+[2025-08-18 10:48:39] Successful creating image file
+[2025-08-18 10:48:39] Successful download image/home/p1rat/code/rwal/wallpaper-nmje3m.jpeg
+[2025-08-18 10:48:43] Try to request
+[2025-08-18 10:48:44] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:48:44] Successful request
+[2025-08-18 10:48:44] Try to parse
+[2025-08-18 10:48:44] Successful parse JSON
+[2025-08-18 10:48:44] Data of JSON: 2405
+[2025-08-18 10:48:44] Try to request
+[2025-08-18 10:48:44] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=51&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:48:44] Successful request
+[2025-08-18 10:48:44] Try to parse
+[2025-08-18 10:48:44] Successful parse JSON
+[2025-08-18 10:48:44] Data of JSON: https://w.wallhaven.cc/full/6o/wallhaven-6o2wkq.png
+[2025-08-18 10:48:44] Try to delete old image
+[2025-08-18 10:48:44] Successful deleting old image
+[2025-08-18 10:48:44] Data of JSON: image/png
+[2025-08-18 10:48:44] Successful init CURL to image download
+[2025-08-18 10:48:44] Successful creating image file
+[2025-08-18 10:48:45] Successful download image/home/p1rat/code/rwal/wallpaper-6o2wkq.png
+[2025-08-18 10:48:48] Try to request
+[2025-08-18 10:48:48] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:48:48] Successful request
+[2025-08-18 10:48:48] Try to parse
+[2025-08-18 10:48:48] Successful parse JSON
+[2025-08-18 10:48:48] Data of JSON: 2405
+[2025-08-18 10:48:48] Try to request
+[2025-08-18 10:48:49] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=94&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:48:49] Successful request
+[2025-08-18 10:48:49] Try to parse
+[2025-08-18 10:48:49] Successful parse JSON
+[2025-08-18 10:48:49] Data of JSON: https://w.wallhaven.cc/full/4v/wallhaven-4v7py8.png
+[2025-08-18 10:48:49] Try to delete old image
+[2025-08-18 10:48:49] Successful deleting old image
+[2025-08-18 10:48:49] Data of JSON: image/png
+[2025-08-18 10:48:49] Successful init CURL to image download
+[2025-08-18 10:48:49] Successful creating image file
+[2025-08-18 10:48:49] Successful download image/home/p1rat/code/rwal/wallpaper-4v7py8.png
+[2025-08-18 10:48:51] Ending program
+[2025-08-18 10:53:50] Starting program
+[2025-08-18 10:53:51] Try to request
+[2025-08-18 10:53:52] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:53:52] Successful request
+[2025-08-18 10:53:52] Try to parse
+[2025-08-18 10:53:52] Successful parse JSON
+[2025-08-18 10:53:52] Data of JSON: 1497
+[2025-08-18 10:53:52] Count = 748
+[2025-08-18 10:53:52] Count = 374
+[2025-08-18 10:53:52] Count = 187
+[2025-08-18 10:53:52] Count = 93
+[2025-08-18 10:53:52] Try to request
+[2025-08-18 10:53:52] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=77&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:53:52] Successful request
+[2025-08-18 10:53:52] Try to parse
+[2025-08-18 10:53:52] Successful parse JSON
+[2025-08-18 10:53:52] Data of JSON: https://w.wallhaven.cc/full/43/wallhaven-43g9l6.png
+[2025-08-18 10:53:52] Try to delete old image
+[2025-08-18 10:53:52] Successful deleting old image
+[2025-08-18 10:53:52] Data of JSON: image/png
+[2025-08-18 10:53:52] Successful init CURL to image download
+[2025-08-18 10:53:52] Successful creating image file
+[2025-08-18 10:53:53] Successful download image/home/p1rat/code/rwal/wallpaper-43g9l6.png
+[2025-08-18 10:53:55] Try to request
+[2025-08-18 10:53:55] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:53:55] Successful request
+[2025-08-18 10:53:55] Try to parse
+[2025-08-18 10:53:55] Successful parse JSON
+[2025-08-18 10:53:55] Data of JSON: 1497
+[2025-08-18 10:53:55] Count = 748
+[2025-08-18 10:53:55] Count = 374
+[2025-08-18 10:53:55] Count = 187
+[2025-08-18 10:53:55] Count = 93
+[2025-08-18 10:53:55] Try to request
+[2025-08-18 10:53:56] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=72&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:53:56] Successful request
+[2025-08-18 10:53:56] Try to parse
+[2025-08-18 10:53:56] Successful parse JSON
+[2025-08-18 10:53:56] Data of JSON: https://w.wallhaven.cc/full/p8/wallhaven-p8o5gj.png
+[2025-08-18 10:53:56] Try to delete old image
+[2025-08-18 10:53:56] Successful deleting old image
+[2025-08-18 10:53:56] Data of JSON: image/png
+[2025-08-18 10:53:56] Successful init CURL to image download
+[2025-08-18 10:53:56] Successful creating image file
+[2025-08-18 10:54:00] Successful download image/home/p1rat/code/rwal/wallpaper-p8o5gj.png
+[2025-08-18 10:54:03] Try to request
+[2025-08-18 10:54:03] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:54:03] Successful request
+[2025-08-18 10:54:03] Try to parse
+[2025-08-18 10:54:03] Successful parse JSON
+[2025-08-18 10:54:03] Data of JSON: 2405
+[2025-08-18 10:54:03] Count = 1202
+[2025-08-18 10:54:03] Count = 601
+[2025-08-18 10:54:03] Count = 300
+[2025-08-18 10:54:03] Count = 150
+[2025-08-18 10:54:03] Count = 75
+[2025-08-18 10:54:03] Try to request
+[2025-08-18 10:54:04] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:54:04] Successful request
+[2025-08-18 10:54:04] Try to parse
+[2025-08-18 10:54:04] Successful parse JSON
+[2025-08-18 10:54:04] Data of JSON: https://w.wallhaven.cc/full/0p/wallhaven-0pvpr9.jpg
+[2025-08-18 10:54:04] Try to delete old image
+[2025-08-18 10:54:04] Successful deleting old image
+[2025-08-18 10:54:04] Data of JSON: image/jpeg
+[2025-08-18 10:54:04] Successful init CURL to image download
+[2025-08-18 10:54:04] Successful creating image file
+[2025-08-18 10:54:04] Successful download image/home/p1rat/code/rwal/wallpaper-0pvpr9.jpeg
+[2025-08-18 10:54:06] Try to request
+[2025-08-18 10:54:06] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:54:06] Successful request
+[2025-08-18 10:54:06] Try to parse
+[2025-08-18 10:54:06] Successful parse JSON
+[2025-08-18 10:54:06] Data of JSON: 2405
+[2025-08-18 10:54:06] Count = 1202
+[2025-08-18 10:54:06] Count = 601
+[2025-08-18 10:54:06] Count = 300
+[2025-08-18 10:54:06] Count = 150
+[2025-08-18 10:54:06] Count = 75
+[2025-08-18 10:54:06] Try to request
+[2025-08-18 10:54:07] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=42&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:54:07] Successful request
+[2025-08-18 10:54:07] Try to parse
+[2025-08-18 10:54:07] Successful parse JSON
+[2025-08-18 10:54:07] Data of JSON: https://w.wallhaven.cc/full/5g/wallhaven-5ggl98.jpg
+[2025-08-18 10:54:07] Try to delete old image
+[2025-08-18 10:54:07] Successful deleting old image
+[2025-08-18 10:54:07] Data of JSON: image/jpeg
+[2025-08-18 10:54:07] Successful init CURL to image download
+[2025-08-18 10:54:07] Successful creating image file
+[2025-08-18 10:54:07] Successful download image/home/p1rat/code/rwal/wallpaper-5ggl98.jpeg
+[2025-08-18 10:54:09] Try to request
+[2025-08-18 10:54:10] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:54:10] Successful request
+[2025-08-18 10:54:10] Try to parse
+[2025-08-18 10:54:10] Successful parse JSON
+[2025-08-18 10:54:10] Data of JSON: 1497
+[2025-08-18 10:54:10] Count = 748
+[2025-08-18 10:54:10] Count = 374
+[2025-08-18 10:54:10] Count = 187
+[2025-08-18 10:54:10] Count = 93
+[2025-08-18 10:54:10] Try to request
+[2025-08-18 10:54:10] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=2&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:54:10] Successful request
+[2025-08-18 10:54:10] Try to parse
+[2025-08-18 10:54:10] Successful parse JSON
+[2025-08-18 10:54:10] Data of JSON: https://w.wallhaven.cc/full/zy/wallhaven-zyx1dw.png
+[2025-08-18 10:54:10] Try to delete old image
+[2025-08-18 10:54:10] Successful deleting old image
+[2025-08-18 10:54:10] Data of JSON: image/png
+[2025-08-18 10:54:10] Successful init CURL to image download
+[2025-08-18 10:54:10] Successful creating image file
+[2025-08-18 10:54:10] Successful download image/home/p1rat/code/rwal/wallpaper-zyx1dw.png
+[2025-08-18 10:54:14] Ending program
+[2025-08-18 10:56:08] Starting program
+[2025-08-18 10:56:09] Try to request
+[2025-08-18 10:56:10] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:10] Successful request
+[2025-08-18 10:56:10] Try to parse
+[2025-08-18 10:56:10] Successful parse JSON
+[2025-08-18 10:56:10] Data of JSON: 1497
+[2025-08-18 10:56:10] Try to request
+[2025-08-18 10:56:10] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=1263&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:10] Successful request
+[2025-08-18 10:56:10] Try to parse
+[2025-08-18 10:56:10] Successful parse JSON
+[2025-08-18 10:56:10] Data of JSON: https://w.wallhaven.cc/full/d5/wallhaven-d511m3.png
+[2025-08-18 10:56:10] Try to delete old image
+[2025-08-18 10:56:10] Successful deleting old image
+[2025-08-18 10:56:10] Data of JSON: image/png
+[2025-08-18 10:56:10] Successful init CURL to image download
+[2025-08-18 10:56:10] Successful creating image file
+[2025-08-18 10:56:10] Successful download image/home/p1rat/code/rwal/wallpaper-d511m3.png
+[2025-08-18 10:56:12] Try to request
+[2025-08-18 10:56:12] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:12] Successful request
+[2025-08-18 10:56:12] Try to parse
+[2025-08-18 10:56:12] Successful parse JSON
+[2025-08-18 10:56:12] Data of JSON: 1497
+[2025-08-18 10:56:12] Try to request
+[2025-08-18 10:56:13] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=463&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:13] Successful request
+[2025-08-18 10:56:13] Try to parse
+[2025-08-18 10:56:13] Successful parse JSON
+[2025-08-18 10:56:13] Data of JSON: https://w.wallhaven.cc/full/x1/wallhaven-x1v6w3.png
+[2025-08-18 10:56:13] Try to delete old image
+[2025-08-18 10:56:13] Successful deleting old image
+[2025-08-18 10:56:13] Data of JSON: image/png
+[2025-08-18 10:56:13] Successful init CURL to image download
+[2025-08-18 10:56:13] Successful creating image file
+[2025-08-18 10:56:13] Successful download image/home/p1rat/code/rwal/wallpaper-x1v6w3.png
+[2025-08-18 10:56:16] Try to request
+[2025-08-18 10:56:17] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:17] Successful request
+[2025-08-18 10:56:17] Try to parse
+[2025-08-18 10:56:17] Successful parse JSON
+[2025-08-18 10:56:17] Data of JSON: 2405
+[2025-08-18 10:56:17] Try to request
+[2025-08-18 10:56:17] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=604&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:17] Successful request
+[2025-08-18 10:56:17] Try to parse
+[2025-08-18 10:56:17] Successful parse JSON
+[2025-08-18 10:56:17] Data of JSON: https://w.wallhaven.cc/full/47/wallhaven-47zgre.jpg
+[2025-08-18 10:56:17] Try to delete old image
+[2025-08-18 10:56:17] Successful deleting old image
+[2025-08-18 10:56:17] Data of JSON: image/jpeg
+[2025-08-18 10:56:17] Successful init CURL to image download
+[2025-08-18 10:56:17] Successful creating image file
+[2025-08-18 10:56:18] Successful download image/home/p1rat/code/rwal/wallpaper-47zgre.jpeg
+[2025-08-18 10:56:20] Try to request
+[2025-08-18 10:56:22] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:22] Successful request
+[2025-08-18 10:56:22] Try to parse
+[2025-08-18 10:56:22] Successful parse JSON
+[2025-08-18 10:56:22] Data of JSON: 2405
+[2025-08-18 10:56:22] Try to request
+[2025-08-18 10:56:22] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=13&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:22] Successful request
+[2025-08-18 10:56:22] Try to parse
+[2025-08-18 10:56:22] Successful parse JSON
+[2025-08-18 10:56:22] Data of JSON: https://w.wallhaven.cc/full/39/wallhaven-39vv73.png
+[2025-08-18 10:56:22] Try to delete old image
+[2025-08-18 10:56:22] Successful deleting old image
+[2025-08-18 10:56:22] Data of JSON: image/png
+[2025-08-18 10:56:22] Successful init CURL to image download
+[2025-08-18 10:56:22] Successful creating image file
+[2025-08-18 10:56:23] Successful download image/home/p1rat/code/rwal/wallpaper-39vv73.png
+[2025-08-18 10:56:25] Try to request
+[2025-08-18 10:56:25] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:25] Successful request
+[2025-08-18 10:56:25] Try to parse
+[2025-08-18 10:56:25] Successful parse JSON
+[2025-08-18 10:56:25] Data of JSON: 2405
+[2025-08-18 10:56:25] Try to request
+[2025-08-18 10:56:25] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1814&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:25] Successful request
+[2025-08-18 10:56:25] Try to parse
+[2025-08-18 10:56:25] Successful parse JSON
+[2025-08-18 10:56:25] Data of JSON: https://w.wallhaven.cc/full/4l/wallhaven-4lqvxy.jpg
+[2025-08-18 10:56:25] Try to delete old image
+[2025-08-18 10:56:25] Successful deleting old image
+[2025-08-18 10:56:25] Data of JSON: image/jpeg
+[2025-08-18 10:56:25] Successful init CURL to image download
+[2025-08-18 10:56:25] Successful creating image file
+[2025-08-18 10:56:25] Successful download image/home/p1rat/code/rwal/wallpaper-4lqvxy.jpeg
+[2025-08-18 10:56:27] Try to request
+[2025-08-18 10:56:27] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:27] Successful request
+[2025-08-18 10:56:27] Try to parse
+[2025-08-18 10:56:27] Successful parse JSON
+[2025-08-18 10:56:27] Data of JSON: 1497
+[2025-08-18 10:56:27] Try to request
+[2025-08-18 10:56:28] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=587&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:28] Successful request
+[2025-08-18 10:56:28] Try to parse
+[2025-08-18 10:56:28] Successful parse JSON
+[2025-08-18 10:56:28] Data of JSON: https://w.wallhaven.cc/full/45/wallhaven-455ro3.jpg
+[2025-08-18 10:56:28] Try to delete old image
+[2025-08-18 10:56:28] Successful deleting old image
+[2025-08-18 10:56:28] Data of JSON: image/jpeg
+[2025-08-18 10:56:28] Successful init CURL to image download
+[2025-08-18 10:56:28] Successful creating image file
+[2025-08-18 10:56:28] Successful download image/home/p1rat/code/rwal/wallpaper-455ro3.jpeg
+[2025-08-18 10:56:33] Try to request
+[2025-08-18 10:56:33] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:33] Successful request
+[2025-08-18 10:56:33] Try to parse
+[2025-08-18 10:56:33] Successful parse JSON
+[2025-08-18 10:56:33] Data of JSON: 2405
+[2025-08-18 10:56:33] Try to request
+[2025-08-18 10:56:34] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=466&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:34] Successful request
+[2025-08-18 10:56:34] Try to parse
+[2025-08-18 10:56:34] Successful parse JSON
+[2025-08-18 10:56:34] Data of JSON: https://w.wallhaven.cc/full/nr/wallhaven-nrk1lw.jpg
+[2025-08-18 10:56:34] Try to delete old image
+[2025-08-18 10:56:34] Successful deleting old image
+[2025-08-18 10:56:34] Data of JSON: image/jpeg
+[2025-08-18 10:56:34] Successful init CURL to image download
+[2025-08-18 10:56:34] Successful creating image file
+[2025-08-18 10:56:34] Successful download image/home/p1rat/code/rwal/wallpaper-nrk1lw.jpeg
+[2025-08-18 10:56:36] Try to request
+[2025-08-18 10:56:37] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:37] Successful request
+[2025-08-18 10:56:37] Try to parse
+[2025-08-18 10:56:37] Successful parse JSON
+[2025-08-18 10:56:37] Data of JSON: 2405
+[2025-08-18 10:56:37] Try to request
+[2025-08-18 10:56:37] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1423&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:37] Successful request
+[2025-08-18 10:56:37] Try to parse
+[2025-08-18 10:56:37] Successful parse JSON
+[2025-08-18 10:56:37] Data of JSON: https://w.wallhaven.cc/full/g7/wallhaven-g7yjp3.jpg
+[2025-08-18 10:56:37] Try to delete old image
+[2025-08-18 10:56:37] Successful deleting old image
+[2025-08-18 10:56:37] Data of JSON: image/jpeg
+[2025-08-18 10:56:37] Successful init CURL to image download
+[2025-08-18 10:56:37] Successful creating image file
+[2025-08-18 10:56:38] Successful download image/home/p1rat/code/rwal/wallpaper-g7yjp3.jpeg
+[2025-08-18 10:56:40] Try to request
+[2025-08-18 10:56:40] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:40] Successful request
+[2025-08-18 10:56:40] Try to parse
+[2025-08-18 10:56:40] Successful parse JSON
+[2025-08-18 10:56:40] Data of JSON: 1497
+[2025-08-18 10:56:40] Try to request
+[2025-08-18 10:56:41] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=1493&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:41] Successful request
+[2025-08-18 10:56:41] Try to parse
+[2025-08-18 10:56:41] Successful parse JSON
+[2025-08-18 10:56:41] Data of JSON: https://w.wallhaven.cc/full/3z/wallhaven-3zplyd.jpg
+[2025-08-18 10:56:41] Try to delete old image
+[2025-08-18 10:56:41] Successful deleting old image
+[2025-08-18 10:56:41] Data of JSON: image/jpeg
+[2025-08-18 10:56:41] Successful init CURL to image download
+[2025-08-18 10:56:41] Successful creating image file
+[2025-08-18 10:56:41] Successful download image/home/p1rat/code/rwal/wallpaper-3zplyd.jpeg
+[2025-08-18 10:56:43] Try to request
+[2025-08-18 10:56:43] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:43] Successful request
+[2025-08-18 10:56:43] Try to parse
+[2025-08-18 10:56:43] Successful parse JSON
+[2025-08-18 10:56:43] Data of JSON: 1497
+[2025-08-18 10:56:43] Try to request
+[2025-08-18 10:56:44] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=856&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:56:44] Successful request
+[2025-08-18 10:56:44] Try to parse
+[2025-08-18 10:56:44] Successful parse JSON
+[2025-08-18 10:56:44] Data of JSON: https://w.wallhaven.cc/full/xl/wallhaven-xl16ov.png
+[2025-08-18 10:56:44] Try to delete old image
+[2025-08-18 10:56:44] Successful deleting old image
+[2025-08-18 10:56:44] Data of JSON: image/png
+[2025-08-18 10:56:44] Successful init CURL to image download
+[2025-08-18 10:56:44] Successful creating image file
+[2025-08-18 10:56:45] Successful download image/home/p1rat/code/rwal/wallpaper-xl16ov.png
+[2025-08-18 10:56:49] Ending program
+[2025-08-18 10:58:36] Starting program
+[2025-08-18 10:58:38] Try to request
+[2025-08-18 10:58:38] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:58:38] Successful request
+[2025-08-18 10:58:38] Try to parse
+[2025-08-18 10:58:38] Successful parse JSON
+[2025-08-18 10:58:38] Data of JSON: 2405
+[2025-08-18 10:58:38] Try to request
+[2025-08-18 10:58:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=527&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:58:39] Successful request
+[2025-08-18 10:58:39] Try to parse
+[2025-08-18 10:58:39] Successful parse JSON
+[2025-08-18 10:58:39] Data of JSON: https://w.wallhaven.cc/full/j8/wallhaven-j8k7km.png
+[2025-08-18 10:58:39] Try to delete old image
+[2025-08-18 10:58:39] Successful deleting old image
+[2025-08-18 10:58:39] Data of JSON: image/png
+[2025-08-18 10:58:39] Successful init CURL to image download
+[2025-08-18 10:58:39] Successful creating image file
+[2025-08-18 10:58:39] Successful download image/home/p1rat/code/rwal/wallpaper-j8k7km.png
+[2025-08-18 10:58:41] Try to request
+[2025-08-18 10:58:42] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:58:42] Successful request
+[2025-08-18 10:58:42] Try to parse
+[2025-08-18 10:58:42] Successful parse JSON
+[2025-08-18 10:58:42] Data of JSON: 2405
+[2025-08-18 10:58:42] Try to request
+[2025-08-18 10:58:42] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=234&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:58:42] Successful request
+[2025-08-18 10:58:42] Try to parse
+[2025-08-18 10:58:42] Successful parse JSON
+[2025-08-18 10:58:42] Data of JSON: https://w.wallhaven.cc/full/3k/wallhaven-3kop26.jpg
+[2025-08-18 10:58:42] Try to delete old image
+[2025-08-18 10:58:42] Successful deleting old image
+[2025-08-18 10:58:42] Data of JSON: image/jpeg
+[2025-08-18 10:58:42] Successful init CURL to image download
+[2025-08-18 10:58:42] Successful creating image file
+[2025-08-18 10:58:43] Successful download image/home/p1rat/code/rwal/wallpaper-3kop26.jpeg
+[2025-08-18 10:58:44] Ending program
+[2025-08-18 10:58:59] Starting program
+[2025-08-18 10:58:59] Try to request
+[2025-08-18 10:58:59] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:58:59] Successful request
+[2025-08-18 10:58:59] Try to parse
+[2025-08-18 10:58:59] Successful parse JSON
+[2025-08-18 10:58:59] Data of JSON: 1497
+[2025-08-18 10:58:59] Try to request
+[2025-08-18 10:59:00] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=492&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:59:00] Successful request
+[2025-08-18 10:59:00] Try to parse
+[2025-08-18 10:59:00] Successful parse JSON
+[2025-08-18 10:59:00] Data of JSON: https://w.wallhaven.cc/full/ne/wallhaven-ne8dyl.jpg
+[2025-08-18 10:59:00] Try to delete old image
+[2025-08-18 10:59:00] Successful deleting old image
+[2025-08-18 10:59:00] Data of JSON: image/jpeg
+[2025-08-18 10:59:00] Successful init CURL to image download
+[2025-08-18 10:59:00] Successful creating image file
+[2025-08-18 10:59:00] Successful download image/home/p1rat/code/rwal/wallpaper-ne8dyl.jpeg
+[2025-08-18 10:59:02] Try to request
+[2025-08-18 10:59:02] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:59:02] Successful request
+[2025-08-18 10:59:02] Try to parse
+[2025-08-18 10:59:02] Successful parse JSON
+[2025-08-18 10:59:02] Data of JSON: 1497
+[2025-08-18 10:59:02] Try to request
+[2025-08-18 10:59:03] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=639&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 10:59:03] Successful request
+[2025-08-18 10:59:03] Try to parse
+[2025-08-18 10:59:03] Successful parse JSON
+[2025-08-18 10:59:03] Data of JSON: https://w.wallhaven.cc/full/7p/wallhaven-7pzro3.jpg
+[2025-08-18 10:59:03] Try to delete old image
+[2025-08-18 10:59:03] Successful deleting old image
+[2025-08-18 10:59:03] Data of JSON: image/jpeg
+[2025-08-18 10:59:03] Successful init CURL to image download
+[2025-08-18 10:59:03] Successful creating image file
+[2025-08-18 10:59:03] Successful download image/home/p1rat/code/rwal/wallpaper-7pzro3.jpeg
+[2025-08-18 10:59:19] Ending program
+[2025-08-18 11:56:12] Starting program
+[2025-08-18 11:56:14] Try to request
+[2025-08-18 11:56:14] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:14] Successful request
+[2025-08-18 11:56:14] Try to parse
+[2025-08-18 11:56:14] Successful parse JSON
+[2025-08-18 11:56:14] Data of JSON: 5411
+[2025-08-18 11:56:14] Try to request
+[2025-08-18 11:56:15] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=3155&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:15] Successful request
+[2025-08-18 11:56:15] Try to parse
+[2025-08-18 11:56:15] Successful parse JSON
+[2025-08-18 11:56:15] Try to request
+[2025-08-18 11:56:15] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:15] Successful request
+[2025-08-18 11:56:15] Try to parse
+[2025-08-18 11:56:15] Successful parse JSON
+[2025-08-18 11:56:15] Data of JSON: 5411
+[2025-08-18 11:56:15] Try to request
+[2025-08-18 11:56:15] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=2498&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:15] Successful request
+[2025-08-18 11:56:15] Try to parse
+[2025-08-18 11:56:15] Successful parse JSON
+[2025-08-18 11:56:15] Try to request
+[2025-08-18 11:56:16] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:16] Successful request
+[2025-08-18 11:56:16] Try to parse
+[2025-08-18 11:56:16] Successful parse JSON
+[2025-08-18 11:56:16] Data of JSON: 5411
+[2025-08-18 11:56:16] Try to request
+[2025-08-18 11:56:16] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=3485&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:16] Successful request
+[2025-08-18 11:56:16] Try to parse
+[2025-08-18 11:56:16] Successful parse JSON
+[2025-08-18 11:56:16] Try to request
+[2025-08-18 11:56:17] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:17] Successful request
+[2025-08-18 11:56:17] Try to parse
+[2025-08-18 11:56:17] Successful parse JSON
+[2025-08-18 11:56:17] Data of JSON: 5411
+[2025-08-18 11:56:17] Try to request
+[2025-08-18 11:56:17] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=4985&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:17] uccessful creating image file
+[2025-08-18 11:56:17] Error: paragraph data not found in JSON
+[2025-08-18 11:56:17] Try to request
+[2025-08-18 11:56:18] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:18] Successful request
+[2025-08-18 11:56:18] Try to parse
+[2025-08-18 11:56:18] Successful parse JSON
+[2025-08-18 11:56:18] Data of JSON: 5411
+[2025-08-18 11:56:18] Try to request
+[2025-08-18 11:56:18] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=3078&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:18] Successful request
+[2025-08-18 11:56:18] Try to parse
+[2025-08-18 11:56:18] Successful parse JSON
+[2025-08-18 11:56:18] Try to request
+[2025-08-18 11:56:18] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:18] Successful request
+[2025-08-18 11:56:18] Try to parse
+[2025-08-18 11:56:18] Successful parse JSON
+[2025-08-18 11:56:18] Data of JSON: 5411
+[2025-08-18 11:56:18] Try to request
+[2025-08-18 11:56:19] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=3055&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:19] Successful request
+[2025-08-18 11:56:19] Try to parse
+[2025-08-18 11:56:19] Successful parse JSON
+[2025-08-18 11:56:19] Try to request
+[2025-08-18 11:56:20] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:20] Successful request
+[2025-08-18 11:56:20] Try to parse
+[2025-08-18 11:56:20] Successful parse JSON
+[2025-08-18 11:56:20] Data of JSON: 5411
+[2025-08-18 11:56:20] Try to request
+[2025-08-18 11:56:20] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=240&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:20] Successful request
+[2025-08-18 11:56:20] Try to parse
+[2025-08-18 11:56:20] Successful parse JSON
+[2025-08-18 11:56:20] Data of JSON: https://w.wallhaven.cc/full/ym/wallhaven-ym7v37.png
+[2025-08-18 11:56:20] Try to delete old image
+[2025-08-18 11:56:20] Successful deleting old image
+[2025-08-18 11:56:20] Data of JSON: image/png
+[2025-08-18 11:56:20] Successful init CURL to image download
+[2025-08-18 11:56:20] Successful creating image file
+[2025-08-18 11:56:21] Successful download image/home/p1rat/code/rwal/wallpaper-ym7v37.png
+[2025-08-18 11:56:24] Try to request
+[2025-08-18 11:56:24] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:24] Successful request
+[2025-08-18 11:56:24] Try to parse
+[2025-08-18 11:56:24] Successful parse JSON
+[2025-08-18 11:56:24] Data of JSON: 5411
+[2025-08-18 11:56:24] Try to request
+[2025-08-18 11:56:25] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=2762&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:25] Successful request
+[2025-08-18 11:56:25] Try to parse
+[2025-08-18 11:56:25] Successful parse JSON
+[2025-08-18 11:56:25] Try to request
+[2025-08-18 11:56:25] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:25] Successful request
+[2025-08-18 11:56:25] Try to parse
+[2025-08-18 11:56:25] Successful parse JSON
+[2025-08-18 11:56:25] Data of JSON: 5411
+[2025-08-18 11:56:25] Try to request
+[2025-08-18 11:56:26] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1487&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:56:26] Successful request
+[2025-08-18 11:56:26] Try to parse
+[2025-08-18 11:56:26] Successful parse JSON
+[2025-08-18 11:56:26] Data of JSON: https://w.wallhaven.cc/full/mp/wallhaven-mpmoly.png
+[2025-08-18 11:56:26] Try to delete old image
+[2025-08-18 11:56:26] Successful deleting old image
+[2025-08-18 11:56:26] Data of JSON: image/png
+[2025-08-18 11:56:26] Successful init CURL to image download
+[2025-08-18 11:56:26] Successful creating image file
+[2025-08-18 11:56:26] Successful download image/home/p1rat/code/rwal/wallpaper-mpmoly.png
+[2025-08-18 11:56:28] Ending program
+[2025-08-18 11:58:30] Starting program
+[2025-08-18 11:58:31] Try to request
+[2025-08-18 11:58:31] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:58:31] Successful request
+[2025-08-18 11:58:31] Try to parse
+[2025-08-18 11:58:31] Successful parse JSON
+[2025-08-18 11:58:31] Data of JSON: 1497
+[2025-08-18 11:58:31] Try to request
+[2025-08-18 11:58:32] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=1194&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:58:32] Successful request
+[2025-08-18 11:58:32] Try to parse
+[2025-08-18 11:58:32] Successful parse JSON
+[2025-08-18 11:58:32] Data of JSON: https://w.wallhaven.cc/full/ne/wallhaven-neg8mr.jpg
+[2025-08-18 11:58:32] Try to delete old image
+[2025-08-18 11:58:32] Successful deleting old image
+[2025-08-18 11:58:32] Data of JSON: image/jpeg
+[2025-08-18 11:58:32] Successful init CURL to image download
+[2025-08-18 11:58:32] Successful creating image file
+[2025-08-18 11:58:32] Successful download image/home/p1rat/code/rwal/wallpaper-neg8mr.jpeg
+[2025-08-18 11:58:33] Try to request
+[2025-08-18 11:58:34] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:58:34] Successful request
+[2025-08-18 11:58:34] Try to parse
+[2025-08-18 11:58:34] Successful parse JSON
+[2025-08-18 11:58:34] Data of JSON: 1497
+[2025-08-18 11:58:34] Try to request
+[2025-08-18 11:58:34] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=771&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 11:58:34] Successful request
+[2025-08-18 11:58:34] Try to parse
+[2025-08-18 11:58:34] Successful parse JSON
+[2025-08-18 11:58:34] Data of JSON: https://w.wallhaven.cc/full/x1/wallhaven-x1y7rd.png
+[2025-08-18 11:58:34] Try to delete old image
+[2025-08-18 11:58:34] Successful deleting old image
+[2025-08-18 11:58:34] Data of JSON: image/png
+[2025-08-18 11:58:34] Successful init CURL to image download
+[2025-08-18 11:58:34] Successful creating image file
+[2025-08-18 11:58:35] Successful download image/home/p1rat/code/rwal/wallpaper-x1y7rd.png
+[2025-08-18 11:58:37] Ending program
+[2025-08-18 12:17:38] Starting program
+[2025-08-18 12:17:39] Try to request
+[2025-08-18 12:17:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:39] Successful request
+[2025-08-18 12:17:39] Try to parse
+[2025-08-18 12:17:39] Successful parse JSON
+[2025-08-18 12:17:39] Data of JSON: 2405
+[2025-08-18 12:17:39] Try to request
+[2025-08-18 12:17:40] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=539&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:40] Successful request
+[2025-08-18 12:17:40] Try to parse
+[2025-08-18 12:17:40] Successful parse JSON
+[2025-08-18 12:17:40] Data of JSON: https://w.wallhaven.cc/full/4o/wallhaven-4okp17.jpg
+[2025-08-18 12:17:40] Try to delete old image
+[2025-08-18 12:17:40] Successful deleting old image
+[2025-08-18 12:17:40] Data of JSON: image/jpeg
+[2025-08-18 12:17:40] Successful init CURL to image download
+[2025-08-18 12:17:40] Successful creating image file
+[2025-08-18 12:17:40] Successful download image/home/p1rat/code/rwal/wallpaper-4okp17.jpeg
+[2025-08-18 12:17:41] Try to request
+[2025-08-18 12:17:42] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:42] Successful request
+[2025-08-18 12:17:42] Try to parse
+[2025-08-18 12:17:42] Successful parse JSON
+[2025-08-18 12:17:42] Data of JSON: 2405
+[2025-08-18 12:17:42] Try to request
+[2025-08-18 12:17:42] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=808&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:42] Successful request
+[2025-08-18 12:17:42] Try to parse
+[2025-08-18 12:17:42] Successful parse JSON
+[2025-08-18 12:17:42] Data of JSON: https://w.wallhaven.cc/full/48/wallhaven-48m3rk.jpg
+[2025-08-18 12:17:42] Try to delete old image
+[2025-08-18 12:17:42] Successful deleting old image
+[2025-08-18 12:17:42] Data of JSON: image/jpeg
+[2025-08-18 12:17:42] Successful init CURL to image download
+[2025-08-18 12:17:42] Successful creating image file
+[2025-08-18 12:17:43] Successful download image/home/p1rat/code/rwal/wallpaper-48m3rk.jpeg
+[2025-08-18 12:17:46] Try to request
+[2025-08-18 12:17:46] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:46] Successful request
+[2025-08-18 12:17:46] Try to parse
+[2025-08-18 12:17:46] Successful parse JSON
+[2025-08-18 12:17:46] Data of JSON: 2405
+[2025-08-18 12:17:46] Try to request
+[2025-08-18 12:17:46] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1839&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:46] Successful request
+[2025-08-18 12:17:46] Try to parse
+[2025-08-18 12:17:46] Successful parse JSON
+[2025-08-18 12:17:46] Data of JSON: https://w.wallhaven.cc/full/5w/wallhaven-5w81e5.jpg
+[2025-08-18 12:17:46] Try to delete old image
+[2025-08-18 12:17:46] Successful deleting old image
+[2025-08-18 12:17:46] Data of JSON: image/jpeg
+[2025-08-18 12:17:46] Successful init CURL to image download
+[2025-08-18 12:17:46] Successful creating image file
+[2025-08-18 12:17:48] Successful download image/home/p1rat/code/rwal/wallpaper-5w81e5.jpeg
+[2025-08-18 12:17:49] Try to request
+[2025-08-18 12:17:50] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:50] Successful request
+[2025-08-18 12:17:50] Try to parse
+[2025-08-18 12:17:50] Successful parse JSON
+[2025-08-18 12:17:50] Data of JSON: 2405
+[2025-08-18 12:17:50] Try to request
+[2025-08-18 12:17:50] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=757&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:50] Successful request
+[2025-08-18 12:17:50] Try to parse
+[2025-08-18 12:17:50] Successful parse JSON
+[2025-08-18 12:17:50] Data of JSON: https://w.wallhaven.cc/full/yj/wallhaven-yj7drl.png
+[2025-08-18 12:17:50] Try to delete old image
+[2025-08-18 12:17:50] Successful deleting old image
+[2025-08-18 12:17:50] Data of JSON: image/png
+[2025-08-18 12:17:50] Successful init CURL to image download
+[2025-08-18 12:17:50] Successful creating image file
+[2025-08-18 12:17:52] Successful download image/home/p1rat/code/rwal/wallpaper-yj7drl.png
+[2025-08-18 12:17:53] Try to request
+[2025-08-18 12:17:53] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:53] Successful request
+[2025-08-18 12:17:53] Try to parse
+[2025-08-18 12:17:53] Successful parse JSON
+[2025-08-18 12:17:53] Data of JSON: 2405
+[2025-08-18 12:17:53] Try to request
+[2025-08-18 12:17:54] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=2153&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:54] Successful request
+[2025-08-18 12:17:54] Try to parse
+[2025-08-18 12:17:54] Successful parse JSON
+[2025-08-18 12:17:54] Data of JSON: https://w.wallhaven.cc/full/r7/wallhaven-r7d3o7.png
+[2025-08-18 12:17:54] Try to delete old image
+[2025-08-18 12:17:54] Successful deleting old image
+[2025-08-18 12:17:54] Data of JSON: image/png
+[2025-08-18 12:17:54] Successful init CURL to image download
+[2025-08-18 12:17:54] Successful creating image file
+[2025-08-18 12:17:54] Successful download image/home/p1rat/code/rwal/wallpaper-r7d3o7.png
+[2025-08-18 12:17:58] Try to request
+[2025-08-18 12:17:58] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:58] Successful request
+[2025-08-18 12:17:58] Try to parse
+[2025-08-18 12:17:58] Successful parse JSON
+[2025-08-18 12:17:58] Data of JSON: 2405
+[2025-08-18 12:17:58] Try to request
+[2025-08-18 12:17:59] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1216&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:17:59] Successful request
+[2025-08-18 12:17:59] Try to parse
+[2025-08-18 12:17:59] Successful parse JSON
+[2025-08-18 12:17:59] Data of JSON: https://w.wallhaven.cc/full/nk/wallhaven-nk7ok7.jpg
+[2025-08-18 12:17:59] Try to delete old image
+[2025-08-18 12:17:59] Successful deleting old image
+[2025-08-18 12:17:59] Data of JSON: image/jpeg
+[2025-08-18 12:17:59] Successful init CURL to image download
+[2025-08-18 12:17:59] Successful creating image file
+[2025-08-18 12:17:59] Successful download image/home/p1rat/code/rwal/wallpaper-nk7ok7.jpeg
+[2025-08-18 12:18:00] Try to request
+[2025-08-18 12:18:01] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:01] Successful request
+[2025-08-18 12:18:01] Try to parse
+[2025-08-18 12:18:01] Successful parse JSON
+[2025-08-18 12:18:01] Data of JSON: 2405
+[2025-08-18 12:18:01] Try to request
+[2025-08-18 12:18:01] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1650&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:01] Successful request
+[2025-08-18 12:18:01] Try to parse
+[2025-08-18 12:18:01] Successful parse JSON
+[2025-08-18 12:18:01] Data of JSON: https://w.wallhaven.cc/full/n6/wallhaven-n6e2ow.jpg
+[2025-08-18 12:18:01] Try to delete old image
+[2025-08-18 12:18:01] Successful deleting old image
+[2025-08-18 12:18:01] Data of JSON: image/jpeg
+[2025-08-18 12:18:01] Successful init CURL to image download
+[2025-08-18 12:18:01] Successful creating image file
+[2025-08-18 12:18:02] Successful download image/home/p1rat/code/rwal/wallpaper-n6e2ow.jpeg
+[2025-08-18 12:18:03] Try to request
+[2025-08-18 12:18:04] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:04] Successful request
+[2025-08-18 12:18:04] Try to parse
+[2025-08-18 12:18:04] Successful parse JSON
+[2025-08-18 12:18:04] Data of JSON: 1497
+[2025-08-18 12:18:04] Try to request
+[2025-08-18 12:18:04] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=834&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:04] Successful request
+[2025-08-18 12:18:04] Try to parse
+[2025-08-18 12:18:04] Successful parse JSON
+[2025-08-18 12:18:04] Data of JSON: https://w.wallhaven.cc/full/3z/wallhaven-3z1p16.jpg
+[2025-08-18 12:18:04] Try to delete old image
+[2025-08-18 12:18:04] Successful deleting old image
+[2025-08-18 12:18:04] Data of JSON: image/jpeg
+[2025-08-18 12:18:04] Successful init CURL to image download
+[2025-08-18 12:18:04] Successful creating image file
+[2025-08-18 12:18:04] Successful download image/home/p1rat/code/rwal/wallpaper-3z1p16.jpeg
+[2025-08-18 12:18:06] Try to request
+[2025-08-18 12:18:06] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:06] Successful request
+[2025-08-18 12:18:06] Try to parse
+[2025-08-18 12:18:06] Successful parse JSON
+[2025-08-18 12:18:06] Data of JSON: 2405
+[2025-08-18 12:18:06] Try to request
+[2025-08-18 12:18:07] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=261&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:07] Successful request
+[2025-08-18 12:18:07] Try to parse
+[2025-08-18 12:18:07] Successful parse JSON
+[2025-08-18 12:18:07] Data of JSON: https://w.wallhaven.cc/full/5w/wallhaven-5w9xe8.png
+[2025-08-18 12:18:07] Try to delete old image
+[2025-08-18 12:18:07] Successful deleting old image
+[2025-08-18 12:18:07] Data of JSON: image/png
+[2025-08-18 12:18:07] Successful init CURL to image download
+[2025-08-18 12:18:07] Successful creating image file
+[2025-08-18 12:18:07] Successful download image/home/p1rat/code/rwal/wallpaper-5w9xe8.png
+[2025-08-18 12:18:09] Try to request
+[2025-08-18 12:18:10] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:10] Successful request
+[2025-08-18 12:18:10] Try to parse
+[2025-08-18 12:18:10] Successful parse JSON
+[2025-08-18 12:18:10] Data of JSON: 2405
+[2025-08-18 12:18:10] Try to request
+[2025-08-18 12:18:10] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=907&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:10] Successful request
+[2025-08-18 12:18:10] Try to parse
+[2025-08-18 12:18:10] Successful parse JSON
+[2025-08-18 12:18:10] Data of JSON: https://w.wallhaven.cc/full/o3/wallhaven-o3ydwm.jpg
+[2025-08-18 12:18:10] Try to delete old image
+[2025-08-18 12:18:10] Successful deleting old image
+[2025-08-18 12:18:10] Data of JSON: image/jpeg
+[2025-08-18 12:18:10] Successful init CURL to image download
+[2025-08-18 12:18:10] Successful creating image file
+[2025-08-18 12:18:11] Successful download image/home/p1rat/code/rwal/wallpaper-o3ydwm.jpeg
+[2025-08-18 12:18:13] Ending program
+[2025-08-18 12:18:35] Starting program
+[2025-08-18 12:18:35] Try to request
+[2025-08-18 12:18:36] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:36] Successful request
+[2025-08-18 12:18:36] Try to parse
+[2025-08-18 12:18:36] Successful parse JSON
+[2025-08-18 12:18:36] Data of JSON: 1497
+[2025-08-18 12:18:36] Try to request
+[2025-08-18 12:18:36] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=895&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:36] Successful request
+[2025-08-18 12:18:36] Try to parse
+[2025-08-18 12:18:36] Successful parse JSON
+[2025-08-18 12:18:36] Data of JSON: https://w.wallhaven.cc/full/4x/wallhaven-4xqjg3.png
+[2025-08-18 12:18:36] Try to delete old image
+[2025-08-18 12:18:36] Successful deleting old image
+[2025-08-18 12:18:36] Data of JSON: image/png
+[2025-08-18 12:18:36] Successful init CURL to image download
+[2025-08-18 12:18:36] Successful creating image file
+[2025-08-18 12:18:37] Successful download image/home/p1rat/code/rwal/wallpaper-4xqjg3.png
+[2025-08-18 12:18:39] Try to request
+[2025-08-18 12:18:40] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:40] Successful request
+[2025-08-18 12:18:40] Try to parse
+[2025-08-18 12:18:40] Successful parse JSON
+[2025-08-18 12:18:40] Data of JSON: 2405
+[2025-08-18 12:18:40] Try to request
+[2025-08-18 12:18:40] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=145&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:40] Successful request
+[2025-08-18 12:18:40] Try to parse
+[2025-08-18 12:18:40] Successful parse JSON
+[2025-08-18 12:18:40] Data of JSON: https://w.wallhaven.cc/full/n6/wallhaven-n6zov7.jpg
+[2025-08-18 12:18:40] Try to delete old image
+[2025-08-18 12:18:40] Successful deleting old image
+[2025-08-18 12:18:40] Data of JSON: image/jpeg
+[2025-08-18 12:18:40] Successful init CURL to image download
+[2025-08-18 12:18:40] Successful creating image file
+[2025-08-18 12:18:41] Successful download image/home/p1rat/code/rwal/wallpaper-n6zov7.jpeg
+[2025-08-18 12:18:42] Try to request
+[2025-08-18 12:18:43] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:43] Successful request
+[2025-08-18 12:18:43] Try to parse
+[2025-08-18 12:18:43] Successful parse JSON
+[2025-08-18 12:18:43] Data of JSON: 1497
+[2025-08-18 12:18:43] Try to request
+[2025-08-18 12:18:43] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=167&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:43] Successful request
+[2025-08-18 12:18:43] Try to parse
+[2025-08-18 12:18:43] Successful parse JSON
+[2025-08-18 12:18:43] Data of JSON: https://w.wallhaven.cc/full/l3/wallhaven-l3zm1p.jpg
+[2025-08-18 12:18:43] Try to delete old image
+[2025-08-18 12:18:43] Successful deleting old image
+[2025-08-18 12:18:43] Data of JSON: image/jpeg
+[2025-08-18 12:18:43] Successful init CURL to image download
+[2025-08-18 12:18:43] Successful creating image file
+[2025-08-18 12:18:44] Successful download image/home/p1rat/code/rwal/wallpaper-l3zm1p.jpeg
+[2025-08-18 12:18:47] Try to request
+[2025-08-18 12:18:48] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:48] Successful request
+[2025-08-18 12:18:48] Try to parse
+[2025-08-18 12:18:48] Successful parse JSON
+[2025-08-18 12:18:48] Data of JSON: 1497
+[2025-08-18 12:18:48] Try to request
+[2025-08-18 12:18:48] url of request: https://wallhaven.cc/api/v1/search?q=girls&purity=100%20&sorting=random&resolutions=1920x1080&page=946&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:48] Successful request
+[2025-08-18 12:18:48] Try to parse
+[2025-08-18 12:18:48] Successful parse JSON
+[2025-08-18 12:18:48] Data of JSON: https://w.wallhaven.cc/full/47/wallhaven-47p9p9.jpg
+[2025-08-18 12:18:48] Try to delete old image
+[2025-08-18 12:18:48] Successful deleting old image
+[2025-08-18 12:18:48] Data of JSON: image/jpeg
+[2025-08-18 12:18:48] Successful init CURL to image download
+[2025-08-18 12:18:48] Successful creating image file
+[2025-08-18 12:18:49] Successful download image/home/p1rat/code/rwal/wallpaper-47p9p9.jpeg
+[2025-08-18 12:18:50] Try to request
+[2025-08-18 12:18:51] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:51] Successful request
+[2025-08-18 12:18:51] Try to parse
+[2025-08-18 12:18:51] Successful parse JSON
+[2025-08-18 12:18:51] Data of JSON: 2405
+[2025-08-18 12:18:51] Try to request
+[2025-08-18 12:18:51] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=977&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:51] Successful request
+[2025-08-18 12:18:51] Try to parse
+[2025-08-18 12:18:51] Successful parse JSON
+[2025-08-18 12:18:51] Data of JSON: https://w.wallhaven.cc/full/n6/wallhaven-n6pjk6.jpg
+[2025-08-18 12:18:51] Try to delete old image
+[2025-08-18 12:18:51] Successful deleting old image
+[2025-08-18 12:18:51] Data of JSON: image/jpeg
+[2025-08-18 12:18:51] Successful init CURL to image download
+[2025-08-18 12:18:51] Successful creating image file
+[2025-08-18 12:18:52] Successful download image/home/p1rat/code/rwal/wallpaper-n6pjk6.jpeg
+[2025-08-18 12:18:53] Try to request
+[2025-08-18 12:18:54] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:54] Successful request
+[2025-08-18 12:18:54] Try to parse
+[2025-08-18 12:18:54] Successful parse JSON
+[2025-08-18 12:18:54] Data of JSON: 2405
+[2025-08-18 12:18:54] Try to request
+[2025-08-18 12:18:54] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=2318&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:54] Successful request
+[2025-08-18 12:18:54] Try to parse
+[2025-08-18 12:18:54] Successful parse JSON
+[2025-08-18 12:18:54] Data of JSON: https://w.wallhaven.cc/full/42/wallhaven-42jeqg.jpg
+[2025-08-18 12:18:54] Try to delete old image
+[2025-08-18 12:18:54] Successful deleting old image
+[2025-08-18 12:18:54] Data of JSON: image/jpeg
+[2025-08-18 12:18:54] Successful init CURL to image download
+[2025-08-18 12:18:54] Successful creating image file
+[2025-08-18 12:18:54] Successful download image/home/p1rat/code/rwal/wallpaper-42jeqg.jpeg
+[2025-08-18 12:18:56] Try to request
+[2025-08-18 12:18:57] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:57] Successful request
+[2025-08-18 12:18:57] Try to parse
+[2025-08-18 12:18:57] Successful parse JSON
+[2025-08-18 12:18:57] Data of JSON: 2405
+[2025-08-18 12:18:57] Try to request
+[2025-08-18 12:18:57] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=1623&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:57] Successful request
+[2025-08-18 12:18:57] Try to parse
+[2025-08-18 12:18:57] Successful parse JSON
+[2025-08-18 12:18:57] Data of JSON: https://w.wallhaven.cc/full/4l/wallhaven-4lj93r.jpg
+[2025-08-18 12:18:57] Try to delete old image
+[2025-08-18 12:18:57] Successful deleting old image
+[2025-08-18 12:18:57] Data of JSON: image/jpeg
+[2025-08-18 12:18:57] Successful init CURL to image download
+[2025-08-18 12:18:57] Successful creating image file
+[2025-08-18 12:18:58] Successful download image/home/p1rat/code/rwal/wallpaper-4lj93r.jpeg
+[2025-08-18 12:18:59] Try to request
+[2025-08-18 12:18:59] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:59] Successful request
+[2025-08-18 12:18:59] Try to parse
+[2025-08-18 12:18:59] Successful parse JSON
+[2025-08-18 12:18:59] Data of JSON: 2405
+[2025-08-18 12:18:59] Try to request
+[2025-08-18 12:18:59] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=265&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:18:59] Successful request
+[2025-08-18 12:18:59] Try to parse
+[2025-08-18 12:19:00] Successful parse JSON
+[2025-08-18 12:19:00] Data of JSON: https://w.wallhaven.cc/full/95/wallhaven-953271.png
+[2025-08-18 12:19:00] Try to delete old image
+[2025-08-18 12:19:00] Successful deleting old image
+[2025-08-18 12:19:00] Data of JSON: image/png
+[2025-08-18 12:19:00] Successful init CURL to image download
+[2025-08-18 12:19:00] Successful creating image file
+[2025-08-18 12:19:00] Successful download image/home/p1rat/code/rwal/wallpaper-953271.png
+[2025-08-18 12:19:03] Ending program
+[2025-08-18 12:43:02] Starting program
+[2025-08-18 12:43:36] Starting program
+[2025-08-18 12:47:56] Try to request
+[2025-08-18 12:47:56] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:47:56] Successful request
+[2025-08-18 12:47:56] Try to parse
+[2025-08-18 12:47:56] Successful parse JSON
+[2025-08-18 12:47:56] Data of JSON: 2405
+[2025-08-18 12:47:56] Try to request
+[2025-08-18 12:47:57] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=80&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:47:57] Successful request
+[2025-08-18 12:47:57] Try to parse
+[2025-08-18 12:47:57] Successful parse JSON
+[2025-08-18 12:47:57] Data of JSON: https://w.wallhaven.cc/full/j8/wallhaven-j83z25.png
+[2025-08-18 12:47:57] Try to delete old image
+[2025-08-18 12:47:57] Successful deleting old image
+[2025-08-18 12:47:57] Data of JSON: image/png
+[2025-08-18 12:47:57] Successful init CURL to image download
+[2025-08-18 12:47:57] Successful creating image file
+[2025-08-18 12:47:58] Successful download image/home/p1rat/code/rwal/wallpaper-j83z25.png
+[2025-08-18 12:49:29] Starting program
+[2025-08-18 12:49:31] Try to request
+[2025-08-18 12:49:32] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:49:32] Successful request
+[2025-08-18 12:49:32] Try to parse
+[2025-08-18 12:49:32] Successful parse JSON
+[2025-08-18 12:49:32] Data of JSON: 2405
+[2025-08-18 12:49:32] Try to request
+[2025-08-18 12:49:32] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=227&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:49:32] Successful request
+[2025-08-18 12:49:32] Try to parse
+[2025-08-18 12:49:32] Successful parse JSON
+[2025-08-18 12:49:32] Data of JSON: https://w.wallhaven.cc/full/wy/wallhaven-wyyxmr.png
+[2025-08-18 12:49:32] Try to delete old image
+[2025-08-18 12:49:32] Successful deleting old image
+[2025-08-18 12:49:32] Data of JSON: image/png
+[2025-08-18 12:49:32] Successful init CURL to image download
+[2025-08-18 12:49:32] Successful creating image file
+[2025-08-18 12:49:33] Successful download image/home/p1rat/code/rwal/wallpaper-wyyxmr.png
+[2025-08-18 12:49:35] Ending program
+[2025-08-18 12:49:38] Try to request
+[2025-08-18 12:49:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:49:39] Successful request
+[2025-08-18 12:49:39] Try to parse
+[2025-08-18 12:49:39] Successful parse JSON
+[2025-08-18 12:49:39] Data of JSON: 2405
+[2025-08-18 12:49:39] Try to request
+[2025-08-18 12:49:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=67&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:49:39] Successful request
+[2025-08-18 12:49:39] Try to parse
+[2025-08-18 12:49:39] Successful parse JSON
+[2025-08-18 12:49:39] Data of JSON: https://w.wallhaven.cc/full/yj/wallhaven-yjj98l.png
+[2025-08-18 12:49:39] Try to delete old image
+[2025-08-18 12:49:39] Successful deleting old image
+[2025-08-18 12:49:39] Data of JSON: image/png
+[2025-08-18 12:49:39] Successful init CURL to image download
+[2025-08-18 12:49:39] Successful creating image file
+[2025-08-18 12:49:40] Successful download image/home/p1rat/code/rwal/wallpaper-yjj98l.png
+[2025-08-18 12:52:12] Try to request
+[2025-08-18 12:52:12] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:12] Successful request
+[2025-08-18 12:52:12] Try to parse
+[2025-08-18 12:52:12] Successful parse JSON
+[2025-08-18 12:52:12] Data of JSON: 2405
+[2025-08-18 12:52:12] Try to request
+[2025-08-18 12:52:13] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=229&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:13] Successful request
+[2025-08-18 12:52:13] Try to parse
+[2025-08-18 12:52:13] Successful parse JSON
+[2025-08-18 12:52:13] Data of JSON: https://w.wallhaven.cc/full/rr/wallhaven-rrjod1.png
+[2025-08-18 12:52:13] Try to delete old image
+[2025-08-18 12:52:13] Successful deleting old image
+[2025-08-18 12:52:13] Data of JSON: image/png
+[2025-08-18 12:52:13] Successful init CURL to image download
+[2025-08-18 12:52:13] Successful creating image file
+[2025-08-18 12:52:14] Successful download image/home/p1rat/code/rwal/wallpaper-rrjod1.png
+[2025-08-18 12:52:18] Try to request
+[2025-08-18 12:52:19] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:19] Successful request
+[2025-08-18 12:52:19] Try to parse
+[2025-08-18 12:52:19] Successful parse JSON
+[2025-08-18 12:52:19] Data of JSON: 2405
+[2025-08-18 12:52:19] Try to request
+[2025-08-18 12:52:20] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=97&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:20] Successful request
+[2025-08-18 12:52:20] Try to parse
+[2025-08-18 12:52:20] Successful parse JSON
+[2025-08-18 12:52:20] Data of JSON: https://w.wallhaven.cc/full/ym/wallhaven-ymd967.jpg
+[2025-08-18 12:52:20] Try to delete old image
+[2025-08-18 12:52:20] Successful deleting old image
+[2025-08-18 12:52:20] Data of JSON: image/jpeg
+[2025-08-18 12:52:20] Successful init CURL to image download
+[2025-08-18 12:52:20] Successful creating image file
+[2025-08-18 12:52:24] Successful download image/home/p1rat/code/rwal/wallpaper-ymd967.jpeg
+[2025-08-18 12:52:34] Try to request
+[2025-08-18 12:52:35] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:35] Successful request
+[2025-08-18 12:52:35] Try to parse
+[2025-08-18 12:52:35] Successful parse JSON
+[2025-08-18 12:52:35] Data of JSON: 2405
+[2025-08-18 12:52:35] Try to request
+[2025-08-18 12:52:35] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=142&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:35] Successful request
+[2025-08-18 12:52:35] Try to parse
+[2025-08-18 12:52:35] Successful parse JSON
+[2025-08-18 12:52:35] Data of JSON: https://w.wallhaven.cc/full/ne/wallhaven-nerj88.png
+[2025-08-18 12:52:35] Try to delete old image
+[2025-08-18 12:52:35] Successful deleting old image
+[2025-08-18 12:52:35] Data of JSON: image/png
+[2025-08-18 12:52:35] Successful init CURL to image download
+[2025-08-18 12:52:35] Successful creating image file
+[2025-08-18 12:52:36] Successful download image/home/p1rat/code/rwal/wallpaper-nerj88.png
+[2025-08-18 12:52:56] Try to request
+[2025-08-18 12:52:57] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:57] Successful request
+[2025-08-18 12:52:57] Try to parse
+[2025-08-18 12:52:57] Successful parse JSON
+[2025-08-18 12:52:57] Data of JSON: 2405
+[2025-08-18 12:52:57] Try to request
+[2025-08-18 12:52:57] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=70&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:52:57] Successful request
+[2025-08-18 12:52:57] Try to parse
+[2025-08-18 12:52:57] Successful parse JSON
+[2025-08-18 12:52:57] Data of JSON: https://w.wallhaven.cc/full/lm/wallhaven-lm93p2.jpg
+[2025-08-18 12:52:57] Try to delete old image
+[2025-08-18 12:52:57] Successful deleting old image
+[2025-08-18 12:52:57] Data of JSON: image/jpeg
+[2025-08-18 12:52:57] Successful init CURL to image download
+[2025-08-18 12:52:57] Successful creating image file
+[2025-08-18 12:52:57] Successful download image/home/p1rat/code/rwal/wallpaper-lm93p2.jpeg
+[2025-08-18 12:53:03] Try to request
+[2025-08-18 12:53:04] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:53:04] Successful request
+[2025-08-18 12:53:04] Try to parse
+[2025-08-18 12:53:04] Successful parse JSON
+[2025-08-18 12:53:04] Data of JSON: 2405
+[2025-08-18 12:53:04] Try to request
+[2025-08-18 12:53:04] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=108&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-18 12:53:04] Successful request
+[2025-08-18 12:53:04] Try to parse
+[2025-08-18 12:53:04] Successful parse JSON
+[2025-08-18 12:53:04] Data of JSON: https://w.wallhaven.cc/full/j5/wallhaven-j581k5.png
+[2025-08-18 12:53:04] Try to delete old image
+[2025-08-18 12:53:04] Successful deleting old image
+[2025-08-18 12:53:04] Data of JSON: image/png
+[2025-08-18 12:53:04] Successful init CURL to image download
+[2025-08-18 12:53:04] Successful creating image file
+[2025-08-18 12:53:04] Successful download image/home/p1rat/code/rwal/wallpaper-j581k5.png

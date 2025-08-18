@@ -21,7 +21,7 @@ void Flows::core(int argc,char **argv){
 
 	while (x != 'q'){
 		if (x == '1'){
-		   	refresh_wallpaper(argc,argv,count); 
+		   	refresh_wallpaper(argc,argv,"core",count); 
 			count += countStr.find("menu")->second;
 			clear_last_lines(count);		
 		}
@@ -56,3 +56,4 @@ void Flows::core(int argc,char **argv){
 	Logs l;
 	l.write_logs("Ending program");	
 }
+
