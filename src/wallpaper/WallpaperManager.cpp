@@ -10,7 +10,9 @@ namespace fs = std::filesystem;
 void save_wallpaper(std::string from){
 	Logs l;
 	try{
-		std::string to = "/home/p1rat/Pictures/rwall/" + from.substr(21,41);
+		std::string rwal = rwal_catalog();
+		l.write_logs("Output of rwal_catalog: " + rwal);
+		std::string to = rwal + from.substr(26,41);
 		l.write_logs("Image successful saved: " + to);
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
@@ -60,8 +62,7 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode,int count){
 }
 
 std::string where_are_wallpaper(){
-	fs::path dir_path("/home/p1rat/code/rwal");
-	
+	fs::path dir_path = "/home/p1rat/code/rwal";
 	try {
 		for (const auto& item : fs::directory_iterator(dir_path)){
 			if (fs::is_regular_file(item.path())){

@@ -12,7 +12,7 @@ void Flows::core(int argc,char **argv){
 
 	std::map<std::string,int> countStr;
 	
-	countStr.insert({"menu",6});	
+	countStr.insert({"menu",7});	
 	countStr.insert({"keywords_menu",5});
 
 	int count = 0;
