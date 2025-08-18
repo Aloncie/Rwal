@@ -1,6 +1,7 @@
 #include "CurlWrapper.h"
 #include "logs/logs.h"
 #include <exception>
+#include <string>
 
 static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) {
     size_t realsize = size * nmemb;
@@ -62,9 +63,12 @@ std::string MyCurl::get_data(std::string paragraph, std::string str){
 		if (j[paragraph].is_array()){
 			for (auto& item : j[paragraph]){
 				if (item.contains(str)){
+					Logs l;
 					if (item[str].is_string()){
+						l.write_logs("Data of JSON: " + item[str].get<std::string>());
 						return item[str].get<std::string>();
 					}
+					l.write_logs("Data of JSON: " + std::to_string(item[str].get<int>()));
 					return std::to_string(item[str].get<int>());
 				}
 			}
@@ -72,9 +76,13 @@ std::string MyCurl::get_data(std::string paragraph, std::string str){
 
 		else if (j[paragraph].is_object()){
 			if (j[paragraph].contains(str)){
+				Logs l;
 				if (j[paragraph][str].is_string()){
+					l.write_logs("Data of JSON: " + j[paragraph][str].get<std::string>());
 					return j[paragraph][str].get<std::string>();
 				}
+
+				l.write_logs("Data of JSON: " + std::to_string(j[paragraph][str].get<int>()));
 				return std::to_string(j[paragraph][str].get<int>());
 			}
 		}
