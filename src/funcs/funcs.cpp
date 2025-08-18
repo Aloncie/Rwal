@@ -1,6 +1,5 @@
 #include "funcs.h"
 #include "logs/logs.h"
-#include <exception>
 #include <filesystem>
 
 namespace fs = std::filesystem;
@@ -64,4 +63,65 @@ std::string rwal_catalog(){
 	} catch (std::exception& e){
 		l.write_logs("Filesystem error in catalog creating/checking: " + std::string(e.what()));	
 	}
+}
+
+void setup_systemd_timer(){
+	Logs l;
+	l.write_logs("Try to create/check service&timer files");
+	const fs::path service_dir = "/etc/systemd/system";
+	const std::string service_name = "rwal";
+	const fs::path service_file = service_dir / (service_name + ".service");
+	const fs::path timer_file = service_dir / (service_name + ".timer");
+
+	if (getuid() != 0) {
+		l.write_logs("Failed - there are not root rights");
+		std::cerr << "Need root rights. Please run program with 'sudo'" << std::endl; 	
+		return;
+	}
+	
+	if (!fs::exists(service_file)){
+		l.write_logs("There is not service file");
+		l.write_logs("Try to create service file");
+		std::ofstream service(service_file);
+		if (service.is_open()){
+			service <<
+			"[Unit]\n"
+			"Description=A service to refresh ur wallpaper in some time\n\n"
+			"[Service]\n"
+			"Type=oneshot\n"
+			"ExecStart=/home/p1rat/code/rwal/build/rwal\n";
+			service.close();
+			l.write_logs("Success creation service file");
+		}
+		else{
+			l.write_logs("Failed to create service file");
+			return;		
+		}
+	} else
+		l.write_logs("Service file already exists");
+	if (!fs::exists(timer_file)){
+		l.write_logs("There is not timer file");
+			l.write_logs("Try to create timer file");
+			std::ofstream service(timer_file);
+			if (service.is_open()){
+				service <<
+				"[Unit]\n"
+				"Description=Activates rwal.service periodicallyn\n"
+				"[Timer]\n"
+				"OnCalendar=hourly\n"
+				"Unit=rwal.service\n"
+				"[Install]\n"
+				"WantedBy=timers.target\n";
+				service.close();
+				l.write_logs("Success creation timer file");
+			}
+			else{
+				l.write_logs("Failed to create timer file");
+				return;		
+			}
+	} else
+		l.write_logs("Timer file already exists");
+
+	system("systemctl daemon-reload");
+	system(("systemctl enable --now " + service_name + ".timer").c_str());
 }
