@@ -3,6 +3,7 @@
 #include "keywords/keywords.h"
 #include "logs/logs.h"
 #include "startup_flows.h"
+#include "settings/settings.h"
 
 void Flows::core(int argc,char **argv){
 	if (true){
@@ -50,6 +51,18 @@ void Flows::core(int argc,char **argv){
 				count += countStr.find("keywords_menu")->second;
 				clear_last_lines(count);
 				x = 0;
+		}
+		else if (x == '4'){
+			std::string wallpaper_local = rwal_catalog();
+			Timer t;
+			std::string timer = t.see_timer();
+			char y  = 0;
+			while (y != 'q'){
+				if (y == '1'){
+					
+				}
+				settings(y,count,timer,wallpaper_local);
+			}
 		}
 		menu(x,count);
 	}
