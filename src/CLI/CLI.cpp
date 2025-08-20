@@ -1,18 +1,6 @@
 #include "CLI.h"
 #include "Menus.h"
-
-void menu(char& choice, int& count){
-	for (int i = 0;i < Main_menu.size();i++){
-		std::cout << Main_menu[i] << "\n";
-	}
-
-	choice = 0;
-	while (choice != '1'&&choice != '2'&&choice != '3'&&choice != 'q'){
-		count++;
-		std::cin.clear();
-		std::cin >> choice;
-	}
-}
+#include "keywords/keywords.h"
 
 void clear_last_lines(int& count) {
     for (int i = 0; i < count; ++i) {
@@ -22,30 +10,38 @@ void clear_last_lines(int& count) {
 	count = 0;
 }
 
-void keywords_menu(char& choice, int& count){
-	Keywords k;
-	
-	choice = 0;
-	while (choice != '1'&&choice != 'q'){
-		count++;
+MenuManager::MenuManager(int& count) : count_ref(count) {}
+
+char MenuManager::display(const MenuConfig& config){
+	char choice;
+
+	for (int i = 0;i < config.visual.size();i++){
+		std::cout << config.visual[i] << "\n";
+	}
+
+	while (config.valid_choices.find(choice) == std::string::npos){
+		count_ref++;
 		std::cin.clear();
 		std::cin >> choice;
 	}
+
+	return choice;
 }
 
-void settings(char& choice, int& count, std::string& timer, std::string& wallpaper_local){
-	std:: cout << "-------------------------- \n";
-	std::cout << "Choose to edit any setting\n";
-	std::cout << "1) Timer: " << timer << "\n";
-	std::cout << "2) Wallpaper location: " << wallpaper_local << "\n";
-	std::cout << "q) Quit\n";
-	std:: cout << "-------------------------- \n";
+char MenuManager::arrowDisplay(const MenuConfig& config){
+	initscr();	
+	noecho();
+	curs_set(0);
 
-	choice = 0;
-	while (choice != '1'&&choice != '2'&&choice != 'q'){
-		count++;
-		std::cin.clear();
-		std::cin >> choice;
-	}
+	int selected = 0;
 
+	for (int i = 0; i < config.visual.size();i++){
+		if (i == selected)
+
+		std::cout << config.visual[i] << "\n";
+	}	
+	
+	
+	int key = getch();
+	
 }
