@@ -9,6 +9,7 @@ project(rwal VERSION 1.0 LANGUAGES CXX)
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core DBus)
+find_package(Curses REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -25,6 +26,7 @@ target_include_directories(rwal PRIVATE
     ${CURL_INCLUDE_DIRS}
     ${Qt5DBus_INCLUDE_DIRS}
     ${Qt5Core_INCLUDE_DIRS}
+	${CURSES_INCLUDE_DIRS}
 )
 
 target_link_libraries(rwal PRIVATE 
@@ -32,6 +34,7 @@ target_link_libraries(rwal PRIVATE
 	nlohmann_json::nlohmann_json 
 	Qt5::DBus
 	Qt5::Core
+	${CURSES_LIBRARIES}	
 )
 
 install(TARGETS rwal

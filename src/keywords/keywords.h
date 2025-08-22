@@ -7,7 +7,6 @@
 #include <cctype>
 #include <sys/stat.h>
 #include <unistd.h>
-#include "logs/logs.h"
 
 extern const std::string keywords_path;
 
