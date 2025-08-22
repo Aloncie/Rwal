@@ -156,13 +156,19 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: \
  /usr/include/c++/15.2.1/bits/node_handle.h \
  /usr/include/c++/15.2.1/bits/stl_map.h \
  /usr/include/c++/15.2.1/bits/stl_multimap.h \
- /usr/include/c++/15.2.1/bits/erase_if.h \
- /home/p1rat/code/rwal/src/keywords/keywords.h \
- /usr/include/c++/15.2.1/filesystem /usr/include/c++/15.2.1/bits/fs_fwd.h \
- /usr/include/c++/15.2.1/cstdint \
+ /usr/include/c++/15.2.1/bits/erase_if.h /usr/include/c++/15.2.1/vector \
+ /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
+ /usr/include/c++/15.2.1/bits/stl_vector.h \
+ /usr/include/c++/15.2.1/bits/stl_bvector.h \
+ /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/curses.h \
+ /usr/include/ncurses_dll.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
- /usr/include/bits/stdint-least.h /usr/include/c++/15.2.1/bits/chrono.h \
+ /usr/include/bits/stdint-least.h /usr/include/unctrl.h \
+ /usr/include/curses.h /home/p1rat/code/rwal/src/CLI/Menus.h \
+ /home/p1rat/code/rwal/src/keywords/keywords.h \
+ /usr/include/c++/15.2.1/filesystem /usr/include/c++/15.2.1/bits/fs_fwd.h \
+ /usr/include/c++/15.2.1/cstdint /usr/include/c++/15.2.1/bits/chrono.h \
  /usr/include/c++/15.2.1/ratio /usr/include/c++/15.2.1/limits \
  /usr/include/c++/15.2.1/ctime \
  /usr/include/c++/15.2.1/bits/parse_numbers.h \
@@ -183,15 +189,11 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: \
  /usr/include/c++/15.2.1/bits/allocated_ptr.h \
  /usr/include/c++/15.2.1/bits/unique_ptr.h \
  /usr/include/c++/15.2.1/bits/align.h \
- /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
  /usr/include/c++/15.2.1/bits/fs_dir.h \
  /usr/include/c++/15.2.1/bits/fs_ops.h /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/15.2.1/bits/fstream.tcc /usr/include/c++/15.2.1/vector \
- /usr/include/c++/15.2.1/bits/stl_vector.h \
- /usr/include/c++/15.2.1/bits/stl_bvector.h \
- /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/sys/stat.h \
+ /usr/include/c++/15.2.1/bits/fstream.tcc /usr/include/sys/stat.h \
  /usr/include/bits/stat.h /usr/include/bits/struct_stat.h \
  /usr/include/bits/statx.h /usr/include/linux/stat.h \
  /usr/include/bits/statx-generic.h \
@@ -200,38 +202,4 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: \
  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
  /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
  /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
- /usr/include/linux/close_range.h /home/p1rat/code/rwal/src/logs/logs.h \
- /usr/include/c++/15.2.1/memory \
- /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
- /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h \
- /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
- /usr/include/c++/15.2.1/bits/atomic_base.h \
- /usr/include/c++/15.2.1/bits/atomic_lockfree_defines.h \
- /usr/include/c++/15.2.1/bits/atomic_wait.h \
- /usr/include/c++/15.2.1/climits \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
- /usr/include/limits.h /usr/include/bits/posix1_lim.h \
- /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
- /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
- /usr/include/bits/uio_lim.h /usr/include/syscall.h \
- /usr/include/sys/syscall.h /usr/include/asm/unistd.h \
- /usr/include/asm/unistd_64.h /usr/include/bits/syscall.h \
- /usr/include/c++/15.2.1/bits/std_mutex.h \
- /usr/include/c++/15.2.1/backward/auto_ptr.h \
- /usr/include/c++/15.2.1/bits/ranges_uninitialized.h \
- /usr/include/c++/15.2.1/bits/ranges_algobase.h \
- /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
- /usr/include/c++/15.2.1/pstl/execution_defs.h \
- /usr/include/c++/15.2.1/chrono /usr/include/c++/15.2.1/bits/stl_algo.h \
- /usr/include/c++/15.2.1/bits/algorithmfwd.h \
- /usr/include/c++/15.2.1/bits/stl_heap.h \
- /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
- /usr/include/c++/15.2.1/bits/chrono_io.h /usr/include/c++/15.2.1/format \
- /usr/include/c++/15.2.1/array /usr/include/c++/15.2.1/charconv \
- /usr/include/c++/15.2.1/optional \
- /usr/include/c++/15.2.1/bits/enable_special_members.h \
- /usr/include/c++/15.2.1/span /usr/include/c++/15.2.1/bits/monostate.h \
- /usr/include/c++/15.2.1/bits/formatfwd.h \
- /usr/include/c++/15.2.1/bits/unicode.h \
- /usr/include/c++/15.2.1/bits/unicode-data.h
+ /usr/include/linux/close_range.h

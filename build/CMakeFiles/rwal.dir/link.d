@@ -3,17 +3,27 @@ rwal: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o \
+  CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o \
   CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o \
   CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o \
   CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o \
   CMakeFiles/rwal.dir/src/logs/logs.cpp.o \
   CMakeFiles/rwal.dir/src/main.cpp.o \
   CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o \
+  CMakeFiles/rwal.dir/src/settings/settings.cpp.o \
   CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o \
   CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o \
   /usr/lib/libcurl.so \
   /usr/lib/libQt5DBus.so.5.15.17 \
   /usr/lib/libQt5Core.so.5.15.17 \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libncursesw.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libformw.so \
   /usr/lib/libcurl.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -108,6 +118,8 @@ rwal: \
 
 CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o:
 
+CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
+
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o:
 
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
@@ -120,6 +132,8 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o:
 
+CMakeFiles/rwal.dir/src/settings/settings.cpp.o:
+
 CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o:
 
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
@@ -129,6 +143,22 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 /usr/lib/libQt5DBus.so.5.15.17:
 
 /usr/lib/libQt5Core.so.5.15.17:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libncursesw.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libformw.so:
 
 /usr/lib/libcurl.so:
 

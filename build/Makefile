@@ -199,6 +199,30 @@ src/CLI/CLI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/CLI.cpp.s
 .PHONY : src/CLI/CLI.cpp.s
 
+src/CLI/Menus.o: src/CLI/Menus.cpp.o
+.PHONY : src/CLI/Menus.o
+
+# target to build an object file
+src/CLI/Menus.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o
+.PHONY : src/CLI/Menus.cpp.o
+
+src/CLI/Menus.i: src/CLI/Menus.cpp.i
+.PHONY : src/CLI/Menus.i
+
+# target to preprocess a source file
+src/CLI/Menus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/Menus.cpp.i
+.PHONY : src/CLI/Menus.cpp.i
+
+src/CLI/Menus.s: src/CLI/Menus.cpp.s
+.PHONY : src/CLI/Menus.s
+
+# target to generate assembly for a file
+src/CLI/Menus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/Menus.cpp.s
+.PHONY : src/CLI/Menus.cpp.s
+
 src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
 .PHONY : src/dbus/PlasmaDBus.o
 
@@ -343,6 +367,30 @@ src/net/CurlWrapper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s
 .PHONY : src/net/CurlWrapper.cpp.s
 
+src/settings/settings.o: src/settings/settings.cpp.o
+.PHONY : src/settings/settings.o
+
+# target to build an object file
+src/settings/settings.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/settings.cpp.o
+.PHONY : src/settings/settings.cpp.o
+
+src/settings/settings.i: src/settings/settings.cpp.i
+.PHONY : src/settings/settings.i
+
+# target to preprocess a source file
+src/settings/settings.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/settings.cpp.i
+.PHONY : src/settings/settings.cpp.i
+
+src/settings/settings.s: src/settings/settings.cpp.s
+.PHONY : src/settings/settings.s
+
+# target to generate assembly for a file
+src/settings/settings.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/settings.cpp.s
+.PHONY : src/settings/settings.cpp.s
+
 src/startup_flows/startup_flows.o: src/startup_flows/startup_flows.cpp.o
 .PHONY : src/startup_flows/startup_flows.o
 
@@ -407,6 +455,9 @@ help:
 	@echo "... src/CLI/CLI.o"
 	@echo "... src/CLI/CLI.i"
 	@echo "... src/CLI/CLI.s"
+	@echo "... src/CLI/Menus.o"
+	@echo "... src/CLI/Menus.i"
+	@echo "... src/CLI/Menus.s"
 	@echo "... src/dbus/PlasmaDBus.o"
 	@echo "... src/dbus/PlasmaDBus.i"
 	@echo "... src/dbus/PlasmaDBus.s"
@@ -425,6 +476,9 @@ help:
 	@echo "... src/net/CurlWrapper.o"
 	@echo "... src/net/CurlWrapper.i"
 	@echo "... src/net/CurlWrapper.s"
+	@echo "... src/settings/settings.o"
+	@echo "... src/settings/settings.i"
+	@echo "... src/settings/settings.s"
 	@echo "... src/startup_flows/startup_flows.o"
 	@echo "... src/startup_flows/startup_flows.i"
 	@echo "... src/startup_flows/startup_flows.s"

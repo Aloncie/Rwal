@@ -345,13 +345,6 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/bits/statx-generic.h \
  /usr/include/bits/types/struct_statx_timestamp.h \
  /usr/include/bits/types/struct_statx.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/chrono \
- /usr/include/c++/15.2.1/bits/chrono_io.h /usr/include/c++/15.2.1/format \
- /usr/include/c++/15.2.1/charconv \
- /usr/include/c++/15.2.1/bits/monostate.h \
- /usr/include/c++/15.2.1/bits/formatfwd.h \
- /usr/include/c++/15.2.1/bits/unicode.h \
- /usr/include/c++/15.2.1/bits/unicode-data.h \
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
  /usr/include/qt/QtCore/QCoreApplication \
  /usr/include/qt/QtCore/qcoreapplication.h \
@@ -388,7 +381,13 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/qt/QtCore/qmetatype.h \
  /usr/include/qt/QtCore/qvarlengtharray.h \
  /usr/include/qt/QtCore/qcontainerfwd.h \
- /usr/include/qt/QtCore/qobject_impl.h \
+ /usr/include/qt/QtCore/qobject_impl.h /usr/include/c++/15.2.1/chrono \
+ /usr/include/c++/15.2.1/bits/chrono_io.h /usr/include/c++/15.2.1/format \
+ /usr/include/c++/15.2.1/charconv \
+ /usr/include/c++/15.2.1/bits/monostate.h \
+ /usr/include/c++/15.2.1/bits/formatfwd.h \
+ /usr/include/c++/15.2.1/bits/unicode.h \
+ /usr/include/c++/15.2.1/bits/unicode-data.h \
  /usr/include/qt/QtCore/qcoreevent.h /usr/include/qt/QtCore/qeventloop.h \
  /usr/include/qt/QtDBus/QDBusConnection \
  /usr/include/qt/QtDBus/qdbusconnection.h \
@@ -405,4 +404,6 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/qt/QtCore/qsharedpointer.h \
  /usr/include/qt/QtCore/qsharedpointer_impl.h \
  /usr/include/qt/QtCore/QString /usr/include/qt/QtCore/qstring.h \
- /home/p1rat/code/rwal/src/funcs/funcs.h
+ /home/p1rat/code/rwal/src/logs/logs.h \
+ /home/p1rat/code/rwal/src/funcs/funcs.h \
+ /home/p1rat/code/rwal/src/settings/settings.h

@@ -4,6 +4,12 @@
 #include "logs/logs.h"
 #include "startup_flows.h"
 #include "settings/settings.h"
+#include "CLI/Menus.h"
+
+const MenuConfig SETTINGS_MENU = {"12q",Settings_menu}; 
+const MenuConfig MAIN_MENU = {"1234q", Main_menu};
+const MenuConfig KEYWORDS_MENU = {"1q", Keywords_menu};
+
 
 void Flows::core(int argc,char **argv){
 	if (true){
@@ -13,23 +19,23 @@ void Flows::core(int argc,char **argv){
 
 	std::map<std::string,int> countStr;
 	
-	countStr.insert({"menu",7});	
+	countStr.insert({"menu",8});	
 	countStr.insert({"keywords_menu",5});
 
 	int count = 0;
-	char x = 0;
-	menu(x,count);
 
+	MenuManager m(count);
+	char x = m.display(MAIN_MENU);
 	while (x != 'q'){
 		if (x == '1'){
 		   	refresh_wallpaper(argc,argv,"core",count); 
 			count += countStr.find("menu")->second;
-			clear_last_lines(count);		
+			m.clear_last_lines();
 		}
 		else if (x == '2'){
 			save_wallpaper(where_are_wallpaper()); 
 			count += countStr.find("menu")->second;
-			clear_last_lines(count);
+			m.clear_last_lines();
 			std::cout << "Successful download image" << std::endl;
 			count++;
 		}
@@ -37,19 +43,18 @@ void Flows::core(int argc,char **argv){
 				Keywords k;
 				std::string keywords = k.look_keywords();
 				count += countStr.find("menu")->second;
-				clear_last_lines(count);
-				char y = 0;
-				keywords_menu(y,count);
-				while (y != 'q'){
-					if (y == '1'){
+				m.clear_last_lines();
+				x = m.display(KEYWORDS_MENU);	
+				while (x != 'q'){
+					if (x == '1'){
 						k.open_keywords_editor();
 						count += countStr.find("keywords_menu")->second;
-						clear_last_lines(count);
+						m.clear_last_lines();
 					}
-					keywords_menu(y,count);
+					x = m.display(KEYWORDS_MENU);
 				}
 				count += countStr.find("keywords_menu")->second;
-				clear_last_lines(count);
+				m.clear_last_lines();
 				x = 0;
 		}
 		else if (x == '4'){
@@ -61,10 +66,10 @@ void Flows::core(int argc,char **argv){
 				if (y == '1'){
 					
 				}
-				settings(y,count,timer,wallpaper_local);
+				x = m.display(SETTINGS_MENU);
 			}
 		}
-		menu(x,count);
+		x = m.display(MAIN_MENU);
 	}
 	Logs l;
 	l.write_logs("Ending program");	

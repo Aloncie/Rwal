@@ -9,7 +9,7 @@ fs::path get_pictures_path(){
 	#ifdef _WIN32
 	const char* user_profile = std::getenv("USERPROFILE"); 
 	if (user_profile){
-		l.write_logs("Pictures location: " + std::string(user_profile) + "\\Pictures);
+		l.write_logs("Pictures location: " + std::string(user_profile) + "\\Pictures");
 		return user_profile+="\\rwal\\";
 	}
 	#else
@@ -48,6 +48,7 @@ std::string rwal_catalog(){
 	} catch (std::exception& e){
 		l.write_logs("Filesystem error in catalog creating/checking: " + std::string(e.what()));	
 	}
+	return "None";
 }
 
 void Timer::setup_systemd_timer(){
