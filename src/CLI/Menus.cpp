@@ -8,7 +8,7 @@ const std::vector<std::string> Timer_menu{
 	"daily"
 };
 
-const std::vector<std::string> Main_manu{
+const std::vector<std::string> Main_menu{
 	"-------------------------- ",
 	"1) Refresh wallpaper now",
 	"2) Save current wallpaper",
@@ -18,24 +18,24 @@ const std::vector<std::string> Main_manu{
 	"-------------------------- "
 };
 
-Keywords k;
+//Keywords k;
 const std::vector<std::string> Keywords_menu{
 	"-------------------------- ",
-	"Keywords: " + k.look_keywords(),
+//	"Keywords: " + k.look_keywords(),
 	"1) Edit keywords",
 	"q) Quit",
 	"-------------------------- "
 };
-
+/*
 Timer t;
 std::string timer =	t.see_timer();
 std::string wallpaper_local = rwal_catalog();
-
+*/
 const std::vector<std::string> Settings_menu{
 	"-------------------------- ",
 	"Choose to edit any setting",
-	"1) Timer: " + timer,
-	"2) Wallpaper location: " + wallpaper_local,
+//	"1) Timer: " + timer,
+//	"2) Wallpaper location: " + wallpaper_local,
 	"q) Quit",
 	"-------------------------- "
 };

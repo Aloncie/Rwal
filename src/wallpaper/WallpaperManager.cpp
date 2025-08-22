@@ -4,6 +4,7 @@
 #include "dbus/PlasmaDBus.h"
 #include "funcs/funcs.h"
 #include "logs/logs.h"
+#include "settings/settings.h"
 
 namespace fs = std::filesystem;
 

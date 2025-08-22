@@ -1,9 +1,10 @@
 #include "keywords.h"
+#include "logs/logs.h"
 
 const std::string keywords_path = "/home/p1rat/code/rwal/build/keywords.txt";
 
 std::string Keywords::look_keywords(){
-	std::string result = "";
+	std::string result = "None";
 	std::ifstream ifile;
 	ifile.open(keywords_path);
 	if (ifile.is_open()){

@@ -9,7 +9,7 @@ extern std::map<std::string,int> countStr;
 
 struct MenuConfig{
 	const std::string valid_choices;
-	std::vector<std::string>& visual;
+	const std::vector<std::string>& menu;
 };
 
 class MenuManager{
@@ -18,5 +18,6 @@ private:
 public:
 	MenuManager(int& count);
 	char display(const MenuConfig& config);
+	void clear_last_lines();
 	char arrowDisplay(const MenuConfig& config);
 };
