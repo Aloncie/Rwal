@@ -14,5 +14,5 @@ class Timer{
 public:
 	void setup_systemd_timer();
 	std::string see_timer();
-	void edit_timer();
+	void edit_timer(std::string value);
 };

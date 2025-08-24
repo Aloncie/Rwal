@@ -6,7 +6,7 @@ const std::string keywords_path = "/home/p1rat/code/rwal/build/keywords.txt";
 std::string Keywords::look_keywords(){
 	std::string result = "None";
 	std::ifstream ifile;
-	ifile.open(keywords_path);
+	ifile.open("keywords.txt");
 	if (ifile.is_open()){
 		getline(ifile,result);
 		ifile.close();
@@ -18,7 +18,6 @@ std::string Keywords::look_keywords(){
 	}
 	Keywords k;
 	k.format_str(result);
-
 	return result;
 }
 
@@ -42,7 +41,7 @@ std::string Keywords::get_keywords(int& count){
 	k.format_str(result);
 	std::ofstream ofile;
 
-	ofile.open(keywords_path);
+	ofile.open("keywords.txt");
 
 	if (ofile.is_open()){
 		ofile << result;
@@ -100,6 +99,6 @@ void Keywords::open_keywords_editor(){
 	const char* editor = getenv("EDITOR");
 	if (!editor)
 		editor = "nano";
-	std::string command = std::string(editor) + " " + keywords_path;
+	std::string command = std::string(editor) + " " + "keywords.txt";
 	system(command.c_str());	
 }

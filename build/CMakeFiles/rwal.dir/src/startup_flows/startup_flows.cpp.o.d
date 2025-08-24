@@ -192,6 +192,14 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/curses.h \
  /usr/include/ncurses_dll.h /usr/include/unctrl.h /usr/include/curses.h \
+ /home/p1rat/code/rwal/src/CLI/Menus.h /usr/include/c++/15.2.1/functional \
+ /usr/include/c++/15.2.1/bits/std_function.h \
+ /usr/include/c++/15.2.1/unordered_map \
+ /usr/include/c++/15.2.1/bits/unordered_map.h \
+ /usr/include/c++/15.2.1/bits/hashtable.h \
+ /usr/include/c++/15.2.1/bits/hashtable_policy.h \
+ /usr/include/c++/15.2.1/bits/enable_special_members.h \
+ /usr/include/c++/15.2.1/array \
  /home/p1rat/code/rwal/src/keywords/keywords.h \
  /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
@@ -233,13 +241,10 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_heap.h \
  /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
  /usr/include/c++/15.2.1/bits/chrono_io.h /usr/include/c++/15.2.1/format \
- /usr/include/c++/15.2.1/array /usr/include/c++/15.2.1/charconv \
- /usr/include/c++/15.2.1/optional \
- /usr/include/c++/15.2.1/bits/enable_special_members.h \
+ /usr/include/c++/15.2.1/charconv /usr/include/c++/15.2.1/optional \
  /usr/include/c++/15.2.1/span /usr/include/c++/15.2.1/bits/monostate.h \
  /usr/include/c++/15.2.1/bits/formatfwd.h \
  /usr/include/c++/15.2.1/bits/unicode.h \
  /usr/include/c++/15.2.1/bits/unicode-data.h \
  /home/p1rat/code/rwal/src/startup_flows/startup_flows.h \
- /home/p1rat/code/rwal/src/settings/settings.h \
- /home/p1rat/code/rwal/src/CLI/Menus.h
+ /home/p1rat/code/rwal/src/settings/settings.h

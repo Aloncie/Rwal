@@ -1,6 +1,7 @@
 #include "settings.h"
 #include "logs/logs.h"
 #include <filesystem>
+#include <fstream>
 
 fs::path get_pictures_path(){
 	Logs l;
@@ -128,20 +129,59 @@ std::string Timer::see_timer(){
 	l.write_logs("Try to read timer file");
 
 	if (file.is_open()){
-		while (getline(std::cin,str)){
+		while (getline(file,str)){
 			if (str.starts_with("OnCalendar=")){
-				str.erase(str.starts_with("OnCalendar="));
+				str.erase(0,str.find("=")+1);
 				l.write_logs("Successful reading. Data: " + str);
 				return str;
 			}
 		}
 	}
-	else 
-		l.write_logs("Failed to read timer file");
 
 	return "None";
 }
 
-void Timer::edit_timer(){
-		
+void Timer::edit_timer(std::string value){
+	Logs l;
+	
+	if (getuid() != 0) {
+		l.write_logs("Failed - there are not root rights");
+		std::cerr << "Need root rights. Please run program with 'sudo'" << std::endl; 	
+		return;
+	}
+	l.write_logs("Try to edit timer");
+
+	std::ifstream in_file("/etc/systemd/system/rwal.timer");
+	std::vector<std::string> lines;
+	std::string line;
+	bool found = false;
+	if (!in_file){
+		l.write_logs("Failed to open rwal.timer to read");
+		return;
+	}	
+	while (getline(in_file,line)){
+		if (line.find("OnCalendar=") == std::string::npos)
+			lines.push_back(line);
+		else {
+			found = true;
+			lines.push_back("OnCalendar=" + value);
+		}
+	}
+
+	in_file.close();
+
+	if (!found){
+		l.write_logs("Failed to find string");
+		return;
+	}
+
+	std::ofstream out_file("/etc/systemd/system/rwal.timer");
+	if (!out_file){
+		l.write_logs("Failed to create/open rwal.timer to write");
+		return;
+	}
+	for (auto& l : lines)
+		out_file << l << "\n";
+
+	l.write_logs("Successful trying");
 }

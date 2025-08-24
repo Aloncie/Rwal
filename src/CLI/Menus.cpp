@@ -1,41 +1,63 @@
-#include "Menus.h"
 #include "keywords/keywords.h"
 #include "settings/settings.h"
+#include "Menus.h"
+
+//local
+const std::vector<std::string> Main_menu{
+    "-------------------------- ",
+    "1) Refresh wallpaper now",
+    "2) Save current wallpaper",
+    "3) See keywords", 
+    "4) Settings",
+    "q) Quit",
+    "-------------------------- "
+};
 
 const std::vector<std::string> Timer_menu{
-	"None",
-	"hourly",
+	"None", 
+	"hourly", 
 	"daily"
 };
 
-const std::vector<std::string> Main_menu{
-	"-------------------------- ",
-	"1) Refresh wallpaper now",
-	"2) Save current wallpaper",
-	"3) See keywords",
-	"4) Settings",
-	"q) Quit",
-	"-------------------------- "
+//global
+const MenuConfig MAIN_MENU = {
+    "1234q",
+    []() { return Main_menu; }
 };
 
-//Keywords k;
-const std::vector<std::string> Keywords_menu{
-	"-------------------------- ",
-//	"Keywords: " + k.look_keywords(),
-	"1) Edit keywords",
-	"q) Quit",
-	"-------------------------- "
+const MenuConfig TIMER_MENU = {
+	"None",
+	[]() { return Timer_menu;}
 };
-/*
-Timer t;
-std::string timer =	t.see_timer();
-std::string wallpaper_local = rwal_catalog();
-*/
-const std::vector<std::string> Settings_menu{
-	"-------------------------- ",
-	"Choose to edit any setting",
-//	"1) Timer: " + timer,
-//	"2) Wallpaper location: " + wallpaper_local,
-	"q) Quit",
-	"-------------------------- "
+
+const MenuConfig KEYWORDS_MENU = {
+    "1q", 
+    []() {
+        Keywords k;
+        std::string keywords = k.look_keywords();
+        return std::vector<std::string>{
+            "-------------------------- ",
+            "Keywords: " + keywords,
+            "1) Edit keywords",
+            "q) Quit",
+            "-------------------------- "
+        };
+    }
+};
+
+const MenuConfig SETTINGS_MENU = {
+    "12q",
+    []() {
+        Timer t;
+        std::string timer = t.see_timer();
+        std::string wallpaper_local = rwal_catalog();
+        return std::vector<std::string>{
+            "-------------------------- ",
+            "Choose to edit any setting",
+            "1) Timer: " + timer,
+            "2) Wallpaper location: " + wallpaper_local,
+            "q) Quit",
+            "-------------------------- "
+        };
+    }
 };
