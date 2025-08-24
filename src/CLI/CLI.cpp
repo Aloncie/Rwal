@@ -1,6 +1,4 @@
 #include "CLI.h"
-#include "Menus.h"
-#include "keywords/keywords.h"
 
 void MenuManager::clear_last_lines() {
     for (int i = 0; i < count_ref; ++i) {
@@ -12,11 +10,11 @@ void MenuManager::clear_last_lines() {
 
 MenuManager::MenuManager(int& count) : count_ref(count) {}
 
-char MenuManager::display(const MenuConfig& config){
+char MenuManager::charactarInput(const MenuConfig& config){
 	char choice;
-
-	for (int i = 0;i < config.menu.size();i++){
-		std::cout << config.menu[i] << "\n";
+	auto menu = config.menu();	
+	for (int i = 0;i < menu.size();i++){
+		std::cout << menu[i] << "\n";
 	}
 
 	while (config.valid_choices.find(choice) == std::string::npos){
@@ -24,10 +22,14 @@ char MenuManager::display(const MenuConfig& config){
 		std::cin.clear();
 		std::cin >> choice;
 	}
+
+	count_ref+= menu.size();
+
+	clear_last_lines();
 	return static_cast<char>(choice);
 }
 
-char MenuManager::arrowDisplay(const MenuConfig& config){
+std::string MenuManager::arrowInput(const MenuConfig& config){
 	initscr();		
 	noecho();
 	curs_set(0);
@@ -38,23 +40,24 @@ char MenuManager::arrowDisplay(const MenuConfig& config){
 	
 	bool running = true;
 	int selected = 0;
+	auto menu = config.menu();
 
 	while (running){
 		
-		for (int i = 0; i < config.menu.size();i++){
+		for (int i = 0; i < menu.size();i++){
 			move(old_y + i, 0);
 			clrtoeol();
 		}
 
-		for (int i = 0; i < config.menu.size();i++){
+		for (int i = 0; i < menu.size();i++){
 			move(old_y + i,0);	
 			if (i == selected){
 				attron(A_REVERSE);
-				printw("> %s", config.menu[i].c_str());
-				attron(A_REVERSE);
+				printw("> %s", menu[i].c_str());
+				attroff(A_REVERSE);
 			}
 			else 
-				printw(" %s", config.menu[i].c_str());
+				printw(" %s", menu[i].c_str());
 			clrtoeol();
 		}	
 		
@@ -64,12 +67,15 @@ char MenuManager::arrowDisplay(const MenuConfig& config){
 		int key = getch();
 		switch(key) {
 			case KEY_UP: selected = std::max(0,selected -1); break;
-			case KEY_DOWN: selected = std::min((int)config.menu.size()-1, selected+1);break;
+			case KEY_DOWN: selected = std::min((int)menu.size()-1, selected+1);break;
 			case 10: running = false; break;
 		}
 	}
 
 	endwin();
-	return static_cast<char>(selected);
+	return menu[selected];
+}
 
+void MenuManager::countOperatorPlus(int count){
+	count_ref += count;
 }
