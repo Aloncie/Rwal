@@ -13,7 +13,7 @@ void save_wallpaper(std::string from){
 	try{
 		std::string rwal = rwal_catalog();
 		l.write_logs("Output of rwal_catalog: " + rwal);
-		std::string to = rwal + from.substr(26,41);
+		std::string to = rwal + from.substr(from.find("wallpaper"));
 		l.write_logs("Image successful saved: " + to);
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
@@ -34,7 +34,6 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode,int count){
 
 	do {
 		std::string kw = keywords[random(keywords.size()-1)];
-		//get page count for request
 		MyCurl c("apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
 		c.get_request();
 		pageCount = c.get_data("meta","last_page");
@@ -77,6 +76,6 @@ std::string where_are_wallpaper(){
 	} catch (const fs::filesystem_error& e){
 		Logs l;
 		l.write_logs("Error of delete old image: " + std::string(e.what()));
-		return nullptr;
 	}
+	return nullptr;
 }
