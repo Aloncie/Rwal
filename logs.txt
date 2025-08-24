@@ -5559,3 +5559,42 @@ Full path:/root/Pictures/rwal/
 [2025-08-24 | 20:06:35] Pictures location: /root/Pictures
 [2025-08-24 | 20:06:35] The pictures_path: /root/Pictures/rwal/
 [2025-08-24 | 20:06:37] Ending program
+[2025-08-24 | 22:25:25] Starting program
+[2025-08-24 | 22:25:27] Try to know 'Pictures' location
+[2025-08-24 | 22:25:27] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 22:25:27] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 22:25:27] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 22:25:27] Image successful saved: /home/p1rat/Pictures/rwal/paper-9mo7kw.jpeg
+[2025-08-24 | 22:25:50] Ending program
+[2025-08-24 | 22:27:55] Starting program
+[2025-08-24 | 22:28:00] Try to request
+[2025-08-24 | 22:28:01] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 22:28:01] Successful request
+[2025-08-24 | 22:28:01] Try to parse
+[2025-08-24 | 22:28:01] Successful parse JSON
+[2025-08-24 | 22:28:01] Data of JSON: 2406
+[2025-08-24 | 22:28:01] Try to request
+[2025-08-24 | 22:28:02] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=40&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 22:28:02] Successful request
+[2025-08-24 | 22:28:02] Try to parse
+[2025-08-24 | 22:28:02] Successful parse JSON
+[2025-08-24 | 22:28:02] Data of JSON: https://w.wallhaven.cc/full/we/wallhaven-we8llr.png
+[2025-08-24 | 22:28:02] Try to delete old image
+[2025-08-24 | 22:28:02] Successful deleting old image
+[2025-08-24 | 22:28:02] Data of JSON: image/png
+[2025-08-24 | 22:28:02] Successful init CURL to image download
+[2025-08-24 | 22:28:02] Successful creating image file
+[2025-08-24 | 22:28:02] Successful download image/home/p1rat/code/rwal/wallpaper-we8llr.png
+[2025-08-24 | 22:28:04] Try to know 'Pictures' location
+[2025-08-24 | 22:28:04] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 22:28:04] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 22:28:04] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 22:28:04] Image successful saved: /home/p1rat/Pictures/rwal/allpaper-we8llr.png
+[2025-08-24 | 22:28:18] Ending program
+[2025-08-24 | 22:30:49] Starting program
+[2025-08-24 | 22:30:50] Try to know 'Pictures' location
+[2025-08-24 | 22:30:50] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 22:30:50] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 22:30:50] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 22:30:50] Image successful saved: /home/p1rat/Pictures/rwal/wallpaper-we8llr.png
+[2025-08-24 | 22:31:05] Ending program
