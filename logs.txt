@@ -4369,3 +4369,1193 @@
 [2025-08-22 | 18:50:49] Successful creating image file
 [2025-08-22 | 18:50:49] Successful download image/home/p1rat/code/rwal/wallpaper-mpjolk.jpeg
 [2025-08-22 | 18:50:50] Ending program
+[2025-08-24 | 13:44:53] Starting program
+[2025-08-24 | 13:44:53] Try to know 'Pictures' location
+[2025-08-24 | 13:44:53] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 13:44:53] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 13:44:53] Try to read timer file
+[2025-08-24 | 13:45:31] Starting program
+[2025-08-24 | 13:45:33] Try to know 'Pictures' location
+[2025-08-24 | 13:45:33] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 13:45:33] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 13:45:33] Try to read timer file
+[2025-08-24 | 13:45:42] Starting program
+[2025-08-24 | 13:45:43] Ending program
+[2025-08-24 | 13:45:45] Starting program
+[2025-08-24 | 13:45:46] Try to know 'Pictures' location
+[2025-08-24 | 13:45:46] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 13:45:46] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 13:45:46] Try to read timer file
+[2025-08-24 | 13:45:55] Starting program
+[2025-08-24 | 13:45:56] File open error 
+[2025-08-24 | 13:48:26] Starting program
+[2025-08-24 | 13:48:34] Try to know 'Pictures' location
+[2025-08-24 | 13:48:34] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 13:48:34] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 13:48:34] Try to read timer file
+[2025-08-24 | 13:49:14] Starting program
+[2025-08-24 | 13:50:50] Starting program
+[2025-08-24 | 13:51:24] Try to know 'Pictures' location
+[2025-08-24 | 13:51:24] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 13:51:24] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 13:51:27] Try to read timer file
+[2025-08-24 | 13:58:19] Starting program
+[2025-08-24 | 13:58:31] Try to know 'Pictures' location
+[2025-08-24 | 13:58:31] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 13:58:31] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 13:58:39] Try to read timer file
+[2025-08-24 | 14:03:09] Starting program
+[2025-08-24 | 14:03:11] Try to know 'Pictures' location
+[2025-08-24 | 14:03:11] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 14:03:11] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 14:03:17] Try to read timer file
+[2025-08-24 | 14:07:13] Starting program
+[2025-08-24 | 14:07:14] Try to know 'Pictures' location
+[2025-08-24 | 14:07:14] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 14:07:14] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 14:07:14] Try to read timer file
+[2025-08-24 | 14:07:14] Successful reading. Data: O
+[2025-08-24 | 15:04:33] File open error 
+[2025-08-24 | 15:06:39] Try to read timer file
+[2025-08-24 | 15:06:39] Successful reading. Data: O
+[2025-08-24 | 15:06:39] Try to know 'Pictures' location
+[2025-08-24 | 15:06:39] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:06:39] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:06:39] Starting program
+[2025-08-24 | 15:06:46] Try to know 'Pictures' location
+[2025-08-24 | 15:06:46] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:06:46] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:06:46] Try to read timer file
+[2025-08-24 | 15:06:46] Successful reading. Data: O
+[2025-08-24 | 15:07:25] Try to read timer file
+[2025-08-24 | 15:07:25] Successful reading. Data: O
+[2025-08-24 | 15:07:25] Try to know 'Pictures' location
+[2025-08-24 | 15:07:25] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:07:25] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:07:25] Starting program
+[2025-08-24 | 15:07:27] Try to know 'Pictures' location
+[2025-08-24 | 15:07:27] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:07:27] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:07:27] Try to read timer file
+[2025-08-24 | 15:07:27] Successful reading. Data: O
+[2025-08-24 | 15:07:45] Try to request
+[2025-08-24 | 15:07:45] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:07:45] Successful request
+[2025-08-24 | 15:07:45] Try to parse
+[2025-08-24 | 15:07:45] Successful parse JSON
+[2025-08-24 | 15:07:45] Data of JSON: 2406
+[2025-08-24 | 15:07:45] Try to request
+[2025-08-24 | 15:07:46] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=145&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:07:46] Successful request
+[2025-08-24 | 15:07:46] Try to parse
+[2025-08-24 | 15:07:46] Successful parse JSON
+[2025-08-24 | 15:07:46] Data of JSON: https://w.wallhaven.cc/full/gj/wallhaven-gjppr3.jpg
+[2025-08-24 | 15:07:46] Try to delete old image
+[2025-08-24 | 15:07:46] Successful deleting old image
+[2025-08-24 | 15:07:46] Data of JSON: image/jpeg
+[2025-08-24 | 15:07:46] Successful init CURL to image download
+[2025-08-24 | 15:07:46] Successful creating image file
+[2025-08-24 | 15:07:46] Successful download image/home/p1rat/code/rwal/wallpaper-gjppr3.jpeg
+[2025-08-24 | 15:07:50] Try to know 'Pictures' location
+[2025-08-24 | 15:07:50] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:07:50] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:07:50] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:07:50] Image successful saved: /home/p1rat/Pictures/rwal/paper-gjppr3.jpeg
+[2025-08-24 | 15:09:03] Ending program
+[2025-08-24 | 15:09:08] Try to read timer file
+[2025-08-24 | 15:09:08] Successful reading. Data: O
+[2025-08-24 | 15:09:08] Try to know 'Pictures' location
+[2025-08-24 | 15:09:08] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:09:08] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:09:08] Try to request
+[2025-08-24 | 15:09:09] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:09] Successful request
+[2025-08-24 | 15:09:09] Try to parse
+[2025-08-24 | 15:09:09] Successful parse JSON
+[2025-08-24 | 15:09:09] Data of JSON: 2406
+[2025-08-24 | 15:09:09] Try to request
+[2025-08-24 | 15:09:09] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=56&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:09] Successful request
+[2025-08-24 | 15:09:09] Try to parse
+[2025-08-24 | 15:09:09] Successful parse JSON
+[2025-08-24 | 15:09:09] Data of JSON: https://w.wallhaven.cc/full/01/wallhaven-013231.jpg
+[2025-08-24 | 15:09:09] Try to delete old image
+[2025-08-24 | 15:09:09] Successful deleting old image
+[2025-08-24 | 15:09:09] Data of JSON: image/jpeg
+[2025-08-24 | 15:09:09] Successful init CURL to image download
+[2025-08-24 | 15:09:09] Successful creating image file
+[2025-08-24 | 15:09:10] Successful download image/home/p1rat/code/rwal/wallpaper-013231.jpeg
+[2025-08-24 | 15:09:12] Try to read timer file
+[2025-08-24 | 15:09:12] Successful reading. Data: O
+[2025-08-24 | 15:09:12] Try to know 'Pictures' location
+[2025-08-24 | 15:09:12] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:09:12] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:09:12] Try to request
+[2025-08-24 | 15:09:13] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:13] Successful request
+[2025-08-24 | 15:09:13] Try to parse
+[2025-08-24 | 15:09:13] Successful parse JSON
+[2025-08-24 | 15:09:13] Data of JSON: 2406
+[2025-08-24 | 15:09:13] Try to request
+[2025-08-24 | 15:09:14] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=80&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:14] Successful request
+[2025-08-24 | 15:09:14] Try to parse
+[2025-08-24 | 15:09:14] Successful parse JSON
+[2025-08-24 | 15:09:14] Data of JSON: https://w.wallhaven.cc/full/nk/wallhaven-nkvdj7.jpg
+[2025-08-24 | 15:09:14] Try to delete old image
+[2025-08-24 | 15:09:14] Successful deleting old image
+[2025-08-24 | 15:09:14] Data of JSON: image/jpeg
+[2025-08-24 | 15:09:14] Successful init CURL to image download
+[2025-08-24 | 15:09:14] Successful creating image file
+[2025-08-24 | 15:09:14] Successful download image/home/p1rat/code/rwal/wallpaper-nkvdj7.jpeg
+[2025-08-24 | 15:09:17] Try to read timer file
+[2025-08-24 | 15:09:17] Successful reading. Data: O
+[2025-08-24 | 15:09:17] Try to know 'Pictures' location
+[2025-08-24 | 15:09:17] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:09:17] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:09:17] Try to request
+[2025-08-24 | 15:09:17] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:17] Successful request
+[2025-08-24 | 15:09:17] Try to parse
+[2025-08-24 | 15:09:17] Successful parse JSON
+[2025-08-24 | 15:09:17] Data of JSON: 2406
+[2025-08-24 | 15:09:17] Try to request
+[2025-08-24 | 15:09:18] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=97&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:18] Successful request
+[2025-08-24 | 15:09:18] Try to parse
+[2025-08-24 | 15:09:18] Successful parse JSON
+[2025-08-24 | 15:09:18] Data of JSON: https://w.wallhaven.cc/full/0j/wallhaven-0jj5pw.png
+[2025-08-24 | 15:09:18] Try to delete old image
+[2025-08-24 | 15:09:18] Successful deleting old image
+[2025-08-24 | 15:09:18] Data of JSON: image/png
+[2025-08-24 | 15:09:18] Successful init CURL to image download
+[2025-08-24 | 15:09:18] Successful creating image file
+[2025-08-24 | 15:09:19] Successful download image/home/p1rat/code/rwal/wallpaper-0jj5pw.png
+[2025-08-24 | 15:09:22] Try to read timer file
+[2025-08-24 | 15:09:22] Successful reading. Data: O
+[2025-08-24 | 15:09:22] Try to know 'Pictures' location
+[2025-08-24 | 15:09:22] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:09:22] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:09:22] Try to request
+[2025-08-24 | 15:09:23] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:23] Successful request
+[2025-08-24 | 15:09:23] Try to parse
+[2025-08-24 | 15:09:23] Successful parse JSON
+[2025-08-24 | 15:09:23] Data of JSON: 2406
+[2025-08-24 | 15:09:23] Try to request
+[2025-08-24 | 15:09:23] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=31&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:23] Successful request
+[2025-08-24 | 15:09:23] Try to parse
+[2025-08-24 | 15:09:23] Successful parse JSON
+[2025-08-24 | 15:09:23] Data of JSON: https://w.wallhaven.cc/full/o5/wallhaven-o5pl37.jpg
+[2025-08-24 | 15:09:23] Try to delete old image
+[2025-08-24 | 15:09:23] Successful deleting old image
+[2025-08-24 | 15:09:23] Data of JSON: image/jpeg
+[2025-08-24 | 15:09:23] Successful init CURL to image download
+[2025-08-24 | 15:09:23] Successful creating image file
+[2025-08-24 | 15:09:23] Successful download image/home/p1rat/code/rwal/wallpaper-o5pl37.jpeg
+[2025-08-24 | 15:09:26] Try to read timer file
+[2025-08-24 | 15:09:26] Successful reading. Data: O
+[2025-08-24 | 15:09:26] Try to know 'Pictures' location
+[2025-08-24 | 15:09:26] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:09:26] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:09:26] Try to request
+[2025-08-24 | 15:09:26] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:26] Successful request
+[2025-08-24 | 15:09:26] Try to parse
+[2025-08-24 | 15:09:26] Successful parse JSON
+[2025-08-24 | 15:09:26] Data of JSON: 2406
+[2025-08-24 | 15:09:26] Try to request
+[2025-08-24 | 15:09:27] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=65&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:27] Successful request
+[2025-08-24 | 15:09:27] Try to parse
+[2025-08-24 | 15:09:27] Successful parse JSON
+[2025-08-24 | 15:09:27] Data of JSON: https://w.wallhaven.cc/full/4y/wallhaven-4y93rk.jpg
+[2025-08-24 | 15:09:27] Try to delete old image
+[2025-08-24 | 15:09:27] Successful deleting old image
+[2025-08-24 | 15:09:27] Data of JSON: image/jpeg
+[2025-08-24 | 15:09:27] Successful init CURL to image download
+[2025-08-24 | 15:09:27] Successful creating image file
+[2025-08-24 | 15:09:27] Successful download image/home/p1rat/code/rwal/wallpaper-4y93rk.jpeg
+[2025-08-24 | 15:09:29] Try to read timer file
+[2025-08-24 | 15:09:29] Successful reading. Data: O
+[2025-08-24 | 15:09:29] Try to know 'Pictures' location
+[2025-08-24 | 15:09:29] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:09:29] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:09:29] Try to request
+[2025-08-24 | 15:09:29] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:29] Successful request
+[2025-08-24 | 15:09:29] Try to parse
+[2025-08-24 | 15:09:29] Successful parse JSON
+[2025-08-24 | 15:09:29] Data of JSON: 2406
+[2025-08-24 | 15:09:29] Try to request
+[2025-08-24 | 15:09:30] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=179&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:30] Successful request
+[2025-08-24 | 15:09:30] Try to parse
+[2025-08-24 | 15:09:30] Successful parse JSON
+[2025-08-24 | 15:09:30] Data of JSON: https://w.wallhaven.cc/full/r2/wallhaven-r2qw61.png
+[2025-08-24 | 15:09:30] Try to delete old image
+[2025-08-24 | 15:09:30] Successful deleting old image
+[2025-08-24 | 15:09:30] Data of JSON: image/png
+[2025-08-24 | 15:09:30] Successful init CURL to image download
+[2025-08-24 | 15:09:30] Successful creating image file
+[2025-08-24 | 15:09:31] Successful download image/home/p1rat/code/rwal/wallpaper-r2qw61.png
+[2025-08-24 | 15:09:33] Try to read timer file
+[2025-08-24 | 15:09:33] Successful reading. Data: O
+[2025-08-24 | 15:09:33] Try to know 'Pictures' location
+[2025-08-24 | 15:09:33] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:09:33] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:09:33] Try to request
+[2025-08-24 | 15:09:34] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:34] Successful request
+[2025-08-24 | 15:09:34] Try to parse
+[2025-08-24 | 15:09:34] Successful parse JSON
+[2025-08-24 | 15:09:34] Data of JSON: 2406
+[2025-08-24 | 15:09:34] Try to request
+[2025-08-24 | 15:09:34] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=64&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 15:09:34] Successful request
+[2025-08-24 | 15:09:34] Try to parse
+[2025-08-24 | 15:09:34] Successful parse JSON
+[2025-08-24 | 15:09:34] Data of JSON: https://w.wallhaven.cc/full/0p/wallhaven-0pv93p.png
+[2025-08-24 | 15:09:34] Try to delete old image
+[2025-08-24 | 15:09:34] Successful deleting old image
+[2025-08-24 | 15:09:34] Data of JSON: image/png
+[2025-08-24 | 15:09:34] Successful init CURL to image download
+[2025-08-24 | 15:09:34] Successful creating image file
+[2025-08-24 | 15:09:35] Successful download image/home/p1rat/code/rwal/wallpaper-0pv93p.png
+[2025-08-24 | 15:10:30] File open error 
+[2025-08-24 | 15:11:41] File open error 
+[2025-08-24 | 15:12:23] File open error 
+[2025-08-24 | 15:18:43] File open error 
+[2025-08-24 | 15:26:04] File open error 
+[2025-08-24 | 15:26:10] File open error 
+[2025-08-24 | 15:26:15] File open error 
+[2025-08-24 | 15:26:22] File open error 
+[2025-08-24 | 15:26:27] File open error 
+[2025-08-24 | 15:33:20] Start look_keywords
+[2025-08-24 | 15:33:20] File open error 
+[2025-08-24 | 15:35:02] File open error 
+[2025-08-24 | 15:37:19] File open error 
+[2025-08-24 | 15:38:13] File open error 
+[2025-08-24 | 15:42:00] Try to read timer file
+[2025-08-24 | 15:42:00] Successful reading. Data: O
+[2025-08-24 | 15:42:00] Try to know 'Pictures' location
+[2025-08-24 | 15:42:00] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:42:00] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:42:00] Starting program
+[2025-08-24 | 15:42:04] Try to know 'Pictures' location
+[2025-08-24 | 15:42:04] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:42:04] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:42:04] Try to read timer file
+[2025-08-24 | 15:42:04] Successful reading. Data: O
+[2025-08-24 | 15:42:31] Ending program
+[2025-08-24 | 15:45:49] Try to read timer file
+[2025-08-24 | 15:45:49] Successful reading. Data: O
+[2025-08-24 | 15:45:49] Try to know 'Pictures' location
+[2025-08-24 | 15:45:49] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:45:49] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:45:49] Starting program
+[2025-08-24 | 15:45:53] Try to know 'Pictures' location
+[2025-08-24 | 15:45:53] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:45:53] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:45:53] Try to read timer file
+[2025-08-24 | 15:45:53] Successful reading. Data: O
+[2025-08-24 | 15:46:06] Ending program
+[2025-08-24 | 15:48:37] Try to read timer file
+[2025-08-24 | 15:48:37] Successful reading. Data: O
+[2025-08-24 | 15:48:37] Try to know 'Pictures' location
+[2025-08-24 | 15:48:37] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:48:37] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:48:37] Starting program
+[2025-08-24 | 15:48:53] Try to know 'Pictures' location
+[2025-08-24 | 15:48:53] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:48:53] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:48:53] Try to read timer file
+[2025-08-24 | 15:48:53] Successful reading. Data: O
+[2025-08-24 | 15:49:17] Ending program
+[2025-08-24 | 15:49:49] Try to read timer file
+[2025-08-24 | 15:49:49] Successful reading. Data: 
+[2025-08-24 | 15:49:49] Try to know 'Pictures' location
+[2025-08-24 | 15:49:49] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:49:49] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:49:49] Starting program
+[2025-08-24 | 15:50:07] Try to read timer file
+[2025-08-24 | 15:50:07] Successful reading. Data: 
+[2025-08-24 | 15:50:07] Try to know 'Pictures' location
+[2025-08-24 | 15:50:07] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:50:07] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:50:07] Starting program
+[2025-08-24 | 15:50:11] Try to know 'Pictures' location
+[2025-08-24 | 15:50:11] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:50:11] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:50:11] Try to read timer file
+[2025-08-24 | 15:50:11] Successful reading. Data: 
+[2025-08-24 | 15:50:21] Try to know 'Pictures' location
+[2025-08-24 | 15:50:21] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 15:50:21] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 15:50:21] Try to read timer file
+[2025-08-24 | 15:50:21] Successful reading. Data: 
+[2025-08-24 | 15:50:24] Ending program
+[2025-08-24 | 16:08:46] Try to read timer file
+[2025-08-24 | 16:08:46] Successful reading. Data: nCalendar=hourly
+[2025-08-24 | 16:08:46] Try to know 'Pictures' location
+[2025-08-24 | 16:08:46] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:08:46] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:08:46] Starting program
+[2025-08-24 | 16:08:47] Try to know 'Pictures' location
+[2025-08-24 | 16:08:47] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:08:47] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:08:47] Try to read timer file
+[2025-08-24 | 16:08:47] Successful reading. Data: nCalendar=hourly
+[2025-08-24 | 16:08:53] Ending program
+[2025-08-24 | 16:09:23] Try to read timer file
+[2025-08-24 | 16:09:23] Successful reading. Data: hourly
+[2025-08-24 | 16:09:23] Try to know 'Pictures' location
+[2025-08-24 | 16:09:23] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:09:23] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:09:23] Starting program
+[2025-08-24 | 16:09:25] Try to know 'Pictures' location
+[2025-08-24 | 16:09:25] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:09:25] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:09:25] Try to read timer file
+[2025-08-24 | 16:09:25] Successful reading. Data: hourly
+[2025-08-24 | 16:09:49] Try to read timer file
+[2025-08-24 | 16:09:49] Successful reading. Data: hourly
+[2025-08-24 | 16:09:49] Try to know 'Pictures' location
+[2025-08-24 | 16:09:49] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:09:49] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:09:49] Starting program
+[2025-08-24 | 16:09:51] Try to know 'Pictures' location
+[2025-08-24 | 16:09:51] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:09:51] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:09:51] Try to read timer file
+[2025-08-24 | 16:09:51] Successful reading. Data: hourly
+[2025-08-24 | 16:10:15] Try to request
+[2025-08-24 | 16:10:15] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:15] Successful request
+[2025-08-24 | 16:10:15] Try to parse
+[2025-08-24 | 16:10:15] Successful parse JSON
+[2025-08-24 | 16:10:15] Data of JSON: 2406
+[2025-08-24 | 16:10:15] Try to request
+[2025-08-24 | 16:10:15] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=109&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:15] Successful request
+[2025-08-24 | 16:10:15] Try to parse
+[2025-08-24 | 16:10:15] Successful parse JSON
+[2025-08-24 | 16:10:15] Data of JSON: https://w.wallhaven.cc/full/l8/wallhaven-l82do2.jpg
+[2025-08-24 | 16:10:15] Try to delete old image
+[2025-08-24 | 16:10:16] Successful deleting old image
+[2025-08-24 | 16:10:16] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:16] Successful init CURL to image download
+[2025-08-24 | 16:10:16] Successful creating image file
+[2025-08-24 | 16:10:16] Successful download image/home/p1rat/code/rwal/wallpaper-l82do2.jpeg
+[2025-08-24 | 16:10:18] Try to request
+[2025-08-24 | 16:10:18] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:18] Successful request
+[2025-08-24 | 16:10:18] Try to parse
+[2025-08-24 | 16:10:18] Successful parse JSON
+[2025-08-24 | 16:10:18] Data of JSON: 2406
+[2025-08-24 | 16:10:18] Try to request
+[2025-08-24 | 16:10:18] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=142&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:18] Successful request
+[2025-08-24 | 16:10:18] Try to parse
+[2025-08-24 | 16:10:18] Successful parse JSON
+[2025-08-24 | 16:10:18] Data of JSON: https://w.wallhaven.cc/full/eo/wallhaven-eoypw8.jpg
+[2025-08-24 | 16:10:18] Try to delete old image
+[2025-08-24 | 16:10:18] Successful deleting old image
+[2025-08-24 | 16:10:18] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:18] Successful init CURL to image download
+[2025-08-24 | 16:10:18] Successful creating image file
+[2025-08-24 | 16:10:19] Successful download image/home/p1rat/code/rwal/wallpaper-eoypw8.jpeg
+[2025-08-24 | 16:10:21] Try to request
+[2025-08-24 | 16:10:22] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:22] Successful request
+[2025-08-24 | 16:10:22] Try to parse
+[2025-08-24 | 16:10:22] Successful parse JSON
+[2025-08-24 | 16:10:22] Data of JSON: 2406
+[2025-08-24 | 16:10:22] Try to request
+[2025-08-24 | 16:10:22] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=162&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:22] Successful request
+[2025-08-24 | 16:10:22] Try to parse
+[2025-08-24 | 16:10:22] Successful parse JSON
+[2025-08-24 | 16:10:22] Data of JSON: https://w.wallhaven.cc/full/0w/wallhaven-0welpx.jpg
+[2025-08-24 | 16:10:22] Try to delete old image
+[2025-08-24 | 16:10:22] Successful deleting old image
+[2025-08-24 | 16:10:22] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:22] Successful init CURL to image download
+[2025-08-24 | 16:10:22] Successful creating image file
+[2025-08-24 | 16:10:22] Successful download image/home/p1rat/code/rwal/wallpaper-0welpx.jpeg
+[2025-08-24 | 16:10:24] Try to request
+[2025-08-24 | 16:10:24] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:24] Successful request
+[2025-08-24 | 16:10:24] Try to parse
+[2025-08-24 | 16:10:24] Successful parse JSON
+[2025-08-24 | 16:10:24] Data of JSON: 2406
+[2025-08-24 | 16:10:24] Try to request
+[2025-08-24 | 16:10:25] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=98&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:25] Successful request
+[2025-08-24 | 16:10:25] Try to parse
+[2025-08-24 | 16:10:25] Successful parse JSON
+[2025-08-24 | 16:10:25] Data of JSON: https://w.wallhaven.cc/full/42/wallhaven-42lw29.jpg
+[2025-08-24 | 16:10:25] Try to delete old image
+[2025-08-24 | 16:10:25] Successful deleting old image
+[2025-08-24 | 16:10:25] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:25] Successful init CURL to image download
+[2025-08-24 | 16:10:25] Successful creating image file
+[2025-08-24 | 16:10:26] Successful download image/home/p1rat/code/rwal/wallpaper-42lw29.jpeg
+[2025-08-24 | 16:10:27] Try to request
+[2025-08-24 | 16:10:28] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:28] Successful request
+[2025-08-24 | 16:10:28] Try to parse
+[2025-08-24 | 16:10:28] Successful parse JSON
+[2025-08-24 | 16:10:28] Data of JSON: 2406
+[2025-08-24 | 16:10:28] Try to request
+[2025-08-24 | 16:10:28] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=177&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:28] Successful request
+[2025-08-24 | 16:10:28] Try to parse
+[2025-08-24 | 16:10:28] Successful parse JSON
+[2025-08-24 | 16:10:28] Data of JSON: https://w.wallhaven.cc/full/8x/wallhaven-8x7kq2.jpg
+[2025-08-24 | 16:10:28] Try to delete old image
+[2025-08-24 | 16:10:28] Successful deleting old image
+[2025-08-24 | 16:10:28] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:28] Successful init CURL to image download
+[2025-08-24 | 16:10:28] Successful creating image file
+[2025-08-24 | 16:10:29] Successful download image/home/p1rat/code/rwal/wallpaper-8x7kq2.jpeg
+[2025-08-24 | 16:10:31] Try to request
+[2025-08-24 | 16:10:31] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:31] Successful request
+[2025-08-24 | 16:10:31] Try to parse
+[2025-08-24 | 16:10:31] Successful parse JSON
+[2025-08-24 | 16:10:31] Data of JSON: 2406
+[2025-08-24 | 16:10:31] Try to request
+[2025-08-24 | 16:10:32] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=91&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:32] Successful request
+[2025-08-24 | 16:10:32] Try to parse
+[2025-08-24 | 16:10:32] Successful parse JSON
+[2025-08-24 | 16:10:32] Data of JSON: https://w.wallhaven.cc/full/gj/wallhaven-gjejw3.jpg
+[2025-08-24 | 16:10:32] Try to delete old image
+[2025-08-24 | 16:10:32] Successful deleting old image
+[2025-08-24 | 16:10:32] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:32] Successful init CURL to image download
+[2025-08-24 | 16:10:32] Successful creating image file
+[2025-08-24 | 16:10:32] Successful download image/home/p1rat/code/rwal/wallpaper-gjejw3.jpeg
+[2025-08-24 | 16:10:32] Try to request
+[2025-08-24 | 16:10:33] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:33] Successful request
+[2025-08-24 | 16:10:33] Try to parse
+[2025-08-24 | 16:10:33] Successful parse JSON
+[2025-08-24 | 16:10:33] Data of JSON: 2406
+[2025-08-24 | 16:10:33] Try to request
+[2025-08-24 | 16:10:33] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=227&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:33] Successful request
+[2025-08-24 | 16:10:33] Try to parse
+[2025-08-24 | 16:10:33] Successful parse JSON
+[2025-08-24 | 16:10:33] Data of JSON: https://w.wallhaven.cc/full/4d/wallhaven-4dzmxj.jpg
+[2025-08-24 | 16:10:33] Try to delete old image
+[2025-08-24 | 16:10:33] Successful deleting old image
+[2025-08-24 | 16:10:33] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:33] Successful init CURL to image download
+[2025-08-24 | 16:10:33] Successful creating image file
+[2025-08-24 | 16:10:34] Successful download image/home/p1rat/code/rwal/wallpaper-4dzmxj.jpeg
+[2025-08-24 | 16:10:35] Try to request
+[2025-08-24 | 16:10:35] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:35] Successful request
+[2025-08-24 | 16:10:35] Try to parse
+[2025-08-24 | 16:10:35] Successful parse JSON
+[2025-08-24 | 16:10:35] Data of JSON: 2406
+[2025-08-24 | 16:10:35] Try to request
+[2025-08-24 | 16:10:36] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=7&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:36] Successful request
+[2025-08-24 | 16:10:36] Try to parse
+[2025-08-24 | 16:10:36] Successful parse JSON
+[2025-08-24 | 16:10:36] Data of JSON: https://w.wallhaven.cc/full/0w/wallhaven-0wr39r.jpg
+[2025-08-24 | 16:10:36] Try to delete old image
+[2025-08-24 | 16:10:36] Successful deleting old image
+[2025-08-24 | 16:10:36] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:36] Successful init CURL to image download
+[2025-08-24 | 16:10:36] Successful creating image file
+[2025-08-24 | 16:10:37] Successful download image/home/p1rat/code/rwal/wallpaper-0wr39r.jpeg
+[2025-08-24 | 16:10:37] Try to request
+[2025-08-24 | 16:10:37] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:37] Successful request
+[2025-08-24 | 16:10:37] Try to parse
+[2025-08-24 | 16:10:37] Successful parse JSON
+[2025-08-24 | 16:10:37] Data of JSON: 2406
+[2025-08-24 | 16:10:37] Try to request
+[2025-08-24 | 16:10:38] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=74&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:38] Successful request
+[2025-08-24 | 16:10:38] Try to parse
+[2025-08-24 | 16:10:38] Successful parse JSON
+[2025-08-24 | 16:10:38] Data of JSON: https://w.wallhaven.cc/full/lq/wallhaven-lqmpxq.jpg
+[2025-08-24 | 16:10:38] Try to delete old image
+[2025-08-24 | 16:10:38] Successful deleting old image
+[2025-08-24 | 16:10:38] Data of JSON: image/jpeg
+[2025-08-24 | 16:10:38] Successful init CURL to image download
+[2025-08-24 | 16:10:38] Successful creating image file
+[2025-08-24 | 16:10:38] Successful download image/home/p1rat/code/rwal/wallpaper-lqmpxq.jpeg
+[2025-08-24 | 16:10:38] Try to request
+[2025-08-24 | 16:10:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:39] Successful request
+[2025-08-24 | 16:10:39] Try to parse
+[2025-08-24 | 16:10:39] Successful parse JSON
+[2025-08-24 | 16:10:39] Data of JSON: 2406
+[2025-08-24 | 16:10:39] Try to request
+[2025-08-24 | 16:10:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=59&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:39] Successful request
+[2025-08-24 | 16:10:39] Try to parse
+[2025-08-24 | 16:10:39] Successful parse JSON
+[2025-08-24 | 16:10:39] Data of JSON: https://w.wallhaven.cc/full/vg/wallhaven-vg8mk5.png
+[2025-08-24 | 16:10:39] Try to delete old image
+[2025-08-24 | 16:10:39] Successful deleting old image
+[2025-08-24 | 16:10:39] Data of JSON: image/png
+[2025-08-24 | 16:10:39] Successful init CURL to image download
+[2025-08-24 | 16:10:39] Successful creating image file
+[2025-08-24 | 16:10:39] Successful download image/home/p1rat/code/rwal/wallpaper-vg8mk5.png
+[2025-08-24 | 16:10:43] Try to request
+[2025-08-24 | 16:10:43] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:43] Successful request
+[2025-08-24 | 16:10:43] Try to parse
+[2025-08-24 | 16:10:43] Successful parse JSON
+[2025-08-24 | 16:10:43] Data of JSON: 2406
+[2025-08-24 | 16:10:43] Try to request
+[2025-08-24 | 16:10:44] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=51&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:10:44] Successful request
+[2025-08-24 | 16:10:44] Try to parse
+[2025-08-24 | 16:10:44] Successful parse JSON
+[2025-08-24 | 16:10:44] Data of JSON: https://w.wallhaven.cc/full/0p/wallhaven-0prege.png
+[2025-08-24 | 16:10:44] Try to delete old image
+[2025-08-24 | 16:10:44] Successful deleting old image
+[2025-08-24 | 16:10:44] Data of JSON: image/png
+[2025-08-24 | 16:10:44] Successful init CURL to image download
+[2025-08-24 | 16:10:44] Successful creating image file
+[2025-08-24 | 16:10:44] Successful download image/home/p1rat/code/rwal/wallpaper-0prege.png
+[2025-08-24 | 16:10:47] Ending program
+[2025-08-24 | 16:18:56] Try to read timer file
+[2025-08-24 | 16:18:56] Successful reading. Data: hourly
+[2025-08-24 | 16:18:56] Try to know 'Pictures' location
+[2025-08-24 | 16:18:56] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:18:56] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:18:56] Starting program
+[2025-08-24 | 16:18:57] Try to know 'Pictures' location
+[2025-08-24 | 16:18:57] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:18:57] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:18:57] Try to read timer file
+[2025-08-24 | 16:18:57] Successful reading. Data: hourly
+[2025-08-24 | 16:19:15] Ending program
+[2025-08-24 | 16:19:19] Try to read timer file
+[2025-08-24 | 16:19:19] Successful reading. Data: hourly
+[2025-08-24 | 16:19:19] Try to know 'Pictures' location
+[2025-08-24 | 16:19:19] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:19:19] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:19:19] Starting program
+[2025-08-24 | 16:19:20] Try to know 'Pictures' location
+[2025-08-24 | 16:19:20] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:19:20] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:19:20] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:19:20] Image successful saved: /home/p1rat/Pictures/rwal/paper-0prege.png
+[2025-08-24 | 16:19:22] Ending program
+[2025-08-24 | 16:27:25] File open error 
+[2025-08-24 | 16:27:39] Try to read timer file
+[2025-08-24 | 16:27:39] Successful reading. Data: hourly
+[2025-08-24 | 16:27:39] Try to know 'Pictures' location
+[2025-08-24 | 16:27:39] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:27:39] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:27:39] Starting program
+[2025-08-24 | 16:27:44] Try to know 'Pictures' location
+[2025-08-24 | 16:27:44] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:27:44] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:27:44] Try to read timer file
+[2025-08-24 | 16:27:44] Successful reading. Data: hourly
+[2025-08-24 | 16:27:48] Ending program
+[2025-08-24 | 16:37:41] Try to read timer file
+[2025-08-24 | 16:37:41] Successful reading. Data: hourly
+[2025-08-24 | 16:37:41] Try to know 'Pictures' location
+[2025-08-24 | 16:37:41] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:37:41] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:37:41] Try to request
+[2025-08-24 | 16:37:42] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:42] Successful request
+[2025-08-24 | 16:37:42] Try to parse
+[2025-08-24 | 16:37:42] Successful parse JSON
+[2025-08-24 | 16:37:42] Data of JSON: 5414
+[2025-08-24 | 16:37:42] Try to request
+[2025-08-24 | 16:37:43] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=83&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:43] Successful request
+[2025-08-24 | 16:37:43] Try to parse
+[2025-08-24 | 16:37:43] Successful parse JSON
+[2025-08-24 | 16:37:43] Data of JSON: https://w.wallhaven.cc/full/r7/wallhaven-r73lg7.png
+[2025-08-24 | 16:37:43] Try to delete old image
+[2025-08-24 | 16:37:43] Successful deleting old image
+[2025-08-24 | 16:37:43] Data of JSON: image/png
+[2025-08-24 | 16:37:43] Successful init CURL to image download
+[2025-08-24 | 16:37:43] Successful creating image file
+[2025-08-24 | 16:37:44] Successful download image/home/p1rat/code/rwal/wallpaper-r73lg7.png
+[2025-08-24 | 16:37:46] Try to read timer file
+[2025-08-24 | 16:37:46] Successful reading. Data: hourly
+[2025-08-24 | 16:37:46] Try to know 'Pictures' location
+[2025-08-24 | 16:37:46] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:37:46] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:37:46] Try to request
+[2025-08-24 | 16:37:46] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:46] Successful request
+[2025-08-24 | 16:37:46] Try to parse
+[2025-08-24 | 16:37:46] Successful parse JSON
+[2025-08-24 | 16:37:46] Data of JSON: 5414
+[2025-08-24 | 16:37:46] Try to request
+[2025-08-24 | 16:37:47] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=349&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:47] Successful request
+[2025-08-24 | 16:37:47] Try to parse
+[2025-08-24 | 16:37:47] Successful parse JSON
+[2025-08-24 | 16:37:47] Data of JSON: https://w.wallhaven.cc/full/pk/wallhaven-pkwd1j.png
+[2025-08-24 | 16:37:47] Try to delete old image
+[2025-08-24 | 16:37:47] Successful deleting old image
+[2025-08-24 | 16:37:47] Data of JSON: image/png
+[2025-08-24 | 16:37:47] Successful init CURL to image download
+[2025-08-24 | 16:37:47] Successful creating image file
+[2025-08-24 | 16:37:48] Successful download image/home/p1rat/code/rwal/wallpaper-pkwd1j.png
+[2025-08-24 | 16:37:50] Try to read timer file
+[2025-08-24 | 16:37:50] Successful reading. Data: hourly
+[2025-08-24 | 16:37:50] Try to know 'Pictures' location
+[2025-08-24 | 16:37:50] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:37:50] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:37:50] Try to request
+[2025-08-24 | 16:37:50] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:50] Successful request
+[2025-08-24 | 16:37:50] Try to parse
+[2025-08-24 | 16:37:50] Successful parse JSON
+[2025-08-24 | 16:37:50] Data of JSON: 5414
+[2025-08-24 | 16:37:50] Try to request
+[2025-08-24 | 16:37:51] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=388&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:51] Successful request
+[2025-08-24 | 16:37:51] Try to parse
+[2025-08-24 | 16:37:51] Successful parse JSON
+[2025-08-24 | 16:37:51] Data of JSON: https://w.wallhaven.cc/full/6k/wallhaven-6ky2zx.png
+[2025-08-24 | 16:37:51] Try to delete old image
+[2025-08-24 | 16:37:51] Successful deleting old image
+[2025-08-24 | 16:37:51] Data of JSON: image/png
+[2025-08-24 | 16:37:51] Successful init CURL to image download
+[2025-08-24 | 16:37:51] Successful creating image file
+[2025-08-24 | 16:37:51] Successful download image/home/p1rat/code/rwal/wallpaper-6ky2zx.png
+[2025-08-24 | 16:37:53] Try to read timer file
+[2025-08-24 | 16:37:53] Successful reading. Data: hourly
+[2025-08-24 | 16:37:53] Try to know 'Pictures' location
+[2025-08-24 | 16:37:53] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:37:53] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:37:53] Try to request
+[2025-08-24 | 16:37:54] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:54] Successful request
+[2025-08-24 | 16:37:54] Try to parse
+[2025-08-24 | 16:37:54] Successful parse JSON
+[2025-08-24 | 16:37:54] Data of JSON: 5414
+[2025-08-24 | 16:37:54] Try to request
+[2025-08-24 | 16:37:54] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=326&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:54] Successful request
+[2025-08-24 | 16:37:54] Try to parse
+[2025-08-24 | 16:37:54] Successful parse JSON
+[2025-08-24 | 16:37:54] Data of JSON: https://w.wallhaven.cc/full/zm/wallhaven-zmxv2v.jpg
+[2025-08-24 | 16:37:54] Try to delete old image
+[2025-08-24 | 16:37:54] Successful deleting old image
+[2025-08-24 | 16:37:54] Data of JSON: image/jpeg
+[2025-08-24 | 16:37:54] Successful init CURL to image download
+[2025-08-24 | 16:37:54] Successful creating image file
+[2025-08-24 | 16:37:55] Successful download image/home/p1rat/code/rwal/wallpaper-zmxv2v.jpeg
+[2025-08-24 | 16:37:56] Try to read timer file
+[2025-08-24 | 16:37:56] Successful reading. Data: hourly
+[2025-08-24 | 16:37:56] Try to know 'Pictures' location
+[2025-08-24 | 16:37:56] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:37:56] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:37:56] Try to request
+[2025-08-24 | 16:37:57] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:57] Successful request
+[2025-08-24 | 16:37:57] Try to parse
+[2025-08-24 | 16:37:57] Successful parse JSON
+[2025-08-24 | 16:37:57] Data of JSON: 5414
+[2025-08-24 | 16:37:57] Try to request
+[2025-08-24 | 16:37:57] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=526&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:37:57] Successful request
+[2025-08-24 | 16:37:57] Try to parse
+[2025-08-24 | 16:37:57] Successful parse JSON
+[2025-08-24 | 16:37:57] Data of JSON: https://w.wallhaven.cc/full/k9/wallhaven-k9w5jd.png
+[2025-08-24 | 16:37:57] Try to delete old image
+[2025-08-24 | 16:37:57] Successful deleting old image
+[2025-08-24 | 16:37:57] Data of JSON: image/png
+[2025-08-24 | 16:37:57] Successful init CURL to image download
+[2025-08-24 | 16:37:57] Successful creating image file
+[2025-08-24 | 16:37:58] Successful download image/home/p1rat/code/rwal/wallpaper-k9w5jd.png
+[2025-08-24 | 16:38:00] Try to read timer file
+[2025-08-24 | 16:38:00] Successful reading. Data: hourly
+[2025-08-24 | 16:38:00] Try to know 'Pictures' location
+[2025-08-24 | 16:38:00] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:38:00] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:38:00] Try to request
+[2025-08-24 | 16:38:00] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:00] Successful request
+[2025-08-24 | 16:38:00] Try to parse
+[2025-08-24 | 16:38:00] Successful parse JSON
+[2025-08-24 | 16:38:00] Data of JSON: 5414
+[2025-08-24 | 16:38:00] Try to request
+[2025-08-24 | 16:38:01] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=138&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:01] Successful request
+[2025-08-24 | 16:38:01] Try to parse
+[2025-08-24 | 16:38:01] Successful parse JSON
+[2025-08-24 | 16:38:01] Data of JSON: https://w.wallhaven.cc/full/73/wallhaven-733jqo.jpg
+[2025-08-24 | 16:38:01] Try to delete old image
+[2025-08-24 | 16:38:01] Successful deleting old image
+[2025-08-24 | 16:38:01] Data of JSON: image/jpeg
+[2025-08-24 | 16:38:01] Successful init CURL to image download
+[2025-08-24 | 16:38:01] Successful creating image file
+[2025-08-24 | 16:38:01] Successful download image/home/p1rat/code/rwal/wallpaper-733jqo.jpeg
+[2025-08-24 | 16:38:05] Try to read timer file
+[2025-08-24 | 16:38:05] Successful reading. Data: hourly
+[2025-08-24 | 16:38:05] Try to know 'Pictures' location
+[2025-08-24 | 16:38:05] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:38:05] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:38:05] Try to request
+[2025-08-24 | 16:38:05] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:05] Successful request
+[2025-08-24 | 16:38:05] Try to parse
+[2025-08-24 | 16:38:05] Successful parse JSON
+[2025-08-24 | 16:38:05] Data of JSON: 5414
+[2025-08-24 | 16:38:05] Try to request
+[2025-08-24 | 16:38:05] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=203&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:05] Successful request
+[2025-08-24 | 16:38:05] Try to parse
+[2025-08-24 | 16:38:05] Successful parse JSON
+[2025-08-24 | 16:38:05] Data of JSON: https://w.wallhaven.cc/full/nk/wallhaven-nkrdzm.jpg
+[2025-08-24 | 16:38:05] Try to delete old image
+[2025-08-24 | 16:38:05] Successful deleting old image
+[2025-08-24 | 16:38:05] Data of JSON: image/jpeg
+[2025-08-24 | 16:38:05] Successful init CURL to image download
+[2025-08-24 | 16:38:05] Successful creating image file
+[2025-08-24 | 16:38:06] Successful download image/home/p1rat/code/rwal/wallpaper-nkrdzm.jpeg
+[2025-08-24 | 16:38:08] Try to read timer file
+[2025-08-24 | 16:38:08] Successful reading. Data: hourly
+[2025-08-24 | 16:38:08] Try to know 'Pictures' location
+[2025-08-24 | 16:38:08] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:38:08] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:38:08] Try to request
+[2025-08-24 | 16:38:08] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:08] Successful request
+[2025-08-24 | 16:38:08] Try to parse
+[2025-08-24 | 16:38:08] Successful parse JSON
+[2025-08-24 | 16:38:08] Data of JSON: 5414
+[2025-08-24 | 16:38:08] Try to request
+[2025-08-24 | 16:38:09] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=358&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:09] Successful request
+[2025-08-24 | 16:38:09] Try to parse
+[2025-08-24 | 16:38:09] Successful parse JSON
+[2025-08-24 | 16:38:09] Data of JSON: https://w.wallhaven.cc/full/6q/wallhaven-6qyy2w.png
+[2025-08-24 | 16:38:09] Try to delete old image
+[2025-08-24 | 16:38:09] Successful deleting old image
+[2025-08-24 | 16:38:09] Data of JSON: image/png
+[2025-08-24 | 16:38:09] Successful init CURL to image download
+[2025-08-24 | 16:38:09] Successful creating image file
+[2025-08-24 | 16:38:09] Successful download image/home/p1rat/code/rwal/wallpaper-6qyy2w.png
+[2025-08-24 | 16:38:14] Try to read timer file
+[2025-08-24 | 16:38:14] Successful reading. Data: hourly
+[2025-08-24 | 16:38:14] Try to know 'Pictures' location
+[2025-08-24 | 16:38:14] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:38:14] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:38:14] Try to request
+[2025-08-24 | 16:38:14] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:14] Successful request
+[2025-08-24 | 16:38:14] Try to parse
+[2025-08-24 | 16:38:14] Successful parse JSON
+[2025-08-24 | 16:38:14] Data of JSON: 5414
+[2025-08-24 | 16:38:14] Try to request
+[2025-08-24 | 16:38:14] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=243&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:14] Successful request
+[2025-08-24 | 16:38:14] Try to parse
+[2025-08-24 | 16:38:14] Successful parse JSON
+[2025-08-24 | 16:38:14] Data of JSON: https://w.wallhaven.cc/full/qd/wallhaven-qdrrd5.jpg
+[2025-08-24 | 16:38:14] Try to delete old image
+[2025-08-24 | 16:38:14] Successful deleting old image
+[2025-08-24 | 16:38:14] Data of JSON: image/jpeg
+[2025-08-24 | 16:38:14] Successful init CURL to image download
+[2025-08-24 | 16:38:14] Successful creating image file
+[2025-08-24 | 16:38:15] Successful download image/home/p1rat/code/rwal/wallpaper-qdrrd5.jpeg
+[2025-08-24 | 16:38:18] Try to read timer file
+[2025-08-24 | 16:38:18] Successful reading. Data: hourly
+[2025-08-24 | 16:38:18] Try to know 'Pictures' location
+[2025-08-24 | 16:38:18] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:38:18] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:38:18] Try to request
+[2025-08-24 | 16:38:19] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:19] Successful request
+[2025-08-24 | 16:38:19] Try to parse
+[2025-08-24 | 16:38:19] Successful parse JSON
+[2025-08-24 | 16:38:19] Data of JSON: 5414
+[2025-08-24 | 16:38:19] Try to request
+[2025-08-24 | 16:38:19] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=502&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:19] Successful request
+[2025-08-24 | 16:38:19] Try to parse
+[2025-08-24 | 16:38:19] Successful parse JSON
+[2025-08-24 | 16:38:19] Data of JSON: https://w.wallhaven.cc/full/49/wallhaven-49mvww.jpg
+[2025-08-24 | 16:38:19] Try to delete old image
+[2025-08-24 | 16:38:19] Successful deleting old image
+[2025-08-24 | 16:38:19] Data of JSON: image/jpeg
+[2025-08-24 | 16:38:19] Successful init CURL to image download
+[2025-08-24 | 16:38:19] Successful creating image file
+[2025-08-24 | 16:38:19] Successful download image/home/p1rat/code/rwal/wallpaper-49mvww.jpeg
+[2025-08-24 | 16:38:21] Try to read timer file
+[2025-08-24 | 16:38:21] Successful reading. Data: hourly
+[2025-08-24 | 16:38:21] Try to know 'Pictures' location
+[2025-08-24 | 16:38:21] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:38:21] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:38:21] Try to request
+[2025-08-24 | 16:38:22] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:22] Successful request
+[2025-08-24 | 16:38:22] Try to parse
+[2025-08-24 | 16:38:22] Successful parse JSON
+[2025-08-24 | 16:38:22] Data of JSON: 5414
+[2025-08-24 | 16:38:22] Try to request
+[2025-08-24 | 16:38:22] url of request: https://wallhaven.cc/api/v1/search?q=&purity=100%20&sorting=random&resolutions=1920x1080&page=199&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 16:38:22] Successful request
+[2025-08-24 | 16:38:22] Try to parse
+[2025-08-24 | 16:38:22] Successful parse JSON
+[2025-08-24 | 16:38:22] Data of JSON: https://w.wallhaven.cc/full/j5/wallhaven-j5ormm.png
+[2025-08-24 | 16:38:22] Try to delete old image
+[2025-08-24 | 16:38:22] Successful deleting old image
+[2025-08-24 | 16:38:22] Data of JSON: image/png
+[2025-08-24 | 16:38:22] Successful init CURL to image download
+[2025-08-24 | 16:38:22] Successful creating image file
+[2025-08-24 | 16:38:23] Successful download image/home/p1rat/code/rwal/wallpaper-j5ormm.png
+[2025-08-24 | 16:38:54] Try to read timer file
+[2025-08-24 | 16:38:54] Successful reading. Data: hourly
+[2025-08-24 | 16:38:54] Try to know 'Pictures' location
+[2025-08-24 | 16:38:54] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:38:54] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:38:56] Starting program
+[2025-08-24 | 16:39:44] Try to know 'Pictures' location
+[2025-08-24 | 16:39:44] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:39:44] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:39:47] Try to read timer file
+[2025-08-24 | 16:39:47] Successful reading. Data: hourly
+[2025-08-24 | 16:40:09] Try to read timer file
+[2025-08-24 | 16:40:09] Successful reading. Data: hourly
+[2025-08-24 | 16:40:09] Try to know 'Pictures' location
+[2025-08-24 | 16:40:09] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:40:09] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:40:09] Starting program
+[2025-08-24 | 16:40:10] Try to know 'Pictures' location
+[2025-08-24 | 16:40:10] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:40:10] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:40:10] Try to read timer file
+[2025-08-24 | 16:40:10] Successful reading. Data: hourly
+[2025-08-24 | 16:40:24] Ending program
+[2025-08-24 | 16:49:18] Try to read timer file
+[2025-08-24 | 16:49:18] Successful reading. Data: hourly
+[2025-08-24 | 16:49:18] Try to know 'Pictures' location
+[2025-08-24 | 16:49:18] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:49:18] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:18] Starting program
+[2025-08-24 | 16:49:20] Try to know 'Pictures' location
+[2025-08-24 | 16:49:20] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:49:20] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:20] Try to read timer file
+[2025-08-24 | 16:49:20] Successful reading. Data: hourly
+[2025-08-24 | 16:49:22] Try to know 'Pictures' location
+[2025-08-24 | 16:49:22] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:49:22] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:22] Try to read timer file
+[2025-08-24 | 16:49:22] Successful reading. Data: hourly
+[2025-08-24 | 16:49:25] Try to know 'Pictures' location
+[2025-08-24 | 16:49:25] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:49:25] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:25] Try to read timer file
+[2025-08-24 | 16:49:25] Successful reading. Data: hourly
+[2025-08-24 | 16:49:27] Ending program
+[2025-08-24 | 16:49:31] Try to read timer file
+[2025-08-24 | 16:49:31] Successful reading. Data: hourly
+[2025-08-24 | 16:49:31] Try to know 'Pictures' location
+[2025-08-24 | 16:49:31] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:49:31] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:31] Starting program
+[2025-08-24 | 16:49:33] Try to know 'Pictures' location
+[2025-08-24 | 16:49:33] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:49:33] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:33] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:33] Image successful saved: /home/p1rat/Pictures/rwal/paper-j5ormm.png
+[2025-08-24 | 16:49:35] Try to know 'Pictures' location
+[2025-08-24 | 16:49:35] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:49:35] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:49:35] Try to read timer file
+[2025-08-24 | 16:49:35] Successful reading. Data: hourly
+[2025-08-24 | 16:49:37] Ending program
+[2025-08-24 | 16:51:49] Try to read timer file
+[2025-08-24 | 16:51:49] Successful reading. Data: hourly
+[2025-08-24 | 16:51:49] Try to know 'Pictures' location
+[2025-08-24 | 16:51:49] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:51:49] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:51:49] Starting program
+[2025-08-24 | 16:51:52] Try to know 'Pictures' location
+[2025-08-24 | 16:51:52] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:51:52] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:51:52] Try to read timer file
+[2025-08-24 | 16:51:52] Successful reading. Data: hourly
+[2025-08-24 | 16:51:54] Try to know 'Pictures' location
+[2025-08-24 | 16:51:54] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:51:54] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:51:54] Try to read timer file
+[2025-08-24 | 16:51:54] Successful reading. Data: hourly
+[2025-08-24 | 16:52:00] Try to know 'Pictures' location
+[2025-08-24 | 16:52:00] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 16:52:00] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:52:00] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 16:52:00] Image successful saved: /home/p1rat/Pictures/rwal/paper-j5ormm.png
+[2025-08-24 | 16:52:01] Ending program
+[2025-08-24 | 17:01:04] Try to read timer file
+[2025-08-24 | 17:01:04] Successful reading. Data: hourly
+[2025-08-24 | 17:01:04] Try to know 'Pictures' location
+[2025-08-24 | 17:01:04] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 17:01:04] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 17:01:04] Starting program
+[2025-08-24 | 17:01:06] Try to know 'Pictures' location
+[2025-08-24 | 17:01:06] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 17:01:06] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 17:01:06] Try to read timer file
+[2025-08-24 | 17:01:06] Successful reading. Data: hourly
+[2025-08-24 | 17:01:22] Try to read timer file
+[2025-08-24 | 17:01:22] Successful reading. Data: hourly
+[2025-08-24 | 17:01:22] Try to know 'Pictures' location
+[2025-08-24 | 17:01:22] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 17:01:22] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 17:01:22] Starting program
+[2025-08-24 | 17:01:25] Ending program
+[2025-08-24 | 17:01:36] Try to read timer file
+[2025-08-24 | 17:01:36] Successful reading. Data: hourly
+[2025-08-24 | 17:01:36] Try to know 'Pictures' location
+[2025-08-24 | 17:01:36] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 17:01:36] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 17:01:36] Starting program
+[2025-08-24 | 17:01:37] Try to request
+[2025-08-24 | 17:01:38] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 17:01:38] Successful request
+[2025-08-24 | 17:01:38] Try to parse
+[2025-08-24 | 17:01:38] Successful parse JSON
+[2025-08-24 | 17:01:38] Data of JSON: 2406
+[2025-08-24 | 17:01:38] Try to request
+[2025-08-24 | 17:01:38] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=145&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 17:01:38] Successful request
+[2025-08-24 | 17:01:38] Try to parse
+[2025-08-24 | 17:01:38] Successful parse JSON
+[2025-08-24 | 17:01:38] Data of JSON: https://w.wallhaven.cc/full/0w/wallhaven-0wqx26.jpg
+[2025-08-24 | 17:01:38] Try to delete old image
+[2025-08-24 | 17:01:38] Successful deleting old image
+[2025-08-24 | 17:01:38] Data of JSON: image/jpeg
+[2025-08-24 | 17:01:38] Successful init CURL to image download
+[2025-08-24 | 17:01:38] Successful creating image file
+[2025-08-24 | 17:01:38] Successful download image/home/p1rat/code/rwal/wallpaper-0wqx26.jpeg
+[2025-08-24 | 17:01:40] Try to know 'Pictures' location
+[2025-08-24 | 17:01:40] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 17:01:40] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 17:01:40] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 17:01:40] Image successful saved: /home/p1rat/Pictures/rwal/paper-0wqx26.jpeg
+[2025-08-24 | 17:02:10] Ending program
+[2025-08-24 | 17:04:09] Try to read timer file
+[2025-08-24 | 17:04:09] Successful reading. Data: hourly
+[2025-08-24 | 17:04:09] Try to know 'Pictures' location
+[2025-08-24 | 17:04:09] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 17:04:09] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 17:04:09] Starting program
+[2025-08-24 | 18:08:37] Try to read timer file
+[2025-08-24 | 18:08:37] Successful reading. Data: hourly
+[2025-08-24 | 18:08:37] Try to know 'Pictures' location
+[2025-08-24 | 18:08:37] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 18:08:37] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 18:08:37] Starting program
+[2025-08-24 | 18:40:09] Starting program
+[2025-08-24 | 18:40:12] Try to know 'Pictures' location
+[2025-08-24 | 18:40:12] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 18:40:12] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 18:40:12] Try to read timer file
+[2025-08-24 | 18:40:12] Successful reading. Data: hourly
+[2025-08-24 | 18:40:12] Try to read timer file
+[2025-08-24 | 18:40:12] Successful reading. Data: hourly
+[2025-08-24 | 18:40:12] Try to know 'Pictures' location
+[2025-08-24 | 18:40:12] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 18:40:12] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 18:40:26] Ending program
+[2025-08-24 | 18:40:42] Starting program
+[2025-08-24 | 18:40:43] Try to request
+[2025-08-24 | 18:40:43] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 18:40:43] Successful request
+[2025-08-24 | 18:40:43] Try to parse
+[2025-08-24 | 18:40:43] Successful parse JSON
+[2025-08-24 | 18:40:43] Data of JSON: 2406
+[2025-08-24 | 18:40:43] Try to request
+[2025-08-24 | 18:40:44] url of request: https://wallhaven.cc/api/v1/search?q=anime&purity=100%20&sorting=random&resolutions=1920x1080&page=28&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-08-24 | 18:40:44] Successful request
+[2025-08-24 | 18:40:44] Try to parse
+[2025-08-24 | 18:40:44] Successful parse JSON
+[2025-08-24 | 18:40:44] Data of JSON: https://w.wallhaven.cc/full/9m/wallhaven-9mo7kw.jpg
+[2025-08-24 | 18:40:44] Try to delete old image
+[2025-08-24 | 18:40:44] Successful deleting old image
+[2025-08-24 | 18:40:44] Data of JSON: image/jpeg
+[2025-08-24 | 18:40:44] Successful init CURL to image download
+[2025-08-24 | 18:40:44] Successful creating image file
+[2025-08-24 | 18:40:44] Successful download image/home/p1rat/code/rwal/wallpaper-9mo7kw.jpeg
+[2025-08-24 | 18:40:46] Try to know 'Pictures' location
+[2025-08-24 | 18:40:46] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 18:40:46] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 18:40:46] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 18:40:46] Image successful saved: /home/p1rat/Pictures/rwal/paper-9mo7kw.jpeg
+[2025-08-24 | 18:40:59] Ending program
+[2025-08-24 | 18:41:01] Starting program
+[2025-08-24 | 18:41:01] Try to know 'Pictures' location
+[2025-08-24 | 18:41:01] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 18:41:01] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 18:41:01] Try to read timer file
+[2025-08-24 | 18:41:01] Successful reading. Data: hourly
+[2025-08-24 | 18:41:01] Try to read timer file
+[2025-08-24 | 18:41:01] Successful reading. Data: hourly
+[2025-08-24 | 18:41:01] Try to know 'Pictures' location
+[2025-08-24 | 18:41:01] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 18:41:01] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 18:41:04] Ending program
+[2025-08-24 | 19:27:29] Starting program
+[2025-08-24 | 19:27:31] Try to know 'Pictures' location
+[2025-08-24 | 19:27:31] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:27:31] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:27:31] Try to read timer file
+[2025-08-24 | 19:27:31] Successful reading. Data: hourly
+[2025-08-24 | 19:27:31] Try to read timer file
+[2025-08-24 | 19:27:31] Successful reading. Data: hourly
+[2025-08-24 | 19:27:31] Try to know 'Pictures' location
+[2025-08-24 | 19:27:31] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:27:31] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:28:10] Starting program
+[2025-08-24 | 19:28:10] Try to know 'Pictures' location
+[2025-08-24 | 19:28:10] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:28:10] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:28:10] Try to read timer file
+[2025-08-24 | 19:28:10] Successful reading. Data: hourly
+[2025-08-24 | 19:28:10] Try to read timer file
+[2025-08-24 | 19:28:10] Successful reading. Data: hourly
+[2025-08-24 | 19:28:10] Try to know 'Pictures' location
+[2025-08-24 | 19:28:10] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:28:10] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:28:13] Try to read timer file
+[2025-08-24 | 19:28:13] Successful reading. Data: hourly
+[2025-08-24 | 19:28:13] Try to know 'Pictures' location
+[2025-08-24 | 19:28:13] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:28:13] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:28:19] Try to read timer file
+[2025-08-24 | 19:28:19] Successful reading. Data: hourly
+[2025-08-24 | 19:28:19] Try to know 'Pictures' location
+[2025-08-24 | 19:28:19] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:28:19] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:28:25] Try to read timer file
+[2025-08-24 | 19:28:25] Successful reading. Data: hourly
+[2025-08-24 | 19:28:25] Try to know 'Pictures' location
+[2025-08-24 | 19:28:25] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:28:25] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:28:27] Try to read timer file
+[2025-08-24 | 19:28:27] Successful reading. Data: hourly
+[2025-08-24 | 19:28:27] Try to know 'Pictures' location
+[2025-08-24 | 19:28:27] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:28:27] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:29:35] Starting program
+[2025-08-24 | 19:29:37] Try to know 'Pictures' location
+[2025-08-24 | 19:29:37] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:29:37] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:29:37] Try to read timer file
+[2025-08-24 | 19:29:37] Successful reading. Data: hourly
+[2025-08-24 | 19:29:37] Try to read timer file
+[2025-08-24 | 19:29:37] Successful reading. Data: hourly
+[2025-08-24 | 19:29:37] Try to know 'Pictures' location
+[2025-08-24 | 19:29:37] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:29:37] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:29:40] Try to read timer file
+[2025-08-24 | 19:29:40] Successful reading. Data: hourly
+[2025-08-24 | 19:29:40] Try to know 'Pictures' location
+[2025-08-24 | 19:29:40] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:29:40] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:54:06] Starting program
+[2025-08-24 | 19:54:08] Try to know 'Pictures' location
+[2025-08-24 | 19:54:08] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:54:08] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:54:08] Try to read timer file
+[2025-08-24 | 19:54:08] Successful reading. Data: hourly
+[2025-08-24 | 19:54:08] Try to read timer file
+[2025-08-24 | 19:54:08] Successful reading. Data: hourly
+[2025-08-24 | 19:54:08] Try to know 'Pictures' location
+[2025-08-24 | 19:54:08] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:54:08] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:54:16] Try to read timer file
+[2025-08-24 | 19:54:16] Successful reading. Data: hourly
+[2025-08-24 | 19:54:16] Try to know 'Pictures' location
+[2025-08-24 | 19:54:16] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:54:16] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:54:19] Ending program
+[2025-08-24 | 19:57:52] Starting program
+[2025-08-24 | 19:59:20] Try to know 'Pictures' location
+[2025-08-24 | 19:59:20] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:59:20] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:59:20] Try to read timer file
+[2025-08-24 | 19:59:20] Successful reading. Data: hourly
+[2025-08-24 | 19:59:20] Try to read timer file
+[2025-08-24 | 19:59:20] Successful reading. Data: hourly
+[2025-08-24 | 19:59:20] Try to know 'Pictures' location
+[2025-08-24 | 19:59:20] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 19:59:20] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 19:59:27] Ending program
+[2025-08-24 | 20:04:08] Starting program
+[2025-08-24 | 20:06:02] Starting program
+[2025-08-24 | 20:06:04] Try to know 'Pictures' location
+[2025-08-24 | 20:06:04] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 20:06:04] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 20:06:04] Try to read timer file
+[2025-08-24 | 20:06:04] Successful reading. Data: hourly
+[2025-08-24 | 20:06:04] Try to read timer file
+[2025-08-24 | 20:06:04] Successful reading. Data: hourly
+[2025-08-24 | 20:06:04] Try to know 'Pictures' location
+[2025-08-24 | 20:06:04] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 20:06:04] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 20:06:06] Failed - there are not root rights
+[2025-08-24 | 20:06:06] Try to read timer file
+[2025-08-24 | 20:06:06] Successful reading. Data: hourly
+[2025-08-24 | 20:06:06] Try to know 'Pictures' location
+[2025-08-24 | 20:06:06] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 20:06:06] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 20:06:11] Failed - there are not root rights
+[2025-08-24 | 20:06:11] Try to read timer file
+[2025-08-24 | 20:06:11] Successful reading. Data: hourly
+[2025-08-24 | 20:06:11] Try to know 'Pictures' location
+[2025-08-24 | 20:06:11] Pictures location: /home/p1rat/Pictures
+[2025-08-24 | 20:06:11] The pictures_path: /home/p1rat/Pictures/rwal/
+[2025-08-24 | 20:06:17] Ending program
+[2025-08-24 | 20:06:22] Starting program
+[2025-08-24 | 20:06:23] Try to know 'Pictures' location
+[2025-08-24 | 20:06:23] Pictures location: /root/Pictures
+[2025-08-24 | 20:06:23] The pictures_path: /root/Pictures/rwal/
+[2025-08-24 | 20:06:23] Catalog 'rwal' created
+Full path:/root/Pictures/rwal/
+[2025-08-24 | 20:06:23] Try to read timer file
+[2025-08-24 | 20:06:23] Successful reading. Data: hourly
+[2025-08-24 | 20:06:23] Try to read timer file
+[2025-08-24 | 20:06:23] Successful reading. Data: hourly
+[2025-08-24 | 20:06:23] Try to know 'Pictures' location
+[2025-08-24 | 20:06:23] Pictures location: /root/Pictures
+[2025-08-24 | 20:06:23] The pictures_path: /root/Pictures/rwal/
+[2025-08-24 | 20:06:25] Try to edit timer
+[2025-08-24 | 20:06:25] Successful trying
+[2025-08-24 | 20:06:25] Try to read timer file
+[2025-08-24 | 20:06:25] Successful reading. Data: daily
+[2025-08-24 | 20:06:25] Try to know 'Pictures' location
+[2025-08-24 | 20:06:25] Pictures location: /root/Pictures
+[2025-08-24 | 20:06:25] The pictures_path: /root/Pictures/rwal/
+[2025-08-24 | 20:06:29] Try to edit timer
+[2025-08-24 | 20:06:29] Successful trying
+[2025-08-24 | 20:06:29] Try to read timer file
+[2025-08-24 | 20:06:29] Successful reading. Data: hourly
+[2025-08-24 | 20:06:29] Try to know 'Pictures' location
+[2025-08-24 | 20:06:29] Pictures location: /root/Pictures
+[2025-08-24 | 20:06:29] The pictures_path: /root/Pictures/rwal/
+[2025-08-24 | 20:06:35] Try to edit timer
+[2025-08-24 | 20:06:35] Successful trying
+[2025-08-24 | 20:06:35] Try to read timer file
+[2025-08-24 | 20:06:35] Successful reading. Data: daily
+[2025-08-24 | 20:06:35] Try to know 'Pictures' location
+[2025-08-24 | 20:06:35] Pictures location: /root/Pictures
+[2025-08-24 | 20:06:35] The pictures_path: /root/Pictures/rwal/
+[2025-08-24 | 20:06:37] Ending program

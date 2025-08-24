@@ -1,8 +1,14 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <functional>
 
-extern const std::vector<std::string> Main_menu;
-extern const std::vector<std::string> Keywords_menu;
-extern const std::vector<std::string> Settings_menu;
-extern const std::vector<std::string> Timer_menu;
+struct MenuConfig{
+	const std::string valid_choices;
+	std::function<std::vector<std::string>()> menu;
+};
+
+extern const MenuConfig MAIN_MENU;
+extern const MenuConfig KEYWORDS_MENU; 
+extern const MenuConfig SETTINGS_MENU;
+extern const MenuConfig TIMER_MENU;
