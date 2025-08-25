@@ -45,7 +45,7 @@ void Flows::core(int argc,char **argv){
 				if (x == '1'){
 					m.clear_last_lines();
 					std::string y = m.arrowInput(TIMER_MENU);
-					t.edit_timer(y);						
+					std::cout << t.edit_timer(y);
 				}
 				x = m.charactarInput(SETTINGS_MENU);
 			}
