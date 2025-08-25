@@ -16,3 +16,6 @@ int random(int count){
 	return num;
 }
 
+void printFlags(){
+	
+}

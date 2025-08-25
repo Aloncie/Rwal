@@ -129,6 +129,10 @@ std::string Timer::see_timer(){
 	l.write_logs("Try to read timer file");
 
 	if (file.is_open()){
+
+		if (!check_timer_active_status())
+			return "None";
+
 		while (getline(file,str)){
 			if (str.starts_with("OnCalendar=")){
 				str.erase(0,str.find("=")+1);
@@ -141,14 +145,14 @@ std::string Timer::see_timer(){
 	return "None";
 }
 
-void Timer::edit_timer(std::string value){
+std::string Timer::edit_timer(std::string value){
 	Logs l;
 	
-	if (getuid() != 0) {
+	if (geteuid() != 0) {
 		l.write_logs("Failed - there are not root rights");
-		std::cerr << "Need root rights. Please run program with 'sudo'" << std::endl; 	
-		return;
+		return "Need root rights. Please run program with 'sudo'";
 	}
+
 	l.write_logs("Try to edit timer");
 
 	std::ifstream in_file("/etc/systemd/system/rwal.timer");
@@ -157,7 +161,7 @@ void Timer::edit_timer(std::string value){
 	bool found = false;
 	if (!in_file){
 		l.write_logs("Failed to open rwal.timer to read");
-		return;
+		return "Failed set timer. More info in logs. I really apologize >_<";
 	}	
 	while (getline(in_file,line)){
 		if (line.find("OnCalendar=") == std::string::npos)
@@ -172,16 +176,34 @@ void Timer::edit_timer(std::string value){
 
 	if (!found){
 		l.write_logs("Failed to find string");
-		return;
+		return "Failed set timer. More info in logs. I really apologize >_<";
 	}
 
 	std::ofstream out_file("/etc/systemd/system/rwal.timer");
 	if (!out_file){
 		l.write_logs("Failed to create/open rwal.timer to write");
-		return;
+		return "Failed set timer. More info in logs. I really apologize >_<";
 	}
 	for (auto& l : lines)
 		out_file << l << "\n";
 
-	l.write_logs("Successful trying");
+	l.write_logs("Successful edit timer. Try to active timer");
+	
+	system("systemctl unmask rwal.timer >/dev/null 2>&1");
+	system("systemctl daemon-reload");	
+	system("systemctl enable --now rwal.timer");
+	system("systemctl start rwal.timer");
+
+	if (check_timer_active_status())
+		l.write_logs("Timer successfuly activated");
+	else{
+		l.write_logs("Failed to activate timer");
+		return "Failed set timer. More info in logs. I really apologize >_<";
+	}
+	return "Timer successfuly activated!";
 }
+
+bool Timer::check_timer_active_status(){
+	return system("systemctl is-active rwal.timer >/dev/null 2>&1") == 0;
+}
+
