@@ -79,3 +79,15 @@ std::string MenuManager::arrowInput(const MenuConfig& config){
 void MenuManager::countOperatorPlus(int count){
 	count_ref += count;
 }
+
+void MenuManager::show_message(std::string message){
+	std::string cp = message;
+	if (cp.find("failed") == std::string::npos&&cp.find("error") == std::string::npos){
+		//green
+		std::cout << "\033[1;32m" << message << "\033[0m" << std::endl;
+	}
+	else {
+		//red
+   		std::cout << "\033[1;31m" << message << "\033[0m" << std::endl;
+	}
+}

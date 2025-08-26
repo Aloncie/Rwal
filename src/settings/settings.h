@@ -12,7 +12,7 @@ std::string rwal_catalog();
 
 class Timer{
 public:
-	void setup_systemd_timer();
+	void create_systemd_timer();
 	std::string see_timer();
 	std::string edit_timer(std::string value);
 	bool check_timer_active_status();

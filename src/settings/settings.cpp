@@ -14,14 +14,21 @@ fs::path get_pictures_path(){
 		return user_profile+="\\rwal\\";
 	}
 	#else
-	const char* home = std::getenv("HOME");
-	if (home){
-		fs::path pictures_path = fs::path(home) / "Pictures";	
+	const char* starting_path = std::getenv("SUDO_USER"); 
+	std::string home_path;
+	if (!starting_path){
+		home_path = std::getenv("HOME");
+	}
+	else 
+		home_path = "/home/" + std::string(starting_path);
+
+	if (!home_path.empty()){
+		fs::path pictures_path = fs::path(home_path) / "Pictures";	
 		if (fs::exists(pictures_path)){
 			l.write_logs("Pictures location: " + pictures_path.string());
 			return pictures_path+="/rwal/";	
 		}
-		pictures_path = fs::path(home) / "Изображения";
+		pictures_path = fs::path(starting_path) / "Изображения";
 		if (fs::exists(pictures_path)){
 			l.write_logs("Pictures location: " + pictures_path.string());
 			return pictures_path+="/rwal/";
@@ -52,7 +59,7 @@ std::string rwal_catalog(){
 	return "None";
 }
 
-void Timer::setup_systemd_timer(){
+void Timer::create_systemd_timer(){
 	Logs l;
 	l.write_logs("Try to create/check service&timer files");
 	const fs::path service_dir = "/etc/systemd/system";
@@ -66,7 +73,7 @@ void Timer::setup_systemd_timer(){
 		return;
 	}
 	
-	if (!fs::exists(service_file)){
+	if (!fs::exists(service_file)||fs::file_size(service_file) == 0){
 		l.write_logs("There is not service file");
 		l.write_logs("Try to create service file");
 		std::ofstream service(service_file);
@@ -95,16 +102,16 @@ void Timer::setup_systemd_timer(){
 		}
 	} else
 		l.write_logs("Service file already exists");
-	if (!fs::exists(timer_file)){
+	if (!fs::exists(timer_file)||fs::file_size(timer_file) == 0){
 		l.write_logs("There is not timer file");
 			l.write_logs("Try to create timer file");
 			std::ofstream service(timer_file);
 			if (service.is_open()){
 				service <<
 				"[Unit]\n"
-				"Description=Activates rwal.service periodicallyn\n"
+				"Description=Activates rwal.service periodically\n"
 				"[Timer]\n"
-				"OnCalendar=hourly\n"
+				"OnCalendar=\n"
 				"Unit=rwal.service\n\n"
 				"[Install]\n"
 				"WantedBy=timers.target\n";
@@ -119,7 +126,6 @@ void Timer::setup_systemd_timer(){
 		l.write_logs("Timer file already exists");
 
 	system("systemctl daemon-reload");
-	system(("systemctl enable --now " + service_name + ".timer").c_str());
 }
 
 std::string Timer::see_timer(){
@@ -141,7 +147,7 @@ std::string Timer::see_timer(){
 			}
 		}
 	}
-
+	l.write_logs("No data");
 	return "None";
 }
 
@@ -154,11 +160,14 @@ std::string Timer::edit_timer(std::string value){
 	}
 
 	l.write_logs("Try to edit timer");
+		
+	create_systemd_timer();
 
 	std::ifstream in_file("/etc/systemd/system/rwal.timer");
 	std::vector<std::string> lines;
 	std::string line;
 	bool found = false;
+
 	if (!in_file){
 		l.write_logs("Failed to open rwal.timer to read");
 		return "Failed set timer. More info in logs. I really apologize >_<";
@@ -187,6 +196,7 @@ std::string Timer::edit_timer(std::string value){
 	for (auto& l : lines)
 		out_file << l << "\n";
 
+	out_file.close();
 	l.write_logs("Successful edit timer. Try to active timer");
 	
 	system("systemctl unmask rwal.timer >/dev/null 2>&1");
@@ -194,13 +204,14 @@ std::string Timer::edit_timer(std::string value){
 	system("systemctl enable --now rwal.timer");
 	system("systemctl start rwal.timer");
 
-	if (check_timer_active_status())
+	if (check_timer_active_status()){
 		l.write_logs("Timer successfuly activated");
+		return "Timer successfuly activated!";
+	}
 	else{
 		l.write_logs("Failed to activate timer");
 		return "Failed set timer. More info in logs. I really apologize >_<";
 	}
-	return "Timer successfuly activated!";
 }
 
 bool Timer::check_timer_active_status(){
