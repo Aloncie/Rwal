@@ -17,4 +17,5 @@ public:
 	void clear_last_lines();
 	std::string arrowInput(const MenuConfig& config);
 	void countOperatorPlus(int count);
+	void show_message(std::string message);
 };
