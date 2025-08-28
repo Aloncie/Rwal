@@ -1,5 +1,7 @@
 #include "startup_flows/startup_flows.h"
 #include "wallpaper/WallpaperManager.h"
+#include <exception>
+#include <fstream>
 #include <string>
 
 int main(int argc,char* argv[]){
