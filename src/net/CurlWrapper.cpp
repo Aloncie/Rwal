@@ -98,7 +98,6 @@ std::string MyCurl::download_image(const std::string& image_url){
 	l.write_logs("Try to delete old image");
 
 	fs::path dir_path("/home/p1rat/code/rwal");
-	//delete old image
 	try {
 		for (const auto& item : fs::directory_iterator(dir_path)){
 			if (fs::is_regular_file(item.path())){
@@ -114,7 +113,6 @@ std::string MyCurl::download_image(const std::string& image_url){
 		l.write_logs("Error of delete old image: " + std::string(e.what()));
 	}
 
-	//create images's name
 	std::string image_name = "/home/p1rat/code/rwal/wallpaper-";
 	for (int i = 0;i < 6;i++){
 		image_name+=image_url[41+i];
@@ -134,7 +132,6 @@ std::string MyCurl::download_image(const std::string& image_url){
 	else {
 		l.write_logs("Successful init CURL to image download");
 	}
-	//create image
 	FILE* fp = fopen(image_name.c_str(),"wb");
 	if (!fp){
 		l.write_logs("Failed to create image file");

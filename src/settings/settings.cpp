@@ -1,17 +1,25 @@
 #include "settings.h"
 #include "logs/logs.h"
-#include <filesystem>
 #include <fstream>
+#include <exception>
+#include <vector>
+#include <unistd.h>
 
 fs::path get_pictures_path(){
 	Logs l;
 	l.write_logs("Try to know 'Pictures' location");
-
+	fs::path rwal_path;
 	#ifdef _WIN32
 	const char* user_profile = std::getenv("USERPROFILE"); 
 	if (user_profile){
-		l.write_logs("Pictures location: " + std::string(user_profile) + "\\Pictures");
-		return user_profile+="\\rwal\\";
+		rwal_path = user_profile / "Pictures";
+		if (!fs::exists(rwal_path)){
+			rwal_path = user_profile / "Изображения";	
+			if (!fs::exists(rwal_path)
+				return "";
+		}
+		l.write_logs("Pictures location: " + rwal_path);
+		rwal_path /= "rwal\\";
 	}
 	#else
 	const char* starting_path = std::getenv("SUDO_USER"); 
@@ -23,40 +31,38 @@ fs::path get_pictures_path(){
 		home_path = "/home/" + std::string(starting_path);
 
 	if (!home_path.empty()){
-		fs::path pictures_path = fs::path(home_path) / "Pictures";	
-		if (fs::exists(pictures_path)){
-			l.write_logs("Pictures location: " + pictures_path.string());
-			return pictures_path+="/rwal/";	
+		rwal_path = fs::path(home_path) / "Pictures";	
+		if (fs::exists(rwal_path)){
+			l.write_logs("Pictures location: " + rwal_path.string());
+			rwal_path /= "rwal/";
 		}
-		pictures_path = fs::path(starting_path) / "Изображения";
-		if (fs::exists(pictures_path)){
-			l.write_logs("Pictures location: " + pictures_path.string());
-			return pictures_path+="/rwal/";
+		else{
+			rwal_path = fs::path(starting_path) / "Изображения";
+			if (fs::exists(rwal_path)){
+				l.write_logs("Pictures location: " + rwal_path.string());
+				rwal_path /= "rwal/";
+			}
+			else
+				return "";
 		}
 	}
 	#endif
-	l.write_logs("Failed trying");
-	return "None";
-}
 
-std::string rwal_catalog(){
-	Logs l;
-	fs::path pictures_path = get_pictures_path();
-	l.write_logs("The pictures_path: " + pictures_path.string());
 	try {
-		if (pictures_path == "None")
-			return "None";
-		else if (!fs::exists(pictures_path)){
-			fs::create_directory(pictures_path);
-			l.write_logs("Catalog 'rwal' created\nFull path:" + std::string(pictures_path));
+		if (!fs::exists(rwal_path)){
+			fs::create_directory(rwal_path);
+			l.write_logs("Catalog 'rwal' created\nFull path:" + std::string(rwal_path));
 		}
-		else 
-			return pictures_path.string();
-
+		else{
+			l.write_logs("The rwal catalog already exists.\nFull path: " + rwal_path.string());
+			return rwal_path.string();
+		}
 	} catch (std::exception& e){
-		l.write_logs("Filesystem error in catalog creating/checking: " + std::string(e.what()));	
+		l.write_logs("Filesystem error in catalog creating/checking: " + std::string(e.what()));
 	}
-	return "None";
+
+	l.write_logs("Failed trying");
+	return "";
 }
 
 void Timer::create_systemd_timer(){
@@ -85,11 +91,11 @@ void Timer::create_systemd_timer(){
 			"Type=simple\n"
 			"ExecStart=/home/p1rat/code/rwal/build/rwal --change\n"
 			"User=p1rat\n"
-			"WorkingDirectory=/home/p1rat/code/rwal\n"
-			"Environment=DISPLAY=:0\n"
-			"Environment=XAUTHORITY=/run/user/1000/xauth_fEDteC\n"
-			"Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\n"
+			"WorkingDirectory=/home/p1rat/code/rwal/build\n\n"
+			"Environment=XDG_RUNTIME_DIR=/run/use/1000\n\n"
 			"Restart=on-failure\n"
+			"RestartSec=2s\n"
+			"StartLimitBurst=3\n\n"	
 			"[Install]\n"
 			"WantedBy=default.target\n";
 
@@ -109,7 +115,7 @@ void Timer::create_systemd_timer(){
 			if (service.is_open()){
 				service <<
 				"[Unit]\n"
-				"Description=Activates rwal.service periodically\n"
+				"Description=Activates rwal.service periodically\n\n"
 				"[Timer]\n"
 				"OnCalendar=\n"
 				"Unit=rwal.service\n\n"
@@ -170,14 +176,24 @@ std::string Timer::edit_timer(std::string value){
 
 	if (!in_file){
 		l.write_logs("Failed to open rwal.timer to read");
-		return "Failed set timer. More info in logs. I really apologize >_<";
+		return "Failed set timer. More info in logs.  >_<";
 	}	
 	while (getline(in_file,line)){
 		if (line.find("OnCalendar=") == std::string::npos)
 			lines.push_back(line);
 		else {
 			found = true;
-			lines.push_back("OnCalendar=" + value);
+			if (value == "None"){
+				l.write_logs("value is 'None'\nTry to disactivate timer");
+				lines.push_back("OnCalendar=");
+				system("systemctl unmask rwal.timer >/dev/null 2>&1");
+				system("systemctl daemon-reload");
+				system("systemctl disable --now rwal.timer");
+				l.write_logs("Timer successfuly disactivated");
+				return "Timer successfuly disactivated!";
+			}
+			else
+				lines.push_back("OnCalendar=" + value);
 		}
 	}
 
@@ -185,13 +201,13 @@ std::string Timer::edit_timer(std::string value){
 
 	if (!found){
 		l.write_logs("Failed to find string");
-		return "Failed set timer. More info in logs. I really apologize >_<";
+		return "Failed set timer. More info in logs. >_<";
 	}
 
 	std::ofstream out_file("/etc/systemd/system/rwal.timer");
 	if (!out_file){
 		l.write_logs("Failed to create/open rwal.timer to write");
-		return "Failed set timer. More info in logs. I really apologize >_<";
+		return "Failed set timer. More info in logs. >_<";
 	}
 	for (auto& l : lines)
 		out_file << l << "\n";
@@ -210,7 +226,7 @@ std::string Timer::edit_timer(std::string value){
 	}
 	else{
 		l.write_logs("Failed to activate timer");
-		return "Failed set timer. More info in logs. I really apologize >_<";
+		return "Failed set timer. More info in logs. >_<";
 	}
 }
 

@@ -50,7 +50,7 @@ const MenuConfig SETTINGS_MENU = {
     []() {
         Timer t;
         std::string timer = t.see_timer();
-        std::string wallpaper_local = rwal_catalog();
+        std::string wallpaper_local = get_pictures_path();
         return std::vector<std::string>{
             "-------------------------- ",
             "Choose to edit any setting",
