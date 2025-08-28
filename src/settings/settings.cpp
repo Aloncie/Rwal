@@ -156,7 +156,7 @@ std::string Timer::edit_timer(std::string value){
 	
 	if (geteuid() != 0) {
 		l.write_logs("Failed - there are not root rights");
-		return "Need root rights. Please run program with 'sudo'";
+		return "Failed. Need root rights. Please run program with 'sudo'";
 	}
 
 	l.write_logs("Try to edit timer");
@@ -201,8 +201,8 @@ std::string Timer::edit_timer(std::string value){
 	
 	system("systemctl unmask rwal.timer >/dev/null 2>&1");
 	system("systemctl daemon-reload");	
-	system("systemctl enable --now rwal.timer");
 	system("systemctl start rwal.timer");
+	system("systemctl enable --now rwal.timer");
 
 	if (check_timer_active_status()){
 		l.write_logs("Timer successfuly activated");

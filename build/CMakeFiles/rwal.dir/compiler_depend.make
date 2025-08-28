@@ -77,9 +77,11 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/c++/15.2.1/algorithm \
   /usr/include/c++/15.2.1/array \
   /usr/include/c++/15.2.1/backward/binders.h \
   /usr/include/c++/15.2.1/bit \
+  /usr/include/c++/15.2.1/bits/algorithmfwd.h \
   /usr/include/c++/15.2.1/bits/alloc_traits.h \
   /usr/include/c++/15.2.1/bits/allocator.h \
   /usr/include/c++/15.2.1/bits/basic_ios.h \
@@ -125,6 +127,8 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp \
   /usr/include/c++/15.2.1/bits/predefined_ops.h \
   /usr/include/c++/15.2.1/bits/ptr_traits.h \
   /usr/include/c++/15.2.1/bits/range_access.h \
+  /usr/include/c++/15.2.1/bits/ranges_algo.h \
+  /usr/include/c++/15.2.1/bits/ranges_algobase.h \
   /usr/include/c++/15.2.1/bits/ranges_base.h \
   /usr/include/c++/15.2.1/bits/ranges_cmp.h \
   /usr/include/c++/15.2.1/bits/ranges_util.h \
@@ -132,16 +136,19 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp \
   /usr/include/c++/15.2.1/bits/requires_hosted.h \
   /usr/include/c++/15.2.1/bits/std_abs.h \
   /usr/include/c++/15.2.1/bits/std_function.h \
+  /usr/include/c++/15.2.1/bits/stl_algo.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
   /usr/include/c++/15.2.1/bits/stl_bvector.h \
   /usr/include/c++/15.2.1/bits/stl_construct.h \
   /usr/include/c++/15.2.1/bits/stl_function.h \
+  /usr/include/c++/15.2.1/bits/stl_heap.h \
   /usr/include/c++/15.2.1/bits/stl_iterator.h \
   /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/15.2.1/bits/stl_map.h \
   /usr/include/c++/15.2.1/bits/stl_multimap.h \
   /usr/include/c++/15.2.1/bits/stl_pair.h \
+  /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/15.2.1/bits/stl_tree.h \
   /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
   /usr/include/c++/15.2.1/bits/stl_vector.h \
@@ -149,6 +156,7 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp \
   /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/15.2.1/bits/string_view.tcc \
   /usr/include/c++/15.2.1/bits/stringfwd.h \
+  /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/15.2.1/bits/unordered_map.h \
   /usr/include/c++/15.2.1/bits/uses_allocator.h \
   /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
@@ -184,6 +192,8 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/numbers \
   /usr/include/c++/15.2.1/ostream \
+  /usr/include/c++/15.2.1/pstl/execution_defs.h \
+  /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
   /usr/include/c++/15.2.1/stdexcept \
   /usr/include/c++/15.2.1/streambuf \
@@ -1972,6 +1982,7 @@ CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
   /usr/include/c++/15.2.1/bits/fs_fwd.h \
   /usr/include/c++/15.2.1/bits/fs_ops.h \
   /usr/include/c++/15.2.1/bits/fs_path.h \
+  /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
@@ -2052,6 +2063,7 @@ CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
   /usr/include/c++/15.2.1/ext/string_conversions.h \
   /usr/include/c++/15.2.1/ext/type_traits.h \
   /usr/include/c++/15.2.1/filesystem \
+  /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
@@ -2074,8 +2086,10 @@ CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
   /usr/include/c++/15.2.1/type_traits \
   /usr/include/c++/15.2.1/typeinfo \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -3957,24 +3971,6 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/nlohmann/json_fwd.hpp:
 
-/usr/include/c++/15.2.1/bits/fs_dir.h:
-
-/usr/include/bits/stdio_lim.h:
-
-/usr/include/c++/15.2.1/bits/codecvt.h:
-
-/usr/include/nlohmann/detail/input/lexer.hpp:
-
-/home/p1rat/code/rwal/src/CLI/Menus.cpp:
-
-/usr/include/c++/15.2.1/bits/std_mutex.h:
-
-/usr/include/c++/15.2.1/bits/locale_classes.tcc:
-
-/usr/include/bits/statx.h:
-
-/usr/include/qt/QtCore/qiterator.h:
-
 /usr/lib32/libresolv.so.2:
 
 /usr/include/bits/getopt_core.h:
@@ -3984,10 +3980,6 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 /usr/include/bits/confname.h:
 
 /usr/include/nlohmann/detail/macro_unscope.hpp:
-
-/usr/include/c++/15.2.1/ext/alloc_traits.h:
-
-/usr/include/c++/15.2.1/bits/unicode.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h:
 
@@ -4023,8 +4015,6 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/linux/errno.h:
 
-/usr/include/c++/15.2.1/bits/quoted_string.h:
-
 CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/curses.h:
@@ -4057,10 +4047,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/sys/cdefs.h:
 
-/usr/include/features-time64.h:
-
-/usr/include/c++/15.2.1/iostream:
-
 /usr/include/bits/mathcalls.h:
 
 /home/p1rat/code/rwal/src/settings/settings.h:
@@ -4088,6 +4074,10 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 /usr/include/c++/15.2.1/ext/type_traits.h:
 
 /usr/include/nlohmann/detail/macro_scope.hpp:
+
+/usr/include/c++/15.2.1/ext/alloc_traits.h:
+
+/usr/include/c++/15.2.1/bits/unicode.h:
 
 /usr/include/c++/15.2.1/ext/aligned_buffer.h:
 
@@ -4121,6 +4111,10 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/concepts:
 
+/home/p1rat/code/rwal/src/CLI/Menus.cpp:
+
+/usr/include/c++/15.2.1/bits/std_mutex.h:
+
 /usr/include/c++/15.2.1/clocale:
 
 /usr/include/c++/15.2.1/bits/version.h:
@@ -4153,11 +4147,17 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/unordered_map.h:
 
+/usr/include/c++/15.2.1/bits/uniform_int_dist.h:
+
+/usr/include/c++/15.2.1/cwchar:
+
 /usr/lib/libpcre2-16.so.0:
 
 /usr/include/locale.h:
 
 /usr/include/c++/15.2.1/bits/gslice_array.h:
+
+/usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h:
 
 /usr/include/c++/15.2.1/exception:
 
@@ -4169,15 +4169,13 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/ranges_util.h:
 
-/usr/include/asm-generic/bitsperlong.h:
-
 /usr/include/c++/15.2.1/bits/stl_heap.h:
+
+/usr/include/asm-generic/bitsperlong.h:
 
 /usr/include/sys/single_threaded.h:
 
 /usr/include/asm-generic/errno.h:
-
-/usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h:
 
 /usr/include/c++/15.2.1/bits/stl_multimap.h:
 
@@ -4199,6 +4197,8 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/nlohmann/detail/value_t.hpp:
 
+/usr/include/c++/15.2.1/bits/ranges_base.h:
+
 /usr/include/bits/types/clockid_t.h:
 
 /usr/include/qt/QtCore/qsystemdetection.h:
@@ -4208,6 +4208,8 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 /usr/lib/libbrotlicommon.so.1:
 
 /usr/include/bits/posix_opt.h:
+
+/usr/include/c++/15.2.1/pstl/execution_defs.h:
 
 /usr/lib/libcom_err.so.2:
 
@@ -4242,10 +4244,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 /usr/include/qt/QtDBus/qtdbusglobal.h:
 
 /usr/include/c++/15.2.1/ios:
-
-/usr/include/bits/struct_stat.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
 
 /usr/include/c++/15.2.1/bits/range_access.h:
 
@@ -4289,6 +4287,8 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/bits/waitstatus.h:
 
+/usr/include/c++/15.2.1/streambuf:
+
 /usr/include/bits/types/__fpos64_t.h:
 
 /usr/include/bits/select.h:
@@ -4323,6 +4323,10 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/mask_array.h:
 
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/c++/15.2.1/bits/fs_dir.h:
+
 /usr/include/c++/15.2.1/bits/max_size_type.h:
 
 /usr/include/bits/types/locale_t.h:
@@ -4346,6 +4350,10 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 /usr/include/c++/15.2.1/bit:
 
 /usr/include/c++/15.2.1/bits/valarray_array.h:
+
+/usr/include/c++/15.2.1/pstl/pstl_config.h:
+
+/usr/include/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/bits/stdint-least.h:
 
@@ -4421,10 +4429,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/qt/QtDBus/qdbusmessage.h:
 
-/usr/include/c++/15.2.1/pstl/pstl_config.h:
-
-/usr/include/bits/pthread_stack_min-dynamic.h:
-
 /usr/include/c++/15.2.1/bits/stl_bvector.h:
 
 /usr/lib32/libsystemd.so.0:
@@ -4455,8 +4459,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/predefined_ops.h:
 
-/usr/include/c++/15.2.1/streambuf:
-
 /usr/include/c++/15.2.1/bits/functexcept.h:
 
 /usr/include/c++/15.2.1/bits/stl_pair.h:
@@ -4478,8 +4480,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 /usr/include/c++/15.2.1/bits/allocator.h:
 
 /usr/include/c++/15.2.1/ext/atomicity.h:
-
-/usr/include/bits/types/struct_tm.h:
 
 /usr/include/c++/15.2.1/bits/char_traits.h:
 
@@ -4527,6 +4527,14 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/bits/timesize.h:
 
+/usr/include/c++/15.2.1/iostream:
+
+/usr/include/features-time64.h:
+
+/usr/include/c++/15.2.1/bits/quoted_string.h:
+
+/usr/include/c++/15.2.1/array:
+
 /usr/include/sys/types.h:
 
 /usr/include/bits/stdint-intn.h:
@@ -4535,7 +4543,23 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/hash_bytes.h:
 
-/usr/include/c++/15.2.1/array:
+/usr/include/c++/15.2.1/algorithm:
+
+/usr/include/bits/types/__FILE.h:
+
+/usr/include/qt/QtCore/qcontainerfwd.h:
+
+/usr/include/c++/15.2.1/numbers:
+
+/usr/include/qt/QtCore/qbytearray.h:
+
+/usr/include/curl/options.h:
+
+/usr/include/bits/types/struct_tm.h:
+
+/usr/lib/libssl.so.3:
+
+/usr/include/c++/15.2.1/bits/ranges_algo.h:
 
 /usr/include/c++/15.2.1/bits/basic_ios.h:
 
@@ -4571,12 +4595,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/tr1/beta_function.tcc:
 
-/usr/include/c++/15.2.1/bits/chrono.h:
-
-/usr/include/sys/select.h:
-
-/usr/include/c++/15.2.1/bits/stl_function.h:
-
 /usr/include/bits/endian.h:
 
 /usr/include/c++/15.2.1/bits/invoke.h:
@@ -4596,10 +4614,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/nlohmann/detail/meta/type_traits.hpp:
-
-/usr/include/c++/15.2.1/cwchar:
-
-/usr/include/c++/15.2.1/bits/uniform_int_dist.h:
 
 /usr/include/bits/types/wint_t.h:
 
@@ -4631,7 +4645,25 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/postypes.h:
 
-/usr/include/c++/15.2.1/bits/ranges_base.h:
+/usr/include/c++/15.2.1/bits/locale_classes.tcc:
+
+/usr/include/bits/statx.h:
+
+/usr/include/qt/QtCore/qiterator.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
+
+/usr/include/bits/struct_stat.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/c++/15.2.1/bits/stl_function.h:
+
+/usr/include/c++/15.2.1/bits/chrono.h:
+
+/usr/include/c++/15.2.1/bits/codecvt.h:
+
+/usr/include/nlohmann/detail/input/lexer.hpp:
 
 /usr/include/c++/15.2.1/cstddef:
 
@@ -4689,18 +4721,6 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/qt/QtCore/qconfig.h:
 
-/usr/include/c++/15.2.1/algorithm:
-
-/usr/include/bits/types/__FILE.h:
-
-/usr/include/qt/QtCore/qcontainerfwd.h:
-
-/usr/include/c++/15.2.1/numbers:
-
-/usr/include/qt/QtCore/qbytearray.h:
-
-/usr/include/curl/options.h:
-
 /usr/include/c++/15.2.1/atomic:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
@@ -4726,10 +4746,6 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/bits/types/struct_statx_timestamp.h:
 
 /usr/include/c++/15.2.1/bits/monostate.h:
-
-/usr/lib/libssl.so.3:
-
-/usr/include/c++/15.2.1/bits/ranges_algo.h:
 
 /usr/include/linux/types.h:
 
@@ -4766,8 +4782,6 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/charconv:
 
 /usr/include/c++/15.2.1/optional:
-
-/usr/include/c++/15.2.1/pstl/execution_defs.h:
 
 /usr/include/c++/15.2.1/pstl/glue_memory_defs.h:
 
