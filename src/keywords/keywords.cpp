@@ -1,12 +1,18 @@
 #include "keywords.h"
 #include "logs/logs.h"
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <cctype>
+#include <unistd.h>
+#include <sys/stat.h>
 
 const std::string keywords_path = "/home/p1rat/code/rwal/build/keywords.txt";
 
 std::string Keywords::look_keywords(){
 	std::string result = "None";
 	std::ifstream ifile;
-	ifile.open("/home/p1rat/code/rwal/build/keywords.txt");
+	ifile.open("keywords.txt");
 	if (ifile.is_open()){
 		getline(ifile,result);
 		ifile.close();

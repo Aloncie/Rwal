@@ -1,12 +1,7 @@
 #pragma once
 #include <string>
-#include <iostream>
-#include <map>
-#include <vector>
-#include <ncurses.h>
-#include "Menus.h"
 
-extern std::map<std::string,int> countStr;
+struct MenuConfig;
 
 class MenuManager{
 private:

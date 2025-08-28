@@ -1,12 +1,6 @@
 #pragma once
-#include <filesystem>
-#include <fstream>
 #include <string>
 #include <vector>
-#include <iostream>
-#include <cctype>
-#include <sys/stat.h>
-#include <unistd.h>
 
 extern const std::string keywords_path;
 
