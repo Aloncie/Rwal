@@ -1,6 +1,11 @@
-#include "CLI.h"
 #include <algorithm>
 #include <cctype>
+#include <map>
+#include <ncurses.h>
+#include "Menus.h"
+#include "CLI.h"
+#include <iostream>
+#include <vector>
 
 void MenuManager::clear_last_lines() {
     for (int i = 0; i < count_ref; ++i) {
@@ -10,19 +15,23 @@ void MenuManager::clear_last_lines() {
 	count_ref = 0;
 }
 
+extern std::map<std::string,int> countStr;
+
 MenuManager::MenuManager(int& count) : count_ref(count) {}
 
 char MenuManager::charactarInput(const MenuConfig& config){
-	char choice;
+	char choice = ' ';
+	std::string input;
 	auto menu = config.menu();	
 	for (int i = 0;i < menu.size();i++){
 		std::cout << menu[i] << "\n";
 	}
 
 	while (config.valid_choices.find(choice) == std::string::npos){
+		std::getline(std::cin,input);
+		if (input.length() == 1)
+			choice = input[0];
 		count_ref++;
-		std::cin.clear();
-		std::cin >> choice;
 	}
 
 	count_ref+= menu.size();

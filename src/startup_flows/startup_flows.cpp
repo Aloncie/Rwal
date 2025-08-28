@@ -34,10 +34,9 @@ void Flows::core(int argc,char **argv){
 					}
 					x = m.charactarInput(KEYWORDS_MENU);
 				}
-				x = 0;
 		}
 		else if (x == '4'){
-			std::string wallpaper_local = rwal_catalog();
+			std::string wallpaper_local = get_pictures_path();
 			Timer t;
 			std::string timer = t.see_timer();
 			x = m.charactarInput(SETTINGS_MENU);
@@ -46,7 +45,7 @@ void Flows::core(int argc,char **argv){
 					m.clear_last_lines();
 					std::string y = m.arrowInput(TIMER_MENU);
 					m.show_message(t.edit_timer(y));
-					m.countOperatorPlus(1);
+					m.countOperatorPlus(2);
 				}
 				x = m.charactarInput(SETTINGS_MENU);
 			}

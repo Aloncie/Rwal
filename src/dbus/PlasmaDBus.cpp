@@ -1,4 +1,11 @@
 #include "PlasmaDBus.h"
+#include <QCoreApplication>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QVariantMap>
+#include <QDebug>
+#include <QString>
+#include "logs/logs.h"
 
 void change_wallpaper(int argc, char** argv,std::string local){
 
