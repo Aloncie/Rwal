@@ -6,7 +6,7 @@ const std::string keywords_path = "/home/p1rat/code/rwal/build/keywords.txt";
 std::string Keywords::look_keywords(){
 	std::string result = "None";
 	std::ifstream ifile;
-	ifile.open("keywords.txt");
+	ifile.open("/home/p1rat/code/rwal/build/keywords.txt");
 	if (ifile.is_open()){
 		getline(ifile,result);
 		ifile.close();

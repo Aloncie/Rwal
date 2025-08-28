@@ -1,4 +1,6 @@
 #include "CLI.h"
+#include <algorithm>
+#include <cctype>
 
 void MenuManager::clear_last_lines() {
     for (int i = 0; i < count_ref; ++i) {
@@ -82,12 +84,11 @@ void MenuManager::countOperatorPlus(int count){
 
 void MenuManager::show_message(std::string message){
 	std::string cp = message;
-	if (cp.find("failed") == std::string::npos&&cp.find("error") == std::string::npos){
+	std::transform(cp.begin(),cp.end(),cp.begin(), ::tolower);
+	if (cp.find("failed") == std::string::npos&&cp.find("error") == std::string::npos)
 		//green
 		std::cout << "\033[1;32m" << message << "\033[0m" << std::endl;
-	}
-	else {
+	else
 		//red
    		std::cout << "\033[1;31m" << message << "\033[0m" << std::endl;
-	}
 }
