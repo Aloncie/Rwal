@@ -4,6 +4,7 @@
 #include <exception>
 #include <vector>
 #include <unistd.h>
+#include <iostream>
 
 fs::path get_pictures_path(){
 	Logs l;
