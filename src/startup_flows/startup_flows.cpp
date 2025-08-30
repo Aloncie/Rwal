@@ -5,6 +5,7 @@
 #include "startup_flows.h"
 #include "settings/settings.h"
 #include "CLI/Menus.h"
+#include <iostream>
 
 void Flows::core(int argc,char **argv){
 	if (true){
