@@ -634,7 +634,10 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/c++/15.2.1/bits/exception_defines.h \
   /usr/include/c++/15.2.1/bits/exception_ptr.h \
   /usr/include/c++/15.2.1/bits/formatfwd.h \
-  /usr/include/c++/15.2.1/bits/fstream.tcc \
+  /usr/include/c++/15.2.1/bits/fs_dir.h \
+  /usr/include/c++/15.2.1/bits/fs_fwd.h \
+  /usr/include/c++/15.2.1/bits/fs_ops.h \
+  /usr/include/c++/15.2.1/bits/fs_path.h \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
@@ -726,6 +729,7 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/c++/15.2.1/chrono \
   /usr/include/c++/15.2.1/climits \
   /usr/include/c++/15.2.1/clocale \
+  /usr/include/c++/15.2.1/codecvt \
   /usr/include/c++/15.2.1/compare \
   /usr/include/c++/15.2.1/concepts \
   /usr/include/c++/15.2.1/cstddef \
@@ -745,14 +749,13 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/c++/15.2.1/ext/numeric_traits.h \
   /usr/include/c++/15.2.1/ext/string_conversions.h \
   /usr/include/c++/15.2.1/ext/type_traits.h \
+  /usr/include/c++/15.2.1/filesystem \
   /usr/include/c++/15.2.1/format \
-  /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
-  /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/iterator \
   /usr/include/c++/15.2.1/limits \
@@ -787,10 +790,8 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/c++/15.2.1/variant \
   /usr/include/c++/15.2.1/vector \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -1400,27 +1401,17 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/asm/posix_types.h \
   /usr/include/asm/posix_types_64.h \
   /usr/include/asm/types.h \
-  /usr/include/asm/unistd.h \
-  /usr/include/asm/unistd_64.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
-  /usr/include/bits/confname.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
-  /usr/include/bits/environments.h \
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
-  /usr/include/bits/getopt_core.h \
-  /usr/include/bits/getopt_posix.h \
   /usr/include/bits/libc-header-start.h \
-  /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
-  /usr/include/bits/posix1_lim.h \
-  /usr/include/bits/posix2_lim.h \
-  /usr/include/bits/posix_opt.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
@@ -1434,7 +1425,6 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
-  /usr/include/bits/syscall.h \
   /usr/include/bits/thread-shared-types.h \
   /usr/include/bits/time.h \
   /usr/include/bits/time64.h \
@@ -1467,16 +1457,12 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
-  /usr/include/bits/uio_lim.h \
-  /usr/include/bits/unistd_ext.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
-  /usr/include/bits/xopen_lim.h \
   /usr/include/c++/15.2.1/array \
-  /usr/include/c++/15.2.1/backward/auto_ptr.h \
   /usr/include/c++/15.2.1/backward/binders.h \
   /usr/include/c++/15.2.1/bit \
   /usr/include/c++/15.2.1/bits/algorithmfwd.h \
@@ -1484,9 +1470,6 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/c++/15.2.1/bits/alloc_traits.h \
   /usr/include/c++/15.2.1/bits/allocated_ptr.h \
   /usr/include/c++/15.2.1/bits/allocator.h \
-  /usr/include/c++/15.2.1/bits/atomic_base.h \
-  /usr/include/c++/15.2.1/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/15.2.1/bits/atomic_wait.h \
   /usr/include/c++/15.2.1/bits/basic_ios.h \
   /usr/include/c++/15.2.1/bits/basic_ios.tcc \
   /usr/include/c++/15.2.1/bits/basic_string.h \
@@ -1505,6 +1488,10 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/c++/15.2.1/bits/exception_defines.h \
   /usr/include/c++/15.2.1/bits/exception_ptr.h \
   /usr/include/c++/15.2.1/bits/formatfwd.h \
+  /usr/include/c++/15.2.1/bits/fs_dir.h \
+  /usr/include/c++/15.2.1/bits/fs_fwd.h \
+  /usr/include/c++/15.2.1/bits/fs_ops.h \
+  /usr/include/c++/15.2.1/bits/fs_path.h \
   /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
@@ -1540,16 +1527,13 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/c++/15.2.1/bits/ranges_algobase.h \
   /usr/include/c++/15.2.1/bits/ranges_base.h \
   /usr/include/c++/15.2.1/bits/ranges_cmp.h \
-  /usr/include/c++/15.2.1/bits/ranges_uninitialized.h \
   /usr/include/c++/15.2.1/bits/ranges_util.h \
   /usr/include/c++/15.2.1/bits/refwrap.h \
   /usr/include/c++/15.2.1/bits/requires_hosted.h \
   /usr/include/c++/15.2.1/bits/shared_ptr.h \
-  /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
   /usr/include/c++/15.2.1/bits/sstream.tcc \
   /usr/include/c++/15.2.1/bits/std_abs.h \
-  /usr/include/c++/15.2.1/bits/std_mutex.h \
   /usr/include/c++/15.2.1/bits/stl_algo.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
   /usr/include/c++/15.2.1/bits/stl_bvector.h \
@@ -1560,7 +1544,6 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/15.2.1/bits/stl_pair.h \
-  /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h \
   /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
   /usr/include/c++/15.2.1/bits/stl_vector.h \
@@ -1581,8 +1564,8 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/c++/15.2.1/cerrno \
   /usr/include/c++/15.2.1/charconv \
   /usr/include/c++/15.2.1/chrono \
-  /usr/include/c++/15.2.1/climits \
   /usr/include/c++/15.2.1/clocale \
+  /usr/include/c++/15.2.1/codecvt \
   /usr/include/c++/15.2.1/compare \
   /usr/include/c++/15.2.1/concepts \
   /usr/include/c++/15.2.1/cstddef \
@@ -1602,6 +1585,7 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/c++/15.2.1/ext/numeric_traits.h \
   /usr/include/c++/15.2.1/ext/string_conversions.h \
   /usr/include/c++/15.2.1/ext/type_traits.h \
+  /usr/include/c++/15.2.1/filesystem \
   /usr/include/c++/15.2.1/format \
   /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/initializer_list \
@@ -1612,13 +1596,10 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/limits \
   /usr/include/c++/15.2.1/locale \
-  /usr/include/c++/15.2.1/memory \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/numbers \
   /usr/include/c++/15.2.1/optional \
   /usr/include/c++/15.2.1/ostream \
-  /usr/include/c++/15.2.1/pstl/execution_defs.h \
-  /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
   /usr/include/c++/15.2.1/ratio \
   /usr/include/c++/15.2.1/span \
@@ -1655,10 +1636,7 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/libintl.h \
-  /usr/include/limits.h \
-  /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
-  /usr/include/linux/limits.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/sched/types.h \
   /usr/include/linux/stddef.h \
@@ -1673,18 +1651,13 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
-  /usr/include/sys/syscall.h \
   /usr/include/sys/types.h \
-  /usr/include/syscall.h \
   /usr/include/time.h \
-  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
 
 CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
   /home/p1rat/code/rwal/src/startup_flows/startup_flows.h \
@@ -2048,7 +2021,6 @@ CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: /home/p1rat/code/rwal/src/net/Cur
   /usr/include/c++/15.2.1/bits/fs_fwd.h \
   /usr/include/c++/15.2.1/bits/fs_ops.h \
   /usr/include/c++/15.2.1/bits/fs_path.h \
-  /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
   /usr/include/c++/15.2.1/bits/gslice.h \
@@ -2168,13 +2140,11 @@ CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: /home/p1rat/code/rwal/src/net/Cur
   /usr/include/c++/15.2.1/ext/type_traits.h \
   /usr/include/c++/15.2.1/filesystem \
   /usr/include/c++/15.2.1/forward_list \
-  /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
-  /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/iterator \
   /usr/include/c++/15.2.1/limits \
@@ -2221,10 +2191,8 @@ CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: /home/p1rat/code/rwal/src/net/Cur
   /usr/include/c++/15.2.1/vector \
   /usr/include/c++/15.2.1/version \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -2707,7 +2675,6 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/bits/fs_fwd.h \
   /usr/include/c++/15.2.1/bits/fs_ops.h \
   /usr/include/c++/15.2.1/bits/fs_path.h \
-  /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
@@ -2796,7 +2763,6 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/ext/string_conversions.h \
   /usr/include/c++/15.2.1/ext/type_traits.h \
   /usr/include/c++/15.2.1/filesystem \
-  /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
@@ -2823,10 +2789,8 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/unordered_map \
   /usr/include/c++/15.2.1/vector \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -3020,7 +2984,6 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: /home/p1rat/code/rwal/
   /usr/include/c++/15.2.1/bits/fs_fwd.h \
   /usr/include/c++/15.2.1/bits/fs_ops.h \
   /usr/include/c++/15.2.1/bits/fs_path.h \
-  /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
   /usr/include/c++/15.2.1/bits/gslice.h \
@@ -3140,13 +3103,11 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: /home/p1rat/code/rwal/
   /usr/include/c++/15.2.1/ext/type_traits.h \
   /usr/include/c++/15.2.1/filesystem \
   /usr/include/c++/15.2.1/forward_list \
-  /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
-  /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/iterator \
   /usr/include/c++/15.2.1/limits \
@@ -3193,10 +3154,8 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: /home/p1rat/code/rwal/
   /usr/include/c++/15.2.1/vector \
   /usr/include/c++/15.2.1/version \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -4294,12 +4253,6 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/climits:
 
-/usr/include/c++/15.2.1/fstream:
-
-/usr/include/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/nlohmann/detail/meta/call_std/begin.hpp:
-
 /usr/include/c++/15.2.1/memory:
 
 /usr/include/c++/15.2.1/charconv:
@@ -4315,16 +4268,6 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/stdlib.h:
 
 /usr/include/c++/15.2.1/utility:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
-
-/usr/include/c++/15.2.1/bits/stl_iterator.h:
-
-/usr/include/qt/QtCore/qgenericatomic.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h:
-
-/usr/include/asm-generic/sockios.h:
 
 /usr/include/sys/socket.h:
 
@@ -4367,6 +4310,12 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/qt/QtCore/qcoreevent.h:
 
 /usr/include/qt/QtCore/qflags.h:
+
+/usr/include/c++/15.2.1/bits/stl_iterator.h:
+
+/usr/include/qt/QtCore/qgenericatomic.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
 
 /usr/include/qt/QtCore/qglobalstatic.h:
 
@@ -4571,6 +4520,16 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
 
 /usr/include/bits/struct_stat.h:
+
+/usr/include/c++/15.2.1/fstream:
+
+/usr/include/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/nlohmann/detail/meta/call_std/begin.hpp:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h:
+
+/usr/include/asm-generic/sockios.h:
 
 /usr/include/qt/QtCore/qmetatype.h:
 

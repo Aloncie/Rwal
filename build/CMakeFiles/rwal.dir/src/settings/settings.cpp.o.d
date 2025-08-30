@@ -181,8 +181,7 @@ CMakeFiles/rwal.dir/src/settings/settings.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
  /usr/include/c++/15.2.1/bits/fs_dir.h \
  /usr/include/c++/15.2.1/bits/fs_ops.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/iostream \
- /usr/include/c++/15.2.1/fstream \
+ /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc /usr/include/c++/15.2.1/vector \
@@ -192,4 +191,4 @@ CMakeFiles/rwal.dir/src/settings/settings.cpp.o: \
  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
  /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
  /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
- /usr/include/linux/close_range.h
+ /usr/include/linux/close_range.h /usr/include/c++/15.2.1/iostream

@@ -331,9 +331,5 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /home/p1rat/code/rwal/src/keywords/keywords.h \
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
  /home/p1rat/code/rwal/src/funcs/funcs.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/iostream \
- /usr/include/c++/15.2.1/fstream \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/15.2.1/bits/fstream.tcc \
+ /home/p1rat/code/rwal/src/logs/logs.h \
  /home/p1rat/code/rwal/src/settings/settings.h
