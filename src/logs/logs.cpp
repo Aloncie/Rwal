@@ -1,10 +1,15 @@
 #include "logs.h"
+#include "CLI/CLI.h"
 #include <chrono>
 #include <cstdint>
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
+#include <unistd.h>      
+#include <sys/stat.h>    
+#include <sys/types.h>   
+#include <pwd.h>
 
 std::string Logs::get_current_time(){
 	auto now = std::chrono::system_clock::now();
@@ -28,8 +33,10 @@ void Logs::write_logs(std::string message){
 	if (f.is_open()){
 		f << get_current_time() << " " << message << "\n";
 	}
-	else
-		std::cerr << "Error create/open logs" << std::endl;
+	else{
+		MenuManager::getInstatce().show_message("Error of opening logs");
+		MenuManager::getInstatce().dodgeMessage("Error of opening logs");
+	}
 }
 
 void Logs::refresh_logs(fs::path& logs_path){
@@ -43,4 +50,22 @@ void Logs::refresh_logs(fs::path& logs_path){
 	}	
 	
 	std::ofstream f(logs_path, std::ios::out);	
+	f.close();
+	
+	if (chmod(logs_path.c_str(), 0644) != 0){
+		write_logs("Failed to change mod of logs\n Try to fix it yourself");
+		MenuManager::getInstatce().show_message("Critical error of logs. More info in logs.");	
+	}
+	if (geteuid() == 0){
+		const char* sudo_user = std::getenv("SUDO_USER");
+		if (sudo_user){
+			struct passw *pw = getpwnam(sudo_user);
+			if (pw){
+				if (chown(logs_path.c_str(), pw->pw_uid, pw->pw_gid) != 0){
+					write_logs("Failed to change owner of logs\n Try to fix it yourself");
+					MenuManager::getInstatce().show_message("Critical error of logs. More info in logs.");
+				}
+			}
+		}	
+	}	
 }

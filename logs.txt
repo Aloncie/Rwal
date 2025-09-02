@@ -1,2 +1,10 @@
-[2025-08-30 | 20:01:12] Starting program
-[2025-08-30 | 20:01:14] Ending program
+[2025-09-02 | 19:52:18] Pictures location: /home/p1rat/Pictures
+[2025-09-02 | 19:52:18] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal/
+[2025-09-02 | 19:52:18] Try to read timer file
+[2025-09-02 | 19:52:19] Try to read timer file
+[2025-09-02 | 19:52:19] Try to know 'Pictures' location
+[2025-09-02 | 19:52:19] Pictures location: /home/p1rat/Pictures
+[2025-09-02 | 19:52:19] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal/
+[2025-09-02 | 19:52:22] Ending program
