@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QString>
 #include "logs/logs.h"
+#include "CLI/CLI.h"
 
 void change_wallpaper(int argc, char** argv,std::string local){
 
@@ -30,6 +31,7 @@ void change_wallpaper(int argc, char** argv,std::string local){
 	if (reply.type() == QDBusMessage::ErrorMessage) {
 		Logs l;
 		l.write_logs("Error D-Bus");
+		MenuManager::getInstatce().show_message("Failed of changing wallpaper");
 	}
 
 }

@@ -5,7 +5,6 @@
 #include "Menus.h"
 #include "CLI.h"
 #include <iostream>
-#include <vector>
 
 void MenuManager::clear_last_lines() {
     for (int i = 0; i < count_ref; ++i) {
@@ -17,7 +16,12 @@ void MenuManager::clear_last_lines() {
 
 extern std::map<std::string,int> countStr;
 
-MenuManager::MenuManager(int& count) : count_ref(count) {}
+MenuManager::MenuManager() : count_ref(0) {}
+
+MenuManager& MenuManager::getInstatce(){
+	static MenuManager instance;
+	return instance;
+}
 
 char MenuManager::charactarInput(const MenuConfig& config){
 	char choice = ' ';
@@ -92,6 +96,9 @@ void MenuManager::countOperatorPlus(int count){
 }
 
 void MenuManager::show_message(std::string message){
+	if (std::find(dontShowAgain.begin(),dontShowAgain.end(),message) != dontShowAgain.end())
+		return;
+
 	std::string cp = message;
 	std::transform(cp.begin(),cp.end(),cp.begin(), ::tolower);
 	if (cp.find("failed") == std::string::npos&&cp.find("error") == std::string::npos)
@@ -100,4 +107,17 @@ void MenuManager::show_message(std::string message){
 	else
 		//red
    		std::cout << "\033[1;31m" << message << "\033[0m" << std::endl;
+	count_ref++;
+	for (int i = 0; i < message.size(); i++){
+		if (message[i] == '\\' && message[i+1] == 'n'){
+			i++;
+			count_ref++;
+		}
+	}
+}
+
+void MenuManager::dodgeMessage(std::string message){
+	if (std::find(dontShowAgain.begin(),dontShowAgain.end(),message) != dontShowAgain.end())
+		return;
+	dontShowAgain.push_back(message);
 }

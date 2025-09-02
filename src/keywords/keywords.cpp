@@ -1,5 +1,6 @@
 #include "keywords.h"
 #include "logs/logs.h"
+#include "CLI/CLI.h"
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -20,14 +21,14 @@ std::string Keywords::look_keywords(){
 	else {
 		Logs l;
 		l.write_logs("File open error ");
-		return nullptr;
+		return "";
 	}
 	Keywords k;
 	k.format_str(result);
 	return result;
 }
 
-std::string Keywords::get_keywords(int& count){
+std::string Keywords::get_keywords(){
 	std::string result = "";
 	Keywords k;
 
@@ -40,10 +41,9 @@ std::string Keywords::get_keywords(int& count){
 	}
 	
 	std::cout << "\nThere is not file with keywords." <<  "\nPlease write keywords to find wallpaper( use ',' to devide them): ";
-	count+=3;
+	MenuManager::getInstatce().countOperatorPlus(3);
 	while (result == "")
 		std::getline(std::cin,result);
-	//std::cin >> result;
 	k.format_str(result);
 	std::ofstream ofile;
 
@@ -56,17 +56,17 @@ std::string Keywords::get_keywords(int& count){
 	else{ 
 		Logs l;
 		l.write_logs("File create error ");
-		return nullptr;
+		return "";
 	}
 	return result;
 }
 
 std::vector<std::string> Keywords::divide_keywords(std::string str){
 	std::vector<std::string> keywords;
-	str += ' ';
+	//str += ' ';
 	std::string t = "";
 	for (size_t i = 0; i < str.size(); i++) {
-		if (str[i] != ' ')
+		if (str[i] != ' '||i == str.size()-1)
 			t += str[i];
 		else {
 			keywords.push_back(t);
@@ -94,11 +94,13 @@ void Keywords::open_keywords_editor(){
 	struct stat buffer;
     if (stat(keywords_path.c_str(), &buffer) != 0) {
 		l.write_logs("Error: File doesn't exist or inaccessible: " + keywords_path);
+		MenuManager::getInstatce().show_message("Error: File doesn't exist or inaccessible: " + keywords_path);
         return;
     }
 
     if (access(keywords_path.c_str(), W_OK) != 0) {
 		l.write_logs("Error: No write permissions for file: " + keywords_path);
+		MenuManager::getInstatce().show_message("Error: No write permissions for file: " + keywords_path);
         return;
     }
 
