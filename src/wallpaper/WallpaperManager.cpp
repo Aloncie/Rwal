@@ -23,7 +23,7 @@ void save_wallpaper(std::string from){
 	}
 }
 
-void refresh_wallpaper(int argc, char *argv[],std::string mode,int count){
+void refresh_wallpaper(int argc, char *argv[],std::string mode){
 	Logs l;
 	std::string url, local, page, pageCount;
 	int last_page = 1;
@@ -32,7 +32,7 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode,int count){
 	if (mode == "change")
 		keywords = k.divide_keywords(k.look_keywords());
 	else if (mode == "core")
-		keywords = k.divide_keywords(k.get_keywords(count));
+		keywords = k.divide_keywords(k.get_keywords());
 
 	do {
 		std::string kw = keywords[random(keywords.size()-1)];

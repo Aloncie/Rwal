@@ -5,26 +5,23 @@
 #include "startup_flows.h"
 #include "settings/settings.h"
 #include "CLI/Menus.h"
-#include <iostream>
+
+MenuManager& m = MenuManager::getInstatce();
 
 void Flows::core(int argc,char **argv){
 	if (true){
 		Logs l;
 		l.write_logs("Starting program");
 	}
-	
-	int count = 0;
 
-	MenuManager m(count);
 	char x = m.charactarInput(MAIN_MENU);
 	while (x != 'q'){
 		if (x == '1'){
-		   	refresh_wallpaper(argc,argv,"core",count); 
+		   	refresh_wallpaper(argc,argv,"core"); 
 		}
 		else if (x == '2'){
 			save_wallpaper(where_are_wallpaper()); 
-			std::cout << "Successful download image" << std::endl;
-			m.countOperatorPlus(1);
+			m.show_message("Successful download image");
 		}
 		else if (x == '3'){ 
 				Keywords k;
@@ -46,7 +43,6 @@ void Flows::core(int argc,char **argv){
 					m.clear_last_lines();
 					std::string y = m.arrowInput(TIMER_MENU);
 					m.show_message(t.edit_timer(y));
-					m.countOperatorPlus(2);
 				}
 				x = m.charactarInput(SETTINGS_MENU);
 			}
