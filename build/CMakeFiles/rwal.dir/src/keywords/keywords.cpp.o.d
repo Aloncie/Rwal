@@ -185,7 +185,8 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /usr/include/c++/15.2.1/ext/aligned_buffer.h \
  /usr/include/c++/15.2.1/bits/align.h \
  /usr/include/c++/15.2.1/bits/fs_dir.h \
- /usr/include/c++/15.2.1/bits/fs_ops.h /usr/include/c++/15.2.1/fstream \
+ /usr/include/c++/15.2.1/bits/fs_ops.h \
+ /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \

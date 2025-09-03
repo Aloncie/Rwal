@@ -6,6 +6,8 @@
 #include "CLI.h"
 #include <iostream>
 
+std::vector<std::string> MenuManager::dontShowAgain;
+
 void MenuManager::clear_last_lines() {
     for (int i = 0; i < count_ref; ++i) {
         std::cout << "\033[A\033[2K";
@@ -109,8 +111,7 @@ void MenuManager::show_message(std::string message){
    		std::cout << "\033[1;31m" << message << "\033[0m" << std::endl;
 	count_ref++;
 	for (int i = 0; i < message.size(); i++){
-		if (message[i] == '\\' && message[i+1] == 'n'){
-			i++;
+		if (message[i] == '\n'){
 			count_ref++;
 		}
 	}
