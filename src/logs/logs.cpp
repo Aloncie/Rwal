@@ -59,7 +59,7 @@ void Logs::refresh_logs(fs::path& logs_path){
 	if (geteuid() == 0){
 		const char* sudo_user = std::getenv("SUDO_USER");
 		if (sudo_user){
-			struct passw *pw = getpwnam(sudo_user);
+			struct passwd *pw = getpwnam(sudo_user);
 			if (pw){
 				if (chown(logs_path.c_str(), pw->pw_uid, pw->pw_gid) != 0){
 					write_logs("Failed to change owner of logs\n Try to fix it yourself");

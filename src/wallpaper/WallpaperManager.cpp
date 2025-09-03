@@ -5,6 +5,7 @@
 #include "funcs/funcs.h"
 #include "logs/logs.h"
 #include "settings/settings.h"
+#include "CLI/CLI.h"
 #include <exception>
 #include <filesystem>
 
@@ -12,6 +13,11 @@ namespace fs = std::filesystem;
 
 void save_wallpaper(std::string from){
 	Logs l;
+	if (from == ""){
+		MenuManager::getInstatce().show_message("Failed to save wallpaper. More info in logs");
+		l.write_logs("Failed to save wallpaper. Wrong input data");
+		return;
+	}
 	try{
 		std::string rwal = get_pictures_path();
 		l.write_logs("Output of rwal_catalog: " + rwal);
@@ -66,7 +72,7 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 std::string where_are_wallpaper(){
 	fs::path dir_path =	SOURCE_DIR;
 	if (dir_path == "")
-		return nullptr;
+		return "";
 	try {
 		for (const auto& item : fs::directory_iterator(dir_path)){
 			if (fs::is_regular_file(item.path())){
@@ -81,5 +87,5 @@ std::string where_are_wallpaper(){
 		Logs l;
 		l.write_logs("Error of find downloaded image: " + std::string(e.what()));
 	}
-	return nullptr;
+	return "";
 }

@@ -1,5 +1,6 @@
 #include "settings.h"
 #include "logs/logs.h"
+#include "CLI/CLI.h"
 #include <fstream>
 #include <exception>
 #include <vector>
@@ -67,6 +68,10 @@ fs::path get_pictures_path(){
 }
 
 void Timer::create_systemd_timer(){
+
+	//we must have a root rights
+	//be careful with it if u want to call this func in some space
+	
 	Logs l;
 	l.write_logs("Try to create/check service&timer files");
 	const fs::path service_dir = "/etc/systemd/system";
@@ -74,12 +79,6 @@ void Timer::create_systemd_timer(){
 	const fs::path service_file = service_dir / (service_name + ".service");
 	const fs::path timer_file = service_dir / (service_name + ".timer");
 
-	if (getuid() != 0) {
-		l.write_logs("Failed - there are not root rights");
-		std::cerr << "Need root rights. Please run program with 'sudo'" << std::endl; 	
-		return;
-	}
-	
 	if (!fs::exists(service_file)||fs::file_size(service_file) == 0){
 		l.write_logs("There is not service file");
 		l.write_logs("Try to create service file");
@@ -177,7 +176,7 @@ std::string Timer::edit_timer(std::string value){
 
 	if (!in_file){
 		l.write_logs("Failed to open rwal.timer to read");
-		return "Failed set timer. More info in logs.  >_<";
+		return "Failed set timer. More info in logs.";
 	}	
 	while (getline(in_file,line)){
 		if (line.find("OnCalendar=") == std::string::npos)
@@ -202,13 +201,13 @@ std::string Timer::edit_timer(std::string value){
 
 	if (!found){
 		l.write_logs("Failed to find string");
-		return "Failed set timer. More info in logs. >_<";
+		return "Failed set timer. More info in logs.";
 	}
 
 	std::ofstream out_file("/etc/systemd/system/rwal.timer");
 	if (!out_file){
 		l.write_logs("Failed to create/open rwal.timer to write");
-		return "Failed set timer. More info in logs. >_<";
+		return "Failed set timer. More info in logs.";
 	}
 	for (auto& l : lines)
 		out_file << l << "\n";
@@ -227,7 +226,7 @@ std::string Timer::edit_timer(std::string value){
 	}
 	else{
 		l.write_logs("Failed to activate timer");
-		return "Failed set timer. More info in logs. >_<";
+		return "Failed set timer. More info in logs.";
 	}
 }
 

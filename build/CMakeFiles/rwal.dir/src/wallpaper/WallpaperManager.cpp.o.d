@@ -332,4 +332,5 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
  /home/p1rat/code/rwal/src/funcs/funcs.h \
  /home/p1rat/code/rwal/src/logs/logs.h \
- /home/p1rat/code/rwal/src/settings/settings.h
+ /home/p1rat/code/rwal/src/settings/settings.h \
+ /home/p1rat/code/rwal/src/CLI/CLI.h

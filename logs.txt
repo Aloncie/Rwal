@@ -1,10 +1,17 @@
-[2025-09-02 | 19:52:18] Pictures location: /home/p1rat/Pictures
-[2025-09-02 | 19:52:18] The rwal catalog already exists.
+[2025-09-03 | 18:37:45] Try to know 'Pictures' location
+[2025-09-03 | 18:37:45] Pictures location: /home/p1rat/Pictures
+[2025-09-03 | 18:37:45] The rwal catalog already exists.
 Full path: /home/p1rat/Pictures/rwal/
-[2025-09-02 | 19:52:18] Try to read timer file
-[2025-09-02 | 19:52:19] Try to read timer file
-[2025-09-02 | 19:52:19] Try to know 'Pictures' location
-[2025-09-02 | 19:52:19] Pictures location: /home/p1rat/Pictures
-[2025-09-02 | 19:52:19] The rwal catalog already exists.
+[2025-09-03 | 18:37:45] Try to read timer file
+[2025-09-03 | 18:37:45] Try to read timer file
+[2025-09-03 | 18:37:45] Try to know 'Pictures' location
+[2025-09-03 | 18:37:45] Pictures location: /home/p1rat/Pictures
+[2025-09-03 | 18:37:45] The rwal catalog already exists.
 Full path: /home/p1rat/Pictures/rwal/
-[2025-09-02 | 19:52:22] Ending program
+[2025-09-03 | 18:37:47] Failed - there are not root rights
+[2025-09-03 | 18:37:47] Try to read timer file
+[2025-09-03 | 18:37:47] Try to know 'Pictures' location
+[2025-09-03 | 18:37:47] Pictures location: /home/p1rat/Pictures
+[2025-09-03 | 18:37:47] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal/
+[2025-09-03 | 18:37:50] Ending program

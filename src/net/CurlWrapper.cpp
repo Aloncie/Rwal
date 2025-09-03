@@ -97,9 +97,8 @@ std::string MyCurl::download_image(const std::string& image_url){
 	Logs l;
 	l.write_logs("Try to delete old image");
 
-	fs::path dir_path("/home/p1rat/code/rwal");
 	try {
-		for (const auto& item : fs::directory_iterator(dir_path)){
+	   	for (const auto& item : fs::directory_iterator(SOURCE_DIR)){
 			if (fs::is_regular_file(item.path())){
 				auto name = item.path().filename().string();
 				if (name.rfind("wallpaper-", 0) == 0) {
@@ -113,7 +112,7 @@ std::string MyCurl::download_image(const std::string& image_url){
 		l.write_logs("Error of delete old image: " + std::string(e.what()));
 	}
 
-	std::string image_name = "/home/p1rat/code/rwal/wallpaper-";
+	std::string image_name = std::string(SOURCE_DIR) + "/wallpaper-";
 	for (int i = 0;i < 6;i++){
 		image_name+=image_url[41+i];
 	}
@@ -127,7 +126,7 @@ std::string MyCurl::download_image(const std::string& image_url){
 	CURL* image_curl = curl_easy_init();
 	if (!image_curl){
 		l.write_logs("Failed to init CURL to image download");
-		return dir_path;
+		return "";
 	}
 	else {
 		l.write_logs("Successful init CURL to image download");
@@ -135,7 +134,7 @@ std::string MyCurl::download_image(const std::string& image_url){
 	FILE* fp = fopen(image_name.c_str(),"wb");
 	if (!fp){
 		l.write_logs("Failed to create image file");
-		return dir_path;
+		return "";
 	}
 	else
 		l.write_logs("Successful creating image file");
@@ -149,7 +148,7 @@ std::string MyCurl::download_image(const std::string& image_url){
 	CURLcode res = curl_easy_perform(image_curl);
 	if (res != CURLE_OK){
 		l.write_logs("Failed download image: " + std::string(curl_easy_strerror(res)));
-		return dir_path;
+		return "";
 	}
 	else
 		l.write_logs("Successful download image" + image_name);
