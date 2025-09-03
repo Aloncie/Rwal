@@ -294,4 +294,5 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/c++/15.2.1/bits/fs_fwd.h \
  /usr/include/c++/15.2.1/bits/fs_path.h /usr/include/c++/15.2.1/codecvt \
  /usr/include/c++/15.2.1/bits/fs_dir.h \
- /usr/include/c++/15.2.1/bits/fs_ops.h
+ /usr/include/c++/15.2.1/bits/fs_ops.h \
+ /home/p1rat/code/rwal/src/CLI/CLI.h

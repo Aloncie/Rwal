@@ -511,6 +511,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp \
+  /home/p1rat/code/rwal/src/CLI/CLI.h \
   /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
   /home/p1rat/code/rwal/src/logs/logs.h \
   /usr/include/alloca.h \
@@ -1117,6 +1118,7 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: /home/p1rat/code/rwal/src/funcs/funcs
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
 
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywords/keywords.cpp \
+  /home/p1rat/code/rwal/src/CLI/CLI.h \
   /home/p1rat/code/rwal/src/keywords/keywords.h \
   /home/p1rat/code/rwal/src/logs/logs.h \
   /usr/include/alloca.h \
@@ -1388,6 +1390,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
 
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp \
+  /home/p1rat/code/rwal/src/CLI/CLI.h \
   /home/p1rat/code/rwal/src/logs/logs.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
@@ -2321,6 +2324,7 @@ CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: /home/p1rat/code/rwal/src/net/Cur
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: /home/p1rat/code/rwal/src/settings/settings.cpp \
+  /home/p1rat/code/rwal/src/CLI/CLI.h \
   /home/p1rat/code/rwal/src/logs/logs.h \
   /home/p1rat/code/rwal/src/settings/settings.h \
   /usr/include/alloca.h \
@@ -2785,7 +2789,6 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
-  /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/limits \
   /usr/include/c++/15.2.1/locale \
@@ -2850,6 +2853,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
 
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp \
+  /home/p1rat/code/rwal/src/CLI/CLI.h \
   /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
   /home/p1rat/code/rwal/src/funcs/funcs.h \
   /home/p1rat/code/rwal/src/keywords/keywords.h \
