@@ -41,7 +41,11 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 		keywords = k.divide_keywords(k.get_keywords());
 
 	do {
-		std::string kw = keywords[random(keywords.size()-1)];
+		std::string kw;
+		if (keywords.size() == 1)
+			kw = keywords[0];
+		else
+			kw = keywords[random(keywords.size()-1)];
 		MyCurl c("apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
 		c.get_request();
 		pageCount = c.get_data("meta","last_page");

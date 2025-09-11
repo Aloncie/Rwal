@@ -1,7 +1,5 @@
 #include "startup_flows/startup_flows.h"
 #include "wallpaper/WallpaperManager.h"
-#include <exception>
-#include <fstream>
 #include <string>
 
 int main(int argc,char* argv[]){
@@ -11,7 +9,7 @@ int main(int argc,char* argv[]){
 		s = argv[1];
 
 //	if (s == "--help"  || s  == "-h")
-			
+
 	if (s == "--change" || s == "-c")
 		refresh_wallpaper(argc,argv,"change");
 	else 
