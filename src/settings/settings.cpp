@@ -1,7 +1,9 @@
 #include "settings.h"
 #include "logs/logs.h"
-#include "CLI/CLI.h"
 #include <fstream>
+#include <QCoreApplication>
+#include <QStandardPaths>
+#include <QFileInfo>
 #include <exception>
 #include <vector>
 #include <unistd.h>
@@ -234,4 +236,16 @@ bool Timer::check_timer_active_status(){
 	return system("systemctl is-active rwal.timer >/dev/null 2>&1") == 0;
 }
 
+QString getConfigPath(){
+	QCoreApplication::setApplicationName("rwal");
+	QCoreApplication::setOrganizationName("Aloncie");
 
+	QString configDir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+
+	QDir dir;
+
+	if (!dir.exists(configDir))
+		dir.mkpath(configDir);
+
+	return configDir + "/config.json";
+}

@@ -5,3 +5,5 @@
 /home/p1rat/code/rwal/build/CMakeFiles/install.dir
 /home/p1rat/code/rwal/build/CMakeFiles/install/local.dir
 /home/p1rat/code/rwal/build/CMakeFiles/install/strip.dir
+/home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen_timestamp_deps.dir
+/home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen.dir

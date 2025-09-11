@@ -1,5 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rwal.dir/link.d"
+  "CMakeFiles/rwal_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/rwal_autogen.dir/ParseCache.txt"
+  "rwal_autogen"
+  "CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o"
   "CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o.d"
   "CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o"
@@ -24,6 +29,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o.d"
   "rwal"
   "rwal.pdb"
+  "rwal_autogen/mocs_compilation.cpp"
+  "rwal_autogen/timestamp"
 )
 
 # Per-language clean rules from dependency scanning.

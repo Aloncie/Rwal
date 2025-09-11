@@ -175,6 +175,56 @@ rwal/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
 .PHONY : rwal/fast
 
+#=============================================================================
+# Target rules for targets named rwal_autogen_timestamp_deps
+
+# Build rule for target.
+rwal_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_autogen_timestamp_deps
+.PHONY : rwal_autogen_timestamp_deps
+
+# fast build rule for target.
+rwal_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen_timestamp_deps.dir/build.make CMakeFiles/rwal_autogen_timestamp_deps.dir/build
+.PHONY : rwal_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named rwal_autogen
+
+# Build rule for target.
+rwal_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_autogen
+.PHONY : rwal_autogen
+
+# fast build rule for target.
+rwal_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen.dir/build.make CMakeFiles/rwal_autogen.dir/build
+.PHONY : rwal_autogen/fast
+
+rwal_autogen/mocs_compilation.o: rwal_autogen/mocs_compilation.cpp.o
+.PHONY : rwal_autogen/mocs_compilation.o
+
+# target to build an object file
+rwal_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o
+.PHONY : rwal_autogen/mocs_compilation.cpp.o
+
+rwal_autogen/mocs_compilation.i: rwal_autogen/mocs_compilation.cpp.i
+.PHONY : rwal_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+rwal_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.i
+.PHONY : rwal_autogen/mocs_compilation.cpp.i
+
+rwal_autogen/mocs_compilation.s: rwal_autogen/mocs_compilation.cpp.s
+.PHONY : rwal_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+rwal_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s
+.PHONY : rwal_autogen/mocs_compilation.cpp.s
+
 src/CLI/CLI.o: src/CLI/CLI.cpp.o
 .PHONY : src/CLI/CLI.o
 
@@ -451,7 +501,12 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... rwal_autogen"
+	@echo "... rwal_autogen_timestamp_deps"
 	@echo "... rwal"
+	@echo "... rwal_autogen/mocs_compilation.o"
+	@echo "... rwal_autogen/mocs_compilation.i"
+	@echo "... rwal_autogen/mocs_compilation.s"
 	@echo "... src/CLI/CLI.o"
 	@echo "... src/CLI/CLI.i"
 	@echo "... src/CLI/CLI.s"
