@@ -243,6 +243,12 @@ Qt5Core_DIR:PATH=/usr/lib/cmake/Qt5Core
 //The directory containing a CMake configuration file for Qt5DBus.
 Qt5DBus_DIR:PATH=/usr/lib/cmake/Qt5DBus
 
+//The directory containing a CMake configuration file for Qt5Gui.
+Qt5Gui_DIR:PATH=/usr/lib/cmake/Qt5Gui
+
+//The directory containing a CMake configuration file for Qt5Widgets.
+Qt5Widgets_DIR:PATH=/usr/lib/cmake/Qt5Widgets
+
 //The directory containing a CMake configuration file for Qt5.
 Qt5_DIR:PATH=/usr/lib/cmake/Qt5
 

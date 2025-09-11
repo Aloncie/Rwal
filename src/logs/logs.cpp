@@ -24,7 +24,7 @@ void Logs::write_logs(std::string message){
 	fs::path logs_path = fs::path(SOURCE_DIR) / "logs.txt";
 	if (fs::exists(logs_path)){
 		const std::uintmax_t fileSize = fs::file_size(logs_path);
-		const std::uintmax_t limit_size = 1024;
+		const std::uintmax_t limit_size = 1024 * 1024;
 
 		if (fileSize > limit_size)
 			refresh_logs(logs_path);

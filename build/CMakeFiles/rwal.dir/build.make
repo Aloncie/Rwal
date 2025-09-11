@@ -69,13 +69,34 @@ include CMakeFiles/rwal.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/rwal.dir/flags.make
 
+rwal_autogen/timestamp: /usr/bin/moc
+rwal_autogen/timestamp: /usr/bin/uic
+rwal_autogen/timestamp: CMakeFiles/rwal.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target rwal"
+	/usr/bin/cmake -E cmake_autogen /home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen.dir/AutogenInfo.json Debug
+	/usr/bin/cmake -E touch /home/p1rat/code/rwal/build/rwal_autogen/timestamp
+
 CMakeFiles/rwal.dir/codegen:
 .PHONY : CMakeFiles/rwal.dir/codegen
+
+CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: CMakeFiles/rwal.dir/flags.make
+CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: rwal_autogen/mocs_compilation.cpp
+CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o -MF CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o -c /home/p1rat/code/rwal/build/rwal_autogen/mocs_compilation.cpp
+
+CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/build/rwal_autogen/mocs_compilation.cpp > CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/build/rwal_autogen/mocs_compilation.cpp -o CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp
 CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o -MF CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o.d -o CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o -c /home/p1rat/code/rwal/src/CLI/CLI.cpp
 
 CMakeFiles/rwal.dir/src/CLI/CLI.cpp.i: cmake_force
@@ -89,7 +110,7 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
 CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o -MF CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o.d -o CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o -c /home/p1rat/code/rwal/src/CLI/Menus.cpp
 
 CMakeFiles/rwal.dir/src/CLI/Menus.cpp.i: cmake_force
@@ -103,7 +124,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o -MF CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o.d -o CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o -c /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.i: cmake_force
@@ -117,7 +138,7 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: /home/p1rat/code/rwal/src/funcs/funcs.cpp
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o -MF CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o.d -o CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o -c /home/p1rat/code/rwal/src/funcs/funcs.cpp
 
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.i: cmake_force
@@ -131,7 +152,7 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywords/keywords.cpp
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o -MF CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o.d -o CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o -c /home/p1rat/code/rwal/src/keywords/keywords.cpp
 
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.i: cmake_force
@@ -145,7 +166,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rwal.dir/src/logs/logs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rwal.dir/src/logs/logs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/logs/logs.cpp.o -MF CMakeFiles/rwal.dir/src/logs/logs.cpp.o.d -o CMakeFiles/rwal.dir/src/logs/logs.cpp.o -c /home/p1rat/code/rwal/src/logs/logs.cpp
 
 CMakeFiles/rwal.dir/src/logs/logs.cpp.i: cmake_force
@@ -159,7 +180,7 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/main.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp
 CMakeFiles/rwal.dir/src/main.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rwal.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rwal.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/main.cpp.o -MF CMakeFiles/rwal.dir/src/main.cpp.o.d -o CMakeFiles/rwal.dir/src/main.cpp.o -c /home/p1rat/code/rwal/src/main.cpp
 
 CMakeFiles/rwal.dir/src/main.cpp.i: cmake_force
@@ -173,7 +194,7 @@ CMakeFiles/rwal.dir/src/main.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: /home/p1rat/code/rwal/src/net/CurlWrapper.cpp
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o -MF CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o.d -o CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o -c /home/p1rat/code/rwal/src/net/CurlWrapper.cpp
 
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.i: cmake_force
@@ -187,7 +208,7 @@ CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: /home/p1rat/code/rwal/src/settings/settings.cpp
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rwal.dir/src/settings/settings.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rwal.dir/src/settings/settings.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/settings/settings.cpp.o -MF CMakeFiles/rwal.dir/src/settings/settings.cpp.o.d -o CMakeFiles/rwal.dir/src/settings/settings.cpp.o -c /home/p1rat/code/rwal/src/settings/settings.cpp
 
 CMakeFiles/rwal.dir/src/settings/settings.cpp.i: cmake_force
@@ -201,7 +222,7 @@ CMakeFiles/rwal.dir/src/settings/settings.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp
 CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o -MF CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o.d -o CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o -c /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp
 
 CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.i: cmake_force
@@ -215,7 +236,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o -MF CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o.d -o CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o -c /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp
 
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.i: cmake_force
@@ -228,6 +249,7 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.s: cmake_force
 
 # Object files for target rwal
 rwal_OBJECTS = \
+"CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o" \
 "CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o" \
 "CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o" \
@@ -243,6 +265,7 @@ rwal_OBJECTS = \
 # External object files for target rwal
 rwal_EXTERNAL_OBJECTS =
 
+rwal: CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o
 rwal: CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o
 rwal: CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o
 rwal: CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
@@ -258,12 +281,14 @@ rwal: CMakeFiles/rwal.dir/build.make
 rwal: CMakeFiles/rwal.dir/compiler_depend.ts
 rwal: /usr/lib/libcurl.so
 rwal: /usr/lib/libQt5DBus.so.5.15.17
-rwal: /usr/lib/libQt5Core.so.5.15.17
+rwal: /usr/lib/libQt5Widgets.so.5.15.17
 rwal: /usr/lib/libcurses.so
 rwal: /usr/lib/libform.so
 rwal: /usr/lib/libcurl.so
+rwal: /usr/lib/libQt5Gui.so.5.15.17
+rwal: /usr/lib/libQt5Core.so.5.15.17
 rwal: CMakeFiles/rwal.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable rwal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable rwal"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rwal.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -274,7 +299,7 @@ CMakeFiles/rwal.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/rwal.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/rwal.dir/clean
 
-CMakeFiles/rwal.dir/depend:
+CMakeFiles/rwal.dir/depend: rwal_autogen/timestamp
 	cd /home/p1rat/code/rwal/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/p1rat/code/rwal /home/p1rat/code/rwal /home/p1rat/code/rwal/build /home/p1rat/code/rwal/build /home/p1rat/code/rwal/build/CMakeFiles/rwal.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/rwal.dir/depend
 

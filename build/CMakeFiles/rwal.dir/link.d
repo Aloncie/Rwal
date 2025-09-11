@@ -2,6 +2,7 @@ rwal: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
+  CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o \
   CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o \
   CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o \
   CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o \
@@ -15,7 +16,7 @@ rwal: \
   CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o \
   /usr/lib/libcurl.so \
   /usr/lib/libQt5DBus.so.5.15.17 \
-  /usr/lib/libQt5Core.so.5.15.17 \
+  /usr/lib/libQt5Widgets.so.5.15.17 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
@@ -25,6 +26,8 @@ rwal: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libformw.so \
   /usr/lib/libcurl.so \
+  /usr/lib/libQt5Gui.so.5.15.17 \
+  /usr/lib/libQt5Core.so.5.15.17 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -75,6 +78,13 @@ rwal: \
   /usr/lib/libz.so.1 \
   /usr/lib32/libdbus-1.so.3 \
   /usr/lib/libdbus-1.so.3 \
+  /usr/lib32/libGL.so.1 \
+  /usr/lib/libGL.so.1 \
+  /usr/lib32/libpng16.so.16 \
+  /usr/lib/libpng16.so.16 \
+  /usr/lib32/libharfbuzz.so.0 \
+  /usr/lib/libharfbuzz.so.0 \
+  /usr/lib/libmd4c.so.0 \
   /usr/lib32/libsystemd.so.0 \
   /usr/lib/libsystemd.so.0 \
   /usr/lib/libdouble-conversion.so.3 \
@@ -103,18 +113,37 @@ rwal: \
   /usr/lib/libresolv.so.2 \
   /usr/lib32/libbrotlicommon.so.1 \
   /usr/lib/libbrotlicommon.so.1 \
+  /usr/lib32/libGLdispatch.so.0 \
+  /usr/lib/libGLdispatch.so.0 \
+  /usr/lib32/libGLX.so.0 \
+  /usr/lib/libGLX.so.0 \
+  /usr/lib32/libfreetype.so.6 \
+  /usr/lib/libfreetype.so.6 \
+  /usr/lib/libgraphite2.so.3 \
   /usr/lib32/libcap.so.2 \
   /usr/lib/libcap.so.2 \
   /usr/lib32/libicudata.so.76 \
   /usr/lib/libicudata.so.76 \
   /usr/lib32/libpcre2-8.so.0 \
-  /usr/lib/libpcre2-8.so.0
+  /usr/lib/libpcre2-8.so.0 \
+  /usr/lib32/libX11.so.6 \
+  /usr/lib/libX11.so.6 \
+  /usr/lib32/libbz2.so.1.0 \
+  /usr/lib/libbz2.so.1.0 \
+  /usr/lib32/libxcb.so.1 \
+  /usr/lib/libxcb.so.1 \
+  /usr/lib32/libXau.so.6 \
+  /usr/lib/libXau.so.6 \
+  /usr/lib32/libXdmcp.so.6 \
+  /usr/lib/libXdmcp.so.6
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
+
+CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o:
 
 CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o:
 
@@ -142,7 +171,7 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libQt5DBus.so.5.15.17:
 
-/usr/lib/libQt5Core.so.5.15.17:
+/usr/lib/libQt5Widgets.so.5.15.17:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so:
 
@@ -161,6 +190,10 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libformw.so:
 
 /usr/lib/libcurl.so:
+
+/usr/lib/libQt5Gui.so.5.15.17:
+
+/usr/lib/libQt5Core.so.5.15.17:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 
@@ -262,6 +295,20 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libdbus-1.so.3:
 
+/usr/lib32/libGL.so.1:
+
+/usr/lib/libGL.so.1:
+
+/usr/lib32/libpng16.so.16:
+
+/usr/lib/libpng16.so.16:
+
+/usr/lib32/libharfbuzz.so.0:
+
+/usr/lib/libharfbuzz.so.0:
+
+/usr/lib/libmd4c.so.0:
+
 /usr/lib32/libsystemd.so.0:
 
 /usr/lib/libsystemd.so.0:
@@ -318,6 +365,20 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libbrotlicommon.so.1:
 
+/usr/lib32/libGLdispatch.so.0:
+
+/usr/lib/libGLdispatch.so.0:
+
+/usr/lib32/libGLX.so.0:
+
+/usr/lib/libGLX.so.0:
+
+/usr/lib32/libfreetype.so.6:
+
+/usr/lib/libfreetype.so.6:
+
+/usr/lib/libgraphite2.so.3:
+
 /usr/lib32/libcap.so.2:
 
 /usr/lib/libcap.so.2:
@@ -329,3 +390,23 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 /usr/lib32/libpcre2-8.so.0:
 
 /usr/lib/libpcre2-8.so.0:
+
+/usr/lib32/libX11.so.6:
+
+/usr/lib/libX11.so.6:
+
+/usr/lib32/libbz2.so.1.0:
+
+/usr/lib/libbz2.so.1.0:
+
+/usr/lib32/libxcb.so.1:
+
+/usr/lib/libxcb.so.1:
+
+/usr/lib32/libXau.so.6:
+
+/usr/lib/libXau.so.6:
+
+/usr/lib32/libXdmcp.so.6:
+
+/usr/lib/libXdmcp.so.6:

@@ -76,21 +76,24 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/rwal.dir/clean
+clean: CMakeFiles/rwal_autogen_timestamp_deps.dir/clean
+clean: CMakeFiles/rwal_autogen.dir/clean
 .PHONY : clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/rwal.dir
 
 # All Build rule for target.
-CMakeFiles/rwal.dir/all:
+CMakeFiles/rwal.dir/all: CMakeFiles/rwal_autogen_timestamp_deps.dir/all
+CMakeFiles/rwal.dir/all: CMakeFiles/rwal_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target rwal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target rwal"
 .PHONY : CMakeFiles/rwal.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rwal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rwal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 0
 .PHONY : CMakeFiles/rwal.dir/rule
@@ -100,15 +103,79 @@ rwal: CMakeFiles/rwal.dir/rule
 .PHONY : rwal
 
 # codegen rule for target.
-CMakeFiles/rwal.dir/codegen:
+CMakeFiles/rwal.dir/codegen: CMakeFiles/rwal_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Finished codegen for target rwal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Finished codegen for target rwal"
 .PHONY : CMakeFiles/rwal.dir/codegen
 
 # clean rule for target.
 CMakeFiles/rwal.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/clean
 .PHONY : CMakeFiles/rwal.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/rwal_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+CMakeFiles/rwal_autogen_timestamp_deps.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen_timestamp_deps.dir/build.make CMakeFiles/rwal_autogen_timestamp_deps.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen_timestamp_deps.dir/build.make CMakeFiles/rwal_autogen_timestamp_deps.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num= "Built target rwal_autogen_timestamp_deps"
+.PHONY : CMakeFiles/rwal_autogen_timestamp_deps.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rwal_autogen_timestamp_deps.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rwal_autogen_timestamp_deps.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 0
+.PHONY : CMakeFiles/rwal_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+rwal_autogen_timestamp_deps: CMakeFiles/rwal_autogen_timestamp_deps.dir/rule
+.PHONY : rwal_autogen_timestamp_deps
+
+# codegen rule for target.
+CMakeFiles/rwal_autogen_timestamp_deps.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen_timestamp_deps.dir/build.make CMakeFiles/rwal_autogen_timestamp_deps.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num= "Finished codegen for target rwal_autogen_timestamp_deps"
+.PHONY : CMakeFiles/rwal_autogen_timestamp_deps.dir/codegen
+
+# clean rule for target.
+CMakeFiles/rwal_autogen_timestamp_deps.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen_timestamp_deps.dir/build.make CMakeFiles/rwal_autogen_timestamp_deps.dir/clean
+.PHONY : CMakeFiles/rwal_autogen_timestamp_deps.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/rwal_autogen.dir
+
+# All Build rule for target.
+CMakeFiles/rwal_autogen.dir/all: CMakeFiles/rwal_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen.dir/build.make CMakeFiles/rwal_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen.dir/build.make CMakeFiles/rwal_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=15 "Built target rwal_autogen"
+.PHONY : CMakeFiles/rwal_autogen.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rwal_autogen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rwal_autogen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/p1rat/code/rwal/build/CMakeFiles 0
+.PHONY : CMakeFiles/rwal_autogen.dir/rule
+
+# Convenience name for target.
+rwal_autogen: CMakeFiles/rwal_autogen.dir/rule
+.PHONY : rwal_autogen
+
+# codegen rule for target.
+CMakeFiles/rwal_autogen.dir/codegen: CMakeFiles/rwal_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen.dir/build.make CMakeFiles/rwal_autogen.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=15 "Finished codegen for target rwal_autogen"
+.PHONY : CMakeFiles/rwal_autogen.dir/codegen
+
+# clean rule for target.
+CMakeFiles/rwal_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen.dir/build.make CMakeFiles/rwal_autogen.dir/clean
+.PHONY : CMakeFiles/rwal_autogen.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
