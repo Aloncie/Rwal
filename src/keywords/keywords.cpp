@@ -65,15 +65,19 @@ std::vector<std::string> Keywords::divide_keywords(std::string str){
 	//str += ' ';
 	std::string t = "";
 	for (size_t i = 0; i < str.size(); i++) {
-		if (str[i] != ' '||i == str.size()-1)
-			t += str[i];
-		else {
+		if (str[i] == ' ' || i  == str.size()-1){
 			keywords.push_back(t);
 			t = "";
 		}
+		else
+			t += str[i];
 	}
+
+	for (int i = 0;i < keywords.size();i++)
+		std::cout << keywords[i];
+
 	Logs l;
-	l.write_logs("\nKeywords size = " + std::to_string(keywords.size()) + "Keywords[0] = " + keywords[0]);
+	l.write_logs("\nKeywords size = " + std::to_string(keywords.size()));
 	return keywords;
 }
 
