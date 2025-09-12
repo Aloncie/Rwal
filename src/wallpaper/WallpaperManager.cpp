@@ -42,7 +42,7 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 
 	do {
 		std::string kw;
-		if (keywords.size() == 1)
+		if (keywords.size() < 2)
 			kw = keywords[0];
 		else
 			kw = keywords[random(keywords.size()-1)];
