@@ -255,3 +255,49 @@
 [2025-09-11 | 22:01:08] Starting program
 [2025-09-11 | 22:01:19] Ending program
 [2025-09-11 | 22:03:38] Starting program
+[2025-09-12 | 20:36:28] Starting program
+[2025-09-12 | 20:44:01] Starting program
+[2025-09-12 | 20:44:32] Starting program
+[2025-09-12 | 20:45:55] Starting program
+[2025-09-12 | 20:46:01] 
+Keywords size = 0
+[2025-09-12 | 20:46:46] Starting program
+[2025-09-12 | 20:47:35] 
+Keywords size = 0
+[2025-09-12 | 20:51:29] Starting program
+[2025-09-12 | 20:51:30] 
+Keywords size = 0
+[2025-09-12 | 20:54:30] Starting program
+[2025-09-12 | 20:55:01] 
+Keywords size = 0
+[2025-09-12 | 20:57:15] Starting program
+[2025-09-12 | 20:57:17] 
+Keywords size = 0
+[2025-09-12 | 20:57:32] Starting program
+[2025-09-12 | 20:57:55] 
+Keywords size = 0
+[2025-09-12 | 21:01:14] Starting program
+[2025-09-12 | 21:01:26] 
+Keywords size = 1
+[2025-09-12 | 21:01:37] Starting program
+[2025-09-12 | 21:01:38] 
+Keywords size = 1
+[2025-09-12 | 21:01:38] Try to request
+[2025-09-12 | 21:01:39] url of request: https://wallhaven.cc/api/v1/search?q=gir&purity=100%20&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-09-12 | 21:01:39] Successful request
+[2025-09-12 | 21:01:39] Try to parse
+[2025-09-12 | 21:01:39] Successful parse JSON
+[2025-09-12 | 21:01:39] Data of JSON: 1
+[2025-09-12 | 21:01:39] Try to request
+[2025-09-12 | 21:01:39] url of request: https://wallhaven.cc/api/v1/search?q=gir&purity=100%20&sorting=random&resolutions=1920x1080&page=1&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-09-12 | 21:01:39] Successful request
+[2025-09-12 | 21:01:39] Try to parse
+[2025-09-12 | 21:01:39] Successful parse JSON
+[2025-09-12 | 21:01:39] Data of JSON: https://w.wallhaven.cc/full/mp/wallhaven-mpmpm1.jpg
+[2025-09-12 | 21:01:39] Try to delete old image
+[2025-09-12 | 21:01:39] Successful deleting old image
+[2025-09-12 | 21:01:39] Data of JSON: image/jpeg
+[2025-09-12 | 21:01:39] Successful init CURL to image download
+[2025-09-12 | 21:01:39] Successful creating image file
+[2025-09-12 | 21:01:39] Successful download image/home/p1rat/code/rwal/wallpaper-mpmpm1.jpeg
+[2025-09-12 | 21:10:37] Ending program
