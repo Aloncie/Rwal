@@ -1,0 +1,76 @@
+# ==================== #
+# CMake Build Files    #
+# ==================== #
+build/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+*.cmake
+Makefile
+*.a
+*.so
+*.dll
+*.exe
+
+# ==================== #
+# Compiled Object files #
+# ==================== #
+*.slo
+*.lo
+*.o
+*.obj
+
+# ==================== #
+# Precompiled Headers  #
+# ==================== #
+*.gch
+*.pch
+
+# ==================== #
+# Logs and databases   #
+# ==================== #
+logs.txt
+*.log
+*.sql
+*.sqlite
+
+# ==================== #
+# IDE files            #
+# ==================== #
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln
+*.workspace
+
+# ==================== #
+# OS generated files   #
+# ==================== #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ==================== #
+# Temporary files      #
+# ==================== #
+*.tmp
+*.temp
+*~
+*.backup
+*.autosave
+*.png
+*.jpg
+*.jpeg
+
+# ==================== #
+# Package files        #
+# ==================== #
+*.deb
+*.rpm
+*.zip
+*.tar.gz

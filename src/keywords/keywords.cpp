@@ -73,11 +73,6 @@ std::vector<std::string> Keywords::divide_keywords(std::string str){
 			t += str[i];
 	}
 
-	for (int i = 0;i < keywords.size();i++)
-		std::cout << keywords[i];
-
-	Logs l;
-	l.write_logs("\nKeywords size = " + std::to_string(keywords.size()));
 	return keywords;
 }
 
