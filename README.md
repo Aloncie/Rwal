@@ -29,7 +29,7 @@ sudo make install
 
 ______
 
-<video src="https://github.com/Aloncie/Rwal/raw/main/assets/videos/demo.webm" controls width="800">
+<video src="https://github.com/Aloncie/Rwal/assets/videos/demo.webm" controls width="800">
     Your browser doesn't support WebM video
 </video>
 
