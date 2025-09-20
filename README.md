@@ -29,12 +29,6 @@ sudo make install
 
 ______
 
-### Demo
-
-<video src="https://github.com/Aloncie/Rwal/raw/main/assets/videos/Kooha-2025-09-20-11-26-43.webm" controls width="800">
-    Your browser doesn't support WebM video
-</video>
-
 
 _____
 ### ✴️Platform support✳️
