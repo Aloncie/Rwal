@@ -423,7 +423,7 @@ CURSES_INCLUDE_PATH-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CURSES_NCURSES_LIBRARY
 CURSES_NCURSES_LIBRARY-ADVANCED:INTERNAL=1
 //Details about finding CURL
-FIND_PACKAGE_MESSAGE_DETAILS_CURL:INTERNAL=[/usr/lib/libcurl.so][/usr/include][ ][v8.15.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_CURL:INTERNAL=[/usr/lib/libcurl.so][/usr/include][ ][v8.16.0()]
 //Details about finding Curses
 FIND_PACKAGE_MESSAGE_DETAILS_Curses:INTERNAL=[/usr/lib/libcurses.so][/usr/include][v()]
 //Details about finding nlohmann_json
