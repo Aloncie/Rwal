@@ -5,7 +5,7 @@
 int random(int count){
 	std::random_device rd;
 	std::mt19937 gen(rd());	
-	std::uniform_int_distribution<> distrib(0,count/10);
+	std::uniform_int_distribution<> distrib(0,count);
 	int num = distrib(gen);
 	return num;
 }

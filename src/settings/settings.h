@@ -5,6 +5,7 @@
 
 namespace fs = std::filesystem;
 
+class PicturesPath;
 fs::path get_pictures_path();
 
 class Timer{
@@ -14,5 +15,4 @@ public:
 	std::string edit_timer(std::string value);
 	bool check_timer_active_status();
 	bool check_timer_mask_status();
-	QString getConfigPath();
 };
