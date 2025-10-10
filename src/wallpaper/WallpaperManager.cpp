@@ -41,13 +41,15 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 		keywords = k.divide_keywords(k.get_keywords());
 
 	do {
-		std::string kw;
-		if (keywords.size() < 2)
-			kw = keywords[0];
-		else
-			kw = keywords[random(keywords.size()-1)];
+		std::string kw = keywords[0];
+		if (keywords.size() > 2){
+			l.write_logs("Keywords.size = " + std::to_string(keywords.size()));
+			kw = keywords[random(keywords.size() - 1)];
+		}
+
 		MyCurl c("apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
 		c.get_request();
+		l.write_logs("Try to get count of pages from JSON");
 		pageCount = c.get_data("meta","last_page");
 
 		try {
@@ -56,12 +58,13 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 			Logs l;
 			l.write_logs("Failed to stoi pageCount: " + std::string(e.what()));
 			last_page = 1;
-		}
+	}
 
-		page = std::to_string(random(last_page)+1);
+		page = std::to_string(random(last_page/100)+1);
 
 		MyCurl v("page=" + page + "&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",kw);
 		v.get_request();
+		l.write_logs("Try to get url of image from JSON");
 		url = v.get_data("data","path");
 		if (!url.empty()) {
 			local = v.download_image(url);

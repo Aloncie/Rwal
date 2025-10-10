@@ -62,10 +62,9 @@ std::string Keywords::get_keywords(){
 
 std::vector<std::string> Keywords::divide_keywords(std::string str){
 	std::vector<std::string> keywords;
-	//str += ' ';
 	std::string t = "";
-	for (size_t i = 0; i < str.size(); i++) {
-		if (str[i] == ' ' || i  == str.size()-1){
+	for (size_t i = 0; i < str.size()+1; i++) {
+		if (str[i] == ' ' || i  == str.size()){
 			keywords.push_back(t);
 			t = "";
 		}

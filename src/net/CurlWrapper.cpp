@@ -11,7 +11,7 @@ static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) 
 }
 
 MyCurl::MyCurl(std::string str, std::string keyword){
-	url += keyword + "&purity=100%20&sorting=random&resolutions=1920x1080&" + str;
+	url += keyword + "&sorting=random&resolutions=1920x1080&" + str;
 	curl = curl_easy_init();
 }
 

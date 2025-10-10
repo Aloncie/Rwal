@@ -236,16 +236,3 @@ bool Timer::check_timer_active_status(){
 	return system("systemctl is-active rwal.timer >/dev/null 2>&1") == 0;
 }
 
-QString getConfigPath(){
-	QCoreApplication::setApplicationName("rwal");
-	QCoreApplication::setOrganizationName("Aloncie");
-
-	QString configDir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-
-	QDir dir;
-
-	if (!dir.exists(configDir))
-		dir.mkpath(configDir);
-
-	return configDir + "/config.json";
-}

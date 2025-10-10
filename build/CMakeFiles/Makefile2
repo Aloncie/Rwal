@@ -84,8 +84,8 @@ clean: CMakeFiles/rwal_autogen.dir/clean
 # Target rules for target CMakeFiles/rwal.dir
 
 # All Build rule for target.
-CMakeFiles/rwal.dir/all: CMakeFiles/rwal_autogen_timestamp_deps.dir/all
 CMakeFiles/rwal.dir/all: CMakeFiles/rwal_autogen.dir/all
+CMakeFiles/rwal.dir/all: CMakeFiles/rwal_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target rwal"
