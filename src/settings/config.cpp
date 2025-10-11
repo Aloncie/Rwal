@@ -17,4 +17,6 @@ QString Config::getConfigPath(){
 	return configDir + "/config.json";
 }
 
-
+Config::Config(){
+	QString cfg = getConfigPath();		
+}
