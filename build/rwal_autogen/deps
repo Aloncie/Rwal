@@ -17,6 +17,8 @@ rwal_autogen/timestamp: \
 	/home/p1rat/code/rwal/src/main.cpp \
 	/home/p1rat/code/rwal/src/net/CurlWrapper.cpp \
 	/home/p1rat/code/rwal/src/net/CurlWrapper.h \
+	/home/p1rat/code/rwal/src/settings/config.cpp \
+	/home/p1rat/code/rwal/src/settings/config.h \
 	/home/p1rat/code/rwal/src/settings/settings.cpp \
 	/home/p1rat/code/rwal/src/settings/settings.h \
 	/home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp \

@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/rwal.dir/src/main.cpp.o.d"
   "CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o"
   "CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o.d"
+  "CMakeFiles/rwal.dir/src/settings/config.cpp.o"
+  "CMakeFiles/rwal.dir/src/settings/config.cpp.o.d"
   "CMakeFiles/rwal.dir/src/settings/settings.cpp.o"
   "CMakeFiles/rwal.dir/src/settings/settings.cpp.o.d"
   "CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o"

@@ -1,4 +1,5 @@
 #include "WallpaperManager.h"
+#include "settings/config.h"
 #include "net/CurlWrapper.h"
 #include "keywords/keywords.h"
 #include "dbus/PlasmaDBus.h"
@@ -35,8 +36,11 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 	int last_page = 1;
 	Keywords k;
 	std::vector<std::string> keywords;
-	if (mode == "change")
-		keywords = k.divide_keywords(k.look_keywords());
+	if (mode == "change"){
+		Config c;
+		keywords = c.get<std::vector<std::string>>("search.keywords");
+		//keywords = k.divide_keywords(k.look_keywords());
+	}
 	else if (mode == "core")
 		keywords = k.divide_keywords(k.get_keywords());
 
