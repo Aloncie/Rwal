@@ -4,7 +4,7 @@
 #include <QStandardPaths>
 #include <fstream>
 
-fs::path Config::getConfigPath(){
+std::string Config::getConfigPath(){
 	QCoreApplication::setApplicationName("rwal");
 	QCoreApplication::setOrganizationName("Aloncie");
 
@@ -15,19 +15,22 @@ fs::path Config::getConfigPath(){
 	if (!dir.exists(configDir))
 		dir.mkpath(configDir);
 
-	return ((configDir + "/config.json").toUtf8()).constData();
+	return ((configDir + "/config.json").toStdString());
 }
 
 Config::Config(){
 	configPath = getConfigPath();
 	
 	if (fs::exists(configPath)){
-		data = nlohmann::json::parse(configPath);				
+		Logs l;
+		l.write_logs("Config file exists: " + configPath);
+		std::ifstream file(configPath);
+		data = nlohmann::json::parse(file);				
 	}
 	else{
 		data = {
 			{"search", {
-				{"keywords", {"nature", "anime", "space"}}
+				{"keywords", {"anime", "girls"}}
 			}},
 			{"api", {
 				{"wallhaven_api_key", ""}
@@ -42,13 +45,4 @@ void Config::saveConfig(){
 		file << data.dump(4);
 }
 
-template<typename G>
-G Config::get(const std::string& key){
-	return data.value(key,G{});	
-}
 
-template<typename S>
-void Config::set(const std::string& key, const S& value){
-	data[key] = value;
-	saveConfig();	
-}

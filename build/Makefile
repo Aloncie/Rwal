@@ -417,6 +417,30 @@ src/net/CurlWrapper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s
 .PHONY : src/net/CurlWrapper.cpp.s
 
+src/settings/config.o: src/settings/config.cpp.o
+.PHONY : src/settings/config.o
+
+# target to build an object file
+src/settings/config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/config.cpp.o
+.PHONY : src/settings/config.cpp.o
+
+src/settings/config.i: src/settings/config.cpp.i
+.PHONY : src/settings/config.i
+
+# target to preprocess a source file
+src/settings/config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/config.cpp.i
+.PHONY : src/settings/config.cpp.i
+
+src/settings/config.s: src/settings/config.cpp.s
+.PHONY : src/settings/config.s
+
+# target to generate assembly for a file
+src/settings/config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/config.cpp.s
+.PHONY : src/settings/config.cpp.s
+
 src/settings/settings.o: src/settings/settings.cpp.o
 .PHONY : src/settings/settings.o
 
@@ -531,6 +555,9 @@ help:
 	@echo "... src/net/CurlWrapper.o"
 	@echo "... src/net/CurlWrapper.i"
 	@echo "... src/net/CurlWrapper.s"
+	@echo "... src/settings/config.o"
+	@echo "... src/settings/config.i"
+	@echo "... src/settings/config.s"
 	@echo "... src/settings/settings.o"
 	@echo "... src/settings/settings.i"
 	@echo "... src/settings/settings.s"

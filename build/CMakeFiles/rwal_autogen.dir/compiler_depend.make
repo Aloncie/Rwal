@@ -19,6 +19,8 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
   /home/p1rat/code/rwal/src/main.cpp \
   /home/p1rat/code/rwal/src/net/CurlWrapper.cpp \
   /home/p1rat/code/rwal/src/net/CurlWrapper.h \
+  /home/p1rat/code/rwal/src/settings/config.cpp \
+  /home/p1rat/code/rwal/src/settings/config.h \
   /home/p1rat/code/rwal/src/settings/settings.cpp \
   /home/p1rat/code/rwal/src/settings/settings.h \
   /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp \
@@ -168,13 +170,9 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake:
 
-/usr/lib/cmake/Qt5Core/Qt5CoreConfig.cmake:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake:
 
-/usr/lib/cmake/Qt5/Qt5ConfigVersion.cmake:
-
-/home/p1rat/code/rwal/src/CLI/Menus.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake:
 
 /usr/bin/cmake:
 
@@ -190,6 +188,20 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
 
 /usr/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake:
 
+/usr/share/cmake/Modules/Platform/Linux-GNU.cmake:
+
+/usr/share/cmake/Modules/CMakeCXXInformation.cmake:
+
+/home/p1rat/code/rwal/src/logs/logs.h:
+
+CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
+
+/usr/lib/cmake/Qt5/Qt5ConfigVersion.cmake:
+
+/home/p1rat/code/rwal/src/CLI/Menus.h:
+
+/home/p1rat/code/rwal/src/settings/config.cpp:
+
 /home/p1rat/code/rwal/src/net/CurlWrapper.cpp:
 
 /usr/lib/cmake/Qt5DBus/Qt5DBusConfigExtras.cmake:
@@ -199,14 +211,6 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
 /usr/share/cmake/Modules/CMakeParseArguments.cmake:
 
 /usr/lib/cmake/Qt5/Qt5Config.cmake:
-
-/usr/share/cmake/Modules/Platform/Linux-GNU.cmake:
-
-/usr/share/cmake/Modules/CMakeCXXInformation.cmake:
-
-/home/p1rat/code/rwal/src/logs/logs.h:
-
-CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /home/p1rat/code/rwal/src/CLI/CLI.cpp:
 
@@ -232,6 +236,8 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp:
 
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake:
+
 /usr/share/cmake/Modules/FindPkgConfig.cmake:
 
 /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp:
@@ -254,7 +260,11 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /home/p1rat/code/rwal/src/funcs/funcs.cpp:
 
+/usr/lib/cmake/Qt5Core/Qt5CoreConfig.cmake:
+
 /usr/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake:
+
+/home/p1rat/code/rwal/src/settings/config.h:
 
 /usr/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake:
 
@@ -304,8 +314,6 @@ CMakeFiles/4.1.2/CMakeSystem.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake:
-
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake:
@@ -315,5 +323,3 @@ CMakeFiles/4.1.2/CMakeSystem.cmake:
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake:

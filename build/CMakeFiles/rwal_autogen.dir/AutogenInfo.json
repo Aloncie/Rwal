@@ -150,6 +150,12 @@
 			null
 		],
 		[
+			"/home/p1rat/code/rwal/src/settings/config.h",
+			"MU",
+			"ICMTUFM33F/moc_config.cpp",
+			null
+		],
+		[
 			"/home/p1rat/code/rwal/src/settings/settings.h",
 			"MU",
 			"ICMTUFM33F/moc_settings.cpp",
@@ -238,6 +244,7 @@
 		[ "/home/p1rat/code/rwal/src/logs/logs.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/main.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp", "MU", null ],
+		[ "/home/p1rat/code/rwal/src/settings/config.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/settings/settings.cpp", "MU", null ],
 		[
 			"/home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp",

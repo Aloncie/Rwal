@@ -2110,3 +2110,156 @@ Full path: /home/p1rat/Pictures/rwal/
 [2025-10-11 | 18:52:05] Successful creating image file
 [2025-10-11 | 18:52:06] Successful download image/home/p1rat/code/rwal/wallpaper-z839lo.jpeg
 [2025-10-11 | 18:52:09] Ending program
+[2025-10-22 | 20:38:43] Try to request
+[2025-10-22 | 20:38:44] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-22 | 20:38:44] Successful request
+[2025-10-22 | 20:38:44] Try to parse
+[2025-10-22 | 20:38:44] Successful parse JSON
+[2025-10-22 | 20:38:44] Try to get count of pages from JSON
+[2025-10-22 | 20:38:44] Data of JSON: 2198
+[2025-10-22 | 20:38:44] Try to request
+[2025-10-22 | 20:38:44] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=21&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-22 | 20:38:44] Successful request
+[2025-10-22 | 20:38:44] Try to parse
+[2025-10-22 | 20:38:44] Successful parse JSON
+[2025-10-22 | 20:38:44] Try to get url of image from JSON
+[2025-10-22 | 20:38:44] Data of JSON: https://w.wallhaven.cc/full/72/wallhaven-727qp9.jpg
+[2025-10-22 | 20:38:44] Try to delete old image
+[2025-10-22 | 20:38:44] Successful deleting old image
+[2025-10-22 | 20:38:44] Data of JSON: image/jpeg
+[2025-10-22 | 20:38:44] Successful init CURL to image download
+[2025-10-22 | 20:38:44] Successful creating image file
+[2025-10-22 | 20:38:45] Successful download image/home/p1rat/code/rwal/wallpaper-727qp9.jpeg
+[2025-10-22 | 20:43:00] Starting program
+[2025-10-22 | 20:43:02] Ending program
+[2025-10-24 | 21:26:29] Starting program
+[2025-10-24 | 21:26:30] Try to request
+[2025-10-24 | 21:26:30] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:30] Successful request
+[2025-10-24 | 21:26:30] Try to parse
+[2025-10-24 | 21:26:30] Successful parse JSON
+[2025-10-24 | 21:26:30] Try to get count of pages from JSON
+[2025-10-24 | 21:26:30] Data of JSON: 2199
+[2025-10-24 | 21:26:30] Try to request
+[2025-10-24 | 21:26:31] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=5&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:31] Successful request
+[2025-10-24 | 21:26:31] Try to parse
+[2025-10-24 | 21:26:31] Successful parse JSON
+[2025-10-24 | 21:26:31] Try to get url of image from JSON
+[2025-10-24 | 21:26:31] Data of JSON: https://w.wallhaven.cc/full/gj/wallhaven-gj9jx3.png
+[2025-10-24 | 21:26:31] Try to delete old image
+[2025-10-24 | 21:26:31] Successful deleting old image
+[2025-10-24 | 21:26:31] Data of JSON: image/png
+[2025-10-24 | 21:26:31] Successful init CURL to image download
+[2025-10-24 | 21:26:31] Successful creating image file
+[2025-10-24 | 21:26:31] Successful download image/home/p1rat/code/rwal/wallpaper-gj9jx3.png
+[2025-10-24 | 21:26:34] Try to request
+[2025-10-24 | 21:26:35] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:35] Successful request
+[2025-10-24 | 21:26:35] Try to parse
+[2025-10-24 | 21:26:35] Successful parse JSON
+[2025-10-24 | 21:26:35] Try to get count of pages from JSON
+[2025-10-24 | 21:26:35] Data of JSON: 2199
+[2025-10-24 | 21:26:35] Try to request
+[2025-10-24 | 21:26:35] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=4&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:35] Successful request
+[2025-10-24 | 21:26:35] Try to parse
+[2025-10-24 | 21:26:35] Successful parse JSON
+[2025-10-24 | 21:26:35] Try to get url of image from JSON
+[2025-10-24 | 21:26:35] Data of JSON: https://w.wallhaven.cc/full/96/wallhaven-965orw.png
+[2025-10-24 | 21:26:35] Try to delete old image
+[2025-10-24 | 21:26:35] Successful deleting old image
+[2025-10-24 | 21:26:35] Data of JSON: image/png
+[2025-10-24 | 21:26:35] Successful init CURL to image download
+[2025-10-24 | 21:26:35] Successful creating image file
+[2025-10-24 | 21:26:36] Successful download image/home/p1rat/code/rwal/wallpaper-965orw.png
+[2025-10-24 | 21:26:39] Try to request
+[2025-10-24 | 21:26:39] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:39] Successful request
+[2025-10-24 | 21:26:39] Try to parse
+[2025-10-24 | 21:26:39] Successful parse JSON
+[2025-10-24 | 21:26:39] Try to get count of pages from JSON
+[2025-10-24 | 21:26:39] Data of JSON: 2199
+[2025-10-24 | 21:26:39] Try to request
+[2025-10-24 | 21:26:40] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=7&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:40] Successful request
+[2025-10-24 | 21:26:40] Try to parse
+[2025-10-24 | 21:26:40] Successful parse JSON
+[2025-10-24 | 21:26:40] Try to get url of image from JSON
+[2025-10-24 | 21:26:40] Data of JSON: https://w.wallhaven.cc/full/49/wallhaven-496728.jpg
+[2025-10-24 | 21:26:40] Try to delete old image
+[2025-10-24 | 21:26:40] Successful deleting old image
+[2025-10-24 | 21:26:40] Data of JSON: image/jpeg
+[2025-10-24 | 21:26:40] Successful init CURL to image download
+[2025-10-24 | 21:26:40] Successful creating image file
+[2025-10-24 | 21:26:40] Successful download image/home/p1rat/code/rwal/wallpaper-496728.jpeg
+[2025-10-24 | 21:26:42] Try to request
+[2025-10-24 | 21:26:42] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:42] Successful request
+[2025-10-24 | 21:26:42] Try to parse
+[2025-10-24 | 21:26:42] Successful parse JSON
+[2025-10-24 | 21:26:42] Try to get count of pages from JSON
+[2025-10-24 | 21:26:42] Data of JSON: 2199
+[2025-10-24 | 21:26:42] Try to request
+[2025-10-24 | 21:26:42] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=7&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:42] Successful request
+[2025-10-24 | 21:26:42] Try to parse
+[2025-10-24 | 21:26:42] Successful parse JSON
+[2025-10-24 | 21:26:42] Try to get url of image from JSON
+[2025-10-24 | 21:26:42] Data of JSON: https://w.wallhaven.cc/full/yj/wallhaven-yjmx2x.jpg
+[2025-10-24 | 21:26:42] Try to delete old image
+[2025-10-24 | 21:26:42] Successful deleting old image
+[2025-10-24 | 21:26:42] Data of JSON: image/jpeg
+[2025-10-24 | 21:26:42] Successful init CURL to image download
+[2025-10-24 | 21:26:42] Successful creating image file
+[2025-10-24 | 21:26:43] Successful download image/home/p1rat/code/rwal/wallpaper-yjmx2x.jpeg
+[2025-10-24 | 21:26:45] Try to request
+[2025-10-24 | 21:26:45] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:45] Successful request
+[2025-10-24 | 21:26:45] Try to parse
+[2025-10-24 | 21:26:45] Successful parse JSON
+[2025-10-24 | 21:26:45] Try to get count of pages from JSON
+[2025-10-24 | 21:26:45] Data of JSON: 2199
+[2025-10-24 | 21:26:45] Try to request
+[2025-10-24 | 21:26:45] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=15&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:45] Successful request
+[2025-10-24 | 21:26:45] Try to parse
+[2025-10-24 | 21:26:45] Successful parse JSON
+[2025-10-24 | 21:26:45] Try to get url of image from JSON
+[2025-10-24 | 21:26:45] Data of JSON: https://w.wallhaven.cc/full/y8/wallhaven-y8pz1k.jpg
+[2025-10-24 | 21:26:45] Try to delete old image
+[2025-10-24 | 21:26:45] Successful deleting old image
+[2025-10-24 | 21:26:45] Data of JSON: image/jpeg
+[2025-10-24 | 21:26:45] Successful init CURL to image download
+[2025-10-24 | 21:26:45] Successful creating image file
+[2025-10-24 | 21:26:46] Successful download image/home/p1rat/code/rwal/wallpaper-y8pz1k.jpeg
+[2025-10-24 | 21:26:52] Try to request
+[2025-10-24 | 21:26:52] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:52] Successful request
+[2025-10-24 | 21:26:52] Try to parse
+[2025-10-24 | 21:26:52] Successful parse JSON
+[2025-10-24 | 21:26:52] Try to get count of pages from JSON
+[2025-10-24 | 21:26:52] Data of JSON: 2199
+[2025-10-24 | 21:26:52] Try to request
+[2025-10-24 | 21:26:53] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=22&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-24 | 21:26:53] Successful request
+[2025-10-24 | 21:26:53] Try to parse
+[2025-10-24 | 21:26:53] Successful parse JSON
+[2025-10-24 | 21:26:53] Try to get url of image from JSON
+[2025-10-24 | 21:26:53] Data of JSON: https://w.wallhaven.cc/full/l3/wallhaven-l396ll.jpg
+[2025-10-24 | 21:26:53] Try to delete old image
+[2025-10-24 | 21:26:53] Successful deleting old image
+[2025-10-24 | 21:26:53] Data of JSON: image/jpeg
+[2025-10-24 | 21:26:53] Successful init CURL to image download
+[2025-10-24 | 21:26:53] Successful creating image file
+[2025-10-24 | 21:26:54] Successful download image/home/p1rat/code/rwal/wallpaper-l396ll.jpeg
+[2025-10-24 | 21:26:56] Ending program
+[2025-10-24 | 22:29:45] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-24 | 22:32:33] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-24 | 22:42:31] Starting program
+[2025-10-24 | 22:42:32] Ending program
+[2025-10-24 | 22:42:35] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-24 | 22:43:10] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-24 | 22:48:29] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-24 | 22:49:16] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-24 | 22:50:07] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
