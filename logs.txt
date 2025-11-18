@@ -2263,3 +2263,253 @@ Full path: /home/p1rat/Pictures/rwal/
 [2025-10-24 | 22:48:29] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
 [2025-10-24 | 22:49:16] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
 [2025-10-24 | 22:50:07] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-30 | 20:59:37] Starting program
+[2025-10-30 | 20:59:40] Try to request
+[2025-10-30 | 20:59:40] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-30 | 20:59:40] Successful request
+[2025-10-30 | 20:59:40] Try to parse
+[2025-10-30 | 20:59:40] Successful parse JSON
+[2025-10-30 | 20:59:40] Try to get count of pages from JSON
+[2025-10-30 | 20:59:40] Data of JSON: 2200
+[2025-10-30 | 20:59:40] Try to request
+[2025-10-30 | 20:59:41] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=23&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-30 | 20:59:41] Successful request
+[2025-10-30 | 20:59:41] Try to parse
+[2025-10-30 | 20:59:41] Successful parse JSON
+[2025-10-30 | 20:59:41] Try to get url of image from JSON
+[2025-10-30 | 20:59:41] Data of JSON: https://w.wallhaven.cc/full/rd/wallhaven-rdmwv1.jpg
+[2025-10-30 | 20:59:41] Try to delete old image
+[2025-10-30 | 20:59:41] Successful deleting old image
+[2025-10-30 | 20:59:41] Data of JSON: image/jpeg
+[2025-10-30 | 20:59:41] Successful init CURL to image download
+[2025-10-30 | 20:59:41] Successful creating image file
+[2025-10-30 | 20:59:41] Successful download image/home/p1rat/code/rwal/wallpaper-rdmwv1.jpeg
+[2025-10-30 | 20:59:44] Try to request
+[2025-10-30 | 20:59:45] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-30 | 20:59:45] Successful request
+[2025-10-30 | 20:59:45] Try to parse
+[2025-10-30 | 20:59:45] Successful parse JSON
+[2025-10-30 | 20:59:45] Try to get count of pages from JSON
+[2025-10-30 | 20:59:45] Data of JSON: 2200
+[2025-10-30 | 20:59:45] Try to request
+[2025-10-30 | 20:59:45] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=11&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-10-30 | 20:59:45] Successful request
+[2025-10-30 | 20:59:45] Try to parse
+[2025-10-30 | 20:59:45] Successful parse JSON
+[2025-10-30 | 20:59:45] Try to get url of image from JSON
+[2025-10-30 | 20:59:45] Data of JSON: https://w.wallhaven.cc/full/2k/wallhaven-2kpmkm.png
+[2025-10-30 | 20:59:45] Try to delete old image
+[2025-10-30 | 20:59:45] Successful deleting old image
+[2025-10-30 | 20:59:45] Data of JSON: image/png
+[2025-10-30 | 20:59:45] Successful init CURL to image download
+[2025-10-30 | 20:59:45] Successful creating image file
+[2025-10-30 | 20:59:46] Successful download image/home/p1rat/code/rwal/wallpaper-2kpmkm.png
+[2025-10-30 | 20:59:57] Ending program
+[2025-10-30 | 21:00:03] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-10-30 | 21:29:02] Starting program
+[2025-10-30 | 21:29:04] Try to know 'Pictures' location
+[2025-10-30 | 21:29:04] Pictures location: /home/p1rat/Pictures
+[2025-10-30 | 21:29:04] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal/
+[2025-10-30 | 21:29:04] Output of rwal_catalog: /home/p1rat/Pictures/rwal/
+[2025-10-30 | 21:29:04] Image successful saved: /home/p1rat/Pictures/rwal/wallpaper-2kpmkm.png
+[2025-10-30 | 21:29:05] Ending program
+[2025-11-11 | 19:46:03] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-11 | 19:49:10] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-11 | 19:50:49] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-17 | 19:14:26] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-17 | 19:20:47] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-17 | 19:21:02] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-17 | 19:22:22] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-17 | 19:22:52] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-17 | 21:59:03] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:32:53] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:34:01] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:34:43] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:38:05] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:38:32] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:39:41] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:40:10] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:42:53] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:46:00] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:46:59] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:51:21] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:53:27] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:53:27] Error of getting config data: [json.exception.type_error.302] type must be string, but is object
+[2025-11-18 | 20:56:12] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:59:06] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:59:06] Keywords.size = 3
+[2025-11-18 | 20:59:06] Try to request
+[2025-11-18 | 20:59:07] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 20:59:07] Successful request
+[2025-11-18 | 20:59:07] Try to parse
+[2025-11-18 | 20:59:07] Successful parse JSON
+[2025-11-18 | 20:59:07] Try to get count of pages from JSON
+[2025-11-18 | 20:59:07] Data of JSON: 156
+[2025-11-18 | 20:59:07] Try to request
+[2025-11-18 | 20:59:07] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&page=1&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 20:59:07] Successful request
+[2025-11-18 | 20:59:07] Try to parse
+[2025-11-18 | 20:59:07] Successful parse JSON
+[2025-11-18 | 20:59:07] Try to get url of image from JSON
+[2025-11-18 | 20:59:07] Data of JSON: https://w.wallhaven.cc/full/q6/wallhaven-q62elr.jpg
+[2025-11-18 | 20:59:07] Try to delete old image
+[2025-11-18 | 20:59:07] Successful deleting old image
+[2025-11-18 | 20:59:07] Data of JSON: image/jpeg
+[2025-11-18 | 20:59:07] Successful init CURL to image download
+[2025-11-18 | 20:59:07] Successful creating image file
+[2025-11-18 | 20:59:08] Successful download image/home/p1rat/code/rwal/wallpaper-q62elr.jpeg
+[2025-11-18 | 20:59:38] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 20:59:38] Keywords.size = 3
+[2025-11-18 | 20:59:38] Try to request
+[2025-11-18 | 20:59:39] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 20:59:39] Successful request
+[2025-11-18 | 20:59:39] Try to parse
+[2025-11-18 | 20:59:39] Successful parse JSON
+[2025-11-18 | 20:59:39] Try to get count of pages from JSON
+[2025-11-18 | 20:59:39] Data of JSON: 156
+[2025-11-18 | 20:59:39] Try to request
+[2025-11-18 | 20:59:39] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&page=1&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 20:59:39] Successful request
+[2025-11-18 | 20:59:39] Try to parse
+[2025-11-18 | 20:59:39] Successful parse JSON
+[2025-11-18 | 20:59:39] Try to get url of image from JSON
+[2025-11-18 | 20:59:39] Data of JSON: https://w.wallhaven.cc/full/76/wallhaven-767qlv.jpg
+[2025-11-18 | 20:59:39] Try to delete old image
+[2025-11-18 | 20:59:39] Successful deleting old image
+[2025-11-18 | 20:59:39] Data of JSON: image/jpeg
+[2025-11-18 | 20:59:39] Successful init CURL to image download
+[2025-11-18 | 20:59:39] Successful creating image file
+[2025-11-18 | 20:59:39] Successful download image/home/p1rat/code/rwal/wallpaper-767qlv.jpeg
+[2025-11-18 | 21:01:40] Starting program
+[2025-11-18 | 21:01:50] Try to request
+[2025-11-18 | 21:01:50] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:01:50] Successful request
+[2025-11-18 | 21:01:50] Try to parse
+[2025-11-18 | 21:01:50] Successful parse JSON
+[2025-11-18 | 21:01:50] Try to get count of pages from JSON
+[2025-11-18 | 21:01:50] Data of JSON: 2203
+[2025-11-18 | 21:01:50] Try to request
+[2025-11-18 | 21:01:51] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=14&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:01:51] Successful request
+[2025-11-18 | 21:01:51] Try to parse
+[2025-11-18 | 21:01:51] Successful parse JSON
+[2025-11-18 | 21:01:51] Try to get url of image from JSON
+[2025-11-18 | 21:01:51] Data of JSON: https://w.wallhaven.cc/full/6q/wallhaven-6qpm1x.jpg
+[2025-11-18 | 21:01:51] Try to delete old image
+[2025-11-18 | 21:01:51] Successful deleting old image
+[2025-11-18 | 21:01:51] Data of JSON: image/jpeg
+[2025-11-18 | 21:01:51] Successful init CURL to image download
+[2025-11-18 | 21:01:51] Successful creating image file
+[2025-11-18 | 21:01:51] Successful download image/home/p1rat/code/rwal/wallpaper-6qpm1x.jpeg
+[2025-11-18 | 21:01:56] Ending program
+[2025-11-18 | 21:02:09] Starting program
+[2025-11-18 | 21:02:20] Try to request
+[2025-11-18 | 21:02:20] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:20] Successful request
+[2025-11-18 | 21:02:20] Try to parse
+[2025-11-18 | 21:02:20] Successful parse JSON
+[2025-11-18 | 21:02:20] Try to get count of pages from JSON
+[2025-11-18 | 21:02:20] Data of JSON: 2203
+[2025-11-18 | 21:02:20] Try to request
+[2025-11-18 | 21:02:21] url of request: https://wallhaven.cc/api/v1/search?q=girls&sorting=random&resolutions=1920x1080&page=14&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:21] Successful request
+[2025-11-18 | 21:02:21] Try to parse
+[2025-11-18 | 21:02:21] Successful parse JSON
+[2025-11-18 | 21:02:21] Try to get url of image from JSON
+[2025-11-18 | 21:02:21] Data of JSON: https://w.wallhaven.cc/full/96/wallhaven-961qdw.jpg
+[2025-11-18 | 21:02:21] Try to delete old image
+[2025-11-18 | 21:02:21] Successful deleting old image
+[2025-11-18 | 21:02:21] Data of JSON: image/jpeg
+[2025-11-18 | 21:02:21] Successful init CURL to image download
+[2025-11-18 | 21:02:21] Successful creating image file
+[2025-11-18 | 21:02:22] Successful download image/home/p1rat/code/rwal/wallpaper-961qdw.jpeg
+[2025-11-18 | 21:02:25] Ending program
+[2025-11-18 | 21:02:46] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 21:02:46] Keywords.size = 3
+[2025-11-18 | 21:02:46] Try to request
+[2025-11-18 | 21:02:46] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:46] Successful request
+[2025-11-18 | 21:02:46] Try to parse
+[2025-11-18 | 21:02:46] Successful parse JSON
+[2025-11-18 | 21:02:46] Try to get count of pages from JSON
+[2025-11-18 | 21:02:46] Data of JSON: 156
+[2025-11-18 | 21:02:46] Try to request
+[2025-11-18 | 21:02:47] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&page=2&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:47] Successful request
+[2025-11-18 | 21:02:47] Try to parse
+[2025-11-18 | 21:02:47] Successful parse JSON
+[2025-11-18 | 21:02:47] Try to get url of image from JSON
+[2025-11-18 | 21:02:47] Data of JSON: https://w.wallhaven.cc/full/4y/wallhaven-4yye1g.jpg
+[2025-11-18 | 21:02:47] Try to delete old image
+[2025-11-18 | 21:02:47] Successful deleting old image
+[2025-11-18 | 21:02:47] Data of JSON: image/jpeg
+[2025-11-18 | 21:02:47] Successful init CURL to image download
+[2025-11-18 | 21:02:47] Successful creating image file
+[2025-11-18 | 21:02:47] Successful download image/home/p1rat/code/rwal/wallpaper-4yye1g.jpeg
+[2025-11-18 | 21:02:49] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 21:02:49] Keywords.size = 3
+[2025-11-18 | 21:02:49] Try to request
+[2025-11-18 | 21:02:49] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:49] Successful request
+[2025-11-18 | 21:02:49] Try to parse
+[2025-11-18 | 21:02:49] Successful parse JSON
+[2025-11-18 | 21:02:49] Try to get count of pages from JSON
+[2025-11-18 | 21:02:49] Data of JSON: 735
+[2025-11-18 | 21:02:49] Try to request
+[2025-11-18 | 21:02:50] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&page=7&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:50] Successful request
+[2025-11-18 | 21:02:50] Try to parse
+[2025-11-18 | 21:02:50] Successful parse JSON
+[2025-11-18 | 21:02:50] Try to get url of image from JSON
+[2025-11-18 | 21:02:50] Data of JSON: https://w.wallhaven.cc/full/w8/wallhaven-w8w1pp.jpg
+[2025-11-18 | 21:02:50] Try to delete old image
+[2025-11-18 | 21:02:50] Successful deleting old image
+[2025-11-18 | 21:02:50] Data of JSON: image/jpeg
+[2025-11-18 | 21:02:50] Successful init CURL to image download
+[2025-11-18 | 21:02:50] Successful creating image file
+[2025-11-18 | 21:02:50] Successful download image/home/p1rat/code/rwal/wallpaper-w8w1pp.jpeg
+[2025-11-18 | 21:02:52] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 21:02:52] Keywords.size = 3
+[2025-11-18 | 21:02:52] Try to request
+[2025-11-18 | 21:02:52] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:52] Successful request
+[2025-11-18 | 21:02:52] Try to parse
+[2025-11-18 | 21:02:52] Successful parse JSON
+[2025-11-18 | 21:02:52] Try to get count of pages from JSON
+[2025-11-18 | 21:02:52] Data of JSON: 735
+[2025-11-18 | 21:02:52] Try to request
+[2025-11-18 | 21:02:52] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&page=7&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:52] Successful request
+[2025-11-18 | 21:02:52] Try to parse
+[2025-11-18 | 21:02:52] Successful parse JSON
+[2025-11-18 | 21:02:52] Try to get url of image from JSON
+[2025-11-18 | 21:02:52] Data of JSON: https://w.wallhaven.cc/full/5d/wallhaven-5d73z9.jpg
+[2025-11-18 | 21:02:52] Try to delete old image
+[2025-11-18 | 21:02:52] Successful deleting old image
+[2025-11-18 | 21:02:52] Data of JSON: image/jpeg
+[2025-11-18 | 21:02:52] Successful init CURL to image download
+[2025-11-18 | 21:02:52] Successful creating image file
+[2025-11-18 | 21:02:53] Successful download image/home/p1rat/code/rwal/wallpaper-5d73z9.jpeg
+[2025-11-18 | 21:02:56] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
+[2025-11-18 | 21:02:56] Keywords.size = 3
+[2025-11-18 | 21:02:56] Try to request
+[2025-11-18 | 21:02:56] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:56] Successful request
+[2025-11-18 | 21:02:56] Try to parse
+[2025-11-18 | 21:02:56] Successful parse JSON
+[2025-11-18 | 21:02:56] Try to get count of pages from JSON
+[2025-11-18 | 21:02:56] Data of JSON: 735
+[2025-11-18 | 21:02:56] Try to request
+[2025-11-18 | 21:02:57] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&page=4&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2025-11-18 | 21:02:57] Successful request
+[2025-11-18 | 21:02:57] Try to parse
+[2025-11-18 | 21:02:57] Successful parse JSON
+[2025-11-18 | 21:02:57] Try to get url of image from JSON
+[2025-11-18 | 21:02:57] Data of JSON: https://w.wallhaven.cc/full/3k/wallhaven-3kz1o9.jpg
+[2025-11-18 | 21:02:57] Try to delete old image
+[2025-11-18 | 21:02:57] Successful deleting old image
+[2025-11-18 | 21:02:57] Data of JSON: image/jpeg
+[2025-11-18 | 21:02:57] Successful init CURL to image download
+[2025-11-18 | 21:02:57] Successful creating image file
+[2025-11-18 | 21:02:57] Successful download image/home/p1rat/code/rwal/wallpaper-3kz1o9.jpeg

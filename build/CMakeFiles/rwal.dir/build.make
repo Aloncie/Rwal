@@ -296,13 +296,13 @@ rwal: CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o
 rwal: CMakeFiles/rwal.dir/build.make
 rwal: CMakeFiles/rwal.dir/compiler_depend.ts
 rwal: /usr/lib/libcurl.so
-rwal: /usr/lib/libQt5DBus.so.5.15.17
-rwal: /usr/lib/libQt5Widgets.so.5.15.17
+rwal: /usr/lib/libQt5DBus.so.5.15.18
+rwal: /usr/lib/libQt5Widgets.so.5.15.18
 rwal: /usr/lib/libcurses.so
 rwal: /usr/lib/libform.so
 rwal: /usr/lib/libcurl.so
-rwal: /usr/lib/libQt5Gui.so.5.15.17
-rwal: /usr/lib/libQt5Core.so.5.15.17
+rwal: /usr/lib/libQt5Gui.so.5.15.18
+rwal: /usr/lib/libQt5Core.so.5.15.18
 rwal: CMakeFiles/rwal.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable rwal"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rwal.dir/link.txt --verbose=$(VERBOSE)

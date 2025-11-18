@@ -2781,6 +2781,7 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o
  /usr/include/c++/15.2.1/iomanip
  /usr/include/c++/15.2.1/ios
  /usr/include/c++/15.2.1/iosfwd
+ /usr/include/c++/15.2.1/iostream
  /usr/include/c++/15.2.1/istream
  /usr/include/c++/15.2.1/iterator
  /usr/include/c++/15.2.1/limits
@@ -4069,6 +4070,7 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o
  /usr/include/c++/15.2.1/iomanip
  /usr/include/c++/15.2.1/ios
  /usr/include/c++/15.2.1/iosfwd
+ /usr/include/c++/15.2.1/iostream
  /usr/include/c++/15.2.1/istream
  /usr/include/c++/15.2.1/iterator
  /usr/include/c++/15.2.1/limits
@@ -4302,10 +4304,10 @@ rwal
  /usr/lib/libGL.so.1
  /usr/lib/libGLX.so.0
  /usr/lib/libGLdispatch.so.0
- /usr/lib/libQt5Core.so.5.15.17
- /usr/lib/libQt5DBus.so.5.15.17
- /usr/lib/libQt5Gui.so.5.15.17
- /usr/lib/libQt5Widgets.so.5.15.17
+ /usr/lib/libQt5Core.so.5.15.18
+ /usr/lib/libQt5DBus.so.5.15.18
+ /usr/lib/libQt5Gui.so.5.15.18
+ /usr/lib/libQt5Widgets.so.5.15.18
  /usr/lib/libX11.so.6
  /usr/lib/libXau.so.6
  /usr/lib/libXdmcp.so.6
@@ -4325,9 +4327,9 @@ rwal
  /usr/lib/libgraphite2.so.3
  /usr/lib/libgssapi_krb5.so.2
  /usr/lib/libharfbuzz.so.0
- /usr/lib/libicudata.so.76
- /usr/lib/libicui18n.so.76
- /usr/lib/libicuuc.so.76
+ /usr/lib/libicudata.so.78
+ /usr/lib/libicui18n.so.78
+ /usr/lib/libicuuc.so.78
  /usr/lib/libidn2.so.0
  /usr/lib/libk5crypto.so.3
  /usr/lib/libkeyutils.so.1
@@ -4367,9 +4369,9 @@ rwal
  /usr/lib32/libglib-2.0.so.0
  /usr/lib32/libgssapi_krb5.so.2
  /usr/lib32/libharfbuzz.so.0
- /usr/lib32/libicudata.so.76
- /usr/lib32/libicui18n.so.76
- /usr/lib32/libicuuc.so.76
+ /usr/lib32/libicudata.so.78
+ /usr/lib32/libicui18n.so.78
+ /usr/lib32/libicuuc.so.78
  /usr/lib32/libidn2.so.0
  /usr/lib32/libk5crypto.so.3
  /usr/lib32/libkeyutils.so.1

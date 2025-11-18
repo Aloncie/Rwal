@@ -16,8 +16,8 @@ rwal: \
   CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o \
   CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o \
   /usr/lib/libcurl.so \
-  /usr/lib/libQt5DBus.so.5.15.17 \
-  /usr/lib/libQt5Widgets.so.5.15.17 \
+  /usr/lib/libQt5DBus.so.5.15.18 \
+  /usr/lib/libQt5Widgets.so.5.15.18 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so \
@@ -27,8 +27,8 @@ rwal: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libform.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libformw.so \
   /usr/lib/libcurl.so \
-  /usr/lib/libQt5Gui.so.5.15.17 \
-  /usr/lib/libQt5Core.so.5.15.17 \
+  /usr/lib/libQt5Gui.so.5.15.18 \
+  /usr/lib/libQt5Core.so.5.15.18 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -89,10 +89,10 @@ rwal: \
   /usr/lib32/libsystemd.so.0 \
   /usr/lib/libsystemd.so.0 \
   /usr/lib/libdouble-conversion.so.3 \
-  /usr/lib32/libicui18n.so.76 \
-  /usr/lib/libicui18n.so.76 \
-  /usr/lib32/libicuuc.so.76 \
-  /usr/lib/libicuuc.so.76 \
+  /usr/lib32/libicui18n.so.78 \
+  /usr/lib/libicui18n.so.78 \
+  /usr/lib32/libicuuc.so.78 \
+  /usr/lib/libicuuc.so.78 \
   /usr/lib32/libpcre2-16.so.0 \
   /usr/lib/libpcre2-16.so.0 \
   /usr/lib32/libglib-2.0.so.0 \
@@ -123,8 +123,8 @@ rwal: \
   /usr/lib/libgraphite2.so.3 \
   /usr/lib32/libcap.so.2 \
   /usr/lib/libcap.so.2 \
-  /usr/lib32/libicudata.so.76 \
-  /usr/lib/libicudata.so.76 \
+  /usr/lib32/libicudata.so.78 \
+  /usr/lib/libicudata.so.78 \
   /usr/lib32/libpcre2-8.so.0 \
   /usr/lib/libpcre2-8.so.0 \
   /usr/lib32/libX11.so.6 \
@@ -172,9 +172,9 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libcurl.so:
 
-/usr/lib/libQt5DBus.so.5.15.17:
+/usr/lib/libQt5DBus.so.5.15.18:
 
-/usr/lib/libQt5Widgets.so.5.15.17:
+/usr/lib/libQt5Widgets.so.5.15.18:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libcurses.so:
 
@@ -194,9 +194,9 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libcurl.so:
 
-/usr/lib/libQt5Gui.so.5.15.17:
+/usr/lib/libQt5Gui.so.5.15.18:
 
-/usr/lib/libQt5Core.so.5.15.17:
+/usr/lib/libQt5Core.so.5.15.18:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 
@@ -318,13 +318,13 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libdouble-conversion.so.3:
 
-/usr/lib32/libicui18n.so.76:
+/usr/lib32/libicui18n.so.78:
 
-/usr/lib/libicui18n.so.76:
+/usr/lib/libicui18n.so.78:
 
-/usr/lib32/libicuuc.so.76:
+/usr/lib32/libicuuc.so.78:
 
-/usr/lib/libicuuc.so.76:
+/usr/lib/libicuuc.so.78:
 
 /usr/lib32/libpcre2-16.so.0:
 
@@ -386,9 +386,9 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 
 /usr/lib/libcap.so.2:
 
-/usr/lib32/libicudata.so.76:
+/usr/lib32/libicudata.so.78:
 
-/usr/lib/libicudata.so.76:
+/usr/lib/libicudata.so.78:
 
 /usr/lib32/libpcre2-8.so.0:
 
