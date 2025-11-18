@@ -12,7 +12,7 @@
 
 
 <!-- ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey) -->
-💦 __Rwal__ - the program to refresh your wallpaper using keywords from any space of internet💫<br><br>
+💦 __Rwal__ - the program to refresh your wallpaper using keywords from internet💫<br><br>
 
 _______
 
