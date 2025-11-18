@@ -3,6 +3,7 @@
 #include <QCoreApplication>
 #include <QStandardPaths>
 #include <fstream>
+#include <iostream>
 
 std::string Config::getConfigPath(){
 	QCoreApplication::setApplicationName("rwal");

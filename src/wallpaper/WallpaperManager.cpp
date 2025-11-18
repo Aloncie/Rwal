@@ -9,6 +9,8 @@
 #include "CLI/CLI.h"
 #include <exception>
 #include <filesystem>
+#include <iostream>
+#include <nlohmann/json.hpp>
 
 namespace fs = std::filesystem;
 
@@ -38,7 +40,8 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 	std::vector<std::string> keywords;
 	if (mode == "change"){
 		Config c;
-		keywords = c.get<std::vector<std::string>>("search.keywords");
+		auto search = c.get<nlohmann::json>("search");
+		keywords = search["keywords"].get<std::vector<std::string>>();		
 		//keywords = k.divide_keywords(k.look_keywords());
 	}
 	else if (mode == "core")

@@ -2770,6 +2770,7 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o: /home/p1rat/code/rwal/src/setting
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
+  /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/iterator \
   /usr/include/c++/15.2.1/limits \
@@ -4055,6 +4056,7 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: /home/p1rat/code/rwal/
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
+  /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/iterator \
   /usr/include/c++/15.2.1/limits \
@@ -4287,10 +4289,10 @@ rwal: /usr/lib/Scrt1.o \
   /usr/lib/libGL.so.1 \
   /usr/lib/libGLX.so.0 \
   /usr/lib/libGLdispatch.so.0 \
-  /usr/lib/libQt5Core.so.5.15.17 \
-  /usr/lib/libQt5DBus.so.5.15.17 \
-  /usr/lib/libQt5Gui.so.5.15.17 \
-  /usr/lib/libQt5Widgets.so.5.15.17 \
+  /usr/lib/libQt5Core.so.5.15.18 \
+  /usr/lib/libQt5DBus.so.5.15.18 \
+  /usr/lib/libQt5Gui.so.5.15.18 \
+  /usr/lib/libQt5Widgets.so.5.15.18 \
   /usr/lib/libX11.so.6 \
   /usr/lib/libXau.so.6 \
   /usr/lib/libXdmcp.so.6 \
@@ -4310,9 +4312,9 @@ rwal: /usr/lib/Scrt1.o \
   /usr/lib/libgraphite2.so.3 \
   /usr/lib/libgssapi_krb5.so.2 \
   /usr/lib/libharfbuzz.so.0 \
-  /usr/lib/libicudata.so.76 \
-  /usr/lib/libicui18n.so.76 \
-  /usr/lib/libicuuc.so.76 \
+  /usr/lib/libicudata.so.78 \
+  /usr/lib/libicui18n.so.78 \
+  /usr/lib/libicuuc.so.78 \
   /usr/lib/libidn2.so.0 \
   /usr/lib/libk5crypto.so.3 \
   /usr/lib/libkeyutils.so.1 \
@@ -4352,9 +4354,9 @@ rwal: /usr/lib/Scrt1.o \
   /usr/lib32/libglib-2.0.so.0 \
   /usr/lib32/libgssapi_krb5.so.2 \
   /usr/lib32/libharfbuzz.so.0 \
-  /usr/lib32/libicudata.so.76 \
-  /usr/lib32/libicui18n.so.76 \
-  /usr/lib32/libicuuc.so.76 \
+  /usr/lib32/libicudata.so.78 \
+  /usr/lib32/libicui18n.so.78 \
+  /usr/lib32/libicuuc.so.78 \
   /usr/lib32/libidn2.so.0 \
   /usr/lib32/libk5crypto.so.3 \
   /usr/lib32/libkeyutils.so.1 \
@@ -4411,8 +4413,6 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o:
 
 /usr/lib32/libunistring.so.5:
 
-/usr/lib32/libssh2.so.1:
-
 /usr/lib32/libpsl.so.5:
 
 /usr/lib32/libpng16.so.16:
@@ -4427,9 +4427,7 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o:
 
 /usr/lib32/libk5crypto.so.3:
 
-/usr/lib32/libicuuc.so.76:
-
-/usr/lib32/libicudata.so.76:
+/usr/lib32/libicudata.so.78:
 
 /usr/lib32/libglib-2.0.so.0:
 
@@ -4471,11 +4469,9 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/lib/libidn2.so.0:
 
-/usr/lib/libicuuc.so.76:
+/usr/lib/libicui18n.so.78:
 
-/usr/lib/libicui18n.so.76:
-
-/usr/lib/libicudata.so.76:
+/usr/lib/libicudata.so.78:
 
 /usr/lib/libharfbuzz.so.0:
 
@@ -4499,7 +4495,11 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/lib/libXau.so.6:
 
-/usr/lib/libQt5Widgets.so.5.15.17:
+/usr/lib/libQt5Gui.so.5.15.18:
+
+/usr/lib32/libssh2.so.1:
+
+/usr/lib/libQt5Core.so.5.15.18:
 
 /usr/lib/libGL.so.1:
 
@@ -4815,15 +4815,11 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/bits/types/error_t.h:
 
-/usr/lib32/libicui18n.so.76:
-
 /usr/include/bits/types/cookie_io_functions_t.h:
 
 /usr/include/c++/15.2.1/bits/ostream.tcc:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
-
-/usr/lib/libQt5Core.so.5.15.17:
 
 /usr/include/ncurses_dll.h:
 
@@ -4952,8 +4948,6 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o:
 
 /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake:
-
-/usr/lib/libQt5Gui.so.5.15.17:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake:
 
@@ -5098,6 +5092,8 @@ CMakeFiles/4.1.2/CMakeSystem.cmake:
 /usr/include/qt/QtCore/qsysinfo.h:
 
 /usr/share/cmake/Modules/Platform/Linker/GNU.cmake:
+
+/usr/lib32/libicuuc.so.78:
 
 /usr/include/linux/close_range.h:
 
@@ -5265,7 +5261,7 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake:
 
-/usr/lib/libQt5DBus.so.5.15.17:
+/usr/lib/libQt5DBus.so.5.15.18:
 
 /usr/include/c++/15.2.1/bits/vector.tcc:
 
@@ -5475,6 +5471,8 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/c++/15.2.1/variant:
 
+/usr/lib/libQt5Widgets.so.5.15.18:
+
 /usr/include/bits/mathcalls.h:
 
 /usr/include/c++/15.2.1/istream:
@@ -5550,6 +5548,8 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 /usr/include/nlohmann/detail/meta/identity_tag.hpp:
 
 /usr/include/qt/QtCore/qmap.h:
+
+/usr/lib/libicuuc.so.78:
 
 /usr/include/endian.h:
 
@@ -5890,6 +5890,8 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 /usr/include/linux/stddef.h:
 
 /usr/include/bits/fp-logb.h:
+
+/usr/lib32/libicui18n.so.78:
 
 /usr/include/qt/QtCore/qregexp.h:
 

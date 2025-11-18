@@ -27,4 +27,5 @@ public:
 	void set(const std::string& key, const S& value){
 		data[key] = value;
 		saveConfig();	
-}};
+	}
+};
