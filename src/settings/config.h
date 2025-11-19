@@ -15,8 +15,11 @@ public:
 	template<typename G>
 	G get(const std::string& key){
 		try {
-			return data.value(key,G{});	
-		}catch(std::exception& e){
+			if (data.contains(key))
+				return data[key].get<G>();
+			else
+				throw std::invalid_argument("Invalid argument - no value");
+		}catch(std::invalid_argument& e){
 			Logs l;
 			l.write_logs("Error of getting config data: " + std::string(e.what()));
 			return G{};

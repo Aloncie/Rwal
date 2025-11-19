@@ -9,7 +9,6 @@
 #include "CLI/CLI.h"
 #include <exception>
 #include <filesystem>
-#include <iostream>
 #include <nlohmann/json.hpp>
 
 namespace fs = std::filesystem;

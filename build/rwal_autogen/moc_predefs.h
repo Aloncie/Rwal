@@ -228,7 +228,7 @@
 #define __DEC_EVAL_METHOD__ 2
 #define __FLT_MANT_DIG__ 24
 #define __LDBL_DECIMAL_DIG__ 21
-#define __VERSION__ "15.2.1 20250813"
+#define __VERSION__ "15.2.1 20251112"
 #define __UINT64_C(c) c ## UL
 #define __cpp_unicode_characters 201411L
 #define QT_DBUS_LIB 1
