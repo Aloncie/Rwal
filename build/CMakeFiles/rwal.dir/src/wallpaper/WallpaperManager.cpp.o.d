@@ -378,4 +378,4 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/c++/15.2.1/bits/unicode.h \
  /usr/include/c++/15.2.1/bits/unicode-data.h \
  /usr/include/qt/QtCore/qshareddata.h /usr/include/qt/QtCore/qhash.h \
- /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.2.1/iostream
+ /home/p1rat/code/rwal/src/CLI/CLI.h
