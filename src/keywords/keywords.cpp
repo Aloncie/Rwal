@@ -1,94 +1,65 @@
 #include "keywords.h"
 #include "logs/logs.h"
 #include "CLI/CLI.h"
-#include <filesystem>
-#include <fstream>
 #include <iostream>
 #include <cctype>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <settings/config.h>
 
-const std::string keywords_path = "/home/p1rat/code/rwal/build/keywords.txt";
-
-std::string Keywords::look_keywords(){
-	std::string result = "None";
-	std::ifstream ifile;
-	ifile.open(keywords_path);
-	if (ifile.is_open()){
-		getline(ifile,result);
-		ifile.close();
-	}
-	else {
-		Logs l;
-		l.write_logs("File open error ");
-		return "";
-	}
+std::vector<std::string> Keywords::get_keywords(){
+	std::vector<std::string> ready_keywords = look_keywords();
 	Keywords k;
-	k.format_str(result);
-	return result;
-}
-
-std::string Keywords::get_keywords(){
-	std::string result = "";
-	Keywords k;
-
-	if (std::filesystem::exists(keywords_path)) {
-		result = k.look_keywords();	
-		if (result != ""){
-			return result;
-		}
-	}
+	
+	if (ready_keywords.size() > 0)
+		return ready_keywords;
 	
 	std::cout << "\nThere is not file with keywords." <<  "\nPlease write keywords to find wallpaper( use ',' to devide them): ";
 	MenuManager::getInstatce().countOperatorPlus(3);
-	while (result == "")
-		std::getline(std::cin,result);
-	k.format_str(result);
-	std::ofstream ofile;
+	
+	std::string new_keywords = "";
+	while (new_keywords == "")
+		std::getline(std::cin,new_keywords);
 
-	ofile.open("keywords.txt");
-
-	if (ofile.is_open()){
-		ofile << result;
-		ofile.close();
+	//Format keywords
+	for (int i = 0;i < new_keywords.size(); i++){
+		if (!std::isalpha(new_keywords[i])&&new_keywords[i+1] != ' '){
+			new_keywords[i] = ' ';
+		}
+		else if (!std::isalpha(new_keywords[i])){
+			new_keywords.erase(i,1);
+		}
 	}
-	else{ 
-		Logs l;
-		l.write_logs("File create error ");
-		return "";
-	}
-	return result;
-}
 
-std::vector<std::string> Keywords::divide_keywords(std::string str){
-	std::vector<std::string> keywords;
+	//Devide keywords
 	std::string t = "";
-	for (size_t i = 0; i < str.size()+1; i++) {
-		if (str[i] == ' ' || i  == str.size()){
-			keywords.push_back(t);
+	for (size_t i = 0; i < new_keywords.size()+1; i++) {
+		if (new_keywords[i] == ' ' || i  == new_keywords.size()){
+			ready_keywords.push_back(t);
 			t = "";
 		}
 		else
-			t += str[i];
+			t += new_keywords[i];
 	}
 
-	return keywords;
+	
+	//Save keywords
+	Config c;
+	auto search = c.get<nlohmann::json>("search");
+    search["keywords"] = ready_keywords;
+    c.set("search", search);	
+
+	return ready_keywords;
 }
 
-std::string Keywords::format_str(std::string& str){
-	for (int i = 0;i < str.size(); i++){
-		if (!std::isalpha(str[i])&&str[i+1] != ' '){
-			str[i] = ' ';
-		}
-		else if (!std::isalpha(str[i])){
-			str.erase(i,1);
-		}
-	}
-
-	return str;	
+void Keywords::Default(std::vector<std::string>& keywords){
+	Logs l;
+	l.write_logs("There are not keywords. The default keywords will be used.");
+	keywords = {"nature", "landscape", "abstract", "space", "architecture", "animals"};
 }
 
 void Keywords::open_keywords_editor(){
+	/*
     Logs l;
 	struct stat buffer;
     if (stat(keywords_path.c_str(), &buffer) != 0) {
@@ -108,4 +79,5 @@ void Keywords::open_keywords_editor(){
 		editor = "nano";
 	std::string command = std::string(editor) + " " + keywords_path;
 	system(command.c_str());	
+	*/
 }

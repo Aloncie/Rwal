@@ -34,10 +34,10 @@ const MenuConfig KEYWORDS_MENU = {
     "1q", 
     []() {
         Keywords k;
-        std::string keywords = k.look_keywords();
+		std::string keywords = k.look_keywords<std::string>();
         return std::vector<std::string>{
             "-------------------------- ",
-            "Keywords: " + keywords,
+            "Keywords: " + keywords,	
             "1) Edit keywords",
             "q) Quit",
             "-------------------------- "

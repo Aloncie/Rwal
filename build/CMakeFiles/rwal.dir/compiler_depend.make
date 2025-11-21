@@ -363,6 +363,8 @@ CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp \
 CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp \
   /home/p1rat/code/rwal/src/CLI/Menus.h \
   /home/p1rat/code/rwal/src/keywords/keywords.h \
+  /home/p1rat/code/rwal/src/logs/logs.h \
+  /home/p1rat/code/rwal/src/settings/config.h \
   /home/p1rat/code/rwal/src/settings/settings.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
@@ -389,12 +391,22 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
   /usr/include/bits/getopt_core.h \
   /usr/include/bits/getopt_posix.h \
+  /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
   /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
   /usr/include/bits/posix1_lim.h \
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/posix_opt.h \
@@ -453,6 +465,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/bits/wordsize.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/c++/15.2.1/algorithm \
+  /usr/include/c++/15.2.1/any \
   /usr/include/c++/15.2.1/array \
   /usr/include/c++/15.2.1/atomic \
   /usr/include/c++/15.2.1/backward/auto_ptr.h \
@@ -485,15 +498,20 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/bits/exception_defines.h \
   /usr/include/c++/15.2.1/bits/exception_ptr.h \
   /usr/include/c++/15.2.1/bits/formatfwd.h \
+  /usr/include/c++/15.2.1/bits/forward_list.h \
+  /usr/include/c++/15.2.1/bits/forward_list.tcc \
   /usr/include/c++/15.2.1/bits/fs_dir.h \
   /usr/include/c++/15.2.1/bits/fs_fwd.h \
   /usr/include/c++/15.2.1/bits/fs_ops.h \
   /usr/include/c++/15.2.1/bits/fs_path.h \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
+  /usr/include/c++/15.2.1/bits/gslice.h \
+  /usr/include/c++/15.2.1/bits/gslice_array.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
   /usr/include/c++/15.2.1/bits/hashtable.h \
   /usr/include/c++/15.2.1/bits/hashtable_policy.h \
+  /usr/include/c++/15.2.1/bits/indirect_array.h \
   /usr/include/c++/15.2.1/bits/invoke.h \
   /usr/include/c++/15.2.1/bits/ios_base.h \
   /usr/include/c++/15.2.1/bits/istream.tcc \
@@ -507,6 +525,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/bits/locale_facets_nonio.h \
   /usr/include/c++/15.2.1/bits/locale_facets_nonio.tcc \
   /usr/include/c++/15.2.1/bits/localefwd.h \
+  /usr/include/c++/15.2.1/bits/mask_array.h \
   /usr/include/c++/15.2.1/bits/max_size_type.h \
   /usr/include/c++/15.2.1/bits/memory_resource.h \
   /usr/include/c++/15.2.1/bits/memoryfwd.h \
@@ -535,6 +554,8 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/bits/shared_ptr.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
+  /usr/include/c++/15.2.1/bits/slice_array.h \
+  /usr/include/c++/15.2.1/bits/specfun.h \
   /usr/include/c++/15.2.1/bits/sstream.tcc \
   /usr/include/c++/15.2.1/bits/std_abs.h \
   /usr/include/c++/15.2.1/bits/std_function.h \
@@ -572,14 +593,20 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/bits/uses_allocator.h \
   /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/15.2.1/bits/utility.h \
+  /usr/include/c++/15.2.1/bits/valarray_after.h \
+  /usr/include/c++/15.2.1/bits/valarray_array.h \
+  /usr/include/c++/15.2.1/bits/valarray_array.tcc \
+  /usr/include/c++/15.2.1/bits/valarray_before.h \
   /usr/include/c++/15.2.1/bits/vector.tcc \
   /usr/include/c++/15.2.1/bits/version.h \
+  /usr/include/c++/15.2.1/cassert \
   /usr/include/c++/15.2.1/cctype \
   /usr/include/c++/15.2.1/cerrno \
   /usr/include/c++/15.2.1/charconv \
   /usr/include/c++/15.2.1/chrono \
   /usr/include/c++/15.2.1/climits \
   /usr/include/c++/15.2.1/clocale \
+  /usr/include/c++/15.2.1/cmath \
   /usr/include/c++/15.2.1/codecvt \
   /usr/include/c++/15.2.1/compare \
   /usr/include/c++/15.2.1/concepts \
@@ -587,6 +614,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/cstdint \
   /usr/include/c++/15.2.1/cstdio \
   /usr/include/c++/15.2.1/cstdlib \
+  /usr/include/c++/15.2.1/cstring \
   /usr/include/c++/15.2.1/ctime \
   /usr/include/c++/15.2.1/cwchar \
   /usr/include/c++/15.2.1/cwctype \
@@ -602,6 +630,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/ext/type_traits.h \
   /usr/include/c++/15.2.1/filesystem \
   /usr/include/c++/15.2.1/format \
+  /usr/include/c++/15.2.1/forward_list \
   /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
@@ -624,6 +653,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/15.2.1/pstl/glue_numeric_defs.h \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
+  /usr/include/c++/15.2.1/ranges \
   /usr/include/c++/15.2.1/ratio \
   /usr/include/c++/15.2.1/span \
   /usr/include/c++/15.2.1/sstream \
@@ -633,12 +663,26 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/c++/15.2.1/string \
   /usr/include/c++/15.2.1/string_view \
   /usr/include/c++/15.2.1/system_error \
+  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
+  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
+  /usr/include/c++/15.2.1/tr1/ell_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/exp_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/gamma.tcc \
+  /usr/include/c++/15.2.1/tr1/hypergeometric.tcc \
+  /usr/include/c++/15.2.1/tr1/legendre_function.tcc \
+  /usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
+  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
+  /usr/include/c++/15.2.1/tr1/special_function_util.h \
   /usr/include/c++/15.2.1/tuple \
   /usr/include/c++/15.2.1/type_traits \
   /usr/include/c++/15.2.1/typeinfo \
   /usr/include/c++/15.2.1/unordered_map \
   /usr/include/c++/15.2.1/utility \
+  /usr/include/c++/15.2.1/valarray \
   /usr/include/c++/15.2.1/vector \
+  /usr/include/c++/15.2.1/version \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -669,6 +713,53 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
+  /usr/include/nlohmann/adl_serializer.hpp \
+  /usr/include/nlohmann/byte_container_with_subtype.hpp \
+  /usr/include/nlohmann/detail/abi_macros.hpp \
+  /usr/include/nlohmann/detail/conversions/from_json.hpp \
+  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
+  /usr/include/nlohmann/detail/conversions/to_json.hpp \
+  /usr/include/nlohmann/detail/exceptions.hpp \
+  /usr/include/nlohmann/detail/hash.hpp \
+  /usr/include/nlohmann/detail/input/binary_reader.hpp \
+  /usr/include/nlohmann/detail/input/input_adapters.hpp \
+  /usr/include/nlohmann/detail/input/json_sax.hpp \
+  /usr/include/nlohmann/detail/input/lexer.hpp \
+  /usr/include/nlohmann/detail/input/parser.hpp \
+  /usr/include/nlohmann/detail/input/position_t.hpp \
+  /usr/include/nlohmann/detail/iterators/internal_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/iter_impl.hpp \
+  /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
+  /usr/include/nlohmann/detail/iterators/iterator_traits.hpp \
+  /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/primitive_iterator.hpp \
+  /usr/include/nlohmann/detail/json_custom_base_class.hpp \
+  /usr/include/nlohmann/detail/json_pointer.hpp \
+  /usr/include/nlohmann/detail/json_ref.hpp \
+  /usr/include/nlohmann/detail/macro_scope.hpp \
+  /usr/include/nlohmann/detail/macro_unscope.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/begin.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/end.hpp \
+  /usr/include/nlohmann/detail/meta/cpp_future.hpp \
+  /usr/include/nlohmann/detail/meta/detected.hpp \
+  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
+  /usr/include/nlohmann/detail/meta/is_sax.hpp \
+  /usr/include/nlohmann/detail/meta/std_fs.hpp \
+  /usr/include/nlohmann/detail/meta/type_traits.hpp \
+  /usr/include/nlohmann/detail/meta/void_t.hpp \
+  /usr/include/nlohmann/detail/output/binary_writer.hpp \
+  /usr/include/nlohmann/detail/output/output_adapters.hpp \
+  /usr/include/nlohmann/detail/output/serializer.hpp \
+  /usr/include/nlohmann/detail/string_concat.hpp \
+  /usr/include/nlohmann/detail/string_escape.hpp \
+  /usr/include/nlohmann/detail/string_utils.hpp \
+  /usr/include/nlohmann/detail/value_t.hpp \
+  /usr/include/nlohmann/json.hpp \
+  /usr/include/nlohmann/json_fwd.hpp \
+  /usr/include/nlohmann/ordered_map.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   /usr/include/pthread.h \
   /usr/include/qt/QtCore/QDir \
   /usr/include/qt/QtCore/qalgorithms.h \
@@ -1357,6 +1448,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /home/p1rat/code/rwal/src/CLI/CLI.h \
   /home/p1rat/code/rwal/src/keywords/keywords.h \
   /home/p1rat/code/rwal/src/logs/logs.h \
+  /home/p1rat/code/rwal/src/settings/config.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -1369,6 +1461,9 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/asm/posix_types.h \
   /usr/include/asm/posix_types_64.h \
   /usr/include/asm/types.h \
+  /usr/include/asm/unistd.h \
+  /usr/include/asm/unistd_64.h \
+  /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
   /usr/include/bits/confname.h \
@@ -1379,11 +1474,24 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
   /usr/include/bits/getopt_core.h \
   /usr/include/bits/getopt_posix.h \
+  /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
   /usr/include/bits/posix_opt.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
@@ -1402,6 +1510,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/struct_stat.h \
+  /usr/include/bits/syscall.h \
   /usr/include/bits/thread-shared-types.h \
   /usr/include/bits/time.h \
   /usr/include/bits/time64.h \
@@ -1436,18 +1545,28 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
   /usr/include/bits/unistd_ext.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
+  /usr/include/c++/15.2.1/algorithm \
+  /usr/include/c++/15.2.1/any \
+  /usr/include/c++/15.2.1/array \
+  /usr/include/c++/15.2.1/backward/auto_ptr.h \
   /usr/include/c++/15.2.1/backward/binders.h \
   /usr/include/c++/15.2.1/bit \
+  /usr/include/c++/15.2.1/bits/algorithmfwd.h \
   /usr/include/c++/15.2.1/bits/align.h \
   /usr/include/c++/15.2.1/bits/alloc_traits.h \
   /usr/include/c++/15.2.1/bits/allocated_ptr.h \
   /usr/include/c++/15.2.1/bits/allocator.h \
+  /usr/include/c++/15.2.1/bits/atomic_base.h \
+  /usr/include/c++/15.2.1/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/15.2.1/bits/atomic_wait.h \
   /usr/include/c++/15.2.1/bits/basic_ios.h \
   /usr/include/c++/15.2.1/bits/basic_ios.tcc \
   /usr/include/c++/15.2.1/bits/basic_string.h \
@@ -1460,17 +1579,25 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/c++/15.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/15.2.1/bits/cxxabi_forced.h \
   /usr/include/c++/15.2.1/bits/cxxabi_init_exception.h \
+  /usr/include/c++/15.2.1/bits/enable_special_members.h \
+  /usr/include/c++/15.2.1/bits/erase_if.h \
   /usr/include/c++/15.2.1/bits/exception.h \
   /usr/include/c++/15.2.1/bits/exception_defines.h \
   /usr/include/c++/15.2.1/bits/exception_ptr.h \
+  /usr/include/c++/15.2.1/bits/forward_list.h \
+  /usr/include/c++/15.2.1/bits/forward_list.tcc \
   /usr/include/c++/15.2.1/bits/fs_dir.h \
   /usr/include/c++/15.2.1/bits/fs_fwd.h \
   /usr/include/c++/15.2.1/bits/fs_ops.h \
   /usr/include/c++/15.2.1/bits/fs_path.h \
-  /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
+  /usr/include/c++/15.2.1/bits/gslice.h \
+  /usr/include/c++/15.2.1/bits/gslice_array.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
+  /usr/include/c++/15.2.1/bits/hashtable.h \
+  /usr/include/c++/15.2.1/bits/hashtable_policy.h \
+  /usr/include/c++/15.2.1/bits/indirect_array.h \
   /usr/include/c++/15.2.1/bits/invoke.h \
   /usr/include/c++/15.2.1/bits/ios_base.h \
   /usr/include/c++/15.2.1/bits/istream.tcc \
@@ -1483,12 +1610,14 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/c++/15.2.1/bits/locale_facets_nonio.h \
   /usr/include/c++/15.2.1/bits/locale_facets_nonio.tcc \
   /usr/include/c++/15.2.1/bits/localefwd.h \
+  /usr/include/c++/15.2.1/bits/mask_array.h \
   /usr/include/c++/15.2.1/bits/max_size_type.h \
   /usr/include/c++/15.2.1/bits/memory_resource.h \
   /usr/include/c++/15.2.1/bits/memoryfwd.h \
   /usr/include/c++/15.2.1/bits/move.h \
   /usr/include/c++/15.2.1/bits/nested_exception.h \
   /usr/include/c++/15.2.1/bits/new_allocator.h \
+  /usr/include/c++/15.2.1/bits/node_handle.h \
   /usr/include/c++/15.2.1/bits/ostream.h \
   /usr/include/c++/15.2.1/bits/ostream.tcc \
   /usr/include/c++/15.2.1/bits/ostream_insert.h \
@@ -1498,38 +1627,65 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/c++/15.2.1/bits/ptr_traits.h \
   /usr/include/c++/15.2.1/bits/quoted_string.h \
   /usr/include/c++/15.2.1/bits/range_access.h \
+  /usr/include/c++/15.2.1/bits/ranges_algo.h \
+  /usr/include/c++/15.2.1/bits/ranges_algobase.h \
   /usr/include/c++/15.2.1/bits/ranges_base.h \
   /usr/include/c++/15.2.1/bits/ranges_cmp.h \
+  /usr/include/c++/15.2.1/bits/ranges_uninitialized.h \
   /usr/include/c++/15.2.1/bits/ranges_util.h \
   /usr/include/c++/15.2.1/bits/refwrap.h \
   /usr/include/c++/15.2.1/bits/requires_hosted.h \
   /usr/include/c++/15.2.1/bits/shared_ptr.h \
+  /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
+  /usr/include/c++/15.2.1/bits/slice_array.h \
+  /usr/include/c++/15.2.1/bits/specfun.h \
   /usr/include/c++/15.2.1/bits/sstream.tcc \
   /usr/include/c++/15.2.1/bits/std_abs.h \
+  /usr/include/c++/15.2.1/bits/std_function.h \
+  /usr/include/c++/15.2.1/bits/std_mutex.h \
+  /usr/include/c++/15.2.1/bits/stl_algo.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
   /usr/include/c++/15.2.1/bits/stl_bvector.h \
   /usr/include/c++/15.2.1/bits/stl_construct.h \
   /usr/include/c++/15.2.1/bits/stl_function.h \
+  /usr/include/c++/15.2.1/bits/stl_heap.h \
   /usr/include/c++/15.2.1/bits/stl_iterator.h \
   /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h \
+  /usr/include/c++/15.2.1/bits/stl_map.h \
+  /usr/include/c++/15.2.1/bits/stl_multimap.h \
+  /usr/include/c++/15.2.1/bits/stl_numeric.h \
   /usr/include/c++/15.2.1/bits/stl_pair.h \
+  /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/15.2.1/bits/stl_relops.h \
+  /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
+  /usr/include/c++/15.2.1/bits/stl_tree.h \
   /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
   /usr/include/c++/15.2.1/bits/stl_vector.h \
+  /usr/include/c++/15.2.1/bits/stream_iterator.h \
   /usr/include/c++/15.2.1/bits/streambuf.tcc \
   /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/15.2.1/bits/string_view.tcc \
   /usr/include/c++/15.2.1/bits/stringfwd.h \
+  /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/15.2.1/bits/unique_ptr.h \
+  /usr/include/c++/15.2.1/bits/unordered_map.h \
   /usr/include/c++/15.2.1/bits/uses_allocator.h \
   /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/15.2.1/bits/utility.h \
+  /usr/include/c++/15.2.1/bits/valarray_after.h \
+  /usr/include/c++/15.2.1/bits/valarray_array.h \
+  /usr/include/c++/15.2.1/bits/valarray_array.tcc \
+  /usr/include/c++/15.2.1/bits/valarray_before.h \
   /usr/include/c++/15.2.1/bits/vector.tcc \
   /usr/include/c++/15.2.1/bits/version.h \
+  /usr/include/c++/15.2.1/cassert \
   /usr/include/c++/15.2.1/cctype \
   /usr/include/c++/15.2.1/cerrno \
+  /usr/include/c++/15.2.1/climits \
   /usr/include/c++/15.2.1/clocale \
+  /usr/include/c++/15.2.1/cmath \
   /usr/include/c++/15.2.1/codecvt \
   /usr/include/c++/15.2.1/compare \
   /usr/include/c++/15.2.1/concepts \
@@ -1537,6 +1693,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/c++/15.2.1/cstdint \
   /usr/include/c++/15.2.1/cstdio \
   /usr/include/c++/15.2.1/cstdlib \
+  /usr/include/c++/15.2.1/cstring \
   /usr/include/c++/15.2.1/ctime \
   /usr/include/c++/15.2.1/cwchar \
   /usr/include/c++/15.2.1/cwctype \
@@ -1551,35 +1708,61 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/c++/15.2.1/ext/string_conversions.h \
   /usr/include/c++/15.2.1/ext/type_traits.h \
   /usr/include/c++/15.2.1/filesystem \
-  /usr/include/c++/15.2.1/fstream \
+  /usr/include/c++/15.2.1/forward_list \
+  /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
   /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
+  /usr/include/c++/15.2.1/iterator \
   /usr/include/c++/15.2.1/limits \
   /usr/include/c++/15.2.1/locale \
+  /usr/include/c++/15.2.1/map \
+  /usr/include/c++/15.2.1/memory \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/numbers \
+  /usr/include/c++/15.2.1/numeric \
+  /usr/include/c++/15.2.1/optional \
   /usr/include/c++/15.2.1/ostream \
+  /usr/include/c++/15.2.1/pstl/execution_defs.h \
+  /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
+  /usr/include/c++/15.2.1/pstl/glue_numeric_defs.h \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
+  /usr/include/c++/15.2.1/ranges \
   /usr/include/c++/15.2.1/ratio \
+  /usr/include/c++/15.2.1/span \
   /usr/include/c++/15.2.1/sstream \
   /usr/include/c++/15.2.1/stdexcept \
   /usr/include/c++/15.2.1/streambuf \
   /usr/include/c++/15.2.1/string \
   /usr/include/c++/15.2.1/string_view \
   /usr/include/c++/15.2.1/system_error \
+  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
+  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
+  /usr/include/c++/15.2.1/tr1/ell_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/exp_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/gamma.tcc \
+  /usr/include/c++/15.2.1/tr1/hypergeometric.tcc \
+  /usr/include/c++/15.2.1/tr1/legendre_function.tcc \
+  /usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
+  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
+  /usr/include/c++/15.2.1/tr1/special_function_util.h \
   /usr/include/c++/15.2.1/tuple \
   /usr/include/c++/15.2.1/type_traits \
   /usr/include/c++/15.2.1/typeinfo \
+  /usr/include/c++/15.2.1/unordered_map \
+  /usr/include/c++/15.2.1/utility \
+  /usr/include/c++/15.2.1/valarray \
   /usr/include/c++/15.2.1/vector \
+  /usr/include/c++/15.2.1/version \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -1598,32 +1781,87 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywo
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/libintl.h \
+  /usr/include/limits.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/sched/types.h \
   /usr/include/linux/stat.h \
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
+  /usr/include/nlohmann/adl_serializer.hpp \
+  /usr/include/nlohmann/byte_container_with_subtype.hpp \
+  /usr/include/nlohmann/detail/abi_macros.hpp \
+  /usr/include/nlohmann/detail/conversions/from_json.hpp \
+  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
+  /usr/include/nlohmann/detail/conversions/to_json.hpp \
+  /usr/include/nlohmann/detail/exceptions.hpp \
+  /usr/include/nlohmann/detail/hash.hpp \
+  /usr/include/nlohmann/detail/input/binary_reader.hpp \
+  /usr/include/nlohmann/detail/input/input_adapters.hpp \
+  /usr/include/nlohmann/detail/input/json_sax.hpp \
+  /usr/include/nlohmann/detail/input/lexer.hpp \
+  /usr/include/nlohmann/detail/input/parser.hpp \
+  /usr/include/nlohmann/detail/input/position_t.hpp \
+  /usr/include/nlohmann/detail/iterators/internal_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/iter_impl.hpp \
+  /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
+  /usr/include/nlohmann/detail/iterators/iterator_traits.hpp \
+  /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/primitive_iterator.hpp \
+  /usr/include/nlohmann/detail/json_custom_base_class.hpp \
+  /usr/include/nlohmann/detail/json_pointer.hpp \
+  /usr/include/nlohmann/detail/json_ref.hpp \
+  /usr/include/nlohmann/detail/macro_scope.hpp \
+  /usr/include/nlohmann/detail/macro_unscope.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/begin.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/end.hpp \
+  /usr/include/nlohmann/detail/meta/cpp_future.hpp \
+  /usr/include/nlohmann/detail/meta/detected.hpp \
+  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
+  /usr/include/nlohmann/detail/meta/is_sax.hpp \
+  /usr/include/nlohmann/detail/meta/std_fs.hpp \
+  /usr/include/nlohmann/detail/meta/type_traits.hpp \
+  /usr/include/nlohmann/detail/meta/void_t.hpp \
+  /usr/include/nlohmann/detail/output/binary_writer.hpp \
+  /usr/include/nlohmann/detail/output/output_adapters.hpp \
+  /usr/include/nlohmann/detail/output/serializer.hpp \
+  /usr/include/nlohmann/detail/string_concat.hpp \
+  /usr/include/nlohmann/detail/string_escape.hpp \
+  /usr/include/nlohmann/detail/string_utils.hpp \
+  /usr/include/nlohmann/detail/value_t.hpp \
+  /usr/include/nlohmann/json.hpp \
+  /usr/include/nlohmann/json_fwd.hpp \
+  /usr/include/nlohmann/ordered_map.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/stat.h \
+  /usr/include/sys/syscall.h \
   /usr/include/sys/types.h \
+  /usr/include/syscall.h \
   /usr/include/time.h \
   /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp \
   /home/p1rat/code/rwal/src/CLI/CLI.h \
@@ -3382,6 +3620,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /home/p1rat/code/rwal/src/CLI/Menus.h \
   /home/p1rat/code/rwal/src/keywords/keywords.h \
   /home/p1rat/code/rwal/src/logs/logs.h \
+  /home/p1rat/code/rwal/src/settings/config.h \
   /home/p1rat/code/rwal/src/settings/settings.h \
   /home/p1rat/code/rwal/src/startup_flows/startup_flows.h \
   /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h \
@@ -3410,12 +3649,22 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
   /usr/include/bits/getopt_core.h \
   /usr/include/bits/getopt_posix.h \
+  /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
   /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
   /usr/include/bits/posix1_lim.h \
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/posix_opt.h \
@@ -3474,6 +3723,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/bits/wordsize.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/c++/15.2.1/algorithm \
+  /usr/include/c++/15.2.1/any \
   /usr/include/c++/15.2.1/array \
   /usr/include/c++/15.2.1/atomic \
   /usr/include/c++/15.2.1/backward/auto_ptr.h \
@@ -3506,15 +3756,20 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/bits/exception_defines.h \
   /usr/include/c++/15.2.1/bits/exception_ptr.h \
   /usr/include/c++/15.2.1/bits/formatfwd.h \
+  /usr/include/c++/15.2.1/bits/forward_list.h \
+  /usr/include/c++/15.2.1/bits/forward_list.tcc \
   /usr/include/c++/15.2.1/bits/fs_dir.h \
   /usr/include/c++/15.2.1/bits/fs_fwd.h \
   /usr/include/c++/15.2.1/bits/fs_ops.h \
   /usr/include/c++/15.2.1/bits/fs_path.h \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
+  /usr/include/c++/15.2.1/bits/gslice.h \
+  /usr/include/c++/15.2.1/bits/gslice_array.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
   /usr/include/c++/15.2.1/bits/hashtable.h \
   /usr/include/c++/15.2.1/bits/hashtable_policy.h \
+  /usr/include/c++/15.2.1/bits/indirect_array.h \
   /usr/include/c++/15.2.1/bits/invoke.h \
   /usr/include/c++/15.2.1/bits/ios_base.h \
   /usr/include/c++/15.2.1/bits/istream.tcc \
@@ -3528,6 +3783,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/bits/locale_facets_nonio.h \
   /usr/include/c++/15.2.1/bits/locale_facets_nonio.tcc \
   /usr/include/c++/15.2.1/bits/localefwd.h \
+  /usr/include/c++/15.2.1/bits/mask_array.h \
   /usr/include/c++/15.2.1/bits/max_size_type.h \
   /usr/include/c++/15.2.1/bits/memory_resource.h \
   /usr/include/c++/15.2.1/bits/memoryfwd.h \
@@ -3556,6 +3812,8 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/bits/shared_ptr.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
+  /usr/include/c++/15.2.1/bits/slice_array.h \
+  /usr/include/c++/15.2.1/bits/specfun.h \
   /usr/include/c++/15.2.1/bits/sstream.tcc \
   /usr/include/c++/15.2.1/bits/std_abs.h \
   /usr/include/c++/15.2.1/bits/std_function.h \
@@ -3593,14 +3851,20 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/bits/uses_allocator.h \
   /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/15.2.1/bits/utility.h \
+  /usr/include/c++/15.2.1/bits/valarray_after.h \
+  /usr/include/c++/15.2.1/bits/valarray_array.h \
+  /usr/include/c++/15.2.1/bits/valarray_array.tcc \
+  /usr/include/c++/15.2.1/bits/valarray_before.h \
   /usr/include/c++/15.2.1/bits/vector.tcc \
   /usr/include/c++/15.2.1/bits/version.h \
+  /usr/include/c++/15.2.1/cassert \
   /usr/include/c++/15.2.1/cctype \
   /usr/include/c++/15.2.1/cerrno \
   /usr/include/c++/15.2.1/charconv \
   /usr/include/c++/15.2.1/chrono \
   /usr/include/c++/15.2.1/climits \
   /usr/include/c++/15.2.1/clocale \
+  /usr/include/c++/15.2.1/cmath \
   /usr/include/c++/15.2.1/codecvt \
   /usr/include/c++/15.2.1/compare \
   /usr/include/c++/15.2.1/concepts \
@@ -3608,6 +3872,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/cstdint \
   /usr/include/c++/15.2.1/cstdio \
   /usr/include/c++/15.2.1/cstdlib \
+  /usr/include/c++/15.2.1/cstring \
   /usr/include/c++/15.2.1/ctime \
   /usr/include/c++/15.2.1/cwchar \
   /usr/include/c++/15.2.1/cwctype \
@@ -3623,6 +3888,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/ext/type_traits.h \
   /usr/include/c++/15.2.1/filesystem \
   /usr/include/c++/15.2.1/format \
+  /usr/include/c++/15.2.1/forward_list \
   /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
@@ -3645,6 +3911,7 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/15.2.1/pstl/glue_numeric_defs.h \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
+  /usr/include/c++/15.2.1/ranges \
   /usr/include/c++/15.2.1/ratio \
   /usr/include/c++/15.2.1/span \
   /usr/include/c++/15.2.1/sstream \
@@ -3654,12 +3921,26 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/string \
   /usr/include/c++/15.2.1/string_view \
   /usr/include/c++/15.2.1/system_error \
+  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
+  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
+  /usr/include/c++/15.2.1/tr1/ell_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/exp_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/gamma.tcc \
+  /usr/include/c++/15.2.1/tr1/hypergeometric.tcc \
+  /usr/include/c++/15.2.1/tr1/legendre_function.tcc \
+  /usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
+  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
+  /usr/include/c++/15.2.1/tr1/special_function_util.h \
   /usr/include/c++/15.2.1/tuple \
   /usr/include/c++/15.2.1/type_traits \
   /usr/include/c++/15.2.1/typeinfo \
   /usr/include/c++/15.2.1/unordered_map \
   /usr/include/c++/15.2.1/utility \
+  /usr/include/c++/15.2.1/valarray \
   /usr/include/c++/15.2.1/vector \
+  /usr/include/c++/15.2.1/version \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -3690,6 +3971,53 @@ CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
+  /usr/include/nlohmann/adl_serializer.hpp \
+  /usr/include/nlohmann/byte_container_with_subtype.hpp \
+  /usr/include/nlohmann/detail/abi_macros.hpp \
+  /usr/include/nlohmann/detail/conversions/from_json.hpp \
+  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
+  /usr/include/nlohmann/detail/conversions/to_json.hpp \
+  /usr/include/nlohmann/detail/exceptions.hpp \
+  /usr/include/nlohmann/detail/hash.hpp \
+  /usr/include/nlohmann/detail/input/binary_reader.hpp \
+  /usr/include/nlohmann/detail/input/input_adapters.hpp \
+  /usr/include/nlohmann/detail/input/json_sax.hpp \
+  /usr/include/nlohmann/detail/input/lexer.hpp \
+  /usr/include/nlohmann/detail/input/parser.hpp \
+  /usr/include/nlohmann/detail/input/position_t.hpp \
+  /usr/include/nlohmann/detail/iterators/internal_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/iter_impl.hpp \
+  /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
+  /usr/include/nlohmann/detail/iterators/iterator_traits.hpp \
+  /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/primitive_iterator.hpp \
+  /usr/include/nlohmann/detail/json_custom_base_class.hpp \
+  /usr/include/nlohmann/detail/json_pointer.hpp \
+  /usr/include/nlohmann/detail/json_ref.hpp \
+  /usr/include/nlohmann/detail/macro_scope.hpp \
+  /usr/include/nlohmann/detail/macro_unscope.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/begin.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/end.hpp \
+  /usr/include/nlohmann/detail/meta/cpp_future.hpp \
+  /usr/include/nlohmann/detail/meta/detected.hpp \
+  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
+  /usr/include/nlohmann/detail/meta/is_sax.hpp \
+  /usr/include/nlohmann/detail/meta/std_fs.hpp \
+  /usr/include/nlohmann/detail/meta/type_traits.hpp \
+  /usr/include/nlohmann/detail/meta/void_t.hpp \
+  /usr/include/nlohmann/detail/output/binary_writer.hpp \
+  /usr/include/nlohmann/detail/output/output_adapters.hpp \
+  /usr/include/nlohmann/detail/output/serializer.hpp \
+  /usr/include/nlohmann/detail/string_concat.hpp \
+  /usr/include/nlohmann/detail/string_escape.hpp \
+  /usr/include/nlohmann/detail/string_utils.hpp \
+  /usr/include/nlohmann/detail/value_t.hpp \
+  /usr/include/nlohmann/json.hpp \
+  /usr/include/nlohmann/json_fwd.hpp \
+  /usr/include/nlohmann/ordered_map.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   /usr/include/pthread.h \
   /usr/include/qt/QtCore/QDir \
   /usr/include/qt/QtCore/qalgorithms.h \
@@ -4532,52 +4860,6 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/sys/time.h:
 
-/usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
-
-/usr/include/nlohmann/ordered_map.hpp:
-
-/usr/include/nlohmann/json_fwd.hpp:
-
-/usr/include/nlohmann/detail/value_t.hpp:
-
-/usr/include/nlohmann/detail/string_utils.hpp:
-
-/usr/include/nlohmann/detail/output/serializer.hpp:
-
-/usr/include/nlohmann/detail/output/binary_writer.hpp:
-
-/usr/include/nlohmann/detail/meta/void_t.hpp:
-
-CMakeFiles/rwal.dir/src/main.cpp.o:
-
-/usr/include/nlohmann/detail/meta/type_traits.hpp:
-
-/usr/include/nlohmann/detail/meta/std_fs.hpp:
-
-/usr/include/nlohmann/detail/meta/is_sax.hpp:
-
-/usr/include/nlohmann/detail/meta/detected.hpp:
-
-/usr/include/nlohmann/detail/macro_unscope.hpp:
-
-/usr/include/nlohmann/detail/macro_scope.hpp:
-
-/usr/include/nlohmann/detail/json_pointer.hpp:
-
-/usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
-
-/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
-
-/usr/include/nlohmann/detail/iterators/internal_iterator.hpp:
-
-/usr/include/nlohmann/detail/conversions/to_json.hpp:
-
-/usr/include/nlohmann/detail/conversions/from_json.hpp:
-
-/usr/include/nlohmann/byte_container_with_subtype.hpp:
-
-/usr/include/nlohmann/adl_serializer.hpp:
-
 /usr/include/curl/websockets.h:
 
 /usr/include/curl/urlapi.h:
@@ -4591,34 +4873,6 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/curl/curlver.h:
 
 /usr/include/curl/curl.h:
-
-/usr/include/c++/15.2.1/version:
-
-/usr/lib32/libpcre2-8.so.0:
-
-/usr/include/c++/15.2.1/ranges:
-
-/usr/include/c++/15.2.1/cstring:
-
-/usr/include/c++/15.2.1/cassert:
-
-/usr/include/c++/15.2.1/bits/valarray_before.h:
-
-/usr/include/c++/15.2.1/bits/valarray_array.h:
-
-/usr/include/c++/15.2.1/bits/slice_array.h:
-
-/usr/include/c++/15.2.1/bits/mask_array.h:
-
-/usr/include/c++/15.2.1/bits/indirect_array.h:
-
-/usr/include/c++/15.2.1/bits/gslice_array.h:
-
-/usr/include/c++/15.2.1/bits/gslice.h:
-
-/usr/include/nlohmann/detail/conversions/to_chars.hpp:
-
-/usr/include/bits/types/struct_osockaddr.h:
 
 /usr/include/bits/types/struct_iovec.h:
 
@@ -4636,17 +4890,83 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/asm-generic/socket.h:
 
-/usr/include/sys/stat.h:
-
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
 
-/usr/include/math.h:
+/usr/include/sys/stat.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/opt_random.h:
 
-/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
+/usr/include/c++/15.2.1/random:
+
+/usr/include/c++/15.2.1/bits/random.tcc:
+
+/usr/include/qt/QtDBus/qdbusmessage.h:
+
+/usr/lib/libcrypto.so.3:
+
+/usr/include/qt/QtDBus/qdbuserror.h:
+
+/usr/include/qt/QtDBus/qdbusconnection.h:
+
+/usr/include/qt/QtDBus/QDBusMessage:
+
+/usr/include/qt/QtDBus/QDBusConnection:
+
+/usr/include/qt/QtCore/qsharedpointer_impl.h:
+
+/usr/lib32/libcrypto.so.3:
+
+/usr/include/qt/QtCore/qsharedpointer.h:
+
+/usr/include/qt/QtCore/QDebug:
+
+/usr/include/qt/QtCore/QCoreApplication:
+
+/usr/include/c++/15.2.1/variant:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h:
+
+/usr/include/syscall.h:
+
+/usr/include/sys/syscall.h:
+
+/usr/include/strings.h:
+
+/usr/include/string.h:
+
+/usr/include/qt/QtCore/qvarlengtharray.h:
+
+/usr/include/qt/QtCore/qtcore-config.h:
+
+/usr/include/qt/QtCore/qsystemdetection.h:
+
+/usr/include/qt/QtCore/qsysinfo.h:
+
+/usr/include/qt/QtCore/qstringmatcher.h:
+
+/usr/include/qt/QtCore/qstringalgorithms.h:
+
+/usr/include/qt/QtCore/qshareddata.h:
+
+/usr/include/qt/QtCore/qscopedpointer.h:
+
+/usr/include/qt/QtCore/qrefcount.h:
+
+/usr/include/qt/QtCore/qobjectdefs_impl.h:
+
+/usr/include/qt/QtCore/qnamespace.h:
+
+/usr/include/qt/QtCore/qlogging.h:
+
+/usr/include/qt/QtCore/qlist.h:
+
+/usr/include/qt/QtCore/qiterator.h:
+
+/usr/include/qt/QtCore/qhash.h:
+
+/usr/include/qt/QtCore/qglobalstatic.h:
 
 /usr/include/c++/15.2.1/bits/stl_uninitialized.h:
 
@@ -4664,11 +4984,9 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/std_function.h:
 
-/usr/include/c++/15.2.1/tr1/special_function_util.h:
-
-/usr/include/c++/15.2.1/bits/std_abs.h:
-
 /usr/include/c++/15.2.1/bits/iterator_concepts.h:
+
+/usr/include/nlohmann/detail/value_t.hpp:
 
 /usr/include/c++/15.2.1/bits/ranges_base.h:
 
@@ -4688,6 +5006,12 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake:
 
+/usr/include/linux/stat.h:
+
+/usr/include/qt/QtCore/qmetatype.h:
+
+/usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake:
+
 /usr/include/c++/15.2.1/bits/move.h:
 
 /usr/include/c++/15.2.1/bits/memory_resource.h:
@@ -4698,6 +5022,12 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/stl_bvector.h:
 
+/usr/include/qt/QtCore/QString:
+
+/usr/include/bits/types.h:
+
+/usr/include/c++/15.2.1/bits/locale_facets.tcc:
+
 /usr/include/asm/posix_types_64.h:
 
 /usr/include/c++/15.2.1/bits/predefined_ops.h:
@@ -4705,6 +5035,10 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/bits/types/struct_itimerspec.h:
 
 /usr/include/c++/15.2.1/bits/locale_facets.h:
+
+CMakeFiles/rwal.dir/src/main.cpp.o:
+
+/usr/include/nlohmann/detail/meta/type_traits.hpp:
 
 /usr/include/c++/15.2.1/bits/locale_classes.h:
 
@@ -4719,6 +5053,10 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/limits:
 
 /usr/include/c++/15.2.1/bits/hashtable_policy.h:
+
+/usr/include/c++/15.2.1/bits/random.h:
+
+/usr/include/c++/15.2.1/bits/exception_defines.h:
 
 /usr/include/c++/15.2.1/vector:
 
@@ -4742,19 +5080,23 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/char_traits.h:
 
+/usr/include/nlohmann/detail/meta/is_sax.hpp:
+
 /usr/include/c++/15.2.1/bits/uses_allocator_args.h:
 
 /usr/include/c++/15.2.1/bits/basic_ios.tcc:
 
 /usr/include/c++/15.2.1/bit:
 
+/usr/include/c++/15.2.1/bits/valarray_array.h:
+
 /usr/include/c++/15.2.1/algorithm:
 
 /usr/include/c++/15.2.1/bits/exception.h:
 
-/usr/include/bits/uio_lim.h:
-
 /usr/include/bits/math-vector.h:
+
+/usr/include/bits/uio_lim.h:
 
 /usr/include/bits/wordsize.h:
 
@@ -4766,15 +5108,23 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/bits/waitflags.h:
 
-/usr/include/qt/QtDBus/QDBusMessage:
-
 /usr/include/bits/uintn-identity.h:
+
+/usr/include/qt/QtCore/qtextstream.h:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake:
+
+/usr/include/bits/typesizes.h:
 
 /usr/include/bits/types/timer_t.h:
 
 /usr/include/c++/15.2.1/bits/fstream.tcc:
 
 /usr/share/cmake/Modules/Linker/GNU-CXX.cmake:
+
+/usr/include/qt/QtCore/qstringview.h:
+
+/usr/include/c++/15.2.1/tr1/poly_hermite.tcc:
 
 /usr/include/bits/types/time_t.h:
 
@@ -4784,13 +5134,9 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/bits/types/struct_tm.h:
 
-/usr/include/nlohmann/json.hpp:
+/usr/include/bits/types/struct_osockaddr.h:
 
-/usr/include/bits/types/struct_sched_param.h:
-
-/usr/include/nlohmann/detail/meta/call_std/begin.hpp:
-
-/usr/include/bits/types/struct___jmp_buf_tag.h:
+/usr/include/nlohmann/detail/conversions/to_chars.hpp:
 
 /usr/include/bits/waitstatus.h:
 
@@ -4806,15 +5152,17 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/list.tcc:
 
-/usr/include/qt/QtCore/qsharedpointer_impl.h:
-
 /usr/share/cmake/Modules/CMakeLanguageInformation.cmake:
-
-/usr/include/qt/QtDBus/qdbusconnection.h:
 
 /usr/include/bits/types/error_t.h:
 
 /usr/include/bits/types/cookie_io_functions_t.h:
+
+/usr/include/qt/QtCore/qobject_impl.h:
+
+/usr/include/qt/QtCore/qnumeric.h:
+
+/usr/include/bits/types/__sigset_t.h:
 
 /usr/include/c++/15.2.1/bits/ostream.tcc:
 
@@ -4822,19 +5170,27 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/ncurses_dll.h:
 
-/usr/include/c++/15.2.1/bits/valarray_array.tcc:
-
-/usr/include/bits/types/__locale_t.h:
-
 /usr/lib/libcom_err.so.2:
 
 /usr/lib/libgcc_s.so.1:
 
 /home/p1rat/code/rwal/src/keywords/keywords.cpp:
 
+/usr/include/qt/QtCore/qpair.h:
+
+/usr/include/bits/types/clock_t.h:
+
 /usr/include/c++/15.2.1/bits/string_view.tcc:
 
 /usr/include/bits/types/__fpos_t.h:
+
+/usr/include/qt/QtCore/qtypeinfo.h:
+
+/usr/include/asm/unistd_64.h:
+
+/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
+
+/usr/include/nlohmann/adl_serializer.hpp:
 
 /usr/include/c++/15.2.1/forward_list:
 
@@ -4860,6 +5216,8 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake:
 
+/usr/include/c++/15.2.1/bits/mask_array.h:
+
 /usr/include/c++/15.2.1/bits/stl_vector.h:
 
 /usr/include/bits/time.h:
@@ -4884,15 +5242,7 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/system_error:
 
-/usr/include/nlohmann/detail/iterators/primitive_iterator.hpp:
-
-/usr/include/bits/statx-generic.h:
-
-/usr/include/c++/15.2.1/bits/stl_algobase.h:
-
 /home/p1rat/code/rwal/src/settings/config.cpp:
-
-/usr/include/sys/syscall.h:
 
 /usr/include/bits/struct_rwlock.h:
 
@@ -4916,17 +5266,13 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/bits/types/clockid_t.h:
 
-/usr/include/qt/QtCore/qsystemdetection.h:
+/usr/include/qt/QtCore/qdebug.h:
 
-/usr/include/c++/15.2.1/random:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake:
 
 /usr/include/c++/15.2.1/bits/cpp_type_traits.h:
-
-/usr/include/nlohmann/detail/input/lexer.hpp:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake:
 
 /usr/include/bits/floatn.h:
 
@@ -4935,6 +5281,10 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QTsLibPlugin.cmake:
 
 /usr/include/c++/15.2.1/bits/functional_hash.h:
+
+/usr/include/qt/QtCore/qcontiguouscache.h:
+
+/usr/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake:
 
 /usr/include/c++/15.2.1/bits/stl_numeric.h:
 
@@ -4954,11 +5304,15 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o:
 
 CMakeFiles/4.1.2/CMakeSystem.cmake:
 
+/usr/include/bits/types/__locale_t.h:
+
+/usr/include/c++/15.2.1/bits/valarray_array.tcc:
+
 /usr/include/libintl.h:
 
-/usr/include/qt/QtCore/qglobalstatic.h:
-
 /usr/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake:
+
+/usr/include/nlohmann/json_fwd.hpp:
 
 /usr/include/c++/15.2.1/bits/stl_heap.h:
 
@@ -5024,13 +5378,11 @@ CMakeFiles/4.1.2/CMakeSystem.cmake:
 
 /usr/include/c++/15.2.1/bits/invoke.h:
 
+/usr/include/math.h:
+
 /usr/include/c++/15.2.1/bits/stl_map.h:
 
 /usr/include/asm-generic/posix_types.h:
-
-/usr/include/nlohmann/detail/string_escape.hpp:
-
-/usr/include/qt/QtCore/QDir:
 
 /usr/include/bits/byteswap.h:
 
@@ -5048,19 +5400,21 @@ CMakeFiles/4.1.2/CMakeSystem.cmake:
 
 /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp:
 
+/usr/lib32/libpcre2-8.so.0:
+
+/usr/include/c++/15.2.1/ranges:
+
 /usr/include/c++/15.2.1/array:
 
 /usr/include/c++/15.2.1/bits/localefwd.h:
 
-/usr/include/qt/QtCore/qtcore-config.h:
+/usr/include/unistd.h:
+
+/home/p1rat/code/rwal/src/logs/logs.cpp:
 
 /usr/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake:
 
-/usr/include/linux/stat.h:
-
-/usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake:
-
-/usr/include/qt/QtCore/qmetatype.h:
+/usr/include/nlohmann/byte_container_with_subtype.hpp:
 
 /usr/lib/libfreetype.so.6:
 
@@ -5084,11 +5438,13 @@ CMakeFiles/4.1.2/CMakeSystem.cmake:
 
 /usr/include/c++/15.2.1/tr1/bessel_function.tcc:
 
+/usr/include/qt/QtCore/QDir:
+
+/usr/include/nlohmann/detail/string_escape.hpp:
+
 /usr/lib32/libsystemd.so.0:
 
 /usr/include/c++/15.2.1/ratio:
-
-/usr/include/qt/QtCore/qsysinfo.h:
 
 /usr/share/cmake/Modules/Platform/Linker/GNU.cmake:
 
@@ -5118,9 +5474,9 @@ CMakeFiles/4.1.2/CMakeSystem.cmake:
 
 /usr/include/c++/15.2.1/bits/functexcept.h:
 
-/usr/include/bits/types/clock_t.h:
+/usr/include/qt/QtCore/qobject.h:
 
-/usr/include/qt/QtCore/qpair.h:
+/home/p1rat/code/rwal/src/CLI/Menus.h:
 
 /usr/include/bits/endian.h:
 
@@ -5136,10 +5492,6 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/c++/15.2.1/cwctype:
 
-/usr/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake:
-
-/usr/include/qt/QtCore/qcontiguouscache.h:
-
 /usr/include/c++/15.2.1/bits/node_handle.h:
 
 /usr/include/bits/types/struct_timeval.h:
@@ -5154,15 +5506,9 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp:
 
-/usr/include/nlohmann/detail/hash.hpp:
-
-/usr/share/cmake/Modules/Platform/Linux-GNU.cmake:
-
 /usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake:
-
-/usr/include/qt/QtCore/qiterator.h:
 
 /home/p1rat/code/rwal/src/settings/settings.cpp:
 
@@ -5174,10 +5520,6 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/c++/15.2.1/pstl/glue_numeric_defs.h:
 
-/usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:
-
-/usr/include/c++/15.2.1/bits/stl_tree.h:
-
 /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h:
 
 /usr/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake:
@@ -5187,10 +5529,6 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h:
 
 /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake:
-
-/usr/lib32/libcrypto.so.3:
-
-/usr/include/qt/QtCore/qsharedpointer.h:
 
 /usr/include/c++/15.2.1/tr1/ell_integral.tcc:
 
@@ -5204,23 +5542,15 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake:
 
-/usr/include/c++/15.2.1/tr1/poly_hermite.tcc:
-
-/usr/include/qt/QtCore/qstringview.h:
-
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake:
 
-/usr/include/c++/15.2.1/bits/exception_defines.h:
+/usr/include/qt/QtCore/qvector.h:
 
-/usr/include/c++/15.2.1/bits/random.h:
+/usr/include/c++/15.2.1/bits/algorithmfwd.h:
 
-/usr/include/bits/types.h:
-
-/usr/include/c++/15.2.1/bits/locale_facets.tcc:
-
-/usr/include/qt/QtCore/QString:
+/usr/include/c++/15.2.1/bits/memoryfwd.h:
 
 /usr/include/bits/types/wint_t.h:
 
@@ -5244,19 +5574,11 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
 
-/usr/include/qt/QtCore/qshareddata.h:
-
 /usr/share/cmake/Modules/FindCurses.cmake:
 
 /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake:
 
 /usr/share/cmake/Modules/Linker/GNU.cmake:
-
-/usr/include/nlohmann/detail/json_custom_base_class.hpp:
-
-/usr/include/qt/QtCore/qobjectdefs.h:
-
-/usr/include/qt/QtCore/qstringmatcher.h:
 
 /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake:
 
@@ -5274,8 +5596,6 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/bits/types/mbstate_t.h:
 
-/usr/include/qt/QtDBus/qdbusmessage.h:
-
 /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
 
 /usr/include/c++/15.2.1/cstdio:
@@ -5283,6 +5603,8 @@ rwal_autogen/mocs_compilation.cpp:
 /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp:
 
 /usr/include/c++/15.2.1/bits/ostream.h:
+
+/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
 
 /usr/share/cmake/Modules/CheckLibraryExists.cmake:
 
@@ -5308,6 +5630,10 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/c++/15.2.1/bits/codecvt.h:
 
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake:
+
+/usr/include/nlohmann/detail/input/lexer.hpp:
+
 /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
@@ -5321,12 +5647,6 @@ rwal_autogen/mocs_compilation.cpp:
 /usr/share/cmake/Modules/Compiler/GNU.cmake:
 
 /usr/include/c++/15.2.1/bits/stl_list.h:
-
-/usr/include/c++/15.2.1/bits/algorithmfwd.h:
-
-/usr/include/c++/15.2.1/bits/memoryfwd.h:
-
-/usr/include/qt/QtCore/qvector.h:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake:
 
@@ -5364,23 +5684,17 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/c++/15.2.1/bits/locale_classes.tcc:
 
-/usr/include/c++/15.2.1/bits/forward_list.h:
-
-/usr/include/c++/15.2.1/bits/shared_ptr_atomic.h:
-
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake:
 
 /usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/15.2.1/bits/slice_array.h:
 
 /usr/include/c++/15.2.1/iterator:
 
 /usr/lib32/libssl.so.3:
 
 /usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake:
-
-/usr/include/nlohmann/detail/meta/cpp_future.hpp:
-
-/usr/include/qt/QtCore/qvariant.h:
 
 /usr/include/c++/15.2.1/bits/alloc_traits.h:
 
@@ -5402,12 +5716,6 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/bits/errno.h:
 
-/usr/include/bits/types/__sigset_t.h:
-
-/usr/include/qt/QtCore/qnumeric.h:
-
-/usr/include/qt/QtCore/qobject_impl.h:
-
 /usr/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake:
 
 /usr/include/c++/15.2.1/bits/uniform_int_dist.h:
@@ -5428,23 +5736,27 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/c++/15.2.1/cstdlib:
 
+/usr/lib/libz.so.1:
+
+/usr/include/qt/QtCore/qset.h:
+
+/usr/include/qt/QtCore/qhashfunctions.h:
+
+/usr/lib/cmake/Qt5DBus/Qt5DBusConfigVersion.cmake:
+
+/usr/include/c++/15.2.1/bits/shared_ptr_base.h:
+
 /usr/include/c++/15.2.1/debug/debug.h:
 
-/usr/include/nlohmann/detail/output/output_adapters.hpp:
+/usr/include/qt/QtCore/qvariant.h:
 
-/usr/include/c++/15.2.1/bits/align.h:
+/usr/include/nlohmann/detail/meta/cpp_future.hpp:
 
 /usr/include/c++/15.2.1/ext/aligned_buffer.h:
 
 /usr/include/c++/15.2.1/locale:
 
 /usr/include/c++/15.2.1/ext/alloc_traits.h:
-
-/usr/include/c++/15.2.1/any:
-
-/usr/share/cmake/Modules/CMakeParseArguments.cmake:
-
-/usr/include/bits/unistd_ext.h:
 
 /usr/include/c++/15.2.1/bits/unicode.h:
 
@@ -5456,7 +5768,13 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/bits/getopt_core.h:
 
+/usr/include/c++/15.2.1/bits/align.h:
+
+/usr/include/nlohmann/detail/output/output_adapters.hpp:
+
 /usr/include/c++/15.2.1/ext/type_traits.h:
+
+/usr/include/nlohmann/detail/macro_scope.hpp:
 
 /usr/include/c++/15.2.1/functional:
 
@@ -5468,13 +5786,19 @@ rwal_autogen/mocs_compilation.cpp:
 
 /usr/include/c++/15.2.1/numbers:
 
-/usr/include/c++/15.2.1/variant:
-
 /usr/lib/libQt5Widgets.so.5.15.18:
 
 /usr/include/bits/mathcalls.h:
 
 /usr/include/c++/15.2.1/istream:
+
+/usr/include/qt/QtCore/qcoreapplication.h:
+
+/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake:
+
+/usr/include/c++/15.2.1/map:
+
+/usr/include/c++/15.2.1/new:
 
 /usr/include/c++/15.2.1/pstl/execution_defs.h:
 
@@ -5516,10 +5840,6 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake:
-
-/usr/include/qt/QtCore/qdebug.h:
-
 /usr/include/bits/floatn-common.h:
 
 /home/p1rat/code/rwal/src/keywords/keywords.h:
@@ -5544,9 +5864,7 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/curses.h:
 
-/usr/include/nlohmann/detail/meta/identity_tag.hpp:
-
-/usr/include/qt/QtCore/qmap.h:
+/usr/include/c++/15.2.1/bits/indirect_array.h:
 
 /usr/lib/libicuuc.so.78:
 
@@ -5574,11 +5892,13 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/linux/sched/types.h:
 
-/usr/include/qt/QtCore/qobjectdefs_impl.h:
+/usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
 /usr/lib/libpcre2-16.so.0:
 
 /usr/include/locale.h:
+
+/usr/include/c++/15.2.1/bits/gslice_array.h:
 
 /usr/include/sched.h:
 
@@ -5608,13 +5928,13 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/sys/single_threaded.h:
 
-/usr/include/nlohmann/detail/abi_macros.hpp:
-
-/usr/include/c++/15.2.1/bits/shared_ptr.h:
-
 /usr/lib/cmake/Qt5/Qt5ConfigVersion.cmake:
 
 /usr/include/sys/types.h:
+
+/usr/include/qt/QtCore/QVariantMap:
+
+/usr/include/time.h:
 
 /usr/include/nlohmann/detail/exceptions.hpp:
 
@@ -5634,7 +5954,35 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/bits/confname.h:
 
+/usr/include/nlohmann/detail/macro_unscope.hpp:
+
+/usr/lib/libmvec.so.1:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/bits/fp-logb.h:
+
+/usr/include/bits/iscanonical.h:
+
+/home/p1rat/code/rwal/src/CLI/CLI.h:
+
+/usr/include/c++/15.2.1/bits/requires_hosted.h:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
+
 /usr/include/bits/local_lim.h:
+
+/usr/lib32/libicui18n.so.78:
+
+/usr/include/qt/QtCore/qregexp.h:
+
+/usr/include/bits/mathcalls-macros.h:
+
+/usr/include/c++/15.2.1/bits/erase_if.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/messages_members.h:
+
+/usr/include/bits/mathcalls-narrow.h:
 
 /usr/include/bits/posix2_lim.h:
 
@@ -5646,11 +5994,13 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/qt/QtCore/qconfig.h:
 
+/usr/share/cmake/Modules/CMakeParseArguments.cmake:
+
+/usr/include/bits/unistd_ext.h:
+
+/usr/include/c++/15.2.1/any:
+
 /usr/include/c++/15.2.1/backward/auto_ptr.h:
-
-/usr/include/nlohmann/detail/meta/call_std/end.hpp:
-
-/usr/include/qt/QtCore/qversiontagging.h:
 
 /usr/lib/libcurl.so:
 
@@ -5664,11 +6014,17 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/formatfwd.h:
 
+/usr/include/c++/15.2.1/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/15.2.1/bits/forward_list.h:
+
 /usr/lib32/libbz2.so.1.0:
 
 /usr/include/c++/15.2.1/bits/atomic_base.h:
 
 /usr/include/c++/15.2.1/bits/fs_ops.h:
+
+/usr/include/c++/15.2.1/bits/gslice.h:
 
 /usr/include/qt/QtCore/qstring.h:
 
@@ -5690,17 +6046,13 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/ranges_uninitialized.h:
 
+/usr/include/c++/15.2.1/typeinfo:
+
+/usr/include/c++/15.2.1/bits/specfun.h:
+
 /usr/include/c++/15.2.1/bits/streambuf_iterator.h:
 
 /usr/include/c++/15.2.1/bits/sstream.tcc:
-
-/usr/include/nlohmann/detail/input/parser.hpp:
-
-/usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h:
-
-/usr/include/nlohmann/detail/input/binary_reader.hpp:
-
-/usr/include/c++/15.2.1/bits/stl_relops.h:
 
 /usr/include/bits/types/struct_timespec.h:
 
@@ -5710,21 +6062,43 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/bits/stream_iterator.h:
 
-/usr/lib32/libGLX.so.0:
-
-/usr/include/c++/15.2.1/valarray:
-
-/usr/include/c++/15.2.1/bits/unicode-data.h:
-
 /usr/include/qt/QtCore/qcoreevent.h:
 
 /usr/include/c++/15.2.1/bits/unique_ptr.h:
+
+/usr/lib/crti.o:
+
+/usr/include/qt/QtCore/qeventloop.h:
+
+/usr/include/c++/15.2.1/bits/valarray_after.h:
+
+/usr/include/c++/15.2.1/bits/valarray_before.h:
+
+/usr/include/c++/15.2.1/cassert:
+
+/usr/include/qt/QtCore/qstringlist.h:
+
+/usr/include/qt/QtCore/qglobal.h:
+
+/usr/include/nlohmann/detail/input/json_sax.hpp:
+
+/usr/include/qt/QtCore/qversiontagging.h:
+
+/usr/include/nlohmann/detail/meta/call_std/end.hpp:
 
 /usr/include/c++/15.2.1/climits:
 
 /usr/include/nlohmann/detail/string_concat.hpp:
 
 /usr/include/c++/15.2.1/cstdint:
+
+/usr/include/qt/QtCore/qlocale.h:
+
+/usr/include/bits/flt-eval-method.h:
+
+/usr/include/nlohmann/detail/json_ref.hpp:
+
+/usr/include/c++/15.2.1/cstring:
 
 /usr/include/bits/locale.h:
 
@@ -5744,7 +6118,37 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/c++/15.2.1/stdlib.h:
 
+/usr/include/qt/QtCore/qstringliteral.h:
+
+/usr/include/c++/15.2.1/tr1/gamma.tcc:
+
+/usr/include/qt/QtCore/qprocessordetection.h:
+
+/usr/include/c++/15.2.1/tr1/legendre_function.tcc:
+
+/usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc:
+
+/usr/include/c++/15.2.1/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/15.2.1/bits/std_abs.h:
+
+/usr/include/c++/15.2.1/tr1/special_function_util.h:
+
 /usr/include/c++/15.2.1/utility:
+
+/usr/lib32/libGLX.so.0:
+
+/usr/include/c++/15.2.1/bits/unicode-data.h:
+
+/usr/include/c++/15.2.1/valarray:
+
+/usr/include/nlohmann/detail/meta/void_t.hpp:
+
+/usr/include/qt/QtCore/qfiledevice.h:
+
+/usr/include/c++/15.2.1/version:
+
+/usr/include/nlohmann/detail/output/binary_writer.hpp:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
 
@@ -5752,13 +6156,79 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/limits.h:
 
+/usr/lib/crtn.o:
+
+/usr/include/qt/QtCore/qiodevice.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/c++/15.2.1/bits/shared_ptr.h:
+
+/usr/include/nlohmann/detail/abi_macros.hpp:
+
+/usr/include/nlohmann/detail/conversions/from_json.hpp:
+
+/usr/include/nlohmann/detail/conversions/to_json.hpp:
+
+/usr/share/cmake/Modules/Platform/Linux-GNU.cmake:
+
+/usr/include/nlohmann/detail/hash.hpp:
+
+/usr/include/c++/15.2.1/bits/stl_relops.h:
+
+/usr/include/nlohmann/detail/input/binary_reader.hpp:
+
+/usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h:
+
+/usr/include/nlohmann/detail/input/parser.hpp:
+
+/usr/include/nlohmann/detail/iterators/internal_iterator.hpp:
+
+/usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
+
+/usr/include/c++/15.2.1/bits/stl_tree.h:
+
+/usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:
+
+/usr/include/bits/statx-generic.h:
+
+/usr/include/c++/15.2.1/bits/stl_algobase.h:
+
+/usr/include/nlohmann/detail/iterators/primitive_iterator.hpp:
+
+/usr/include/qt/QtCore/qobjectdefs.h:
+
+/usr/include/nlohmann/detail/json_custom_base_class.hpp:
+
+/usr/include/nlohmann/detail/json_pointer.hpp:
+
+/usr/include/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/nlohmann/detail/meta/call_std/begin.hpp:
+
+/usr/include/nlohmann/detail/meta/detected.hpp:
+
+/usr/include/qt/QtCore/qmap.h:
+
+/usr/include/nlohmann/detail/meta/identity_tag.hpp:
+
+/usr/include/nlohmann/detail/meta/std_fs.hpp:
+
+/usr/include/nlohmann/detail/output/serializer.hpp:
+
+/usr/include/nlohmann/detail/string_utils.hpp:
+
+/usr/include/bits/types/struct_sched_param.h:
+
+/usr/include/nlohmann/json.hpp:
+
+/usr/include/nlohmann/ordered_map.hpp:
+
 /usr/include/qt/QtCore/qarraydata.h:
 
 /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp:
 
 /usr/include/qt/QtCore/qatomic.h:
-
-/usr/include/qt/QtCore/QDebug:
 
 /usr/include/qt/QtCore/qatomic_cxx11.h:
 
@@ -5774,148 +6244,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/include/qt/QtCore/qfile.h:
 
-/usr/include/qt/QtCore/qfiledevice.h:
-
 /usr/include/qt/QtCore/qfileinfo.h:
 
 /usr/include/qt/QtCore/qflags.h:
-
-/usr/include/qt/QtCore/qhash.h:
-
-/usr/lib/crtn.o:
-
-/usr/include/linux/limits.h:
-
-/usr/include/qt/QtCore/qiodevice.h:
-
-/usr/include/qt/QtCore/qlist.h:
-
-/usr/include/qt/QtCore/qlogging.h:
-
-/usr/include/qt/QtCore/qnamespace.h:
-
-/home/p1rat/code/rwal/src/CLI/Menus.h:
-
-/usr/include/qt/QtCore/qobject.h:
-
-/usr/include/qt/QtCore/qrefcount.h:
-
-/usr/include/qt/QtCore/qscopedpointer.h:
-
-/usr/include/qt/QtCore/qstringalgorithms.h:
-
-/usr/include/nlohmann/detail/input/json_sax.hpp:
-
-/usr/include/qt/QtCore/qglobal.h:
-
-/usr/include/qt/QtCore/qstringlist.h:
-
-/usr/include/asm/unistd_64.h:
-
-/usr/include/qt/QtCore/qtypeinfo.h:
-
-/usr/include/qt/QtCore/qvarlengtharray.h:
-
-/usr/include/nlohmann/detail/json_ref.hpp:
-
-/usr/include/qt/QtCore/qlocale.h:
-
-/usr/include/bits/flt-eval-method.h:
-
-/usr/include/string.h:
-
-/usr/include/strings.h:
-
-/usr/include/syscall.h:
-
-/home/p1rat/code/rwal/src/logs/logs.cpp:
-
-/usr/include/unistd.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h:
-
-/usr/include/qt/QtCore/QCoreApplication:
-
-/usr/include/time.h:
-
-/usr/include/qt/QtCore/QVariantMap:
-
-/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake:
-
-/usr/include/c++/15.2.1/map:
-
-/usr/include/c++/15.2.1/new:
-
-/usr/include/qt/QtCore/qcoreapplication.h:
-
-/usr/lib/crti.o:
-
-/usr/include/c++/15.2.1/bits/valarray_after.h:
-
-/usr/include/qt/QtCore/qeventloop.h:
-
-/usr/lib/libz.so.1:
-
-/usr/lib/cmake/Qt5DBus/Qt5DBusConfigVersion.cmake:
-
-/usr/include/c++/15.2.1/bits/shared_ptr_base.h:
-
-/usr/include/qt/QtCore/qhashfunctions.h:
-
-/usr/include/qt/QtCore/qset.h:
-
-/usr/include/bits/iscanonical.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/qt/QtCore/qtextstream.h:
-
-/home/p1rat/code/rwal/src/CLI/CLI.h:
-
-/usr/include/c++/15.2.1/bits/requires_hosted.h:
-
-/usr/include/bits/libm-simd-decl-stubs.h:
-
-/usr/include/qt/QtDBus/QDBusConnection:
-
-/usr/lib/libcrypto.so.3:
-
-/usr/include/qt/QtDBus/qdbuserror.h:
-
-/usr/lib/libmvec.so.1:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/bits/fp-logb.h:
-
-/usr/lib32/libicui18n.so.78:
-
-/usr/include/qt/QtCore/qregexp.h:
-
-/usr/include/bits/mathcalls-macros.h:
-
-/usr/include/c++/15.2.1/bits/erase_if.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/messages_members.h:
-
-/usr/include/bits/mathcalls-narrow.h:
-
-/usr/include/c++/15.2.1/bits/random.tcc:
-
-/usr/include/c++/15.2.1/typeinfo:
-
-/usr/include/c++/15.2.1/bits/specfun.h:
-
-/usr/include/qt/QtCore/qstringliteral.h:
-
-/usr/include/c++/15.2.1/tr1/gamma.tcc:
-
-/usr/include/qt/QtCore/qprocessordetection.h:
-
-/usr/include/c++/15.2.1/tr1/legendre_function.tcc:
-
-/usr/include/c++/15.2.1/tr1/poly_laguerre.tcc:
-
-/usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc:
