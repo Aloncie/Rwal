@@ -37,14 +37,15 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 	int last_page = 1;
 	Keywords k;
 	std::vector<std::string> keywords;
+
 	if (mode == "change"){
-		Config c;
-		auto search = c.get<nlohmann::json>("search");
-		keywords = search["keywords"].get<std::vector<std::string>>();		
-		//keywords = k.divide_keywords(k.look_keywords());
+		keywords = k.look_keywords();
+		if (keywords.size() < 1)
+			k.Default(keywords);
 	}
+
 	else if (mode == "core")
-		keywords = k.divide_keywords(k.get_keywords());
+		keywords = k.get_keywords();
 
 	do {
 		std::string kw = keywords[0];
@@ -64,9 +65,9 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 			Logs l;
 			l.write_logs("Failed to stoi pageCount: " + std::string(e.what()));
 			last_page = 1;
-	}
+		}
 
-		page = std::to_string(random(last_page/100)+1);
+		page = std::to_string(random(last_page%100));
 
 		MyCurl v("page=" + page + "&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",kw);
 		v.get_request();
