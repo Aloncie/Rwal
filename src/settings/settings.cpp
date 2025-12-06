@@ -1,5 +1,6 @@
 #include "settings.h"
 #include "logs/logs.h"
+#include <filesystem>
 #include <fstream>
 #include <QCoreApplication>
 #include <QStandardPaths>
@@ -8,6 +9,26 @@
 #include <vector>
 #include <unistd.h>
 #include <iostream>
+
+fs::path Timer::get_user_timer_path() const {
+	const char* home_dir = std::getenv("HOME");	
+	
+	if (home_dir){
+		const fs::path service_dir = fs::path(home_dir) / ".config" / "systemd" / "user";
+		try{
+			fs::create_directory(service_dir);
+		} catch (const std::exception& e){
+			Logs l;
+			l.write_logs("Failed create service directory(" + std::string(service_dir) + "\nError: " + std::string(e.what()));
+		}
+		return service_dir;
+	}
+	else{
+		Logs l;
+		l.write_logs("CRITICAL: HOME environment variable is not set!");	
+		return "";
+	}
+}
 
 fs::path get_pictures_path(){
 	Logs l;
@@ -70,13 +91,11 @@ fs::path get_pictures_path(){
 }
 
 void Timer::create_systemd_timer(){
-
-	//we must have a root rights
-	//be careful with it if u want to call this func in some space
 	
 	Logs l;
 	l.write_logs("Try to create/check service&timer files");
-	const fs::path service_dir = "/etc/systemd/system";
+
+	const fs::path service_dir = get_user_timer_path();
 	const std::string service_name = "rwal";
 	const fs::path service_file = service_dir / (service_name + ".service");
 	const fs::path timer_file = service_dir / (service_name + ".timer");
@@ -87,20 +106,14 @@ void Timer::create_systemd_timer(){
 		std::ofstream service(service_file);
 		if (service.is_open()){
 			service <<
-			"[Unit]\n"
-			"Description=A service to refresh ur wallpaper in some time\n\n"
 			"[Service]\n"
 			"Type=simple\n"
-			"ExecStart=/home/p1rat/code/rwal/build/rwal --change\n"
-			"User=p1rat\n"
-			"WorkingDirectory=/home/p1rat/code/rwal/build\n\n"
-			"Environment=XDG_RUNTIME_DIR=/run/use/1000\n\n"
+			"ExecStart=/usr/local/bin/rwal --change\n"
 			"Restart=on-failure\n"
 			"RestartSec=2s\n"
-			"StartLimitBurst=3\n\n"	
+			"StartLimitBurst=3\n"
 			"[Install]\n"
 			"WantedBy=default.target\n";
-
 			service.close();
 			l.write_logs("Success creation service file");
 		}
@@ -133,11 +146,11 @@ void Timer::create_systemd_timer(){
 	} else
 		l.write_logs("Timer file already exists");
 
-	system("systemctl daemon-reload");
+	system("systemctl --user daemon-reload");
 }
 
 std::string Timer::see_timer(){
-	std::ifstream file("/etc/systemd/system/rwal.timer");	
+	std::ifstream file(get_user_timer_path() / "rwal.timer");
 	std::string str;
 	Logs l;
 	l.write_logs("Try to read timer file");
@@ -161,17 +174,11 @@ std::string Timer::see_timer(){
 
 std::string Timer::edit_timer(std::string value){
 	Logs l;
-	
-	if (geteuid() != 0) {
-		l.write_logs("Failed - there are not root rights");
-		return "\nFailed. Need root rights. Please run program with 'sudo'";
-	}
-
 	l.write_logs("Try to edit timer");
 		
 	create_systemd_timer();
 
-	std::ifstream in_file("/etc/systemd/system/rwal.timer");
+	std::ifstream in_file(get_user_timer_path() / "rwal.timer");
 	std::vector<std::string> lines;
 	std::string line;
 	bool found = false;
@@ -189,8 +196,8 @@ std::string Timer::edit_timer(std::string value){
 				l.write_logs("value is 'None'\nTry to disactivate timer");
 				lines.push_back("OnCalendar=");
 				system("systemctl unmask rwal.timer >/dev/null 2>&1");
-				system("systemctl daemon-reload");
-				system("systemctl disable --now rwal.timer");
+				system("systemctl --user daemon-reload");
+				system("systemctl --user disable --now rwal.timer");
 				l.write_logs("Timer successfuly disactivated");
 				return "Timer successfuly disactivated!";
 			}
@@ -206,7 +213,7 @@ std::string Timer::edit_timer(std::string value){
 		return "Failed set timer. More info in logs.";
 	}
 
-	std::ofstream out_file("/etc/systemd/system/rwal.timer");
+	std::fstream out_file(get_user_timer_path() / "rwal.timer");	
 	if (!out_file){
 		l.write_logs("Failed to create/open rwal.timer to write");
 		return "Failed set timer. More info in logs.";
@@ -218,9 +225,9 @@ std::string Timer::edit_timer(std::string value){
 	l.write_logs("Successful edit timer. Try to active timer");
 	
 	system("systemctl unmask rwal.timer >/dev/null 2>&1");
-	system("systemctl daemon-reload");	
-	system("systemctl start rwal.timer");
-	system("systemctl enable --now rwal.timer");
+	system("systemctl --user daemon-reload");	
+	system("systemctl --user start rwal.timer");
+	system("systemctl --user enable --now rwal.timer");
 
 	if (check_timer_active_status()){
 		l.write_logs("Timer successfuly activated");

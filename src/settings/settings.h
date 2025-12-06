@@ -9,6 +9,8 @@ class PicturesPath;
 fs::path get_pictures_path();
 
 class Timer{
+private:
+	fs::path get_user_timer_path() const;
 public:
 	void create_systemd_timer();
 	std::string see_timer();

@@ -6,14 +6,18 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <settings/config.h>
+#include <settings/config.h>
 
 std::vector<std::string> Keywords::get_keywords(){
-	std::vector<std::string> ready_keywords = look_keywords();
-	Keywords k;
+	Config c;
+	auto search = c.get<nlohmann::json>("search");
+	std::vector<std::string> ready_keywords = search["keywords"];
 	
 	if (ready_keywords.size() > 0)
 		return ready_keywords;
 	
+	Keywords k;
+
 	std::cout << "\nThere is not file with keywords." <<  "\nPlease write keywords to find wallpaper( use ',' to devide them): ";
 	MenuManager::getInstatce().countOperatorPlus(3);
 	
@@ -44,8 +48,6 @@ std::vector<std::string> Keywords::get_keywords(){
 
 	
 	//Save keywords
-	Config c;
-	auto search = c.get<nlohmann::json>("search");
     search["keywords"] = ready_keywords;
     c.set("search", search);	
 
