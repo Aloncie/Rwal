@@ -2,15 +2,18 @@
 #include <string>
 #include <filesystem>
 #include <QDir>
+#include <optional>
 
 namespace fs = std::filesystem;
 
-class PicturesPath;
-fs::path get_pictures_path();
+class PicturesPath{
+public:
+	fs::path get_pictures_path();
+};
 
 class Timer{
 private:
-	fs::path get_user_timer_path() const;
+	std::optional<fs::path> get_user_timer_path() const;
 public:
 	void create_systemd_timer();
 	std::string see_timer();
