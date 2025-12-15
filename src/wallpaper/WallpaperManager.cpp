@@ -10,6 +10,7 @@
 #include <exception>
 #include <filesystem>
 #include <nlohmann/json.hpp>
+#include <iostream>
 
 namespace fs = std::filesystem;
 
@@ -21,7 +22,13 @@ void save_wallpaper(std::string from){
 		return;
 	}
 	try{
-		std::string rwal = get_pictures_path();
+		PicturesPath p;
+
+		std::string rwal = p.get_pictures_path();
+		if (rwal == "None"){
+			std::cerr << "Failed operation. More in logs";
+			return;
+		}
 		l.write_logs("Output of rwal_catalog: " + rwal);
 		std::string to = rwal + from.substr(from.find("wallpaper"));
 		l.write_logs("Image successful saved: " + to);

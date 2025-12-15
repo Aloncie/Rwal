@@ -6,11 +6,12 @@
 #include <QStandardPaths>
 #include <QFileInfo>
 #include <exception>
+#include <optional>
 #include <vector>
 #include <unistd.h>
 #include <iostream>
 
-fs::path Timer::get_user_timer_path() const {
+std::optional<fs::path> Timer::get_user_timer_path() const {
 	const char* home_dir = std::getenv("HOME");	
 	
 	if (home_dir){
@@ -25,15 +26,14 @@ fs::path Timer::get_user_timer_path() const {
 	}
 	else{
 		Logs l;
-		l.write_logs("CRITICAL: HOME environment variable is not set!");	
-		return "";
+		l.write_logs("Error: HOME environment variable is not set!");	
+		return std::nullopt;
 	}
 }
 
-fs::path get_pictures_path(){
+fs::path PicturesPath::get_pictures_path(){
 	Logs l;
 	l.write_logs("Try to know 'Pictures' location");
-	fs::path rwal_path;
 	#ifdef _WIN32
 	const char* user_profile = std::getenv("USERPROFILE"); 
 	if (user_profile){
@@ -47,47 +47,41 @@ fs::path get_pictures_path(){
 		rwal_path /= "rwal\\";
 	}
 	#else
-	const char* starting_path = std::getenv("SUDO_USER"); 
-	std::string home_path;
-	if (!starting_path){
-		home_path = std::getenv("HOME");
-	}
-	else 
-		home_path = "/home/" + std::string(starting_path);
+	fs::path path = std::getenv("HOME");
 
-	if (!home_path.empty()){
-		rwal_path = fs::path(home_path) / "Pictures";	
-		if (fs::exists(rwal_path)){
-			l.write_logs("Pictures location: " + rwal_path.string());
-			rwal_path /= "rwal/";
+	if (!path.empty()){
+		path /= "Pictures";	
+		if (fs::exists(path)){
+			l.write_logs("Pictures location: " + path.string());
+			path /= "rwal/";
 		}
 		else{
-			rwal_path = fs::path(starting_path) / "Изображения";
-			if (fs::exists(rwal_path)){
-				l.write_logs("Pictures location: " + rwal_path.string());
-				rwal_path /= "rwal/";
+			path /= "Изображения";
+			if (fs::exists(path)){
+				l.write_logs("Pictures location: " + path.string());
+				path /= "rwal/";
 			}
 			else
-				return "";
+				return "None";
 		}
 	}
 	#endif
 
 	try {
-		if (!fs::exists(rwal_path)){
-			fs::create_directory(rwal_path);
-			l.write_logs("Catalog 'rwal' created\nFull path:" + std::string(rwal_path));
+		if (!fs::exists(path)){
+			fs::create_directory(path);
+			l.write_logs("Catalog 'rwal' created\nFull path:" + std::string(path));
 		}
 		else{
-			l.write_logs("The rwal catalog already exists.\nFull path: " + rwal_path.string());
-			return rwal_path.string();
+			l.write_logs("The rwal catalog already exists.\nFull path: " + path.string());
+			return path.string();
 		}
 	} catch (std::exception& e){
 		l.write_logs("Filesystem error in catalog creating/checking: " + std::string(e.what()));
 	}
 
-	l.write_logs("Failed trying");
-	return "";
+	l.write_logs("Failed getting path of rwal catalog in pictures.");
+	return "None";
 }
 
 void Timer::create_systemd_timer(){
@@ -95,7 +89,11 @@ void Timer::create_systemd_timer(){
 	Logs l;
 	l.write_logs("Try to create/check service&timer files");
 
-	const fs::path service_dir = get_user_timer_path();
+	auto path = get_user_timer_path();
+	if (!path)
+		return;
+
+	const fs::path service_dir = *path;
 	const std::string service_name = "rwal";
 	const fs::path service_file = service_dir / (service_name + ".service");
 	const fs::path timer_file = service_dir / (service_name + ".timer");
@@ -150,7 +148,11 @@ void Timer::create_systemd_timer(){
 }
 
 std::string Timer::see_timer(){
-	std::ifstream file(get_user_timer_path() / "rwal.timer");
+	auto path = get_user_timer_path();
+	if (!path)
+		return "None";
+
+	std::ifstream file(*path / "rwal.timer");
 	std::string str;
 	Logs l;
 	l.write_logs("Try to read timer file");
@@ -178,7 +180,11 @@ std::string Timer::edit_timer(std::string value){
 		
 	create_systemd_timer();
 
-	std::ifstream in_file(get_user_timer_path() / "rwal.timer");
+	auto path = get_user_timer_path();
+	if (!path)
+		return "None";
+
+	std::ifstream in_file(*path / "rwal.timer");
 	std::vector<std::string> lines;
 	std::string line;
 	bool found = false;
@@ -213,7 +219,7 @@ std::string Timer::edit_timer(std::string value){
 		return "Failed set timer. More info in logs.";
 	}
 
-	std::fstream out_file(get_user_timer_path() / "rwal.timer");	
+	std::fstream out_file(*path / "rwal.timer");	
 	if (!out_file){
 		l.write_logs("Failed to create/open rwal.timer to write");
 		return "Failed set timer. More info in logs.";
@@ -240,6 +246,6 @@ std::string Timer::edit_timer(std::string value){
 }
 
 bool Timer::check_timer_active_status(){
-	return system("systemctl is-active rwal.timer >/dev/null 2>&1") == 0;
+	return system("systemctl --user is-active rwal.timer >/dev/null 2>&1") == 0;
 }
 
