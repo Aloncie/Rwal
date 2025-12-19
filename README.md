@@ -28,11 +28,10 @@ sudo make install
 ```
 
 
-```
 
 ______
 
-
+<!--
 _____
 ### ✴️Platform support✳️
 
@@ -52,9 +51,8 @@ _____
 
 ______
 
-```
 
-<!--
+
 ## 📖 Documentation
 
 Detailed documentation and usage examples are available in the [project wiki](https://github.com/Aloncie/Rwal/wiki).
