@@ -49,8 +49,9 @@ const MenuConfig SETTINGS_MENU = {
     "12q",
     []() {
         Timer t;
+		PicturesPath p;
         std::string timer = t.see_timer();
-        std::string wallpaper_local = get_pictures_path();
+        std::string wallpaper_local = p.get_pictures_path();
         return std::vector<std::string>{
             "-------------------------- ",
             "Choose to edit any setting",
