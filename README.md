@@ -29,7 +29,7 @@ sudo make install
 
 ______
 
-
+```
 _____
 ### ✴️Platform support✳️
 
@@ -48,6 +48,7 @@ _____
 |                 | macOS Sequoia        | 🔴 No support    |                                 |
 
 ______
+```
 
 <!--
 ## 📖 Documentation
