@@ -34,7 +34,8 @@ void Flows::core(int argc,char **argv){
 				}
 		}
 		else if (x == '4'){
-			std::string wallpaper_local = get_pictures_path();
+			PicturesPath p;
+			std::string wallpaper_local = p.get_pictures_path();
 			Timer t;
 			std::string timer = t.see_timer();
 			x = m.charactarInput(SETTINGS_MENU);

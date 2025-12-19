@@ -47,8 +47,14 @@ fs::path PicturesPath::get_pictures_path(){
 		rwal_path /= "rwal\\";
 	}
 	#else
-	fs::path path = std::getenv("HOME");
-
+	QString pictures_path = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+	if (pictures_path.isEmpty()){
+		l.write_logs("Error: QStandardPaths Pictures location not found.");
+		return "None";
+	}
+	fs::path path(pictures_path.toStdString());
+	path /= "rwal";
+/*
 	if (!path.empty()){
 		path /= "Pictures";	
 		if (fs::exists(path)){
@@ -65,16 +71,18 @@ fs::path PicturesPath::get_pictures_path(){
 				return "None";
 		}
 	}
+*/
 	#endif
 
 	try {
 		if (!fs::exists(path)){
 			fs::create_directory(path);
-			l.write_logs("Catalog 'rwal' created\nFull path:" + std::string(path));
+			return path;
+			l.write_logs("Catalog 'rwal' created\nFull path:" + path.string());
 		}
 		else{
 			l.write_logs("The rwal catalog already exists.\nFull path: " + path.string());
-			return path.string();
+			return path;
 		}
 	} catch (std::exception& e){
 		l.write_logs("Filesystem error in catalog creating/checking: " + std::string(e.what()));

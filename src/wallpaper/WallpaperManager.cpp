@@ -24,14 +24,14 @@ void save_wallpaper(std::string from){
 	try{
 		PicturesPath p;
 
-		std::string rwal = p.get_pictures_path();
+		fs::path rwal = p.get_pictures_path();
 		if (rwal == "None"){
 			std::cerr << "Failed operation. More in logs";
 			return;
 		}
-		l.write_logs("Output of rwal_catalog: " + rwal);
-		std::string to = rwal + from.substr(from.find("wallpaper"));
-		l.write_logs("Image successful saved: " + to);
+		l.write_logs("Output of rwal_catalog: " + rwal.string());
+		fs::path to = rwal / from.substr(from.find("wallpaper"));
+		l.write_logs("Image successful saved: " + std::string(to));
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
 		l.write_logs("Failed to saved image: " + std::string(e.what()));
