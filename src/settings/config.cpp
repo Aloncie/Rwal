@@ -3,7 +3,6 @@
 #include <QCoreApplication>
 #include <QStandardPaths>
 #include <fstream>
-#include <iostream>
 
 std::string Config::getConfigPath(){
 	QCoreApplication::setApplicationName("rwal");
@@ -21,7 +20,7 @@ std::string Config::getConfigPath(){
 
 Config::Config(){
 	configPath = getConfigPath();
-	
+	initValidators();	
 	if (fs::exists(configPath)){
 		Logs l;
 		l.write_logs("Config file exists: " + configPath);
@@ -31,7 +30,7 @@ Config::Config(){
 	else{
 		data = {
 			{"search", {
-				{"keywords", {"anime", "girls"}}
+				{"keywords", {}}
 			}},
 			{"api", {
 				{"wallhaven_api_key", ""}
@@ -45,5 +44,24 @@ void Config::saveConfig(){
 		std::ofstream file(configPath);
 		file << data.dump(4);
 }
+
+void Config::initValidators(){
+	auto is_not_empty_string = [](const nlohmann::json& j){
+		return j.is_string() && !j.get<std::string>().empty(); 
+				};
+	auto is_not_empty_array = [](const nlohmann::json& j){
+		return j.is_array() && !j.empty();
+	};
+
+
+	validators["/timer"] = [is_not_empty_string](const nlohmann::json& j){
+		if (!is_not_empty_string(j)) return false;
+		char x = j.get<std::string>().back();
+		return (x == 'm' || x == 'h');
+	};
+	validators["/search/keywords"] = is_not_empty_array;
+   	validators["api/wallhaven_api_key"] = is_not_empty_string;
+}
+
 
 
