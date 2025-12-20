@@ -111,16 +111,6 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
  /usr/include/c++/15.2.1/tuple /usr/include/c++/15.2.1/bits/ranges_util.h \
  /home/p1rat/code/rwal/src/settings/config.h \
- /usr/include/nlohmann/json.hpp /usr/include/c++/15.2.1/algorithm \
- /usr/include/c++/15.2.1/bits/stl_algo.h \
- /usr/include/c++/15.2.1/bits/algorithmfwd.h \
- /usr/include/c++/15.2.1/bits/stl_heap.h \
- /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
- /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
- /usr/include/c++/15.2.1/bits/ranges_algo.h \
- /usr/include/c++/15.2.1/bits/ranges_algobase.h \
- /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
- /usr/include/c++/15.2.1/pstl/execution_defs.h \
  /usr/include/c++/15.2.1/functional \
  /usr/include/c++/15.2.1/bits/std_function.h \
  /usr/include/c++/15.2.1/typeinfo /usr/include/c++/15.2.1/unordered_map \
@@ -135,6 +125,16 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/array \
+ /usr/include/nlohmann/json.hpp /usr/include/c++/15.2.1/algorithm \
+ /usr/include/c++/15.2.1/bits/stl_algo.h \
+ /usr/include/c++/15.2.1/bits/algorithmfwd.h \
+ /usr/include/c++/15.2.1/bits/stl_heap.h \
+ /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
+ /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
+ /usr/include/c++/15.2.1/bits/ranges_algo.h \
+ /usr/include/c++/15.2.1/bits/ranges_algobase.h \
+ /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/15.2.1/pstl/execution_defs.h \
  /usr/include/c++/15.2.1/iterator \
  /usr/include/c++/15.2.1/bits/stream_iterator.h \
  /usr/include/c++/15.2.1/bits/streambuf_iterator.h \

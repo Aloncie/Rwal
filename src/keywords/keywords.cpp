@@ -11,7 +11,10 @@
 std::vector<std::string> Keywords::get_keywords(){
 	Config c;
 	auto search = c.get<nlohmann::json>("search");
-	std::vector<std::string> ready_keywords = search["keywords"];
+
+	std::vector<std::string> ready_keywords;
+	if (search.contains("keywords") && !search["keywords"].empty())
+		ready_keywords = search["keywords"];
 	
 	if (ready_keywords.size() > 0)
 		return ready_keywords;
@@ -48,8 +51,7 @@ std::vector<std::string> Keywords::get_keywords(){
 
 	
 	//Save keywords
-    search["keywords"] = ready_keywords;
-    c.set("search", search);	
+    c.set("/search/keywords", ready_keywords);	
 
 	return ready_keywords;
 }
