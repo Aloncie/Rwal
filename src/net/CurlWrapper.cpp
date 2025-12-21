@@ -112,15 +112,18 @@ std::string MyCurl::download_image(const std::string& image_url){
 		l.write_logs("Error of delete old image: " + std::string(e.what()));
 	}
 
-	std::string image_name = std::string(SOURCE_DIR) + "/wallpaper-";
+	
+	size_t LastSlash = image_url.find_last_of('/');
+	std::string filename = (LastSlash == std::string::npos) ? "wallpaper" : image_url.substr(LastSlash + 1);
+	std::string image_name = std::string(SOURCE_DIR) + "/" + filename;
+
 	for (int i = 0;i < 6;i++){
 		image_name+=image_url[41+i];
 	}
-	std::unique_ptr<std::string> t (new std::string);
-	*t = get_data("data","file_type");
+	std::string t = get_data("data","file_type");
 	image_name += ".";
-	for (size_t i = 6; i < t->size(); i++){
-		image_name += (*t)[i];
+	for (size_t i = 6; i < t.size(); i++){
+		image_name += (t)[i];
 	}
 
 	CURL* image_curl = curl_easy_init();
@@ -146,6 +149,10 @@ std::string MyCurl::download_image(const std::string& image_url){
 	curl_easy_setopt(image_curl, CURLOPT_TIMEOUT, 15L);
 	
 	CURLcode res = curl_easy_perform(image_curl);
+
+	fclose(fp);
+	curl_easy_cleanup(image_curl);
+
 	if (res != CURLE_OK){
 		l.write_logs("Failed download image: " + std::string(curl_easy_strerror(res)));
 		return "";
@@ -153,8 +160,6 @@ std::string MyCurl::download_image(const std::string& image_url){
 	else
 		l.write_logs("Successful download image" + image_name);
 
-	fclose(fp);
-	curl_easy_cleanup(image_curl);
 	return image_name;
 }
 
