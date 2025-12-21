@@ -10,8 +10,8 @@ MenuManager& m = MenuManager::getInstatce();
 
 void Flows::core(int argc,char **argv){
 	if (true){
-		Logs l;
-		l.write_logs("Starting program");
+		 
+		Logs::getInstance().write_logs("Starting program");
 	}
 
 	char x = m.charactarInput(MAIN_MENU);
@@ -50,7 +50,7 @@ void Flows::core(int argc,char **argv){
 		}
 		x = m.charactarInput(MAIN_MENU);
 	}
-	Logs l;
-	l.write_logs("Ending program");	
+	 
+	Logs::getInstance().write_logs("Ending program");	
 }
 

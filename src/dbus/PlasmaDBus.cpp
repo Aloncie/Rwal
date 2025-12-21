@@ -29,8 +29,8 @@ void change_wallpaper(int argc, char** argv,std::string local){
 
 	auto reply = QDBusConnection::sessionBus().call(msg);
 	if (reply.type() == QDBusMessage::ErrorMessage) {
-		Logs l;
-		l.write_logs("Error D-Bus");
+		 
+		Logs::getInstance().write_logs("Error D-Bus");
 		MenuManager::getInstatce().show_message("Failed of changing wallpaper");
 	}
 

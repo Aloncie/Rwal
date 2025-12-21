@@ -20,8 +20,8 @@ public:
 		try {
 			return data[key].get<G>();
 		}catch(std::invalid_argument& e){
-			Logs l;
-			l.write_logs("Error of getting config data: " + std::string(e.what()));
+			 
+			Logs::getInstance().write_logs("Error of getting config data: " + std::string(e.what()));
 			return G{};
 		}
 	}
