@@ -1,7 +1,9 @@
 #include "keywords.h"
 #include "logs/logs.h"
 #include "CLI/CLI.h"
+#include <algorithm>
 #include <iostream>
+#include <sstream>
 #include <cctype>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -13,11 +15,10 @@ std::vector<std::string> Keywords::get_keywords(){
 	auto search = c.get<nlohmann::json>("search");
 
 	std::vector<std::string> ready_keywords;
-	if (search.contains("keywords") && !search["keywords"].empty())
+	if (search.contains("keywords") && !search["keywords"].empty()){
 		ready_keywords = search["keywords"];
-	
-	if (ready_keywords.size() > 0)
 		return ready_keywords;
+	}
 	
 	Keywords k;
 
@@ -29,27 +30,19 @@ std::vector<std::string> Keywords::get_keywords(){
 		std::getline(std::cin,new_keywords);
 
 	//Format keywords
-	for (int i = 0;i < new_keywords.size(); i++){
-		if (!std::isalpha(new_keywords[i])&&new_keywords[i+1] != ' '){
-			new_keywords[i] = ' ';
-		}
-		else if (!std::isalpha(new_keywords[i])){
-			new_keywords.erase(i,1);
-		}
-	}
+	
+	std::replace_if(new_keywords.begin(), new_keywords.end(),
+			[]( unsigned char c){ return !std::isalpha(c); }, ' ');
 
 	//Devide keywords
-	std::string t = "";
-	for (size_t i = 0; i < new_keywords.size()+1; i++) {
-		if (new_keywords[i] == ' ' || i  == new_keywords.size()){
-			ready_keywords.push_back(t);
-			t = "";
-		}
-		else
-			t += new_keywords[i];
+	
+	std::stringstream ss(new_keywords);
+	std::string segment;
+			
+	while (ss >> segment){
+		ready_keywords.push_back(segment);
 	}
 
-	
 	//Save keywords
     c.set("/search/keywords", ready_keywords);	
 
