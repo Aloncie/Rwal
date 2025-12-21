@@ -15,10 +15,10 @@
 namespace fs = std::filesystem;
 
 void save_wallpaper(std::string from){
-	Logs l;
+	 
 	if (from == ""){
 		MenuManager::getInstatce().show_message("Failed to save wallpaper. More info in logs");
-		l.write_logs("Failed to save wallpaper. Wrong input data");
+		Logs::getInstance().write_logs("Failed to save wallpaper. Wrong input data");
 		return;
 	}
 	try{
@@ -29,17 +29,17 @@ void save_wallpaper(std::string from){
 			std::cerr << "Failed operation. More in logs";
 			return;
 		}
-		l.write_logs("Output of rwal_catalog: " + rwal.string());
+		Logs::getInstance().write_logs("Output of rwal_catalog: " + rwal.string());
 		fs::path to = rwal / from.substr(from.find("wallpaper"));
-		l.write_logs("Image successful saved: " + std::string(to));
+		Logs::getInstance().write_logs("Image successful saved: " + std::string(to));
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
-		l.write_logs("Failed to saved image: " + std::string(e.what()));
+		Logs::getInstance().write_logs("Failed to saved image: " + std::string(e.what()));
 	}
 }
 
 void refresh_wallpaper(int argc, char *argv[],std::string mode){
-	Logs l;
+	 
 	std::string url, local, page, pageCount;
 	int last_page = 1;
 	Keywords k;
@@ -57,20 +57,20 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 	do {
 		std::string kw = keywords[0];
 		if (keywords.size() > 2){
-			l.write_logs("Keywords.size = " + std::to_string(keywords.size()));
+			Logs::getInstance().write_logs("Keywords.size = " + std::to_string(keywords.size()));
 			kw = keywords[random(keywords.size() - 1)];
 		}
 
 		MyCurl c("apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
 		c.get_request();
-		l.write_logs("Try to get count of pages from JSON");
+		Logs::getInstance().write_logs("Try to get count of pages from JSON");
 		pageCount = c.get_data("meta","last_page");
 
 		try {
 			last_page = std::stoi(pageCount);
 		} catch(std::exception& e){
-			Logs l;
-			l.write_logs("Failed to stoi pageCount: " + std::string(e.what()));
+			 
+			Logs::getInstance().write_logs("Failed to stoi pageCount: " + std::string(e.what()));
 			last_page = 1;
 		}
 
@@ -78,7 +78,7 @@ void refresh_wallpaper(int argc, char *argv[],std::string mode){
 
 		MyCurl v("page=" + page + "&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",kw);
 		v.get_request();
-		l.write_logs("Try to get url of image from JSON");
+		Logs::getInstance().write_logs("Try to get url of image from JSON");
 		url = v.get_data("data","path");
 		if (!url.empty()) {
 			local = v.download_image(url);
@@ -105,8 +105,8 @@ std::string where_are_wallpaper(){
 		}
 
 	} catch (const fs::filesystem_error& e){
-		Logs l;
-		l.write_logs("Error of find downloaded image: " + std::string(e.what()));
+		 
+		Logs::getInstance().write_logs("Error of find downloaded image: " + std::string(e.what()));
 	}
 	return "";
 }

@@ -50,23 +50,23 @@ std::vector<std::string> Keywords::get_keywords(){
 }
 
 void Keywords::Default(std::vector<std::string>& keywords){
-	Logs l;
-	l.write_logs("There are not keywords. The default keywords will be used.");
+	 
+	Logs::getInstance().write_logs("There are not keywords. The default keywords will be used.");
 	keywords = {"nature", "landscape", "abstract", "space", "architecture", "animals"};
 }
 
 void Keywords::open_keywords_editor(){
 	/*
-    Logs l;
+     
 	struct stat buffer;
     if (stat(keywords_path.c_str(), &buffer) != 0) {
-		l.write_logs("Error: File doesn't exist or inaccessible: " + keywords_path);
+		Logs::getInstance().write_logs("Error: File doesn't exist or inaccessible: " + keywords_path);
 		MenuManager::getInstatce().show_message("Error: File doesn't exist or inaccessible: " + keywords_path);
         return;
     }
 
     if (access(keywords_path.c_str(), W_OK) != 0) {
-		l.write_logs("Error: No write permissions for file: " + keywords_path);
+		Logs::getInstance().write_logs("Error: No write permissions for file: " + keywords_path);
 		MenuManager::getInstatce().show_message("Error: No write permissions for file: " + keywords_path);
         return;
     }

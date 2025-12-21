@@ -22,8 +22,8 @@ Config::Config(){
 	configPath = getConfigPath();
 	initValidators();	
 	if (fs::exists(configPath)){
-		Logs l;
-		l.write_logs("Config file exists: " + configPath);
+		 
+		Logs::getInstance().write_logs("Config file exists: " + configPath);
 		std::ifstream file(configPath);
 		data = nlohmann::json::parse(file);				
 	}
