@@ -1,7 +1,9 @@
 #include "CurlWrapper.h"
 #include "logs/logs.h"
 #include <exception>
+#include <filesystem>
 #include <string>
+#include <fstream>
 
 static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) {
     size_t realsize = size * nmemb;
@@ -95,18 +97,17 @@ std::string MyCurl::get_data(std::string paragraph, std::string str){
 
 std::string MyCurl::download_image(const std::string& image_url){
 	 
+	fs::path downloads = fs::path(SOURCE_DIR) / "downloads";
 	Logs::getInstance().write_logs("Try to delete old image");
 
 	try {
-	   	for (const auto& item : fs::directory_iterator(SOURCE_DIR)){
-			if (fs::is_regular_file(item.path())){
-				auto name = item.path().filename().string();
-				if (name.rfind("wallpaper-", 0) == 0) {
-					fs::remove(item.path());
-				}
-			}
+		if (!fs::exists(downloads))
+			fs::create_directory(downloads);
+		for (const auto &i : fs::directory_iterator(downloads)){
+			if (fs::is_regular_file(i.path()))
+			   	fs::remove(i.path());	
 		}
-		Logs::getInstance().write_logs("Successful deleting old image");
+	   	Logs::getInstance().write_logs("Successful deleting old image");
 
 	} catch (const fs::filesystem_error& e){
 		Logs::getInstance().write_logs("Error of delete old image: " + std::string(e.what()));
@@ -115,7 +116,7 @@ std::string MyCurl::download_image(const std::string& image_url){
 	
 	size_t LastSlash = image_url.find_last_of('/');
 	std::string filename = (LastSlash == std::string::npos) ? "wallpaper" : image_url.substr(LastSlash + 1);
-	std::string image_name = std::string(SOURCE_DIR) + "/" + filename;
+	std::string image_name = downloads.string() + "/" + filename;
 
 	std::string t = get_data("data","file_type");
 	image_name += ".";
@@ -131,23 +132,29 @@ std::string MyCurl::download_image(const std::string& image_url){
 	else {
 		Logs::getInstance().write_logs("Successful init CURL to image download");
 	}
-	FILE* fp = fopen(image_name.c_str(),"wb");
+	std::ofstream fp(image_name.c_str(), std::ios::binary);
 	if (!fp){
 		Logs::getInstance().write_logs("Failed to create image file");
+		curl_easy_cleanup(image_curl);
 		return "";
 	}
 	else
 		Logs::getInstance().write_logs("Successful creating image file");
 
 	curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
-	curl_easy_setopt(image_curl, CURLOPT_WRITEFUNCTION, NULL);
-	curl_easy_setopt(image_curl, CURLOPT_WRITEDATA, fp);
+	curl_easy_setopt(image_curl, CURLOPT_WRITEFUNCTION, +[](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
+    	auto* stream = static_cast<std::ofstream*>(userdata);
+    	size_t totalSize = size * nmemb;
+   		stream->write(static_cast<char*>(ptr), totalSize);
+    	return totalSize;
+    });	
+	curl_easy_setopt(image_curl, CURLOPT_WRITEDATA, &fp);
 	curl_easy_setopt(image_curl, CURLOPT_FOLLOWLOCATION,1L);
 	curl_easy_setopt(image_curl, CURLOPT_TIMEOUT, 15L);
 	
 	CURLcode res = curl_easy_perform(image_curl);
 
-	fclose(fp);
+	fp.close();
 	curl_easy_cleanup(image_curl);
 
 	if (res != CURLE_OK){
