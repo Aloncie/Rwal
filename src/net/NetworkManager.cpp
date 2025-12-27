@@ -5,6 +5,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <cstring>
+#include <string>
 
 struct SocketGuard{
 	int fd;
@@ -14,6 +15,10 @@ struct SocketGuard{
 			close(fd);
 	}
 };
+
+NetworkManager::NetworkManager(){
+	mycurl	
+}
 
 NetworkManager& NetworkManager::getInstance(){
 	static NetworkManager instance;
@@ -44,11 +49,15 @@ bool NetworkManager::isAvailable() {
     timeval tv{.tv_sec = 3, .tv_usec = 0};
     setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
 
-    if (connect(sock, (struct sockaddr*)&server, sizeof(server)) == 0) {
+    if (connect(sock, reinterpret_cast<sockaddr*>(&server), sizeof(server)) == 0) {
         logger.write_logs("Internet check: SUCCESS");
         return true;
     }
 
     logger.write_logs("Internet check: FAILED (No connection to 8.8.8.8:53)");
     return false;
+}
+
+std::string NetworkManager::fetchImage(const std::string& query){
+	
 }
