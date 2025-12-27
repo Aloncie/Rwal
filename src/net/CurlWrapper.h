@@ -16,8 +16,9 @@ private:
 	nlohmann::json j;
 public:
 
-	MyCurl(std::string api_key, std::string keyword);
+	MyCurl();
 	void get_request();
+	void prepare_request(const std::string& keyword);
 	std::string get_data(std::string paragraph, std::string str);
 	std::string get_count_pages();
 	std::string download_image(const std::string& image_url);

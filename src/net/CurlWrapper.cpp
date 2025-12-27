@@ -13,8 +13,11 @@ static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) 
 }
 
 MyCurl::MyCurl(std::string str, std::string keyword){
-	url += keyword + "&sorting=random&resolutions=1920x1080&" + str;
 	curl = curl_easy_init();
+}
+
+void MyCurl::prepare_request(const std::string& keyword){
+	
 }
 
 void MyCurl::get_request(){
@@ -27,6 +30,7 @@ void MyCurl::get_request(){
 		curl_easy_setopt(curl,CURLOPT_WRITEDATA,&buffer);
 		curl_easy_setopt(curl,CURLOPT_TIMEOUT,10L);
 		curl_easy_setopt(curl,CURLOPT_FOLLOWLOCATION,1L);
+		curl_easy_setopt(curl,CURLOPT_USERAGENT,"rwal/1.0");
 		//curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L); 
 
 		res = curl_easy_perform(curl);

@@ -8,11 +8,13 @@ public:
 
 	bool isAvailable();
 
-	std::string fetchWallpaperUrl(const std::string& query);
+	std::string fetchImage(const std::string& query);
 private:
 	NetworkManager();
 	~NetworkManager() = default;
 
 	NetworkManager(const NetworkManager&) = delete;
 	NetworkManager& operator=(const NetworkManager&) = delete;
+
+	MyCurl mycurl;
 };
