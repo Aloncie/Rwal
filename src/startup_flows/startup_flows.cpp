@@ -17,7 +17,7 @@ void Flows::core(int argc,char **argv){
 	char x = m.charactarInput(MAIN_MENU);
 	while (x != 'q'){
 		if (x == '1'){
-		   	refresh_wallpaper(argc,argv,"core"); 
+		   	refresh_wallpaper("core"); 
 		}
 		else if (x == '2'){
 			save_wallpaper(where_are_wallpaper()); 

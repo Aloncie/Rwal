@@ -132,6 +132,12 @@
 			null
 		],
 		[
+			"/home/p1rat/code/rwal/src/internal/GlobalConstans.h",
+			"MU",
+			"TLJAIHGYSZ/moc_GlobalConstans.cpp",
+			null
+		],
+		[
 			"/home/p1rat/code/rwal/src/keywords/keywords.h",
 			"MU",
 			"YLEOVZJWXT/moc_keywords.cpp",
@@ -147,6 +153,12 @@
 			"/home/p1rat/code/rwal/src/net/CurlWrapper.h",
 			"MU",
 			"7OIUYE7PDQ/moc_CurlWrapper.cpp",
+			null
+		],
+		[
+			"/home/p1rat/code/rwal/src/net/NetworkManager.h",
+			"MU",
+			"7OIUYE7PDQ/moc_NetworkManager.cpp",
 			null
 		],
 		[
@@ -244,6 +256,7 @@
 		[ "/home/p1rat/code/rwal/src/logs/logs.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/main.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp", "MU", null ],
+		[ "/home/p1rat/code/rwal/src/net/NetworkManager.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/settings/config.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/settings/settings.cpp", "MU", null ],
 		[

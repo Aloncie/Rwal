@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/p1rat/code/rwal/src/logs/logs.cpp" "CMakeFiles/rwal.dir/src/logs/logs.cpp.o" "gcc" "CMakeFiles/rwal.dir/src/logs/logs.cpp.o.d"
   "/home/p1rat/code/rwal/src/main.cpp" "CMakeFiles/rwal.dir/src/main.cpp.o" "gcc" "CMakeFiles/rwal.dir/src/main.cpp.o.d"
   "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp" "CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o" "gcc" "CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o.d"
+  "/home/p1rat/code/rwal/src/net/NetworkManager.cpp" "CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o" "gcc" "CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o.d"
   "/home/p1rat/code/rwal/src/settings/config.cpp" "CMakeFiles/rwal.dir/src/settings/config.cpp.o" "gcc" "CMakeFiles/rwal.dir/src/settings/config.cpp.o.d"
   "/home/p1rat/code/rwal/src/settings/settings.cpp" "CMakeFiles/rwal.dir/src/settings/settings.cpp.o" "gcc" "CMakeFiles/rwal.dir/src/settings/settings.cpp.o.d"
   "/home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp" "CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o" "gcc" "CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o.d"

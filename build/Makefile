@@ -417,6 +417,30 @@ src/net/CurlWrapper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s
 .PHONY : src/net/CurlWrapper.cpp.s
 
+src/net/NetworkManager.o: src/net/NetworkManager.cpp.o
+.PHONY : src/net/NetworkManager.o
+
+# target to build an object file
+src/net/NetworkManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o
+.PHONY : src/net/NetworkManager.cpp.o
+
+src/net/NetworkManager.i: src/net/NetworkManager.cpp.i
+.PHONY : src/net/NetworkManager.i
+
+# target to preprocess a source file
+src/net/NetworkManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.i
+.PHONY : src/net/NetworkManager.cpp.i
+
+src/net/NetworkManager.s: src/net/NetworkManager.cpp.s
+.PHONY : src/net/NetworkManager.s
+
+# target to generate assembly for a file
+src/net/NetworkManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.s
+.PHONY : src/net/NetworkManager.cpp.s
+
 src/settings/config.o: src/settings/config.cpp.o
 .PHONY : src/settings/config.o
 
@@ -555,6 +579,9 @@ help:
 	@echo "... src/net/CurlWrapper.o"
 	@echo "... src/net/CurlWrapper.i"
 	@echo "... src/net/CurlWrapper.s"
+	@echo "... src/net/NetworkManager.o"
+	@echo "... src/net/NetworkManager.i"
+	@echo "... src/net/NetworkManager.s"
 	@echo "... src/settings/config.o"
 	@echo "... src/settings/config.i"
 	@echo "... src/settings/config.s"

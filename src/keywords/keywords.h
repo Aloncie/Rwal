@@ -10,6 +10,11 @@ extern const std::string keywords_path;
 class Keywords{
 private:
 	std::vector<std::string> LongWayGetKeywords();
+public:
+	void Default(std::vector<std::string>& Keywords);
+
+	std::string GetRandomKeywords(const std::string& mode);
+	void open_keywords_editor();
 
 	template<typename T = std::vector<std::string>>
 	T ShortWayGetKeywords(){
@@ -20,7 +25,7 @@ private:
 
 		std::string result;
 		for (const auto& kw : keywords) {
-			if (!result.empty()) result += ", "; 
+			if (!result.empty()) result += ", ";
 			result += kw;
 		}
 		return result;
@@ -32,10 +37,5 @@ private:
 	};
 
 
-public:
-	void Default(std::vector<std::string>& Keywords);
-
-	std::string GetRandomKeywords(const std::string& mode);
-	void open_keywords_editor();
 };
 

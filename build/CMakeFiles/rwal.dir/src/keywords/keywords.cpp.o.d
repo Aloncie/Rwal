@@ -317,7 +317,53 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
  /home/p1rat/code/rwal/src/settings/config.h \
- /home/p1rat/code/rwal/src/logs/logs.h \
+ /usr/include/qt/QtCore/QFileSystemWatcher \
+ /usr/include/qt/QtCore/qfilesystemwatcher.h \
+ /usr/include/qt/QtCore/qobject.h /usr/include/qt/QtCore/qobjectdefs.h \
+ /usr/include/qt/QtCore/qnamespace.h /usr/include/qt/QtCore/qglobal.h \
+ /usr/include/qt/QtCore/qconfig.h /usr/include/qt/QtCore/qtcore-config.h \
+ /usr/include/qt/QtCore/qsystemdetection.h \
+ /usr/include/qt/QtCore/qprocessordetection.h \
+ /usr/include/qt/QtCore/qcompilerdetection.h \
+ /usr/include/qt/QtCore/qtypeinfo.h /usr/include/qt/QtCore/qsysinfo.h \
+ /usr/include/qt/QtCore/qlogging.h /usr/include/qt/QtCore/qflags.h \
+ /usr/include/qt/QtCore/qatomic.h /usr/include/qt/QtCore/qbasicatomic.h \
+ /usr/include/qt/QtCore/qatomic_cxx11.h \
+ /usr/include/qt/QtCore/qgenericatomic.h /usr/include/c++/15.2.1/atomic \
+ /usr/include/qt/QtCore/qglobalstatic.h /usr/include/qt/QtCore/qnumeric.h \
+ /usr/include/qt/QtCore/qversiontagging.h \
+ /usr/include/qt/QtCore/qobjectdefs_impl.h \
+ /usr/include/qt/QtCore/qstring.h /usr/include/qt/QtCore/qchar.h \
+ /usr/include/qt/QtCore/qbytearray.h /usr/include/qt/QtCore/qrefcount.h \
+ /usr/include/qt/QtCore/qarraydata.h /usr/include/c++/15.2.1/stdlib.h \
+ /usr/include/qt/QtCore/qstringliteral.h \
+ /usr/include/qt/QtCore/qstringalgorithms.h \
+ /usr/include/qt/QtCore/qstringview.h /usr/include/qt/QtCore/qlist.h \
+ /usr/include/qt/QtCore/qalgorithms.h /usr/include/qt/QtCore/qiterator.h \
+ /usr/include/qt/QtCore/qhashfunctions.h /usr/include/qt/QtCore/qpair.h \
+ /usr/include/qt/QtCore/qvector.h \
+ /usr/include/qt/QtCore/qcontainertools_impl.h \
+ /usr/include/c++/15.2.1/list /usr/include/c++/15.2.1/bits/stl_list.h \
+ /usr/include/c++/15.2.1/bits/list.tcc \
+ /usr/include/qt/QtCore/qbytearraylist.h \
+ /usr/include/qt/QtCore/qstringlist.h /usr/include/qt/QtCore/qregexp.h \
+ /usr/include/qt/QtCore/qstringmatcher.h \
+ /usr/include/qt/QtCore/qscopedpointer.h \
+ /usr/include/qt/QtCore/qmetatype.h \
+ /usr/include/qt/QtCore/qvarlengtharray.h \
+ /usr/include/qt/QtCore/qcontainerfwd.h \
+ /usr/include/qt/QtCore/qobject_impl.h /usr/include/c++/15.2.1/chrono \
+ /usr/include/c++/15.2.1/bits/chrono_io.h /usr/include/c++/15.2.1/format \
+ /usr/include/c++/15.2.1/charconv \
+ /usr/include/c++/15.2.1/bits/monostate.h \
+ /usr/include/c++/15.2.1/bits/formatfwd.h \
+ /usr/include/c++/15.2.1/bits/unicode.h \
+ /usr/include/c++/15.2.1/bits/unicode-data.h \
+ /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/fstream \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/15.2.1/bits/fstream.tcc \
+ /home/p1rat/code/rwal/src/funcs/funcs.h \
  /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.2.1/iostream \
  /usr/include/sys/stat.h /usr/include/bits/stat.h \
  /usr/include/bits/struct_stat.h /usr/include/bits/statx.h \

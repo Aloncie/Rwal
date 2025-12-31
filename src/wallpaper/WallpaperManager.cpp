@@ -1,4 +1,5 @@
 #include "WallpaperManager.h"
+#include "internal/GlobalConstans.h"
 #include "settings/config.h"
 #include "net/CurlWrapper.h"
 #include "keywords/keywords.h"
@@ -26,9 +27,7 @@ void save_wallpaper(std::string from){
 		PicturesPath p;
 
 		fs::path rwal = p.get_pictures_path();
-		if (rwal == "None"){
-			std::cerr << "Failed operation. More in logs";
-			return;
+		if (rwal == "None"){ std::cerr << "Failed operation. More in logs"; return;
 		}
 		Logs::getInstance().write_logs("Output of rwal_catalog: " + rwal.string());
 		fs::path to = rwal / from.substr(from.find("wallpaper"));
@@ -42,9 +41,9 @@ void save_wallpaper(std::string from){
 void refresh_wallpaper(const std::string& mode){
 	Keywords k;
 	std::string keyword = k.GetRandomKeywords(mode);
-	std::string local = NetworkManager::getInstance().fetchImage(keyword);
+	std::string url = NetworkManager::getInstance().fetchImage(keyword);
 
-	change_wallpaper(local);
+	change_wallpaper(url);
 }
 
 std::string where_are_wallpaper(){
@@ -55,7 +54,7 @@ std::string where_are_wallpaper(){
 		for (const auto& item : fs::directory_iterator(dir_path)){
 			if (fs::is_regular_file(item.path())){
 				auto name = item.path().filename().string();
-				if (name.rfind("wallpaper-", 0) == 0) {
+				if (name.rfind(FILE_PREFIX, 0) == 0) {
 					return item.path();
 				}
 			}

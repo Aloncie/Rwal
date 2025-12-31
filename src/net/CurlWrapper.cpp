@@ -1,5 +1,7 @@
 #include "CurlWrapper.h"
+#include "internal/GlobalConstans.h"
 #include "logs/logs.h"
+#include "funcs/funcs.h"
 #include <exception>
 #include <filesystem>
 #include <string>
@@ -115,9 +117,8 @@ std::string MyCurl::download_image(const std::string& image_url){
 	}
 
 	
-	size_t LastSlash = image_url.find_last_of('/');
-	std::string filename = (LastSlash == std::string::npos) ? "wallpaper" : image_url.substr(LastSlash + 1);
-	fs::path wallpaper = downloads.string() + "/" + filename;
+	std::string filename = call_image(image_url);
+    fs::path wallpaper = downloads / filename;
 
 	CURL* image_curl = curl_easy_init();
 	if (!image_curl){
@@ -171,4 +172,39 @@ MyCurl::~MyCurl(){
 void MyCurl::clearning(){
 	buffer.clear();
 	j.clear();
+}
+
+void MyCurl::generateUniqueSuffix(std::string& filename) {
+    const std::string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    for (int i = 0; i < SUFFIX_LENGTH; ++i) {
+	   	filename += chars[random(chars.size() - 1)];
+    }
+}
+
+std::string MyCurl::call_image(const std::string& image_url) {
+    size_t lastSlash = image_url.find_last_of('/');
+    std::string filename = FILE_PREFIX;
+
+    if (lastSlash == std::string::npos) {
+        generateUniqueSuffix(filename);
+        filename += ".jpg";
+    }
+    else {
+        std::string raw_tail = image_url.substr(lastSlash + 1);
+        size_t firstDash = raw_tail.find('-');
+
+        if (firstDash == std::string::npos) {
+            generateUniqueSuffix(filename);
+
+            if (raw_tail.find(".png") != std::string::npos) {
+                filename += ".png";
+            } else {
+                filename += ".jpg";
+            }
+        }
+        else {
+            filename += raw_tail.substr(firstDash + 1);
+        }
+    }
+    return filename;
 }
