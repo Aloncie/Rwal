@@ -1,19 +1,36 @@
 #pragma once
 #include <functional>
+#include <QFileSystemWatcher>
 #include <nlohmann/json.hpp>
 #include <string>
 #include "logs/logs.h"
 
-class Config{
+class Config : public QObject{
+	Q_OBJECT
 private:
+	QFileSystemWatcher* watcher;
 	nlohmann::json data;
 	std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
 	std::string configPath;
-	std::string getConfigPath();
+
 	void saveConfig();
 	void initValidators();
-public:
+	
 	Config();
+
+	Config(const Config&) = delete;
+    Config& operator=(const Config&) = delete;
+
+private slots:
+	void loadConfig();
+public:
+	static Config& getInstance() {
+        static Config instance;
+        return instance;
+    }
+
+	std::string getConfigPath();
+	nlohmann::json& all() { return data; }
 
 	template<typename G>
 	G get(const std::string& key){

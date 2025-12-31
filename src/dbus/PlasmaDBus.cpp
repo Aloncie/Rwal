@@ -1,5 +1,4 @@
 #include "PlasmaDBus.h"
-#include <QCoreApplication>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QVariantMap>
@@ -8,10 +7,7 @@
 #include "logs/logs.h"
 #include "CLI/CLI.h"
 
-void change_wallpaper(int argc, char** argv,std::string local){
-
-	QCoreApplication app(argc, argv);
-
+void change_wallpaper(std::string local){
 	QString local_q = QString::fromStdString(local);
 	
 	QVariantMap params;	
