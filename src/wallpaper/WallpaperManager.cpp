@@ -6,6 +6,7 @@
 #include "funcs/funcs.h"
 #include "logs/logs.h"
 #include "settings/settings.h"
+#include "net/NetworkManager.h"
 #include "CLI/CLI.h"
 #include <exception>
 #include <filesystem>
@@ -38,56 +39,12 @@ void save_wallpaper(std::string from){
 	}
 }
 
-void refresh_wallpaper(int argc, char *argv[],std::string mode){
-	 
-	std::string url, local, page, pageCount;
-	int last_page = 1;
+void refresh_wallpaper(const std::string& mode){
 	Keywords k;
-	std::vector<std::string> keywords;
+	std::string keyword = k.GetRandomKeywords(mode);
+	std::string local = NetworkManager::getInstance().fetchImage(keyword);
 
-	if (mode == "change"){
-		keywords = k.look_keywords();
-		if (keywords.size() < 1)
-			k.Default(keywords);
-	}
-
-	else if (mode == "core")
-		keywords = k.get_keywords();
-
-	do {
-		std::string kw = keywords[0];
-		if (keywords.size() > 2){
-			Logs::getInstance().write_logs("Keywords.size = " + std::to_string(keywords.size()));
-			kw = keywords[random(keywords.size() - 1)];
-		}
-
-		MyCurl c("apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a", kw);
-		c.get_request();
-		Logs::getInstance().write_logs("Try to get count of pages from JSON");
-		pageCount = c.get_data("meta","last_page");
-
-		try {
-			last_page = std::stoi(pageCount);
-		} catch(std::exception& e){
-			 
-			Logs::getInstance().write_logs("Failed to stoi pageCount: " + std::string(e.what()));
-			last_page = 1;
-		}
-
-		page = std::to_string(random(last_page%100));
-
-		MyCurl v("page=" + page + "&apikey=an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",kw);
-		v.get_request();
-		Logs::getInstance().write_logs("Try to get url of image from JSON");
-		url = v.get_data("data","path");
-		if (!url.empty()) {
-			local = v.download_image(url);
-			break;
-		}
-	} while (true);	
-
-	change_wallpaper(argc, argv, local);
-
+	change_wallpaper(local);
 }
 
 std::string where_are_wallpaper(){

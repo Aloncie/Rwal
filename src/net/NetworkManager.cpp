@@ -1,7 +1,10 @@
 #include "NetworkManager.h"
 #include "logs/logs.h"
+#include "settings/config.h"
+#include <optional>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include "funcs/funcs.h"
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <cstring>
@@ -16,8 +19,7 @@ struct SocketGuard{
 	}
 };
 
-NetworkManager::NetworkManager(){
-	mycurl	
+NetworkManager::NetworkManager() : mycurl(){
 }
 
 NetworkManager& NetworkManager::getInstance(){
@@ -58,6 +60,48 @@ bool NetworkManager::isAvailable() {
     return false;
 }
 
-std::string NetworkManager::fetchImage(const std::string& query){
+std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::string> page){
+	auto& logger = Logs::getInstance();
+	auto& cfg = Config::getInstance().all();
+
+	auto& wh = cfg["services"]["wallhaven"];
+    auto& search = cfg["search"];
+
+    std::string url = wh["base_url"].get<std::string>();
+    url += wh["param_names"]["query"].get<std::string>() + keyword;
+	if (page.has_value())
+		url += "&page=" + *page;
+    url += "&" + wh["param_names"]["sorting"].get<std::string>() + "=" + search["sorting"].get<std::string>();
+    url += "&" + wh["param_names"]["res"].get<std::string>() + "=" + search["res"].get<std::string>();
+    url += "&" + wh["apikey"].get<std::string>();
+
+    return url;
+}
+
+std::string NetworkManager::fetchImage(std::string keyword){
+	auto& logger = Logs::getInstance();
+	int last_page;
+
+	if (!isAvailable())
+	   return "";
+
+	mycurl.get_request(craftUrl(keyword));
+	std::string pageCount =	mycurl.get_data("meta","last_page");
 	
+
+	try {
+		last_page = std::stoi(pageCount);
+	} catch(std::exception& e){
+
+		Logs::getInstance().write_logs("Failed to stoi pageCount: " + std::string(e.what()));
+		last_page = 1;
+	}
+
+	int max_p = std::min(last_page, 100);
+	std::string page = std::to_string(random(max_p));
+
+	mycurl.get_request(craftUrl(keyword, page));
+	std::string url = mycurl.get_data("data","path");
+
+	return url;
 }

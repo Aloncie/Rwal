@@ -18,26 +18,54 @@ std::string Config::getConfigPath(){
 	return ((configDir + "/config.json").toStdString());
 }
 
-Config::Config(){
-	configPath = getConfigPath();
-	initValidators();	
-	if (fs::exists(configPath)){
-		 
-		Logs::getInstance().write_logs("Config file exists: " + configPath);
-		std::ifstream file(configPath);
-		data = nlohmann::json::parse(file);				
-	}
-	else{
+Config::Config() {
+    configPath = getConfigPath();
+    initValidators();
+    
+    loadConfig();
+
+    watcher = new QFileSystemWatcher(this);
+    watcher->addPath(QString::fromStdString(configPath));
+    
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &Config::loadConfig);
+}
+
+void Config::loadConfig(){
+	if (std::filesystem::exists(configPath)) {
+        std::ifstream file(configPath);
+        if (file.is_open()) {
+            try {
+                data = nlohmann::json::parse(file);
+                Logs::getInstance().write_logs("Config loaded/reloaded: " + configPath);
+            } catch (nlohmann::json::parse_error& e) {
+                Logs::getInstance().write_logs("JSON Parse Error: " + std::string(e.what()));
+            }
+        }
+    } else {	
 		data = {
-			{"search", {
-				{"keywords", {}}
-			}},
-			{"api", {
-				{"wallhaven_api_key", ""}
-			}}
+   			{"services", {
+        		{"wallhaven", {
+            		{"apikey", "apikey="},
+            		{"base_url", "https://wallhaven.cc/api/v1/search"},
+            		{"param_names", {
+                		{"query", "?q="},
+                		{"sorting", "sorting"},
+                		{"res", "resolutions"}
+            	}}
+        	}}
+    		}},
+    		{"search", {
+        		{"keywords", {}},
+        		{"sorting", "random"},
+        		{"res", "1920x1080"}
+    		}}
 		};
 		saveConfig();
-	}
+	};		
+
+	if (watcher && watcher->files().isEmpty()) {
+        watcher->addPath(QString::fromStdString(configPath));
+    }
 }
 
 void Config::saveConfig(){
@@ -62,6 +90,4 @@ void Config::initValidators(){
 	validators["/search/keywords"] = is_not_empty_array;
    	validators["api/wallhaven_api_key"] = is_not_empty_string;
 }
-
-
 

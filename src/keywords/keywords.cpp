@@ -1,5 +1,6 @@
 #include "keywords.h"
 #include "logs/logs.h"
+#include <funcs/funcs.h>
 #include "CLI/CLI.h"
 #include <algorithm>
 #include <iostream>
@@ -10,9 +11,8 @@
 #include <settings/config.h>
 #include <settings/config.h>
 
-std::vector<std::string> Keywords::get_keywords(){
-	Config c;
-	auto search = c.get<nlohmann::json>("search");
+std::vector<std::string> Keywords::LongWayGetKeywords(){
+	auto search = Config::getInstance().get<nlohmann::json>("search");
 
 	std::vector<std::string> ready_keywords;
 	if (search.contains("keywords") && !search["keywords"].empty()){
@@ -44,7 +44,7 @@ std::vector<std::string> Keywords::get_keywords(){
 	}
 
 	//Save keywords
-    c.set("/search/keywords", ready_keywords);	
+	Config::getInstance().set("/search/keywords", ready_keywords);	
 
 	return ready_keywords;
 }
@@ -53,6 +53,21 @@ void Keywords::Default(std::vector<std::string>& keywords){
 	 
 	Logs::getInstance().write_logs("There are not keywords. The default keywords will be used.");
 	keywords = {"nature", "landscape", "abstract", "space", "architecture", "animals"};
+}
+
+std::string Keywords::GetRandomKeywords(const std::string& mode){
+	std::vector<std::string> keywords;
+	if (mode == "change"){
+		keywords = ShortWayGetKeywords();
+		if (keywords.size() < 1)
+			Default(keywords);
+	}
+
+	else if (mode == "core")
+		keywords = LongWayGetKeywords();
+
+	return keywords[random(keywords.size() - 1)];
+		
 }
 
 void Keywords::open_keywords_editor(){

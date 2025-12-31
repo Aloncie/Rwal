@@ -12,16 +12,14 @@ static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) 
 	return realsize;
 }
 
-MyCurl::MyCurl(std::string str, std::string keyword){
+MyCurl::MyCurl(){
 	curl = curl_easy_init();
+	curl_easy_setopt(curl,CURLOPT_USERAGENT,"rwal/1.0");
 }
 
-void MyCurl::prepare_request(const std::string& keyword){
-	
-}
+void MyCurl::get_request(std::string url){
+	clearning();
 
-void MyCurl::get_request(){
-	 
 	CURLcode res;
 	if (curl){
 		Logs::getInstance().write_logs("Try to request");
@@ -30,8 +28,6 @@ void MyCurl::get_request(){
 		curl_easy_setopt(curl,CURLOPT_WRITEDATA,&buffer);
 		curl_easy_setopt(curl,CURLOPT_TIMEOUT,10L);
 		curl_easy_setopt(curl,CURLOPT_FOLLOWLOCATION,1L);
-		curl_easy_setopt(curl,CURLOPT_USERAGENT,"rwal/1.0");
-		//curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L); 
 
 		res = curl_easy_perform(curl);
 		curl_easy_getinfo(curl,CURLINFO_RESPONSE_CODE,&http_code);
@@ -39,7 +35,7 @@ void MyCurl::get_request(){
 		Logs::getInstance().write_logs("url of request: " + url);
 
 		if (http_code != 200 || res != CURLE_OK){
-			Logs::getInstance().write_logs("Http error" + http_code);
+			Logs::getInstance().write_logs("Http error" + std::to_string(http_code));
 			return;
 		}
 		else {
@@ -55,7 +51,8 @@ void MyCurl::get_request(){
 			return;
 		}
 	}
-	else return;
+	else 
+		return;
 
 }
 
@@ -120,13 +117,7 @@ std::string MyCurl::download_image(const std::string& image_url){
 	
 	size_t LastSlash = image_url.find_last_of('/');
 	std::string filename = (LastSlash == std::string::npos) ? "wallpaper" : image_url.substr(LastSlash + 1);
-	std::string image_name = downloads.string() + "/" + filename;
-
-	std::string t = get_data("data","file_type");
-	image_name += ".";
-	for (size_t i = 6; i < t.size(); i++){
-		image_name += (t)[i];
-	}
+	fs::path wallpaper = downloads.string() + "/" + filename;
 
 	CURL* image_curl = curl_easy_init();
 	if (!image_curl){
@@ -136,7 +127,7 @@ std::string MyCurl::download_image(const std::string& image_url){
 	else {
 		Logs::getInstance().write_logs("Successful init CURL to image download");
 	}
-	std::ofstream fp(image_name.c_str(), std::ios::binary);
+	std::ofstream fp(wallpaper.c_str(), std::ios::binary);
 	if (!fp){
 		Logs::getInstance().write_logs("Failed to create image file");
 		curl_easy_cleanup(image_curl);
@@ -166,13 +157,18 @@ std::string MyCurl::download_image(const std::string& image_url){
 		return "";
 	}
 	else
-		Logs::getInstance().write_logs("Successful download image" + image_name);
+		Logs::getInstance().write_logs("Successful download image" + wallpaper.string());
 
-	return image_name;
+	return wallpaper;
 }
 
 
 
 MyCurl::~MyCurl(){
 	curl_easy_cleanup(curl);
+}
+
+void MyCurl::clearning(){
+	buffer.clear();
+	j.clear();
 }

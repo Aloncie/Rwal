@@ -11,16 +11,15 @@ class MyCurl{
 private:
 	CURL* curl;
 	long http_code = 0;
-	std::string url = "https://wallhaven.cc/api/v1/search?q=";
 	std::string page, buffer;
 	nlohmann::json j;
+
+	void clearning();
 public:
 
 	MyCurl();
-	void get_request();
-	void prepare_request(const std::string& keyword);
+	void get_request(std::string url);
 	std::string get_data(std::string paragraph, std::string str);
-	std::string get_count_pages();
 	std::string download_image(const std::string& image_url);
 
    	~MyCurl();
