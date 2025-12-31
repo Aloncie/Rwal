@@ -15,6 +15,8 @@ private:
 	nlohmann::json j;
 
 	void clearning();
+	void generateUniqueSuffix(std::string& filename);
+	std::string call_image(const std::string& image_url);
 public:
 
 	MyCurl();

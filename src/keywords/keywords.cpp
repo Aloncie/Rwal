@@ -59,12 +59,11 @@ std::string Keywords::GetRandomKeywords(const std::string& mode){
 	std::vector<std::string> keywords;
 	if (mode == "change"){
 		keywords = ShortWayGetKeywords();
-		if (keywords.size() < 1)
-			Default(keywords);
 	}
-
 	else if (mode == "core")
 		keywords = LongWayGetKeywords();
+	if (keywords.empty())
+		Default(keywords);
 
 	return keywords[random(keywords.size() - 1)];
 		

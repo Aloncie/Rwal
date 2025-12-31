@@ -2,7 +2,6 @@
 #include "settings/settings.h"
 #include "Menus.h"
 
-//local
 const std::vector<std::string> Main_menu{
     "-------------------------- ",
     "1) Refresh wallpaper now",
@@ -19,7 +18,6 @@ const std::vector<std::string> Timer_menu{
 	"daily"
 };
 
-//global
 const MenuConfig MAIN_MENU = {
     "1234q",
     []() { return Main_menu; }
@@ -34,7 +32,7 @@ const MenuConfig KEYWORDS_MENU = {
     "1q", 
     []() {
         Keywords k;
-		std::string keywords = k.look_keywords<std::string>();
+		std::string keywords = k.ShortWayGetKeywords<std::string>();
         return std::vector<std::string>{
             "-------------------------- ",
             "Keywords: " + keywords,	

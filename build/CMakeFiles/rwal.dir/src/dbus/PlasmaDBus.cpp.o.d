@@ -109,9 +109,10 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/c++/15.2.1/bits/uses_allocator.h \
  /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
  /usr/include/c++/15.2.1/tuple /usr/include/c++/15.2.1/bits/ranges_util.h \
- /usr/include/qt/QtCore/QCoreApplication \
- /usr/include/qt/QtCore/qcoreapplication.h \
- /usr/include/qt/QtCore/qglobal.h /usr/include/c++/15.2.1/utility \
+ /usr/include/qt/QtDBus/QDBusConnection \
+ /usr/include/qt/QtDBus/qdbusconnection.h \
+ /usr/include/qt/QtDBus/qtdbusglobal.h /usr/include/qt/QtCore/qglobal.h \
+ /usr/include/c++/15.2.1/utility \
  /usr/include/c++/15.2.1/bits/stl_relops.h /usr/include/assert.h \
  /usr/include/qt/QtCore/qconfig.h /usr/include/qt/QtCore/qtcore-config.h \
  /usr/include/qt/QtCore/qsystemdetection.h \
@@ -170,11 +171,11 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/c++/15.2.1/bits/std_mutex.h \
  /usr/include/qt/QtCore/qglobalstatic.h /usr/include/qt/QtCore/qnumeric.h \
  /usr/include/qt/QtCore/qversiontagging.h \
- /usr/include/qt/QtCore/qstring.h /usr/include/qt/QtCore/qchar.h \
- /usr/include/qt/QtCore/qbytearray.h /usr/include/qt/QtCore/qrefcount.h \
- /usr/include/qt/QtCore/qnamespace.h /usr/include/qt/QtCore/qarraydata.h \
- /usr/include/string.h /usr/include/strings.h \
- /usr/include/c++/15.2.1/stdlib.h /usr/include/c++/15.2.1/iterator \
+ /usr/include/qt/QtCore/qmetatype.h /usr/include/qt/QtCore/qbytearray.h \
+ /usr/include/qt/QtCore/qrefcount.h /usr/include/qt/QtCore/qnamespace.h \
+ /usr/include/qt/QtCore/qarraydata.h /usr/include/string.h \
+ /usr/include/strings.h /usr/include/c++/15.2.1/stdlib.h \
+ /usr/include/c++/15.2.1/iterator \
  /usr/include/c++/15.2.1/bits/stream_iterator.h \
  /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
  /usr/include/c++/15.2.1/streambuf \
@@ -192,13 +193,14 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/c++/15.2.1/typeinfo \
  /usr/include/c++/15.2.1/bits/nested_exception.h \
  /usr/include/c++/15.2.1/bits/streambuf.tcc \
- /usr/include/qt/QtCore/qstringliteral.h \
+ /usr/include/qt/QtCore/qvarlengtharray.h \
+ /usr/include/qt/QtCore/qcontainerfwd.h \
+ /usr/include/qt/QtCore/qalgorithms.h \
+ /usr/include/qt/QtCore/qcontainertools_impl.h \
+ /usr/include/qt/QtCore/qhashfunctions.h /usr/include/qt/QtCore/qstring.h \
+ /usr/include/qt/QtCore/qchar.h /usr/include/qt/QtCore/qstringliteral.h \
  /usr/include/qt/QtCore/qstringalgorithms.h \
- /usr/include/qt/QtCore/qstringview.h /usr/include/qt/QtCore/qobject.h \
- /usr/include/qt/QtCore/qobjectdefs.h \
- /usr/include/qt/QtCore/qobjectdefs_impl.h /usr/include/qt/QtCore/qlist.h \
- /usr/include/qt/QtCore/qalgorithms.h /usr/include/qt/QtCore/qiterator.h \
- /usr/include/qt/QtCore/qhashfunctions.h /usr/include/qt/QtCore/qpair.h \
+ /usr/include/qt/QtCore/qstringview.h /usr/include/qt/QtCore/qpair.h \
  /usr/include/c++/15.2.1/numeric \
  /usr/include/c++/15.2.1/bits/stl_numeric.h \
  /usr/include/c++/15.2.1/limits \
@@ -217,18 +219,7 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/array \
- /usr/include/qt/QtCore/qvector.h \
- /usr/include/qt/QtCore/qcontainertools_impl.h \
- /usr/include/c++/15.2.1/list /usr/include/c++/15.2.1/bits/stl_list.h \
- /usr/include/c++/15.2.1/bits/allocated_ptr.h \
- /usr/include/c++/15.2.1/bits/list.tcc \
- /usr/include/qt/QtCore/qbytearraylist.h \
- /usr/include/qt/QtCore/qstringlist.h /usr/include/qt/QtCore/qregexp.h \
- /usr/include/qt/QtCore/qstringmatcher.h \
- /usr/include/qt/QtCore/qscopedpointer.h \
- /usr/include/qt/QtCore/qmetatype.h \
- /usr/include/qt/QtCore/qvarlengtharray.h \
- /usr/include/qt/QtCore/qcontainerfwd.h /usr/include/c++/15.2.1/memory \
+ /usr/include/c++/15.2.1/memory \
  /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h \
  /usr/include/c++/15.2.1/bits/align.h \
  /usr/include/c++/15.2.1/bits/unique_ptr.h \
@@ -243,14 +234,26 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/c++/15.2.1/bits/basic_ios.tcc \
  /usr/include/c++/15.2.1/bits/shared_ptr.h \
  /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
+ /usr/include/c++/15.2.1/bits/allocated_ptr.h \
  /usr/include/c++/15.2.1/ext/concurrence.h \
  /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
  /usr/include/c++/15.2.1/backward/auto_ptr.h \
  /usr/include/c++/15.2.1/bits/ranges_uninitialized.h \
  /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
- /usr/include/c++/15.2.1/map /usr/include/c++/15.2.1/bits/stl_tree.h \
+ /usr/include/qt/QtCore/qobjectdefs.h \
+ /usr/include/qt/QtCore/qobjectdefs_impl.h /usr/include/c++/15.2.1/list \
+ /usr/include/c++/15.2.1/bits/stl_list.h \
+ /usr/include/c++/15.2.1/bits/list.tcc /usr/include/c++/15.2.1/map \
+ /usr/include/c++/15.2.1/bits/stl_tree.h \
  /usr/include/c++/15.2.1/bits/stl_map.h \
  /usr/include/c++/15.2.1/bits/stl_multimap.h \
+ /usr/include/qt/QtCore/qvariant.h /usr/include/qt/QtCore/qlist.h \
+ /usr/include/qt/QtCore/qiterator.h /usr/include/qt/QtCore/qvector.h \
+ /usr/include/qt/QtCore/qbytearraylist.h \
+ /usr/include/qt/QtCore/qstringlist.h /usr/include/qt/QtCore/qregexp.h \
+ /usr/include/qt/QtCore/qstringmatcher.h /usr/include/qt/QtCore/qmap.h \
+ /usr/include/qt/QtCore/qhash.h /usr/include/qt/QtCore/qobject.h \
+ /usr/include/qt/QtCore/qscopedpointer.h \
  /usr/include/qt/QtCore/qobject_impl.h /usr/include/c++/15.2.1/chrono \
  /usr/include/c++/15.2.1/bits/chrono.h /usr/include/c++/15.2.1/ratio \
  /usr/include/c++/15.2.1/ctime \
@@ -274,25 +277,17 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/c++/15.2.1/bits/formatfwd.h \
  /usr/include/c++/15.2.1/bits/unicode.h \
  /usr/include/c++/15.2.1/bits/unicode-data.h \
- /usr/include/qt/QtCore/qcoreevent.h /usr/include/qt/QtCore/qeventloop.h \
- /usr/include/qt/QtDBus/QDBusConnection \
- /usr/include/qt/QtDBus/qdbusconnection.h \
- /usr/include/qt/QtDBus/qtdbusglobal.h /usr/include/qt/QtCore/qvariant.h \
- /usr/include/qt/QtCore/qmap.h /usr/include/qt/QtCore/qhash.h \
  /usr/include/c++/15.2.1/variant /usr/include/qt/QtDBus/QDBusMessage \
  /usr/include/qt/QtDBus/qdbusmessage.h \
  /usr/include/qt/QtDBus/qdbuserror.h /usr/include/qt/QtCore/QVariantMap \
- /usr/include/qt/QtCore/qvariant.h /usr/include/qt/QtCore/QDebug \
- /usr/include/qt/QtCore/qdebug.h /usr/include/qt/QtCore/qtextstream.h \
- /usr/include/qt/QtCore/qiodevice.h /usr/include/qt/QtCore/qlocale.h \
- /usr/include/qt/QtCore/qshareddata.h /usr/include/qt/QtCore/qset.h \
- /usr/include/qt/QtCore/qcontiguouscache.h \
- /usr/include/qt/QtCore/qsharedpointer.h \
- /usr/include/qt/QtCore/qsharedpointer_impl.h \
- /usr/include/qt/QtCore/QString /usr/include/qt/QtCore/qstring.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/filesystem \
- /usr/include/c++/15.2.1/bits/fs_fwd.h \
+ /usr/include/qt/QtCore/qvariant.h /usr/include/qt/QtCore/QUrl \
+ /usr/include/qt/QtCore/qurl.h /usr/include/qt/QtCore/QString \
+ /usr/include/qt/QtCore/qstring.h /home/p1rat/code/rwal/src/logs/logs.h \
+ /usr/include/c++/15.2.1/filesystem /usr/include/c++/15.2.1/bits/fs_fwd.h \
  /usr/include/c++/15.2.1/bits/fs_path.h /usr/include/c++/15.2.1/codecvt \
  /usr/include/c++/15.2.1/bits/fs_dir.h \
- /usr/include/c++/15.2.1/bits/fs_ops.h \
- /home/p1rat/code/rwal/src/CLI/CLI.h
+ /usr/include/c++/15.2.1/bits/fs_ops.h /usr/include/c++/15.2.1/fstream \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/15.2.1/bits/fstream.tcc \
+ /home/p1rat/code/rwal/src/CLI/Menus.h

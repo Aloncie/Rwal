@@ -7,11 +7,11 @@
 #include "logs/logs.h"
 #include "CLI/CLI.h"
 
-void change_wallpaper(std::string local){
-	QString local_q = QString::fromStdString(local);
+void change_wallpaper(std::string url){
+	QString url_q = QString::fromStdString(url);
 	
 	QVariantMap params;	
-	params.insert(QStringLiteral("Image"), local_q);
+	params.insert(QStringLiteral("Image"), url_q);
 
 	auto msg = QDBusMessage::createMethodCall(
 		QStringLiteral("org.kde.plasmashell"),

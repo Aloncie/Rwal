@@ -5831,3 +5831,90 @@ Full path: /home/p1rat/Pictures/rwal
 [2025-12-20 | 20:24:51] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
 [2025-12-20 | 20:24:51] Config file exists: /home/p1rat/.config/Aloncie/rwal/config.json
 [2025-12-20 | 20:24:53] Ending program
+[2026-01-01 | 01:27:52] Starting program
+[2026-01-01 | 01:28:40] Ending program
+[2026-01-01 | 01:34:59] Starting program
+[2026-01-01 | 01:35:02] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 01:35:02] Try to check internet connection
+[2026-01-01 | 01:35:02] Internet check: SUCCESS
+[2026-01-01 | 01:35:02] Try to request
+[2026-01-01 | 01:35:02] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:35:02] Successful request
+[2026-01-01 | 01:35:02] Try to parse
+[2026-01-01 | 01:35:02] Successful parse JSON
+[2026-01-01 | 01:35:02] Data of JSON: 572
+[2026-01-01 | 01:35:02] Try to request
+[2026-01-01 | 01:35:03] url of request: https://wallhaven.cc/api/v1/search?q=nature&page=91&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:35:03] Successful request
+[2026-01-01 | 01:35:03] Try to parse
+[2026-01-01 | 01:35:03] Successful parse JSON
+[2026-01-01 | 01:35:03] Data of JSON: https://w.wallhaven.cc/full/73/wallhaven-7336lo.jpg
+[2026-01-01 | 01:35:10] Try to check internet connection
+[2026-01-01 | 01:35:10] Internet check: SUCCESS
+[2026-01-01 | 01:35:10] Try to request
+[2026-01-01 | 01:35:10] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:35:10] Successful request
+[2026-01-01 | 01:35:10] Try to parse
+[2026-01-01 | 01:35:10] Successful parse JSON
+[2026-01-01 | 01:35:10] Data of JSON: 253
+[2026-01-01 | 01:35:10] Try to request
+[2026-01-01 | 01:35:10] url of request: https://wallhaven.cc/api/v1/search?q=view&page=93&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:35:10] Successful request
+[2026-01-01 | 01:35:10] Try to parse
+[2026-01-01 | 01:35:10] Successful parse JSON
+[2026-01-01 | 01:35:10] Data of JSON: https://w.wallhaven.cc/full/g8/wallhaven-g8zz87.jpg
+[2026-01-01 | 01:35:11] Ending program
+[2026-01-01 | 01:39:38] Starting program
+[2026-01-01 | 01:40:49] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 01:41:41] Try to check internet connection
+[2026-01-01 | 01:41:41] Internet check: SUCCESS
+[2026-01-01 | 01:41:41] Try to request
+[2026-01-01 | 01:41:42] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:41:42] Successful request
+[2026-01-01 | 01:41:42] Try to parse
+[2026-01-01 | 01:41:42] Successful parse JSON
+[2026-01-01 | 01:41:42] Data of JSON: 253
+[2026-01-01 | 01:41:42] Try to request
+[2026-01-01 | 01:41:43] url of request: https://wallhaven.cc/api/v1/search?q=view&page=61&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:41:43] Successful request
+[2026-01-01 | 01:41:43] Try to parse
+[2026-01-01 | 01:41:43] Successful parse JSON
+[2026-01-01 | 01:41:43] Data of JSON: https://w.wallhaven.cc/full/xl/wallhaven-xl26wz.jpg
+[2026-01-01 | 01:42:50] Starting program
+[2026-01-01 | 01:42:54] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 01:43:29] Starting program
+[2026-01-01 | 01:43:36] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 01:43:47] Try to check internet connection
+[2026-01-01 | 01:43:47] Internet check: SUCCESS
+[2026-01-01 | 01:43:47] Try to request
+[2026-01-01 | 01:43:47] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:43:47] Successful request
+[2026-01-01 | 01:43:47] Try to parse
+[2026-01-01 | 01:43:47] Successful parse JSON
+[2026-01-01 | 01:43:47] Data of JSON: 2216
+[2026-01-01 | 01:43:47] Try to request
+[2026-01-01 | 01:43:48] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=27&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:43:48] Successful request
+[2026-01-01 | 01:43:48] Try to parse
+[2026-01-01 | 01:43:48] Successful parse JSON
+[2026-01-01 | 01:43:48] Data of JSON: https://w.wallhaven.cc/full/6q/wallhaven-6qoy96.jpg
+[2026-01-01 | 01:49:34] Starting program
+[2026-01-01 | 01:49:37] Ending program
+[2026-01-01 | 01:49:58] Starting program
+[2026-01-01 | 01:50:00] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 01:50:00] Try to check internet connection
+[2026-01-01 | 01:50:00] Internet check: SUCCESS
+[2026-01-01 | 01:50:00] Try to request
+[2026-01-01 | 01:50:00] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:50:00] Successful request
+[2026-01-01 | 01:50:00] Try to parse
+[2026-01-01 | 01:50:00] Successful parse JSON
+[2026-01-01 | 01:50:00] Data of JSON: 112
+[2026-01-01 | 01:50:00] Try to request
+[2026-01-01 | 01:50:00] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&page=97&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 01:50:00] Successful request
+[2026-01-01 | 01:50:00] Try to parse
+[2026-01-01 | 01:50:00] Successful parse JSON
+[2026-01-01 | 01:50:00] Data of JSON: https://w.wallhaven.cc/full/m3/wallhaven-m3xkd1.png
+[2026-01-01 | 01:50:01] D-Bus: Wallpaper change command sent successfully
+[2026-01-01 | 01:50:04] Ending program
