@@ -103,5 +103,5 @@ std::string NetworkManager::fetchImage(std::string keyword){
 	mycurl.get_request(craftUrl(keyword, page));
 	std::string url = mycurl.get_data("data","path");
 
-	return url;
+	return mycurl.download_image(url);
 }

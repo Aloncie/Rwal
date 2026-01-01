@@ -1749,7 +1749,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp
- /home/p1rat/code/rwal/src/CLI/Menus.h
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h
  /home/p1rat/code/rwal/src/logs/logs.h
  /usr/include/alloca.h
@@ -2063,8 +2062,8 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
  /usr/include/linux/types.h
  /usr/include/locale.h
  /usr/include/pthread.h
+ /usr/include/qt/QtCore/QDebug
  /usr/include/qt/QtCore/QString
- /usr/include/qt/QtCore/QUrl
  /usr/include/qt/QtCore/QVariantMap
  /usr/include/qt/QtCore/qalgorithms.h
  /usr/include/qt/QtCore/qarraydata.h
@@ -2078,14 +2077,18 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
  /usr/include/qt/QtCore/qconfig.h
  /usr/include/qt/QtCore/qcontainerfwd.h
  /usr/include/qt/QtCore/qcontainertools_impl.h
+ /usr/include/qt/QtCore/qcontiguouscache.h
+ /usr/include/qt/QtCore/qdebug.h
  /usr/include/qt/QtCore/qflags.h
  /usr/include/qt/QtCore/qgenericatomic.h
  /usr/include/qt/QtCore/qglobal.h
  /usr/include/qt/QtCore/qglobalstatic.h
  /usr/include/qt/QtCore/qhash.h
  /usr/include/qt/QtCore/qhashfunctions.h
+ /usr/include/qt/QtCore/qiodevice.h
  /usr/include/qt/QtCore/qiterator.h
  /usr/include/qt/QtCore/qlist.h
+ /usr/include/qt/QtCore/qlocale.h
  /usr/include/qt/QtCore/qlogging.h
  /usr/include/qt/QtCore/qmap.h
  /usr/include/qt/QtCore/qmetatype.h
@@ -2100,6 +2103,10 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
  /usr/include/qt/QtCore/qrefcount.h
  /usr/include/qt/QtCore/qregexp.h
  /usr/include/qt/QtCore/qscopedpointer.h
+ /usr/include/qt/QtCore/qset.h
+ /usr/include/qt/QtCore/qshareddata.h
+ /usr/include/qt/QtCore/qsharedpointer.h
+ /usr/include/qt/QtCore/qsharedpointer_impl.h
  /usr/include/qt/QtCore/qstring.h
  /usr/include/qt/QtCore/qstringalgorithms.h
  /usr/include/qt/QtCore/qstringlist.h
@@ -2109,8 +2116,8 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
  /usr/include/qt/QtCore/qsysinfo.h
  /usr/include/qt/QtCore/qsystemdetection.h
  /usr/include/qt/QtCore/qtcore-config.h
+ /usr/include/qt/QtCore/qtextstream.h
  /usr/include/qt/QtCore/qtypeinfo.h
- /usr/include/qt/QtCore/qurl.h
  /usr/include/qt/QtCore/qvariant.h
  /usr/include/qt/QtCore/qvarlengtharray.h
  /usr/include/qt/QtCore/qvector.h

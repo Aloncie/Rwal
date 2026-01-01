@@ -1,62 +1,86 @@
 #include "keywords/keywords.h"
 #include "settings/settings.h"
+#include <nlohmann/json.hpp>
+#include "settings/config.h"
 #include "Menus.h"
-
-const std::vector<std::string> Main_menu{
-    "-------------------------- ",
-    "1) Refresh wallpaper now",
-    "2) Save current wallpaper",
-    "3) See keywords", 
-    "4) Settings",
-    "q) Quit",
-    "-------------------------- "
-};
-
-const std::vector<std::string> Timer_menu{
-	"None", 
-	"hourly", 
-	"daily"
-};
 
 const MenuConfig MAIN_MENU = {
     "1234q",
-    []() { return Main_menu; }
+	rwal::ui::ready::main_list
 };
 
 const MenuConfig TIMER_MENU = {
 	"None",
-	[]() { return Timer_menu;}
+	rwal::ui::ready::timer_list
 };
 
 const MenuConfig KEYWORDS_MENU = {
-    "1q", 
-    []() {
-        Keywords k;
-		std::string keywords = k.ShortWayGetKeywords<std::string>();
-        return std::vector<std::string>{
-            "-------------------------- ",
-            "Keywords: " + keywords,	
-            "1) Edit keywords",
-            "q) Quit",
-            "-------------------------- "
-        };
-    }
+    "armq", 
+	rwal::ui::generators::keywords_list
 };
 
 const MenuConfig SETTINGS_MENU = {
     "12q",
-    []() {
-        Timer t;
-		PicturesPath p;
-        std::string timer = t.see_timer();
-        std::string wallpaper_local = p.get_pictures_path();
-        return std::vector<std::string>{
-            "-------------------------- ",
-            "Choose to edit any setting",
-            "1) Timer: " + timer,
-            "2) Wallpaper location: " + wallpaper_local,
-            "q) Quit",
-            "-------------------------- "
-        };
-    }
+   	rwal::ui::generators::setting_list 
 };
+
+namespace rwal::ui {
+	namespace generators {
+		std::vector<std::string> keywords_list() {
+			std::vector<std::string> lines = {"--- Keywords Editor ---"};
+
+			auto search = Config::getInstance().get<nlohmann::json>("search");
+
+			std::vector<std::string> keywords;
+			if (search.contains("keywords"))
+				if (!search["keywords"].empty()){
+					keywords = search["keywords"];
+
+					for(size_t i = 0; i < keywords.size(); ++i) {
+						lines.push_back(std::to_string(i + 1) + ". " + keywords[i]);
+					}
+				}
+
+				else 
+					lines.push_back("None");	
+		
+			lines.push_back("a) Add | r) Remove | m) Manual(JSON) | q) Back");
+			return lines;
+		}
+		std::vector<std::string> settings_list() {
+			Timer t;
+			PicturesPath p;
+
+			return {
+				"-------------------------- ",
+				"Choose to edit any setting",
+				"1) Timer: " + t.see_timer(),
+				"2) Wallpaper location: " + p.get_pictures_path().string(),
+				"q) Quit",
+				"-------------------------- "
+			};
+		}
+	}
+	namespace ready {
+
+		const std::vector<std::string> Main_menu{
+			"-------------------------- ",
+			"1) Refresh wallpaper now",
+			"2) Save current wallpaper",
+			"3) See keywords",
+			"4) Settings",
+			"q) Quit",
+			"-------------------------- "
+		};
+
+		const std::vector<std::string> Timer_menu{
+			"None",
+			"hourly",
+			"daily"
+		};
+
+	}
+}
+
+
+

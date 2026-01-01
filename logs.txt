@@ -5918,3 +5918,559 @@ Full path: /home/p1rat/Pictures/rwal
 [2026-01-01 | 01:50:00] Data of JSON: https://w.wallhaven.cc/full/m3/wallhaven-m3xkd1.png
 [2026-01-01 | 01:50:01] D-Bus: Wallpaper change command sent successfully
 [2026-01-01 | 01:50:04] Ending program
+[2026-01-01 | 18:54:46] Starting program
+[2026-01-01 | 18:54:47] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 18:54:48] Try to check internet connection
+[2026-01-01 | 18:54:48] Internet check: SUCCESS
+[2026-01-01 | 18:54:48] Try to request
+[2026-01-01 | 18:54:48] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:54:48] Successful request
+[2026-01-01 | 18:54:48] Try to parse
+[2026-01-01 | 18:54:48] Successful parse JSON
+[2026-01-01 | 18:54:48] Data of JSON: 572
+[2026-01-01 | 18:54:48] Try to request
+[2026-01-01 | 18:54:48] url of request: https://wallhaven.cc/api/v1/search?q=nature&page=21&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:54:48] Successful request
+[2026-01-01 | 18:54:48] Try to parse
+[2026-01-01 | 18:54:48] Successful parse JSON
+[2026-01-01 | 18:54:48] Data of JSON: https://w.wallhaven.cc/full/d5/wallhaven-d5g1o3.jpg
+[2026-01-01 | 18:54:51] Ending program
+[2026-01-01 | 18:56:04] Starting program
+[2026-01-01 | 18:56:06] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 18:56:06] Try to check internet connection
+[2026-01-01 | 18:56:06] Internet check: SUCCESS
+[2026-01-01 | 18:56:06] Try to request
+[2026-01-01 | 18:56:06] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:56:06] Successful request
+[2026-01-01 | 18:56:06] Try to parse
+[2026-01-01 | 18:56:06] Successful parse JSON
+[2026-01-01 | 18:56:06] Data of JSON: 2216
+[2026-01-01 | 18:56:06] Try to request
+[2026-01-01 | 18:56:06] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=79&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:56:06] Successful request
+[2026-01-01 | 18:56:06] Try to parse
+[2026-01-01 | 18:56:06] Successful parse JSON
+[2026-01-01 | 18:56:06] Data of JSON: https://w.wallhaven.cc/full/q6/wallhaven-q623g5.png
+[2026-01-01 | 18:56:34] Ending program
+[2026-01-01 | 18:56:52] Starting program
+[2026-01-01 | 18:56:52] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 18:56:52] Try to check internet connection
+[2026-01-01 | 18:56:52] Internet check: SUCCESS
+[2026-01-01 | 18:56:52] Try to request
+[2026-01-01 | 18:56:53] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:56:53] Successful request
+[2026-01-01 | 18:56:53] Try to parse
+[2026-01-01 | 18:56:53] Successful parse JSON
+[2026-01-01 | 18:56:53] Data of JSON: 253
+[2026-01-01 | 18:56:53] Try to request
+[2026-01-01 | 18:56:53] url of request: https://wallhaven.cc/api/v1/search?q=view&page=88&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:56:53] Successful request
+[2026-01-01 | 18:56:53] Try to parse
+[2026-01-01 | 18:56:53] Successful parse JSON
+[2026-01-01 | 18:56:53] Data of JSON: https://w.wallhaven.cc/full/yj/wallhaven-yj5q5x.jpg
+[2026-01-01 | 18:57:04] Try to check internet connection
+[2026-01-01 | 18:57:04] Internet check: SUCCESS
+[2026-01-01 | 18:57:04] Try to request
+[2026-01-01 | 18:57:04] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:57:04] Successful request
+[2026-01-01 | 18:57:04] Try to parse
+[2026-01-01 | 18:57:04] Successful parse JSON
+[2026-01-01 | 18:57:04] Data of JSON: 154
+[2026-01-01 | 18:57:04] Try to request
+[2026-01-01 | 18:57:04] url of request: https://wallhaven.cc/api/v1/search?q=space&page=57&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:57:04] Successful request
+[2026-01-01 | 18:57:04] Try to parse
+[2026-01-01 | 18:57:04] Successful parse JSON
+[2026-01-01 | 18:57:04] Data of JSON: https://w.wallhaven.cc/full/x1/wallhaven-x1731l.jpg
+[2026-01-01 | 18:57:07] Try to check internet connection
+[2026-01-01 | 18:57:07] Internet check: SUCCESS
+[2026-01-01 | 18:57:07] Try to request
+[2026-01-01 | 18:57:07] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:57:07] Successful request
+[2026-01-01 | 18:57:07] Try to parse
+[2026-01-01 | 18:57:07] Successful parse JSON
+[2026-01-01 | 18:57:07] Data of JSON: 253
+[2026-01-01 | 18:57:07] Try to request
+[2026-01-01 | 18:57:07] url of request: https://wallhaven.cc/api/v1/search?q=view&page=70&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 18:57:07] Successful request
+[2026-01-01 | 18:57:07] Try to parse
+[2026-01-01 | 18:57:07] Successful parse JSON
+[2026-01-01 | 18:57:07] Data of JSON: https://w.wallhaven.cc/full/l8/wallhaven-l88xol.jpg
+[2026-01-01 | 18:57:24] Ending program
+[2026-01-01 | 19:01:02] Starting program
+[2026-01-01 | 19:01:03] Ending program
+[2026-01-01 | 19:01:24] Starting program
+[2026-01-01 | 19:01:24] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 19:01:24] Try to check internet connection
+[2026-01-01 | 19:01:24] Internet check: SUCCESS
+[2026-01-01 | 19:01:24] Try to request
+[2026-01-01 | 19:01:25] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:01:25] Successful request
+[2026-01-01 | 19:01:25] Try to parse
+[2026-01-01 | 19:01:25] Successful parse JSON
+[2026-01-01 | 19:01:25] Data of JSON: 2216
+[2026-01-01 | 19:01:25] Try to request
+[2026-01-01 | 19:01:25] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=65&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:01:25] Successful request
+[2026-01-01 | 19:01:25] Try to parse
+[2026-01-01 | 19:01:25] Successful parse JSON
+[2026-01-01 | 19:01:25] Data of JSON: https://w.wallhaven.cc/full/57/wallhaven-5725y8.jpg
+[2026-01-01 | 19:01:25] Try to delete old image
+[2026-01-01 | 19:01:25] Successful deleting old image
+[2026-01-01 | 19:01:25] Successful init CURL to image download
+[2026-01-01 | 19:01:25] Successful creating image file
+[2026-01-01 | 19:01:25] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-5725y8.jpg
+[2026-01-01 | 19:11:15] Try to know 'Pictures' location
+[2026-01-01 | 19:11:15] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:15] Try to read timer file
+[2026-01-01 | 19:11:15] Try to read timer file
+[2026-01-01 | 19:11:15] Try to know 'Pictures' location
+[2026-01-01 | 19:11:15] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:18] Try to edit timer
+[2026-01-01 | 19:11:18] Try to create/check service&timer files
+[2026-01-01 | 19:11:18] Service file already exists
+[2026-01-01 | 19:11:18] Timer file already exists
+[2026-01-01 | 19:11:18] Successful edit timer. Try to active timer
+[2026-01-01 | 19:11:22] Timer successfuly activated
+[2026-01-01 | 19:11:22] Try to read timer file
+[2026-01-01 | 19:11:22] Successful reading. Data: hourly
+[2026-01-01 | 19:11:22] Try to know 'Pictures' location
+[2026-01-01 | 19:11:22] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:26] Try to edit timer
+[2026-01-01 | 19:11:26] Try to create/check service&timer files
+[2026-01-01 | 19:11:26] Service file already exists
+[2026-01-01 | 19:11:26] Timer file already exists
+[2026-01-01 | 19:11:26] value is 'None'
+Try to disactivate timer
+[2026-01-01 | 19:11:30] Timer successfuly disactivated
+[2026-01-01 | 19:11:30] Try to read timer file
+[2026-01-01 | 19:11:30] Try to know 'Pictures' location
+[2026-01-01 | 19:11:30] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:33] Try to read timer file
+[2026-01-01 | 19:11:33] Try to know 'Pictures' location
+[2026-01-01 | 19:11:33] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:34] Try to read timer file
+[2026-01-01 | 19:11:34] Try to know 'Pictures' location
+[2026-01-01 | 19:11:34] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:43] Try to know 'Pictures' location
+[2026-01-01 | 19:11:43] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:43] Output of rwal_catalog: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:11:43] Image successful saved: /home/p1rat/Pictures/rwal/wallpaper-nzpxyw.jpeg
+[2026-01-01 | 19:12:28] Try to know 'Pictures' location
+[2026-01-01 | 19:12:28] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:28] Try to read timer file
+[2026-01-01 | 19:12:28] Try to read timer file
+[2026-01-01 | 19:12:28] Try to know 'Pictures' location
+[2026-01-01 | 19:12:28] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:31] Try to know 'Pictures' location
+[2026-01-01 | 19:12:31] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:31] Try to read timer file
+[2026-01-01 | 19:12:31] Try to read timer file
+[2026-01-01 | 19:12:31] Try to know 'Pictures' location
+[2026-01-01 | 19:12:31] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:36] Try to know 'Pictures' location
+[2026-01-01 | 19:12:36] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:36] Output of rwal_catalog: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:36] Image successful saved: /home/p1rat/Pictures/rwal/wallpaper-nzpxyw.jpeg
+[2026-01-01 | 19:12:37] Try to know 'Pictures' location
+[2026-01-01 | 19:12:37] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:37] Output of rwal_catalog: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:12:37] Image successful saved: /home/p1rat/Pictures/rwal/wallpaper-nzpxyw.jpeg
+[2026-01-01 | 19:12:38] Ending program
+[2026-01-01 | 19:14:46] Starting program
+[2026-01-01 | 19:14:49] Try to know 'Pictures' location
+[2026-01-01 | 19:14:49] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:14:49] Try to read timer file
+[2026-01-01 | 19:14:49] Try to read timer file
+[2026-01-01 | 19:14:49] Try to know 'Pictures' location
+[2026-01-01 | 19:14:49] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:14:53] Ending program
+[2026-01-01 | 19:34:01] Starting program
+[2026-01-01 | 19:34:02] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 19:34:02] Try to check internet connection
+[2026-01-01 | 19:34:02] Internet check: SUCCESS
+[2026-01-01 | 19:34:02] Try to request
+[2026-01-01 | 19:34:03] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:03] Successful request
+[2026-01-01 | 19:34:03] Try to parse
+[2026-01-01 | 19:34:03] Successful parse JSON
+[2026-01-01 | 19:34:03] Data of JSON: 572
+[2026-01-01 | 19:34:03] Try to request
+[2026-01-01 | 19:34:03] url of request: https://wallhaven.cc/api/v1/search?q=nature&page=66&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:03] Successful request
+[2026-01-01 | 19:34:03] Try to parse
+[2026-01-01 | 19:34:03] Successful parse JSON
+[2026-01-01 | 19:34:03] Data of JSON: https://w.wallhaven.cc/full/m9/wallhaven-m9q999.jpg
+[2026-01-01 | 19:34:03] Try to delete old image
+[2026-01-01 | 19:34:03] Successful deleting old image
+[2026-01-01 | 19:34:03] Successful init CURL to image download
+[2026-01-01 | 19:34:03] Successful creating image file
+[2026-01-01 | 19:34:04] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-m9q999.jpg
+[2026-01-01 | 19:34:07] Try to check internet connection
+[2026-01-01 | 19:34:07] Internet check: SUCCESS
+[2026-01-01 | 19:34:07] Try to request
+[2026-01-01 | 19:34:08] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:08] Successful request
+[2026-01-01 | 19:34:08] Try to parse
+[2026-01-01 | 19:34:08] Successful parse JSON
+[2026-01-01 | 19:34:08] Data of JSON: 112
+[2026-01-01 | 19:34:08] Try to request
+[2026-01-01 | 19:34:08] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&page=10&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:08] Successful request
+[2026-01-01 | 19:34:08] Try to parse
+[2026-01-01 | 19:34:08] Successful parse JSON
+[2026-01-01 | 19:34:08] Data of JSON: https://w.wallhaven.cc/full/r7/wallhaven-r7p3zw.jpg
+[2026-01-01 | 19:34:08] Try to delete old image
+[2026-01-01 | 19:34:08] Successful deleting old image
+[2026-01-01 | 19:34:08] Successful init CURL to image download
+[2026-01-01 | 19:34:08] Successful creating image file
+[2026-01-01 | 19:34:09] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-r7p3zw.jpg
+[2026-01-01 | 19:34:11] Try to check internet connection
+[2026-01-01 | 19:34:11] Internet check: SUCCESS
+[2026-01-01 | 19:34:11] Try to request
+[2026-01-01 | 19:34:11] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:11] Successful request
+[2026-01-01 | 19:34:11] Try to parse
+[2026-01-01 | 19:34:11] Successful parse JSON
+[2026-01-01 | 19:34:11] Data of JSON: 253
+[2026-01-01 | 19:34:11] Try to request
+[2026-01-01 | 19:34:11] url of request: https://wallhaven.cc/api/v1/search?q=view&page=36&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:11] Successful request
+[2026-01-01 | 19:34:11] Try to parse
+[2026-01-01 | 19:34:11] Successful parse JSON
+[2026-01-01 | 19:34:11] Data of JSON: https://w.wallhaven.cc/full/48/wallhaven-48owq1.jpg
+[2026-01-01 | 19:34:11] Try to delete old image
+[2026-01-01 | 19:34:11] Successful deleting old image
+[2026-01-01 | 19:34:11] Successful init CURL to image download
+[2026-01-01 | 19:34:11] Successful creating image file
+[2026-01-01 | 19:34:12] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-48owq1.jpg
+[2026-01-01 | 19:34:17] Try to check internet connection
+[2026-01-01 | 19:34:17] Internet check: SUCCESS
+[2026-01-01 | 19:34:17] Try to request
+[2026-01-01 | 19:34:17] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:17] Successful request
+[2026-01-01 | 19:34:17] Try to parse
+[2026-01-01 | 19:34:17] Successful parse JSON
+[2026-01-01 | 19:34:17] Data of JSON: 154
+[2026-01-01 | 19:34:17] Try to request
+[2026-01-01 | 19:34:17] url of request: https://wallhaven.cc/api/v1/search?q=space&page=46&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:17] Successful request
+[2026-01-01 | 19:34:17] Try to parse
+[2026-01-01 | 19:34:17] Successful parse JSON
+[2026-01-01 | 19:34:17] Data of JSON: https://w.wallhaven.cc/full/0j/wallhaven-0jpzmm.jpg
+[2026-01-01 | 19:34:17] Try to delete old image
+[2026-01-01 | 19:34:17] Successful deleting old image
+[2026-01-01 | 19:34:17] Successful init CURL to image download
+[2026-01-01 | 19:34:17] Successful creating image file
+[2026-01-01 | 19:34:18] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-0jpzmm.jpg
+[2026-01-01 | 19:34:23] Try to check internet connection
+[2026-01-01 | 19:34:23] Internet check: SUCCESS
+[2026-01-01 | 19:34:23] Try to request
+[2026-01-01 | 19:34:23] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:23] Successful request
+[2026-01-01 | 19:34:23] Try to parse
+[2026-01-01 | 19:34:23] Successful parse JSON
+[2026-01-01 | 19:34:23] Data of JSON: 572
+[2026-01-01 | 19:34:23] Try to request
+[2026-01-01 | 19:34:23] url of request: https://wallhaven.cc/api/v1/search?q=nature&page=75&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:23] Successful request
+[2026-01-01 | 19:34:23] Try to parse
+[2026-01-01 | 19:34:23] Successful parse JSON
+[2026-01-01 | 19:34:23] Data of JSON: https://w.wallhaven.cc/full/md/wallhaven-md6qy1.jpg
+[2026-01-01 | 19:34:23] Try to delete old image
+[2026-01-01 | 19:34:23] Successful deleting old image
+[2026-01-01 | 19:34:23] Successful init CURL to image download
+[2026-01-01 | 19:34:23] Successful creating image file
+[2026-01-01 | 19:34:24] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-md6qy1.jpg
+[2026-01-01 | 19:34:26] Try to check internet connection
+[2026-01-01 | 19:34:26] Internet check: SUCCESS
+[2026-01-01 | 19:34:26] Try to request
+[2026-01-01 | 19:34:26] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:26] Successful request
+[2026-01-01 | 19:34:26] Try to parse
+[2026-01-01 | 19:34:26] Successful parse JSON
+[2026-01-01 | 19:34:26] Data of JSON: 112
+[2026-01-01 | 19:34:26] Try to request
+[2026-01-01 | 19:34:27] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&page=37&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:27] Successful request
+[2026-01-01 | 19:34:27] Try to parse
+[2026-01-01 | 19:34:27] Successful parse JSON
+[2026-01-01 | 19:34:27] Data of JSON: https://w.wallhaven.cc/full/k7/wallhaven-k79r3m.jpg
+[2026-01-01 | 19:34:27] Try to delete old image
+[2026-01-01 | 19:34:27] Successful deleting old image
+[2026-01-01 | 19:34:27] Successful init CURL to image download
+[2026-01-01 | 19:34:27] Successful creating image file
+[2026-01-01 | 19:34:27] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-k79r3m.jpg
+[2026-01-01 | 19:34:31] Try to check internet connection
+[2026-01-01 | 19:34:31] Internet check: SUCCESS
+[2026-01-01 | 19:34:31] Try to request
+[2026-01-01 | 19:34:32] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:32] Successful request
+[2026-01-01 | 19:34:32] Try to parse
+[2026-01-01 | 19:34:32] Successful parse JSON
+[2026-01-01 | 19:34:32] Data of JSON: 154
+[2026-01-01 | 19:34:32] Try to request
+[2026-01-01 | 19:34:32] url of request: https://wallhaven.cc/api/v1/search?q=space&page=26&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:32] Successful request
+[2026-01-01 | 19:34:32] Try to parse
+[2026-01-01 | 19:34:32] Successful parse JSON
+[2026-01-01 | 19:34:32] Data of JSON: https://w.wallhaven.cc/full/mp/wallhaven-mp9y21.jpg
+[2026-01-01 | 19:34:32] Try to delete old image
+[2026-01-01 | 19:34:32] Successful deleting old image
+[2026-01-01 | 19:34:32] Successful init CURL to image download
+[2026-01-01 | 19:34:32] Successful creating image file
+[2026-01-01 | 19:34:32] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-mp9y21.jpg
+[2026-01-01 | 19:34:34] Try to check internet connection
+[2026-01-01 | 19:34:34] Internet check: SUCCESS
+[2026-01-01 | 19:34:34] Try to request
+[2026-01-01 | 19:34:34] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:34] Successful request
+[2026-01-01 | 19:34:34] Try to parse
+[2026-01-01 | 19:34:34] Successful parse JSON
+[2026-01-01 | 19:34:34] Data of JSON: 154
+[2026-01-01 | 19:34:34] Try to request
+[2026-01-01 | 19:34:35] url of request: https://wallhaven.cc/api/v1/search?q=space&page=91&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:35] Successful request
+[2026-01-01 | 19:34:35] Try to parse
+[2026-01-01 | 19:34:35] Successful parse JSON
+[2026-01-01 | 19:34:35] Data of JSON: https://w.wallhaven.cc/full/j8/wallhaven-j8k7py.jpg
+[2026-01-01 | 19:34:35] Try to delete old image
+[2026-01-01 | 19:34:35] Successful deleting old image
+[2026-01-01 | 19:34:35] Successful init CURL to image download
+[2026-01-01 | 19:34:35] Successful creating image file
+[2026-01-01 | 19:34:35] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-j8k7py.jpg
+[2026-01-01 | 19:34:41] Try to check internet connection
+[2026-01-01 | 19:34:41] Internet check: SUCCESS
+[2026-01-01 | 19:34:41] Try to request
+[2026-01-01 | 19:34:41] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:41] Successful request
+[2026-01-01 | 19:34:41] Try to parse
+[2026-01-01 | 19:34:41] Successful parse JSON
+[2026-01-01 | 19:34:41] Data of JSON: 253
+[2026-01-01 | 19:34:41] Try to request
+[2026-01-01 | 19:34:42] url of request: https://wallhaven.cc/api/v1/search?q=view&page=73&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:42] Successful request
+[2026-01-01 | 19:34:42] Try to parse
+[2026-01-01 | 19:34:42] Successful parse JSON
+[2026-01-01 | 19:34:42] Data of JSON: https://w.wallhaven.cc/full/0w/wallhaven-0w2lex.jpg
+[2026-01-01 | 19:34:42] Try to delete old image
+[2026-01-01 | 19:34:42] Successful deleting old image
+[2026-01-01 | 19:34:42] Successful init CURL to image download
+[2026-01-01 | 19:34:42] Successful creating image file
+[2026-01-01 | 19:34:42] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-0w2lex.jpg
+[2026-01-01 | 19:34:44] Try to check internet connection
+[2026-01-01 | 19:34:44] Internet check: SUCCESS
+[2026-01-01 | 19:34:44] Try to request
+[2026-01-01 | 19:34:45] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:45] Successful request
+[2026-01-01 | 19:34:45] Try to parse
+[2026-01-01 | 19:34:45] Successful parse JSON
+[2026-01-01 | 19:34:45] Data of JSON: 154
+[2026-01-01 | 19:34:45] Try to request
+[2026-01-01 | 19:34:45] url of request: https://wallhaven.cc/api/v1/search?q=space&page=50&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:45] Successful request
+[2026-01-01 | 19:34:45] Try to parse
+[2026-01-01 | 19:34:45] Successful parse JSON
+[2026-01-01 | 19:34:45] Data of JSON: https://w.wallhaven.cc/full/x1/wallhaven-x1myyl.jpg
+[2026-01-01 | 19:34:45] Try to delete old image
+[2026-01-01 | 19:34:45] Successful deleting old image
+[2026-01-01 | 19:34:45] Successful init CURL to image download
+[2026-01-01 | 19:34:45] Successful creating image file
+[2026-01-01 | 19:34:46] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-x1myyl.jpg
+[2026-01-01 | 19:34:51] Try to check internet connection
+[2026-01-01 | 19:34:51] Internet check: SUCCESS
+[2026-01-01 | 19:34:51] Try to request
+[2026-01-01 | 19:34:51] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:51] Successful request
+[2026-01-01 | 19:34:51] Try to parse
+[2026-01-01 | 19:34:51] Successful parse JSON
+[2026-01-01 | 19:34:51] Data of JSON: 112
+[2026-01-01 | 19:34:51] Try to request
+[2026-01-01 | 19:34:52] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&page=90&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:52] Successful request
+[2026-01-01 | 19:34:52] Try to parse
+[2026-01-01 | 19:34:52] Successful parse JSON
+[2026-01-01 | 19:34:52] Data of JSON: https://w.wallhaven.cc/full/4g/wallhaven-4glrp3.jpg
+[2026-01-01 | 19:34:52] Try to delete old image
+[2026-01-01 | 19:34:52] Successful deleting old image
+[2026-01-01 | 19:34:52] Successful init CURL to image download
+[2026-01-01 | 19:34:52] Successful creating image file
+[2026-01-01 | 19:34:52] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-4glrp3.jpg
+[2026-01-01 | 19:34:54] Try to check internet connection
+[2026-01-01 | 19:34:54] Internet check: SUCCESS
+[2026-01-01 | 19:34:54] Try to request
+[2026-01-01 | 19:34:54] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:54] Successful request
+[2026-01-01 | 19:34:54] Try to parse
+[2026-01-01 | 19:34:54] Successful parse JSON
+[2026-01-01 | 19:34:54] Data of JSON: 154
+[2026-01-01 | 19:34:54] Try to request
+[2026-01-01 | 19:34:55] url of request: https://wallhaven.cc/api/v1/search?q=space&page=74&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:34:55] Successful request
+[2026-01-01 | 19:34:55] Try to parse
+[2026-01-01 | 19:34:55] Successful parse JSON
+[2026-01-01 | 19:34:55] Data of JSON: https://w.wallhaven.cc/full/4d/wallhaven-4dlkrg.jpg
+[2026-01-01 | 19:34:55] Try to delete old image
+[2026-01-01 | 19:34:55] Successful deleting old image
+[2026-01-01 | 19:34:55] Successful init CURL to image download
+[2026-01-01 | 19:34:55] Successful creating image file
+[2026-01-01 | 19:34:56] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-4dlkrg.jpg
+[2026-01-01 | 19:35:00] Try to check internet connection
+[2026-01-01 | 19:35:00] Internet check: SUCCESS
+[2026-01-01 | 19:35:00] Try to request
+[2026-01-01 | 19:35:00] url of request: https://wallhaven.cc/api/v1/search?q=space&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:00] Successful request
+[2026-01-01 | 19:35:00] Try to parse
+[2026-01-01 | 19:35:00] Successful parse JSON
+[2026-01-01 | 19:35:00] Data of JSON: 154
+[2026-01-01 | 19:35:00] Try to request
+[2026-01-01 | 19:35:00] url of request: https://wallhaven.cc/api/v1/search?q=space&page=11&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:00] Successful request
+[2026-01-01 | 19:35:00] Try to parse
+[2026-01-01 | 19:35:00] Successful parse JSON
+[2026-01-01 | 19:35:00] Data of JSON: https://w.wallhaven.cc/full/4l/wallhaven-4lxvxl.jpg
+[2026-01-01 | 19:35:00] Try to delete old image
+[2026-01-01 | 19:35:00] Successful deleting old image
+[2026-01-01 | 19:35:00] Successful init CURL to image download
+[2026-01-01 | 19:35:00] Successful creating image file
+[2026-01-01 | 19:35:01] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-4lxvxl.jpg
+[2026-01-01 | 19:35:06] Ending program
+[2026-01-01 | 19:35:23] Starting program
+[2026-01-01 | 19:35:24] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-01 | 19:35:24] Try to check internet connection
+[2026-01-01 | 19:35:24] Internet check: SUCCESS
+[2026-01-01 | 19:35:24] Try to request
+[2026-01-01 | 19:35:24] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:24] Successful request
+[2026-01-01 | 19:35:24] Try to parse
+[2026-01-01 | 19:35:24] Successful parse JSON
+[2026-01-01 | 19:35:24] Data of JSON: 2216
+[2026-01-01 | 19:35:24] Try to request
+[2026-01-01 | 19:35:24] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=90&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:24] Successful request
+[2026-01-01 | 19:35:24] Try to parse
+[2026-01-01 | 19:35:24] Successful parse JSON
+[2026-01-01 | 19:35:24] Data of JSON: https://w.wallhaven.cc/full/r7/wallhaven-r7or9w.png
+[2026-01-01 | 19:35:24] Try to delete old image
+[2026-01-01 | 19:35:24] Successful deleting old image
+[2026-01-01 | 19:35:24] Successful init CURL to image download
+[2026-01-01 | 19:35:24] Successful creating image file
+[2026-01-01 | 19:35:25] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-r7or9w.png
+[2026-01-01 | 19:35:28] Try to check internet connection
+[2026-01-01 | 19:35:28] Internet check: SUCCESS
+[2026-01-01 | 19:35:28] Try to request
+[2026-01-01 | 19:35:28] url of request: https://wallhaven.cc/api/v1/search?q=nature&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:28] Successful request
+[2026-01-01 | 19:35:28] Try to parse
+[2026-01-01 | 19:35:28] Successful parse JSON
+[2026-01-01 | 19:35:28] Data of JSON: 572
+[2026-01-01 | 19:35:28] Try to request
+[2026-01-01 | 19:35:29] url of request: https://wallhaven.cc/api/v1/search?q=nature&page=17&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:29] Successful request
+[2026-01-01 | 19:35:29] Try to parse
+[2026-01-01 | 19:35:29] Successful parse JSON
+[2026-01-01 | 19:35:29] Data of JSON: https://w.wallhaven.cc/full/45/wallhaven-456e87.jpg
+[2026-01-01 | 19:35:29] Try to delete old image
+[2026-01-01 | 19:35:29] Successful deleting old image
+[2026-01-01 | 19:35:29] Successful init CURL to image download
+[2026-01-01 | 19:35:29] Successful creating image file
+[2026-01-01 | 19:35:29] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-456e87.jpg
+[2026-01-01 | 19:35:33] Try to check internet connection
+[2026-01-01 | 19:35:33] Internet check: SUCCESS
+[2026-01-01 | 19:35:33] Try to request
+[2026-01-01 | 19:35:33] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:33] Successful request
+[2026-01-01 | 19:35:33] Try to parse
+[2026-01-01 | 19:35:33] Successful parse JSON
+[2026-01-01 | 19:35:33] Data of JSON: 253
+[2026-01-01 | 19:35:33] Try to request
+[2026-01-01 | 19:35:33] url of request: https://wallhaven.cc/api/v1/search?q=view&page=95&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:33] Successful request
+[2026-01-01 | 19:35:33] Try to parse
+[2026-01-01 | 19:35:33] Successful parse JSON
+[2026-01-01 | 19:35:33] Data of JSON: https://w.wallhaven.cc/full/3q/wallhaven-3qq5y9.png
+[2026-01-01 | 19:35:33] Try to delete old image
+[2026-01-01 | 19:35:33] Successful deleting old image
+[2026-01-01 | 19:35:33] Successful init CURL to image download
+[2026-01-01 | 19:35:33] Successful creating image file
+[2026-01-01 | 19:35:34] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-3qq5y9.png
+[2026-01-01 | 19:35:38] Try to check internet connection
+[2026-01-01 | 19:35:38] Internet check: SUCCESS
+[2026-01-01 | 19:35:38] Try to request
+[2026-01-01 | 19:35:39] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:39] Successful request
+[2026-01-01 | 19:35:39] Try to parse
+[2026-01-01 | 19:35:39] Successful parse JSON
+[2026-01-01 | 19:35:39] Data of JSON: 112
+[2026-01-01 | 19:35:39] Try to request
+[2026-01-01 | 19:35:39] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&page=17&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:39] Successful request
+[2026-01-01 | 19:35:39] Try to parse
+[2026-01-01 | 19:35:39] Successful parse JSON
+[2026-01-01 | 19:35:39] Data of JSON: https://w.wallhaven.cc/full/48/wallhaven-48zzp2.jpg
+[2026-01-01 | 19:35:39] Try to delete old image
+[2026-01-01 | 19:35:39] Successful deleting old image
+[2026-01-01 | 19:35:39] Successful init CURL to image download
+[2026-01-01 | 19:35:39] Successful creating image file
+[2026-01-01 | 19:35:39] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-48zzp2.jpg
+[2026-01-01 | 19:35:43] Try to check internet connection
+[2026-01-01 | 19:35:43] Internet check: SUCCESS
+[2026-01-01 | 19:35:43] Try to request
+[2026-01-01 | 19:35:43] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:43] Successful request
+[2026-01-01 | 19:35:43] Try to parse
+[2026-01-01 | 19:35:43] Successful parse JSON
+[2026-01-01 | 19:35:43] Data of JSON: 112
+[2026-01-01 | 19:35:43] Try to request
+[2026-01-01 | 19:35:43] url of request: https://wallhaven.cc/api/v1/search?q=beautiful&page=69&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:43] Successful request
+[2026-01-01 | 19:35:43] Try to parse
+[2026-01-01 | 19:35:43] Successful parse JSON
+[2026-01-01 | 19:35:43] Data of JSON: https://w.wallhaven.cc/full/95/wallhaven-95yy5w.jpg
+[2026-01-01 | 19:35:43] Try to delete old image
+[2026-01-01 | 19:35:43] Successful deleting old image
+[2026-01-01 | 19:35:43] Successful init CURL to image download
+[2026-01-01 | 19:35:43] Successful creating image file
+[2026-01-01 | 19:35:44] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-95yy5w.jpg
+[2026-01-01 | 19:35:46] Try to check internet connection
+[2026-01-01 | 19:35:46] Internet check: SUCCESS
+[2026-01-01 | 19:35:46] Try to request
+[2026-01-01 | 19:35:47] url of request: https://wallhaven.cc/api/v1/search?q=view&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:47] Successful request
+[2026-01-01 | 19:35:47] Try to parse
+[2026-01-01 | 19:35:47] Successful parse JSON
+[2026-01-01 | 19:35:47] Data of JSON: 253
+[2026-01-01 | 19:35:47] Try to request
+[2026-01-01 | 19:35:47] url of request: https://wallhaven.cc/api/v1/search?q=view&page=19&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-01 | 19:35:47] Successful request
+[2026-01-01 | 19:35:47] Try to parse
+[2026-01-01 | 19:35:47] Successful parse JSON
+[2026-01-01 | 19:35:47] Data of JSON: https://w.wallhaven.cc/full/nm/wallhaven-nmgp18.jpg
+[2026-01-01 | 19:35:47] Try to delete old image
+[2026-01-01 | 19:35:47] Successful deleting old image
+[2026-01-01 | 19:35:47] Successful init CURL to image download
+[2026-01-01 | 19:35:47] Successful creating image file
+[2026-01-01 | 19:35:48] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-nmgp18.jpg
+[2026-01-01 | 19:35:54] Try to know 'Pictures' location
+[2026-01-01 | 19:35:54] The rwal catalog already exists.
+Full path: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:35:54] Output of rwal_catalog: /home/p1rat/Pictures/rwal
+[2026-01-01 | 19:35:54] Image successful saved: /home/p1rat/Pictures/rwal/wallpaper-nmgp18.jpg
+[2026-01-01 | 19:37:18] Ending program
+[2026-01-01 | 20:00:53] Starting program
+[2026-01-01 | 20:01:02] Ending program
