@@ -1744,7 +1744,6 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp \
-  /home/p1rat/code/rwal/src/CLI/Menus.h \
   /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
   /home/p1rat/code/rwal/src/logs/logs.h \
   /usr/include/alloca.h \
@@ -2058,8 +2057,8 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/linux/types.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
+  /usr/include/qt/QtCore/QDebug \
   /usr/include/qt/QtCore/QString \
-  /usr/include/qt/QtCore/QUrl \
   /usr/include/qt/QtCore/QVariantMap \
   /usr/include/qt/QtCore/qalgorithms.h \
   /usr/include/qt/QtCore/qarraydata.h \
@@ -2073,14 +2072,18 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/qt/QtCore/qconfig.h \
   /usr/include/qt/QtCore/qcontainerfwd.h \
   /usr/include/qt/QtCore/qcontainertools_impl.h \
+  /usr/include/qt/QtCore/qcontiguouscache.h \
+  /usr/include/qt/QtCore/qdebug.h \
   /usr/include/qt/QtCore/qflags.h \
   /usr/include/qt/QtCore/qgenericatomic.h \
   /usr/include/qt/QtCore/qglobal.h \
   /usr/include/qt/QtCore/qglobalstatic.h \
   /usr/include/qt/QtCore/qhash.h \
   /usr/include/qt/QtCore/qhashfunctions.h \
+  /usr/include/qt/QtCore/qiodevice.h \
   /usr/include/qt/QtCore/qiterator.h \
   /usr/include/qt/QtCore/qlist.h \
+  /usr/include/qt/QtCore/qlocale.h \
   /usr/include/qt/QtCore/qlogging.h \
   /usr/include/qt/QtCore/qmap.h \
   /usr/include/qt/QtCore/qmetatype.h \
@@ -2095,6 +2098,10 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/qt/QtCore/qrefcount.h \
   /usr/include/qt/QtCore/qregexp.h \
   /usr/include/qt/QtCore/qscopedpointer.h \
+  /usr/include/qt/QtCore/qset.h \
+  /usr/include/qt/QtCore/qshareddata.h \
+  /usr/include/qt/QtCore/qsharedpointer.h \
+  /usr/include/qt/QtCore/qsharedpointer_impl.h \
   /usr/include/qt/QtCore/qstring.h \
   /usr/include/qt/QtCore/qstringalgorithms.h \
   /usr/include/qt/QtCore/qstringlist.h \
@@ -2104,8 +2111,8 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/Pl
   /usr/include/qt/QtCore/qsysinfo.h \
   /usr/include/qt/QtCore/qsystemdetection.h \
   /usr/include/qt/QtCore/qtcore-config.h \
+  /usr/include/qt/QtCore/qtextstream.h \
   /usr/include/qt/QtCore/qtypeinfo.h \
-  /usr/include/qt/QtCore/qurl.h \
   /usr/include/qt/QtCore/qvariant.h \
   /usr/include/qt/QtCore/qvarlengtharray.h \
   /usr/include/qt/QtCore/qvector.h \
@@ -6473,8 +6480,6 @@ CMakeFiles/rwal.dir/src/settings/settings.cpp.o:
 
 /usr/lib32/libdbus-1.so.3:
 
-/usr/lib32/libcrypto.so.3:
-
 /usr/lib32/libcom_err.so.2:
 
 /usr/lib32/libcap.so.2:
@@ -6627,9 +6632,13 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/qt/QtDBus/QDBusConnection:
 
-/usr/include/qt/QtCore/qurl.h:
+/usr/include/qt/QtCore/qsharedpointer_impl.h:
 
-/usr/include/qt/QtCore/QUrl:
+/usr/lib32/libcrypto.so.3:
+
+/usr/include/qt/QtCore/qsharedpointer.h:
+
+/usr/include/qt/QtCore/QDebug:
 
 /usr/include/c++/15.2.1/variant:
 
@@ -6851,6 +6860,8 @@ CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake:
 
+/usr/include/qt/QtCore/qtextstream.h:
+
 /usr/include/bits/typesizes.h:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake:
@@ -6922,6 +6933,8 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/bits/functional_hash.h:
 
 /usr/include/c++/15.2.1/bits/stl_numeric.h:
+
+/usr/include/qt/QtCore/qcontiguouscache.h:
 
 /usr/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake:
 
@@ -7617,6 +7630,8 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
 
+/usr/include/qt/QtCore/qdebug.h:
+
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake:
 
 /usr/include/gnu/stubs-64.h:
@@ -7775,6 +7790,8 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/lib/libz.so.1:
 
+/usr/include/qt/QtCore/qset.h:
+
 /usr/lib/cmake/Qt5DBus/Qt5DBusConfigVersion.cmake:
 
 /usr/include/c++/15.2.1/bits/shared_ptr_base.h:
@@ -7818,6 +7835,8 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 /usr/include/qt/QtCore/qtypeinfo.h:
 
 /usr/include/qt/QtCore/qvarlengtharray.h:
+
+/usr/include/qt/QtCore/qlocale.h:
 
 /usr/include/nlohmann/detail/json_ref.hpp:
 

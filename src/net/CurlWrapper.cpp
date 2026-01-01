@@ -176,14 +176,14 @@ void MyCurl::clearning(){
 
 void MyCurl::generateUniqueSuffix(std::string& filename) {
     const std::string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for (int i = 0; i < SUFFIX_LENGTH; ++i) {
+    for (int i = 0; i < rwal::wallpaper::SUFFIX_LENGTH; ++i) {
 	   	filename += chars[random(chars.size() - 1)];
     }
 }
 
 std::string MyCurl::call_image(const std::string& image_url) {
     size_t lastSlash = image_url.find_last_of('/');
-    std::string filename = FILE_PREFIX;
+    std::string filename = rwal::wallpaper::FILE_PREFIX;
 
     if (lastSlash == std::string::npos) {
         generateUniqueSuffix(filename);

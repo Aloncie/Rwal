@@ -5,29 +5,30 @@
 #include <QDebug>
 #include <QString>
 #include "logs/logs.h"
-#include "CLI/CLI.h"
 
-void change_wallpaper(std::string url){
-	QString url_q = QString::fromStdString(url);
-	
-	QVariantMap params;	
-	params.insert(QStringLiteral("Image"), url_q);
+void change_wallpaper(std::string local) {
+    QString path = "file://" + QString::fromStdString(local);
 
-	auto msg = QDBusMessage::createMethodCall(
-		QStringLiteral("org.kde.plasmashell"),
-		QStringLiteral("/PlasmaShell"),
-		QStringLiteral("org.kde.PlasmaShell"),
-		QStringLiteral("setWallpaper")	
-	);
-	msg << QStringLiteral("org.kde.image")
-		<< params
-		<< quint32(0);
+    QString script = QString(
+        "var allDesktops = desktops();"
+        "for (var i = 0; i < allDesktops.length; i++) {"
+        "    allDesktops[i].wallpaperPlugin = 'org.kde.image';"
+        "    allDesktops[i].currentConfigGroup = Array('Wallpaper', 'org.kde.image', 'General');"
+        "    allDesktops[i].writeConfig('Image', '%1');"
+        "}"
+    ).arg(path);
 
-	auto reply = QDBusConnection::sessionBus().call(msg);
-	if (reply.type() == QDBusMessage::ErrorMessage) {
-		 
-		Logs::getInstance().write_logs("Error D-Bus");
-		MenuManager::getInstatce().show_message("Failed of changing wallpaper");
-	}
+    auto msg = QDBusMessage::createMethodCall(
+        QStringLiteral("org.kde.plasmashell"),
+        QStringLiteral("/PlasmaShell"),
+        QStringLiteral("org.kde.PlasmaShell"),
+        QStringLiteral("evaluateScript")
+    );
 
+    msg << script;
+
+    auto reply = QDBusConnection::sessionBus().call(msg);
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        Logs::getInstance().write_logs("D-Bus Error: " + reply.errorMessage().toStdString());
+    }
 }

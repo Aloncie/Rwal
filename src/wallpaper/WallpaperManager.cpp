@@ -47,14 +47,14 @@ void refresh_wallpaper(const std::string& mode){
 }
 
 std::string where_are_wallpaper(){
-	fs::path dir_path =	SOURCE_DIR;
+	fs::path dir_path =	SOURCE_DIR / fs::path(rwal::wallpaper::DONWLOADS_DIR_NAME);
 	if (dir_path == "")
 		return "";
 	try {
 		for (const auto& item : fs::directory_iterator(dir_path)){
 			if (fs::is_regular_file(item.path())){
 				auto name = item.path().filename().string();
-				if (name.rfind(FILE_PREFIX, 0) == 0) {
+				if (name.rfind(rwal::wallpaper::FILE_PREFIX, 0) == 0) {
 					return item.path();
 				}
 			}
