@@ -2,26 +2,32 @@
 #include "settings/settings.h"
 #include <nlohmann/json.hpp>
 #include "settings/config.h"
-#include "Menus.h"
+#include "wallpaper/WallpaperManager.h"
+#include "menus.h"
 
-const MenuConfig MAIN_MENU = {
+const CharacterMenuConfig MAIN_MENU = {
     "1234q",
-	rwal::ui::ready::main_list
+	rwal::ui::ready::main_list,
+	{
+        {'1', []() { refresh_wallpaper(); }},
+        {'2', []() { save_wallpaper(where_are_wallpaper()); }},
+        {'3', []() {  }},
+        {'4', []() { /* переход в settings */ }}
+    }
 };
 
-const MenuConfig TIMER_MENU = {
-	"None",
+const ArrowMenuConfig TIMER_MENU = {
 	rwal::ui::ready::timer_list
 };
 
-const MenuConfig KEYWORDS_MENU = {
+const CharacterMenuConfig KEYWORDS_MENU = {
     "armq", 
 	rwal::ui::generators::keywords_list
 };
 
-const MenuConfig SETTINGS_MENU = {
+const CharacterMenuConfig SETTINGS_MENU = {
     "12q",
-   	rwal::ui::generators::setting_list 
+   	rwal::ui::generators::settings_list 
 };
 
 namespace rwal::ui {

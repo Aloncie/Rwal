@@ -1,6 +1,7 @@
 #pragma once
+#include "ui/menus/Menus.h"
 
 class Flows{
 public:
-	void core(int argc,char **argv);
+	void core(const MenuConfig& current_menu);
 };
