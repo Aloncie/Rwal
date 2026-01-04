@@ -1,7 +1,11 @@
 #pragma once
-#include "ui/cli/cli.h"
+#include <string>
+
+struct CharacterMenuConfig;
+struct ArrowMenuConfig;
 
 namespace rwal::ui::io{
-	char characterInput(const characterMenuConfig& config);
-	std::string arrowInput(const arrowMenuConfig& config);
+
+	std::string CharacterInput(const CharacterMenuConfig& config);
+	std::string ArrowInput(const ArrowMenuConfig& config);
 }

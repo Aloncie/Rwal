@@ -1,10 +1,10 @@
 #include "io.h"
-#include "ui/menus/menus.h"
+#include "menus.h"
 #include <iostream>
 #include <ncurses.h>
 
 namespace rwal::ui::io{
-	char characterInput(const characterMenuConfig& config){
+	std::string CharacterInput(const CharacterMenuConfig& config){
 		char choice = ' ';
 		std::string input;
 		auto menu = config.menu();	
@@ -22,10 +22,10 @@ namespace rwal::ui::io{
 		MenuManager::getInstatce().countOperatorPlus(menu.size());
 
 		MenuManager::getInstatce().clear_last_lines();
-		return static_cast<char>(choice);
+		return std::string(1, choice);
 	}
 
-	std::string arrowInput(const arrowMenuConfig& config){
+	std::string ArrowInput(const ArrowMenuConfig& config){
 		initscr();		
 		noecho();
 		curs_set(0);
@@ -36,7 +36,7 @@ namespace rwal::ui::io{
 		
 		bool running = true;
 		int selected = 0;
-		auto menu = arrowMenuConfig.menu();
+		auto menu = config.menu();
 
 		while (running){
 			

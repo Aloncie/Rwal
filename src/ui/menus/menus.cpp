@@ -88,5 +88,10 @@ namespace rwal::ui {
 	}
 }
 
+std::string CharacterMenuConfig::get_input() const {
+    return rwal::ui::io::CharacterInput(*this);
+}
 
-
+std::string ArrowMenuConfig::get_input() const {
+    return rwal::ui::io::ArrowInput(*this); 
+}
