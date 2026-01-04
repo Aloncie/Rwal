@@ -1,5 +1,4 @@
 #pragma once
-#include <map>
 #include <vector>
 #include <string>
 #include <functional>
@@ -25,15 +24,31 @@ namespace rwal::ui {
 	struct CharacterMenuConfig : public BaseMenu {
 		const std::string valid_choices;
 		std::function<std::vector<std::string>()> menu_generator;
-		std::map<char, std::function<void()>> actions;
+		std::function<BaseMenu*(std::string)> logic_handler;
 
+		CharacterMenuConfig(
+			std::string choices,
+			std::function<std::vector<std::string>()> gen,
+			std::function<BaseMenu*(std::string)> logic
+    	) : valid_choices(choices), menu_generator(gen), logic_handler(logic) {}
+
+
+		BaseMenu* execute_actions(std::string input) const override;
 		std::vector<std::string> menu() const override { return menu_generator(); }
 		std::string get_input() const override;
 	};
 
 	struct ArrowMenuConfig : public BaseMenu {
 		std::function<std::vector<std::string>()> menu_generator;
-		void execute_actions(char c) const override{};
+		std::function<BaseMenu*(std::string)> logic_handler;
+
+		ArrowMenuConfig(
+			std::function<std::vector<std::string>()> gen,
+			std::function<BaseMenu*(std::string)> logic
+    	) : menu_generator(gen), logic_handler(logic) {}
+
+		
+		BaseMenu* execute_actions(std::string input) const override;
 		std::vector<std::string> menu() const override { return menu_generator(); }
 		std::string get_input() const override;
 	};

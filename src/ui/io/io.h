@@ -1,11 +1,13 @@
 #pragma once
 #include <string>
 
-struct CharacterMenuConfig;
-struct ArrowMenuConfig;
 
-namespace rwal::ui::io{
+namespace rwal::ui{
+	struct CharacterMenuConfig;
+	struct ArrowMenuConfig;
 
-	std::string CharacterInput(const CharacterMenuConfig& config);
-	std::string ArrowInput(const ArrowMenuConfig& config);
+	namespace io{
+		std::string CharacterInput(const CharacterMenuConfig& config);
+		std::string ArrowInput(const ArrowMenuConfig& config);
+	}
 }

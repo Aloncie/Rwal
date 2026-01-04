@@ -13,8 +13,9 @@ private:
 public:
 	void Default(std::vector<std::string>& Keywords);
 
-	std::string GetRandomKeywords(const std::string& mode);
+	std::string LongGetRandomKeywords(const std::string& mode);
 	void open_keywords_editor();
+	void Format(std::string& str);
 
 	template<typename T = std::vector<std::string>>
 	T ShortWayGetKeywords(){

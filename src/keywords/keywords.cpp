@@ -29,10 +29,7 @@ std::vector<std::string> Keywords::LongWayGetKeywords(){
 	while (new_keywords == "")
 		std::getline(std::cin,new_keywords);
 
-	//Format keywords
-	
-	std::replace_if(new_keywords.begin(), new_keywords.end(),
-			[]( unsigned char c){ return !std::isalpha(c); }, ' ');
+	Format(new_keywords);	
 
 	//Devide keywords
 	
@@ -47,6 +44,12 @@ std::vector<std::string> Keywords::LongWayGetKeywords(){
 	Config::getInstance().set("/search/keywords", ready_keywords);	
 
 	return ready_keywords;
+}
+
+void Keywords::Format(std::string& str){
+	std::replace_if(str.begin(), str.end(),
+		[]( unsigned char c){ return !std::isalnum(c); }, ' ');
+
 }
 
 void Keywords::Default(std::vector<std::string>& keywords){
