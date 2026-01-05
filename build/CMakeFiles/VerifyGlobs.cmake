@@ -4,18 +4,19 @@
 # SOURCES at CMakeLists.txt:21 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/p1rat/code/rwal/src/*.cpp")
 set(OLD_GLOB
-  "/home/p1rat/code/rwal/src/CLI/CLI.cpp"
-  "/home/p1rat/code/rwal/src/CLI/Menus.cpp"
   "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp"
   "/home/p1rat/code/rwal/src/funcs/funcs.cpp"
   "/home/p1rat/code/rwal/src/keywords/keywords.cpp"
   "/home/p1rat/code/rwal/src/logs/logs.cpp"
   "/home/p1rat/code/rwal/src/main.cpp"
+  "/home/p1rat/code/rwal/src/navigator/navigator.cpp"
   "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp"
   "/home/p1rat/code/rwal/src/net/NetworkManager.cpp"
   "/home/p1rat/code/rwal/src/settings/config.cpp"
   "/home/p1rat/code/rwal/src/settings/settings.cpp"
-  "/home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp"
+  "/home/p1rat/code/rwal/src/ui/cli/cli.cpp"
+  "/home/p1rat/code/rwal/src/ui/io/io.cpp"
+  "/home/p1rat/code/rwal/src/ui/menus/menus.cpp"
   "/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
@@ -26,18 +27,19 @@ endif()
 # HEADERS at CMakeLists.txt:22 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/p1rat/code/rwal/src/*.h")
 set(OLD_GLOB
-  "/home/p1rat/code/rwal/src/CLI/CLI.h"
-  "/home/p1rat/code/rwal/src/CLI/Menus.h"
   "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h"
   "/home/p1rat/code/rwal/src/funcs/funcs.h"
   "/home/p1rat/code/rwal/src/internal/GlobalConstans.h"
   "/home/p1rat/code/rwal/src/keywords/keywords.h"
   "/home/p1rat/code/rwal/src/logs/logs.h"
+  "/home/p1rat/code/rwal/src/navigator/navigator.h"
   "/home/p1rat/code/rwal/src/net/CurlWrapper.h"
   "/home/p1rat/code/rwal/src/net/NetworkManager.h"
   "/home/p1rat/code/rwal/src/settings/config.h"
   "/home/p1rat/code/rwal/src/settings/settings.h"
-  "/home/p1rat/code/rwal/src/startup_flows/startup_flows.h"
+  "/home/p1rat/code/rwal/src/ui/cli/cli.h"
+  "/home/p1rat/code/rwal/src/ui/io/io.h"
+  "/home/p1rat/code/rwal/src/ui/menus/menus.h"
   "/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

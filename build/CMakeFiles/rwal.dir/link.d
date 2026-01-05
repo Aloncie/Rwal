@@ -3,18 +3,19 @@ rwal: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o \
-  CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o \
-  CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o \
   CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o \
   CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o \
   CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o \
   CMakeFiles/rwal.dir/src/logs/logs.cpp.o \
   CMakeFiles/rwal.dir/src/main.cpp.o \
+  CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o \
   CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o \
   CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o \
   CMakeFiles/rwal.dir/src/settings/config.cpp.o \
   CMakeFiles/rwal.dir/src/settings/settings.cpp.o \
-  CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o \
+  CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o \
+  CMakeFiles/rwal.dir/src/ui/io/io.cpp.o \
+  CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o \
   CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o \
   /usr/lib/libcurl.so \
   /usr/lib/libQt5DBus.so.5.15.18 \
@@ -147,10 +148,6 @@ rwal: \
 
 CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o:
 
-CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o:
-
-CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o:
-
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o:
 
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
@@ -161,6 +158,8 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o:
 
 CMakeFiles/rwal.dir/src/main.cpp.o:
 
+CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o:
+
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o:
 
 CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o:
@@ -169,7 +168,11 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o:
 
-CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o:
+CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o:
+
+CMakeFiles/rwal.dir/src/ui/io/io.cpp.o:
+
+CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o:
 
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o:
 

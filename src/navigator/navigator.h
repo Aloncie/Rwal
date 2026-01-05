@@ -1,7 +1,7 @@
 #pragma once
 #include "ui/menus/menus.h"
 
-class Flows{
+class Navigator{
 public:
-	void core(const MenuConfig& current_menu);
+	void core(const rwal::ui::BaseMenu* current_menu);
 };

@@ -34,12 +34,14 @@ void MenuManager::show_message(std::string message){
 
 	std::string cp = message;
 	std::transform(cp.begin(),cp.end(),cp.begin(), ::tolower);
-	if (cp.find("failed") == std::string::npos&&cp.find("error") == std::string::npos&&cp.find("invalid") == std::string::npos)
+	if (cp.find("successful") != std::string::npos)
 		//green
 		std::cout << "\033[1;32m" << message << "\033[0m" << std::endl;
-	else
+	else if (cp.find("failed") != std::string::npos||cp.find("error") != std::string::npos||cp.find("invalid") != std::string::npos)
 		//red
    		std::cout << "\033[1;31m" << message << "\033[0m" << std::endl;
+	else 
+		std::cout << message << std::endl;
 	count_ref++;
 	for (int i = 0; i < message.size(); i++){
 		if (message[i] == '\n'){
@@ -54,6 +56,3 @@ void MenuManager::dodgeMessage(std::string message){
 	dontShowAgain.push_back(message);
 }
 
-char MenuManager::giveMeInput(){
-
-}

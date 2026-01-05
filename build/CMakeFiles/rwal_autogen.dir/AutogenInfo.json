@@ -108,18 +108,6 @@
 	"HEADERS" : 
 	[
 		[
-			"/home/p1rat/code/rwal/src/CLI/CLI.h",
-			"MU",
-			"TO4CJDNY6K/moc_CLI.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/CLI/Menus.h",
-			"MU",
-			"TO4CJDNY6K/moc_Menus.cpp",
-			null
-		],
-		[
 			"/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h",
 			"MU",
 			"FBT33E4DH6/moc_PlasmaDBus.cpp",
@@ -150,6 +138,12 @@
 			null
 		],
 		[
+			"/home/p1rat/code/rwal/src/navigator/navigator.h",
+			"MU",
+			"4ECQZEQ6UK/moc_navigator.cpp",
+			null
+		],
+		[
 			"/home/p1rat/code/rwal/src/net/CurlWrapper.h",
 			"MU",
 			"7OIUYE7PDQ/moc_CurlWrapper.cpp",
@@ -174,9 +168,21 @@
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/startup_flows/startup_flows.h",
+			"/home/p1rat/code/rwal/src/ui/cli/cli.h",
 			"MU",
-			"7Y45LV7CKT/moc_startup_flows.cpp",
+			"SULDK2LFTM/moc_cli.cpp",
+			null
+		],
+		[
+			"/home/p1rat/code/rwal/src/ui/io/io.h",
+			"MU",
+			"WWP5RIGN3J/moc_io.cpp",
+			null
+		],
+		[
+			"/home/p1rat/code/rwal/src/ui/menus/menus.h",
+			"MU",
+			"5RFAFZXDHW/moc_menus.cpp",
 			null
 		],
 		[
@@ -248,22 +254,19 @@
 	"SETTINGS_FILE" : "/home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/p1rat/code/rwal/src/CLI/CLI.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/CLI/Menus.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/funcs/funcs.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/keywords/keywords.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/logs/logs.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/main.cpp", "MU", null ],
+		[ "/home/p1rat/code/rwal/src/navigator/navigator.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/net/NetworkManager.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/settings/config.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/settings/settings.cpp", "MU", null ],
-		[
-			"/home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp",
-			"MU",
-			null
-		],
+		[ "/home/p1rat/code/rwal/src/ui/cli/cli.cpp", "MU", null ],
+		[ "/home/p1rat/code/rwal/src/ui/io/io.cpp", "MU", null ],
+		[ "/home/p1rat/code/rwal/src/ui/menus/menus.cpp", "MU", null ],
 		[
 			"/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp",
 			"MU",

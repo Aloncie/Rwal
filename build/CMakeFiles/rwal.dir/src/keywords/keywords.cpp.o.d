@@ -364,7 +364,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
  /home/p1rat/code/rwal/src/funcs/funcs.h \
- /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.2.1/iostream \
+ /home/p1rat/code/rwal/src/ui/cli/cli.h /usr/include/c++/15.2.1/iostream \
  /usr/include/sys/stat.h /usr/include/bits/stat.h \
  /usr/include/bits/struct_stat.h /usr/include/bits/statx.h \
  /usr/include/linux/stat.h /usr/include/bits/statx-generic.h \

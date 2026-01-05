@@ -7,18 +7,6 @@
 },
 {
   "directory": "/home/p1rat/code/rwal/build",
-  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o -c /home/p1rat/code/rwal/src/CLI/CLI.cpp",
-  "file": "/home/p1rat/code/rwal/src/CLI/CLI.cpp",
-  "output": "CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o"
-},
-{
-  "directory": "/home/p1rat/code/rwal/build",
-  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o -c /home/p1rat/code/rwal/src/CLI/Menus.cpp",
-  "file": "/home/p1rat/code/rwal/src/CLI/Menus.cpp",
-  "output": "CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o"
-},
-{
-  "directory": "/home/p1rat/code/rwal/build",
   "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o -c /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp",
   "file": "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp",
   "output": "CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o"
@@ -49,6 +37,12 @@
 },
 {
   "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o -c /home/p1rat/code/rwal/src/navigator/navigator.cpp",
+  "file": "/home/p1rat/code/rwal/src/navigator/navigator.cpp",
+  "output": "CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
   "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o -c /home/p1rat/code/rwal/src/net/CurlWrapper.cpp",
   "file": "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp",
   "output": "CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o"
@@ -73,9 +67,21 @@
 },
 {
   "directory": "/home/p1rat/code/rwal/build",
-  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o -c /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp",
-  "file": "/home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp",
-  "output": "CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o"
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o -c /home/p1rat/code/rwal/src/ui/cli/cli.cpp",
+  "file": "/home/p1rat/code/rwal/src/ui/cli/cli.cpp",
+  "output": "CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/ui/io/io.cpp.o -c /home/p1rat/code/rwal/src/ui/io/io.cpp",
+  "file": "/home/p1rat/code/rwal/src/ui/io/io.cpp",
+  "output": "CMakeFiles/rwal.dir/src/ui/io/io.cpp.o"
+},
+{
+  "directory": "/home/p1rat/code/rwal/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DSOURCE_DIR=\\\"/home/p1rat/code/rwal\\\" -I/home/p1rat/code/rwal/build -I/home/p1rat/code/rwal -I/home/p1rat/code/rwal/build/rwal_autogen/include -I/home/p1rat/code/rwal/src -isystem /usr/include/qt -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -g -std=gnu++20 -fPIC -o CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o -c /home/p1rat/code/rwal/src/ui/menus/menus.cpp",
+  "file": "/home/p1rat/code/rwal/src/ui/menus/menus.cpp",
+  "output": "CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o"
 },
 {
   "directory": "/home/p1rat/code/rwal/build",

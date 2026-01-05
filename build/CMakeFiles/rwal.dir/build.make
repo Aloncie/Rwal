@@ -93,38 +93,10 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/build/rwal_autogen/mocs_compilation.cpp -o CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s
 
-CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: CMakeFiles/rwal.dir/flags.make
-CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: /home/p1rat/code/rwal/src/CLI/CLI.cpp
-CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o -MF CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o.d -o CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o -c /home/p1rat/code/rwal/src/CLI/CLI.cpp
-
-CMakeFiles/rwal.dir/src/CLI/CLI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/src/CLI/CLI.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/CLI/CLI.cpp > CMakeFiles/rwal.dir/src/CLI/CLI.cpp.i
-
-CMakeFiles/rwal.dir/src/CLI/CLI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/CLI/CLI.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/CLI/CLI.cpp -o CMakeFiles/rwal.dir/src/CLI/CLI.cpp.s
-
-CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: CMakeFiles/rwal.dir/flags.make
-CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: /home/p1rat/code/rwal/src/CLI/Menus.cpp
-CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o -MF CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o.d -o CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o -c /home/p1rat/code/rwal/src/CLI/Menus.cpp
-
-CMakeFiles/rwal.dir/src/CLI/Menus.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/src/CLI/Menus.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/CLI/Menus.cpp > CMakeFiles/rwal.dir/src/CLI/Menus.cpp.i
-
-CMakeFiles/rwal.dir/src/CLI/Menus.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/CLI/Menus.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/CLI/Menus.cpp -o CMakeFiles/rwal.dir/src/CLI/Menus.cpp.s
-
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o -MF CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o.d -o CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o -c /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.i: cmake_force
@@ -138,7 +110,7 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: /home/p1rat/code/rwal/src/funcs/funcs.cpp
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o -MF CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o.d -o CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o -c /home/p1rat/code/rwal/src/funcs/funcs.cpp
 
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.i: cmake_force
@@ -152,7 +124,7 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: /home/p1rat/code/rwal/src/keywords/keywords.cpp
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o -MF CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o.d -o CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o -c /home/p1rat/code/rwal/src/keywords/keywords.cpp
 
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.i: cmake_force
@@ -166,7 +138,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: /home/p1rat/code/rwal/src/logs/logs.cpp
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rwal.dir/src/logs/logs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rwal.dir/src/logs/logs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/logs/logs.cpp.o -MF CMakeFiles/rwal.dir/src/logs/logs.cpp.o.d -o CMakeFiles/rwal.dir/src/logs/logs.cpp.o -c /home/p1rat/code/rwal/src/logs/logs.cpp
 
 CMakeFiles/rwal.dir/src/logs/logs.cpp.i: cmake_force
@@ -180,7 +152,7 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/main.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp
 CMakeFiles/rwal.dir/src/main.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rwal.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rwal.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/main.cpp.o -MF CMakeFiles/rwal.dir/src/main.cpp.o.d -o CMakeFiles/rwal.dir/src/main.cpp.o -c /home/p1rat/code/rwal/src/main.cpp
 
 CMakeFiles/rwal.dir/src/main.cpp.i: cmake_force
@@ -191,10 +163,24 @@ CMakeFiles/rwal.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/main.cpp -o CMakeFiles/rwal.dir/src/main.cpp.s
 
+CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o: CMakeFiles/rwal.dir/flags.make
+CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o: /home/p1rat/code/rwal/src/navigator/navigator.cpp
+CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o -MF CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o.d -o CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o -c /home/p1rat/code/rwal/src/navigator/navigator.cpp
+
+CMakeFiles/rwal.dir/src/navigator/navigator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/src/navigator/navigator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/navigator/navigator.cpp > CMakeFiles/rwal.dir/src/navigator/navigator.cpp.i
+
+CMakeFiles/rwal.dir/src/navigator/navigator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/navigator/navigator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/navigator/navigator.cpp -o CMakeFiles/rwal.dir/src/navigator/navigator.cpp.s
+
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: /home/p1rat/code/rwal/src/net/CurlWrapper.cpp
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o -MF CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o.d -o CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o -c /home/p1rat/code/rwal/src/net/CurlWrapper.cpp
 
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.i: cmake_force
@@ -208,7 +194,7 @@ CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o: /home/p1rat/code/rwal/src/net/NetworkManager.cpp
 CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o -MF CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o.d -o CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o -c /home/p1rat/code/rwal/src/net/NetworkManager.cpp
 
 CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.i: cmake_force
@@ -222,7 +208,7 @@ CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/settings/config.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/settings/config.cpp.o: /home/p1rat/code/rwal/src/settings/config.cpp
 CMakeFiles/rwal.dir/src/settings/config.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/rwal.dir/src/settings/config.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rwal.dir/src/settings/config.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/settings/config.cpp.o -MF CMakeFiles/rwal.dir/src/settings/config.cpp.o.d -o CMakeFiles/rwal.dir/src/settings/config.cpp.o -c /home/p1rat/code/rwal/src/settings/config.cpp
 
 CMakeFiles/rwal.dir/src/settings/config.cpp.i: cmake_force
@@ -236,7 +222,7 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.s: cmake_force
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: /home/p1rat/code/rwal/src/settings/settings.cpp
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/rwal.dir/src/settings/settings.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/rwal.dir/src/settings/settings.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/settings/settings.cpp.o -MF CMakeFiles/rwal.dir/src/settings/settings.cpp.o.d -o CMakeFiles/rwal.dir/src/settings/settings.cpp.o -c /home/p1rat/code/rwal/src/settings/settings.cpp
 
 CMakeFiles/rwal.dir/src/settings/settings.cpp.i: cmake_force
@@ -247,24 +233,52 @@ CMakeFiles/rwal.dir/src/settings/settings.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/settings/settings.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/settings/settings.cpp -o CMakeFiles/rwal.dir/src/settings/settings.cpp.s
 
-CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: CMakeFiles/rwal.dir/flags.make
-CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp
-CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o -MF CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o.d -o CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o -c /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp
+CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o: CMakeFiles/rwal.dir/flags.make
+CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o: /home/p1rat/code/rwal/src/ui/cli/cli.cpp
+CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o -MF CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o.d -o CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o -c /home/p1rat/code/rwal/src/ui/cli/cli.cpp
 
-CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp > CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.i
+CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/ui/cli/cli.cpp > CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.i
 
-CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/startup_flows/startup_flows.cpp -o CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.s
+CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/ui/cli/cli.cpp -o CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.s
+
+CMakeFiles/rwal.dir/src/ui/io/io.cpp.o: CMakeFiles/rwal.dir/flags.make
+CMakeFiles/rwal.dir/src/ui/io/io.cpp.o: /home/p1rat/code/rwal/src/ui/io/io.cpp
+CMakeFiles/rwal.dir/src/ui/io/io.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/rwal.dir/src/ui/io/io.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/ui/io/io.cpp.o -MF CMakeFiles/rwal.dir/src/ui/io/io.cpp.o.d -o CMakeFiles/rwal.dir/src/ui/io/io.cpp.o -c /home/p1rat/code/rwal/src/ui/io/io.cpp
+
+CMakeFiles/rwal.dir/src/ui/io/io.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/src/ui/io/io.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/ui/io/io.cpp > CMakeFiles/rwal.dir/src/ui/io/io.cpp.i
+
+CMakeFiles/rwal.dir/src/ui/io/io.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/ui/io/io.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/ui/io/io.cpp -o CMakeFiles/rwal.dir/src/ui/io/io.cpp.s
+
+CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o: CMakeFiles/rwal.dir/flags.make
+CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o: /home/p1rat/code/rwal/src/ui/menus/menus.cpp
+CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o -MF CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o.d -o CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o -c /home/p1rat/code/rwal/src/ui/menus/menus.cpp
+
+CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/p1rat/code/rwal/src/ui/menus/menus.cpp > CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.i
+
+CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/p1rat/code/rwal/src/ui/menus/menus.cpp -o CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.s
 
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: CMakeFiles/rwal.dir/flags.make
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o: CMakeFiles/rwal.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o -MF CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o.d -o CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o -c /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp
 
 CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.i: cmake_force
@@ -278,36 +292,38 @@ CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.s: cmake_force
 # Object files for target rwal
 rwal_OBJECTS = \
 "CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o" \
-"CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o" \
 "CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o" \
 "CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o" \
 "CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o" \
 "CMakeFiles/rwal.dir/src/logs/logs.cpp.o" \
 "CMakeFiles/rwal.dir/src/main.cpp.o" \
+"CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o" \
 "CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o" \
 "CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o" \
 "CMakeFiles/rwal.dir/src/settings/config.cpp.o" \
 "CMakeFiles/rwal.dir/src/settings/settings.cpp.o" \
-"CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o" \
+"CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o" \
+"CMakeFiles/rwal.dir/src/ui/io/io.cpp.o" \
+"CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o" \
 "CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o"
 
 # External object files for target rwal
 rwal_EXTERNAL_OBJECTS =
 
 rwal: CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o
-rwal: CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o
-rwal: CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o
 rwal: CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
 rwal: CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o
 rwal: CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o
 rwal: CMakeFiles/rwal.dir/src/logs/logs.cpp.o
 rwal: CMakeFiles/rwal.dir/src/main.cpp.o
+rwal: CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o
 rwal: CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o
 rwal: CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o
 rwal: CMakeFiles/rwal.dir/src/settings/config.cpp.o
 rwal: CMakeFiles/rwal.dir/src/settings/settings.cpp.o
-rwal: CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o
+rwal: CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o
+rwal: CMakeFiles/rwal.dir/src/ui/io/io.cpp.o
+rwal: CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o
 rwal: CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o
 rwal: CMakeFiles/rwal.dir/build.make
 rwal: CMakeFiles/rwal.dir/compiler_depend.ts
@@ -320,7 +336,7 @@ rwal: /usr/lib/libcurl.so
 rwal: /usr/lib/libQt5Gui.so.5.15.18
 rwal: /usr/lib/libQt5Core.so.5.15.18
 rwal: CMakeFiles/rwal.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable rwal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable rwal"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rwal.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

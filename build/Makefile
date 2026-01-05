@@ -225,54 +225,6 @@ rwal_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s
 .PHONY : rwal_autogen/mocs_compilation.cpp.s
 
-src/CLI/CLI.o: src/CLI/CLI.cpp.o
-.PHONY : src/CLI/CLI.o
-
-# target to build an object file
-src/CLI/CLI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/CLI.cpp.o
-.PHONY : src/CLI/CLI.cpp.o
-
-src/CLI/CLI.i: src/CLI/CLI.cpp.i
-.PHONY : src/CLI/CLI.i
-
-# target to preprocess a source file
-src/CLI/CLI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/CLI.cpp.i
-.PHONY : src/CLI/CLI.cpp.i
-
-src/CLI/CLI.s: src/CLI/CLI.cpp.s
-.PHONY : src/CLI/CLI.s
-
-# target to generate assembly for a file
-src/CLI/CLI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/CLI.cpp.s
-.PHONY : src/CLI/CLI.cpp.s
-
-src/CLI/Menus.o: src/CLI/Menus.cpp.o
-.PHONY : src/CLI/Menus.o
-
-# target to build an object file
-src/CLI/Menus.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/Menus.cpp.o
-.PHONY : src/CLI/Menus.cpp.o
-
-src/CLI/Menus.i: src/CLI/Menus.cpp.i
-.PHONY : src/CLI/Menus.i
-
-# target to preprocess a source file
-src/CLI/Menus.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/Menus.cpp.i
-.PHONY : src/CLI/Menus.cpp.i
-
-src/CLI/Menus.s: src/CLI/Menus.cpp.s
-.PHONY : src/CLI/Menus.s
-
-# target to generate assembly for a file
-src/CLI/Menus.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/CLI/Menus.cpp.s
-.PHONY : src/CLI/Menus.cpp.s
-
 src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
 .PHONY : src/dbus/PlasmaDBus.o
 
@@ -393,6 +345,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/navigator/navigator.o: src/navigator/navigator.cpp.o
+.PHONY : src/navigator/navigator.o
+
+# target to build an object file
+src/navigator/navigator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o
+.PHONY : src/navigator/navigator.cpp.o
+
+src/navigator/navigator.i: src/navigator/navigator.cpp.i
+.PHONY : src/navigator/navigator.i
+
+# target to preprocess a source file
+src/navigator/navigator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/navigator/navigator.cpp.i
+.PHONY : src/navigator/navigator.cpp.i
+
+src/navigator/navigator.s: src/navigator/navigator.cpp.s
+.PHONY : src/navigator/navigator.s
+
+# target to generate assembly for a file
+src/navigator/navigator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/navigator/navigator.cpp.s
+.PHONY : src/navigator/navigator.cpp.s
+
 src/net/CurlWrapper.o: src/net/CurlWrapper.cpp.o
 .PHONY : src/net/CurlWrapper.o
 
@@ -489,29 +465,77 @@ src/settings/settings.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/settings.cpp.s
 .PHONY : src/settings/settings.cpp.s
 
-src/startup_flows/startup_flows.o: src/startup_flows/startup_flows.cpp.o
-.PHONY : src/startup_flows/startup_flows.o
+src/ui/cli/cli.o: src/ui/cli/cli.cpp.o
+.PHONY : src/ui/cli/cli.o
 
 # target to build an object file
-src/startup_flows/startup_flows.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.o
-.PHONY : src/startup_flows/startup_flows.cpp.o
+src/ui/cli/cli.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o
+.PHONY : src/ui/cli/cli.cpp.o
 
-src/startup_flows/startup_flows.i: src/startup_flows/startup_flows.cpp.i
-.PHONY : src/startup_flows/startup_flows.i
+src/ui/cli/cli.i: src/ui/cli/cli.cpp.i
+.PHONY : src/ui/cli/cli.i
 
 # target to preprocess a source file
-src/startup_flows/startup_flows.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.i
-.PHONY : src/startup_flows/startup_flows.cpp.i
+src/ui/cli/cli.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.i
+.PHONY : src/ui/cli/cli.cpp.i
 
-src/startup_flows/startup_flows.s: src/startup_flows/startup_flows.cpp.s
-.PHONY : src/startup_flows/startup_flows.s
+src/ui/cli/cli.s: src/ui/cli/cli.cpp.s
+.PHONY : src/ui/cli/cli.s
 
 # target to generate assembly for a file
-src/startup_flows/startup_flows.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/startup_flows/startup_flows.cpp.s
-.PHONY : src/startup_flows/startup_flows.cpp.s
+src/ui/cli/cli.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.s
+.PHONY : src/ui/cli/cli.cpp.s
+
+src/ui/io/io.o: src/ui/io/io.cpp.o
+.PHONY : src/ui/io/io.o
+
+# target to build an object file
+src/ui/io/io.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/io/io.cpp.o
+.PHONY : src/ui/io/io.cpp.o
+
+src/ui/io/io.i: src/ui/io/io.cpp.i
+.PHONY : src/ui/io/io.i
+
+# target to preprocess a source file
+src/ui/io/io.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/io/io.cpp.i
+.PHONY : src/ui/io/io.cpp.i
+
+src/ui/io/io.s: src/ui/io/io.cpp.s
+.PHONY : src/ui/io/io.s
+
+# target to generate assembly for a file
+src/ui/io/io.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/io/io.cpp.s
+.PHONY : src/ui/io/io.cpp.s
+
+src/ui/menus/menus.o: src/ui/menus/menus.cpp.o
+.PHONY : src/ui/menus/menus.o
+
+# target to build an object file
+src/ui/menus/menus.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o
+.PHONY : src/ui/menus/menus.cpp.o
+
+src/ui/menus/menus.i: src/ui/menus/menus.cpp.i
+.PHONY : src/ui/menus/menus.i
+
+# target to preprocess a source file
+src/ui/menus/menus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.i
+.PHONY : src/ui/menus/menus.cpp.i
+
+src/ui/menus/menus.s: src/ui/menus/menus.cpp.s
+.PHONY : src/ui/menus/menus.s
+
+# target to generate assembly for a file
+src/ui/menus/menus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.s
+.PHONY : src/ui/menus/menus.cpp.s
 
 src/wallpaper/WallpaperManager.o: src/wallpaper/WallpaperManager.cpp.o
 .PHONY : src/wallpaper/WallpaperManager.o
@@ -555,12 +579,6 @@ help:
 	@echo "... rwal_autogen/mocs_compilation.o"
 	@echo "... rwal_autogen/mocs_compilation.i"
 	@echo "... rwal_autogen/mocs_compilation.s"
-	@echo "... src/CLI/CLI.o"
-	@echo "... src/CLI/CLI.i"
-	@echo "... src/CLI/CLI.s"
-	@echo "... src/CLI/Menus.o"
-	@echo "... src/CLI/Menus.i"
-	@echo "... src/CLI/Menus.s"
 	@echo "... src/dbus/PlasmaDBus.o"
 	@echo "... src/dbus/PlasmaDBus.i"
 	@echo "... src/dbus/PlasmaDBus.s"
@@ -576,6 +594,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/navigator/navigator.o"
+	@echo "... src/navigator/navigator.i"
+	@echo "... src/navigator/navigator.s"
 	@echo "... src/net/CurlWrapper.o"
 	@echo "... src/net/CurlWrapper.i"
 	@echo "... src/net/CurlWrapper.s"
@@ -588,9 +609,15 @@ help:
 	@echo "... src/settings/settings.o"
 	@echo "... src/settings/settings.i"
 	@echo "... src/settings/settings.s"
-	@echo "... src/startup_flows/startup_flows.o"
-	@echo "... src/startup_flows/startup_flows.i"
-	@echo "... src/startup_flows/startup_flows.s"
+	@echo "... src/ui/cli/cli.o"
+	@echo "... src/ui/cli/cli.i"
+	@echo "... src/ui/cli/cli.s"
+	@echo "... src/ui/io/io.o"
+	@echo "... src/ui/io/io.i"
+	@echo "... src/ui/io/io.s"
+	@echo "... src/ui/menus/menus.o"
+	@echo "... src/ui/menus/menus.i"
+	@echo "... src/ui/menus/menus.s"
 	@echo "... src/wallpaper/WallpaperManager.o"
 	@echo "... src/wallpaper/WallpaperManager.i"
 	@echo "... src/wallpaper/WallpaperManager.s"

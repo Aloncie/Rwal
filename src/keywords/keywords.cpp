@@ -1,7 +1,7 @@
 #include "keywords.h"
 #include "logs/logs.h"
 #include <funcs/funcs.h>
-#include "CLI/CLI.h"
+#include "ui/cli/cli.h"
 #include <algorithm>
 #include <iostream>
 #include <sstream>

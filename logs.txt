@@ -7160,3 +7160,123 @@ Full path: /home/p1rat/Pictures/rwal
 [2026-01-04 | 22:58:46] Successful creating image file
 [2026-01-04 | 22:58:46] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-nmr77k.jpg
 [2026-01-04 | 22:59:15] Ending program
+[2026-01-05 | 13:41:55] Starting program
+[2026-01-05 | 13:46:14] Starting program
+[2026-01-05 | 13:47:02] Starting program
+[2026-01-05 | 14:02:55] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:02:55] Try to check internet connection
+[2026-01-05 | 14:02:55] Internet check: SUCCESS
+[2026-01-05 | 14:02:55] Try to request
+[2026-01-05 | 14:02:55] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:02:55] Successful request
+[2026-01-05 | 14:02:55] Try to parse
+[2026-01-05 | 14:02:55] Successful parse JSON
+[2026-01-05 | 14:02:55] Data of JSON: 2217
+[2026-01-05 | 14:02:55] Try to request
+[2026-01-05 | 14:02:56] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=89&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:02:56] Successful request
+[2026-01-05 | 14:02:56] Try to parse
+[2026-01-05 | 14:02:56] Successful parse JSON
+[2026-01-05 | 14:02:56] Data of JSON: https://w.wallhaven.cc/full/e7/wallhaven-e7l6po.png
+[2026-01-05 | 14:02:56] Try to delete old image
+[2026-01-05 | 14:02:56] Successful deleting old image
+[2026-01-05 | 14:02:56] Successful init CURL to image download
+[2026-01-05 | 14:02:56] Successful creating image file
+[2026-01-05 | 14:02:56] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-e7l6po.png
+[2026-01-05 | 14:06:36] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:06:36] Try to check internet connection
+[2026-01-05 | 14:06:36] Internet check: SUCCESS
+[2026-01-05 | 14:06:36] Try to request
+[2026-01-05 | 14:06:36] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:36] Successful request
+[2026-01-05 | 14:06:36] Try to parse
+[2026-01-05 | 14:06:36] Successful parse JSON
+[2026-01-05 | 14:06:36] Data of JSON: 2217
+[2026-01-05 | 14:06:36] Try to request
+[2026-01-05 | 14:06:37] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=32&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:37] Successful request
+[2026-01-05 | 14:06:37] Try to parse
+[2026-01-05 | 14:06:37] Successful parse JSON
+[2026-01-05 | 14:06:37] Data of JSON: https://w.wallhaven.cc/full/m9/wallhaven-m953jy.jpg
+[2026-01-05 | 14:06:37] Try to delete old image
+[2026-01-05 | 14:06:37] Successful deleting old image
+[2026-01-05 | 14:06:37] Successful init CURL to image download
+[2026-01-05 | 14:06:37] Successful creating image file
+[2026-01-05 | 14:06:37] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-m953jy.jpg
+[2026-01-05 | 14:06:39] Try to check internet connection
+[2026-01-05 | 14:06:39] Internet check: SUCCESS
+[2026-01-05 | 14:06:39] Try to request
+[2026-01-05 | 14:06:39] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:39] Successful request
+[2026-01-05 | 14:06:39] Try to parse
+[2026-01-05 | 14:06:39] Successful parse JSON
+[2026-01-05 | 14:06:39] Data of JSON: 2217
+[2026-01-05 | 14:06:39] Try to request
+[2026-01-05 | 14:06:40] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=38&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:40] Successful request
+[2026-01-05 | 14:06:40] Try to parse
+[2026-01-05 | 14:06:40] Successful parse JSON
+[2026-01-05 | 14:06:40] Data of JSON: https://w.wallhaven.cc/full/e7/wallhaven-e7o838.jpg
+[2026-01-05 | 14:06:40] Try to delete old image
+[2026-01-05 | 14:06:40] Successful deleting old image
+[2026-01-05 | 14:06:40] Successful init CURL to image download
+[2026-01-05 | 14:06:40] Successful creating image file
+[2026-01-05 | 14:06:40] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-e7o838.jpg
+[2026-01-05 | 14:06:42] Try to check internet connection
+[2026-01-05 | 14:06:42] Internet check: SUCCESS
+[2026-01-05 | 14:06:42] Try to request
+[2026-01-05 | 14:06:43] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:43] Successful request
+[2026-01-05 | 14:06:43] Try to parse
+[2026-01-05 | 14:06:43] Successful parse JSON
+[2026-01-05 | 14:06:43] Data of JSON: 2217
+[2026-01-05 | 14:06:43] Try to request
+[2026-01-05 | 14:06:43] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=96&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:43] Successful request
+[2026-01-05 | 14:06:43] Try to parse
+[2026-01-05 | 14:06:43] Successful parse JSON
+[2026-01-05 | 14:06:43] Data of JSON: https://w.wallhaven.cc/full/ne/wallhaven-nex2zo.png
+[2026-01-05 | 14:06:43] Try to delete old image
+[2026-01-05 | 14:06:43] Successful deleting old image
+[2026-01-05 | 14:06:43] Successful init CURL to image download
+[2026-01-05 | 14:06:43] Successful creating image file
+[2026-01-05 | 14:06:43] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-nex2zo.png
+[2026-01-05 | 14:06:45] Try to check internet connection
+[2026-01-05 | 14:06:45] Internet check: SUCCESS
+[2026-01-05 | 14:06:45] Try to request
+[2026-01-05 | 14:06:46] url of request: https://wallhaven.cc/api/v1/search?q=anime&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:46] Successful request
+[2026-01-05 | 14:06:46] Try to parse
+[2026-01-05 | 14:06:46] Successful parse JSON
+[2026-01-05 | 14:06:46] Data of JSON: 2217
+[2026-01-05 | 14:06:46] Try to request
+[2026-01-05 | 14:06:46] url of request: https://wallhaven.cc/api/v1/search?q=anime&page=46&sorting=random&resolutions=1920x1080&an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a
+[2026-01-05 | 14:06:46] Successful request
+[2026-01-05 | 14:06:46] Try to parse
+[2026-01-05 | 14:06:46] Successful parse JSON
+[2026-01-05 | 14:06:46] Data of JSON: https://w.wallhaven.cc/full/4d/wallhaven-4dy62j.png
+[2026-01-05 | 14:06:46] Try to delete old image
+[2026-01-05 | 14:06:46] Successful deleting old image
+[2026-01-05 | 14:06:46] Successful init CURL to image download
+[2026-01-05 | 14:06:46] Successful creating image file
+[2026-01-05 | 14:06:47] Successful download image/home/p1rat/code/rwal/downloads/wallpaper-4dy62j.png
+[2026-01-05 | 14:07:05] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:07:13] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:07:15] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:07:16] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:10:54] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:29:11] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:29:53] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:34:03] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:37:33] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:39:43] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 14:49:18] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:42:33] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:42:36] Try to read timer file
+[2026-01-05 | 18:43:37] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:49:07] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:49:36] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:51:53] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:52:47] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:57:46] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
+[2026-01-05 | 18:58:24] Config loaded/reloaded: /home/p1rat/.config/Aloncie/rwal/config.json
