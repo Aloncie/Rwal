@@ -21,7 +21,7 @@ private:
 	Config(const Config&) = delete;
     Config& operator=(const Config&) = delete;
 
-private slots:
+public slots:
 	void loadConfig();
 public:
 	static Config& getInstance() {

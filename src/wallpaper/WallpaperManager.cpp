@@ -1,14 +1,11 @@
 #include "WallpaperManager.h"
 #include "internal/GlobalConstans.h"
-#include "settings/config.h"
-#include "net/CurlWrapper.h"
 #include "keywords/keywords.h"
 #include "dbus/PlasmaDBus.h"
-#include "funcs/funcs.h"
 #include "logs/logs.h"
 #include "settings/settings.h"
 #include "net/NetworkManager.h"
-#include "CLI/CLI.h"
+#include "ui/cli//cli.h"
 #include <exception>
 #include <filesystem>
 #include <nlohmann/json.hpp>

@@ -1,13 +1,15 @@
-#include "startup_flows/startup_flows.h"
+#include "navigator/navigator.h"
 #include "wallpaper/WallpaperManager.h"
 #include <string>
 #include <QCoreApplication>
+#include "ui/menus/menus.h"
 
 
 int main(int argc,char* argv[]){
-	Flows f;
+	Navigator n;
 	std::string s;
 	QCoreApplication app(argc, argv);
+
 	if (argv[1])
 		s = argv[1];
 
@@ -16,6 +18,6 @@ int main(int argc,char* argv[]){
 	if (s == "--change" || s == "-c")
 		refresh_wallpaper("change");
 	else 
-		f.core(argc,argv);
+		n.core(&rwal::ui::MAIN_MENU);
 	return 0;
 }

@@ -1,7 +1,6 @@
 #include "logs.h"
-#include "CLI/CLI.h"
+#include "ui/cli/cli.h"
 #include <chrono>
-#include <cstdint>
 #include <filesystem>
 #include <iomanip>
 #include <iostream>

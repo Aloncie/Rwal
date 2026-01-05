@@ -1,17 +1,17 @@
-#include "ui/cli/cli.h"
 #include "navigator.h"
+#include "ui/cli/cli.h"
 
-MenuManager& m = MenuManager::getInstatce();
 
-void Flows::core(const MenuConfig& current_menu) {
-    char choice;
+void Navigator::core(const rwal::ui::BaseMenu* current_menu) {
+	std::string input;
     do {
-		//Тут я решил изменить твою логику и работал над этим до мини выгора       		 
-        if (current_menu.actions.count(choice)) {
-            current_menu.actions.at(choice)();
-        } else if (choice != 'q') {
-			m.show_message("Invalid choice"); 
+		input = (*current_menu).get_input();	
+       	auto x = (*current_menu).execute_actions(input); 
+		if (x.nextMenu){
+			current_menu = x.nextMenu;
+			input = "";
 		}
-
-    } while (choice != 'q');
+		if (x.IsWrongInput)
+			MenuManager::getInstatce().show_message("Invalid input");
+    } while (input != "q");
 }

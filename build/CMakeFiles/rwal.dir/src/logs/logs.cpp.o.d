@@ -183,11 +183,11 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
- /home/p1rat/code/rwal/src/CLI/CLI.h /usr/include/c++/15.2.1/vector \
+ /home/p1rat/code/rwal/src/ui/cli/cli.h /usr/include/c++/15.2.1/vector \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
- /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/chrono \
- /usr/include/c++/15.2.1/bits/stl_algo.h \
+ /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/iostream \
+ /usr/include/c++/15.2.1/chrono /usr/include/c++/15.2.1/bits/stl_algo.h \
  /usr/include/c++/15.2.1/bits/algorithmfwd.h \
  /usr/include/c++/15.2.1/bits/stl_heap.h \
  /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
@@ -200,8 +200,7 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: \
  /usr/include/c++/15.2.1/bits/formatfwd.h \
  /usr/include/c++/15.2.1/bits/ranges_algobase.h \
  /usr/include/c++/15.2.1/bits/unicode.h \
- /usr/include/c++/15.2.1/bits/unicode-data.h \
- /usr/include/c++/15.2.1/iostream /usr/include/unistd.h \
+ /usr/include/c++/15.2.1/bits/unicode-data.h /usr/include/unistd.h \
  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
  /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
  /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
