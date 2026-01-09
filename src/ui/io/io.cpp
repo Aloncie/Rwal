@@ -9,6 +9,7 @@ namespace rwal::ui::io{
 		char choice = ' ';
 		std::string input;
 		auto menu = config.menu();	
+		std::cout << "\n";
 		for (int i = 0;i < menu.size();i++){
 			std::cout << menu[i] << "\n";
 		}
@@ -20,7 +21,7 @@ namespace rwal::ui::io{
 			MenuManager::getInstatce().countOperatorPlus(1);
 		}
 
-		MenuManager::getInstatce().countOperatorPlus(menu.size());
+		MenuManager::getInstatce().countOperatorPlus(menu.size() + 1);
 
 		MenuManager::getInstatce().clear_last_lines();
 		return std::string(1, choice);

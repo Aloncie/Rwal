@@ -106,7 +106,7 @@ namespace rwal::ui {
 				for(size_t i = 0; i < keywords.size(); ++i)
 					lines.push_back(std::to_string(i + 1) + ". " + keywords[i]);
 			}
-			lines.push_back("a) Add | r) Remove | m) Manual(JSON) | q) Back");
+			lines.push_back("a) Add | r) Remove | m) Manual(editor) | q) Back");
 			return lines;
 		}
 		std::vector<std::string> settings_list() {
@@ -122,7 +122,7 @@ namespace rwal::ui {
 
 	namespace ready {
 		std::vector<std::string> main_list() {
-			return {"1) Refresh", "2) Save", "3) Keywords", "4) Settings", "q) Quit"};
+			return {"--- Main Menu ---", "1) Refresh", "2) Save", "3) Keywords", "4) Settings", "q) Quit"};
 		}
 		std::vector<std::string> timer_list() {
 			return {"none", "hourly", "daily"};
