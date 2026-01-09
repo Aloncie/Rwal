@@ -73,25 +73,23 @@ std::string Keywords::GetRandomKeywords(const std::string& mode){
 }
 
 void Keywords::open_keywords_editor(){
-	/*
      
 	struct stat buffer;
-    if (stat(keywords_path.c_str(), &buffer) != 0) {
-		Logs::getInstance().write_logs("Error: File doesn't exist or inaccessible: " + keywords_path);
-		MenuManager::getInstatce().show_message("Error: File doesn't exist or inaccessible: " + keywords_path);
+    if (stat(Config::getInstance().getConfigPath().c_str(), &buffer) != 0) {
+		Logs::getInstance().write_logs("Error: File doesn't exist or inaccessible: " + Config::getInstance().getConfigPath());
+		MenuManager::getInstatce().show_message("Error: File doesn't exist or inaccessible: " +  Config::getInstance().getConfigPath());
         return;
     }
 
-    if (access(keywords_path.c_str(), W_OK) != 0) {
-		Logs::getInstance().write_logs("Error: No write permissions for file: " + keywords_path);
-		MenuManager::getInstatce().show_message("Error: No write permissions for file: " + keywords_path);
+    if (access(Config::getInstance().getConfigPath().c_str(), W_OK) != 0) {
+		Logs::getInstance().write_logs("Error: No write permissions for file: " + Config::getInstance().getConfigPath());
+		MenuManager::getInstatce().show_message("Error: No write permissions for file: " + Config::getInstance().getConfigPath());
         return;
     }
 
 	const char* editor = getenv("EDITOR");
 	if (!editor)
 		editor = "nano";
-	std::string command = std::string(editor) + " " + keywords_path;
+	std::string command = std::string(editor) + " " + Config::getInstance().getConfigPath();
 	system(command.c_str());	
-	*/
 }

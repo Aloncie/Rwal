@@ -29,6 +29,7 @@ void save_wallpaper(std::string from){
 		Logs::getInstance().write_logs("Output of rwal_catalog: " + rwal.string());
 		fs::path to = rwal / from.substr(from.find("wallpaper"));
 		Logs::getInstance().write_logs("Image successful saved: " + std::string(to));
+		MenuManager::getInstatce().show_message("Image successfully saved");
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
 		Logs::getInstance().write_logs("Failed to saved image: " + std::string(e.what()));
