@@ -73,23 +73,21 @@ std::string Keywords::GetRandomKeywords(const std::string& mode){
 }
 
 void Keywords::open_keywords_editor(){
-     
-	struct stat buffer;
-    if (stat(Config::getInstance().getConfigPath().c_str(), &buffer) != 0) {
-		Logs::getInstance().write_logs("Error: File doesn't exist or inaccessible: " + Config::getInstance().getConfigPath());
-		MenuManager::getInstatce().show_message("Error: File doesn't exist or inaccessible: " +  Config::getInstance().getConfigPath());
-        return;
-    }
-
-    if (access(Config::getInstance().getConfigPath().c_str(), W_OK) != 0) {
-		Logs::getInstance().write_logs("Error: No write permissions for file: " + Config::getInstance().getConfigPath());
-		MenuManager::getInstatce().show_message("Error: No write permissions for file: " + Config::getInstance().getConfigPath());
-        return;
-    }
+	std::string path = std::string(SOURCE_DIR) + "keywords.txt";
+   	std::ofstream file(path);
+	
+	std::vector<std::string> keywords = ShortWayGetKeywords();	
+	for (int i = 0; i < keywords.size(); i++)
+	   file << i;	
+	file.close();
+	
+	std::cout << "\033[?1049h" << std::flush;
 
 	const char* editor = getenv("EDITOR");
 	if (!editor)
 		editor = "nano";
-	std::string command = std::string(editor) + " " + Config::getInstance().getConfigPath();
+	std::string command = std::string(editor) + " " + path;
 	system(command.c_str());	
+
+	std::cout << "\033[?1049l" << std::flush;
 }
