@@ -2,7 +2,7 @@
 #include <cctype>
 #include <map>
 #include <ncurses.h>
-#include "cli.h"
+#include "cli.hpp"
 #include <iostream>
 
 std::vector<std::string> MenuManager::dontShowAgain;

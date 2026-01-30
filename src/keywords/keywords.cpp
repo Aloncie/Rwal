@@ -1,15 +1,15 @@
-#include "keywords.h"
-#include "logs/logs.h"
-#include <funcs/funcs.h>
-#include "ui/cli/cli.h"
+#include "keywords.hpp"
+#include "logs/logs.hpp"
+#include "internal/platform/env_utils.hpp"
+#include "funcs/funcs.hpp"
+#include "ui/cli/cli.hpp"
 #include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <cctype>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <settings/config.h>
-#include <settings/config.h>
+#include "settings/config.hpp"
 
 std::vector<std::string> Keywords::LongWayGetKeywords(){
 	auto search = Config::getInstance().get<nlohmann::json>("search");
@@ -72,22 +72,45 @@ std::string Keywords::GetRandomKeywords(const std::string& mode){
 		
 }
 
-void Keywords::open_keywords_editor(){
+void Keywords::editKeywords(){
 	std::string path = std::string(SOURCE_DIR) + "keywords.txt";
-   	std::ofstream file(path);
+	importToTxt(path);
+	std::vector<std::string> keywords;
 	
+	rwal::platform::terminal::buffer::enter_alt_buffer();
+	rwal::platform::executor::open_editor(path);	
+	rwal::platform::terminal::buffer::leave_alt_buffer();
+	keywords = exportFromTxt(path);
+
+	Config::getInstance().set("/search/keywords", keywords);
+}
+
+void Keywords::importToTxt(std::string& path){
+
+	std::ofstream file(path);
 	std::vector<std::string> keywords = ShortWayGetKeywords();	
 	for (int i = 0; i < keywords.size(); i++)
-	   file << i;	
+	   file << keywords[i];
 	file.close();
-	
-	std::cout << "\033[?1049h" << std::flush;
 
-	const char* editor = getenv("EDITOR");
-	if (!editor)
-		editor = "nano";
-	std::string command = std::string(editor) + " " + path;
-	system(command.c_str());	
+}
 
-	std::cout << "\033[?1049l" << std::flush;
+std::vector<std::string> Keywords::exportFromTxt(std::string& path){
+	std::ifstream file(path);
+	std::string line;
+	std::vector<std::string> keywords;
+
+	if (file.is_open()){
+		while (getline(file,line)){
+			Format(line);
+			if (!line.empty() && line.length() < 256)
+				if (std::find(keywords.begin(), keywords.end(), line) == keywords.end())
+					keywords.push_back(line);
+		}
+		file.close();
+	} else{
+		Logs::getInstance().write_logs("Failed opening keywords.txt in " + path);
+		MenuManager::getInstatce().show_message("Failed operation. More info in logs");
+	}
+	return keywords;
 }

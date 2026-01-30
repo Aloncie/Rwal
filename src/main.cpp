@@ -1,8 +1,8 @@
-#include "navigator/navigator.h"
-#include "wallpaper/WallpaperManager.h"
+#include "navigator/navigator.hpp"
+#include "wallpaper/WallpaperManager.hpp"
 #include <string>
 #include <QCoreApplication>
-#include "ui/menus/menus.h"
+#include "ui/menus/menus.hpp"
 
 
 int main(int argc,char* argv[]){

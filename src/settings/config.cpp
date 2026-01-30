@@ -1,4 +1,4 @@
-#include "config.h"
+#include "config.hpp"
 #include <QDir>
 #include <QCoreApplication>
 #include <QStandardPaths>
