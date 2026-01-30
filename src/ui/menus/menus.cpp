@@ -1,9 +1,9 @@
-#include "menus.h"
-#include "settings/settings.h"
-#include "ui/cli/cli.h"
-#include "keywords/keywords.h"
-#include "settings/config.h"
-#include "wallpaper/WallpaperManager.h"
+#include "menus.hpp"
+#include "settings/settings.hpp"
+#include "ui/cli/cli.hpp"
+#include "keywords/keywords.hpp"
+#include "settings/config.hpp"
+#include "wallpaper/WallpaperManager.hpp"
 
 namespace rwal::ui {
 

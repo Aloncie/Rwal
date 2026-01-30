@@ -1,4 +1,4 @@
-#include "funcs.h"
+#include "funcs.hpp"
 #include <random>
 #include <unistd.h>
 

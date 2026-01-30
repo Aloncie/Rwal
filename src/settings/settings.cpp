@@ -1,5 +1,5 @@
-#include "settings.h"
-#include "logs/logs.h"
+#include "settings.hpp"
+#include "logs/logs.hpp"
 #include <filesystem>
 #include <fstream>
 #include <QCoreApplication>

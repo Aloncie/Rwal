@@ -3,7 +3,7 @@
 #include <QFileSystemWatcher>
 #include <nlohmann/json.hpp>
 #include <string>
-#include "logs/logs.h"
+#include "logs/logs.hpp"
 
 class Config : public QObject{
 	Q_OBJECT

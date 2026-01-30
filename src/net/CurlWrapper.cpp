@@ -1,7 +1,7 @@
-#include "CurlWrapper.h"
-#include "internal/GlobalConstans.h"
-#include "logs/logs.h"
-#include "funcs/funcs.h"
+#include "CurlWrapper.hpp"
+#include "internal/GlobalConstans.hpp"
+#include "logs/logs.hpp"
+#include "funcs/funcs.hpp"
 #include <exception>
 #include <filesystem>
 #include <string>

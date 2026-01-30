@@ -1,5 +1,5 @@
-#include "logs.h"
-#include "ui/cli/cli.h"
+#include "logs.hpp"
+#include "ui/cli/cli.hpp"
 #include <chrono>
 #include <filesystem>
 #include <iomanip>

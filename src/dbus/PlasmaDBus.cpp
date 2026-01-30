@@ -1,10 +1,10 @@
-#include "PlasmaDBus.h"
+#include "PlasmaDBus.hpp"
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QVariantMap>
 #include <QDebug>
 #include <QString>
-#include "logs/logs.h"
+#include "logs/logs.hpp"
 
 void change_wallpaper(std::string local) {
     QString path = "file://" + QString::fromStdString(local);

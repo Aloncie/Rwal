@@ -3,20 +3,22 @@
 #include <type_traits>
 #include <vector>
 #include <nlohmann/json.hpp>
-#include <settings/config.h>
+#include "settings/config.hpp"
 
 extern const std::string keywords_path;
 
 class Keywords{
 private:
 	std::vector<std::string> LongWayGetKeywords();
+	void importToTxt(std::string& path);
+	std::vector<std::string> exportFromTxt(std::string& path);
+
 public:
 	void Default(std::vector<std::string>& Keywords);
 
 	std::string LongGetRandomKeywords(const std::string& mode);
-	void open_keywords_editor();
+	void editKeywords();
 	void Format(std::string& str);
-
 	std::string GetRandomKeywords(const std::string& mode);
 
 	template<typename T = std::vector<std::string>>
@@ -38,7 +40,6 @@ public:
 			static_assert(false, "Unsupported type");
 		}
 	};
-
-
+	
 };
 

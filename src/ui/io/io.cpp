@@ -1,6 +1,6 @@
-#include "io.h"
-#include "ui/cli/cli.h"
-#include "ui/menus/menus.h"
+#include "io.hpp"
+#include "ui/cli/cli.hpp"
+#include "ui/menus/menus.hpp"
 #include <iostream>
 #include <ncurses.h>
 

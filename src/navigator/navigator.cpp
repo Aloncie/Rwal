@@ -1,5 +1,5 @@
-#include "navigator.h"
-#include "ui/cli/cli.h"
+#include "navigator.hpp"
+#include "ui/cli/cli.hpp"
 
 
 void Navigator::core(const rwal::ui::BaseMenu* current_menu) {
