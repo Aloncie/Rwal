@@ -4,33 +4,34 @@ rwal_autogen/timestamp: \
 	/home/p1rat/code/rwal/build/CMakeFiles/4.1.2/CMakeSystem.cmake \
 	/home/p1rat/code/rwal/build/rwal_autogen/moc_predefs.h \
 	/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp \
-	/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
+	/home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp \
 	/home/p1rat/code/rwal/src/funcs/funcs.cpp \
-	/home/p1rat/code/rwal/src/funcs/funcs.h \
-	/home/p1rat/code/rwal/src/internal/GlobalConstans.h \
+	/home/p1rat/code/rwal/src/funcs/funcs.hpp \
+	/home/p1rat/code/rwal/src/internal/platform/env_utils.cpp \
+	/home/p1rat/code/rwal/src/internal/platform/env_utils.hpp \
 	/home/p1rat/code/rwal/src/keywords/keywords.cpp \
-	/home/p1rat/code/rwal/src/keywords/keywords.h \
+	/home/p1rat/code/rwal/src/keywords/keywords.hpp \
 	/home/p1rat/code/rwal/src/logs/logs.cpp \
-	/home/p1rat/code/rwal/src/logs/logs.h \
+	/home/p1rat/code/rwal/src/logs/logs.hpp \
 	/home/p1rat/code/rwal/src/main.cpp \
 	/home/p1rat/code/rwal/src/navigator/navigator.cpp \
-	/home/p1rat/code/rwal/src/navigator/navigator.h \
+	/home/p1rat/code/rwal/src/navigator/navigator.hpp \
 	/home/p1rat/code/rwal/src/net/CurlWrapper.cpp \
-	/home/p1rat/code/rwal/src/net/CurlWrapper.h \
+	/home/p1rat/code/rwal/src/net/CurlWrapper.hpp \
 	/home/p1rat/code/rwal/src/net/NetworkManager.cpp \
-	/home/p1rat/code/rwal/src/net/NetworkManager.h \
+	/home/p1rat/code/rwal/src/net/NetworkManager.hpp \
 	/home/p1rat/code/rwal/src/settings/config.cpp \
-	/home/p1rat/code/rwal/src/settings/config.h \
+	/home/p1rat/code/rwal/src/settings/config.hpp \
 	/home/p1rat/code/rwal/src/settings/settings.cpp \
-	/home/p1rat/code/rwal/src/settings/settings.h \
+	/home/p1rat/code/rwal/src/settings/settings.hpp \
 	/home/p1rat/code/rwal/src/ui/cli/cli.cpp \
-	/home/p1rat/code/rwal/src/ui/cli/cli.h \
+	/home/p1rat/code/rwal/src/ui/cli/cli.hpp \
 	/home/p1rat/code/rwal/src/ui/io/io.cpp \
-	/home/p1rat/code/rwal/src/ui/io/io.h \
+	/home/p1rat/code/rwal/src/ui/io/io.hpp \
 	/home/p1rat/code/rwal/src/ui/menus/menus.cpp \
-	/home/p1rat/code/rwal/src/ui/menus/menus.h \
+	/home/p1rat/code/rwal/src/ui/menus/menus.hpp \
 	/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp \
-	/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h \
+	/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp \
 	/usr/include/alloca.h \
 	/usr/include/asm-generic/bitsperlong.h \
 	/usr/include/asm-generic/errno-base.h \

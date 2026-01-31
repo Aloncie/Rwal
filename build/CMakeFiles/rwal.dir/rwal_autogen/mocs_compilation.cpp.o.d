@@ -186,7 +186,7 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: \
  /usr/include/c++/15.2.1/bits/ranges_algobase.h \
  /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/15.2.1/pstl/execution_defs.h \
- /home/p1rat/code/rwal/build/rwal_autogen/ICMTUFM33F/../../../src/settings/config.h \
+ /home/p1rat/code/rwal/build/rwal_autogen/ICMTUFM33F/../../../src/settings/config.hpp \
  /usr/include/c++/15.2.1/functional \
  /usr/include/c++/15.2.1/bits/std_function.h \
  /usr/include/c++/15.2.1/unordered_map \
@@ -360,7 +360,7 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp /usr/include/c++/15.2.1/any \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/fstream \
+ /home/p1rat/code/rwal/src/logs/logs.hpp /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc

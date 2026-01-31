@@ -6,6 +6,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/p1rat/code/rwal/src/*.c
 set(OLD_GLOB
   "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp"
   "/home/p1rat/code/rwal/src/funcs/funcs.cpp"
+  "/home/p1rat/code/rwal/src/internal/platform/env_utils.cpp"
   "/home/p1rat/code/rwal/src/keywords/keywords.cpp"
   "/home/p1rat/code/rwal/src/logs/logs.cpp"
   "/home/p1rat/code/rwal/src/main.cpp"
@@ -27,20 +28,6 @@ endif()
 # HEADERS at CMakeLists.txt:22 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/p1rat/code/rwal/src/*.h")
 set(OLD_GLOB
-  "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h"
-  "/home/p1rat/code/rwal/src/funcs/funcs.h"
-  "/home/p1rat/code/rwal/src/internal/GlobalConstans.h"
-  "/home/p1rat/code/rwal/src/keywords/keywords.h"
-  "/home/p1rat/code/rwal/src/logs/logs.h"
-  "/home/p1rat/code/rwal/src/navigator/navigator.h"
-  "/home/p1rat/code/rwal/src/net/CurlWrapper.h"
-  "/home/p1rat/code/rwal/src/net/NetworkManager.h"
-  "/home/p1rat/code/rwal/src/settings/config.h"
-  "/home/p1rat/code/rwal/src/settings/settings.h"
-  "/home/p1rat/code/rwal/src/ui/cli/cli.h"
-  "/home/p1rat/code/rwal/src/ui/io/io.h"
-  "/home/p1rat/code/rwal/src/ui/menus/menus.h"
-  "/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

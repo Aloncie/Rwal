@@ -18,7 +18,6 @@ public:
 
 	std::string LongGetRandomKeywords(const std::string& mode);
 	void editKeywords();
-	void Format(std::string& str);
 	std::string GetRandomKeywords(const std::string& mode);
 
 	template<typename T = std::vector<std::string>>

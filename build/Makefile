@@ -273,6 +273,30 @@ src/funcs/funcs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/funcs/funcs.cpp.s
 .PHONY : src/funcs/funcs.cpp.s
 
+src/internal/platform/env_utils.o: src/internal/platform/env_utils.cpp.o
+.PHONY : src/internal/platform/env_utils.o
+
+# target to build an object file
+src/internal/platform/env_utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/platform/env_utils.cpp.o
+.PHONY : src/internal/platform/env_utils.cpp.o
+
+src/internal/platform/env_utils.i: src/internal/platform/env_utils.cpp.i
+.PHONY : src/internal/platform/env_utils.i
+
+# target to preprocess a source file
+src/internal/platform/env_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/platform/env_utils.cpp.i
+.PHONY : src/internal/platform/env_utils.cpp.i
+
+src/internal/platform/env_utils.s: src/internal/platform/env_utils.cpp.s
+.PHONY : src/internal/platform/env_utils.s
+
+# target to generate assembly for a file
+src/internal/platform/env_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/platform/env_utils.cpp.s
+.PHONY : src/internal/platform/env_utils.cpp.s
+
 src/keywords/keywords.o: src/keywords/keywords.cpp.o
 .PHONY : src/keywords/keywords.o
 
@@ -585,6 +609,9 @@ help:
 	@echo "... src/funcs/funcs.o"
 	@echo "... src/funcs/funcs.i"
 	@echo "... src/funcs/funcs.s"
+	@echo "... src/internal/platform/env_utils.o"
+	@echo "... src/internal/platform/env_utils.i"
+	@echo "... src/internal/platform/env_utils.s"
 	@echo "... src/keywords/keywords.o"
 	@echo "... src/keywords/keywords.i"
 	@echo "... src/keywords/keywords.s"

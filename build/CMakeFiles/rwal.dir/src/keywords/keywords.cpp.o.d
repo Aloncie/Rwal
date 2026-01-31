@@ -1,6 +1,7 @@
 CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /home/p1rat/code/rwal/src/keywords/keywords.cpp \
- /usr/include/stdc-predef.h /home/p1rat/code/rwal/src/keywords/keywords.h \
+ /usr/include/stdc-predef.h \
+ /home/p1rat/code/rwal/src/keywords/keywords.hpp \
  /usr/include/c++/15.2.1/string \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -316,7 +317,7 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp /usr/include/c++/15.2.1/any \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /home/p1rat/code/rwal/src/settings/config.h \
+ /home/p1rat/code/rwal/src/settings/config.hpp \
  /usr/include/qt/QtCore/QFileSystemWatcher \
  /usr/include/qt/QtCore/qfilesystemwatcher.h \
  /usr/include/qt/QtCore/qobject.h /usr/include/qt/QtCore/qobjectdefs.h \
@@ -359,14 +360,16 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /usr/include/c++/15.2.1/bits/formatfwd.h \
  /usr/include/c++/15.2.1/bits/unicode.h \
  /usr/include/c++/15.2.1/bits/unicode-data.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/fstream \
+ /home/p1rat/code/rwal/src/logs/logs.hpp /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
- /home/p1rat/code/rwal/src/funcs/funcs.h \
- /home/p1rat/code/rwal/src/ui/cli/cli.h /usr/include/c++/15.2.1/iostream \
- /usr/include/sys/stat.h /usr/include/bits/stat.h \
- /usr/include/bits/struct_stat.h /usr/include/bits/statx.h \
- /usr/include/linux/stat.h /usr/include/bits/statx-generic.h \
+ /home/p1rat/code/rwal/src/internal/platform/env_utils.hpp \
+ /usr/include/c++/15.2.1/iostream \
+ /home/p1rat/code/rwal/src/funcs/funcs.hpp \
+ /home/p1rat/code/rwal/src/ui/cli/cli.hpp /usr/include/sys/stat.h \
+ /usr/include/bits/stat.h /usr/include/bits/struct_stat.h \
+ /usr/include/bits/statx.h /usr/include/linux/stat.h \
+ /usr/include/bits/statx-generic.h \
  /usr/include/bits/types/struct_statx_timestamp.h \
  /usr/include/bits/types/struct_statx.h
