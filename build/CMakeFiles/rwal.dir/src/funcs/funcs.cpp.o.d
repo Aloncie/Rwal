@@ -1,6 +1,6 @@
 CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o: \
  /home/p1rat/code/rwal/src/funcs/funcs.cpp /usr/include/stdc-predef.h \
- /home/p1rat/code/rwal/src/funcs/funcs.h /usr/include/c++/15.2.1/random \
+ /home/p1rat/code/rwal/src/funcs/funcs.hpp /usr/include/c++/15.2.1/random \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \

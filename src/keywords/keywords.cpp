@@ -3,59 +3,44 @@
 #include "internal/platform/env_utils.hpp"
 #include "funcs/funcs.hpp"
 #include "ui/cli/cli.hpp"
-#include <algorithm>
 #include <iostream>
-#include <sstream>
-#include <cctype>
 #include <unistd.h>
 #include <sys/stat.h>
 #include "settings/config.hpp"
+#include "internal/utils/string_utils.hpp"
+#include "internal/utils/vector_utils.hpp"
 
 std::vector<std::string> Keywords::LongWayGetKeywords(){
-	auto search = Config::getInstance().get<nlohmann::json>("search");
+    auto& config = Config::getInstance();
+    auto search = config.get<nlohmann::json>("search");
 
-	std::vector<std::string> ready_keywords;
-	if (search.contains("keywords") && !search["keywords"].empty()){
-		ready_keywords = search["keywords"];
-		return ready_keywords;
-	}
-	
-	Keywords k;
+    if (search.contains("keywords") && !search["keywords"].empty()){
+        return search["keywords"].get<std::vector<std::string>>();
+    }
+    
+    std::string input;
+    std::vector<std::string> ready_keywords;
 
-	std::cout << "\nThere is not file with keywords." <<  "\nPlease write keywords to find wallpaper( use ',' to devide them): ";
-	MenuManager::getInstatce().countOperatorPlus(3);
-	
-	std::string new_keywords = "";
-	while (new_keywords == "")
-		std::getline(std::cin,new_keywords);
+    while (ready_keywords.empty()) {
+        std::cout << "\nKeywords not found. Enter keywords (space separated): ";
+        std::getline(std::cin, input);
+        
+        rwal::utils::str::format(input); 
+        ready_keywords = rwal::utils::str::split_by_space(input);
 
-	Format(new_keywords);	
-
-	//Devide keywords
-	
-	std::stringstream ss(new_keywords);
-	std::string segment;
-			
-	while (ss >> segment){
-		ready_keywords.push_back(segment);
-	}
-
-	//Save keywords
-	Config::getInstance().set("/search/keywords", ready_keywords);	
-
-	return ready_keywords;
-}
-
-void Keywords::Format(std::string& str){
-	std::replace_if(str.begin(), str.end(),
-		[]( unsigned char c){ return !std::isalnum(c); }, ' ');
-
+        if (ready_keywords.empty()) {
+             std::cout << "Input cannot be empty! Try again.";
+        }
+    }
+    
+    config.set("/search/keywords", ready_keywords); 
+    return ready_keywords;
 }
 
 void Keywords::Default(std::vector<std::string>& keywords){
 	 
 	Logs::getInstance().write_logs("There are not keywords. The default keywords will be used.");
-	keywords = {"nature", "landscape", "abstract", "space", "architecture", "animals"};
+	keywords = {"nature", "landscape", "abstract", "space", "architecture", "animals", "anime", "cars"};
 }
 
 std::string Keywords::GetRandomKeywords(const std::string& mode){
@@ -67,7 +52,7 @@ std::string Keywords::GetRandomKeywords(const std::string& mode){
 		keywords = LongWayGetKeywords();
 	if (keywords.empty())
 		Default(keywords);
-
+	
 	return keywords[random(keywords.size() - 1)];
 		
 }
@@ -89,8 +74,9 @@ void Keywords::importToTxt(std::string& path){
 
 	std::ofstream file(path);
 	std::vector<std::string> keywords = ShortWayGetKeywords();	
+	file << "#Edit keywords with rule '1 string - 1 word'";
 	for (int i = 0; i < keywords.size(); i++)
-	   file << keywords[i];
+	   file << keywords[i] + "\n";
 	file.close();
 
 }
@@ -102,10 +88,11 @@ std::vector<std::string> Keywords::exportFromTxt(std::string& path){
 
 	if (file.is_open()){
 		while (getline(file,line)){
-			Format(line);
-			if (!line.empty() && line.length() < 256)
-				if (std::find(keywords.begin(), keywords.end(), line) == keywords.end())
-					keywords.push_back(line);
+			if (line[0] != '#'){
+				rwal::utils::str::format(line);
+				if (!line.empty() && line.length() < 256)
+					rwal::utils::vector::add_unique(keywords,line);
+			}
 		}
 		file.close();
 	} else{

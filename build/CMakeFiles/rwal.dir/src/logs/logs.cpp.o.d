@@ -1,6 +1,6 @@
 CMakeFiles/rwal.dir/src/logs/logs.cpp.o: \
  /home/p1rat/code/rwal/src/logs/logs.cpp /usr/include/stdc-predef.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/string \
+ /home/p1rat/code/rwal/src/logs/logs.hpp /usr/include/c++/15.2.1/string \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -183,7 +183,7 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o: \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
- /home/p1rat/code/rwal/src/ui/cli/cli.h /usr/include/c++/15.2.1/vector \
+ /home/p1rat/code/rwal/src/ui/cli/cli.hpp /usr/include/c++/15.2.1/vector \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/iostream \

@@ -1,6 +1,6 @@
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp /usr/include/stdc-predef.h \
- /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
+ /home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp \
  /usr/include/c++/15.2.1/string \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -288,8 +288,8 @@ CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o: \
  /usr/include/qt/QtCore/qsharedpointer.h \
  /usr/include/qt/QtCore/qsharedpointer_impl.h \
  /usr/include/qt/QtCore/QString /usr/include/qt/QtCore/qstring.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/filesystem \
- /usr/include/c++/15.2.1/bits/fs_fwd.h \
+ /home/p1rat/code/rwal/src/logs/logs.hpp \
+ /usr/include/c++/15.2.1/filesystem /usr/include/c++/15.2.1/bits/fs_fwd.h \
  /usr/include/c++/15.2.1/bits/fs_path.h /usr/include/c++/15.2.1/codecvt \
  /usr/include/c++/15.2.1/bits/fs_dir.h \
  /usr/include/c++/15.2.1/bits/fs_ops.h /usr/include/c++/15.2.1/fstream \

@@ -6,33 +6,34 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
   CMakeFiles/4.1.2/CMakeSystem.cmake \
   rwal_autogen/moc_predefs.h \
   /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp \
-  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.h \
+  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp \
   /home/p1rat/code/rwal/src/funcs/funcs.cpp \
-  /home/p1rat/code/rwal/src/funcs/funcs.h \
-  /home/p1rat/code/rwal/src/internal/GlobalConstans.h \
+  /home/p1rat/code/rwal/src/funcs/funcs.hpp \
+  /home/p1rat/code/rwal/src/internal/platform/env_utils.cpp \
+  /home/p1rat/code/rwal/src/internal/platform/env_utils.hpp \
   /home/p1rat/code/rwal/src/keywords/keywords.cpp \
-  /home/p1rat/code/rwal/src/keywords/keywords.h \
+  /home/p1rat/code/rwal/src/keywords/keywords.hpp \
   /home/p1rat/code/rwal/src/logs/logs.cpp \
-  /home/p1rat/code/rwal/src/logs/logs.h \
+  /home/p1rat/code/rwal/src/logs/logs.hpp \
   /home/p1rat/code/rwal/src/main.cpp \
   /home/p1rat/code/rwal/src/navigator/navigator.cpp \
-  /home/p1rat/code/rwal/src/navigator/navigator.h \
+  /home/p1rat/code/rwal/src/navigator/navigator.hpp \
   /home/p1rat/code/rwal/src/net/CurlWrapper.cpp \
-  /home/p1rat/code/rwal/src/net/CurlWrapper.h \
+  /home/p1rat/code/rwal/src/net/CurlWrapper.hpp \
   /home/p1rat/code/rwal/src/net/NetworkManager.cpp \
-  /home/p1rat/code/rwal/src/net/NetworkManager.h \
+  /home/p1rat/code/rwal/src/net/NetworkManager.hpp \
   /home/p1rat/code/rwal/src/settings/config.cpp \
-  /home/p1rat/code/rwal/src/settings/config.h \
+  /home/p1rat/code/rwal/src/settings/config.hpp \
   /home/p1rat/code/rwal/src/settings/settings.cpp \
-  /home/p1rat/code/rwal/src/settings/settings.h \
+  /home/p1rat/code/rwal/src/settings/settings.hpp \
   /home/p1rat/code/rwal/src/ui/cli/cli.cpp \
-  /home/p1rat/code/rwal/src/ui/cli/cli.h \
+  /home/p1rat/code/rwal/src/ui/cli/cli.hpp \
   /home/p1rat/code/rwal/src/ui/io/io.cpp \
-  /home/p1rat/code/rwal/src/ui/io/io.h \
+  /home/p1rat/code/rwal/src/ui/io/io.hpp \
   /home/p1rat/code/rwal/src/ui/menus/menus.cpp \
-  /home/p1rat/code/rwal/src/ui/menus/menus.h \
+  /home/p1rat/code/rwal/src/ui/menus/menus.hpp \
   /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp \
-  /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h \
+  /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp \
   /usr/bin/cmake \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
@@ -6433,8 +6434,6 @@ CMakeFiles/rwal.dir/src/logs/logs.cpp.o:
 
 CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o:
 
-CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o:
-
 /usr/lib32/libzstd.so.1:
 
 /usr/lib32/libz.so.1:
@@ -6563,6 +6562,8 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/curses.h:
 
+/home/p1rat/code/rwal/src/settings/settings.h:
+
 /usr/include/qt/QtCore/qstandardpaths.h:
 
 /usr/include/qt/QtCore/qfileinfo.h:
@@ -6603,9 +6604,23 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/asm-generic/socket.h:
 
+/home/p1rat/code/rwal/src/net/CurlWrapper.h:
+
+/home/p1rat/code/rwal/src/internal/GlobalConstans.h:
+
 /usr/include/qt/QtCore/QCoreApplication:
 
+/home/p1rat/code/rwal/src/ui/menus/menus.h:
+
+/home/p1rat/code/rwal/src/navigator/navigator.h:
+
 /usr/include/sys/stat.h:
+
+/usr/include/bits/in.h:
+
+/usr/include/bits/socket.h:
+
+/home/p1rat/code/rwal/src/ui/cli/cli.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/opt_random.h:
 
@@ -6639,13 +6654,17 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/c++/15.2.1/variant:
 
+/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h:
 
-/usr/include/stdint.h:
+/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h:
 
-/usr/include/math.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h:
+
+/usr/include/stdint.h:
 
 /usr/include/linux/sched/types.h:
 
@@ -6709,6 +6728,12 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/bits/iscanonical.h:
 
+/usr/lib32/libgssapi_krb5.so.2:
+
+/home/p1rat/code/rwal/src/logs/logs.h:
+
+/home/p1rat/code/rwal/src/settings/config.h:
+
 /usr/include/qt/QtCore/qlocale.h:
 
 /usr/include/bits/flt-eval-method.h:
@@ -6727,19 +6752,11 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/c++/15.2.1/bits/version.h:
 
-/usr/include/c++/15.2.1/cstdlib:
-
 /usr/include/c++/15.2.1/bits/valarray_before.h:
 
 /usr/include/c++/15.2.1/bits/valarray_array.h:
 
 /usr/include/c++/15.2.1/bit:
-
-/usr/lib/crti.o:
-
-/usr/include/qt/QtCore/qeventloop.h:
-
-/usr/include/c++/15.2.1/bits/valarray_after.h:
 
 /usr/include/c++/15.2.1/bits/utility.h:
 
@@ -6819,6 +6836,10 @@ CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o:
 
 /usr/include/c++/15.2.1/bits/ranges_base.h:
 
+/usr/include/c++/15.2.1/bits/range_access.h:
+
+/usr/include/qt/QtCore/qbytearraylist.h:
+
 /usr/include/c++/15.2.1/bits/out_ptr.h:
 
 /usr/include/c++/15.2.1/bits/std_abs.h:
@@ -6897,13 +6918,17 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/alloca.h:
 
-/usr/include/c++/15.2.1/bits/list.tcc:
+/usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
-
-/usr/include/bits/types/sigset_t.h:
+/usr/include/c++/15.2.1/bits/ios_base.h:
 
 /usr/include/c++/15.2.1/bits/indirect_array.h:
+
+/usr/lib/libGLdispatch.so.0:
+
+/usr/include/c++/15.2.1/backward/binders.h:
+
+/usr/include/c++/15.2.1/bits/hash_bytes.h:
 
 /usr/include/c++/15.2.1/bits/fs_path.h:
 
@@ -6933,17 +6958,13 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/vector:
 
-/usr/include/bits/mathcalls-narrow.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/messages_members.h:
-
-/usr/include/c++/15.2.1/bits/erase_if.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake:
-
 /usr/include/c++/15.2.1/bits/cxxabi_forced.h:
 
 /usr/include/c++/15.2.1/bits/ranges_cmp.h:
+
+/usr/include/c++/15.2.1/cctype:
+
+/usr/include/c++/15.2.1/ext/concurrence.h:
 
 /usr/include/nlohmann/detail/input/input_adapters.hpp:
 
@@ -6966,6 +6987,10 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /usr/include/nlohmann/detail/input/position_t.hpp:
 
 /usr/include/c++/15.2.1/bits/char_traits.h:
+
+/usr/include/c++/15.2.1/bits/move_only_function.h:
+
+/usr/include/nlohmann/detail/meta/is_sax.hpp:
 
 /usr/include/c++/15.2.1/cerrno:
 
@@ -6997,7 +7022,13 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/nlohmann/detail/meta/cpp_future.hpp:
 
+/usr/include/c++/15.2.1/array:
+
 /usr/include/bits/endianness.h:
+
+rwal_autogen/ICMTUFM33F/moc_config.cpp:
+
+CMakeFiles/4.1.2/CMakeSystem.cmake:
 
 /usr/include/libintl.h:
 
@@ -7010,6 +7041,8 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp:
 
 /usr/include/bits/types/struct_FILE.h:
+
+/home/p1rat/code/rwal/src/net/CurlWrapper.hpp:
 
 /usr/include/c++/15.2.1/filesystem:
 
@@ -7025,6 +7058,22 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/nlohmann/detail/macro_unscope.hpp:
 
+/usr/include/c++/15.2.1/bits/list.tcc:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
+
+/usr/include/bits/types/sigset_t.h:
+
+/home/p1rat/code/rwal/src/internal/platform/env_utils.hpp:
+
+/usr/include/c++/15.2.1/cstdint:
+
+/usr/include/nlohmann/detail/string_concat.hpp:
+
+/usr/include/qt/QtCore/qstringmatcher.h:
+
+/usr/share/cmake/Modules/Linker/GNU.cmake:
+
 /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h:
 
 /usr/include/qt/QtCore/qdir.h:
@@ -7033,15 +7082,9 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /home/p1rat/code/rwal/src/ui/io/io.cpp:
 
-/usr/include/c++/15.2.1/bits/stl_map.h:
+/usr/include/math.h:
 
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/bits/byteswap.h:
-
-/usr/include/bits/types/clockid_t.h:
-
-/usr/include/qt/QtCore/qsystemdetection.h:
+/home/p1rat/code/rwal/src/logs/logs.hpp:
 
 /usr/lib/cmake/Qt5/Qt5ModuleLocation.cmake:
 
@@ -7049,19 +7092,9 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/asm/errno.h:
 
-/usr/lib32/libharfbuzz.so.0:
-
-/usr/include/asm/posix_types.h:
-
-/usr/include/c++/15.2.1/bits/stl_vector.h:
-
-/usr/include/bits/time.h:
+/usr/include/c++/15.2.1/bits/alloc_traits.h:
 
 /usr/include/c++/15.2.1/compare:
-
-/usr/lib32/libgssapi_krb5.so.2:
-
-/home/p1rat/code/rwal/src/logs/logs.h:
 
 /usr/include/c++/15.2.1/cwctype:
 
@@ -7073,7 +7106,15 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/locale_facets.tcc:
 
-/usr/include/c++/15.2.1/bits/alloc_traits.h:
+/usr/lib32/libharfbuzz.so.0:
+
+/usr/include/asm/posix_types.h:
+
+CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o:
+
+/usr/include/asm-generic/int-ll64.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h:
 
 /usr/include/c++/15.2.1/bits/quoted_string.h:
 
@@ -7081,7 +7122,7 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/features-time64.h:
 
-/usr/include/asm/unistd.h:
+/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
 
 /usr/lib/libkrb5support.so.0:
 
@@ -7091,43 +7132,45 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/include/wchar.h:
 
-/usr/lib32/libresolv.so.2:
+/usr/include/bits/mathcalls-narrow.h:
 
-/usr/include/bits/getopt_core.h:
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/messages_members.h:
 
-/usr/include/c++/15.2.1/bits/align.h:
+/usr/include/c++/15.2.1/bits/erase_if.h:
 
-/usr/include/nlohmann/detail/output/output_adapters.hpp:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake:
 
-/home/p1rat/code/rwal/src/navigator/navigator.h:
+/home/p1rat/code/rwal/src/ui/menus/menus.hpp:
 
-/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h:
+/usr/include/bits/floatn.h:
 
-/usr/include/c++/15.2.1/ext/numeric_traits.h:
+/usr/include/c++/15.2.1/atomic:
 
-/usr/include/bits/xopen_lim.h:
+/usr/bin/cmake:
 
-/usr/include/c++/15.2.1/tr1/ell_integral.tcc:
+/usr/include/bits/types/time_t.h:
 
-/usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake:
+/home/p1rat/code/rwal/src/internal/platform/env_utils.cpp:
 
-/usr/include/nlohmann/detail/meta/is_sax.hpp:
+/usr/include/c++/15.2.1/bits/string_view.tcc:
 
-/usr/include/c++/15.2.1/bits/move_only_function.h:
+/usr/include/bits/types/__fpos_t.h:
 
-/home/p1rat/code/rwal/src/internal/GlobalConstans.h:
+/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
 
-/home/p1rat/code/rwal/src/net/CurlWrapper.h:
+/usr/include/nlohmann/adl_serializer.hpp:
 
-/usr/include/c++/15.2.1/tr1/bessel_function.tcc:
+/usr/include/bits/long-double.h:
 
-/usr/include/qt/QtCore/QDir:
+/usr/include/bits/struct_stat.h:
 
-/usr/include/nlohmann/detail/string_escape.hpp:
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
 
-/usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h:
+/home/p1rat/code/rwal/src/funcs/funcs.hpp:
 
-/usr/include/c++/15.2.1/bits/ios_base.h:
+/usr/include/c++/15.2.1/bits/ostream.tcc:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
 
 /usr/include/c++/15.2.1/bits/stl_construct.h:
 
@@ -7143,89 +7186,99 @@ CMakeFiles/rwal.dir/src/main.cpp.o:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake:
 
-/home/p1rat/code/rwal/src/ui/menus/menus.h:
-
 /home/p1rat/code/rwal/src/funcs/funcs.cpp:
 
 /usr/include/c++/15.2.1/bits/cxxabi_init_exception.h:
 
 rwal_autogen/moc_predefs.h:
 
-/usr/include/c++/15.2.1/ostream:
+/usr/include/asm/unistd.h:
 
-CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o:
+/home/p1rat/code/rwal/src/net/NetworkManager.hpp:
 
-/usr/include/asm-generic/int-ll64.h:
+/usr/include/gnu/stubs.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h:
-
-/usr/include/c++/15.2.1/bits/range_access.h:
-
-/usr/include/bits/struct_stat.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
-
-/usr/include/qt/QtCore/qbytearraylist.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h:
-
-/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h:
-
-/usr/include/c++/15.2.1/bits/ostream.tcc:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
-
-/home/p1rat/code/rwal/src/settings/config.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
-
-/usr/include/c++/15.2.1/bits/stl_iterator.h:
-
-/usr/include/qt/QtCore/qgenericatomic.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake:
-
-/usr/include/bits/pthreadtypes.h:
-
-/usr/include/c++/15.2.1/tr1/beta_function.tcc:
-
-/home/p1rat/code/rwal/src/navigator/navigator.cpp:
-
-/usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake:
-
-/usr/include/c++/15.2.1/ext/concurrence.h:
-
-/usr/include/c++/15.2.1/cctype:
-
-/usr/lib/libGLdispatch.so.0:
-
-/usr/include/c++/15.2.1/backward/binders.h:
-
-/usr/include/c++/15.2.1/bits/hash_bytes.h:
-
-/usr/include/c++/15.2.1/cstdio:
-
-/usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
+/home/p1rat/code/rwal/src/ui/cli/cli.hpp:
 
 /usr/include/assert.h:
 
-/home/p1rat/code/rwal/src/net/CurlWrapper.cpp:
+/usr/lib/crti.o:
 
-/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
+/usr/include/qt/QtCore/qeventloop.h:
 
-/usr/include/c++/15.2.1/chrono:
+/usr/include/c++/15.2.1/bits/valarray_after.h:
 
-/usr/include/features.h:
+CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o:
+
+/home/p1rat/code/rwal/src/keywords/keywords.hpp:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/c++/15.2.1/bits/stl_vector.h:
+
+/usr/include/bits/time.h:
+
+/home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp:
+
+/usr/include/bits/syscall.h:
+
+/usr/include/qt/QtCore/qconfig.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/c++/15.2.1/bits/stl_map.h:
+
+/home/p1rat/code/rwal/src/navigator/navigator.hpp:
 
 /usr/include/bits/types/mbstate_t.h:
 
 /usr/include/asm/types.h:
 
-/usr/include/bits/floatn.h:
+/usr/include/c++/15.2.1/bits/basic_ios.h:
 
-/usr/include/c++/15.2.1/atomic:
+/usr/include/asm/bitsperlong.h:
 
-/usr/bin/cmake:
+/home/p1rat/code/rwal/src/ui/menus/menus.cpp:
+
+CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
+
+/usr/include/c++/15.2.1/cstdio:
+
+/usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
+
+/home/p1rat/code/rwal/src/net/CurlWrapper.cpp:
+
+/usr/include/c++/15.2.1/bits/std_mutex.h:
+
+/usr/include/c++/15.2.1/bits/locale_facets_nonio.h:
+
+/home/p1rat/code/rwal/src/net/NetworkManager.cpp:
+
+/usr/include/bits/uintn-identity.h:
+
+/usr/include/bits/types/clockid_t.h:
+
+/usr/include/qt/QtCore/qsystemdetection.h:
+
+/home/p1rat/code/rwal/src/navigator/navigator.cpp:
+
+/usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake:
+
+/usr/include/c++/15.2.1/bits/valarray_array.tcc:
+
+/usr/include/bits/types/__locale_t.h:
+
+/usr/lib/libcom_err.so.2:
+
+/usr/lib/libgcc_s.so.1:
+
+/home/p1rat/code/rwal/src/keywords/keywords.cpp:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/c++/15.2.1/bits/stl_bvector.h:
+
+/usr/include/bits/posix2_lim.h:
 
 /home/p1rat/code/rwal/src/settings/settings.cpp:
 
@@ -7239,21 +7292,17 @@ CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o:
 
 /usr/include/bits/pthreadtypes-arch.h:
 
-/usr/include/c++/15.2.1/bits/std_mutex.h:
+/home/p1rat/code/rwal/src/settings/settings.hpp:
 
-/usr/include/c++/15.2.1/bits/locale_facets_nonio.h:
+/usr/include/c++/15.2.1/ext/aligned_buffer.h:
 
-/home/p1rat/code/rwal/src/net/NetworkManager.cpp:
+/usr/include/c++/15.2.1/locale:
 
-/usr/include/bits/uintn-identity.h:
+/usr/include/bits/timesize.h:
 
-/home/p1rat/code/rwal/src/settings/settings.h:
+/usr/include/bits/waitstatus.h:
 
-/home/p1rat/code/rwal/src/settings/config.cpp:
-
-/usr/include/sys/syscall.h:
-
-/usr/include/bits/types/cookie_io_functions_t.h:
+/usr/include/bits/wchar.h:
 
 /usr/lib32/libXdmcp.so.6:
 
@@ -7269,15 +7318,13 @@ CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o:
 
 /usr/include/c++/15.2.1/ext/atomicity.h:
 
-CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
+/usr/lib32/libresolv.so.2:
 
-/usr/include/c++/15.2.1/bits/basic_ios.h:
+/usr/include/bits/getopt_core.h:
 
-/usr/include/asm/bitsperlong.h:
+/usr/include/c++/15.2.1/bits/align.h:
 
-/home/p1rat/code/rwal/src/ui/menus/menus.cpp:
-
-/usr/include/bits/types/time_t.h:
+/usr/include/nlohmann/detail/output/output_adapters.hpp:
 
 /usr/lib/libQt5DBus.so.5.15.18:
 
@@ -7297,24 +7344,6 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/bits/local_lim.h:
 
-/usr/include/bits/syscall.h:
-
-/usr/include/qt/QtCore/qconfig.h:
-
-/usr/include/c++/15.2.1/bits/string_view.tcc:
-
-/usr/include/bits/types/__fpos_t.h:
-
-/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
-
-/usr/include/nlohmann/adl_serializer.hpp:
-
-/usr/include/bits/long-double.h:
-
-/usr/include/c++/15.2.1/bits/stl_bvector.h:
-
-/usr/include/bits/posix2_lim.h:
-
 /usr/include/c++/15.2.1/bits/enable_special_members.h:
 
 /usr/include/bits/atomic_wide_counter.h:
@@ -7325,11 +7354,27 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
 
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/c++/15.2.1/tr1/beta_function.tcc:
+
+/usr/include/bits/statx-generic.h:
+
+/usr/include/nlohmann/detail/iterators/primitive_iterator.hpp:
+
+/usr/include/c++/15.2.1/bits/stl_algobase.h:
+
+/home/p1rat/code/rwal/src/settings/config.cpp:
+
+/usr/include/sys/syscall.h:
+
+/usr/include/c++/15.2.1/chrono:
+
+/usr/include/features.h:
+
+/usr/include/bits/types/cookie_io_functions_t.h:
+
 /usr/include/bits/setjmp.h:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/bits/waitstatus.h:
 
 /usr/include/bits/libm-simd-decl-stubs.h:
 
@@ -7350,18 +7395,6 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 /usr/include/c++/15.2.1/iosfwd:
 
 /usr/include/bits/types/error_t.h:
-
-/usr/include/bits/stdio_lim.h:
-
-/usr/lib/libcom_err.so.2:
-
-/usr/lib/libgcc_s.so.1:
-
-/home/p1rat/code/rwal/src/keywords/keywords.cpp:
-
-/usr/include/c++/15.2.1/bits/valarray_array.tcc:
-
-/usr/include/bits/types/__locale_t.h:
 
 /usr/include/bits/thread-shared-types.h:
 
@@ -7393,6 +7426,12 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/c++/15.2.1/streambuf:
 
+/home/p1rat/code/rwal/src/keywords/keywords.h:
+
+/usr/include/bits/floatn-common.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
+
 /usr/include/bits/types/__fpos64_t.h:
 
 /home/p1rat/code/rwal/src/main.cpp:
@@ -7407,12 +7446,6 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/qt/QtCore/qbasicatomic.h:
 
-/usr/include/bits/in.h:
-
-/usr/include/bits/socket.h:
-
-/home/p1rat/code/rwal/src/ui/cli/cli.h:
-
 /usr/include/bits/waitflags.h:
 
 /usr/include/c++/15.2.1/bits/ranges_algobase.h:
@@ -7420,6 +7453,8 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 /usr/include/c++/15.2.1/forward_list:
 
 /usr/lib/libssl.so.3:
+
+/home/p1rat/code/rwal/src/settings/config.hpp:
 
 /usr/include/c++/15.2.1/bits/ranges_algo.h:
 
@@ -7447,6 +7482,12 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/share/cmake/Modules/Linker/GNU-CXX.cmake:
 
+/usr/include/qt/QtCore/qvector.h:
+
+/usr/include/c++/15.2.1/bits/algorithmfwd.h:
+
+/usr/include/c++/15.2.1/bits/memoryfwd.h:
+
 /usr/include/bits/types/wint_t.h:
 
 /usr/include/bits/uio_lim.h:
@@ -7461,16 +7502,6 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/c++/15.2.1/ext/alloc_traits.h:
 
-/usr/include/bits/timesize.h:
-
-/usr/include/qt/QtCore/qvector.h:
-
-/usr/include/c++/15.2.1/bits/memoryfwd.h:
-
-/usr/include/c++/15.2.1/bits/algorithmfwd.h:
-
-/usr/include/c++/15.2.1/array:
-
 /usr/include/bits/stdint-intn.h:
 
 /usr/include/bits/wctype-wchar.h:
@@ -7480,6 +7511,16 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 /usr/include/stdio.h:
 
 /usr/include/c++/15.2.1/bits/postypes.h:
+
+/usr/include/c++/15.2.1/ext/numeric_traits.h:
+
+/usr/include/bits/xopen_lim.h:
+
+/usr/include/c++/15.2.1/tr1/ell_integral.tcc:
+
+/usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake:
+
+/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp:
 
 /usr/include/c++/15.2.1/algorithm:
 
@@ -7493,11 +7534,9 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/qt/QtCore/qversiontagging.h:
 
+/usr/include/c++/15.2.1/cstdlib:
+
 /usr/include/c++/15.2.1/cstring:
-
-/usr/include/c++/15.2.1/ext/aligned_buffer.h:
-
-/usr/include/c++/15.2.1/locale:
 
 /usr/include/linux/types.h:
 
@@ -7551,6 +7590,8 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 
 /usr/include/c++/15.2.1/optional:
 
+/usr/include/c++/15.2.1/ostream:
+
 /usr/include/c++/15.2.1/pstl/execution_defs.h:
 
 /usr/include/c++/15.2.1/stdexcept:
@@ -7566,6 +7607,12 @@ CMakeFiles/4.1.2/CMakeCXXCompiler.cmake:
 /usr/include/c++/15.2.1/bits/invoke.h:
 
 /usr/include/c++/15.2.1/text_encoding:
+
+/usr/include/c++/15.2.1/tr1/bessel_function.tcc:
+
+/usr/include/qt/QtCore/QDir:
+
+/usr/include/nlohmann/detail/string_escape.hpp:
 
 /usr/include/c++/15.2.1/tr1/exp_integral.tcc:
 
@@ -7607,15 +7654,17 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h:
 
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
+
+/usr/include/c++/15.2.1/bits/stl_iterator.h:
+
+/usr/include/qt/QtCore/qgenericatomic.h:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake:
+
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h:
-
-/usr/include/bits/floatn-common.h:
-
-/home/p1rat/code/rwal/src/keywords/keywords.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h:
 
@@ -7640,8 +7689,6 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake:
 
 /usr/include/gnu/stubs-64.h:
-
-/usr/include/gnu/stubs.h:
 
 /usr/include/sys/socket.h:
 
@@ -7713,11 +7760,9 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:
 
-/usr/include/bits/statx-generic.h:
+/usr/include/qt/QtCore/qobjectdefs.h:
 
-/usr/include/c++/15.2.1/bits/stl_algobase.h:
-
-/usr/include/nlohmann/detail/iterators/primitive_iterator.hpp:
+/usr/include/nlohmann/detail/json_custom_base_class.hpp:
 
 /usr/include/nlohmann/detail/json_pointer.hpp:
 
@@ -7734,18 +7779,6 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 /usr/include/nlohmann/detail/output/binary_writer.hpp:
 
 /usr/include/nlohmann/detail/output/serializer.hpp:
-
-/usr/include/c++/15.2.1/cstdint:
-
-/usr/include/nlohmann/detail/string_concat.hpp:
-
-/usr/include/nlohmann/detail/json_custom_base_class.hpp:
-
-/usr/include/qt/QtCore/qobjectdefs.h:
-
-/usr/include/qt/QtCore/qstringmatcher.h:
-
-/usr/share/cmake/Modules/Linker/GNU.cmake:
 
 /usr/include/nlohmann/detail/string_utils.hpp:
 
@@ -7783,9 +7816,9 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/include/qt/QtCore/qflags.h:
 
-/usr/include/nlohmann/detail/input/json_sax.hpp:
-
 /home/p1rat/code/rwal/src/net/NetworkManager.h:
+
+/usr/include/nlohmann/detail/input/json_sax.hpp:
 
 /usr/include/qt/QtCore/qstringlist.h:
 
@@ -7887,10 +7920,6 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake:
 
-/usr/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake:
-
 /usr/include/c++/15.2.1/bits/ptr_traits.h:
 
 /usr/include/ctype.h:
@@ -7941,6 +7970,8 @@ CMakeFiles/rwal.dir/src/settings/config.cpp.o:
 
 /usr/lib/libpng16.so.16:
 
+/home/p1rat/code/rwal/src/ui/io/io.hpp:
+
 /usr/share/cmake/Modules/FindCURL.cmake:
 
 /usr/share/cmake/Modules/FindCurses.cmake:
@@ -7975,6 +8006,10 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o:
 
 /usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake:
 
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake:
+
+/usr/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake:
+
 /usr/lib32/libnghttp2.so.14:
 
 /usr/include/bits/types/__mbstate_t.h:
@@ -7982,7 +8017,3 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o:
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake:
 
 rwal_autogen/mocs_compilation.cpp:
-
-CMakeFiles/4.1.2/CMakeSystem.cmake:
-
-rwal_autogen/ICMTUFM33F/moc_config.cpp:

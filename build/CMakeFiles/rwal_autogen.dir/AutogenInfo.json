@@ -108,85 +108,85 @@
 	"HEADERS" : 
 	[
 		[
-			"/home/p1rat/code/rwal/src/dbus/PlasmaDBus.h",
+			"/home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp",
 			"MU",
 			"FBT33E4DH6/moc_PlasmaDBus.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/funcs/funcs.h",
+			"/home/p1rat/code/rwal/src/funcs/funcs.hpp",
 			"MU",
 			"JN5YVYUASM/moc_funcs.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/internal/GlobalConstans.h",
+			"/home/p1rat/code/rwal/src/internal/platform/env_utils.hpp",
 			"MU",
-			"TLJAIHGYSZ/moc_GlobalConstans.cpp",
+			"ISY75Z2EZA/moc_env_utils.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/keywords/keywords.h",
+			"/home/p1rat/code/rwal/src/keywords/keywords.hpp",
 			"MU",
 			"YLEOVZJWXT/moc_keywords.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/logs/logs.h",
+			"/home/p1rat/code/rwal/src/logs/logs.hpp",
 			"MU",
 			"H7PGZVHGC6/moc_logs.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/navigator/navigator.h",
+			"/home/p1rat/code/rwal/src/navigator/navigator.hpp",
 			"MU",
 			"4ECQZEQ6UK/moc_navigator.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/net/CurlWrapper.h",
+			"/home/p1rat/code/rwal/src/net/CurlWrapper.hpp",
 			"MU",
 			"7OIUYE7PDQ/moc_CurlWrapper.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/net/NetworkManager.h",
+			"/home/p1rat/code/rwal/src/net/NetworkManager.hpp",
 			"MU",
 			"7OIUYE7PDQ/moc_NetworkManager.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/settings/config.h",
+			"/home/p1rat/code/rwal/src/settings/config.hpp",
 			"MU",
 			"ICMTUFM33F/moc_config.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/settings/settings.h",
+			"/home/p1rat/code/rwal/src/settings/settings.hpp",
 			"MU",
 			"ICMTUFM33F/moc_settings.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/ui/cli/cli.h",
+			"/home/p1rat/code/rwal/src/ui/cli/cli.hpp",
 			"MU",
 			"SULDK2LFTM/moc_cli.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/ui/io/io.h",
+			"/home/p1rat/code/rwal/src/ui/io/io.hpp",
 			"MU",
 			"WWP5RIGN3J/moc_io.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/ui/menus/menus.h",
+			"/home/p1rat/code/rwal/src/ui/menus/menus.hpp",
 			"MU",
 			"5RFAFZXDHW/moc_menus.cpp",
 			null
 		],
 		[
-			"/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h",
+			"/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp",
 			"MU",
 			"A6UPEAG54T/moc_WallpaperManager.cpp",
 			null
@@ -256,6 +256,11 @@
 	[
 		[ "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/funcs/funcs.cpp", "MU", null ],
+		[
+			"/home/p1rat/code/rwal/src/internal/platform/env_utils.cpp",
+			"MU",
+			null
+		],
 		[ "/home/p1rat/code/rwal/src/keywords/keywords.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/logs/logs.cpp", "MU", null ],
 		[ "/home/p1rat/code/rwal/src/main.cpp", "MU", null ],
