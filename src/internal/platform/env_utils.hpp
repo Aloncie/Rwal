@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 namespace rwal::platform{
 	namespace terminal {
@@ -13,6 +16,6 @@ namespace rwal::platform{
 		}
 	}
 	namespace executor{
-		void open_editor(std::string& path);
+		void open_editor(fs::path& path);
 	}
 }
