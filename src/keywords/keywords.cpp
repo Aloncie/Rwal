@@ -3,6 +3,7 @@
 #include "internal/platform/env_utils.hpp"
 #include "funcs/funcs.hpp"
 #include "ui/cli/cli.hpp"
+#include <filesystem>
 #include <iostream>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -58,19 +59,19 @@ std::string Keywords::GetRandomKeywords(const std::string& mode){
 }
 
 void Keywords::editKeywords(){
-	std::string path = std::string(SOURCE_DIR) + "keywords.txt";
-	importToTxt(path);
+	fs::path temp_path = fs::temp_directory_path() / "keywords.txt";	
+	importToTxt(temp_path);
 	std::vector<std::string> keywords;
 	
 	rwal::platform::terminal::buffer::enter_alt_buffer();
-	rwal::platform::executor::open_editor(path);	
+	rwal::platform::executor::open_editor(temp_path);	
 	rwal::platform::terminal::buffer::leave_alt_buffer();
-	keywords = exportFromTxt(path);
+	keywords = exportFromTxt(temp_path);
 
 	Config::getInstance().set("/search/keywords", keywords);
 }
 
-void Keywords::importToTxt(std::string& path){
+void Keywords::importToTxt(fs::path& path){
 
 	std::ofstream file(path);
 	std::vector<std::string> keywords = ShortWayGetKeywords();	
@@ -81,7 +82,7 @@ void Keywords::importToTxt(std::string& path){
 
 }
 
-std::vector<std::string> Keywords::exportFromTxt(std::string& path){
+std::vector<std::string> Keywords::exportFromTxt(fs::path& path){
 	std::ifstream file(path);
 	std::string line;
 	std::vector<std::string> keywords;

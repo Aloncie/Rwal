@@ -4,14 +4,17 @@
 #include <vector>
 #include <nlohmann/json.hpp>
 #include "settings/config.hpp"
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 extern const std::string keywords_path;
 
 class Keywords{
 private:
 	std::vector<std::string> LongWayGetKeywords();
-	void importToTxt(std::string& path);
-	std::vector<std::string> exportFromTxt(std::string& path);
+	void importToTxt(fs::path& path);
+	std::vector<std::string> exportFromTxt(fs::path& path);
 
 public:
 	void Default(std::vector<std::string>& Keywords);
