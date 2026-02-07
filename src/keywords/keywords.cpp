@@ -69,13 +69,14 @@ void Keywords::editKeywords(){
 	keywords = exportFromTxt(temp_path);
 
 	Config::getInstance().set("/search/keywords", keywords);
+
+	fs::remove(temp_path);
 }
 
 void Keywords::importToTxt(fs::path& path){
 
 	std::ofstream file(path);
 	std::vector<std::string> keywords = ShortWayGetKeywords();	
-	file << "#Edit keywords with rule '1 string - 1 word'";
 	for (int i = 0; i < keywords.size(); i++)
 	   file << keywords[i] + "\n";
 	file.close();
@@ -97,7 +98,7 @@ std::vector<std::string> Keywords::exportFromTxt(fs::path& path){
 		}
 		file.close();
 	} else{
-		Logs::getInstance().write_logs("Failed opening keywords.txt in " + path);
+		Logs::getInstance().write_logs("Failed opening keywords.txt in " + path.string());
 		MenuManager::getInstatce().show_message("Failed operation. More info in logs");
 	}
 	return keywords;
