@@ -1,17 +1,22 @@
 #include "navigator.hpp"
 #include "ui/cli/cli.hpp"
 
+void Navigator::printMenu(){
+	auto menu = current_menu->menu();	
+	std::cout << "\n";
+	for (int i = 0;i < menu.size();i++){
+		std::cout << menu[i] << "\n";
+	}
+}
 
-void Navigator::core(const rwal::ui::BaseMenu* current_menu) {
-	std::string input;
-    do {
-		input = (*current_menu).get_input();	
-       	auto x = (*current_menu).execute_actions(input); 
-		if (x.nextMenu){
-			current_menu = x.nextMenu;
-			input = "";
-		}
-		if (x.IsWrongInput)
-			MenuManager::getInstatce().show_message("Invalid input");
-    } while (input != "q");
+void Navigator::processInput(std::string input) {
+	auto x = current_menu->execute_actions(input); 
+	if (x.nextMenu)
+		current_menu = x.nextMenu;
+	else if (x.IsWrongInput)
+		MenuManager::getInstatce().show_message("Invalid input");
+}
+
+rwal::ui::CharacterMenuConfig* Navigator::getCurrentMenu(){
+	return current_menu;
 }

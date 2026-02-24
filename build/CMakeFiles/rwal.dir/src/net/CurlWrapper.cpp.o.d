@@ -1,6 +1,6 @@
 CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: \
  /home/p1rat/code/rwal/src/net/CurlWrapper.cpp /usr/include/stdc-predef.h \
- /home/p1rat/code/rwal/src/net/CurlWrapper.h /usr/include/curl/curl.h \
+ /home/p1rat/code/rwal/src/net/CurlWrapper.hpp /usr/include/curl/curl.h \
  /usr/include/curl/curlver.h /usr/include/curl/system.h \
  /usr/include/sys/types.h /usr/include/features.h \
  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -325,9 +325,40 @@ CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp /usr/include/c++/15.2.1/any \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /home/p1rat/code/rwal/src/internal/GlobalConstans.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/fstream \
+ /home/p1rat/code/rwal/src/internal/GlobalConstans.hpp \
+ /home/p1rat/code/rwal/src/logs/logs.hpp /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
- /home/p1rat/code/rwal/src/funcs/funcs.h
+ /usr/include/qt/QtCore/QStandardPaths \
+ /usr/include/qt/QtCore/qstandardpaths.h \
+ /usr/include/qt/QtCore/qstringlist.h /usr/include/qt/QtCore/qlist.h \
+ /usr/include/qt/QtCore/qalgorithms.h /usr/include/qt/QtCore/qglobal.h \
+ /usr/include/qt/QtCore/qconfig.h /usr/include/qt/QtCore/qtcore-config.h \
+ /usr/include/qt/QtCore/qsystemdetection.h \
+ /usr/include/qt/QtCore/qprocessordetection.h \
+ /usr/include/qt/QtCore/qcompilerdetection.h \
+ /usr/include/qt/QtCore/qtypeinfo.h /usr/include/qt/QtCore/qsysinfo.h \
+ /usr/include/qt/QtCore/qlogging.h /usr/include/qt/QtCore/qflags.h \
+ /usr/include/qt/QtCore/qatomic.h /usr/include/qt/QtCore/qbasicatomic.h \
+ /usr/include/qt/QtCore/qatomic_cxx11.h \
+ /usr/include/qt/QtCore/qgenericatomic.h /usr/include/c++/15.2.1/atomic \
+ /usr/include/qt/QtCore/qglobalstatic.h /usr/include/qt/QtCore/qnumeric.h \
+ /usr/include/qt/QtCore/qversiontagging.h \
+ /usr/include/qt/QtCore/qiterator.h /usr/include/qt/QtCore/qrefcount.h \
+ /usr/include/qt/QtCore/qarraydata.h \
+ /usr/include/qt/QtCore/qhashfunctions.h /usr/include/qt/QtCore/qstring.h \
+ /usr/include/qt/QtCore/qchar.h /usr/include/qt/QtCore/qbytearray.h \
+ /usr/include/qt/QtCore/qnamespace.h /usr/include/c++/15.2.1/stdlib.h \
+ /usr/include/qt/QtCore/qstringliteral.h \
+ /usr/include/qt/QtCore/qstringalgorithms.h \
+ /usr/include/qt/QtCore/qstringview.h /usr/include/qt/QtCore/qpair.h \
+ /usr/include/qt/QtCore/qvector.h \
+ /usr/include/qt/QtCore/qcontainertools_impl.h \
+ /usr/include/c++/15.2.1/list /usr/include/c++/15.2.1/bits/stl_list.h \
+ /usr/include/c++/15.2.1/bits/list.tcc \
+ /usr/include/qt/QtCore/qbytearraylist.h /usr/include/qt/QtCore/qregexp.h \
+ /usr/include/qt/QtCore/qstringmatcher.h \
+ /usr/include/qt/QtCore/qobjectdefs.h \
+ /usr/include/qt/QtCore/qobjectdefs_impl.h \
+ /home/p1rat/code/rwal/src/funcs/funcs.hpp

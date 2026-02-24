@@ -3,6 +3,7 @@
 #include "ui/cli/cli.hpp"
 #include "keywords/keywords.hpp"
 #include "settings/config.hpp"
+#include "internal/utils/string_utils.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 
 namespace rwal::ui {
@@ -18,9 +19,9 @@ namespace rwal::ui {
 				save_wallpaper(where_are_wallpaper()); 
 				return {nullptr, false}; 
 			} else if (input == "3") {
-				return {(BaseMenu*)&KEYWORDS_MENU, false};
+				return {&KEYWORDS_MENU, false};
 			} else if (input == "4") {
-				return {(BaseMenu*)&SETTINGS_MENU, false};
+				return {&SETTINGS_MENU, false};
 			} else if (input == "q") {
 				return {nullptr, false}; 
 			} else {
@@ -29,14 +30,13 @@ namespace rwal::ui {
 		}
 	};
 
-	const ArrowMenuConfig TIMER_MENU = {
+	const CharacterMenuConfig TIMER_MENU = {
 		ready::timer_list,
 		[](std::string input) -> MenuResponce {
 			Timer t;
 			// Здесь логика валидации внутри edit_timer
-			if (input == "hourly" || input == "daily") {
-				t.edit_timer(input);
-				return {(BaseMenu*)&SETTINGS_MENU, false};
+			if (input == "hourly" || input == "daily") { t.edit_timer(input);
+				return {&SETTINGS_MENU, false};
 			} else {
 				return {nullptr, true};
 			}
@@ -53,7 +53,7 @@ namespace rwal::ui {
 			if (input == "a") { 
 				std::string keyword = MenuManager::getInstatce().request_input<std::string>("Write new keyword: ");
 				if (!keyword.empty()) {
-					k.Format(keyword); 
+					rwal::utils::str::format(keyword); 
 					keywords.push_back(keyword);
 					Config::getInstance().set("/search/keywords", keywords);
 				}
@@ -69,11 +69,11 @@ namespace rwal::ui {
 				}
 				return {nullptr, false};
 			} else if (input == "m") {
-				k.open_keywords_editor();
+				k.edit_keywords();
 				Config::getInstance().loadConfig();
 				return {nullptr, false};
 			} else if (input == "q") {
-				return {(BaseMenu*)&MAIN_MENU, false};
+				return {&MAIN_MENU, false};
 			} else {
 				return {nullptr, true};
 			}
@@ -85,11 +85,11 @@ namespace rwal::ui {
 		generators::settings_list,
 		[](std::string input) -> MenuResponce {
 			if (input == "1") {
-				return {(BaseMenu*)&TIMER_MENU, false};
+				return {&TIMER_MENU, false};
 			} else if (input == "2") {
 				return {nullptr, false}; // Место для логики пути
 			} else if (input == "q") {
-				return {(BaseMenu*)&MAIN_MENU, false};
+				return {&MAIN_MENU, false};
 			} else {
 				return {nullptr, true};
 			}
@@ -128,8 +128,5 @@ namespace rwal::ui {
 			return {"none", "hourly", "daily"};
 		}
 	}
-
-	std::string CharacterMenuConfig::get_input() const { return io::CharacterInput(*this); }
-	std::string ArrowMenuConfig::get_input() const { return io::ArrowInput(*this); }
 
 }

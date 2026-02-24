@@ -2,22 +2,23 @@
 #include "wallpaper/WallpaperManager.hpp"
 #include <string>
 #include <QCoreApplication>
+#include <QObject>
 #include "ui/menus/menus.hpp"
-
+#include "AppController/AppController.hpp"
+#include <iostream>
 
 int main(int argc,char* argv[]){
-	Navigator n;
+	Navigator navigator;
 	std::string s;
 	QCoreApplication app(argc, argv);
-
-	if (argv[1])
+	if (argc > 1&&argv[1])
 		s = argv[1];
 
-//	if (s == "--help"  || s  == "-h")
-
-	if (s == "--change" || s == "-c")
+	if (s == "--change" || s == "-c"){
 		refresh_wallpaper("change");
-	else 
-		n.core(&rwal::ui::MAIN_MENU);
-	return 0;
+		return 0;
+	}
+
+	AppController controller(&navigator);
+	return app.exec();
 }

@@ -2,6 +2,7 @@
 #include <string>
 #include <filesystem>
 #include <fstream>
+#include <QStandardPaths>
 
 namespace fs = std::filesystem;
 
@@ -11,7 +12,7 @@ private:
 	std::ofstream f;
 
 	Logs(){
-		logs_path = fs::path(SOURCE_DIR) / "logs.txt";
+		logs_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::CacheLocation).toStdString()) / "logs.txt";
 		if (fs::exists(logs_path)){
 			const std::uintmax_t fileSize = fs::file_size(logs_path);
 			const std::uintmax_t limit_size = 1024 * 1024;

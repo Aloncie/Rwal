@@ -1,7 +1,7 @@
 CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
  /usr/include/stdc-predef.h \
- /home/p1rat/code/rwal/src/navigator/navigator.h \
- /home/p1rat/code/rwal/src/ui/menus/menus.h \
+ /home/p1rat/code/rwal/src/navigator/navigator.hpp \
+ /home/p1rat/code/rwal/src/ui/menus/menus.hpp \
  /usr/include/c++/15.2.1/vector \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -125,8 +125,7 @@ CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
  /usr/include/c++/15.2.1/bits/enable_special_members.h \
  /usr/include/c++/15.2.1/bits/node_handle.h \
  /usr/include/c++/15.2.1/bits/erase_if.h /usr/include/c++/15.2.1/array \
- /home/p1rat/code/rwal/src/ui/io/io.h \
- /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.h \
+ /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp \
  /usr/include/qt/QtCore/QCoreApplication \
  /usr/include/qt/QtCore/qcoreapplication.h \
  /usr/include/qt/QtCore/qglobal.h /usr/include/c++/15.2.1/utility \
@@ -277,4 +276,9 @@ CMakeFiles/rwal.dir/src/main.cpp.o: /home/p1rat/code/rwal/src/main.cpp \
  /usr/include/c++/15.2.1/bits/formatfwd.h \
  /usr/include/c++/15.2.1/bits/unicode.h \
  /usr/include/c++/15.2.1/bits/unicode-data.h \
- /usr/include/qt/QtCore/qcoreevent.h /usr/include/qt/QtCore/qeventloop.h
+ /usr/include/qt/QtCore/qcoreevent.h /usr/include/qt/QtCore/qeventloop.h \
+ /usr/include/qt/QtCore/QObject /usr/include/qt/QtCore/qobject.h \
+ /home/p1rat/code/rwal/src/AppController/AppController.hpp \
+ /usr/include/qt/QtCore/QSocketNotifier \
+ /usr/include/qt/QtCore/qsocketnotifier.h \
+ /usr/include/c++/15.2.1/iostream
