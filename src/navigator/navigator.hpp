@@ -1,7 +1,12 @@
 #pragma once
-#include "ui/menus/menus.h"
+#include "ui/menus/menus.hpp"
+#include <string>
 
 class Navigator{
+	const rwal::ui::CharacterMenuConfig* current_menu;
 public:
-	void core(const rwal::ui::BaseMenu* current_menu);
+	Navigator(const rwal::ui::CharacterMenuConfig& config) : current_menu(&config) {};
+	void printMenu();
+	void processInput(std::string input);
+	rwal::ui::CharacterMenuConfig* getCurrentMenu();
 };

@@ -27,6 +27,13 @@ void save_wallpaper(std::string from){
 		if (rwal == "None"){ std::cerr << "Failed operation. More in logs"; return;
 		}
 		Logs::getInstance().write_logs("Output of rwal_catalog: " + rwal.string());
+
+		auto pos = from.find(rwal::wallpaper::FILE_PREFIX);
+		if (pos == std::string::npos) {
+			Logs::getInstance().write_logs("Error: filename doesn't contain prefix");
+			return; 
+		}
+
 		fs::path to = rwal / from.substr(from.find("wallpaper"));
 		Logs::getInstance().write_logs("Image successful saved: " + std::string(to));
 		MenuManager::getInstatce().show_message("Image successfully saved");

@@ -1,7 +1,7 @@
 CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: \
  /home/p1rat/code/rwal/build/rwal_autogen/mocs_compilation.cpp \
  /usr/include/stdc-predef.h \
- /home/p1rat/code/rwal/build/rwal_autogen/ICMTUFM33F/moc_config.cpp \
+ /home/p1rat/code/rwal/build/rwal_autogen/ZA5ADP36QA/moc_AppController.cpp \
  /usr/include/c++/15.2.1/memory /usr/include/c++/15.2.1/bits/memoryfwd.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -186,24 +186,10 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: \
  /usr/include/c++/15.2.1/bits/ranges_algobase.h \
  /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/15.2.1/pstl/execution_defs.h \
- /home/p1rat/code/rwal/build/rwal_autogen/ICMTUFM33F/../../../src/settings/config.hpp \
- /usr/include/c++/15.2.1/functional \
- /usr/include/c++/15.2.1/bits/std_function.h \
- /usr/include/c++/15.2.1/unordered_map \
- /usr/include/c++/15.2.1/bits/unordered_map.h \
- /usr/include/c++/15.2.1/bits/hashtable.h \
- /usr/include/c++/15.2.1/bits/hashtable_policy.h \
- /usr/include/c++/15.2.1/bits/enable_special_members.h \
- /usr/include/c++/15.2.1/bits/node_handle.h \
- /usr/include/c++/15.2.1/bits/erase_if.h /usr/include/c++/15.2.1/vector \
- /usr/include/c++/15.2.1/bits/stl_vector.h \
- /usr/include/c++/15.2.1/bits/stl_bvector.h \
- /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/array \
- /usr/include/qt/QtCore/QFileSystemWatcher \
- /usr/include/qt/QtCore/qfilesystemwatcher.h \
- /usr/include/qt/QtCore/qobject.h /usr/include/qt/QtCore/qobjectdefs.h \
- /usr/include/qt/QtCore/qnamespace.h /usr/include/qt/QtCore/qglobal.h \
- /usr/include/c++/15.2.1/utility \
+ /home/p1rat/code/rwal/build/rwal_autogen/ZA5ADP36QA/../../../src/AppController/AppController.hpp \
+ /usr/include/qt/QtCore/QObject /usr/include/qt/QtCore/qobject.h \
+ /usr/include/qt/QtCore/qobjectdefs.h /usr/include/qt/QtCore/qnamespace.h \
+ /usr/include/qt/QtCore/qglobal.h /usr/include/c++/15.2.1/utility \
  /usr/include/c++/15.2.1/bits/stl_relops.h /usr/include/assert.h \
  /usr/include/qt/QtCore/qconfig.h /usr/include/qt/QtCore/qtcore-config.h \
  /usr/include/qt/QtCore/qsystemdetection.h \
@@ -239,6 +225,18 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_numeric.h \
  /usr/include/c++/15.2.1/limits \
  /usr/include/c++/15.2.1/pstl/glue_numeric_defs.h \
+ /usr/include/c++/15.2.1/functional \
+ /usr/include/c++/15.2.1/bits/std_function.h \
+ /usr/include/c++/15.2.1/unordered_map \
+ /usr/include/c++/15.2.1/bits/unordered_map.h \
+ /usr/include/c++/15.2.1/bits/hashtable.h \
+ /usr/include/c++/15.2.1/bits/hashtable_policy.h \
+ /usr/include/c++/15.2.1/bits/enable_special_members.h \
+ /usr/include/c++/15.2.1/bits/node_handle.h \
+ /usr/include/c++/15.2.1/bits/erase_if.h /usr/include/c++/15.2.1/vector \
+ /usr/include/c++/15.2.1/bits/stl_vector.h \
+ /usr/include/c++/15.2.1/bits/stl_bvector.h \
+ /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/array \
  /usr/include/qt/QtCore/qvector.h \
  /usr/include/qt/QtCore/qcontainertools_impl.h \
  /usr/include/c++/15.2.1/list /usr/include/c++/15.2.1/bits/stl_list.h \
@@ -276,6 +274,15 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: \
  /usr/include/c++/15.2.1/bits/formatfwd.h \
  /usr/include/c++/15.2.1/bits/unicode.h \
  /usr/include/c++/15.2.1/bits/unicode-data.h \
+ /usr/include/qt/QtCore/QSocketNotifier \
+ /usr/include/qt/QtCore/qsocketnotifier.h \
+ /usr/include/qt/QtCore/qobject.h \
+ /home/p1rat/code/rwal/src/navigator/navigator.hpp \
+ /home/p1rat/code/rwal/src/ui/menus/menus.hpp \
+ /home/p1rat/code/rwal/build/rwal_autogen/ICMTUFM33F/moc_config.cpp \
+ /home/p1rat/code/rwal/build/rwal_autogen/ICMTUFM33F/../../../src/settings/config.hpp \
+ /usr/include/qt/QtCore/QFileSystemWatcher \
+ /usr/include/qt/QtCore/qfilesystemwatcher.h \
  /usr/include/nlohmann/json.hpp /usr/include/nlohmann/adl_serializer.hpp \
  /usr/include/nlohmann/detail/abi_macros.hpp \
  /usr/include/nlohmann/detail/conversions/from_json.hpp \
@@ -363,4 +370,6 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: \
  /home/p1rat/code/rwal/src/logs/logs.hpp /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/15.2.1/bits/fstream.tcc
+ /usr/include/c++/15.2.1/bits/fstream.tcc \
+ /usr/include/qt/QtCore/QStandardPaths \
+ /usr/include/qt/QtCore/qstandardpaths.h

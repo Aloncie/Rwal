@@ -364,6 +364,8 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
+ /usr/include/qt/QtCore/QStandardPaths \
+ /usr/include/qt/QtCore/qstandardpaths.h \
  /home/p1rat/code/rwal/src/internal/platform/env_utils.hpp \
  /usr/include/c++/15.2.1/iostream \
  /home/p1rat/code/rwal/src/funcs/funcs.hpp \
@@ -372,4 +374,6 @@ CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o: \
  /usr/include/bits/statx.h /usr/include/linux/stat.h \
  /usr/include/bits/statx-generic.h \
  /usr/include/bits/types/struct_statx_timestamp.h \
- /usr/include/bits/types/struct_statx.h
+ /usr/include/bits/types/struct_statx.h \
+ /home/p1rat/code/rwal/src/internal/utils/string_utils.hpp \
+ /home/p1rat/code/rwal/src/internal/utils/vector_utils.hpp

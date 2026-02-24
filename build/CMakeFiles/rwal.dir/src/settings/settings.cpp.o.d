@@ -1,6 +1,7 @@
 CMakeFiles/rwal.dir/src/settings/settings.cpp.o: \
  /home/p1rat/code/rwal/src/settings/settings.cpp \
- /usr/include/stdc-predef.h /home/p1rat/code/rwal/src/settings/settings.h \
+ /usr/include/stdc-predef.h \
+ /home/p1rat/code/rwal/src/settings/settings.hpp \
  /usr/include/c++/15.2.1/string \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -279,13 +280,14 @@ CMakeFiles/rwal.dir/src/settings/settings.cpp.o: \
  /usr/include/c++/15.2.1/bits/unicode.h \
  /usr/include/c++/15.2.1/bits/unicode-data.h \
  /usr/include/qt/QtCore/qshareddata.h /usr/include/qt/QtCore/qhash.h \
- /home/p1rat/code/rwal/src/logs/logs.h /usr/include/c++/15.2.1/fstream \
+ /home/p1rat/code/rwal/src/logs/logs.hpp /usr/include/c++/15.2.1/fstream \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
+ /usr/include/qt/QtCore/QStandardPaths \
+ /usr/include/qt/QtCore/qstandardpaths.h \
  /usr/include/qt/QtCore/QCoreApplication \
  /usr/include/qt/QtCore/qcoreapplication.h \
  /usr/include/qt/QtCore/qcoreevent.h /usr/include/qt/QtCore/qeventloop.h \
- /usr/include/qt/QtCore/QStandardPaths \
- /usr/include/qt/QtCore/qstandardpaths.h /usr/include/qt/QtCore/QFileInfo \
- /usr/include/qt/QtCore/qfileinfo.h /usr/include/c++/15.2.1/iostream
+ /usr/include/qt/QtCore/QFileInfo /usr/include/qt/QtCore/qfileinfo.h \
+ /usr/include/c++/15.2.1/iostream

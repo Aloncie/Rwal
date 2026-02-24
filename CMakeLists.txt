@@ -19,7 +19,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "src/*.cpp")
-file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "src/*.h")
+file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "src/*.hpp")
 
 add_executable(rwal ${SOURCES} ${HEADERS})
 
@@ -35,6 +35,7 @@ target_include_directories(rwal PRIVATE
     ${Qt5Core_INCLUDE_DIRS}
 	${Qt5Widgets_INCLUDE_DIRS}
 	${CURSES_INCLUDE_DIRS}
+	${QT_USE_FILE}
 )
 
 target_link_libraries(rwal PRIVATE 

@@ -1,5 +1,5 @@
 #pragma once
-#include "CurlWrapper.h"
+#include "CurlWrapper.hpp"
 #include <optional>
 #include <string>
 
