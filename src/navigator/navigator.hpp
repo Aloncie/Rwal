@@ -8,5 +8,5 @@ public:
 	Navigator(const rwal::ui::CharacterMenuConfig& config) : current_menu(&config) {};
 	void printMenu();
 	void processInput(std::string input);
-	rwal::ui::CharacterMenuConfig* getCurrentMenu();
+	const rwal::ui::CharacterMenuConfig* getCurrentMenu() const;
 };
