@@ -11,12 +11,12 @@ void AppController::handleStdin(){
 	std::string input;
 	do {
 
-	while (config.valid_choices.find(input) == std::string::npos){
+	while (config->valid_choices.find(input) == std::string::npos){
 		std::getline(std::cin,input);
 		MenuManager::getInstatce().countOperatorPlus(1);
 	}
-
-	MenuManager::getInstatce().countOperatorPlus(menu.size());
+	auto menuLines = m_navigator->getCurrentMenu()->menu().size(); 
+	MenuManager::getInstatce().countOperatorPlus(menuLines);
 
 	MenuManager::getInstatce().clear_last_lines();
 	m_navigator->processInput(input);
