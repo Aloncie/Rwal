@@ -72,7 +72,7 @@ rwal_autogen/timestamp: /usr/bin/moc
 rwal_autogen/timestamp: /usr/bin/uic
 rwal_autogen/timestamp: CMakeFiles/rwal_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/p1rat/code/rwal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target rwal"
-	/usr/bin/cmake -E cmake_autogen /home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen.dir/AutogenInfo.json ""
+	/usr/bin/cmake -E cmake_autogen /home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen.dir/AutogenInfo.json Debug
 	/usr/bin/cmake -E touch /home/p1rat/code/rwal/build/rwal_autogen/timestamp
 
 CMakeFiles/rwal_autogen.dir/codegen:

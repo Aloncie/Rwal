@@ -10,7 +10,7 @@ private:
 	static std::vector<std::string> dontShowAgain;
 	MenuManager();
 public:
-	static MenuManager& getInstatce();
+	static MenuManager& getInstance();
 	void clear_last_lines();
 	void countOperatorPlus(int count);
 	void show_message(std::string message);

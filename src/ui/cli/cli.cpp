@@ -19,7 +19,7 @@ extern std::map<std::string,int> countStr;
 
 MenuManager::MenuManager() : count_ref(0) {}
 
-MenuManager& MenuManager::getInstatce(){
+MenuManager& MenuManager::getInstance(){
 	static MenuManager instance;
 	return instance;
 }

@@ -13,6 +13,5 @@ private slots:
 private:
 	QSocketNotifier* m_notifier;
 	Navigator* m_navigator;
-	rwal::ui::CharacterMenuConfig* config;
 };
 

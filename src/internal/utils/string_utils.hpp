@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <vector>
 
-namespace rwal::utils::str{
+namespace rwal::utils::string{
 	inline void format(std::string& str){
 		if (str.empty())
 			return;

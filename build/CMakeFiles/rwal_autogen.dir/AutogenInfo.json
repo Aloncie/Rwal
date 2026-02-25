@@ -224,7 +224,6 @@
 		"QT_CORE_LIB",
 		"QT_DBUS_LIB",
 		"QT_GUI_LIB",
-		"QT_NO_DEBUG",
 		"QT_WIDGETS_LIB",
 		"SOURCE_DIR=\"/home/p1rat/code/rwal\""
 	],

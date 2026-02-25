@@ -8,7 +8,7 @@
 #include <iostream>
 
 int main(int argc,char* argv[]){
-	Navigator navigator;
+	Navigator navigator(rwal::ui::MAIN_MENU);
 	std::string s;
 	QCoreApplication app(argc, argv);
 	if (argc > 1&&argv[1])

@@ -14,7 +14,7 @@ void Navigator::processInput(std::string input) {
 	if (x.nextMenu)
 		current_menu = x.nextMenu;
 	else if (x.IsWrongInput)
-		MenuManager::getInstatce().show_message("Invalid input");
+		MenuManager::getInstance().show_message("Invalid input");
 }
 
 const rwal::ui::CharacterMenuConfig* Navigator::getCurrentMenu() const {
