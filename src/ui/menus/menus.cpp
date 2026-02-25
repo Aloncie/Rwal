@@ -5,6 +5,7 @@
 #include "settings/config.hpp"
 #include "internal/utils/string_utils.hpp"
 #include "wallpaper/WallpaperManager.hpp"
+#include <QCoreApplication>
 
 namespace rwal::ui {
 
@@ -23,6 +24,7 @@ namespace rwal::ui {
 			} else if (input == "4") {
 				return {&SETTINGS_MENU, false};
 			} else if (input == "q") {
+				QCoreApplication::quit();
 				return {nullptr, false}; 
 			} else {
 				return {nullptr, true};
@@ -31,18 +33,24 @@ namespace rwal::ui {
 	};
 
 	const CharacterMenuConfig TIMER_MENU = {
+		"nhd",
 		ready::timer_list,
 		[](std::string input) -> MenuResponce {
 			Timer t;
-			// Здесь логика валидации внутри edit_timer
-			if (input == "hourly" || input == "daily") { t.edit_timer(input);
+			if (input == "h") {
+				t.edit_timer("hourly");
+				return {&SETTINGS_MENU, false};
+			} else if (input == "d") {
+				t.edit_timer("daily");
+				return {&SETTINGS_MENU, false};
+			} else if (input == "n") {
+				t.edit_timer("None");
 				return {&SETTINGS_MENU, false};
 			} else {
 				return {nullptr, true};
 			}
 		}
 	};
-
 	const CharacterMenuConfig KEYWORDS_MENU = {
 		"armq", 
 		generators::keywords_list,
@@ -51,15 +59,15 @@ namespace rwal::ui {
 			std::vector<std::string> keywords = k.ShortWayGetKeywords();
 
 			if (input == "a") { 
-				std::string keyword = MenuManager::getInstatce().request_input<std::string>("Write new keyword: ");
+				std::string keyword = MenuManager::getInstance().request_input<std::string>("Write new keyword: ");
 				if (!keyword.empty()) {
-					rwal::utils::str::format(keyword); 
+					rwal::utils::string::format(keyword); 
 					keywords.push_back(keyword);
 					Config::getInstance().set("/search/keywords", keywords);
 				}
 				return {nullptr, false};
 			} else if (input == "r") {
-				int display_index = MenuManager::getInstatce().request_input<int>("Enter index for remove: ");
+				int display_index = MenuManager::getInstance().request_input<int>("Enter index for remove: ");
 				if (display_index >= 1) {
 					int real_index = display_index - 1;
 					if (real_index < (int)keywords.size()) {
@@ -69,7 +77,7 @@ namespace rwal::ui {
 				}
 				return {nullptr, false};
 			} else if (input == "m") {
-				k.edit_keywords();
+				k.editKeywords();
 				Config::getInstance().loadConfig();
 				return {nullptr, false};
 			} else if (input == "q") {
@@ -125,7 +133,7 @@ namespace rwal::ui {
 			return {"--- Main Menu ---", "1) Refresh", "2) Save", "3) Keywords", "4) Settings", "q) Quit"};
 		}
 		std::vector<std::string> timer_list() {
-			return {"none", "hourly", "daily"};
+			return {"(n)one", "(h)ourly", "(d)aily"};
 		}
 	}
 

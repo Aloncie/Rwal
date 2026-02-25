@@ -39,10 +39,10 @@ namespace rwal::ui {
         std::vector<std::string> menu() const { return menu_generator(); }
     };
 
-	extern const rwal::ui::CharacterMenuConfig MAIN_MENU;
-	extern const rwal::ui::CharacterMenuConfig KEYWORDS_MENU;
-	extern const rwal::ui::CharacterMenuConfig SETTINGS_MENU;
-	extern const rwal::ui::CharacterMenuConfig TIMER_MENU;
+	extern const CharacterMenuConfig MAIN_MENU;
+	extern const CharacterMenuConfig KEYWORDS_MENU;
+	extern const CharacterMenuConfig SETTINGS_MENU;
+	extern const CharacterMenuConfig TIMER_MENU;
 }
 
 

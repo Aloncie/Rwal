@@ -26,8 +26,8 @@ std::vector<std::string> Keywords::LongWayGetKeywords(){
         std::cout << "\nKeywords not found. Enter keywords (space separated): ";
         std::getline(std::cin, input);
         
-        rwal::utils::str::format(input); 
-        ready_keywords = rwal::utils::str::split_by_space(input);
+        rwal::utils::string::format(input); 
+        ready_keywords = rwal::utils::string::split_by_space(input);
 
         if (ready_keywords.empty()) {
              std::cout << "Input cannot be empty! Try again.";
@@ -91,7 +91,7 @@ std::vector<std::string> Keywords::exportFromTxt(fs::path& path){
 	if (file.is_open()){
 		while (getline(file,line)){
 			if (line[0] != '#'){
-				rwal::utils::str::format(line);
+				rwal::utils::string::format(line);
 				if (!line.empty() && line.length() < 256)
 					rwal::utils::vector::add_unique(keywords,line);
 			}
@@ -99,7 +99,7 @@ std::vector<std::string> Keywords::exportFromTxt(fs::path& path){
 		file.close();
 	} else{
 		Logs::getInstance().write_logs("Failed opening keywords.txt in " + path.string());
-		MenuManager::getInstatce().show_message("Failed operation. More info in logs");
+		MenuManager::getInstance().show_message("Failed operation. More info in logs");
 	}
 	return keywords;
 }
