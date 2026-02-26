@@ -1,6 +1,7 @@
 #include "AppController.hpp"
 #include <iostream>
 #include "ui/cli/cli.hpp"
+#include "logs/logs.hpp"
 
 AppController::AppController(Navigator* nav, QObject* parent) : QObject(parent), m_navigator(nav)
 {
@@ -13,10 +14,10 @@ void AppController::handleStdin(){
 	std::string input;
 	do {
 		do {			
-			std::getline(std::cin,input);
-			MenuManager::getInstance().countOperatorPlus(1);
+			input = MenuManager::getInstance().request_input<std::string>(std::nullopt);
 		} while (m_navigator->getCurrentMenu()->valid_choices.find(input) == std::string::npos);
 
+		Logs::getInstance().write_logs("input is " + input);
 		auto menuLines = m_navigator->getCurrentMenu()->menu().size(); 
 		MenuManager::getInstance().countOperatorPlus(menuLines);
 		MenuManager::getInstance().clear_last_lines();

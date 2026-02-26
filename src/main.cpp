@@ -8,6 +8,9 @@
 #include <iostream>
 
 int main(int argc,char* argv[]){
+	QCoreApplication::setApplicationName("rwal");
+	QCoreApplication::setOrganizationName("Aloncie");
+
 	Navigator navigator(rwal::ui::MAIN_MENU);
 	std::string s;
 	QCoreApplication app(argc, argv);
