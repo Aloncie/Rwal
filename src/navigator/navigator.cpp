@@ -3,7 +3,6 @@
 
 void Navigator::printMenu(){
 	auto menu = current_menu->menu();	
-	std::cout << "\n";
 	for (int i = 0;i < menu.size();i++){
 		std::cout << menu[i] << "\n";
 	}

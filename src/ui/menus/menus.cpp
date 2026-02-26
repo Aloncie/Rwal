@@ -24,6 +24,8 @@ namespace rwal::ui {
 			} else if (input == "4") {
 				return {&SETTINGS_MENU, false};
 			} else if (input == "q") {
+				MenuManager::getInstance().countOperatorPlus(MAIN_MENU.menu().size());
+				MenuManager::getInstance().clear_last_lines();
 				QCoreApplication::quit();
 				return {nullptr, false}; 
 			} else {

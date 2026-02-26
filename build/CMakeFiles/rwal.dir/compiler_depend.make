@@ -1041,6 +1041,7 @@ CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o: rwal_autogen/mocs_compi
 
 CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o: /home/p1rat/code/rwal/src/AppController/AppController.cpp \
   /home/p1rat/code/rwal/src/AppController/AppController.hpp \
+  /home/p1rat/code/rwal/src/logs/logs.hpp \
   /home/p1rat/code/rwal/src/navigator/navigator.hpp \
   /home/p1rat/code/rwal/src/ui/cli/cli.hpp \
   /home/p1rat/code/rwal/src/ui/menus/menus.hpp \
@@ -1165,6 +1166,11 @@ CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/bits/exception_defines.h \
   /usr/include/c++/15.2.1/bits/exception_ptr.h \
   /usr/include/c++/15.2.1/bits/formatfwd.h \
+  /usr/include/c++/15.2.1/bits/fs_dir.h \
+  /usr/include/c++/15.2.1/bits/fs_fwd.h \
+  /usr/include/c++/15.2.1/bits/fs_ops.h \
+  /usr/include/c++/15.2.1/bits/fs_path.h \
+  /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
@@ -1256,6 +1262,7 @@ CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/chrono \
   /usr/include/c++/15.2.1/climits \
   /usr/include/c++/15.2.1/clocale \
+  /usr/include/c++/15.2.1/codecvt \
   /usr/include/c++/15.2.1/compare \
   /usr/include/c++/15.2.1/concepts \
   /usr/include/c++/15.2.1/cstddef \
@@ -1275,7 +1282,9 @@ CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/ext/numeric_traits.h \
   /usr/include/c++/15.2.1/ext/string_conversions.h \
   /usr/include/c++/15.2.1/ext/type_traits.h \
+  /usr/include/c++/15.2.1/filesystem \
   /usr/include/c++/15.2.1/format \
+  /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/functional \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/iomanip \
@@ -1315,8 +1324,10 @@ CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o: /home/p1rat/code/rwal
   /usr/include/c++/15.2.1/utility \
   /usr/include/c++/15.2.1/vector \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -1347,6 +1358,7 @@ CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o: /home/p1rat/code/rwal
   /usr/include/pthread.h \
   /usr/include/qt/QtCore/QObject \
   /usr/include/qt/QtCore/QSocketNotifier \
+  /usr/include/qt/QtCore/QStandardPaths \
   /usr/include/qt/QtCore/qalgorithms.h \
   /usr/include/qt/QtCore/qarraydata.h \
   /usr/include/qt/QtCore/qatomic.h \
@@ -1380,6 +1392,7 @@ CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o: /home/p1rat/code/rwal
   /usr/include/qt/QtCore/qregexp.h \
   /usr/include/qt/QtCore/qscopedpointer.h \
   /usr/include/qt/QtCore/qsocketnotifier.h \
+  /usr/include/qt/QtCore/qstandardpaths.h \
   /usr/include/qt/QtCore/qstring.h \
   /usr/include/qt/QtCore/qstringalgorithms.h \
   /usr/include/qt/QtCore/qstringlist.h \
@@ -3921,6 +3934,7 @@ CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o: /home/p1rat/code/rwal/src/nav
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/numbers \
+  /usr/include/c++/15.2.1/optional \
   /usr/include/c++/15.2.1/ostream \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
   /usr/include/c++/15.2.1/sstream \
@@ -5929,6 +5943,7 @@ CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o: /home/p1rat/code/rwal/src/ui/cli/cli.c
   /usr/include/c++/15.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/15.2.1/bits/cxxabi_forced.h \
   /usr/include/c++/15.2.1/bits/cxxabi_init_exception.h \
+  /usr/include/c++/15.2.1/bits/enable_special_members.h \
   /usr/include/c++/15.2.1/bits/erase_if.h \
   /usr/include/c++/15.2.1/bits/exception.h \
   /usr/include/c++/15.2.1/bits/exception_defines.h \
@@ -6021,6 +6036,7 @@ CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o: /home/p1rat/code/rwal/src/ui/cli/cli.c
   /usr/include/c++/15.2.1/map \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/numbers \
+  /usr/include/c++/15.2.1/optional \
   /usr/include/c++/15.2.1/ostream \
   /usr/include/c++/15.2.1/pstl/execution_defs.h \
   /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
