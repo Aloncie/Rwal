@@ -23,10 +23,6 @@ file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "src/*.hpp")
 
 add_executable(rwal ${SOURCES} ${HEADERS})
 
-target_compile_definitions(rwal PRIVATE
-    SOURCE_DIR="${CMAKE_SOURCE_DIR}"
-)
-
 target_include_directories(rwal PRIVATE
     ${PROJECT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src

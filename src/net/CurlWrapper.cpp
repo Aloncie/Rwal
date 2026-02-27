@@ -103,7 +103,8 @@ std::string MyCurl::get_data(std::string paragraph, std::string str){
 
 std::string MyCurl::download_image(const std::string& image_url){
 	 
-	fs::path downloads = fs::path(SOURCE_DIR) / "downloads";
+	fs::path downloads = fs::path(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) / rwal::wallpaper::DONWLOADS_DIR_NAME;	
+	std::filesystem::create_directories(downloads.parent_path());
 	Logs::getInstance().write_logs("Try to delete old image");
 
 	try {
