@@ -2,8 +2,11 @@
 # 🏛️ Rwal: Architecture and Philosophy
 
 [Aloncie](https://github.com/Aloncie):
-> Rwal is first and foremost a **learning project** for me. But I have been triyng upgrade Rwal. This project always will be in my ❤️
+> Rwal is first and foremost a **learning project** for me. But I have been triyng upgrade Rwal. This project always will be in my heart.
+> 
 > It's not a commercial product, but it's built with professional intent – every line is a lesson.
+
+
 ---
 
 ## 🎯 Vision
