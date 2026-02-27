@@ -1,5 +1,5 @@
 **DOCUMENTATION.md**
-```markdown
+
 # 📘 Rwal – Detailed Documentation
 
 This document complements the README with in‑depth information about the project's architecture, configuration, and usage.
@@ -26,6 +26,8 @@ See the README for quick build instructions. For advanced options:
 cmake .. -DCMAKE_INSTALL_PREFIX=/your/prefix
 make
 make install
+```
+---
 
 ## 🎮 Usage
 ### 👾Interactive Mode
@@ -50,9 +52,11 @@ rwal --change
 
 This picks a random keyword from your config, downloads a random image from that search, and sets it as wallpaper. No output is printed – all logs go to logs.txt.
 
-## 📁 Project Structure
-text
+---
 
+## 📁 Project Structure
+
+``` struct
 src/
 ├── internal/          – utilities (strings, vectors, platform helpers)
 ├── dbus/              – KDE Plasma D‑Bus integration
@@ -64,14 +68,13 @@ src/
 ├── funcs/             – miscellaneous helpers
 ├── navigator/         – menu state machine
 └── wallpaper/         – download, save, set wallpaper
+```
 
 ## 📝 Logging
-
 Logs are stored in ~/.cache/rwal/logs.txt. They include timestamps, network requests, errors, and user input. The log file is automatically rotated when it exceeds 1 MB.
-🧪 Current Status & Roadmap
 
+## 🧪 Current Status & Roadmap
 See RwalRoadMap.md (in the repository) for the up‑to‑date development plan.
-🤝 Contributing
 
+## 🤝 Contributing
 While this is a personal learning project, suggestions and bug reports are welcome via GitHub Issues.
-```
