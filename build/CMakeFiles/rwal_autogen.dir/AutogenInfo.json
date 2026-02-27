@@ -219,14 +219,7 @@
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/p1rat/code/rwal/build/rwal_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/p1rat/code/rwal/build/rwal_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : 
-	[
-		"QT_CORE_LIB",
-		"QT_DBUS_LIB",
-		"QT_GUI_LIB",
-		"QT_WIDGETS_LIB",
-		"SOURCE_DIR=\"/home/p1rat/code/rwal\""
-	],
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_DBUS_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[

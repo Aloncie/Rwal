@@ -287,7 +287,6 @@
 #define __STDC_IEC_60559_BFP__ 201404L
 #define __SIZEOF_PTRDIFF_T__ 8
 #define __FLT64X_HAS_INFINITY__ 1
-#define SOURCE_DIR "/home/p1rat/code/rwal"
 #define __SIZEOF_LONG__ 8
 #define __LDBL_DIG__ 18
 #define __FLT64_IS_IEC_60559__ 1
