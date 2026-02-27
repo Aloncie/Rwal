@@ -14,7 +14,7 @@ int main(int argc,char* argv[]){
 	Navigator navigator(rwal::ui::MAIN_MENU);
 	std::string s;
 	QCoreApplication app(argc, argv);
-	if (argc > 1&&argv[1])
+	if (argc > 0&&argv[1])
 		s = argv[1];
 
 	if (s == "--change" || s == "-c"){

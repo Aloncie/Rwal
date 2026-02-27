@@ -12,19 +12,17 @@ AppController::AppController(Navigator* nav, QObject* parent) : QObject(parent),
 }
 void AppController::handleStdin(){
 	std::string input;
-	do {
-		do {			
-			input = MenuManager::getInstance().request_input<std::string>(std::nullopt);
-		} while (m_navigator->getCurrentMenu()->valid_choices.find(input) == std::string::npos);
+	bool needQuit;
+	do {			
+		input = MenuManager::getInstance().request_input<std::string>(std::nullopt);
+	} while (m_navigator->getCurrentMenu()->valid_choices.find(input) == std::string::npos);
 
-		Logs::getInstance().write_logs("input is " + input);
-		auto menuLines = m_navigator->getCurrentMenu()->menu().size(); 
-		MenuManager::getInstance().countOperatorPlus(menuLines);
-		MenuManager::getInstance().clear_last_lines();
+	auto menuLines = m_navigator->getCurrentMenu()->menu().size(); 
+	MenuManager::getInstance().countOperatorPlus(menuLines);
+	MenuManager::getInstance().clear_last_lines();
 
-		m_navigator->processInput(input);
-		m_navigator->getCurrentMenu();
+	needQuit = m_navigator->processInput(input);
+	if (!needQuit)
 		m_navigator->printMenu();
-	} while (input != "q");
 }
 

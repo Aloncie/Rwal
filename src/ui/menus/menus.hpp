@@ -9,6 +9,7 @@ namespace rwal::ui {
     struct MenuResponce {
 		const CharacterMenuConfig* nextMenu;
         bool IsWrongInput;    
+		bool needQuit;
     };
 
     namespace generators {

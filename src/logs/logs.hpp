@@ -13,6 +13,7 @@ private:
 
 	Logs(){
 		logs_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::CacheLocation).toStdString()) / "logs.txt";
+		std::filesystem::create_directories(logs_path.parent_path()); 
 		if (fs::exists(logs_path)){
 			const std::uintmax_t fileSize = fs::file_size(logs_path);
 			const std::uintmax_t limit_size = 1024 * 1024;
