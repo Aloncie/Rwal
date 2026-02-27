@@ -19,8 +19,7 @@ struct SocketGuard{
 	}
 };
 
-NetworkManager::NetworkManager() : mycurl(){
-}
+NetworkManager::NetworkManager() : mycurl(){}
 
 NetworkManager& NetworkManager::getInstance(){
 	static NetworkManager instance;
@@ -61,7 +60,6 @@ bool NetworkManager::isAvailable() {
 }
 
 std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::string> page){
-	auto& logger = Logs::getInstance();
 	auto& cfg = Config::getInstance().all();
 
 	auto& wh = cfg["services"]["wallhaven"];
@@ -79,7 +77,6 @@ std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::stri
 }
 
 std::string NetworkManager::fetchImage(std::string keyword){
-	auto& logger = Logs::getInstance();
 	int last_page;
 
 	if (!isAvailable())
@@ -100,8 +97,17 @@ std::string NetworkManager::fetchImage(std::string keyword){
 	int max_p = std::min(last_page, 100);
 	std::string page = std::to_string(random(max_p));
 
-	mycurl.get_request(craftUrl(keyword, page));
+	try {
+		mycurl.get_request(craftUrl(keyword, page));
+	} catch (std::exception& e){
+		Logs::getInstance().write_logs("CURL error: " + std::string(e.what()));
+	}
+
 	std::string url = mycurl.get_data("data","path");
 
+	if (url.empty()) {
+		Logs::getInstance().write_logs("No image URL found in response");
+		return "";
+	}
 	return mycurl.download_image(url);
 }

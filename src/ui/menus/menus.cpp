@@ -15,21 +15,18 @@ namespace rwal::ui {
 		[](std::string input) -> MenuResponce { 
 			if (input == "1") { 
 				refresh_wallpaper(); 
-				return {nullptr, false}; 
+				return {nullptr, false, false}; 
 			} else if (input == "2") { 
 				save_wallpaper(where_are_wallpaper()); 
-				return {nullptr, false}; 
+				return {nullptr, false, false}; 
 			} else if (input == "3") {
-				return {&KEYWORDS_MENU, false};
+				return {&KEYWORDS_MENU, false, false};
 			} else if (input == "4") {
-				return {&SETTINGS_MENU, false};
+				return {&SETTINGS_MENU, false, false};
 			} else if (input == "q") {
-				MenuManager::getInstance().countOperatorPlus(MAIN_MENU.menu().size());
-				MenuManager::getInstance().clear_last_lines();
-				QCoreApplication::quit();
-				return {nullptr, false}; 
+				return {nullptr, false, true};
 			} else {
-				return {nullptr, true};
+				return {nullptr, true, false};
 			}
 		}
 	};
@@ -41,15 +38,15 @@ namespace rwal::ui {
 			Timer t;
 			if (input == "h") {
 				t.edit_timer("hourly");
-				return {&SETTINGS_MENU, false};
+				return {&SETTINGS_MENU, false, false};
 			} else if (input == "d") {
 				t.edit_timer("daily");
-				return {&SETTINGS_MENU, false};
+				return {&SETTINGS_MENU, false, false};
 			} else if (input == "n") {
 				t.edit_timer("None");
-				return {&SETTINGS_MENU, false};
+				return {&SETTINGS_MENU, false, false};
 			} else {
-				return {nullptr, true};
+				return {nullptr, true, false};
 			}
 		}
 	};
@@ -67,7 +64,7 @@ namespace rwal::ui {
 					keywords.push_back(keyword);
 					Config::getInstance().set("/search/keywords", keywords);
 				}
-				return {nullptr, false};
+				return {nullptr, false, false};
 			} else if (input == "r") {
 				int display_index = MenuManager::getInstance().request_input<int>("Enter index for remove: ");
 				if (display_index >= 1) {
@@ -77,15 +74,15 @@ namespace rwal::ui {
 						Config::getInstance().set("/search/keywords", keywords);
 					}
 				}
-				return {nullptr, false};
+				return {nullptr, false, false};
 			} else if (input == "m") {
 				k.editKeywords();
 				Config::getInstance().loadConfig();
-				return {nullptr, false};
+				return {nullptr, false, false};
 			} else if (input == "q") {
-				return {&MAIN_MENU, false};
+				return {&MAIN_MENU, false, false};
 			} else {
-				return {nullptr, true};
+				return {nullptr, true, false};
 			}
 		}
 	};
@@ -95,13 +92,13 @@ namespace rwal::ui {
 		generators::settings_list,
 		[](std::string input) -> MenuResponce {
 			if (input == "1") {
-				return {&TIMER_MENU, false};
+				return {&TIMER_MENU, false, false};
 			} else if (input == "2") {
-				return {nullptr, false}; // Место для логики пути
+				return {nullptr, false, false}; // Место для логики пути
 			} else if (input == "q") {
-				return {&MAIN_MENU, false};
+				return {&MAIN_MENU, false, false};
 			} else {
-				return {nullptr, true};
+				return {nullptr, true, false};
 			}
 		}
 	};

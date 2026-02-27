@@ -52,7 +52,7 @@ void refresh_wallpaper(const std::string& mode){
 }
 
 std::string where_are_wallpaper(){
-	fs::path dir_path =	SOURCE_DIR / fs::path(rwal::wallpaper::DONWLOADS_DIR_NAME);
+	fs::path dir_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString())/ rwal::wallpaper::DONWLOADS_DIR_NAME;	
 	if (dir_path == "")
 		return "";
 	try {
