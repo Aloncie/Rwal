@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/p1rat/code/rwal/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -87,7 +97,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\" \"gmock\" \"gtest\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -163,6 +173,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named rwal_lib
+
+# Build rule for target.
+rwal_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_lib
+.PHONY : rwal_lib
+
+# fast build rule for target.
+rwal_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/build
+.PHONY : rwal_lib/fast
+
+#=============================================================================
 # Target rules for targets named rwal
 
 # Build rule for target.
@@ -174,6 +197,45 @@ rwal: cmake_check_build_system
 rwal/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/build
 .PHONY : rwal/fast
+
+#=============================================================================
+# Target rules for targets named rwal_tests
+
+# Build rule for target.
+rwal_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_tests
+.PHONY : rwal_tests
+
+# fast build rule for target.
+rwal_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/build
+.PHONY : rwal_tests/fast
+
+#=============================================================================
+# Target rules for targets named rwal_lib_autogen_timestamp_deps
+
+# Build rule for target.
+rwal_lib_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_lib_autogen_timestamp_deps
+.PHONY : rwal_lib_autogen_timestamp_deps
+
+# fast build rule for target.
+rwal_lib_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib_autogen_timestamp_deps.dir/build.make CMakeFiles/rwal_lib_autogen_timestamp_deps.dir/build
+.PHONY : rwal_lib_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named rwal_lib_autogen
+
+# Build rule for target.
+rwal_lib_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_lib_autogen
+.PHONY : rwal_lib_autogen
+
+# fast build rule for target.
+rwal_lib_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib_autogen.dir/build.make CMakeFiles/rwal_lib_autogen.dir/build
+.PHONY : rwal_lib_autogen/fast
 
 #=============================================================================
 # Target rules for targets named rwal_autogen_timestamp_deps
@@ -201,6 +263,84 @@ rwal_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_autogen.dir/build.make CMakeFiles/rwal_autogen.dir/build
 .PHONY : rwal_autogen/fast
 
+#=============================================================================
+# Target rules for targets named rwal_tests_autogen_timestamp_deps
+
+# Build rule for target.
+rwal_tests_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_tests_autogen_timestamp_deps
+.PHONY : rwal_tests_autogen_timestamp_deps
+
+# fast build rule for target.
+rwal_tests_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests_autogen_timestamp_deps.dir/build.make CMakeFiles/rwal_tests_autogen_timestamp_deps.dir/build
+.PHONY : rwal_tests_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named rwal_tests_autogen
+
+# Build rule for target.
+rwal_tests_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rwal_tests_autogen
+.PHONY : rwal_tests_autogen
+
+# fast build rule for target.
+rwal_tests_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests_autogen.dir/build.make CMakeFiles/rwal_tests_autogen.dir/build
+.PHONY : rwal_tests_autogen/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 rwal_autogen/mocs_compilation.o: rwal_autogen/mocs_compilation.cpp.o
 .PHONY : rwal_autogen/mocs_compilation.o
 
@@ -225,12 +365,60 @@ rwal_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.s
 .PHONY : rwal_autogen/mocs_compilation.cpp.s
 
+rwal_lib_autogen/mocs_compilation.o: rwal_lib_autogen/mocs_compilation.cpp.o
+.PHONY : rwal_lib_autogen/mocs_compilation.o
+
+# target to build an object file
+rwal_lib_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/rwal_lib_autogen/mocs_compilation.cpp.o
+.PHONY : rwal_lib_autogen/mocs_compilation.cpp.o
+
+rwal_lib_autogen/mocs_compilation.i: rwal_lib_autogen/mocs_compilation.cpp.i
+.PHONY : rwal_lib_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+rwal_lib_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/rwal_lib_autogen/mocs_compilation.cpp.i
+.PHONY : rwal_lib_autogen/mocs_compilation.cpp.i
+
+rwal_lib_autogen/mocs_compilation.s: rwal_lib_autogen/mocs_compilation.cpp.s
+.PHONY : rwal_lib_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+rwal_lib_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/rwal_lib_autogen/mocs_compilation.cpp.s
+.PHONY : rwal_lib_autogen/mocs_compilation.cpp.s
+
+rwal_tests_autogen/mocs_compilation.o: rwal_tests_autogen/mocs_compilation.cpp.o
+.PHONY : rwal_tests_autogen/mocs_compilation.o
+
+# target to build an object file
+rwal_tests_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/rwal_tests_autogen/mocs_compilation.cpp.o
+.PHONY : rwal_tests_autogen/mocs_compilation.cpp.o
+
+rwal_tests_autogen/mocs_compilation.i: rwal_tests_autogen/mocs_compilation.cpp.i
+.PHONY : rwal_tests_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+rwal_tests_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/rwal_tests_autogen/mocs_compilation.cpp.i
+.PHONY : rwal_tests_autogen/mocs_compilation.cpp.i
+
+rwal_tests_autogen/mocs_compilation.s: rwal_tests_autogen/mocs_compilation.cpp.s
+.PHONY : rwal_tests_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+rwal_tests_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/rwal_tests_autogen/mocs_compilation.cpp.s
+.PHONY : rwal_tests_autogen/mocs_compilation.cpp.s
+
 src/AppController/AppController.o: src/AppController/AppController.cpp.o
 .PHONY : src/AppController/AppController.o
 
 # target to build an object file
 src/AppController/AppController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/AppController/AppController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/AppController/AppController.cpp.o
 .PHONY : src/AppController/AppController.cpp.o
 
 src/AppController/AppController.i: src/AppController/AppController.cpp.i
@@ -238,7 +426,7 @@ src/AppController/AppController.i: src/AppController/AppController.cpp.i
 
 # target to preprocess a source file
 src/AppController/AppController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/AppController/AppController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/AppController/AppController.cpp.i
 .PHONY : src/AppController/AppController.cpp.i
 
 src/AppController/AppController.s: src/AppController/AppController.cpp.s
@@ -246,7 +434,7 @@ src/AppController/AppController.s: src/AppController/AppController.cpp.s
 
 # target to generate assembly for a file
 src/AppController/AppController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/AppController/AppController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/AppController/AppController.cpp.s
 .PHONY : src/AppController/AppController.cpp.s
 
 src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
@@ -254,7 +442,7 @@ src/dbus/PlasmaDBus.o: src/dbus/PlasmaDBus.cpp.o
 
 # target to build an object file
 src/dbus/PlasmaDBus.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/dbus/PlasmaDBus.cpp.o
 .PHONY : src/dbus/PlasmaDBus.cpp.o
 
 src/dbus/PlasmaDBus.i: src/dbus/PlasmaDBus.cpp.i
@@ -262,7 +450,7 @@ src/dbus/PlasmaDBus.i: src/dbus/PlasmaDBus.cpp.i
 
 # target to preprocess a source file
 src/dbus/PlasmaDBus.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/dbus/PlasmaDBus.cpp.i
 .PHONY : src/dbus/PlasmaDBus.cpp.i
 
 src/dbus/PlasmaDBus.s: src/dbus/PlasmaDBus.cpp.s
@@ -270,7 +458,7 @@ src/dbus/PlasmaDBus.s: src/dbus/PlasmaDBus.cpp.s
 
 # target to generate assembly for a file
 src/dbus/PlasmaDBus.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/dbus/PlasmaDBus.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/dbus/PlasmaDBus.cpp.s
 .PHONY : src/dbus/PlasmaDBus.cpp.s
 
 src/funcs/funcs.o: src/funcs/funcs.cpp.o
@@ -278,7 +466,7 @@ src/funcs/funcs.o: src/funcs/funcs.cpp.o
 
 # target to build an object file
 src/funcs/funcs.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/funcs/funcs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/funcs/funcs.cpp.o
 .PHONY : src/funcs/funcs.cpp.o
 
 src/funcs/funcs.i: src/funcs/funcs.cpp.i
@@ -286,7 +474,7 @@ src/funcs/funcs.i: src/funcs/funcs.cpp.i
 
 # target to preprocess a source file
 src/funcs/funcs.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/funcs/funcs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/funcs/funcs.cpp.i
 .PHONY : src/funcs/funcs.cpp.i
 
 src/funcs/funcs.s: src/funcs/funcs.cpp.s
@@ -294,7 +482,7 @@ src/funcs/funcs.s: src/funcs/funcs.cpp.s
 
 # target to generate assembly for a file
 src/funcs/funcs.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/funcs/funcs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/funcs/funcs.cpp.s
 .PHONY : src/funcs/funcs.cpp.s
 
 src/internal/platform/env_utils.o: src/internal/platform/env_utils.cpp.o
@@ -302,7 +490,7 @@ src/internal/platform/env_utils.o: src/internal/platform/env_utils.cpp.o
 
 # target to build an object file
 src/internal/platform/env_utils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/platform/env_utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/internal/platform/env_utils.cpp.o
 .PHONY : src/internal/platform/env_utils.cpp.o
 
 src/internal/platform/env_utils.i: src/internal/platform/env_utils.cpp.i
@@ -310,7 +498,7 @@ src/internal/platform/env_utils.i: src/internal/platform/env_utils.cpp.i
 
 # target to preprocess a source file
 src/internal/platform/env_utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/platform/env_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/internal/platform/env_utils.cpp.i
 .PHONY : src/internal/platform/env_utils.cpp.i
 
 src/internal/platform/env_utils.s: src/internal/platform/env_utils.cpp.s
@@ -318,7 +506,7 @@ src/internal/platform/env_utils.s: src/internal/platform/env_utils.cpp.s
 
 # target to generate assembly for a file
 src/internal/platform/env_utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/platform/env_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/internal/platform/env_utils.cpp.s
 .PHONY : src/internal/platform/env_utils.cpp.s
 
 src/internal/utils/string_utils.o: src/internal/utils/string_utils.cpp.o
@@ -326,7 +514,7 @@ src/internal/utils/string_utils.o: src/internal/utils/string_utils.cpp.o
 
 # target to build an object file
 src/internal/utils/string_utils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/utils/string_utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/internal/utils/string_utils.cpp.o
 .PHONY : src/internal/utils/string_utils.cpp.o
 
 src/internal/utils/string_utils.i: src/internal/utils/string_utils.cpp.i
@@ -334,7 +522,7 @@ src/internal/utils/string_utils.i: src/internal/utils/string_utils.cpp.i
 
 # target to preprocess a source file
 src/internal/utils/string_utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/utils/string_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/internal/utils/string_utils.cpp.i
 .PHONY : src/internal/utils/string_utils.cpp.i
 
 src/internal/utils/string_utils.s: src/internal/utils/string_utils.cpp.s
@@ -342,7 +530,7 @@ src/internal/utils/string_utils.s: src/internal/utils/string_utils.cpp.s
 
 # target to generate assembly for a file
 src/internal/utils/string_utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/internal/utils/string_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/internal/utils/string_utils.cpp.s
 .PHONY : src/internal/utils/string_utils.cpp.s
 
 src/keywords/keywords.o: src/keywords/keywords.cpp.o
@@ -350,7 +538,7 @@ src/keywords/keywords.o: src/keywords/keywords.cpp.o
 
 # target to build an object file
 src/keywords/keywords.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/keywords/keywords.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/keywords/keywords.cpp.o
 .PHONY : src/keywords/keywords.cpp.o
 
 src/keywords/keywords.i: src/keywords/keywords.cpp.i
@@ -358,7 +546,7 @@ src/keywords/keywords.i: src/keywords/keywords.cpp.i
 
 # target to preprocess a source file
 src/keywords/keywords.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/keywords/keywords.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/keywords/keywords.cpp.i
 .PHONY : src/keywords/keywords.cpp.i
 
 src/keywords/keywords.s: src/keywords/keywords.cpp.s
@@ -366,7 +554,7 @@ src/keywords/keywords.s: src/keywords/keywords.cpp.s
 
 # target to generate assembly for a file
 src/keywords/keywords.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/keywords/keywords.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/keywords/keywords.cpp.s
 .PHONY : src/keywords/keywords.cpp.s
 
 src/logs/logs.o: src/logs/logs.cpp.o
@@ -374,7 +562,7 @@ src/logs/logs.o: src/logs/logs.cpp.o
 
 # target to build an object file
 src/logs/logs.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/logs/logs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/logs/logs.cpp.o
 .PHONY : src/logs/logs.cpp.o
 
 src/logs/logs.i: src/logs/logs.cpp.i
@@ -382,7 +570,7 @@ src/logs/logs.i: src/logs/logs.cpp.i
 
 # target to preprocess a source file
 src/logs/logs.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/logs/logs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/logs/logs.cpp.i
 .PHONY : src/logs/logs.cpp.i
 
 src/logs/logs.s: src/logs/logs.cpp.s
@@ -390,7 +578,7 @@ src/logs/logs.s: src/logs/logs.cpp.s
 
 # target to generate assembly for a file
 src/logs/logs.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/logs/logs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/logs/logs.cpp.s
 .PHONY : src/logs/logs.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -422,7 +610,7 @@ src/navigator/navigator.o: src/navigator/navigator.cpp.o
 
 # target to build an object file
 src/navigator/navigator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/navigator/navigator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/navigator/navigator.cpp.o
 .PHONY : src/navigator/navigator.cpp.o
 
 src/navigator/navigator.i: src/navigator/navigator.cpp.i
@@ -430,7 +618,7 @@ src/navigator/navigator.i: src/navigator/navigator.cpp.i
 
 # target to preprocess a source file
 src/navigator/navigator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/navigator/navigator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/navigator/navigator.cpp.i
 .PHONY : src/navigator/navigator.cpp.i
 
 src/navigator/navigator.s: src/navigator/navigator.cpp.s
@@ -438,7 +626,7 @@ src/navigator/navigator.s: src/navigator/navigator.cpp.s
 
 # target to generate assembly for a file
 src/navigator/navigator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/navigator/navigator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/navigator/navigator.cpp.s
 .PHONY : src/navigator/navigator.cpp.s
 
 src/net/CurlWrapper.o: src/net/CurlWrapper.cpp.o
@@ -446,7 +634,7 @@ src/net/CurlWrapper.o: src/net/CurlWrapper.cpp.o
 
 # target to build an object file
 src/net/CurlWrapper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/net/CurlWrapper.cpp.o
 .PHONY : src/net/CurlWrapper.cpp.o
 
 src/net/CurlWrapper.i: src/net/CurlWrapper.cpp.i
@@ -454,7 +642,7 @@ src/net/CurlWrapper.i: src/net/CurlWrapper.cpp.i
 
 # target to preprocess a source file
 src/net/CurlWrapper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/net/CurlWrapper.cpp.i
 .PHONY : src/net/CurlWrapper.cpp.i
 
 src/net/CurlWrapper.s: src/net/CurlWrapper.cpp.s
@@ -462,7 +650,7 @@ src/net/CurlWrapper.s: src/net/CurlWrapper.cpp.s
 
 # target to generate assembly for a file
 src/net/CurlWrapper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/CurlWrapper.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/net/CurlWrapper.cpp.s
 .PHONY : src/net/CurlWrapper.cpp.s
 
 src/net/NetworkManager.o: src/net/NetworkManager.cpp.o
@@ -470,7 +658,7 @@ src/net/NetworkManager.o: src/net/NetworkManager.cpp.o
 
 # target to build an object file
 src/net/NetworkManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/net/NetworkManager.cpp.o
 .PHONY : src/net/NetworkManager.cpp.o
 
 src/net/NetworkManager.i: src/net/NetworkManager.cpp.i
@@ -478,7 +666,7 @@ src/net/NetworkManager.i: src/net/NetworkManager.cpp.i
 
 # target to preprocess a source file
 src/net/NetworkManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/net/NetworkManager.cpp.i
 .PHONY : src/net/NetworkManager.cpp.i
 
 src/net/NetworkManager.s: src/net/NetworkManager.cpp.s
@@ -486,7 +674,7 @@ src/net/NetworkManager.s: src/net/NetworkManager.cpp.s
 
 # target to generate assembly for a file
 src/net/NetworkManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/net/NetworkManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/net/NetworkManager.cpp.s
 .PHONY : src/net/NetworkManager.cpp.s
 
 src/settings/config.o: src/settings/config.cpp.o
@@ -494,7 +682,7 @@ src/settings/config.o: src/settings/config.cpp.o
 
 # target to build an object file
 src/settings/config.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/config.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/settings/config.cpp.o
 .PHONY : src/settings/config.cpp.o
 
 src/settings/config.i: src/settings/config.cpp.i
@@ -502,7 +690,7 @@ src/settings/config.i: src/settings/config.cpp.i
 
 # target to preprocess a source file
 src/settings/config.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/config.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/settings/config.cpp.i
 .PHONY : src/settings/config.cpp.i
 
 src/settings/config.s: src/settings/config.cpp.s
@@ -510,7 +698,7 @@ src/settings/config.s: src/settings/config.cpp.s
 
 # target to generate assembly for a file
 src/settings/config.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/config.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/settings/config.cpp.s
 .PHONY : src/settings/config.cpp.s
 
 src/settings/settings.o: src/settings/settings.cpp.o
@@ -518,7 +706,7 @@ src/settings/settings.o: src/settings/settings.cpp.o
 
 # target to build an object file
 src/settings/settings.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/settings.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/settings/settings.cpp.o
 .PHONY : src/settings/settings.cpp.o
 
 src/settings/settings.i: src/settings/settings.cpp.i
@@ -526,7 +714,7 @@ src/settings/settings.i: src/settings/settings.cpp.i
 
 # target to preprocess a source file
 src/settings/settings.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/settings.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/settings/settings.cpp.i
 .PHONY : src/settings/settings.cpp.i
 
 src/settings/settings.s: src/settings/settings.cpp.s
@@ -534,7 +722,7 @@ src/settings/settings.s: src/settings/settings.cpp.s
 
 # target to generate assembly for a file
 src/settings/settings.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/settings/settings.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/settings/settings.cpp.s
 .PHONY : src/settings/settings.cpp.s
 
 src/ui/cli/cli.o: src/ui/cli/cli.cpp.o
@@ -542,7 +730,7 @@ src/ui/cli/cli.o: src/ui/cli/cli.cpp.o
 
 # target to build an object file
 src/ui/cli/cli.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/cli.cpp.o
 .PHONY : src/ui/cli/cli.cpp.o
 
 src/ui/cli/cli.i: src/ui/cli/cli.cpp.i
@@ -550,7 +738,7 @@ src/ui/cli/cli.i: src/ui/cli/cli.cpp.i
 
 # target to preprocess a source file
 src/ui/cli/cli.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/cli.cpp.i
 .PHONY : src/ui/cli/cli.cpp.i
 
 src/ui/cli/cli.s: src/ui/cli/cli.cpp.s
@@ -558,7 +746,7 @@ src/ui/cli/cli.s: src/ui/cli/cli.cpp.s
 
 # target to generate assembly for a file
 src/ui/cli/cli.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/cli/cli.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/cli.cpp.s
 .PHONY : src/ui/cli/cli.cpp.s
 
 src/ui/menus/menus.o: src/ui/menus/menus.cpp.o
@@ -566,7 +754,7 @@ src/ui/menus/menus.o: src/ui/menus/menus.cpp.o
 
 # target to build an object file
 src/ui/menus/menus.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/menus/menus.cpp.o
 .PHONY : src/ui/menus/menus.cpp.o
 
 src/ui/menus/menus.i: src/ui/menus/menus.cpp.i
@@ -574,7 +762,7 @@ src/ui/menus/menus.i: src/ui/menus/menus.cpp.i
 
 # target to preprocess a source file
 src/ui/menus/menus.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/menus/menus.cpp.i
 .PHONY : src/ui/menus/menus.cpp.i
 
 src/ui/menus/menus.s: src/ui/menus/menus.cpp.s
@@ -582,7 +770,7 @@ src/ui/menus/menus.s: src/ui/menus/menus.cpp.s
 
 # target to generate assembly for a file
 src/ui/menus/menus.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/ui/menus/menus.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/menus/menus.cpp.s
 .PHONY : src/ui/menus/menus.cpp.s
 
 src/wallpaper/WallpaperManager.o: src/wallpaper/WallpaperManager.cpp.o
@@ -590,7 +778,7 @@ src/wallpaper/WallpaperManager.o: src/wallpaper/WallpaperManager.cpp.o
 
 # target to build an object file
 src/wallpaper/WallpaperManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/wallpaper/WallpaperManager.cpp.o
 .PHONY : src/wallpaper/WallpaperManager.cpp.o
 
 src/wallpaper/WallpaperManager.i: src/wallpaper/WallpaperManager.cpp.i
@@ -598,7 +786,7 @@ src/wallpaper/WallpaperManager.i: src/wallpaper/WallpaperManager.cpp.i
 
 # target to preprocess a source file
 src/wallpaper/WallpaperManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/wallpaper/WallpaperManager.cpp.i
 .PHONY : src/wallpaper/WallpaperManager.cpp.i
 
 src/wallpaper/WallpaperManager.s: src/wallpaper/WallpaperManager.cpp.s
@@ -606,8 +794,56 @@ src/wallpaper/WallpaperManager.s: src/wallpaper/WallpaperManager.cpp.s
 
 # target to generate assembly for a file
 src/wallpaper/WallpaperManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal.dir/build.make CMakeFiles/rwal.dir/src/wallpaper/WallpaperManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/wallpaper/WallpaperManager.cpp.s
 .PHONY : src/wallpaper/WallpaperManager.cpp.s
+
+tests/test_main.o: tests/test_main.cpp.o
+.PHONY : tests/test_main.o
+
+# target to build an object file
+tests/test_main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/tests/test_main.cpp.o
+.PHONY : tests/test_main.cpp.o
+
+tests/test_main.i: tests/test_main.cpp.i
+.PHONY : tests/test_main.i
+
+# target to preprocess a source file
+tests/test_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/tests/test_main.cpp.i
+.PHONY : tests/test_main.cpp.i
+
+tests/test_main.s: tests/test_main.cpp.s
+.PHONY : tests/test_main.s
+
+# target to generate assembly for a file
+tests/test_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/tests/test_main.cpp.s
+.PHONY : tests/test_main.cpp.s
+
+tests/test_string_utils.o: tests/test_string_utils.cpp.o
+.PHONY : tests/test_string_utils.o
+
+# target to build an object file
+tests/test_string_utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/tests/test_string_utils.cpp.o
+.PHONY : tests/test_string_utils.cpp.o
+
+tests/test_string_utils.i: tests/test_string_utils.cpp.i
+.PHONY : tests/test_string_utils.i
+
+# target to preprocess a source file
+tests/test_string_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/tests/test_string_utils.cpp.i
+.PHONY : tests/test_string_utils.cpp.i
+
+tests/test_string_utils.s: tests/test_string_utils.cpp.s
+.PHONY : tests/test_string_utils.s
+
+# target to generate assembly for a file
+tests/test_string_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_tests.dir/build.make CMakeFiles/rwal_tests.dir/tests/test_string_utils.cpp.s
+.PHONY : tests/test_string_utils.cpp.s
 
 # Help Target
 help:
@@ -621,12 +857,29 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... rwal_autogen"
 	@echo "... rwal_autogen_timestamp_deps"
+	@echo "... rwal_lib_autogen"
+	@echo "... rwal_lib_autogen_timestamp_deps"
+	@echo "... rwal_tests_autogen"
+	@echo "... rwal_tests_autogen_timestamp_deps"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... rwal"
+	@echo "... rwal_lib"
+	@echo "... rwal_tests"
 	@echo "... rwal_autogen/mocs_compilation.o"
 	@echo "... rwal_autogen/mocs_compilation.i"
 	@echo "... rwal_autogen/mocs_compilation.s"
+	@echo "... rwal_lib_autogen/mocs_compilation.o"
+	@echo "... rwal_lib_autogen/mocs_compilation.i"
+	@echo "... rwal_lib_autogen/mocs_compilation.s"
+	@echo "... rwal_tests_autogen/mocs_compilation.o"
+	@echo "... rwal_tests_autogen/mocs_compilation.i"
+	@echo "... rwal_tests_autogen/mocs_compilation.s"
 	@echo "... src/AppController/AppController.o"
 	@echo "... src/AppController/AppController.i"
 	@echo "... src/AppController/AppController.s"
@@ -675,6 +928,12 @@ help:
 	@echo "... src/wallpaper/WallpaperManager.o"
 	@echo "... src/wallpaper/WallpaperManager.i"
 	@echo "... src/wallpaper/WallpaperManager.s"
+	@echo "... tests/test_main.o"
+	@echo "... tests/test_main.i"
+	@echo "... tests/test_main.s"
+	@echo "... tests/test_string_utils.o"
+	@echo "... tests/test_string_utils.i"
+	@echo "... tests/test_string_utils.s"
 .PHONY : help
 
 

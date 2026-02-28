@@ -10,6 +10,7 @@ class Logs{
 private:
 	fs::path logs_path;
 	std::ofstream f;
+	static Logs* s_instance;
 
 	Logs(){
 		logs_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::CacheLocation).toStdString()) / "logs.txt";
@@ -29,11 +30,19 @@ private:
 
 	std::string get_current_time();
 	void refresh_logs(fs::path& logs_path);
-public:
 
-	static Logs& getInstance(){
-		static Logs instance;
-		return instance;
-	};
+public:
+	static Logs& getInstance() {
+        if (!s_instance) {
+            static Logs instance;
+            s_instance = &instance;
+        }
+        return *s_instance;
+    }
+
+    static void setInstanceForTesting(Logs* mock) {
+        s_instance = mock;
+    }	
+
 	void write_logs(std::string message);
 };
