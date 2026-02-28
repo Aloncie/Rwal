@@ -1,4 +1,3 @@
-**RwalPhilosophy.md**
 # 🏛️ Rwal: Architecture and Philosophy
 
 [Aloncie](https://github.com/Aloncie):
