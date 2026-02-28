@@ -105,117 +105,17 @@
 		"/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
 		"/usr/share/cmake/Modules/FindPackageMessage.cmake",
 		"/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
-		"/usr/share/cmake/Modules/FindPackageMessage.cmake"
+		"/usr/share/cmake/Modules/FindPackageMessage.cmake",
+		"/usr/share/cmake/Modules/FetchContent.cmake",
+		"/usr/share/cmake/Modules/ExternalProject/shared_internal_commands.cmake",
+		"/usr/share/cmake/Modules/FetchContent/CMakeLists.cmake.in",
+		"/usr/share/cmake/Modules/GoogleTest.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/p1rat/code/rwal",
 	"CROSS_CONFIG" : false,
 	"DEP_FILE" : "/home/p1rat/code/rwal/build/rwal_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "rwal_autogen/timestamp",
-	"HEADERS" : 
-	[
-		[
-			"/home/p1rat/code/rwal/src/AppController/AppController.hpp",
-			"MU",
-			"ZA5ADP36QA/moc_AppController.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp",
-			"MU",
-			"FBT33E4DH6/moc_PlasmaDBus.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/funcs/funcs.hpp",
-			"MU",
-			"JN5YVYUASM/moc_funcs.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/internal/GlobalConstans.hpp",
-			"MU",
-			"TLJAIHGYSZ/moc_GlobalConstans.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/internal/platform/env_utils.hpp",
-			"MU",
-			"ISY75Z2EZA/moc_env_utils.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/internal/utils/string_utils.hpp",
-			"MU",
-			"GMKV6AYWIY/moc_string_utils.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/internal/utils/vector_utils.hpp",
-			"MU",
-			"GMKV6AYWIY/moc_vector_utils.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/keywords/keywords.hpp",
-			"MU",
-			"YLEOVZJWXT/moc_keywords.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/logs/logs.hpp",
-			"MU",
-			"H7PGZVHGC6/moc_logs.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/navigator/navigator.hpp",
-			"MU",
-			"4ECQZEQ6UK/moc_navigator.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/net/CurlWrapper.hpp",
-			"MU",
-			"7OIUYE7PDQ/moc_CurlWrapper.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/net/NetworkManager.hpp",
-			"MU",
-			"7OIUYE7PDQ/moc_NetworkManager.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/settings/config.hpp",
-			"MU",
-			"ICMTUFM33F/moc_config.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/settings/settings.hpp",
-			"MU",
-			"ICMTUFM33F/moc_settings.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/ui/cli/cli.hpp",
-			"MU",
-			"SULDK2LFTM/moc_cli.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/ui/menus/menus.hpp",
-			"MU",
-			"5RFAFZXDHW/moc_menus.cpp",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp",
-			"MU",
-			"A6UPEAG54T/moc_WallpaperManager.cpp",
-			null
-		]
-	],
+	"HEADERS" : [],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/p1rat/code/rwal/build/rwal_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/p1rat/code/rwal/build/rwal_autogen/mocs_compilation.cpp",
@@ -260,7 +160,7 @@
 	],
 	"MOC_PREDEFS_FILE" : "/home/p1rat/code/rwal/build/rwal_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : [],
+	"MOC_SKIP" : [ "/home/p1rat/code/rwal/build/rwal_lib_autogen/mocs_compilation.cpp" ],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
 	"PARSE_CACHE_FILE" : "/home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen.dir/ParseCache.txt",
@@ -271,42 +171,11 @@
 	"SETTINGS_FILE" : "/home/p1rat/code/rwal/build/CMakeFiles/rwal_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[
-			"/home/p1rat/code/rwal/src/AppController/AppController.cpp",
-			"MU",
-			null
-		],
-		[ "/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/funcs/funcs.cpp", "MU", null ],
-		[
-			"/home/p1rat/code/rwal/src/internal/platform/env_utils.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/p1rat/code/rwal/src/internal/utils/string_utils.cpp",
-			"MU",
-			null
-		],
-		[ "/home/p1rat/code/rwal/src/keywords/keywords.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/logs/logs.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/main.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/navigator/navigator.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/net/CurlWrapper.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/net/NetworkManager.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/settings/config.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/settings/settings.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/ui/cli/cli.cpp", "MU", null ],
-		[ "/home/p1rat/code/rwal/src/ui/menus/menus.cpp", "MU", null ],
-		[
-			"/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp",
-			"MU",
-			null
-		]
+		[ "/home/p1rat/code/rwal/src/main.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : [],
+	"UIC_SKIP" : [ "/home/p1rat/code/rwal/build/rwal_lib_autogen/mocs_compilation.cpp" ],
 	"UIC_UI_FILES" : [],
 	"USE_BETTER_GRAPH" : false,
 	"VERBOSITY" : 0

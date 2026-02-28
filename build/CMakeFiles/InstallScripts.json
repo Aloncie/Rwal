@@ -1,7 +1,10 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/p1rat/code/rwal/build/cmake_install.cmake"
+		"/home/p1rat/code/rwal/build/cmake_install.cmake",
+		"/home/p1rat/code/rwal/build/_deps/googletest-build/cmake_install.cmake",
+		"/home/p1rat/code/rwal/build/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/home/p1rat/code/rwal/build/_deps/googletest-build/googletest/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

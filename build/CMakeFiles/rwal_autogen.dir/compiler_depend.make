@@ -4,470 +4,8 @@
 rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
   CMakeFiles/4.2.3/CMakeCXXCompiler.cmake \
   CMakeFiles/4.2.3/CMakeSystem.cmake \
-  rwal_autogen/moc_predefs.h \
-  /home/p1rat/code/rwal/src/AppController/AppController.cpp \
-  /home/p1rat/code/rwal/src/AppController/AppController.hpp \
-  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp \
-  /home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp \
-  /home/p1rat/code/rwal/src/funcs/funcs.cpp \
-  /home/p1rat/code/rwal/src/funcs/funcs.hpp \
-  /home/p1rat/code/rwal/src/internal/GlobalConstans.hpp \
-  /home/p1rat/code/rwal/src/internal/platform/env_utils.cpp \
-  /home/p1rat/code/rwal/src/internal/platform/env_utils.hpp \
-  /home/p1rat/code/rwal/src/internal/utils/string_utils.cpp \
-  /home/p1rat/code/rwal/src/internal/utils/string_utils.hpp \
-  /home/p1rat/code/rwal/src/internal/utils/vector_utils.hpp \
-  /home/p1rat/code/rwal/src/keywords/keywords.cpp \
-  /home/p1rat/code/rwal/src/keywords/keywords.hpp \
-  /home/p1rat/code/rwal/src/logs/logs.cpp \
-  /home/p1rat/code/rwal/src/logs/logs.hpp \
   /home/p1rat/code/rwal/src/main.cpp \
-  /home/p1rat/code/rwal/src/navigator/navigator.cpp \
-  /home/p1rat/code/rwal/src/navigator/navigator.hpp \
-  /home/p1rat/code/rwal/src/net/CurlWrapper.cpp \
-  /home/p1rat/code/rwal/src/net/CurlWrapper.hpp \
-  /home/p1rat/code/rwal/src/net/NetworkManager.cpp \
-  /home/p1rat/code/rwal/src/net/NetworkManager.hpp \
-  /home/p1rat/code/rwal/src/settings/config.cpp \
-  /home/p1rat/code/rwal/src/settings/config.hpp \
-  /home/p1rat/code/rwal/src/settings/settings.cpp \
-  /home/p1rat/code/rwal/src/settings/settings.hpp \
-  /home/p1rat/code/rwal/src/ui/cli/cli.cpp \
-  /home/p1rat/code/rwal/src/ui/cli/cli.hpp \
-  /home/p1rat/code/rwal/src/ui/menus/menus.cpp \
-  /home/p1rat/code/rwal/src/ui/menus/menus.hpp \
-  /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp \
-  /home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp \
   /usr/bin/cmake \
-  /usr/include/alloca.h \
-  /usr/include/asm-generic/bitsperlong.h \
-  /usr/include/asm-generic/errno-base.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/int-ll64.h \
-  /usr/include/asm-generic/posix_types.h \
-  /usr/include/asm-generic/types.h \
-  /usr/include/asm/bitsperlong.h \
-  /usr/include/asm/errno.h \
-  /usr/include/asm/posix_types.h \
-  /usr/include/asm/posix_types_64.h \
-  /usr/include/asm/types.h \
-  /usr/include/asm/unistd.h \
-  /usr/include/asm/unistd_64.h \
-  /usr/include/assert.h \
-  /usr/include/bits/atomic_wide_counter.h \
-  /usr/include/bits/byteswap.h \
-  /usr/include/bits/confname.h \
-  /usr/include/bits/cpu-set.h \
-  /usr/include/bits/endian.h \
-  /usr/include/bits/endianness.h \
-  /usr/include/bits/environments.h \
-  /usr/include/bits/errno.h \
-  /usr/include/bits/floatn-common.h \
-  /usr/include/bits/floatn.h \
-  /usr/include/bits/getopt_core.h \
-  /usr/include/bits/getopt_posix.h \
-  /usr/include/bits/libc-header-start.h \
-  /usr/include/bits/local_lim.h \
-  /usr/include/bits/locale.h \
-  /usr/include/bits/long-double.h \
-  /usr/include/bits/posix1_lim.h \
-  /usr/include/bits/posix2_lim.h \
-  /usr/include/bits/posix_opt.h \
-  /usr/include/bits/pthread_stack_min-dynamic.h \
-  /usr/include/bits/pthreadtypes-arch.h \
-  /usr/include/bits/pthreadtypes.h \
-  /usr/include/bits/sched.h \
-  /usr/include/bits/select.h \
-  /usr/include/bits/setjmp.h \
-  /usr/include/bits/stdint-intn.h \
-  /usr/include/bits/stdio_lim.h \
-  /usr/include/bits/stdlib-float.h \
-  /usr/include/bits/struct_mutex.h \
-  /usr/include/bits/struct_rwlock.h \
-  /usr/include/bits/syscall.h \
-  /usr/include/bits/thread-shared-types.h \
-  /usr/include/bits/time.h \
-  /usr/include/bits/time64.h \
-  /usr/include/bits/timesize.h \
-  /usr/include/bits/timex.h \
-  /usr/include/bits/types.h \
-  /usr/include/bits/types/FILE.h \
-  /usr/include/bits/types/__FILE.h \
-  /usr/include/bits/types/__fpos64_t.h \
-  /usr/include/bits/types/__fpos_t.h \
-  /usr/include/bits/types/__locale_t.h \
-  /usr/include/bits/types/__mbstate_t.h \
-  /usr/include/bits/types/__sigset_t.h \
-  /usr/include/bits/types/clock_t.h \
-  /usr/include/bits/types/clockid_t.h \
-  /usr/include/bits/types/cookie_io_functions_t.h \
-  /usr/include/bits/types/error_t.h \
-  /usr/include/bits/types/locale_t.h \
-  /usr/include/bits/types/mbstate_t.h \
-  /usr/include/bits/types/sigset_t.h \
-  /usr/include/bits/types/struct_FILE.h \
-  /usr/include/bits/types/struct___jmp_buf_tag.h \
-  /usr/include/bits/types/struct_itimerspec.h \
-  /usr/include/bits/types/struct_sched_param.h \
-  /usr/include/bits/types/struct_timespec.h \
-  /usr/include/bits/types/struct_timeval.h \
-  /usr/include/bits/types/struct_tm.h \
-  /usr/include/bits/types/time_t.h \
-  /usr/include/bits/types/timer_t.h \
-  /usr/include/bits/types/wint_t.h \
-  /usr/include/bits/typesizes.h \
-  /usr/include/bits/uintn-identity.h \
-  /usr/include/bits/uio_lim.h \
-  /usr/include/bits/unistd_ext.h \
-  /usr/include/bits/waitflags.h \
-  /usr/include/bits/waitstatus.h \
-  /usr/include/bits/wchar.h \
-  /usr/include/bits/wctype-wchar.h \
-  /usr/include/bits/wordsize.h \
-  /usr/include/bits/xopen_lim.h \
-  /usr/include/c++/15.2.1/algorithm \
-  /usr/include/c++/15.2.1/any \
-  /usr/include/c++/15.2.1/array \
-  /usr/include/c++/15.2.1/atomic \
-  /usr/include/c++/15.2.1/backward/auto_ptr.h \
-  /usr/include/c++/15.2.1/backward/binders.h \
-  /usr/include/c++/15.2.1/bit \
-  /usr/include/c++/15.2.1/bits/algorithmfwd.h \
-  /usr/include/c++/15.2.1/bits/align.h \
-  /usr/include/c++/15.2.1/bits/alloc_traits.h \
-  /usr/include/c++/15.2.1/bits/allocated_ptr.h \
-  /usr/include/c++/15.2.1/bits/allocator.h \
-  /usr/include/c++/15.2.1/bits/atomic_base.h \
-  /usr/include/c++/15.2.1/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/15.2.1/bits/atomic_wait.h \
-  /usr/include/c++/15.2.1/bits/basic_ios.h \
-  /usr/include/c++/15.2.1/bits/basic_ios.tcc \
-  /usr/include/c++/15.2.1/bits/basic_string.h \
-  /usr/include/c++/15.2.1/bits/basic_string.tcc \
-  /usr/include/c++/15.2.1/bits/c++0x_warning.h \
-  /usr/include/c++/15.2.1/bits/char_traits.h \
-  /usr/include/c++/15.2.1/bits/charconv.h \
-  /usr/include/c++/15.2.1/bits/codecvt.h \
-  /usr/include/c++/15.2.1/bits/concept_check.h \
-  /usr/include/c++/15.2.1/bits/cpp_type_traits.h \
-  /usr/include/c++/15.2.1/bits/cxxabi_forced.h \
-  /usr/include/c++/15.2.1/bits/cxxabi_init_exception.h \
-  /usr/include/c++/15.2.1/bits/erase_if.h \
-  /usr/include/c++/15.2.1/bits/exception.h \
-  /usr/include/c++/15.2.1/bits/exception_defines.h \
-  /usr/include/c++/15.2.1/bits/exception_ptr.h \
-  /usr/include/c++/15.2.1/bits/formatfwd.h \
-  /usr/include/c++/15.2.1/bits/fstream.tcc \
-  /usr/include/c++/15.2.1/bits/functexcept.h \
-  /usr/include/c++/15.2.1/bits/functional_hash.h \
-  /usr/include/c++/15.2.1/bits/gslice.h \
-  /usr/include/c++/15.2.1/bits/gslice_array.h \
-  /usr/include/c++/15.2.1/bits/hash_bytes.h \
-  /usr/include/c++/15.2.1/bits/indirect_array.h \
-  /usr/include/c++/15.2.1/bits/invoke.h \
-  /usr/include/c++/15.2.1/bits/ios_base.h \
-  /usr/include/c++/15.2.1/bits/istream.tcc \
-  /usr/include/c++/15.2.1/bits/iterator_concepts.h \
-  /usr/include/c++/15.2.1/bits/list.tcc \
-  /usr/include/c++/15.2.1/bits/locale_classes.h \
-  /usr/include/c++/15.2.1/bits/locale_classes.tcc \
-  /usr/include/c++/15.2.1/bits/locale_conv.h \
-  /usr/include/c++/15.2.1/bits/locale_facets.h \
-  /usr/include/c++/15.2.1/bits/locale_facets.tcc \
-  /usr/include/c++/15.2.1/bits/locale_facets_nonio.h \
-  /usr/include/c++/15.2.1/bits/locale_facets_nonio.tcc \
-  /usr/include/c++/15.2.1/bits/localefwd.h \
-  /usr/include/c++/15.2.1/bits/mask_array.h \
-  /usr/include/c++/15.2.1/bits/max_size_type.h \
-  /usr/include/c++/15.2.1/bits/memory_resource.h \
-  /usr/include/c++/15.2.1/bits/memoryfwd.h \
-  /usr/include/c++/15.2.1/bits/mofunc_impl.h \
-  /usr/include/c++/15.2.1/bits/monostate.h \
-  /usr/include/c++/15.2.1/bits/move.h \
-  /usr/include/c++/15.2.1/bits/move_only_function.h \
-  /usr/include/c++/15.2.1/bits/nested_exception.h \
-  /usr/include/c++/15.2.1/bits/new_allocator.h \
-  /usr/include/c++/15.2.1/bits/node_handle.h \
-  /usr/include/c++/15.2.1/bits/ostream.h \
-  /usr/include/c++/15.2.1/bits/ostream.tcc \
-  /usr/include/c++/15.2.1/bits/ostream_insert.h \
-  /usr/include/c++/15.2.1/bits/out_ptr.h \
-  /usr/include/c++/15.2.1/bits/postypes.h \
-  /usr/include/c++/15.2.1/bits/predefined_ops.h \
-  /usr/include/c++/15.2.1/bits/ptr_traits.h \
-  /usr/include/c++/15.2.1/bits/quoted_string.h \
-  /usr/include/c++/15.2.1/bits/range_access.h \
-  /usr/include/c++/15.2.1/bits/ranges_algo.h \
-  /usr/include/c++/15.2.1/bits/ranges_algobase.h \
-  /usr/include/c++/15.2.1/bits/ranges_base.h \
-  /usr/include/c++/15.2.1/bits/ranges_cmp.h \
-  /usr/include/c++/15.2.1/bits/ranges_uninitialized.h \
-  /usr/include/c++/15.2.1/bits/ranges_util.h \
-  /usr/include/c++/15.2.1/bits/refwrap.h \
-  /usr/include/c++/15.2.1/bits/requires_hosted.h \
-  /usr/include/c++/15.2.1/bits/sat_arith.h \
-  /usr/include/c++/15.2.1/bits/shared_ptr.h \
-  /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
-  /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
-  /usr/include/c++/15.2.1/bits/slice_array.h \
-  /usr/include/c++/15.2.1/bits/specfun.h \
-  /usr/include/c++/15.2.1/bits/std_abs.h \
-  /usr/include/c++/15.2.1/bits/std_function.h \
-  /usr/include/c++/15.2.1/bits/std_mutex.h \
-  /usr/include/c++/15.2.1/bits/stl_algo.h \
-  /usr/include/c++/15.2.1/bits/stl_algobase.h \
-  /usr/include/c++/15.2.1/bits/stl_bvector.h \
-  /usr/include/c++/15.2.1/bits/stl_construct.h \
-  /usr/include/c++/15.2.1/bits/stl_function.h \
-  /usr/include/c++/15.2.1/bits/stl_heap.h \
-  /usr/include/c++/15.2.1/bits/stl_iterator.h \
-  /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h \
-  /usr/include/c++/15.2.1/bits/stl_list.h \
-  /usr/include/c++/15.2.1/bits/stl_map.h \
-  /usr/include/c++/15.2.1/bits/stl_multimap.h \
-  /usr/include/c++/15.2.1/bits/stl_numeric.h \
-  /usr/include/c++/15.2.1/bits/stl_pair.h \
-  /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/15.2.1/bits/stl_relops.h \
-  /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
-  /usr/include/c++/15.2.1/bits/stl_tree.h \
-  /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
-  /usr/include/c++/15.2.1/bits/stl_vector.h \
-  /usr/include/c++/15.2.1/bits/stream_iterator.h \
-  /usr/include/c++/15.2.1/bits/streambuf.tcc \
-  /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
-  /usr/include/c++/15.2.1/bits/string_view.tcc \
-  /usr/include/c++/15.2.1/bits/stringfwd.h \
-  /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
-  /usr/include/c++/15.2.1/bits/unique_ptr.h \
-  /usr/include/c++/15.2.1/bits/uses_allocator.h \
-  /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
-  /usr/include/c++/15.2.1/bits/utility.h \
-  /usr/include/c++/15.2.1/bits/valarray_after.h \
-  /usr/include/c++/15.2.1/bits/valarray_array.h \
-  /usr/include/c++/15.2.1/bits/valarray_array.tcc \
-  /usr/include/c++/15.2.1/bits/valarray_before.h \
-  /usr/include/c++/15.2.1/bits/vector.tcc \
-  /usr/include/c++/15.2.1/bits/version.h \
-  /usr/include/c++/15.2.1/cassert \
-  /usr/include/c++/15.2.1/cctype \
-  /usr/include/c++/15.2.1/cerrno \
-  /usr/include/c++/15.2.1/charconv \
-  /usr/include/c++/15.2.1/climits \
-  /usr/include/c++/15.2.1/clocale \
-  /usr/include/c++/15.2.1/cmath \
-  /usr/include/c++/15.2.1/compare \
-  /usr/include/c++/15.2.1/concepts \
-  /usr/include/c++/15.2.1/cstddef \
-  /usr/include/c++/15.2.1/cstdint \
-  /usr/include/c++/15.2.1/cstdio \
-  /usr/include/c++/15.2.1/cstdlib \
-  /usr/include/c++/15.2.1/cstring \
-  /usr/include/c++/15.2.1/ctime \
-  /usr/include/c++/15.2.1/cwchar \
-  /usr/include/c++/15.2.1/cwctype \
-  /usr/include/c++/15.2.1/debug/assertions.h \
-  /usr/include/c++/15.2.1/debug/debug.h \
-  /usr/include/c++/15.2.1/exception \
-  /usr/include/c++/15.2.1/ext/aligned_buffer.h \
-  /usr/include/c++/15.2.1/ext/alloc_traits.h \
-  /usr/include/c++/15.2.1/ext/atomicity.h \
-  /usr/include/c++/15.2.1/ext/concurrence.h \
-  /usr/include/c++/15.2.1/ext/numeric_traits.h \
-  /usr/include/c++/15.2.1/ext/string_conversions.h \
-  /usr/include/c++/15.2.1/ext/type_traits.h \
-  /usr/include/c++/15.2.1/filesystem \
-  /usr/include/c++/15.2.1/format \
-  /usr/include/c++/15.2.1/forward_list \
-  /usr/include/c++/15.2.1/fstream \
-  /usr/include/c++/15.2.1/functional \
-  /usr/include/c++/15.2.1/initializer_list \
-  /usr/include/c++/15.2.1/iomanip \
-  /usr/include/c++/15.2.1/ios \
-  /usr/include/c++/15.2.1/iosfwd \
-  /usr/include/c++/15.2.1/istream \
-  /usr/include/c++/15.2.1/iterator \
-  /usr/include/c++/15.2.1/limits \
-  /usr/include/c++/15.2.1/list \
-  /usr/include/c++/15.2.1/locale \
-  /usr/include/c++/15.2.1/map \
-  /usr/include/c++/15.2.1/memory \
-  /usr/include/c++/15.2.1/new \
-  /usr/include/c++/15.2.1/numbers \
-  /usr/include/c++/15.2.1/numeric \
-  /usr/include/c++/15.2.1/optional \
-  /usr/include/c++/15.2.1/ostream \
-  /usr/include/c++/15.2.1/pstl/execution_defs.h \
-  /usr/include/c++/15.2.1/pstl/glue_numeric_defs.h \
-  /usr/include/c++/15.2.1/stdexcept \
-  /usr/include/c++/15.2.1/streambuf \
-  /usr/include/c++/15.2.1/string \
-  /usr/include/c++/15.2.1/string_view \
-  /usr/include/c++/15.2.1/text_encoding \
-  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
-  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
-  /usr/include/c++/15.2.1/tr1/ell_integral.tcc \
-  /usr/include/c++/15.2.1/tr1/exp_integral.tcc \
-  /usr/include/c++/15.2.1/tr1/gamma.tcc \
-  /usr/include/c++/15.2.1/tr1/hypergeometric.tcc \
-  /usr/include/c++/15.2.1/tr1/legendre_function.tcc \
-  /usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc \
-  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
-  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
-  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
-  /usr/include/c++/15.2.1/tr1/special_function_util.h \
-  /usr/include/c++/15.2.1/tuple \
-  /usr/include/c++/15.2.1/type_traits \
-  /usr/include/c++/15.2.1/typeinfo \
-  /usr/include/c++/15.2.1/unordered_map \
-  /usr/include/c++/15.2.1/utility \
-  /usr/include/c++/15.2.1/valarray \
-  /usr/include/c++/15.2.1/vector \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/messages_members.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
-  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
-  /usr/include/ctype.h \
-  /usr/include/endian.h \
-  /usr/include/errno.h \
-  /usr/include/features-time64.h \
-  /usr/include/features.h \
-  /usr/include/gnu/stubs-64.h \
-  /usr/include/gnu/stubs.h \
-  /usr/include/libintl.h \
-  /usr/include/limits.h \
-  /usr/include/linux/errno.h \
-  /usr/include/linux/limits.h \
-  /usr/include/linux/posix_types.h \
-  /usr/include/linux/stddef.h \
-  /usr/include/linux/types.h \
-  /usr/include/locale.h \
-  /usr/include/nlohmann/adl_serializer.hpp \
-  /usr/include/nlohmann/byte_container_with_subtype.hpp \
-  /usr/include/nlohmann/detail/abi_macros.hpp \
-  /usr/include/nlohmann/detail/conversions/from_json.hpp \
-  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
-  /usr/include/nlohmann/detail/conversions/to_json.hpp \
-  /usr/include/nlohmann/detail/exceptions.hpp \
-  /usr/include/nlohmann/detail/hash.hpp \
-  /usr/include/nlohmann/detail/input/binary_reader.hpp \
-  /usr/include/nlohmann/detail/input/input_adapters.hpp \
-  /usr/include/nlohmann/detail/input/json_sax.hpp \
-  /usr/include/nlohmann/detail/input/lexer.hpp \
-  /usr/include/nlohmann/detail/input/parser.hpp \
-  /usr/include/nlohmann/detail/input/position_t.hpp \
-  /usr/include/nlohmann/detail/iterators/internal_iterator.hpp \
-  /usr/include/nlohmann/detail/iterators/iter_impl.hpp \
-  /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
-  /usr/include/nlohmann/detail/iterators/iterator_traits.hpp \
-  /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
-  /usr/include/nlohmann/detail/iterators/primitive_iterator.hpp \
-  /usr/include/nlohmann/detail/json_custom_base_class.hpp \
-  /usr/include/nlohmann/detail/json_pointer.hpp \
-  /usr/include/nlohmann/detail/json_ref.hpp \
-  /usr/include/nlohmann/detail/macro_scope.hpp \
-  /usr/include/nlohmann/detail/macro_unscope.hpp \
-  /usr/include/nlohmann/detail/meta/call_std/begin.hpp \
-  /usr/include/nlohmann/detail/meta/call_std/end.hpp \
-  /usr/include/nlohmann/detail/meta/cpp_future.hpp \
-  /usr/include/nlohmann/detail/meta/detected.hpp \
-  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
-  /usr/include/nlohmann/detail/meta/is_sax.hpp \
-  /usr/include/nlohmann/detail/meta/std_fs.hpp \
-  /usr/include/nlohmann/detail/meta/type_traits.hpp \
-  /usr/include/nlohmann/detail/meta/void_t.hpp \
-  /usr/include/nlohmann/detail/output/binary_writer.hpp \
-  /usr/include/nlohmann/detail/output/output_adapters.hpp \
-  /usr/include/nlohmann/detail/output/serializer.hpp \
-  /usr/include/nlohmann/detail/string_concat.hpp \
-  /usr/include/nlohmann/detail/string_escape.hpp \
-  /usr/include/nlohmann/detail/string_utils.hpp \
-  /usr/include/nlohmann/detail/value_t.hpp \
-  /usr/include/nlohmann/json.hpp \
-  /usr/include/nlohmann/json_fwd.hpp \
-  /usr/include/nlohmann/ordered_map.hpp \
-  /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
-  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
-  /usr/include/pthread.h \
-  /usr/include/qt/QtCore/QFileSystemWatcher \
-  /usr/include/qt/QtCore/QObject \
-  /usr/include/qt/QtCore/QSocketNotifier \
-  /usr/include/qt/QtCore/QStandardPaths \
-  /usr/include/qt/QtCore/qalgorithms.h \
-  /usr/include/qt/QtCore/qarraydata.h \
-  /usr/include/qt/QtCore/qatomic.h \
-  /usr/include/qt/QtCore/qatomic_cxx11.h \
-  /usr/include/qt/QtCore/qbasicatomic.h \
-  /usr/include/qt/QtCore/qbytearray.h \
-  /usr/include/qt/QtCore/qbytearraylist.h \
-  /usr/include/qt/QtCore/qchar.h \
-  /usr/include/qt/QtCore/qcompilerdetection.h \
-  /usr/include/qt/QtCore/qconfig.h \
-  /usr/include/qt/QtCore/qcontainerfwd.h \
-  /usr/include/qt/QtCore/qcontainertools_impl.h \
-  /usr/include/qt/QtCore/qfilesystemwatcher.h \
-  /usr/include/qt/QtCore/qflags.h \
-  /usr/include/qt/QtCore/qgenericatomic.h \
-  /usr/include/qt/QtCore/qglobal.h \
-  /usr/include/qt/QtCore/qglobalstatic.h \
-  /usr/include/qt/QtCore/qhashfunctions.h \
-  /usr/include/qt/QtCore/qiterator.h \
-  /usr/include/qt/QtCore/qlist.h \
-  /usr/include/qt/QtCore/qlogging.h \
-  /usr/include/qt/QtCore/qmetatype.h \
-  /usr/include/qt/QtCore/qnamespace.h \
-  /usr/include/qt/QtCore/qnumeric.h \
-  /usr/include/qt/QtCore/qobject.h \
-  /usr/include/qt/QtCore/qobject_impl.h \
-  /usr/include/qt/QtCore/qobjectdefs.h \
-  /usr/include/qt/QtCore/qobjectdefs_impl.h \
-  /usr/include/qt/QtCore/qpair.h \
-  /usr/include/qt/QtCore/qprocessordetection.h \
-  /usr/include/qt/QtCore/qrefcount.h \
-  /usr/include/qt/QtCore/qregexp.h \
-  /usr/include/qt/QtCore/qscopedpointer.h \
-  /usr/include/qt/QtCore/qsocketnotifier.h \
-  /usr/include/qt/QtCore/qstandardpaths.h \
-  /usr/include/qt/QtCore/qstring.h \
-  /usr/include/qt/QtCore/qstringalgorithms.h \
-  /usr/include/qt/QtCore/qstringlist.h \
-  /usr/include/qt/QtCore/qstringliteral.h \
-  /usr/include/qt/QtCore/qstringmatcher.h \
-  /usr/include/qt/QtCore/qstringview.h \
-  /usr/include/qt/QtCore/qsysinfo.h \
-  /usr/include/qt/QtCore/qsystemdetection.h \
-  /usr/include/qt/QtCore/qtcore-config.h \
-  /usr/include/qt/QtCore/qtypeinfo.h \
-  /usr/include/qt/QtCore/qvarlengtharray.h \
-  /usr/include/qt/QtCore/qvector.h \
-  /usr/include/qt/QtCore/qversiontagging.h \
-  /usr/include/sched.h \
-  /usr/include/stdc-predef.h \
-  /usr/include/stdio.h \
-  /usr/include/stdlib.h \
-  /usr/include/string.h \
-  /usr/include/strings.h \
-  /usr/include/sys/cdefs.h \
-  /usr/include/sys/select.h \
-  /usr/include/sys/syscall.h \
-  /usr/include/sys/types.h \
-  /usr/include/syscall.h \
-  /usr/include/time.h \
-  /usr/include/unistd.h \
-  /usr/include/wchar.h \
-  /usr/include/wctype.h \
   /usr/lib/cmake/Qt5/Qt5Config.cmake \
   /usr/lib/cmake/Qt5/Qt5ConfigVersion.cmake \
   /usr/lib/cmake/Qt5/Qt5ModuleLocation.cmake \
@@ -520,8 +58,6 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
   /usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake \
   /usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake \
   /usr/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
   /usr/share/cmake/Modules/CMakeCXXInformation.cmake \
   /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake \
   /usr/share/cmake/Modules/CMakeGenericSystem.cmake \
@@ -534,11 +70,15 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
   /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
   /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake \
   /usr/share/cmake/Modules/Compiler/GNU.cmake \
+  /usr/share/cmake/Modules/ExternalProject/shared_internal_commands.cmake \
+  /usr/share/cmake/Modules/FetchContent.cmake \
+  /usr/share/cmake/Modules/FetchContent/CMakeLists.cmake.in \
   /usr/share/cmake/Modules/FindCURL.cmake \
   /usr/share/cmake/Modules/FindCurses.cmake \
   /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake \
   /usr/share/cmake/Modules/FindPackageMessage.cmake \
   /usr/share/cmake/Modules/FindPkgConfig.cmake \
+  /usr/share/cmake/Modules/GoogleTest.cmake \
   /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake \
   /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake \
   /usr/share/cmake/Modules/Linker/GNU-CXX.cmake \
@@ -558,1112 +98,192 @@ rwal_autogen/timestamp: /home/p1rat/code/rwal/CMakeLists.txt \
   /usr/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake
 
 
-/usr/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake:
-
-/usr/share/cmake/Modules/SelectLibraryConfigurations.cmake:
-
-/usr/share/cmake/Modules/Platform/UnixPaths.cmake:
+/usr/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake:
 
 /usr/share/cmake/Modules/Platform/Linux.cmake:
 
 /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake:
 
+/usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake:
+
 /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake:
 
 /usr/share/cmake/Modules/Platform/Linker/GNU.cmake:
 
-/usr/share/cmake/Modules/Linker/GNU.cmake:
-
-/usr/include/endian.h:
-
-/usr/include/c++/15.2.1/cassert:
-
-/usr/include/qt/QtCore/qlist.h:
-
-/usr/include/c++/15.2.1/bits/version.h:
-
-/usr/include/c++/15.2.1/bits/valarray_before.h:
-
-/usr/include/c++/15.2.1/bits/valarray_array.h:
-
-/usr/include/c++/15.2.1/bit:
-
-/usr/include/c++/15.2.1/bits/utility.h:
-
-/usr/include/linux/posix_types.h:
-
-/usr/include/c++/15.2.1/bits/uses_allocator_args.h:
-
-/usr/include/c++/15.2.1/bits/uses_allocator.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
-
-/usr/include/c++/15.2.1/bits/unique_ptr.h:
-
-/usr/include/c++/15.2.1/cwchar:
-
-/usr/include/c++/15.2.1/bits/streambuf_iterator.h:
-
-/usr/include/asm-generic/errno.h:
-
-/usr/include/c++/15.2.1/bits/stl_uninitialized.h:
-
-/usr/include/c++/15.2.1/bits/stl_algo.h:
-
-/usr/include/pthread.h:
-
-/usr/include/c++/15.2.1/clocale:
-
-/usr/include/c++/15.2.1/bits/stl_list.h:
-
-/usr/share/cmake/Modules/Compiler/GNU.cmake:
-
-/usr/include/c++/15.2.1/bits/stl_iterator_base_types.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake:
-
-/usr/include/c++/15.2.1/bits/stl_heap.h:
-
-/usr/include/c++/15.2.1/bits/basic_string.h:
-
-/usr/include/asm-generic/types.h:
-
-/usr/include/c++/15.2.1/bits/ranges_util.h:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/c++/15.2.1/exception:
-
-/usr/include/c++/15.2.1/bits/iterator_concepts.h:
-
-/usr/include/nlohmann/detail/value_t.hpp:
-
-/usr/include/c++/15.2.1/bits/shared_ptr_atomic.h:
-
-/usr/include/c++/15.2.1/bits/locale_classes.tcc:
-
-/usr/include/c++/15.2.1/bits/sat_arith.h:
-
-/usr/include/c++/15.2.1/bits/ranges_base.h:
-
-/usr/include/c++/15.2.1/bits/range_access.h:
-
-/usr/include/qt/QtCore/qbytearraylist.h:
-
-/usr/include/c++/15.2.1/bits/out_ptr.h:
-
-/usr/include/c++/15.2.1/bits/std_abs.h:
-
-/usr/include/c++/15.2.1/tr1/special_function_util.h:
-
-/usr/include/c++/15.2.1/bits/ostream_insert.h:
-
-/usr/include/c++/15.2.1/list:
-
-/usr/include/c++/15.2.1/bits/streambuf.tcc:
-
-/usr/include/bits/cpu-set.h:
-
-/usr/include/c++/15.2.1/bits/refwrap.h:
-
-/usr/include/c++/15.2.1/bits/basic_string.tcc:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake:
-
-/usr/include/bits/typesizes.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake:
-
-/usr/include/c++/15.2.1/bits/new_allocator.h:
-
-/usr/include/qt/QtCore/qsysinfo.h:
-
-/usr/include/c++/15.2.1/cmath:
-
-/usr/include/c++/15.2.1/bits/stringfwd.h:
-
-/usr/include/c++/15.2.1/bits/nested_exception.h:
-
-/usr/include/c++/15.2.1/bits/move.h:
-
-/usr/include/c++/15.2.1/bits/memory_resource.h:
+/usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake:
 
 /usr/share/cmake/Modules/FindPkgConfig.cmake:
 
-/usr/include/c++/15.2.1/bits/max_size_type.h:
-
-/usr/include/c++/15.2.1/bits/std_function.h:
-
-CMakeFiles/4.2.3/CMakeSystem.cmake:
-
-/usr/include/c++/15.2.1/bits/mask_array.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake:
-
-/usr/include/c++/15.2.1/bits/localefwd.h:
-
-/usr/include/c++/15.2.1/bits/locale_facets_nonio.tcc:
-
-/usr/include/bits/select.h:
-
-/usr/include/c++/15.2.1/bits/predefined_ops.h:
-
-/usr/include/bits/types/struct_itimerspec.h:
-
-/usr/include/c++/15.2.1/bits/locale_facets.h:
-
-/usr/include/nlohmann/detail/meta/type_traits.hpp:
-
-/usr/share/cmake/Modules/MacroAddFileDependencies.cmake:
-
-/usr/include/qt/QtCore/qstring.h:
-
-/usr/include/c++/15.2.1/bits/locale_conv.h:
-
-/usr/include/c++/15.2.1/bits/locale_classes.h:
-
-/usr/include/alloca.h:
-
-/usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h:
-
-/usr/include/c++/15.2.1/bits/ios_base.h:
-
-/usr/include/c++/15.2.1/bits/indirect_array.h:
-
-/usr/include/c++/15.2.1/backward/binders.h:
-
-/usr/include/c++/15.2.1/bits/hash_bytes.h:
-
-/usr/include/c++/15.2.1/bits/gslice_array.h:
-
-/usr/include/locale.h:
-
-/usr/include/c++/15.2.1/bits/gslice.h:
-
-/usr/include/qt/QtCore/qscopedpointer.h:
-
-/usr/include/c++/15.2.1/bits/functional_hash.h:
-
-/usr/include/c++/15.2.1/bits/stl_numeric.h:
-
-/usr/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake:
-
-/usr/include/c++/15.2.1/bits/exception_defines.h:
-
-/usr/include/c++/15.2.1/vector:
-
-/usr/include/c++/15.2.1/bits/cxxabi_forced.h:
-
-/usr/include/c++/15.2.1/bits/ranges_cmp.h:
-
-/usr/include/c++/15.2.1/cctype:
-
-/usr/include/c++/15.2.1/ext/concurrence.h:
-
-/usr/include/nlohmann/detail/input/input_adapters.hpp:
-
-/usr/include/c++/15.2.1/bits/monostate.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake:
-
-/usr/include/c++/15.2.1/bits/codecvt.h:
+/usr/share/cmake/Modules/FindPackageMessage.cmake:
 
 /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:
 
-/usr/include/c++/15.2.1/bits/charconv.h:
+/usr/share/cmake/Modules/FindCURL.cmake:
 
-/usr/include/c++/15.2.1/bits/concept_check.h:
-
-/usr/include/nlohmann/detail/input/position_t.hpp:
-
-/usr/include/c++/15.2.1/bits/char_traits.h:
-
-/usr/include/c++/15.2.1/bits/move_only_function.h:
-
-/usr/include/nlohmann/detail/meta/is_sax.hpp:
-
-/usr/include/c++/15.2.1/cerrno:
-
-/usr/include/c++/15.2.1/bits/basic_ios.tcc:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeEglPlatformIntegrationPlugin.cmake:
-
-/usr/include/c++/15.2.1/bits/stl_multimap.h:
-
-/usr/include/c++/15.2.1/bits/exception_ptr.h:
-
-/usr/include/c++/15.2.1/bits/atomic_wait.h:
-
-/usr/include/c++/15.2.1/bits/stream_iterator.h:
-
-/usr/include/c++/15.2.1/bits/allocated_ptr.h:
-
-/usr/share/cmake/Modules/CMakeInitializeConfigs.cmake:
-
-/usr/include/c++/15.2.1/bits/functexcept.h:
-
-/usr/include/c++/15.2.1/debug/debug.h:
-
-/usr/include/nlohmann/detail/meta/cpp_future.hpp:
-
-/usr/include/c++/15.2.1/array:
-
-/usr/include/c++/15.2.1/backward/auto_ptr.h:
-
-/usr/include/nlohmann/detail/meta/call_std/end.hpp:
-
-/usr/include/qt/QtCore/qversiontagging.h:
-
-/usr/include/c++/15.2.1/atomic:
-
-/usr/bin/cmake:
-
-/usr/include/bits/confname.h:
-
-/usr/include/nlohmann/detail/macro_unscope.hpp:
-
-/usr/include/c++/15.2.1/bits/list.tcc:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
-
-/usr/include/bits/types/sigset_t.h:
-
-/home/p1rat/code/rwal/src/internal/platform/env_utils.hpp:
-
-/usr/include/qt/QtCore/qstringmatcher.h:
-
-/home/p1rat/code/rwal/src/logs/logs.hpp:
-
-/usr/lib/cmake/Qt5/Qt5ModuleLocation.cmake:
-
-/usr/include/bits/endian.h:
-
-/usr/include/asm/errno.h:
-
-/usr/include/c++/15.2.1/bits/slice_array.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/c++/15.2.1/iterator:
-
-/usr/include/c++/15.2.1/unordered_map:
-
-/usr/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake:
-
-/usr/include/asm/types.h:
-
-/usr/include/bits/types/struct_FILE.h:
-
-/home/p1rat/code/rwal/src/net/CurlWrapper.hpp:
-
-/usr/include/c++/15.2.1/filesystem:
-
-/usr/include/c++/15.2.1/bits/alloc_traits.h:
-
-/usr/include/qt/QtCore/QSocketNotifier:
-
-/usr/include/c++/15.2.1/compare:
-
-/usr/include/c++/15.2.1/cwctype:
-
-/usr/include/asm/posix_types_64.h:
-
-/usr/include/bits/types.h:
-
-/usr/include/c++/15.2.1/bits/locale_facets.tcc:
-
-/usr/include/asm/posix_types.h:
-
-/usr/include/asm-generic/int-ll64.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h:
-
-/usr/include/c++/15.2.1/bits/quoted_string.h:
-
-/usr/include/features-time64.h:
-
-/usr/include/bits/posix1_lim.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake:
-
-/home/p1rat/code/rwal/src/ui/menus/menus.hpp:
-
-/usr/include/bits/floatn.h:
-
-/usr/include/c++/15.2.1/bits/basic_ios.h:
-
-/usr/include/asm/bitsperlong.h:
-
-/home/p1rat/code/rwal/src/ui/menus/menus.cpp:
-
-/usr/include/bits/types/time_t.h:
-
-/usr/include/asm/unistd.h:
-
-/home/p1rat/code/rwal/src/ui/cli/cli.cpp:
-
-/usr/include/c++/15.2.1/tr1/hypergeometric.tcc:
-
-/usr/include/bits/types/struct_timespec.h:
-
-/usr/include/c++/15.2.1/bits/allocator.h:
-
-/usr/include/c++/15.2.1/ext/atomicity.h:
-
-/home/p1rat/code/rwal/src/settings/settings.cpp:
-
-/usr/include/c++/15.2.1/pstl/glue_numeric_defs.h:
-
-/usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake:
-
-/usr/include/bits/pthreadtypes-arch.h:
-
-/usr/include/c++/15.2.1/bits/stl_construct.h:
-
-/usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake:
-
-/usr/include/c++/15.2.1/bits/istream.tcc:
-
-/usr/include/bits/struct_mutex.h:
-
-/usr/include/c++/15.2.1/limits:
-
-/usr/include/time.h:
-
-/usr/include/c++/15.2.1/bits/cpp_type_traits.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake:
-
-/usr/include/c++/15.2.1/bits/locale_facets_nonio.h:
-
-/home/p1rat/code/rwal/src/net/NetworkManager.cpp:
-
-/usr/include/bits/uintn-identity.h:
-
-/home/p1rat/code/rwal/src/funcs/funcs.cpp:
-
-/usr/include/c++/15.2.1/bits/cxxabi_init_exception.h:
-
-rwal_autogen/moc_predefs.h:
-
-/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
-
-/home/p1rat/code/rwal/src/ui/cli/cli.hpp:
-
-/usr/include/assert.h:
-
-/home/p1rat/code/rwal/src/net/NetworkManager.hpp:
-
-/usr/include/gnu/stubs.h:
-
-/home/p1rat/code/rwal/src/net/CurlWrapper.cpp:
-
-/usr/include/bits/syscall.h:
-
-/usr/include/qt/QtCore/qconfig.h:
-
-/usr/include/c++/15.2.1/bits/string_view.tcc:
-
-/usr/include/bits/types/__fpos_t.h:
-
-/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
-
-/usr/include/nlohmann/adl_serializer.hpp:
-
-/usr/include/bits/long-double.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
-
-/home/p1rat/code/rwal/src/funcs/funcs.hpp:
-
-/usr/include/c++/15.2.1/bits/ostream.tcc:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
-
-/home/p1rat/code/rwal/src/AppController/AppController.hpp:
-
-/usr/include/c++/15.2.1/climits:
-
-/home/p1rat/code/rwal/src/settings/settings.hpp:
-
-/usr/include/c++/15.2.1/ext/aligned_buffer.h:
-
-/usr/include/c++/15.2.1/locale:
-
-/usr/include/bits/timesize.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/include/bits/wchar.h:
-
-/home/p1rat/code/rwal/src/internal/platform/env_utils.cpp:
-
-/usr/include/bits/endianness.h:
-
-/usr/include/libintl.h:
-
-/usr/include/c++/15.2.1/bits/atomic_base.h:
-
-/home/p1rat/code/rwal/src/dbus/PlasmaDBus.cpp:
-
-/usr/include/sys/syscall.h:
-
-/home/p1rat/code/rwal/src/navigator/navigator.hpp:
-
-/usr/include/bits/types/mbstate_t.h:
-
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/c++/15.2.1/bits/stl_map.h:
-
-/home/p1rat/code/rwal/src/AppController/AppController.cpp:
-
-/usr/include/bits/types/clockid_t.h:
-
-/usr/include/qt/QtCore/qsystemdetection.h:
-
-/usr/include/c++/15.2.1/bits/valarray_after.h:
-
-/usr/include/c++/15.2.1/bits/stl_vector.h:
-
-/usr/include/bits/time.h:
-
-/home/p1rat/code/rwal/src/dbus/PlasmaDBus.hpp:
-
-/usr/include/c++/15.2.1/bits/stl_algobase.h:
-
-/usr/include/nlohmann/detail/iterators/primitive_iterator.hpp:
-
-/home/p1rat/code/rwal/src/keywords/keywords.hpp:
-
-/usr/include/bits/stdio_lim.h:
-
-/home/p1rat/code/rwal/src/navigator/navigator.cpp:
-
-/usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake:
-
-/usr/include/c++/15.2.1/bits/std_mutex.h:
-
-/usr/include/bits/byteswap.h:
-
-/usr/include/c++/15.2.1/bits/stl_bvector.h:
-
-/usr/include/bits/posix2_lim.h:
-
-/usr/include/bits/getopt_core.h:
-
-/usr/include/c++/15.2.1/bits/align.h:
-
-/usr/include/nlohmann/detail/output/output_adapters.hpp:
-
-/usr/include/c++/15.2.1/bits/vector.tcc:
-
-/home/p1rat/code/rwal/src/settings/config.cpp:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QWaylandEglPlatformIntegrationPlugin.cmake:
-
-/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake:
-
-/usr/include/bits/getopt_posix.h:
-
-/usr/include/c++/15.2.1/tuple:
-
-/usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
-
-/usr/include/errno.h:
-
-/usr/include/bits/libc-header-start.h:
-
-/usr/include/bits/local_lim.h:
-
-/usr/include/bits/atomic_wide_counter.h:
-
-/usr/include/bits/posix_opt.h:
-
-/usr/include/bits/pthread_stack_min-dynamic.h:
-
-/usr/include/bits/pthreadtypes.h:
-
-/usr/include/c++/15.2.1/tr1/beta_function.tcc:
-
-/usr/include/features.h:
-
-/usr/include/bits/types/cookie_io_functions_t.h:
-
-CMakeFiles/4.2.3/CMakeCXXCompiler.cmake:
-
-/usr/include/bits/setjmp.h:
-
-/usr/include/c++/15.2.1/bits/requires_hosted.h:
-
-/usr/share/cmake/Modules/CMakeLanguageInformation.cmake:
-
-/usr/include/c++/15.2.1/bits/formatfwd.h:
-
-/usr/include/c++/15.2.1/bits/atomic_lockfree_defines.h:
-
-/usr/include/c++/15.2.1/bits/node_handle.h:
-
-/usr/include/bits/types/struct_timeval.h:
-
-/usr/include/c++/15.2.1/iosfwd:
-
-/usr/include/bits/types/error_t.h:
-
-/home/p1rat/code/rwal/src/internal/utils/string_utils.cpp:
-
-/home/p1rat/code/rwal/src/keywords/keywords.cpp:
-
-/usr/include/c++/15.2.1/bits/valarray_array.tcc:
-
-/usr/include/bits/types/__locale_t.h:
-
-/usr/include/bits/thread-shared-types.h:
-
-/usr/include/c++/15.2.1/ios:
-
-/usr/include/bits/stdlib-float.h:
-
-/usr/include/bits/time64.h:
-
-/usr/include/bits/errno.h:
-
-/usr/include/c++/15.2.1/bits/c++0x_warning.h:
-
-/usr/include/bits/types/__sigset_t.h:
-
-/usr/include/qt/QtCore/qnumeric.h:
-
-/usr/include/qt/QtCore/qobject_impl.h:
-
-/usr/include/bits/timex.h:
-
-/usr/include/c++/15.2.1/ctime:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake:
-
-/usr/include/c++/15.2.1/streambuf:
-
-/usr/include/bits/floatn-common.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
-
-/usr/include/bits/types/__fpos64_t.h:
-
-/home/p1rat/code/rwal/src/main.cpp:
-
-/usr/include/bits/types/locale_t.h:
-
-/usr/include/bits/sched.h:
-
-/usr/include/bits/struct_rwlock.h:
-
-/usr/include/c++/15.2.1/bits/stl_pair.h:
-
-/usr/include/qt/QtCore/qbasicatomic.h:
-
-/usr/include/bits/waitflags.h:
-
-/usr/include/c++/15.2.1/bits/ranges_algobase.h:
-
-/usr/include/c++/15.2.1/forward_list:
-
-/home/p1rat/code/rwal/src/settings/config.hpp:
-
-/usr/include/c++/15.2.1/bits/ranges_algo.h:
-
-/usr/include/c++/15.2.1/bits/mofunc_impl.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/bits/types/struct_tm.h:
-
-/usr/include/nlohmann/detail/conversions/to_chars.hpp:
-
-/usr/include/c++/15.2.1/bits/stl_tempbuf.h:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/bits/types/timer_t.h:
-
-/usr/include/c++/15.2.1/bits/fstream.tcc:
-
-/usr/share/cmake/Modules/Linker/GNU-CXX.cmake:
-
-/usr/include/qt/QtCore/qvector.h:
-
-/usr/include/c++/15.2.1/bits/algorithmfwd.h:
-
-/usr/include/c++/15.2.1/bits/memoryfwd.h:
-
-/usr/include/bits/types/wint_t.h:
-
-/usr/include/bits/uio_lim.h:
-
-/usr/include/c++/15.2.1/bits/exception.h:
-
-/usr/share/cmake/Modules/CMakeParseArguments.cmake:
-
-/usr/include/c++/15.2.1/any:
-
-/usr/include/bits/unistd_ext.h:
-
-/usr/include/c++/15.2.1/ext/alloc_traits.h:
-
-/usr/include/bits/stdint-intn.h:
-
-/usr/include/bits/wctype-wchar.h:
-
-/usr/include/bits/wordsize.h:
-
-/usr/include/stdio.h:
-
-/usr/include/c++/15.2.1/bits/postypes.h:
-
-/usr/include/c++/15.2.1/ext/numeric_traits.h:
-
-/usr/include/bits/xopen_lim.h:
-
-/usr/include/c++/15.2.1/tr1/ell_integral.tcc:
-
-/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.hpp:
-
-/usr/include/c++/15.2.1/algorithm:
-
-/usr/include/bits/types/__FILE.h:
-
-/usr/include/qt/QtCore/qcontainerfwd.h:
-
-/usr/include/c++/15.2.1/concepts:
-
-/usr/include/c++/15.2.1/cstddef:
-
-/usr/include/wchar.h:
-
-/usr/include/nlohmann/detail/exceptions.hpp:
-
-/usr/include/nlohmann/detail/string_concat.hpp:
-
-/usr/include/c++/15.2.1/cstdint:
-
-/usr/include/nlohmann/detail/json_ref.hpp:
-
-/usr/include/c++/15.2.1/cstdio:
-
-/usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
-
-/usr/include/c++/15.2.1/cstdlib:
-
-/usr/include/c++/15.2.1/cstring:
-
-/usr/include/linux/types.h:
-
-/usr/include/c++/15.2.1/bits/ranges_uninitialized.h:
-
-/usr/include/qt/QtCore/qalgorithms.h:
-
-/usr/include/c++/15.2.1/ext/string_conversions.h:
-
-/usr/include/c++/15.2.1/ext/type_traits.h:
-
-/usr/include/nlohmann/detail/macro_scope.hpp:
-
-/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:
-
-/home/p1rat/code/rwal/src/internal/utils/vector_utils.hpp:
-
-/usr/include/c++/15.2.1/fstream:
-
-/usr/include/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/nlohmann/detail/meta/call_std/begin.hpp:
-
-/usr/include/c++/15.2.1/functional:
-
-/usr/include/c++/15.2.1/initializer_list:
-
-/usr/include/qt/QtCore/qbytearray.h:
-
-/usr/include/c++/15.2.1/numbers:
-
-/usr/include/bits/locale.h:
-
-/usr/include/c++/15.2.1/iomanip:
-
-/usr/include/c++/15.2.1/istream:
-
-/usr/include/c++/15.2.1/memory:
-
-/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake:
-
-/usr/include/c++/15.2.1/map:
-
-/usr/include/c++/15.2.1/new:
-
-/home/p1rat/code/rwal/CMakeLists.txt:
-
-/usr/include/c++/15.2.1/numeric:
-
-/usr/include/c++/15.2.1/bits/stl_function.h:
-
-/usr/include/sys/select.h:
-
-/usr/include/c++/15.2.1/charconv:
-
-/usr/include/c++/15.2.1/optional:
-
-/usr/include/c++/15.2.1/ostream:
-
-/usr/include/c++/15.2.1/pstl/execution_defs.h:
-
-/usr/include/c++/15.2.1/stdexcept:
-
-/usr/include/c++/15.2.1/debug/assertions.h:
-
-/usr/include/c++/15.2.1/string:
-
-/usr/include/c++/15.2.1/string_view:
-
-/usr/include/c++/15.2.1/bits/invoke.h:
-
-/usr/include/c++/15.2.1/text_encoding:
-
-/usr/include/c++/15.2.1/tr1/bessel_function.tcc:
-
-/usr/include/nlohmann/detail/string_escape.hpp:
-
-/usr/include/c++/15.2.1/tr1/exp_integral.tcc:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake:
-
-/usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc:
-
-/usr/include/c++/15.2.1/tr1/poly_laguerre.tcc:
-
-/usr/include/strings.h:
-
-/usr/include/c++/15.2.1/type_traits:
-
-/home/p1rat/code/rwal/src/internal/GlobalConstans.hpp:
-
-/usr/include/c++/15.2.1/bits/specfun.h:
-
-/usr/include/c++/15.2.1/typeinfo:
-
-/usr/include/bits/types/FILE.h:
-
-/usr/lib/cmake/Qt5DBus/Qt5DBusConfig.cmake:
-
-/usr/include/c++/15.2.1/utility:
-
-/usr/include/c++/15.2.1/valarray:
-
-/usr/include/nlohmann/detail/meta/void_t.hpp:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
-
-/usr/include/c++/15.2.1/bits/stl_iterator.h:
-
-/usr/include/qt/QtCore/qgenericatomic.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h:
-
-/usr/include/c++/15.2.1/format:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake:
-
-/usr/include/gnu/stubs-64.h:
-
-/usr/include/limits.h:
-
-/usr/include/linux/errno.h:
-
-/usr/include/linux/limits.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/qt/QtCore/QObject:
-
-/usr/include/qt/QtCore/qobjectdefs_impl.h:
-
-/usr/include/nlohmann/byte_container_with_subtype.hpp:
+/usr/share/cmake/Modules/FetchContent/CMakeLists.cmake.in:
 
 /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake:
 
-/usr/include/qt/QtCore/qmetatype.h:
+/usr/share/cmake/Modules/FetchContent.cmake:
 
-/usr/include/c++/15.2.1/bits/shared_ptr.h:
+/usr/share/cmake/Modules/ExternalProject/shared_internal_commands.cmake:
 
-/home/p1rat/code/rwal/src/internal/utils/string_utils.hpp:
+/usr/share/cmake/Modules/Compiler/GNU-CXX.cmake:
 
-/usr/include/nlohmann/detail/abi_macros.hpp:
+/usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake:
 
-/usr/include/nlohmann/detail/conversions/from_json.hpp:
+/usr/share/cmake/Modules/CheckLibraryExists.cmake:
 
-/usr/include/nlohmann/detail/conversions/to_json.hpp:
+/usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
 
-/usr/share/cmake/Modules/Platform/Linux-GNU.cmake:
+/usr/share/cmake/Modules/Linker/GNU.cmake:
 
-/usr/include/nlohmann/detail/hash.hpp:
+/usr/share/cmake/Modules/CMakeLanguageInformation.cmake:
 
-/usr/include/c++/15.2.1/bits/stl_relops.h:
+/usr/share/cmake/Modules/CMakeInitializeConfigs.cmake:
 
-/usr/include/nlohmann/detail/input/binary_reader.hpp:
-
-/usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h:
-
-/usr/include/nlohmann/detail/input/parser.hpp:
-
-/usr/include/qt/QtCore/qstringalgorithms.h:
-
-/usr/include/nlohmann/detail/iterators/internal_iterator.hpp:
-
-/usr/include/c++/15.2.1/bits/ostream.h:
-
-/usr/include/nlohmann/detail/iterators/iteration_proxy.hpp:
-
-/usr/include/c++/15.2.1/tr1/poly_hermite.tcc:
-
-/usr/include/qt/QtCore/qstringview.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake:
-
-/usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
-
-/usr/include/c++/15.2.1/bits/stl_tree.h:
-
-/usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:
-
-/usr/include/qt/QtCore/qobjectdefs.h:
-
-/usr/include/nlohmann/detail/json_custom_base_class.hpp:
-
-/usr/include/nlohmann/detail/json_pointer.hpp:
-
-/usr/include/nlohmann/detail/meta/detected.hpp:
-
-/usr/include/nlohmann/detail/meta/identity_tag.hpp:
-
-/usr/include/nlohmann/detail/meta/std_fs.hpp:
-
-/usr/include/qt/QtCore/qlogging.h:
-
-/usr/include/nlohmann/detail/output/binary_writer.hpp:
-
-/usr/include/nlohmann/detail/output/serializer.hpp:
-
-/usr/include/nlohmann/detail/string_utils.hpp:
-
-/usr/include/bits/types/struct_sched_param.h:
-
-/usr/include/nlohmann/json.hpp:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/messages_members.h:
-
-/usr/include/c++/15.2.1/bits/erase_if.h:
-
-/usr/include/qt/QtCore/qsocketnotifier.h:
-
-/usr/include/nlohmann/json_fwd.hpp:
-
-/usr/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake:
-
-/usr/include/nlohmann/ordered_map.hpp:
-
-/usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
-
-/usr/include/qt/QtCore/QFileSystemWatcher:
-
-/usr/include/qt/QtCore/qarraydata.h:
-
-/home/p1rat/code/rwal/src/wallpaper/WallpaperManager.cpp:
-
-/usr/include/qt/QtCore/qatomic.h:
-
-/usr/include/qt/QtCore/qatomic_cxx11.h:
-
-/usr/include/qt/QtCore/qchar.h:
-
-/usr/include/bits/environments.h:
-
-/usr/include/qt/QtCore/qcompilerdetection.h:
-
-/usr/include/qt/QtCore/qcontainertools_impl.h:
-
-/usr/include/string.h:
-
-/usr/include/qt/QtCore/qflags.h:
-
-/usr/include/nlohmann/detail/input/json_sax.hpp:
-
-/usr/include/qt/QtCore/qstringlist.h:
-
-/usr/include/qt/QtCore/qglobal.h:
-
-/usr/include/qt/QtCore/qglobalstatic.h:
-
-/usr/share/cmake/Modules/FindPackageMessage.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake:
-
-/usr/lib/cmake/Qt5DBus/Qt5DBusConfigVersion.cmake:
-
-/usr/include/c++/15.2.1/bits/shared_ptr_base.h:
-
-/usr/include/qt/QtCore/qhashfunctions.h:
-
-/usr/include/qt/QtCore/qiterator.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake:
-
-/usr/include/qt/QtCore/qnamespace.h:
-
-/usr/include/qt/QtCore/qobject.h:
-
-/usr/include/bits/types/clock_t.h:
-
-/usr/include/qt/QtCore/qpair.h:
-
-/usr/include/c++/15.2.1/tr1/legendre_function.tcc:
-
-/usr/include/qt/QtCore/qprocessordetection.h:
-
-/usr/include/qt/QtCore/qrefcount.h:
-
-/usr/include/qt/QtCore/qregexp.h:
-
-/usr/include/qt/QtCore/qstandardpaths.h:
-
-/usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake:
-
-/usr/include/c++/15.2.1/tr1/gamma.tcc:
-
-/usr/include/qt/QtCore/qstringliteral.h:
-
-/usr/include/qt/QtCore/qtcore-config.h:
-
-/usr/include/bits/types/__mbstate_t.h:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake:
-
-/usr/include/asm/unistd_64.h:
-
-/usr/include/qt/QtCore/qtypeinfo.h:
-
-/usr/include/qt/QtCore/qvarlengtharray.h:
-
-/usr/include/sched.h:
-
-/usr/include/wctype.h:
-
-/usr/include/sys/cdefs.h:
-
-/usr/lib/cmake/Qt5/Qt5ConfigVersion.cmake:
-
-/usr/include/sys/types.h:
-
-/usr/include/syscall.h:
-
-/home/p1rat/code/rwal/src/logs/logs.cpp:
-
-/usr/include/unistd.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr.h:
-
-/usr/lib/cmake/Qt5/Qt5Config.cmake:
-
-/usr/include/qt/QtCore/QStandardPaths:
-
-/usr/lib/cmake/Qt5Core/Qt5CoreConfig.cmake:
-
-/usr/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake:
-
-/usr/lib/cmake/Qt5Core/Qt5CoreMacros.cmake:
-
-/usr/lib/cmake/Qt5DBus/Qt5DBusMacros.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake:
-
-/usr/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake:
-
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake:
-
-/usr/include/c++/15.2.1/bits/ptr_traits.h:
-
-/usr/include/ctype.h:
+/usr/share/cmake/Modules/FindCurses.cmake:
 
 /usr/share/cmake/Modules/CMakeGenericSystem.cmake:
 
-/usr/include/nlohmann/detail/input/lexer.hpp:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake:
+/usr/lib/cmake/Qt5DBus/Qt5DBusConfigExtras.cmake:
+
+/usr/share/cmake/Modules/GoogleTest.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake:
+
+/usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake:
+
+/usr/share/cmake/Modules/SelectLibraryConfigurations.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeGlxPlatformIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake:
+
+/usr/share/cmake/Modules/MacroAddFileDependencies.cmake:
+
+/usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake:
+
+/usr/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake:
+
+CMakeFiles/4.2.3/CMakeCXXCompiler.cmake:
+
+/usr/lib/cmake/Qt5Core/Qt5CoreMacros.cmake:
+
+CMakeFiles/4.2.3/CMakeSystem.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake:
+
+/home/p1rat/code/rwal/CMakeLists.txt:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake:
+
+/usr/share/cmake/Modules/Compiler/GNU.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake:
+
+/home/p1rat/code/rwal/src/main.cpp:
+
+/usr/share/cmake/Modules/CMakeParseArguments.cmake:
+
+/usr/lib/cmake/Qt5/Qt5Config.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Core/Qt5CoreConfig.cmake:
+
+/usr/lib/cmake/Qt5/Qt5ConfigVersion.cmake:
+
+/usr/bin/cmake:
+
+/usr/lib/cmake/Qt5/Qt5ModuleLocation.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake:
+
+/usr/share/cmake/Modules/Platform/UnixPaths.cmake:
+
+/usr/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake:
+
+/usr/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake:
+
+/usr/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake:
+
+/usr/lib/cmake/Qt5DBus/Qt5DBusConfigVersion.cmake:
+
+/usr/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake:
 
-/usr/include/qt/QtCore/qfilesystemwatcher.h:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake:
+
+/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QTsLibPlugin.cmake:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake:
+/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:
 
-/usr/lib/cmake/Qt5DBus/Qt5DBusConfigExtras.cmake:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QWaylandEglPlatformIntegrationPlugin.cmake:
+
+/usr/share/cmake/Modules/Linker/GNU-CXX.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QWaylandIntegrationPlugin.cmake:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeGlxPlatformIntegrationPlugin.cmake:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeEglPlatformIntegrationPlugin.cmake:
+
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake:
 
 /usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake:
 
-/usr/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake:
-
-/usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake:
+/usr/lib/cmake/Qt5DBus/Qt5DBusConfig.cmake:
 
 /usr/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake:
 
-/usr/include/c++/15.2.1/bits/uniform_int_dist.h:
-
-/usr/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake:
+/usr/share/cmake/Modules/Platform/Linux-GNU.cmake:
 
 /usr/share/cmake/Modules/CMakeCXXInformation.cmake:
 
-/usr/share/cmake/Modules/CheckLibraryExists.cmake:
+/usr/lib/cmake/Qt5DBus/Qt5DBusMacros.cmake:
 
-/usr/share/cmake/Modules/Compiler/GNU-CXX.cmake:
+/usr/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake:
 
-/usr/share/cmake/Modules/FindCURL.cmake:
-
-/usr/share/cmake/Modules/FindCurses.cmake:
-
-/usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake:
+/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake:
