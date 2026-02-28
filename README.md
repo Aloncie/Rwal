@@ -108,7 +108,7 @@ This project is licensed under the MIT License – see the LICENSE file for deta
 
 ## 🔗 Links
 
-- [Philosophy](https://github.com/Aloncie/Rwal/blob/main/docs/PHISOLOPHY.md)
+- [Philosophy](https://github.com/Aloncie/Rwal/blob/main/docs/PHILOSOPHY.md)
 - [Documentation](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md)
 - [Roadmap](https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md)
 
