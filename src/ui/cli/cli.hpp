@@ -4,31 +4,29 @@
 #include <iostream>
 #include <sstream>
 #include <optional>
+#include <ncurses.h>
 
 class MenuManager{
 private:
-	int count_ref;
 	static std::vector<std::string> dontShowAgain;
-	MenuManager();
 public:
-	static MenuManager& getInstance();
-	void clear_last_lines();
-	void countOperatorPlus(int count);
-	void show_message(std::string message);
+	void initUI();
+	void shutdownUI();
+
+	MenuManager();
+	void showMessage(std::string message);
 	void dodgeMessage(std::string message);
 
 	template<typename T>
 	T request_input(std::optional<std::string> message = std::nullopt) {
 		std::string input;
 		bool first_attempt = true;
-		count_ref++;
 
 		while (true) {
 			if (!first_attempt) {
-				show_message("Error: Invalid or dirty input. Try again.");
+				showMessage("Error: Invalid or dirty input. Try again.");
 			}
 			first_attempt = false;
-			//show_message(message);
 			if (!std::getline(std::cin, input)) {
 				std::cin.clear();
 				continue;
