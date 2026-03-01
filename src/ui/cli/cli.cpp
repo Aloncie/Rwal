@@ -1,58 +1,58 @@
 #include <algorithm>
 #include <cctype>
 #include <map>
-#include <ncurses.h>
 #include "cli.hpp"
 #include <iostream>
-
-std::vector<std::string> MenuManager::dontShowAgain;
-
-void MenuManager::clear_last_lines() {
-    for (int i = 0; i < count_ref; ++i) {
-        std::cout << "\033[A\033[2K";
-    }
-    std::cout << "\r";
-	count_ref = 0;
-}
-
-extern std::map<std::string,int> countStr;
-
-MenuManager::MenuManager() : count_ref(0) {}
-
-MenuManager& MenuManager::getInstance(){
-	static MenuManager instance;
-	return instance;
-}
-
-void MenuManager::countOperatorPlus(int count){
-	count_ref += count;
-}
-
-void MenuManager::show_message(std::string message){
-	if (std::find(dontShowAgain.begin(),dontShowAgain.end(),message) != dontShowAgain.end())
-		return;
-
-	std::string cp = message;
-	std::transform(cp.begin(),cp.end(),cp.begin(), ::tolower);
-	if (cp.find("successful") != std::string::npos)
-		//green
-		std::cout << "\033[1;32m" << message << "\033[0m" << std::endl;
-	else if (cp.find("failed") != std::string::npos||cp.find("error") != std::string::npos||cp.find("invalid") != std::string::npos)
-		//red
-   		std::cout << "\033[1;31m" << message << "\033[0m" << std::endl;
-	else 
-		std::cout << message << std::endl;
-	count_ref++;
-	for (int i = 0; i < message.size(); i++){
-		if (message[i] == '\n'){
-			count_ref++;
-		}
-	}
-}
 
 void MenuManager::dodgeMessage(std::string message){
 	if (std::find(dontShowAgain.begin(),dontShowAgain.end(),message) != dontShowAgain.end())
 		return;
 	dontShowAgain.push_back(message);
 }
+
+MenuManager::MenuManager(){}
+
+void initUI(){
+    initscr();
+    cbreak();
+    noecho();
+    keypad(stdscr, TRUE);
+    curs_set(0);
+
+    if (has_colors()) {
+        start_color();
+        init_pair(1, COLOR_GREEN, COLOR_BLACK);
+        init_pair(2, COLOR_RED, COLOR_BLACK);
+    }
+}
+
+void MenuManager::shutdownUI(){endwin();}
+
+void MenuManager::showMessage(std::string message){
+    if (std::find(dontShowAgain.begin(), dontShowAgain.end(), message) != dontShowAgain.end())
+        return;
+
+    std::string lower = message;
+    std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+
+    int colorPair = 0;
+    if (lower.find("successful") != std::string::npos) {
+        colorPair = 1; // green
+    } else if (lower.find("failed") != std::string::npos ||
+               lower.find("error") != std::string::npos ||
+               lower.find("invalid") != std::string::npos) {
+        colorPair = 2; // red
+    }
+
+    if (colorPair != 0) {
+        attron(COLOR_PAIR(colorPair));
+    }
+    mvprintw(LINES - 1, 0, "%s", message.c_str());
+    clrtoeol();
+    if (colorPair != 0) {
+        attroff(COLOR_PAIR(colorPair));
+    }
+    refresh();
+}
+
 

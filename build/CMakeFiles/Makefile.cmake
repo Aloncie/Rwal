@@ -11,8 +11,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/4.2.3/CMakeCCompiler.cmake"
   "CMakeFiles/4.2.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.2.3/CMakeSystem.cmake"
-  "CMakeFiles/VerifyGlobs.cmake"
-  "CMakeFiles/cmake.verify_globs"
   "_deps/googletest-src/CMakeLists.txt"
   "_deps/googletest-src/googlemock/CMakeLists.txt"
   "_deps/googletest-src/googlemock/cmake/gmock.pc.in"

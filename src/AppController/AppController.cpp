@@ -18,9 +18,6 @@ void AppController::handleStdin(){
 	} while (m_navigator->getCurrentMenu()->valid_choices.find(input) == std::string::npos);
 
 	auto menuLines = m_navigator->getCurrentMenu()->menu().size(); 
-	MenuManager::getInstance().countOperatorPlus(menuLines);
-	MenuManager::getInstance().clear_last_lines();
-
 	needQuit = m_navigator->processInput(input);
 	if (!needQuit)
 		m_navigator->printMenu();

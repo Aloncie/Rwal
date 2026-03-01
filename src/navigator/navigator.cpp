@@ -1,14 +1,16 @@
 #include "navigator.hpp"
 #include "ui/cli/cli.hpp"
 #include <QCoreApplication>
+#include <ncurses.h>
 
 void Navigator::printMenu(){
-	auto menu = current_menu->menu();	
-	for (int i = 0;i < menu.size();i++){
-		std::cout << menu[i] << "\n";
-	}
+    clear();
+    int row = 0;
+    for (const auto& line : current_menu->menu()) {
+        mvprintw(row++, 0, "%s", line.c_str());
+    }
+    refresh();
 }
-
 bool Navigator::processInput(std::string input) {
 	auto x = current_menu->execute_actions(input); 
 	if (x.nextMenu)
