@@ -39,7 +39,7 @@ set(SOURCES
     src/net/NetworkManager.cpp
     src/settings/config.cpp
     src/settings/settings.cpp
-    src/ui/cli/cli.cpp
+	src/ui/cli/UIManager.cpp
     src/ui/menus/menus.cpp
     src/wallpaper/WallpaperManager.cpp
 )
@@ -59,7 +59,7 @@ set(HEADERS
     src/net/NetworkManager.hpp
     src/settings/config.hpp
     src/settings/settings.hpp
-    src/ui/cli/cli.hpp
+	src/ui/cli/UIManager.hpp
     src/ui/menus/menus.hpp
     src/wallpaper/WallpaperManager.hpp
 )

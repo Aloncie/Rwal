@@ -1,6 +1,6 @@
 #include "menus.hpp"
 #include "settings/settings.hpp"
-#include "ui/cli/cli.hpp"
+#include "ui/cli/UIManager.hpp"
 #include "keywords/keywords.hpp"
 #include "settings/config.hpp"
 #include "internal/utils/string_utils.hpp"
@@ -58,7 +58,7 @@ namespace rwal::ui {
 			std::vector<std::string> keywords = k.ShortWayGetKeywords();
 
 			if (input == "a") { 
-				std::string keyword = MenuManager::getInstance().request_input<std::string>("Write new keyword: ");
+				std::string keyword = UIManager::getInstance().request_input<std::string>("Write new keyword: ");
 				if (!keyword.empty()) {
 					rwal::utils::string::format(keyword); 
 					keywords.push_back(keyword);
@@ -66,7 +66,7 @@ namespace rwal::ui {
 				}
 				return {nullptr, false, false};
 			} else if (input == "r") {
-				int display_index = MenuManager::getInstance().request_input<int>("Enter index for remove: ");
+				int display_index = UIManager::getInstance().request_input<int>("Enter index for remove: ");
 				if (display_index >= 1) {
 					int real_index = display_index - 1;
 					if (real_index < (int)keywords.size()) {

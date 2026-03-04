@@ -16,7 +16,7 @@ namespace fs = std::filesystem;
 void save_wallpaper(std::string from){
 	 
 	if (from == ""){
-		MenuManager::getInstance().show_message("Failed to save wallpaper. More info in logs");
+		UIManager::getInstance().show_message("Failed to save wallpaper. More info in logs");
 		Logs::getInstance().write_logs("Failed to save wallpaper. Wrong input data");
 		return;
 	}
@@ -36,7 +36,7 @@ void save_wallpaper(std::string from){
 
 		fs::path to = rwal / from.substr(from.find("wallpaper"));
 		Logs::getInstance().write_logs("Image successful saved: " + std::string(to));
-		MenuManager::getInstance().show_message("Image successfully saved");
+		UIManager::getInstance().show_message("Image successfully saved");
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
 		Logs::getInstance().write_logs("Failed to saved image: " + std::string(e.what()));

@@ -1,16 +1,16 @@
 #include <algorithm>
 #include <cctype>
 #include <map>
-#include "cli.hpp"
+#include "UIManager.hpp"
 #include <iostream>
 
-void MenuManager::dodgeMessage(std::string message){
+void UIManager::dodgeMessage(std::string message){
 	if (std::find(dontShowAgain.begin(),dontShowAgain.end(),message) != dontShowAgain.end())
 		return;
 	dontShowAgain.push_back(message);
 }
 
-MenuManager::MenuManager(){}
+UIManager::UIManager(){}
 
 void initUI(){
     initscr();
@@ -26,9 +26,24 @@ void initUI(){
     }
 }
 
-void MenuManager::shutdownUI(){endwin();}
+std::string UIManager::readInput(std::optional<std::string> message){
+	if (message != std::nullopt){
+		mvprintw(LINES - 1, 0, "%s", message->c_str());
+		clrtoeol();
+		refresh();
+	}
 
-void MenuManager::showMessage(std::string message){
+	echo();
+	char buffer[256];
+	getnstr(buffer, sizeof(buffer)-1);
+	noecho();
+
+	return std::string(buffer);
+}
+
+void UIManager::shutdownUI(){endwin();}
+
+void UIManager::showMessage(std::string message){
     if (std::find(dontShowAgain.begin(), dontShowAgain.end(), message) != dontShowAgain.end())
         return;
 

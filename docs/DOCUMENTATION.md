@@ -6,7 +6,7 @@ Rwal is built as a set of loosely coupled modules, each with a single responsibi
 
 - **`AppController`** – Qt event loop entry point; manages `QSocketNotifier` for asynchronous input.
 - **`Navigator`** – State machine for menu navigation; holds pointer to current `CharacterMenuConfig`.
-- **`MenuManager`** – Handles terminal output: line counting, clearing, coloured messages.
+- **`UIManager`** – Handles terminal output: line counting, clearing, coloured messages.
 - **`NetworkManager`** – Wrapper around libcurl; performs HTTP requests and parses JSON responses.
 - **`Keywords`** – Manages keyword lists: reading from config, random selection, editing via external editor.
 - **`Settings`** – Configuration file handling, systemd timer integration, pictures path detection.
@@ -112,12 +112,12 @@ graph TD
   - `bool IsWrongInput` – `true` if input was invalid.
   - `bool needQuit` – `true` if the program should quit.
 
-### `MenuManager`
+### `UIManager`
 - **Header:** `cli.hpp`
 - **Purpose:** Manages terminal output: line counting, clearing, message display.
 - **Key members:** `int count_ref` – number of lines printed since last clear.
 - **Key methods:**
-  - `static MenuManager& getInstance()` – singleton access.
+  - `static UIManager& getInstance()` – singleton access.
   - `void clear_last_lines()` – moves cursor up and clears `count_ref` lines.
   - `void countOperatorPlus(int count)` – adds to `count_ref`.
   - `void show_message(std::string message)` – prints message with colour based on content.

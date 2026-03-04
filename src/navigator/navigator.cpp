@@ -1,5 +1,4 @@
 #include "navigator.hpp"
-#include "ui/cli/cli.hpp"
 #include <QCoreApplication>
 #include <ncurses.h>
 
@@ -11,12 +10,12 @@ void Navigator::printMenu(){
     }
     refresh();
 }
-bool Navigator::processInput(std::string input) {
+bool Navigator::processInput(std::string input, UIManager uimanager) {
 	auto x = current_menu->execute_actions(input); 
 	if (x.nextMenu)
 		current_menu = x.nextMenu;
 	else if (x.IsWrongInput)
-		MenuManager::getInstance().show_message("Invalid input");
+		uimanager.showMessage("Invalid input");
 	else if (x.needQuit){
 		QCoreApplication::quit();
 		return true;

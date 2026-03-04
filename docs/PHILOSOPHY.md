@@ -54,7 +54,7 @@ The project is built with clear separation of responsibilities.
 
 ### Key Design Patterns
 
-1. **Singleton** – used for `Config`, `Logs`, `MenuManager`, `NetworkManager` to provide global access. (May be refactored later for testability.)
+1. **Singleton** – used for `Config`, `Logs`, `UIManager`, `NetworkManager` to provide global access. (May be refactored later for testability.)
 2. **Observer** – `QFileSystemWatcher` watches `config.json`; changes are hot‑reloaded.
 3. **Dependency Injection (lite)** – `Navigator` receives a pointer to the current menu, allowing easy screen switching.
 

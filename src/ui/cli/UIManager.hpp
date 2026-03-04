@@ -6,19 +6,20 @@
 #include <optional>
 #include <ncurses.h>
 
-class MenuManager{
+class UIManager{
 private:
 	static std::vector<std::string> dontShowAgain;
+	std::string readInput(std::optional<std::string> message = std::nullopt);
 public:
 	void initUI();
 	void shutdownUI();
 
-	MenuManager();
+	UIManager();
 	void showMessage(std::string message);
 	void dodgeMessage(std::string message);
 
 	template<typename T>
-	T request_input(std::optional<std::string> message = std::nullopt) {
+	T requestInput(std::optional<std::string> message = std::nullopt) {
 		std::string input;
 		bool first_attempt = true;
 
@@ -27,11 +28,8 @@ public:
 				showMessage("Error: Invalid or dirty input. Try again.");
 			}
 			first_attempt = false;
-			if (!std::getline(std::cin, input)) {
-				std::cin.clear();
-				continue;
-			}
-
+			
+			input = readInput(message);
 			if constexpr (std::is_same_v<T, std::string>) {
 				return input;
 			} else {
