@@ -1,5 +1,5 @@
 #include "logs.hpp"
-#include "ui/cli/cli.hpp"
+#include "ui/cli/UIManager.hpp"
 #include <chrono>
 #include <filesystem>
 #include <iomanip>
@@ -26,8 +26,8 @@ void Logs::write_logs(std::string message){
 		f << get_current_time() << " " << message << std::endl;
 	}
 	else{
-		MenuManager::getInstance().show_message("Error of opening logs");
-		MenuManager::getInstance().dodgeMessage("Error of opening logs");
+		UIManager::getInstance().show_message("Error of opening logs");
+		UIManager::getInstance().dodgeMessage("Error of opening logs");
 	}
 }
 
@@ -46,7 +46,7 @@ void Logs::refresh_logs(fs::path& logs_path){
 	
 	if (chmod(logs_path.c_str(), 0644) != 0){
 		write_logs("Failed to change mod of logs\n Try to fix it yourself");
-		MenuManager::getInstance().show_message("Critical error of logs. More info in logs.");	
+		UIManager::getInstance().show_message("Critical error of logs. More info in logs.");	
 	}
 	if (geteuid() == 0){
 		const char* sudo_user = std::getenv("SUDO_USER");
@@ -55,7 +55,7 @@ void Logs::refresh_logs(fs::path& logs_path){
 			if (pw){
 				if (chown(logs_path.c_str(), pw->pw_uid, pw->pw_gid) != 0){
 					write_logs("Failed to change owner of logs\n Try to fix it yourself");
-					MenuManager::getInstance().show_message("Critical error of logs. More info in logs.");
+					UIManager::getInstance().show_message("Critical error of logs. More info in logs.");
 				}
 			}
 		}	

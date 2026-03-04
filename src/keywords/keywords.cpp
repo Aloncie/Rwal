@@ -2,7 +2,7 @@
 #include "logs/logs.hpp"
 #include "internal/platform/env_utils.hpp"
 #include "funcs/funcs.hpp"
-#include "ui/cli/cli.hpp"
+#include "ui/cli/UIManager.hpp"
 #include <filesystem>
 #include <iostream>
 #include <unistd.h>
@@ -99,7 +99,7 @@ std::vector<std::string> Keywords::exportFromTxt(fs::path& path){
 		file.close();
 	} else{
 		Logs::getInstance().write_logs("Failed opening keywords.txt in " + path.string());
-		MenuManager::getInstance().show_message("Failed operation. More info in logs");
+		UIManager::getInstance().show_message("Failed operation. More info in logs");
 	}
 	return keywords;
 }

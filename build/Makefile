@@ -724,29 +724,29 @@ src/settings/settings.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/settings/settings.cpp.s
 .PHONY : src/settings/settings.cpp.s
 
-src/ui/cli/cli.o: src/ui/cli/cli.cpp.o
-.PHONY : src/ui/cli/cli.o
+src/ui/cli/UIManager.o: src/ui/cli/UIManager.cpp.o
+.PHONY : src/ui/cli/UIManager.o
 
 # target to build an object file
-src/ui/cli/cli.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/cli.cpp.o
-.PHONY : src/ui/cli/cli.cpp.o
+src/ui/cli/UIManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/UIManager.cpp.o
+.PHONY : src/ui/cli/UIManager.cpp.o
 
-src/ui/cli/cli.i: src/ui/cli/cli.cpp.i
-.PHONY : src/ui/cli/cli.i
+src/ui/cli/UIManager.i: src/ui/cli/UIManager.cpp.i
+.PHONY : src/ui/cli/UIManager.i
 
 # target to preprocess a source file
-src/ui/cli/cli.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/cli.cpp.i
-.PHONY : src/ui/cli/cli.cpp.i
+src/ui/cli/UIManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/UIManager.cpp.i
+.PHONY : src/ui/cli/UIManager.cpp.i
 
-src/ui/cli/cli.s: src/ui/cli/cli.cpp.s
-.PHONY : src/ui/cli/cli.s
+src/ui/cli/UIManager.s: src/ui/cli/UIManager.cpp.s
+.PHONY : src/ui/cli/UIManager.s
 
 # target to generate assembly for a file
-src/ui/cli/cli.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/cli.cpp.s
-.PHONY : src/ui/cli/cli.cpp.s
+src/ui/cli/UIManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rwal_lib.dir/build.make CMakeFiles/rwal_lib.dir/src/ui/cli/UIManager.cpp.s
+.PHONY : src/ui/cli/UIManager.cpp.s
 
 src/ui/menus/menus.o: src/ui/menus/menus.cpp.o
 .PHONY : src/ui/menus/menus.o
@@ -918,9 +918,9 @@ help:
 	@echo "... src/settings/settings.o"
 	@echo "... src/settings/settings.i"
 	@echo "... src/settings/settings.s"
-	@echo "... src/ui/cli/cli.o"
-	@echo "... src/ui/cli/cli.i"
-	@echo "... src/ui/cli/cli.s"
+	@echo "... src/ui/cli/UIManager.o"
+	@echo "... src/ui/cli/UIManager.i"
+	@echo "... src/ui/cli/UIManager.s"
 	@echo "... src/ui/menus/menus.o"
 	@echo "... src/ui/menus/menus.i"
 	@echo "... src/ui/menus/menus.s"

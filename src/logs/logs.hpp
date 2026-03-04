@@ -44,5 +44,5 @@ public:
         s_instance = mock;
     }	
 
-	void write_logs(std::string message);
+	virtual void write_logs(std::string message);
 };
