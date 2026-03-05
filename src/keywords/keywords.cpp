@@ -2,7 +2,6 @@
 #include "logs/logs.hpp"
 #include "internal/platform/env_utils.hpp"
 #include "funcs/funcs.hpp"
-#include "ui/cli/UIManager.hpp"
 #include <filesystem>
 #include <iostream>
 #include <unistd.h>
@@ -10,6 +9,8 @@
 #include "settings/config.hpp"
 #include "internal/utils/string_utils.hpp"
 #include "internal/utils/vector_utils.hpp"
+
+Keywords::Keywords(UIManager& ui) : m_ui(ui){};
 
 std::vector<std::string> Keywords::LongWayGetKeywords(){
     auto& config = Config::getInstance();
@@ -99,7 +100,7 @@ std::vector<std::string> Keywords::exportFromTxt(fs::path& path){
 		file.close();
 	} else{
 		Logs::getInstance().write_logs("Failed opening keywords.txt in " + path.string());
-		UIManager::getInstance().show_message("Failed operation. More info in logs");
+		m_ui.showMessage("Failed operation. More info in logs");
 	}
 	return keywords;
 }

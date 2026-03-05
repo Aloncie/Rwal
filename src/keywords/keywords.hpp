@@ -5,6 +5,7 @@
 #include <nlohmann/json.hpp>
 #include "settings/config.hpp"
 #include <filesystem>
+#include "ui/cli/UIManager.hpp"
 
 namespace fs = std::filesystem;
 
@@ -15,10 +16,11 @@ private:
 	std::vector<std::string> LongWayGetKeywords();
 	void importToTxt(fs::path& path);
 	std::vector<std::string> exportFromTxt(fs::path& path);
-
+	UIManager& m_ui;
 public:
-	void Default(std::vector<std::string>& Keywords);
+	Keywords(UIManager& ui);
 
+	void Default(std::vector<std::string>& Keywords);
 	std::string LongGetRandomKeywords(const std::string& mode);
 	void editKeywords();
 	std::string GetRandomKeywords(const std::string& mode);
