@@ -66,7 +66,7 @@ rwal --change
 rwal -c
 ```
 
-For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/DOCUMENTATION.md).
+For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).
 
 ---
 
