@@ -1,6 +1,6 @@
 <h1 align="center">Hi there, I'm <a href="https://github.com/Aloncie" target="_blank">Aloncie</a> <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px"></h1>
 
-<h3 align="center">👾 Today I'm glad to present my new project... 👾</h3>
+<h3 align="center">👾 Today I'm glad to present my new(first) project... 👾</h3>
 
 <br>
 
