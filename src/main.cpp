@@ -8,6 +8,7 @@
 #include <iostream>
 #include "ui/cli/UIManager.hpp"
 #include "keywords/keywords.hpp"
+#include "logs/logs.hpp"
 
 int main(int argc,char* argv[]){
 	QCoreApplication::setApplicationName("Rwal");
@@ -19,6 +20,7 @@ int main(int argc,char* argv[]){
 	Keywords keywords(uimanager);
 
 	uimanager.initUI();
+	Logs::init(uimanager);
 
 	std::string s;
 	if (argc > 0&&argv[1])
@@ -30,6 +32,9 @@ int main(int argc,char* argv[]){
 	}
 
 	AppController controller(&navigator, uimanager);
+
+	Logs::getInstance().write_logs("Rwal started");
+
 	int one = app.exec();
 	uimanager.shutdownUI();
 	return one;
