@@ -112,4 +112,8 @@ This project is licensed under the MIT License – see the LICENSE file for deta
 - [Documentation](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md)
 - [Roadmap](https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md)
 
+## 📊 2-Minute Survey
+
+Help shape Rwal's future: [google-form](https://forms.gle/JCewzzEUwPGxx7cY7)
+
 **Made with ❤️ and a lot of ☕ by Aloncie.**
