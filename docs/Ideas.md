@@ -9,6 +9,7 @@
 7. Rework all menus to 1 class
 8. FIx terminal size menu bug. 
 9. Add tests on core methods and logic.
+10. Add api-key in settings
 
 Make fetchImage std::optinal func and edit it in WallpaperManager too.
 #idea

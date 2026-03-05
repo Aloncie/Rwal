@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <fstream>
 #include <QStandardPaths>
+#include "ui/cli/UIManager.hpp"
 
 namespace fs = std::filesystem;
 
@@ -11,6 +12,7 @@ private:
 	fs::path logs_path;
 	std::ofstream f;
 	static Logs* s_instance;
+	UIManager* m_ui;
 
 	Logs(){
 		logs_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::CacheLocation).toStdString()) / "logs.txt";
@@ -32,6 +34,9 @@ private:
 	void refresh_logs(fs::path& logs_path);
 
 public:
+	static void init(UIManager& ui){
+		getInstance().m_ui = &ui;
+	}
 	static Logs& getInstance() {
         if (!s_instance) {
             static Logs instance;

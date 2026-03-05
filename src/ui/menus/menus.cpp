@@ -6,6 +6,7 @@
 #include "internal/utils/string_utils.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 #include <QCoreApplication>
+#include "ui/cli/UIManager.hpp"
 
 namespace rwal::ui {
 
@@ -106,7 +107,8 @@ namespace rwal::ui {
 	namespace generators {
 		std::vector<std::string> keywords_list() {
 			std::vector<std::string> lines = {"--- Keywords Editor ---"};
-			Keywords k;
+			UIManager ui;
+			Keywords k(ui);
 			auto keywords = k.ShortWayGetKeywords();
 			if (keywords.empty()) lines.push_back("None"); 
 			else {
