@@ -78,10 +78,10 @@ Automatically created on first run in ~/.config/Aloncie/rwal/config.json.
 {
     "search": {
         "keywords": [
-	        //kewords for search
+	        kewords for search
         ],
-        "res": //resolution wallpaper's,
-        "sorting": //type of sorting
+        "res": resolution wallpaper's,
+        "sorting": type of sorting
     },
     "services": {
         "wallhaven": {
