@@ -187,7 +187,7 @@ Located in `~/.config/Aloncie/rwal/config.json`. Structure:
     },
     "services": {
         "wallhaven": {
-            "apikey": "an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",
+            "apikey": "YOUR_API_KEY_HERE",
             "base_url": "https://wallhaven.cc/api/v1/search",
             "param_names": {
                 "query": "?q=",
