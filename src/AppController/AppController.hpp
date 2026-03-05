@@ -8,11 +8,12 @@
 class AppController : public QObject{
 	Q_OBJECT;
 public:
-	AppController(Navigator* nav, QObject* parent = nullptr);
+	AppController(Navigator* nav, UIManager& ui, QObject* parent = nullptr);
 private slots:
-	void handleStdin(UIManager uimanager);
+	void handleStdin();
 private:
 	QSocketNotifier* m_notifier;
 	Navigator* m_navigator;
+	UIManager& m_ui;
 };
 

@@ -7,18 +7,20 @@
 #include "AppController/AppController.hpp"
 #include <iostream>
 #include "ui/cli/UIManager.hpp"
+#include "keywords/keywords.hpp"
 
 int main(int argc,char* argv[]){
 	QCoreApplication::setApplicationName("Rwal");
 	QCoreApplication::setOrganizationName("Aloncie");
-
-	Navigator navigator(rwal::ui::MAIN_MENU);
-	std::string s;
 	QCoreApplication app(argc, argv);
 
+	Navigator navigator(rwal::ui::MAIN_MENU);
 	UIManager uimanager;
+	Keywords keywords(uimanager);
+
 	uimanager.initUI();
 
+	std::string s;
 	if (argc > 0&&argv[1])
 		s = argv[1];
 
@@ -27,7 +29,7 @@ int main(int argc,char* argv[]){
 		return 0;
 	}
 
-	AppController controller(&navigator);
+	AppController controller(&navigator, uimanager);
 	int one = app.exec();
 	uimanager.shutdownUI();
 	return one;
