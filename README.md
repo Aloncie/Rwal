@@ -85,7 +85,7 @@ Automatically created on first run in ~/.config/Aloncie/rwal/config.json.
     },
     "services": {
         "wallhaven": {
-            "apikey": "an1CFSaR5hyU5D5AM7lCl66FCzp9Dp4a",
+            "apikey": "api-key",
             "base_url": "https://wallhaven.cc/api/v1/search",
             "param_names": {
                 "query": "?q=",

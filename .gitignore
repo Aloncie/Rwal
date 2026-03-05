@@ -75,3 +75,6 @@ Thumbs.db
 *.zip
 *.tar.gz
 *.gif
+
+#another
+.cache/
