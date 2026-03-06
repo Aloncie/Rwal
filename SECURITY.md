@@ -2,13 +2,19 @@
 
 ## 🛡️ Supported Versions
 
-Rwal is actively developed, and the latest version receives all security updates.  
-Older versions may not be maintained, so please upgrade to the latest release.
+Rwal follows a **latest‑release only** support policy. This means:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| v0.1.0-alpha (latest) | :white_check_mark: |
-| < v0.1.0 | :x: |
+- Only the **most recent release** receives security updates.
+- If you are using an older version, please **upgrade to the latest release** to ensure you have all security fixes.
+
+We do **not** backport security patches to previous releases. This keeps development focused and ensures that all users benefit from the latest improvements.
+
+| Version         | Supported          |
+|-----------------|--------------------|
+| latest release  | :white_check_mark: |
+| any older release | :x:              |
+
+> 💡 Always check the [Releases](https://github.com/Aloncie/Rwal/releases) page for the newest version.
 
 ## 🐛 Reporting a Vulnerability
 
@@ -40,7 +46,6 @@ Use GitHub's **private vulnerability reporting** tool:
 
 Rwal is in **active development**, and I'm currently focusing on:
 
-- 🔄 Refactoring the menu system for better stability
 - 🧪 Adding unit tests to prevent regressions
 - 🌍 Cross-platform hardening
 - 📦 Safe handling of external data (Wallhaven API)
