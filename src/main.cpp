@@ -17,9 +17,14 @@ int main(int argc,char* argv[]){
 	QCoreApplication app(argc, argv);
 
 	UIManager uimanager;
-	uimanager.initUI();
 	Keywords keywords(uimanager);
 	Timer timer;
+
+
+	if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
+		refresh_wallpaper(keywords, "change");
+		return 0;
+	}
 
 	auto mainMenu = std::make_unique<MainMenu>(uimanager, keywords);
     auto settingsMenu = std::make_unique<SettingsMenu>(timer);
@@ -34,11 +39,7 @@ int main(int argc,char* argv[]){
 
 	navigator.start("main");
 
-	if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
-		refresh_wallpaper(keywords, "change");
-		uimanager.shutdownUI();
-		return 0;
-	}
+	uimanager.initUI();
 	AppController controller(&navigator, uimanager);
 	Logs::init(uimanager);
 	Logs::getInstance().write_logs("Rwal started");
