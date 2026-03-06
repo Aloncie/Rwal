@@ -2,12 +2,17 @@
 #include "ui/menus/menus.hpp"
 #include <string>
 #include "ui/cli/UIManager.hpp"
+#include <map>
+#include <memory>
 
 class Navigator{
-	const rwal::ui::CharacterMenuConfig* current_menu;
+private:
+	std::map<std::string, std::unique_ptr<Menu>> m_menus;
+	Menu* m_currentMenu = nullptr;
 public:
-	Navigator(const rwal::ui::CharacterMenuConfig& config) : current_menu(&config) {};
-	void printMenu();
-	bool processInput(std::string input, UIManager uimanager);
-	const rwal::ui::CharacterMenuConfig* getCurrentMenu() const;
+	void printCurrentMenu();
+	void start(const std::string InitialMenu);
+	bool processInput(std::string& input, UIManager& uimanager);
+	void registerMenu(const std::string& name, std::unique_ptr<Menu> menu);
+	std::string getCurrentValidChoices() const;
 };

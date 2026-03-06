@@ -7,17 +7,18 @@ AppController::AppController(Navigator* nav, UIManager& ui, QObject* parent) : Q
 	m_notifier = new QSocketNotifier(STDIN_FILENO, QSocketNotifier::Read, this);
 	connect(m_notifier, &QSocketNotifier::activated, this, &AppController::handleStdin);
 
-	m_navigator->printMenu();
+	m_navigator->printCurrentMenu();
 }
 void AppController::handleStdin(){
 	std::string input;
 	bool needQuit;
+	std::string valid = m_navigator->getCurrentValidChoices();
 	do {			
 		input = m_ui.requestInput<std::string>(std::nullopt);
-	} while (m_navigator->getCurrentMenu()->valid_choices.find(input) == std::string::npos);
+	} while (valid.find(input) == std::string::npos);
 
 	needQuit = m_navigator->processInput(input, m_ui);
 	if (!needQuit)
-		m_navigator->printMenu();
+		m_navigator->printCurrentMenu();
 }
 

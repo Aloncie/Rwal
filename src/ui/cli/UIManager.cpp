@@ -4,6 +4,8 @@
 #include "UIManager.hpp"
 #include <iostream>
 
+std::vector<std::string> UIManager::dontShowAgain;
+
 void UIManager::dodgeMessage(std::string message){
 	if (std::find(dontShowAgain.begin(),dontShowAgain.end(),message) != dontShowAgain.end())
 		return;
@@ -12,7 +14,7 @@ void UIManager::dodgeMessage(std::string message){
 
 UIManager::UIManager(){}
 
-void initUI(){
+void UIManager::initUI(){
     initscr();
     cbreak();
     noecho();

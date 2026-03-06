@@ -1,11 +1,9 @@
 #include "WallpaperManager.hpp"
 #include "internal/GlobalConstans.hpp"
-#include "keywords/keywords.hpp"
 #include "dbus/PlasmaDBus.hpp"
 #include "logs/logs.hpp"
 #include "settings/settings.hpp"
 #include "net/NetworkManager.hpp"
-#include "ui/cli//cli.hpp"
 #include <exception>
 #include <filesystem>
 #include <nlohmann/json.hpp>
@@ -13,10 +11,10 @@
 
 namespace fs = std::filesystem;
 
-void save_wallpaper(std::string from){
+void save_wallpaper(std::string from, UIManager& ui){
 	 
 	if (from == ""){
-		UIManager::getInstance().show_message("Failed to save wallpaper. More info in logs");
+		ui.showMessage("Failed to save wallpaper. More info in logs");
 		Logs::getInstance().write_logs("Failed to save wallpaper. Wrong input data");
 		return;
 	}
@@ -36,15 +34,14 @@ void save_wallpaper(std::string from){
 
 		fs::path to = rwal / from.substr(from.find("wallpaper"));
 		Logs::getInstance().write_logs("Image successful saved: " + std::string(to));
-		UIManager::getInstance().show_message("Image successfully saved");
+		ui.showMessage("Image successfully saved");
 		fs::copy_file(from,to,fs::copy_options::overwrite_existing);	
 	} catch (const std::exception& e){
 		Logs::getInstance().write_logs("Failed to saved image: " + std::string(e.what()));
 	}
 }
 
-void refresh_wallpaper(const std::string& mode){
-	Keywords k;
+void refresh_wallpaper(Keywords& k, const std::string& mode){
 	std::string keyword = k.GetRandomKeywords(mode);
 	std::string url = NetworkManager::getInstance().fetchImage(keyword);
 
