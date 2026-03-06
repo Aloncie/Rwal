@@ -21,11 +21,10 @@ void UIManager::initUI(){
     keypad(stdscr, TRUE);
     curs_set(0);
 
-    if (has_colors()) {
-        start_color();
-        init_pair(1, COLOR_GREEN, COLOR_BLACK);
-        init_pair(2, COLOR_RED, COLOR_BLACK);
-    }
+	if (has_colors()) {
+		start_color();
+		use_default_colors();
+	}
 }
 
 std::string UIManager::readInput(std::optional<std::string> message){
