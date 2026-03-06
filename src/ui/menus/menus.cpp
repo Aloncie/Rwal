@@ -1,141 +1,163 @@
 #include "menus.hpp"
-#include "settings/settings.hpp"
-#include "ui/cli/UIManager.hpp"
-#include "keywords/keywords.hpp"
 #include "settings/config.hpp"
 #include "internal/utils/string_utils.hpp"
 #include "wallpaper/WallpaperManager.hpp"
+#include "menu_ids.hpp"
 #include <QCoreApplication>
-#include "ui/cli/UIManager.hpp"
 
-namespace rwal::ui {
+namespace MenuId = rwal::ui::MenuId;
 
-	const CharacterMenuConfig MAIN_MENU = {
-		"1234q",                     
-		ready::main_list,  
-		[](std::string input) -> MenuResponce { 
-			if (input == "1") { 
-				refresh_wallpaper(); 
-				return {nullptr, false, false}; 
-			} else if (input == "2") { 
-				save_wallpaper(where_are_wallpaper()); 
-				return {nullptr, false, false}; 
-			} else if (input == "3") {
-				return {&KEYWORDS_MENU, false, false};
-			} else if (input == "4") {
-				return {&SETTINGS_MENU, false, false};
-			} else if (input == "q") {
-				return {nullptr, false, true};
-			} else {
-				return {nullptr, true, false};
-			}
-		}
-	};
+// ========== MainMenu ==========
+MainMenu::MainMenu(UIManager& ui, Keywords& keywords) 
+    : m_ui(ui), m_keywords(keywords) {}
 
-	const CharacterMenuConfig TIMER_MENU = {
-		"nhd",
-		ready::timer_list,
-		[](std::string input) -> MenuResponce {
-			Timer t;
-			if (input == "h") {
-				t.edit_timer("hourly");
-				return {&SETTINGS_MENU, false, false};
-			} else if (input == "d") {
-				t.edit_timer("daily");
-				return {&SETTINGS_MENU, false, false};
-			} else if (input == "n") {
-				t.edit_timer("None");
-				return {&SETTINGS_MENU, false, false};
-			} else {
-				return {nullptr, true, false};
-			}
-		}
-	};
-	const CharacterMenuConfig KEYWORDS_MENU = {
-		"armq", 
-		generators::keywords_list,
-		[](std::string input) -> MenuResponce {
-			Keywords k;
-			std::vector<std::string> keywords = k.ShortWayGetKeywords();
+std::vector<std::string> MainMenu::getLines() {
+    return {
+        "--- Main Menu ---",
+        "1) Refresh",
+        "2) Save",
+        "3) Keywords",
+        "4) Settings",
+        "q) Quit",
+        ""  // Empty line for spacing
+    };
+}
 
-			if (input == "a") { 
-				std::string keyword = UIManager::getInstance().request_input<std::string>("Write new keyword: ");
-				if (!keyword.empty()) {
-					rwal::utils::string::format(keyword); 
-					keywords.push_back(keyword);
-					Config::getInstance().set("/search/keywords", keywords);
-				}
-				return {nullptr, false, false};
-			} else if (input == "r") {
-				int display_index = UIManager::getInstance().request_input<int>("Enter index for remove: ");
-				if (display_index >= 1) {
-					int real_index = display_index - 1;
-					if (real_index < (int)keywords.size()) {
-						keywords.erase(keywords.begin() + real_index);
-						Config::getInstance().set("/search/keywords", keywords);
-					}
-				}
-				return {nullptr, false, false};
-			} else if (input == "m") {
-				k.editKeywords();
-				Config::getInstance().loadConfig();
-				return {nullptr, false, false};
-			} else if (input == "q") {
-				return {&MAIN_MENU, false, false};
-			} else {
-				return {nullptr, true, false};
-			}
-		}
-	};
+MenuResponce MainMenu::handleInput(const std::string& input) {
+    if (input == "1") {
+        refresh_wallpaper(m_keywords);
+        return {"", false, false};
+    } 
+    else if (input == "2") {
+        save_wallpaper(where_are_wallpaper(), m_ui);
+        return {"", false, false};
+    } 
+    else if (input == "3") {
+        return {MenuId::KEYWORDS, false, false};
+    } 
+    else if (input == "4") {
+        return {MenuId::SETTINGS, false, false};
+    } 
+    else if (input == "q") {
+        return {"", false, true};
+    } 
+    else {
+        return {"", true, false};
+    }
+}
 
-	const CharacterMenuConfig SETTINGS_MENU = {
-		"12q",
-		generators::settings_list,
-		[](std::string input) -> MenuResponce {
-			if (input == "1") {
-				return {&TIMER_MENU, false, false};
-			} else if (input == "2") {
-				return {nullptr, false, false}; // Место для логики пути
-			} else if (input == "q") {
-				return {&MAIN_MENU, false, false};
-			} else {
-				return {nullptr, true, false};
-			}
-		}
-	};
+// ========== SettingsMenu ==========
+SettingsMenu::SettingsMenu(Timer& timer) 
+    : m_timer(timer) {}
 
-	namespace generators {
-		std::vector<std::string> keywords_list() {
-			std::vector<std::string> lines = {"--- Keywords Editor ---"};
-			UIManager ui;
-			Keywords k(ui);
-			auto keywords = k.ShortWayGetKeywords();
-			if (keywords.empty()) lines.push_back("None"); 
-			else {
-				for(size_t i = 0; i < keywords.size(); ++i)
-					lines.push_back(std::to_string(i + 1) + ". " + keywords[i]);
-			}
-			lines.push_back("a) Add | r) Remove | m) Manual(editor) | q) Back");
-			return lines;
-		}
-		std::vector<std::string> settings_list() {
-			Timer t;
-			return {
-				"--- Settings ---",
-				"1) Timer: " + t.see_timer(),
-				"2) Wallpapers's path: " + where_are_wallpaper(),
-				"q) Back"
-			};
-		}
-	}
+std::vector<std::string> SettingsMenu::getLines() {
+    return {
+        "--- Settings ---",
+        "1) Timer: " + m_timer.see_timer(),
+        "2) Wallpapers's path: " + where_are_wallpaper(),
+        "q) Back",
+        ""  // Empty line for spacing
+    };
+}
 
-	namespace ready {
-		std::vector<std::string> main_list() {
-			return {"--- Main Menu ---", "1) Refresh", "2) Save", "3) Keywords", "4) Settings", "q) Quit"};
-		}
-		std::vector<std::string> timer_list() {
-			return {"(n)one", "(h)ourly", "(d)aily"};
-		}
-	}
+MenuResponce SettingsMenu::handleInput(const std::string& input) {
+    if (input == "1") {
+        return {MenuId::TIMER, false, false};
+    } 
+    else if (input == "2") {
+        // Space for path logic
+        return {"", false, false};
+    } 
+    else if (input == "q") {
+        return {MenuId::MAIN, false, false};
+    } 
+    else {
+        return {"", true, false};
+    }
+}
 
+// ========== KeywordsMenu ==========
+KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui)
+    : m_keywords(keywords), m_ui(ui) {}
+
+std::vector<std::string> KeywordsMenu::getLines() {
+    std::vector<std::string> lines = {"--- Keywords Editor ---"};
+    auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
+    
+    if (keywords.empty()) {
+        lines.push_back("None");
+    } else {
+        for (size_t i = 0; i < keywords.size(); ++i) {
+            lines.push_back(std::to_string(i + 1) + ". " + keywords[i]);
+        }
+    }
+    lines.push_back("a) Add | r) Remove | m) Manual(editor) | q) Back");
+    lines.push_back("");  // Empty line for spacing
+    return lines;
+}
+
+MenuResponce KeywordsMenu::handleInput(const std::string& input) {
+    auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
+
+    if (input == "a") {
+        std::string keyword = m_ui.requestInput<std::string>("Write new keyword: ");
+        if (!keyword.empty()) {
+            rwal::utils::string::format(keyword);
+            keywords.push_back(keyword);
+            Config::getInstance().set("/search/keywords", keywords);
+        }
+        return {"", false, false};
+    } 
+    else if (input == "r") {
+        int display_index = m_ui.requestInput<int>("Enter index for remove: ");
+        if (display_index >= 1) {
+            int real_index = display_index - 1;
+            if (real_index < (int)keywords.size()) {
+                keywords.erase(keywords.begin() + real_index);
+                Config::getInstance().set("/search/keywords", keywords);
+            }
+        }
+        return {"", false, false};
+    } 
+    else if (input == "m") {
+        m_keywords.editKeywords();
+        Config::getInstance().loadConfig();
+        return {"", false, false};
+    } 
+    else if (input == "q") {
+        return {MenuId::MAIN, false, false};
+    } 
+    else {
+        return {"", true, false};
+    }
+}
+
+// ========== TimerMenu ==========
+TimerMenu::TimerMenu(Timer& timer) : m_timer(timer) {}
+
+std::vector<std::string> TimerMenu::getLines() {
+    return {
+        "(n)one",
+        "(h)ourly",
+        "(d)aily",
+        ""  // Empty line for spacing
+    };
+}
+
+MenuResponce TimerMenu::handleInput(const std::string& input) {
+    if (input == "h") {
+        m_timer.edit_timer("hourly");
+        return {MenuId::SETTINGS, false, false};
+    } 
+    else if (input == "d") {
+        m_timer.edit_timer("daily");
+        return {MenuId::SETTINGS, false, false};
+    } 
+    else if (input == "n") {
+        m_timer.edit_timer("None");
+        return {MenuId::SETTINGS, false, false};
+    } 
+    else {
+        return {"", true, false};
+    }
 }
