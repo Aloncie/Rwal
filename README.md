@@ -102,6 +102,10 @@ Automatically created on first run in ~/.config/Aloncie/rwal/config.json.
 
 This project is licensed under the MIT License – see the LICENSE file for details.
 
+## 🔒 Security
+
+For security issues, please see our [Security Policy](SECURITY.md).
+
 ## 📫 Contact
 - Author: [@Aloncie](https://github.com/Aloncie)
 - Project repo: [Rwal](https://github.com/Aloncie/Rwal)
