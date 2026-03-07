@@ -1,15 +1,14 @@
 #include "menus.hpp"
 #include "settings/config.hpp"
 #include "internal/utils/string_utils.hpp"
-#include "wallpaper/WallpaperManager.hpp"
 #include "menu_ids.hpp"
 #include <QCoreApplication>
 
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(UIManager& ui, Keywords& keywords) 
-    : m_ui(ui), m_keywords(keywords) {}
+MainMenu::MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm) 
+    : m_ui(ui), m_keywords(keywords), m_wm(wm) {}
 
 std::vector<std::string> MainMenu::getLines() {
     return {
@@ -25,11 +24,11 @@ std::vector<std::string> MainMenu::getLines() {
 
 MenuResponce MainMenu::handleInput(const std::string& input) {
     if (input == "1") {
-        refresh_wallpaper(m_keywords);
+        m_wm.refresh();
         return {"", false, false};
     } 
     else if (input == "2") {
-        save_wallpaper(where_are_wallpaper(), m_ui);
+        m_wm.saveCurrent();
         return {"", false, false};
     } 
     else if (input == "3") {
@@ -47,14 +46,14 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
 }
 
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(Timer& timer) 
-    : m_timer(timer) {}
+SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm) 
+    : m_timer(timer), m_wm(wm) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
     return {
         "--- Settings ---",
         "1) Timer: " + m_timer.see_timer(),
-        "2) Wallpapers's path: " + where_are_wallpaper(),
+        "2) Wallpapers's path: " + m_wm.getPicturesPath()->string(),
         "q) Back",
         ""  // Empty line for spacing
     };
@@ -77,8 +76,8 @@ MenuResponce SettingsMenu::handleInput(const std::string& input) {
 }
 
 // ========== KeywordsMenu ==========
-KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui)
-    : m_keywords(keywords), m_ui(ui) {}
+KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui, Config& config)
+    : m_keywords(keywords), m_ui(ui), m_config(config) {}
 
 std::vector<std::string> KeywordsMenu::getLines() {
     std::vector<std::string> lines = {"--- Keywords Editor ---"};
@@ -104,7 +103,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
         if (!keyword.empty()) {
             rwal::utils::string::format(keyword);
             keywords.push_back(keyword);
-            Config::getInstance().set("/search/keywords", keywords);
+            m_config.set("/search/keywords", keywords);
         }
         return {"", false, false};
     } 
@@ -114,14 +113,14 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
             int real_index = display_index - 1;
             if (real_index < (int)keywords.size()) {
                 keywords.erase(keywords.begin() + real_index);
-                Config::getInstance().set("/search/keywords", keywords);
+                m_config.set("/search/keywords", keywords);
             }
         }
         return {"", false, false};
     } 
     else if (input == "m") {
         m_keywords.editKeywords();
-        Config::getInstance().loadConfig();
+        m_config.loadConfig();
         return {"", false, false};
     } 
     else if (input == "q") {
