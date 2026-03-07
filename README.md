@@ -9,10 +9,8 @@
 ![Version](https://img.shields.io/badge/version-alpha-red)
 ![C++](https://img.shields.io/badge/C%2B%2B-20-blue?logo=c%2B%2B)
 ![CMake](https://img.shields.io/badge/CMake-3.10%2B-purple?logo=cmake)
-![Qt5](https://img.shields.io/badge/Qt-5.15-green?logo=qt)
+![Qt5](https://img.shields.io/badge/Qt-5-yellowgreen?logo=qt)
 ![License](https://img.shields.io/badge/license-MIT-orange)
-![Build](https://img.shields.io/badge/build-CMake%20%7C%20Make-yellow)
-![Status](https://img.shields.io/badge/status-active-brightgreen)
 
 ---
 

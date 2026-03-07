@@ -180,10 +180,10 @@ Located in `~/.config/Aloncie/rwal/config.json`. Structure:
 {
     "search": {
         "keywords": [
-	        //kewords for search
+	        kewords for search
         ],
-        "res": //resolution wallpaper's,
-        "sorting": //type of sorting
+        "res": resolution wallpaper's,
+        "sorting": type of sorting
     },
     "services": {
         "wallhaven": {
