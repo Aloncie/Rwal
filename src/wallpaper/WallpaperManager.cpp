@@ -68,3 +68,19 @@ std::string where_are_wallpaper(){
 	}
 	return "";
 }
+
+std::optional<fs::path> WallpaperManager::getPicturesPath() {
+    QString path = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    if (path.isEmpty()) {
+        m_ui.showMessage("Could not find Pictures folder");
+        return std::nullopt;
+    }
+    fs::path rwalPath = fs::path(path.toStdString()) / "rwal";
+    std::error_code ec;
+    fs::create_directories(rwalPath, ec);
+    if (ec) {
+        m_ui.showMessage("Failed to create rwal directory");
+        return std::nullopt;
+    }
+    return rwalPath;
+}

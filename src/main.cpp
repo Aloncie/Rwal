@@ -10,6 +10,7 @@
 #include "keywords/keywords.hpp"
 #include "logs/logs.hpp"
 #include "settings/settings.hpp"
+#include "settings/config.hpp"
 
 int main(int argc,char* argv[]){
 	QCoreApplication::setApplicationName("Rwal");
@@ -17,6 +18,7 @@ int main(int argc,char* argv[]){
 	QCoreApplication app(argc, argv);
 
 	UIManager uimanager;
+	Config config;
 	Keywords keywords(uimanager);
 	Timer timer;
 

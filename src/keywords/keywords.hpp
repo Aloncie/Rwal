@@ -17,8 +17,9 @@ private:
 	void importToTxt(fs::path& path);
 	std::vector<std::string> exportFromTxt(fs::path& path);
 	UIManager& m_ui;
+	Config& m_config;
 public:
-	Keywords(UIManager& ui);
+	Keywords(UIManager& ui,Config& config);
 
 	void Default(std::vector<std::string>& Keywords);
 	std::string LongGetRandomKeywords(const std::string& mode);
@@ -27,7 +28,7 @@ public:
 
 	template<typename T = std::vector<std::string>>
 	T ShortWayGetKeywords(){
-		auto search = Config::getInstance().get<nlohmann::json>("search");
+		auto search = m_config.get<nlohmann::json>("search");
 		std::vector<std::string> keywords = search["keywords"].get<std::vector<std::string>>();
 
 		if constexpr(std::is_same_v<T,std::string>){
