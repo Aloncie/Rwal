@@ -11,26 +11,30 @@
 #include "logs/logs.hpp"
 #include "settings/settings.hpp"
 #include "settings/config.hpp"
+#include "net/CurlWrapper.hpp"
+#include "net/NetworkManager.hpp"
 
 int main(int argc,char* argv[]){
 	QCoreApplication::setApplicationName("Rwal");
 	QCoreApplication::setOrganizationName("Aloncie");
 	QCoreApplication app(argc, argv);
 
-	UIManager uimanager;
+	UIManager um;
 	Config config;
-	Keywords keywords(uimanager);
+	Keywords keywords(um, config);
+	MyCurl curl;
 	Timer timer;
-
+	NetworkManager nm(curl, config);
+	WallpaperManager wm(um, keywords, nm);
 
 	if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
-		refresh_wallpaper(keywords, "change");
+		wm.refresh("change");
 		return 0;
 	}
 
-	auto mainMenu = std::make_unique<MainMenu>(uimanager, keywords);
-    auto settingsMenu = std::make_unique<SettingsMenu>(timer);
-    auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, uimanager);
+	auto mainMenu = std::make_unique<MainMenu>(um, keywords, wm);
+    auto settingsMenu = std::make_unique<SettingsMenu>(timer, wm);
+    auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, um, config);
     auto timerMenu = std::make_unique<TimerMenu>(timer);
 
 	Navigator navigator;
@@ -41,12 +45,12 @@ int main(int argc,char* argv[]){
 
 	navigator.start("main");
 
-	uimanager.initUI();
-	AppController controller(&navigator, uimanager);
-	Logs::init(uimanager);
+	um.initUI();
+	AppController controller(&navigator, um);
+	Logs::init(um);
 	Logs::getInstance().write_logs("Rwal started");
 
 	int one = app.exec();
-	uimanager.shutdownUI();
+	um.shutdownUI();
 	return one;
 }

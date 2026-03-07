@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/rwal.dir/link.d CMakeFiles/rwal.dir/rwal_autogen/mocs_compilation.cpp.o CMakeFiles/rwal.dir/src/main.cpp.o -o rwal  librwal_lib.a /usr/lib/libcurl.so /usr/lib/libcurl.so /usr/lib/libQt5DBus.so.5.15.18 /usr/lib/libQt5Widgets.so.5.15.18 /usr/lib/libQt5Gui.so.5.15.18 /usr/lib/libQt5Core.so.5.15.18 -lcurses -lform

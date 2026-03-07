@@ -1,6 +1,5 @@
 #include "NetworkManager.hpp"
 #include "logs/logs.hpp"
-#include "settings/config.hpp"
 #include <optional>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -19,12 +18,7 @@ struct SocketGuard{
 	}
 };
 
-NetworkManager::NetworkManager() : mycurl(){}
-
-NetworkManager& NetworkManager::getInstance(){
-	static NetworkManager instance;
-	return instance;
-}
+NetworkManager::NetworkManager(MyCurl& curl, Config& config) : m_curl(curl), m_config(config){}
 
 bool NetworkManager::isAvailable() {
     auto& logger = Logs::getInstance();
@@ -60,7 +54,7 @@ bool NetworkManager::isAvailable() {
 }
 
 std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::string> page){
-	auto& cfg = Config::getInstance().all();
+	auto& cfg = m_config.all();
 
 	auto& wh = cfg["services"]["wallhaven"];
     auto& search = cfg["search"];
@@ -82,8 +76,8 @@ std::string NetworkManager::fetchImage(std::string keyword){
 	if (!isAvailable())
 	   return "";
 
-	mycurl.get_request(craftUrl(keyword));
-	std::string pageCount =	mycurl.get_data("meta","last_page");
+	m_curl.get_request(craftUrl(keyword));
+	std::string pageCount =	m_curl.get_data("meta","last_page");
 	
 
 	try {
@@ -98,16 +92,16 @@ std::string NetworkManager::fetchImage(std::string keyword){
 	std::string page = std::to_string(random(max_p));
 
 	try {
-		mycurl.get_request(craftUrl(keyword, page));
+		m_curl.get_request(craftUrl(keyword, page));
 	} catch (std::exception& e){
 		Logs::getInstance().write_logs("CURL error: " + std::string(e.what()));
 	}
 
-	std::string url = mycurl.get_data("data","path");
+	std::string url = m_curl.get_data("data","path");
 
 	if (url.empty()) {
 		Logs::getInstance().write_logs("No image URL found in response");
 		return "";
 	}
-	return mycurl.download_image(url);
+	return m_curl.download_image(url);
 }

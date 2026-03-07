@@ -5,9 +5,6 @@
 #include <fstream>
 
 std::string Config::getConfigPath(){
-	QCoreApplication::setApplicationName("rwal");
-	QCoreApplication::setOrganizationName("Aloncie");
-
 	QString configDir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
 
 	QDir dir;
@@ -22,11 +19,11 @@ Config::Config() {
     configPath = getConfigPath();
     initValidators();
     
-    loadConfig();
 
     watcher = new QFileSystemWatcher(this);
     watcher->addPath(QString::fromStdString(configPath));
     
+	loadConfig();
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &Config::loadConfig);
 }
 

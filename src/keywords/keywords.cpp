@@ -22,14 +22,13 @@ std::vector<std::string> Keywords::LongWayGetKeywords(){
     std::vector<std::string> ready_keywords;
 
     while (ready_keywords.empty()) {
-        std::cout << "\nKeywords not found. Enter keywords (space separated): ";
-        std::getline(std::cin, input);
+		input = m_ui.requestInput<std::string>("\nKeywords not found. Enter keywords (space separated): ");
         
         rwal::utils::string::format(input); 
         ready_keywords = rwal::utils::string::split_by_space(input);
 
         if (ready_keywords.empty()) {
-             std::cout << "Input cannot be empty! Try again.";
+             m_ui.showMessage("Input cannot be empty! Try again.");
         }
     }
     
