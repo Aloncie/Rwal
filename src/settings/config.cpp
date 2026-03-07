@@ -58,7 +58,10 @@ void Config::loadConfig(){
         		{"keywords", {}},
         		{"sorting", "random"},
         		{"res", "1920x1080"}
-    		}}
+    		}},
+			{"settings", {
+				{"cursor-visibility", "true"}
+			}}
 		};
 		saveConfig();
 	};		

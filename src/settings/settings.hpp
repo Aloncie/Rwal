@@ -6,9 +6,10 @@
 
 namespace fs = std::filesystem;
 
-class PicturesPath{
+class AppSettings{
 public:
-	fs::path get_pictures_path();
+	bool isCurcorVisible() const;
+	void switchCursorVisiable();
 };
 
 class Timer{

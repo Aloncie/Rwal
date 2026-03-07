@@ -15,19 +15,11 @@ private:
 
 	void saveConfig();
 	void initValidators();
-	
-	Config();
-
-	Config(const Config&) = delete;
-    Config& operator=(const Config&) = delete;
 
 public slots:
 	void loadConfig();
 public:
-	static Config& getInstance() {
-        static Config instance;
-        return instance;
-    }
+	Config();
 
 	std::string getConfigPath();
 	nlohmann::json& all() { return data; }

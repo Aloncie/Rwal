@@ -2,7 +2,18 @@
 #include <string>
 #include "ui/cli//UIManager.hpp"
 #include "keywords/keywords.hpp"
+#include <filesystem>
 
-void save_wallpaper(std::string from, UIManager& ui);
-void refresh_wallpaper(Keywords& k, const std::string& mode = "core");
-std::string where_are_wallpaper();
+namespace fs = std::filesystem;
+
+class WallpaperManager {
+public:
+    WallpaperManager(UIManager& ui, Keywords& keywords);
+    void refresh(const std::string& mode = "core");
+    void saveCurrent();
+    fs::path getCurrentWallpaperPath() const;
+    fs::path getPicturesPath();
+private:
+    UIManager& m_ui;
+    Keywords& m_keywords;
+};

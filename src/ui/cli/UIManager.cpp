@@ -19,7 +19,7 @@ void UIManager::initUI(){
     cbreak();
     noecho();
     keypad(stdscr, TRUE);
-    curs_set(0);
+    curs_set(1);
 
 	if (has_colors()) {
 		start_color();

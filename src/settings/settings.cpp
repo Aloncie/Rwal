@@ -31,67 +31,6 @@ std::optional<fs::path> Timer::get_user_timer_path() const {
 	}
 }
 
-fs::path PicturesPath::get_pictures_path(){
-	 
-	Logs::getInstance().write_logs("Try to know 'Pictures' location");
-	#ifdef _WIN32
-	const char* user_profile = std::getenv("USERPROFILE"); 
-	if (user_profile){
-		rwal_path = user_profile / "Pictures";
-		if (!fs::exists(rwal_path)){
-			rwal_path = user_profile / "Изображения";	
-			if (!fs::exists(rwal_path)
-				return "";
-		}
-		Logs::getInstance().write_logs("Pictures location: " + rwal_path);
-		rwal_path /= "rwal\\";
-	}
-	#else
-	QString pictures_path = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-	if (pictures_path.isEmpty()){
-		Logs::getInstance().write_logs("Error: QStandardPaths Pictures location not found.");
-		return "None";
-	}
-	fs::path path(pictures_path.toStdString());
-	path /= "rwal";
-/*
-	if (!path.empty()){
-		path /= "Pictures";	
-		if (fs::exists(path)){
-			Logs::getInstance().write_logs("Pictures location: " + path.string());
-			path /= "rwal/";
-		}
-		else{
-			path /= "Изображения";
-			if (fs::exists(path)){
-				Logs::getInstance().write_logs("Pictures location: " + path.string());
-				path /= "rwal/";
-			}
-			else
-				return "None";
-		}
-	}
-*/
-	#endif
-
-	try {
-		if (!fs::exists(path)){
-			fs::create_directory(path);
-			return path;
-			Logs::getInstance().write_logs("Catalog 'rwal' created\nFull path:" + path.string());
-		}
-		else{
-			Logs::getInstance().write_logs("The rwal catalog already exists.\nFull path: " + path.string());
-			return path;
-		}
-	} catch (std::exception& e){
-		Logs::getInstance().write_logs("Filesystem error in catalog creating/checking: " + std::string(e.what()));
-	}
-
-	Logs::getInstance().write_logs("Failed getting path of rwal catalog in pictures.");
-	return "None";
-}
-
 void Timer::create_systemd_timer(){
 	
 	 

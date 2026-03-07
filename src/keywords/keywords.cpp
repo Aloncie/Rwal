@@ -6,15 +6,13 @@
 #include <iostream>
 #include <unistd.h>
 #include <sys/stat.h>
-#include "settings/config.hpp"
 #include "internal/utils/string_utils.hpp"
 #include "internal/utils/vector_utils.hpp"
 
-Keywords::Keywords(UIManager& ui) : m_ui(ui){};
+Keywords::Keywords(UIManager& ui, Config& config) : m_ui(ui), m_config(config){};
 
 std::vector<std::string> Keywords::LongWayGetKeywords(){
-    auto& config = Config::getInstance();
-    auto search = config.get<nlohmann::json>("search");
+    auto search = m_config.get<nlohmann::json>("search");
 
     if (search.contains("keywords") && !search["keywords"].empty()){
         return search["keywords"].get<std::vector<std::string>>();
@@ -35,7 +33,7 @@ std::vector<std::string> Keywords::LongWayGetKeywords(){
         }
     }
     
-    config.set("/search/keywords", ready_keywords); 
+    m_config.set("/search/keywords", ready_keywords); 
     return ready_keywords;
 }
 
@@ -69,7 +67,7 @@ void Keywords::editKeywords(){
 	rwal::platform::terminal::buffer::leave_alt_buffer();
 	keywords = exportFromTxt(temp_path);
 
-	Config::getInstance().set("/search/keywords", keywords);
+	m_config.set("/search/keywords", keywords);
 
 	fs::remove(temp_path);
 }
