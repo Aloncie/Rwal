@@ -12,6 +12,7 @@ struct MenuResponce {
     std::string nextMenu;
     bool IsWrongInput;    
     bool needQuit;
+	std::string Message;
 };
 
 class Menu{

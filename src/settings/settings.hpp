@@ -14,11 +14,11 @@ public:
 
 class Timer{
 private:
-	std::optional<fs::path> get_user_timer_path() const;
+	std::optional<fs::path> getUserTimerPath() const;
 public:
-	void create_systemd_timer();
-	std::string see_timer();
-	std::string edit_timer(std::string value);
-	bool check_timer_active_status();
+	void createSystemdTimer();
+	std::string seeTimer();
+	std::string editTimer(std::string value);
+	bool TimerStatus();
 	bool check_timer_mask_status();
 };

@@ -28,8 +28,8 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
         return {"", false, false};
     } 
     else if (input == "2") {
-        m_wm.saveCurrent();
-        return {"", false, false};
+		std::string message = m_wm.saveCurrent();
+        return {"", false, false, message};
     } 
     else if (input == "3") {
         return {MenuId::KEYWORDS, false, false};
@@ -52,7 +52,7 @@ SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm)
 std::vector<std::string> SettingsMenu::getLines() {
     return {
         "--- Settings ---",
-        "1) Timer: " + m_timer.see_timer(),
+        "1) Timer: " + m_timer.seeTimer(),
         "2) Wallpapers's path: " + m_wm.getPicturesPath()->string(),
         "q) Back",
         ""  // Empty line for spacing
@@ -96,27 +96,28 @@ std::vector<std::string> KeywordsMenu::getLines() {
 }
 
 MenuResponce KeywordsMenu::handleInput(const std::string& input) {
-    auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
-
     if (input == "a") {
-        std::string keyword = m_ui.requestInput<std::string>("Write new keyword: ");
-        if (!keyword.empty()) {
-            rwal::utils::string::format(keyword);
-            keywords.push_back(keyword);
-            m_config.set("/search/keywords", keywords);
-        }
-        return {"", false, false};
+        m_ui.requestInput<std::string>( [this](std::string keyword){
+			auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
+			rwal::utils::string::format(keyword);
+			keywords.push_back(keyword);
+			m_config.set("/search/keywords", keywords);
+		});
+        return {"", false, false, "Write new keyword: "};
     } 
     else if (input == "r") {
-        int display_index = m_ui.requestInput<int>("Enter index for remove: ");
-        if (display_index >= 1) {
-            int real_index = display_index - 1;
-            if (real_index < (int)keywords.size()) {
-                keywords.erase(keywords.begin() + real_index);
-                m_config.set("/search/keywords", keywords);
-            }
-        }
-        return {"", false, false};
+        m_ui.requestInput<int>([this](int display_index){
+			auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
+			if (display_index >= 1){
+				int real_index = display_index - 1;
+				if (real_index < (int)keywords.size()) {
+					keywords.erase(keywords.begin() + real_index);
+					m_config.set("/search/keywords", keywords);
+					}
+				}
+		});
+
+        return {"", false, false, "Enter index to remove: "};
     } 
     else if (input == "m") {
         m_keywords.editKeywords();
@@ -128,6 +129,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
     } 
     else {
         return {"", true, false};
+
     }
 }
 
@@ -145,15 +147,15 @@ std::vector<std::string> TimerMenu::getLines() {
 
 MenuResponce TimerMenu::handleInput(const std::string& input) {
     if (input == "h") {
-        m_timer.edit_timer("hourly");
+        m_timer.editTimer("hourly");
         return {MenuId::SETTINGS, false, false};
     } 
     else if (input == "d") {
-        m_timer.edit_timer("daily");
+        m_timer.editTimer("daily");
         return {MenuId::SETTINGS, false, false};
     } 
     else if (input == "n") {
-        m_timer.edit_timer("None");
+        m_timer.editTimer("None");
         return {MenuId::SETTINGS, false, false};
     } 
     else {

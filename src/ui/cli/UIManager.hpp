@@ -10,7 +10,7 @@
 class UIManager{
 private:
 	static std::vector<std::string> dontShowAgain;
-	bool inputActive;
+	bool inputActive = false;
 	std::string inputBuffer;
 	std::string prompt;
 	std::function<void(std::string)> inputCallback;
@@ -21,19 +21,17 @@ public:
 	UIManager();
 	void showMessage(std::string message);
 	void dodgeMessage(std::string message);
-
 	bool isInputActive() const;
-	
+
 	void processInputChar(int ch);
 
 	template<typename T>
-	T requestInput(std::function<void(T)> callback, std::optional<std::string> message = std::nullopt) {
+	void requestInput(std::function<void(T)> callback, std::optional<std::string> message = std::nullopt) {
 		if (inputActive) return;
 
 		prompt = message.value_or("");
 		inputBuffer.clear();
 		inputActive = true;
-
 		inputCallback = [this, callback](std::string raw){
 			if constexpr (std::is_same_v<T, std::string>)
 				callback(raw);

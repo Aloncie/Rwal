@@ -3,7 +3,7 @@
 class MockLogs : public Logs {
 public:
     std::vector<std::string> messages;
-    void write_logs(std::string msg) override {
+    void writeLogs(std::string msg) override {
         messages.push_back(msg);
     }
 };

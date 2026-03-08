@@ -139,9 +139,9 @@ graph TD
 - **Purpose:** Low‑level CURL wrapper with JSON parsing.
 - **Key methods:**
   - `MyCurl()` – initializes CURL; throws on failure.
-  - `void get_request(std::string url)` – performs GET request, stores response in `buffer`, parses JSON.
-  - `std::string get_data(std::string paragraph, std::string str)` – extracts string or int from parsed JSON.
-  - `std::string download_image(const std::string& image_url)` – downloads image to `AppLocalDataLocation/downloads/`.
+  - `void getRequest(std::string url)` – performs GET request, stores response in `buffer`, parses JSON.
+  - `std::string getData(std::string paragraph, std::string str)` – extracts string or int from parsed JSON.
+  - `std::string downloadImage(const std::string& image_url)` – downloads image to `AppLocalDataLocation/downloads/`.
 
 ### `Keywords`
 - **Header:** `keywords.hpp`
@@ -169,8 +169,8 @@ graph TD
 - **Purpose:** File logging with rotation.
 - **Key methods:**
   - `static Logs& getInstance()` – singleton.
-  - `void write_logs(std::string message)` – appends timestamped message to `~/.cache/rwal/logs.txt`.
-  - `void refresh_logs(fs::path& logs_path)` – deletes and recreates log file, fixing permissions.
+  - `void writeLogs(std::string message)` – appends timestamped message to `~/.cache/rwal/logs.txt`.
+  - `void refresh(fs::path& logs_path)` – deletes and recreates log file, fixing permissions.
 
 ## 🔧 Configuration File (`config.json`)
 

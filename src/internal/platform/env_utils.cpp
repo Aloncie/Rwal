@@ -1,23 +1,28 @@
 #include "env_utils.hpp"
-#include "logs/logs.hpp"
-#include <QProcess>
-#include <QString>
-#include <QDebug>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <vector>
 
-namespace rwal::platform{
-	namespace executor{
-		void open_editor(fs::path& path){
-			QString editor = QString::fromLocal8Bit(getenv("EDITOR"));
-			if (editor.isEmpty())
-				editor = QStringLiteral("nano");
-			QStringList args;
-			args << QString::fromStdString(path.string());
+namespace rwal::platform::executor {
+    void open_editor(fs::path& path) {
+        const char* editor_env = std::getenv("EDITOR");
+        std::string editor = (editor_env) ? editor_env : "nano";
+        std::string path_str = path.string();
 
-			int exitCode = QProcess::execute(editor, args);
-			if (exitCode != 0) {
-				qDebug() << "Editor exited with code" << exitCode;
-				Logs::getInstance().write_logs("Editor exited with code" + std::to_string(exitCode));
-			}			
-		}
-	}
+        pid_t pid = fork();
+
+        if (pid == -1)
+            return;
+
+        if (pid == 0) {
+			if (std::system("stty sane") != 0) {}
+            const char* args[] = { editor.c_str(), path_str.c_str(), nullptr };
+            execvp(args[0], const_cast<char**>(args));
+            
+            std::_Exit(1); 
+        } else {
+            int status;
+            waitpid(pid, &status, 0);
+        }
+    }
 }

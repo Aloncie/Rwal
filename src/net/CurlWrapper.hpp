@@ -16,13 +16,13 @@ private:
 
 	void clearning();
 	void generateUniqueSuffix(std::string& filename);
-	std::string call_image(const std::string& image_url);
+	std::string call_Image(const std::string& image_url);
 public:
 
 	MyCurl();
-	void get_request(std::string url);
-	std::string get_data(std::string paragraph, std::string str);
-	std::string download_image(const std::string& image_url);
+	void getRequest(std::string url);
+	std::string getData(std::string paragraph, std::string str);
+	std::string downloadImage(const std::string& image_url);
 
    	~MyCurl();
 };

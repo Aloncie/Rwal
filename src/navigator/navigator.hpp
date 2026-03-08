@@ -12,7 +12,7 @@ private:
 public:
 	void printCurrentMenu();
 	void start(const std::string InitialMenu);
-	bool processInput(std::string& input, UIManager& uimanager);
+	MenuResponce processInput(std::string& input, UIManager& uimanager);
 	void registerMenu(const std::string& name, std::unique_ptr<Menu> menu);
 	std::string getCurrentValidChoices() const;
 };
