@@ -13,7 +13,7 @@ class WallpaperManager {
 public:
     WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm);
     void refresh(const std::string mode = "core");
-    void saveCurrent();
+	std::string saveCurrent();
     fs::path getCurrentWallpaperPath() const;
 	std::optional<fs::path> getPicturesPath();
 private:

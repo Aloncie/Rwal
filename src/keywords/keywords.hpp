@@ -13,7 +13,8 @@ extern const std::string keywords_path;
 
 class Keywords{
 private:
-	std::vector<std::string> LongWayGetKeywords();
+	void LongWayGetKeywords(std::function<void(std::vector<std::string>)> callback);
+	void promptForKeywords(std::function<void(std::vector<std::string>)> callback);
 	void importToTxt(fs::path& path);
 	std::vector<std::string> exportFromTxt(fs::path& path);
 	UIManager& m_ui;
@@ -22,9 +23,8 @@ public:
 	Keywords(UIManager& ui,Config& config);
 
 	void Default(std::vector<std::string>& Keywords);
-	std::string LongGetRandomKeywords(const std::string& mode);
 	void editKeywords();
-	std::string GetRandomKeywords(const std::string& mode);
+	void GetRandomKeywords(std::function<void(std::string)> callback, const std::string& mode);
 
 	template<typename T = std::vector<std::string>>
 	T ShortWayGetKeywords(){

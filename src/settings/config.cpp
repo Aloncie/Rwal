@@ -18,7 +18,6 @@ std::string Config::getConfigPath(){
 Config::Config() {
     configPath = getConfigPath();
     initValidators();
-    
 
     watcher = new QFileSystemWatcher(this);
     watcher->addPath(QString::fromStdString(configPath));
@@ -33,9 +32,9 @@ void Config::loadConfig(){
         if (file.is_open()) {
             try {
                 data = nlohmann::json::parse(file);
-                Logs::getInstance().write_logs("Config loaded/reloaded: " + configPath);
+                Logs::getInstance().writeLogs("Config loaded/reloaded: " + configPath);
             } catch (nlohmann::json::parse_error& e) {
-                Logs::getInstance().write_logs("JSON Parse Error: " + std::string(e.what()));
+                Logs::getInstance().writeLogs("JSON Parse Error: " + std::string(e.what()));
             }
         }
     } else {	

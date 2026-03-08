@@ -29,6 +29,6 @@ void change_wallpaper(std::string local) {
 
     auto reply = QDBusConnection::sessionBus().call(msg);
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        Logs::getInstance().write_logs("D-Bus Error: " + reply.errorMessage().toStdString());
+        Logs::getInstance().writeLogs("D-Bus Error: " + reply.errorMessage().toStdString());
     }
 }

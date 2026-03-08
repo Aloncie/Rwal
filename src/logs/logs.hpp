@@ -22,7 +22,7 @@ private:
 			const std::uintmax_t limit_size = 1024 * 1024;
 
 			if (fileSize > limit_size)
-				refresh_logs(logs_path);
+				refresh(logs_path);
 		}
 		f.open(logs_path, std::ios::app);
 	};
@@ -30,8 +30,8 @@ private:
 	Logs(const Logs&) = delete;
 	Logs& operator=(const Logs&) = delete;
 
-	std::string get_current_time();
-	void refresh_logs(fs::path& logs_path);
+	std::string getCurrentTime();
+	void refresh(fs::path& logs_path);
 
 public:
 	static void init(UIManager& ui){
@@ -49,5 +49,5 @@ public:
         s_instance = mock;
     }	
 
-	virtual void write_logs(std::string message);
+	virtual void writeLogs(std::string message);
 };

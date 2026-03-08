@@ -15,42 +15,43 @@
 #include "net/NetworkManager.hpp"
 
 int main(int argc,char* argv[]){
-	QCoreApplication::setApplicationName("Rwal");
-	QCoreApplication::setOrganizationName("Aloncie");
-	QCoreApplication app(argc, argv);
+    QCoreApplication::setApplicationName("Rwal");
+    QCoreApplication::setOrganizationName("Aloncie");
+    QCoreApplication app(argc, argv);
 
-	UIManager um;
-	Config config;
-	Keywords keywords(um, config);
-	MyCurl curl;
-	Timer timer;
-	NetworkManager nm(curl, config);
-	WallpaperManager wm(um, keywords, nm);
+    UIManager um;
+    Config config;
+    Keywords keywords(um, config);
+    MyCurl curl;
+    Timer timer;
+    NetworkManager nm(curl, config);
+    WallpaperManager wm(um, keywords, nm);
 
-	if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
-		wm.refresh("change");
-		return 0;
-	}
+    if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
+        wm.refresh("change");
+        return 0;
+    }
 
-	auto mainMenu = std::make_unique<MainMenu>(um, keywords, wm);
+    um.initUI();
+
+    auto mainMenu = std::make_unique<MainMenu>(um, keywords, wm);
     auto settingsMenu = std::make_unique<SettingsMenu>(timer, wm);
     auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, um, config);
     auto timerMenu = std::make_unique<TimerMenu>(timer);
 
-	Navigator navigator;
+    Navigator navigator;
     navigator.registerMenu("main", std::move(mainMenu));
     navigator.registerMenu("settings", std::move(settingsMenu));
     navigator.registerMenu("keywords", std::move(keywordsMenu));
     navigator.registerMenu("timer", std::move(timerMenu));
 
-	navigator.start("main");
+    navigator.start("main");
 
-	um.initUI();
-	AppController controller(&navigator, um);
-	Logs::init(um);
-	Logs::getInstance().write_logs("Rwal started");
+    AppController controller(&navigator, um);
+    Logs::init(um);
+    Logs::getInstance().writeLogs("Rwal started");
 
-	int one = app.exec();
-	um.shutdownUI();
-	return one;
+    int one = app.exec();
+    um.shutdownUI();
+    return one;
 }

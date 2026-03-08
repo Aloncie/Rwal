@@ -10,6 +10,3 @@ int random(int count){
     return distrib(gen);
 }
 
-void printFlags(){
-	//on future	
-}
