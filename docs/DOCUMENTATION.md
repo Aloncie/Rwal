@@ -1,203 +1,103 @@
-# 📘 Rwal – Technical Documentation
-
+# 📘 Rwal – Technical Documentation (v0.3.0-alpha)
+---
 ## 🧱 Architecture Overview
 
 Rwal is built as a set of loosely coupled modules, each with a single responsibility. The main components are:
+AppController – Qt event loop entry point; manages QSocketNotifier for asynchronous input.
 
-- **`AppController`** – Qt event loop entry point; manages `QSocketNotifier` for asynchronous input.
-- **`Navigator`** – State machine for menu navigation; holds pointer to current `CharacterMenuConfig`.
-- **`UIManager`** – Handles terminal output: line counting, clearing, coloured messages.
-- **`NetworkManager`** – Wrapper around libcurl; performs HTTP requests and parses JSON responses.
-- **`Keywords`** – Manages keyword lists: reading from config, random selection, editing via external editor.
-- **`Settings`** – Configuration file handling, systemd timer integration, pictures path detection.
-- **`WallpaperManager`** – Orchestrates wallpaper download and setting; saves images to user data directory.
-- **`Logs`** – Simple file logger with size rotation and permission fixing.
-
-### 📊Data Flow Graphs
-
-#### Change Mode
-```mermaid
-graph LR
-    %% Стиль: Слева направо (Linear)
-    Start((Run)) -->|Args: -c| Refresh[Manager::refresh]
-    
-    subgraph Data_Flow [Data Pipeline]
-        direction TB
-        Refresh -->|Get Key| KW[Keywords::Random]
-        KW -->|Read| Conf[(Config)]
-        
-        Refresh -->|Get URL| Net[Network::fetch]
-        Net -->|Check| Avail{Is Online?}
-        Avail -- Yes --> Curl[Curl::Download]
-        Curl -->|Save| Disk[/File System/]
-        
-        Refresh -->|Set Wall| Set[WallpaperManager]
-    end
-```
-
-*(Insert Mermaid code from `RwalPhilosophy.md`)*
-
-#### Core Mode
-```mermaid
-graph TD
-    %% --- Dark Theme Styles ---
-    classDef menu fill:#A0522D,stroke:#cc7a00,stroke-width:2px,color:#fff;
-    classDef action fill:#2F4F4F,stroke:#808080,stroke-dasharray: 5 5,color:#fff;
-    classDef startExit fill:#000,stroke:#555,color:#888;
-
-    %% --- Nodes ---
-    Start((Start)):::startExit --> Main[MAIN_MENU]
-    
-    subgraph Navigation [Interactive Menu Loop]
-        direction TB
-        Main:::menu
-        
-        %% Main Menu Logic
-        Main -->|Input: 1| Refresh(Action: Refresh Wallpaper):::action
-        Main -->|Input: 2| Save(Action: Save Wallpaper):::action
-        Main -->|Input: 3| KW[KEYWORDS_MENU]:::menu
-        Main -->|Input: 4| Sett[SETTINGS_MENU]:::menu
-        Main -->|Input: q| Quit((Exit)):::startExit
-
-        %% Keywords Menu Logic
-        KW -->|Input: a| Add(Add Keyword):::action
-        KW -->|Input: r| Remove(Remove Index):::action
-        KW -->|Input: m| Editor(Open System Editor):::action
-        KW -->|Input: q| BackKW[Back to Main_Menu] 
-
-        %% Settings Menu Logic
-        Sett -->|Input: 1| Timer[TIMER_MENU]:::menu
-        Sett -->|Input: 2| Path(Show Wallpaper's path):::action
-        Sett -->|Input: q| BackSett[Back to Main]
-
-        %% Timer Menu Logic
-        Timer -->|Select: hourly/daily| SetTimer(Action: Systemd Timer):::action --> Sett
-    end
-
-```
-*(Insert Mermaid code from `RwalPhilosophy.md`)*
-
+- Navigator – State machine for menu navigation; holds a map of Menu objects.
+- UIManager – Handles terminal output and non‑blocking input. All input requests are callback‑based.
+- NetworkManager – Wrapper around libcurl; performs HTTP requests and parses JSON responses.
+- Keywords – Manages keyword lists; all operations that may block (editor, config write) are asynchronous.
+- Settings – Configuration file handling, systemd timer integration.
+- WallpaperManager – Orchestrates wallpaper download and setting; uses callbacks to report results.
+- Logs – Simple file logger with size rotation and permission fixing (still a singleton for simplicity).
+  
+---
 ## 📁 Detailed Module Breakdown
+1. **AppController**
+   - **Header:** `AppController.hpp`
+   - **Responsibilities:** Initializes QSocketNotifier for stdin, connects to handleStdin slot, prints initial menu.
+   - **Key methods:**
+     - `AppController(Navigator* nav, UIManager& ui, QObject* parent = nullptr)` – constructor.
+     - `void handleStdin()` – slot called when input is available; reads a character, passes it to UIManager if input is active, otherwise to Navigator. Then refreshes the menu and shows any pending message.
 
-### `AppController`
-- **Header:** `AppController.hpp`
-- **Responsibilities:** Initializes `QSocketNotifier` for stdin, connects to `handleStdin` slot, prints initial menu.
-- **Key methods:**
-  - `AppController(Navigator* nav, QObject* parent = nullptr)` – constructor.
-  - `void handleStdin()` – slot called when input is available; reads line, validates against current menu's `valid_choices`, processes input via `Navigator`, clears and prints updated menu.
+2. **Navigator**
+   - **Header:** `navigator.hpp`
+   - **Responsibilities:** Maintains current menu, processes input, handles menu transitions and quit.
+   - **Key members:**
+     - `std::map&lt;std::string, std::unique_ptr&lt;Menu&gt;&gt; m_menus` – registered menus by ID.
+     - `Menu* m_currentMenu` – pointer to the active menu.
+   - **Key methods:**
+     - `void registerMenu(const std::string& name, std::unique_ptr&lt;Menu&gt; menu)` – registers a menu.
+     - `void start(const std::string& initialMenu)` – sets the initial menu and prints it.
+     - `MenuResponce processInput(std::string& input, UIManager& uimanager)` – delegates input to current menu; handles menu switching and quit.
+     - `std::string getCurrentValidChoices() const` – returns valid keys for the current menu (used by AppController for early validation).
 
-### `Navigator`
-- **Header:** `navigator.hpp`
-- **Responsibilities:** Maintains current menu, processes input, handles menu transitions and quit.
-- **Key members:**
-  - `const CharacterMenuConfig* current_menu` – pointer to the active menu.
-- **Key methods:**
-  - `Navigator(const CharacterMenuConfig& config)` – initializes with starting menu.
-  - `void printMenu()` – prints current menu lines.
-  - `bool processInput(std::string input)` – calls `execute_actions` on current menu; updates menu or quits; returns `true` if quit requested.
+3. **Menu Interface** *(defined in `menus.hpp`)*
+   - **Purpose:** Abstract base for all menus.
+   - **Methods:**
+     - `virtual std::vector&lt;std::string&gt; getLines() = 0` – returns the lines to display.
+     - `virtual MenuResponce handleInput(const std::string& input) = 0` – processes a single‑character input.
+     - `virtual std::string getValidChoices() const = 0` – returns a string of valid input characters.
 
-### `CharacterMenuConfig` (defined in `menus.hpp`)
-- **Purpose:** Defines a menu's behaviour.
-- **Fields:**
-  - `const std::string valid_choices` – string of allowed single‑character inputs.
-  - `std::function<std::vector<std::string>()> menu_generator` – returns lines to display.
-  - `std::function<MenuResponce(std::string)> logic_handler` – processes input and returns `MenuResponce`.
-- **Methods:**
-  - `MenuResponce execute_actions(std::string input) const` – calls `logic_handler`.
-  - `std::vector<std::string> menu() const` – calls `menu_generator`.
+4. **UIManager**
+   - **Header:** `ui/cli/UIManager.hpp`
+   - **Purpose:** Manages terminal output and asynchronous input.
+   - **Key members:**
+     - `bool inputActive` – whether an input request is pending.
+     - `std::string inputBuffer` – accumulates characters until Enter.
+     - `std::string prompt` – prompt shown during input.
+     - `std::function&lt;void(std::string)&gt; inputCallback` – called when input is complete.
+   - **Key methods:**
+     - `void initUI()` – initialises ncurses, sets non‑blocking mode, enables colours.
+     - `void shutdownUI()` – ends ncurses.
+     - `void showMessage(std::string message)` – prints a coloured message at the bottom line.
+     - `template&lt;typename T&gt; void requestInput(std::function&lt;void(T)&gt; callback, std::optional&lt;std::string&gt; message)` – starts an asynchronous input request. The callback is invoked with the parsed input when the user presses Enter. If parsing fails, an error message is shown and the request restarts.
+     - `void processInputChar(int ch)` – called by AppController for each character when inputActive is true. Handles backspace, Enter, and normal characters.
+     - `bool isInputActive() const` – returns whether input is pending.
+   - **Why this design?**
+     - Traditional console input with `std::cin` blocks the entire program. By using ncurses in non‑blocking mode (`nodelay(stdscr, TRUE)`) and integrating with Qt's event loop via `QSocketNotifier`, we achieve a fully responsive UI that can handle background tasks (downloads, file operations) without freezing.
 
-### `MenuResponce` (in `menus.hpp`)
-- **Fields:**
-  - `const CharacterMenuConfig* nextMenu` – next menu to switch to (or `nullptr` to stay).
-  - `bool IsWrongInput` – `true` if input was invalid.
-  - `bool needQuit` – `true` if the program should quit.
+5. **Keywords**
+   - **Header:** `keywords.hpp`
+   - **Purpose:** Manages keyword lists – reading from config, random selection, editing.
+   - **Key methods:**
+     - `void GetRandomKeywords(std::function&lt;void(std::string)&gt; callback, const std::string& mode)` – asynchronously obtains a random keyword. In "change" mode it returns immediately from the cached list; in "core" mode it may prompt the user if no keywords are configured, then calls the callback with the chosen keyword.
+     - `void editKeywords()` – opens the system editor in a child process. Before forking, it saves and restores the terminal state using `def_prog_mode()` / `reset_prog_mode()` to prevent terminal corruption.
+     - `template&lt;typename T&gt; T ShortWayGetKeywords()` – returns keywords as a `std::vector&lt;std::string&gt;` or a comma‑separated `std::string` (compile‑time decision).
+   - **Asynchronous pattern:**
+     - `GetRandomKeywords` accepts a callback instead of returning a value. This allows the method to potentially wait for user input (in "core" mode) without blocking the event loop. The callback is invoked when the keyword is ready.
 
-### `UIManager`
-- **Header:** `cli.hpp`
-- **Purpose:** Manages terminal output: line counting, clearing, message display.
-- **Key members:** `int count_ref` – number of lines printed since last clear.
-- **Key methods:**
-  - `static UIManager& getInstance()` – singleton access.
-  - `void clear_last_lines()` – moves cursor up and clears `count_ref` lines.
-  - `void countOperatorPlus(int count)` – adds to `count_ref`.
-  - `void show_message(std::string message)` – prints message with colour based on content.
-  - `void dodgeMessage(std::string message)` – adds message to "don't show again" list.
-  - `template<typename T> T request_input(std::optional<std::string> message)` – reads input, optionally shows a prompt, retries on error.
+6. **WallpaperManager**
+   - **Header:** `wallpaper/WallpaperManager.hpp`
+   - **Purpose:** Orchestrates wallpaper download and setting.
+   - **Key methods:**
+     - `void refresh(const std::string& mode = "core")` – asynchronously fetches a random keyword via `Keywords::GetRandomKeywords`, then downloads the image using `NetworkManager::fetchImage` (which itself may be blocking, but is run in a separate thread). Finally, sets the wallpaper via D‑Bus.
+     - `std::string saveCurrent()` – copies the current wallpaper to the user's Pictures directory. Returns a status message.
+     - `std::optional&lt;fs::path&gt; getPicturesPath()` – locates or creates the `~/Pictures/rwal` directory.
+   - **Threading note:**
+     - `NetworkManager::fetchImage` performs synchronous HTTP requests. To avoid blocking the UI, it is called from a `std::async` or `QtConcurrent` task (not shown in the provided code, but this is the intended upgrade). The result is delivered via a signal or a callback posted to the main thread.
 
-### `NetworkManager`
-- **Header:** `NetworkManager.hpp`
-- **Purpose:** Handles HTTP requests, checks internet connectivity, downloads images.
-- **Key members:** `MyCurl mycurl` – underlying CURL wrapper.
-- **Key methods:**
-  - `static NetworkManager& getInstance()` – singleton.
-  - `bool isAvailable()` – checks internet by connecting
-  - `std::string craftUrl(std::string keyword, std::optional<std::string> page)` – builds Wallhaven API URL.
-  - `std::optional<std::string> fetchImage(std::string keyword)` – performs search, picks random page, downloads image; returns path or `nullopt` on failure.
+7. **NetworkManager**
+   - **Header:** `net/NetworkManager.hpp`
+   - **Purpose:** Handles HTTP requests, checks internet connectivity, downloads images.
+   - **Key methods:**
+     - `bool isAvailable()` – checks connectivity by attempting to connect to `8.8.8.8:53`. Non‑blocking socket with timeout.
+     - `std::string fetchImage(std::string keyword)` – synchronous download (should be called from a worker thread). Returns the local path of the downloaded image.
+     - `std::string craftUrl(std::string keyword, std::optional&lt;std::string&gt; page)` – builds the Wallhaven API URL from config.
 
-### `MyCurl`
-- **Header:** `CurlWrapper.hpp`
-- **Purpose:** Low‑level CURL wrapper with JSON parsing.
-- **Key methods:**
-  - `MyCurl()` – initializes CURL; throws on failure.
-  - `void getRequest(std::string url)` – performs GET request, stores response in `buffer`, parses JSON.
-  - `std::string getData(std::string paragraph, std::string str)` – extracts string or int from parsed JSON.
-  - `std::string downloadImage(const std::string& image_url)` – downloads image to `AppLocalDataLocation/downloads/`.
+8. **Logs**
+   - **Header:** `logs/logs.hpp`
+   - **Purpose:** File logging with rotation. Still a singleton for simplicity, but now accepts a `UIManager*` at initialisation to display critical errors.
+   - **Key methods:**
+     - `static void init(UIManager& ui)` – must be called once in `main()`.
+     - `static Logs& getInstance()` – returns the singleton.
+     - `void writeLogs(std::string message)` – appends a timestamped message to the log file; if the file exceeds 1 MB, it is rotated.
+    
 
-### `Keywords`
-- **Header:** `keywords.hpp`
-- **Purpose:** Keyword storage and retrieval.
-- **Key methods:**
-  - `std::vector<std::string> longWayGetKeywords()` – interactive input if config empty.
-  - `void Default(std::vector<std::string>& keywords)` – sets default keyword list.
-  - `std::string getRandomKeywords(const std::string& mode)` – returns random keyword; mode `"change"` uses `shortWayGetKeywords`, `"core"` uses `longWayGetKeywords`.
-  - `void editKeywords()` – opens temporary file in `$EDITOR` for manual editing.
-  - `template<typename T> T shortWayGetKeywords()` – returns keywords from config as vector or comma‑separated string.
-
-### `Settings` (Timer & PicturesPath)
-- **Headers:** `settings.hpp`, `settings.cpp`
-- **`Timer` class:**
-  - `std::optional<fs::path> getUserTimerPath() const` – gets `~/.config/systemd/user`.
-  - `void createSystemdTimer()` – creates service and timer files if missing.
-  - `std::string seeTimer()` – reads current timer value.
-  - `std::string editTimer(std::string value)` – updates timer, (de)activates.
-  - `bool checkTimerActiveStatus()` – checks if timer is active.
-- **`PicturesPath` class:**
-  - `fs::path getPicturesPath()` – returns `~/Pictures/rwal`, creating if needed.
-
-### `Logs`
-- **Header:** `logs.hpp`
-- **Purpose:** File logging with rotation.
-- **Key methods:**
-  - `static Logs& getInstance()` – singleton.
-  - `void writeLogs(std::string message)` – appends timestamped message to `~/.cache/rwal/logs.txt`.
-  - `void refresh(fs::path& logs_path)` – deletes and recreates log file, fixing permissions.
-
-## 🔧 Configuration File (`config.json`)
-
-Located in `~/.config/Aloncie/rwal/config.json`. Structure:
-
-```json
-{
-    "search": {
-        "keywords": [
-	        kewords for search
-        ],
-        "res": resolution wallpaper's,
-        "sorting": type of sorting
-    },
-    "services": {
-        "wallhaven": {
-            "apikey": "YOUR_API_KEY_HERE",
-            "base_url": "https://wallhaven.cc/api/v1/search",
-            "param_names": {
-                "query": "?q=",
-                "res": "resolutions",
-                "sorting": "sorting"
-            }
-        }
-    }
-}
-```
+№№ 🔧 Configuration File (config.json)
+Located in ~/.config/Aloncie/rwal/config.json. Structure unchanged from previous versions.
 
 ## 🧪 Current Status & Roadmap
 See ROADMAP.md for the up‑to‑date development plan.
