@@ -18,17 +18,19 @@ std::vector<std::string> Keywords::LongWayGetKeywords(){
         return search["keywords"].get<std::vector<std::string>>();
     }
     
-    std::string input;
     std::vector<std::string> ready_keywords;
+	bool areKeywordsReady = false;
 
-    while (ready_keywords.empty()) {
-		input = m_ui.requestInput<std::string>("\nKeywords not found. Enter keywords (space separated): ");
+    while (!areKeywordsReady) {
+		m_ui.requestInput<std::string>([&ready_keywords, &areKeywordsReady](std::string input){
+			rwal::utils::string::format(input); 
+			ready_keywords = rwal::utils::string::split_by_space(input);
+			areKeywordsReady = true;
+		},"\nKeywords not found. Enter keywords (space separated): ");
         
-        rwal::utils::string::format(input); 
-        ready_keywords = rwal::utils::string::split_by_space(input);
-
-        if (ready_keywords.empty()) {
+        if ((areKeywordsReady)&&(ready_keywords.empty())) {
              m_ui.showMessage("Input cannot be empty! Try again.");
+			 areKeywordsReady = false;
         }
     }
     

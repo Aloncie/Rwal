@@ -2,7 +2,42 @@
 #include <cctype>
 #include <map>
 #include "UIManager.hpp"
-#include <iostream>
+
+bool UIManager::isInputActive() const {return inputActive;}
+
+void UIManager::processInputChar(int ch) {
+    if (!inputActive) return;
+
+    if (ch == '\n' || ch == KEY_ENTER) {
+        inputActive = false;
+        move(LINES - 1, 0);
+        clrtoeol();
+        refresh();
+
+        if (inputCallback) {
+            inputCallback(inputBuffer);
+        }
+        return;
+    }
+
+    if (ch == KEY_BACKSPACE || ch == 127 || ch == '\b') {
+        if (!inputBuffer.empty()) {
+            inputBuffer.pop_back();
+
+            move(LINES - 1, prompt.length() + inputBuffer.length());
+            addch(' ');
+            move(LINES - 1, prompt.length() + inputBuffer.length());
+            refresh();
+        }
+        return;
+    }
+
+    if (ch >= 32 && ch <= 126) {
+        inputBuffer.push_back(static_cast<char>(ch));
+        addch(ch);
+        refresh();
+    }
+}
 
 std::vector<std::string> UIManager::dontShowAgain;
 
@@ -25,21 +60,6 @@ void UIManager::initUI(){
 		start_color();
 		use_default_colors();
 	}
-}
-
-std::string UIManager::readInput(std::optional<std::string> message){
-	if (message != std::nullopt){
-		mvprintw(LINES - 1, 0, "%s", message->c_str());
-		clrtoeol();
-		refresh();
-	}
-
-	echo();
-	char buffer[256];
-	getnstr(buffer, sizeof(buffer)-1);
-	noecho();
-
-	return std::string(buffer);
 }
 
 void UIManager::shutdownUI(){endwin();}

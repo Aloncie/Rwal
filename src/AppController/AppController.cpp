@@ -9,16 +9,18 @@ AppController::AppController(Navigator* nav, UIManager& ui, QObject* parent) : Q
 
 	m_navigator->printCurrentMenu();
 }
-void AppController::handleStdin(){
-	std::string input;
-	bool needQuit;
-	std::string valid = m_navigator->getCurrentValidChoices();
-	do {			
-		input = m_ui.requestInput<std::string>(std::nullopt);
-	} while (valid.find(input) == std::string::npos);
 
-	needQuit = m_navigator->processInput(input, m_ui);
-	if (!needQuit)
-		m_navigator->printCurrentMenu();
+void AppController::handleStdin() {
+    int ch;
+    while ((ch = getch()) != ERR) {
+        if (m_ui.isInputActive()) {
+            m_ui.processInputChar(ch);
+        } else {
+            std::string input(1, static_cast<char>(ch));
+            bool needQuit = m_navigator->processInput(input, m_ui);
+            if (!needQuit)
+                m_navigator->printCurrentMenu();
+        }
+    }
 }
 
