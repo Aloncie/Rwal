@@ -91,7 +91,10 @@ Automatically created on first run in ~/.config/Aloncie/rwal/config.json.
                 "sorting": "sorting"
             }
         }
-    }
+    },
+	"settings": {
+		 "cursor-visibility": "true"
+	}
 }
 ```
 **Changes are hot‑reloaded – no restart needed.**
@@ -113,6 +116,7 @@ For security issues, please see our [Security Policy](SECURITY.md).
 - [Philosophy](https://github.com/Aloncie/Rwal/blob/main/docs/PHILOSOPHY.md)
 - [Documentation](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md)
 - [Roadmap](https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md)
+- [Flow Graphs](https://github.com/Aloncie/Rwal/blob/main/docs/FlowGraphs.md)
 
 ## 📊 2-Minute Survey
 
