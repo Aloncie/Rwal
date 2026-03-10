@@ -96,7 +96,7 @@ AppController – Qt event loop entry point; manages QSocketNotifier for asynchr
      - `void writeLogs(std::string message)` – appends a timestamped message to the log file; if the file exceeds 1 MB, it is rotated.
     
 
-№№ 🔧 Configuration File (config.json)
+## 🔧 Configuration File (config.json)
 Located in ~/.config/Aloncie/rwal/config.json. Structure unchanged from previous versions.
 
 ## 🧪 Current Status & Roadmap
