@@ -6,6 +6,7 @@
 #include <QStandardPaths>
 #include <filesystem>
 #include <iostream>
+#include <QCoreApplication>
 
 namespace fs = std::filesystem;
 
@@ -75,8 +76,8 @@ std::optional<fs::path> WallpaperManager::getPicturesPath() {
         return std::nullopt;
     }
 
-    fs::path rwalDir = fs::path(path.toStdString()) / "rwal";
-    std::error_code ec;
+	fs::path rwalDir = fs::path(path.toStdString()) / QCoreApplication::applicationName().toStdString();  	
+	std::error_code ec;
     fs::create_directories(rwalDir, ec);
     if (ec) {
         m_ui.showMessage("Failed to create rwal directory");
