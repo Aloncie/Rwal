@@ -1,0 +1,16 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    qtbase5-dev \
+    libqt5dbus5 \
+    libqt5widgets5 \
+    libcurl4-openssl-dev \
+    libncurses-dev \
+    nlohmann-json3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app

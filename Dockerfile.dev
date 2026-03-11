@@ -1,0 +1,19 @@
+ARG USERNAME=developer
+
+FROM rwal-base:latest
+
+ARG USERNAME
+ARG UID=1000
+ARG GID=1000
+
+RUN groupadd -g ${GID} ${USERNAME} || true && \
+    useradd -m -u ${UID} -g ${USERNAME} -s /bin/bash ${USERNAME} || true
+
+COPY docker-entrypoint-dev.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint-dev.sh
+
+USER ${USERNAME}
+WORKDIR /app
+
+ENTRYPOINT ["docker-entrypoint-dev.sh"]
+CMD ["bash"]

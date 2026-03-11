@@ -1,4 +1,4 @@
-## 💡 Rwal – Ideas & Future Enhancements
+y## 💡 Rwal – Ideas & Future Enhancements
 
 1. Add command‑line flags beyond `--change`, e.g., `--help`, `--version`.
 2. Purity filter (NSFW/Sketchy) in API requests.
@@ -10,5 +10,6 @@
 8. Add api-key in settings
 9. Add core methods, e.g. refresh, init and etc for all/almost all classes
 10. Make fetchImage std::optinal func and edit it in WallpaperManager too.
+11. Make two-stage Dockerfile and add more OS
 
 #idea

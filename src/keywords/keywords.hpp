@@ -42,7 +42,8 @@ public:
 		} else if constexpr (std::is_same_v<T, std::vector<std::string>>) {
 			return keywords;
 		} else {
-			static_assert(false, "Unsupported type");
+			static_assert(always_false<T>::value, "Unsupported type");
+			return T{}; 
 		}
 	};
 	
