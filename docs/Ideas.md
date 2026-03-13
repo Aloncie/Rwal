@@ -1,11 +1,3 @@
----
-tags:
-  - architecture
-  - "#Dev"
-  - "#Rwal"
-status: in-progress
-priority: high
----
 # 💡 Rwal: Ideas & Future Enhancements
 
 ## 🏗 Architectural Evolution (McConnell Inspired)
@@ -23,3 +15,5 @@ priority: high
     - *Goal:* Hide the "secret" of how files are named on the disk from the networking layer. 
 
 ---
+
+<!-- #Dev #Rwal #architecture -->
