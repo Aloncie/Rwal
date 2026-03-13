@@ -6,6 +6,7 @@
 #include "settings/config.hpp"
 #include <filesystem>
 #include "ui/cli/UIManager.hpp"
+#include <type_traits>
 
 namespace fs = std::filesystem;
 
@@ -19,6 +20,8 @@ private:
 	std::vector<std::string> exportFromTxt(fs::path& path);
 	UIManager& m_ui;
 	Config& m_config;
+
+	template<typename> struct always_false : std::false_type {};
 public:
 	Keywords(UIManager& ui,Config& config);
 

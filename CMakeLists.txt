@@ -11,7 +11,7 @@ find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
 find_package(Curses REQUIRED)
 
-add_subdirectory(thrid_party
+add_subdirectory(third_party/googletest)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
