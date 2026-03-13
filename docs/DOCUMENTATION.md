@@ -104,3 +104,5 @@ See ROADMAP.md for the up‑to‑date development plan.
 
 ## 🤝 Contributing
 While this is a personal learning project, suggestions and bug reports are welcome via GitHub Issues.
+
+#Rwal #Dev #cpp #Architecture #
