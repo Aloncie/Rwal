@@ -61,4 +61,9 @@ graph TD
 
 ```
 
-#Dev #Rwal #Architecture 
+<details>
+<summary>tags</summary>
+
+#Rwal #Dev #Architecture
+
+</details>
