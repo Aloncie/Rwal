@@ -8,6 +8,8 @@ RUN rm -rf build && \
     cmake .. && \
     make -j$(nproc)
 
+RUN ./build/tests/rwal_tests
+
 # second stage
 FROM ubuntu:22.04
 
