@@ -1,50 +1,25 @@
-# rwal/docker-compose.yml
 version: '3.8'
 
 services:
-  base:
+  rwal:
     build:
       context: .
-      dockerfile: Dockerfile.base
-    image: rwal-base:latest
-
-  dev:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-      args:
-        USERNAME: ${USER}
-        UID: ${UID:-1000}
-        GID: ${GID:-1000}
-    image: rwal-dev:latest
+      dockerfile: Dockerfile.base 
+      network: host
+    image: rwal:dev
+    environment:
+      - DISPLAY=${DISPLAY}
+      - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID:-1000}/bus
+      - HOME=/home/developer
     volumes:
       - .:/app
+      - ~/.config/Aloncie:/home/developer/.config/Aloncie
+      - ~/.cache/Aloncie:/home/developer/.cache/Aloncie
+      - ~/Pictures/Rwal:/home/developer/Pictures/Rwal
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
-      - /run/user/${UID}/bus:/run/user/${UID}/bus:ro
-      - ~/.config/Aloncie:/home/${USER}/.config/Aloncie
-      - ~/.cache/Aloncie:/home/${USER}/.cache/Aloncie
-      - ~/Pictures/Rwal:/home/${USER}/Pictures/Rwal
-    environment:
-      - DISPLAY=${DISPLAY}
-      - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID}/bus
-      - HOME=/home/${USER}
-    stdin_open: true
-    tty: true
-
-  prod:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: rwal:latest
-    volumes:
-      - ~/.config/Aloncie:/home/user/.config/Aloncie
-      - ~/.cache/Aloncie:/home/user/.cache/Aloncie
-      - ~/Pictures/Rwal:/home/user/Pictures/Rwal
-    environment:
-      - DISPLAY=${DISPLAY}
-      - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID}/bus
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:ro
-      - /run/user/${UID}/bus:/run/user/${UID}/bus:ro
+      - /run/user/${UID:-1000}/bus:/run/user/${UID:-1000}/bus:ro
+    working_dir: /app
+    entrypoint: ./docker-entrypoint-dev.sh
+    command: ./build/rwal
     stdin_open: true
     tty: true

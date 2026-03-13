@@ -6,7 +6,8 @@ RUN rm -rf build && \
     mkdir -p build && \
     cd build && \
     cmake .. && \
-    make -j$(nproc)
+    make -j$(nproc) \
+	ctest
 
 RUN ./build/tests/rwal_tests
 
