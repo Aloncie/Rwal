@@ -1,12 +1,10 @@
-version: '3.8'
-
 services:
   rwal:
     build:
       context: .
       dockerfile: Dockerfile.base 
       network: host
-    image: rwal:dev
+    image: aloncie/rwal:latest
     environment:
       - DISPLAY=${DISPLAY}
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID:-1000}/bus
@@ -20,6 +18,6 @@ services:
       - /run/user/${UID:-1000}/bus:/run/user/${UID:-1000}/bus:ro
     working_dir: /app
     entrypoint: ./docker-entrypoint-dev.sh
-    command: ./build/rwal
+    command: ./rwal
     stdin_open: true
     tty: true

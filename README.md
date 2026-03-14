@@ -44,59 +44,35 @@
 ## 🚀 Installation & Quick Start
 
 ```bash
+# 1. Clone repo
 git clone https://github.com/Aloncie/Rwal.git
+# or download ZIP and extract
+
+# 2. Use
 cd Rwal
-mkdir build && cd build
-cmake ..
-make -j$(nproc)
-sudo make install   # optional, installs to /usr/local/bin
+
+Run with Docker( Interactive mode)
+docker-compose run --rm rwal
+# or change mode
+docker-compose run --rm rwal -c
 ```
 
-Run interactively:
-```bash
-rwal
-```
-
-Run silent change (e.g., for a cron job):
-``` bash
-rwal --change
-# or
-rwal -c
-```
-
-For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).
+#For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).
 
 ---
 
-## ⚙️ Configuration (config.json)
+## ⚙️ Configuration
 
-Automatically created on first run in ~/.config/Aloncie/rwal/config.json.
+On first run, Rwal creates a config file at:
+- `~/.config/Aloncie/rwal/config.json` (Linux)
+- `%APPDATA%\Aloncie\rwal\config.json` (Windows)
 
-``` json
-{
-    "search": {
-        "keywords": [
-	        kewords for search
-        ],
-        "res": resolution wallpaper's,
-        "sorting": type of sorting
-    },
-    "services": {
-        "wallhaven": {
-            "apikey": "api-key",
-            "base_url": "https://wallhaven.cc/api/v1/search",
-            "param_names": {
-                "query": "?q=",
-                "res": "resolutions",
-                "sorting": "sorting"
-            }
-        }
-    },
-	"settings": {
-		 "cursor-visibility": "true"
-	}
-}
-```
+You can edit it manually or use the interactive menu to:
+- Add/remove search keywords
+- Change wallpaper resolution
+- Set sorting options
+- Configure systemd timer (Linux)
+
 **Changes are hot‑reloaded – no restart needed.**
 
 ## 🛡️ License
