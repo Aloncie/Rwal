@@ -2,22 +2,30 @@ services:
   rwal:
     build:
       context: .
-      dockerfile: Dockerfile.base 
-      network: host
+      dockerfile: Dockerfile
     image: aloncie/rwal:latest
-    environment:
-      - DISPLAY=${DISPLAY}
-      - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID:-1000}/bus
-      - HOME=/home/developer
-    volumes:
+    entrypoint: ./docker-entrypoint-dev.sh
+    command: ./rwal
+    volumes: &common-volumes
       - .:/app
       - ~/.config/Aloncie:/home/developer/.config/Aloncie
       - ~/.cache/Aloncie:/home/developer/.cache/Aloncie
       - ~/Pictures/Rwal:/home/developer/Pictures/Rwal
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /run/user/${UID:-1000}/bus:/run/user/${UID:-1000}/bus:ro
-    working_dir: /app
-    entrypoint: ./docker-entrypoint-dev.sh
-    command: ./rwal
+      - ./build:/app/build
+    environment: &common-env
+      - DISPLAY=${DISPLAY}
+      - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID:-1000}/bus
+      - HOME=/home/developer
+    stdin_open: true
+    tty: true
+
+  rwal-run:
+    image: aloncie/rwal:latest
+    entrypoint: ""
+    command: /usr/local/bin/rwal
+    volumes: *common-volumes
+    environment: *common-env
     stdin_open: true
     tty: true
