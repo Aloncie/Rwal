@@ -51,7 +51,7 @@ git clone https://github.com/Aloncie/Rwal.git
 # 2. Use
 cd Rwal
 
-Run with Docker( Interactive mode)
+# Run with Docker( Interactive mode)
 docker-compose run --rm rwal
 # or change mode
 docker-compose run --rm rwal -c
