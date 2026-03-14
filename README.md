@@ -57,7 +57,7 @@ docker-compose run --rm rwal
 docker-compose run --rm rwal -c
 ```
 
-#For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).
+**For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).**
 
 ---
 
