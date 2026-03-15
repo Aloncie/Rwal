@@ -100,6 +100,7 @@ Help shape Rwal's future: [google-form](https://forms.gle/JCewzzEUwPGxx7cY7)
 
 **Made with ❤️ and a lot of ☕ by Aloncie.**
 
+Write me: [Aloncie@proton.me](mailto:Aloncie@proton.me) 
 <details>
 <summary>tags</summary>
 
