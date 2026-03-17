@@ -1,11 +1,8 @@
 services:
-  rwal:
-    build:
+  dev:
+    build: 
       context: .
-      dockerfile: Dockerfile
-    image: aloncie/rwal:latest
-    entrypoint: ./docker-entrypoint-dev.sh
-    command: ./rwal
+      dockerfile: Dockerfile.dev
     volumes: &common-volumes
       - .:/app
       - ~/.config/Aloncie:/home/developer/.config/Aloncie
@@ -18,10 +15,9 @@ services:
       - DISPLAY=${DISPLAY}
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID:-1000}/bus
       - HOME=/home/developer
-    stdin_open: true
-    tty: true
+    command: ./rwal
 
-  rwal-run:
+  rwal:
     image: aloncie/rwal:latest
     entrypoint: ""
     command: /usr/local/bin/rwal
@@ -29,3 +25,5 @@ services:
     environment: *common-env
     stdin_open: true
     tty: true
+
+
