@@ -19,7 +19,10 @@ services:
 
   rwal:
     image: aloncie/rwal:latest
-    entrypoint: ""
+    network_mode: host
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     command: /usr/local/bin/rwal
     volumes: *common-volumes
     environment: *common-env
