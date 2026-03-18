@@ -29,14 +29,25 @@ void MyCurl::getRequest(std::string url){
 	if (curl){
 		Logs::getInstance().writeLogs("Try to request");
 		curl_easy_setopt(curl,CURLOPT_URL, url.c_str());
+
+		Logs::getInstance().writeLogs("1");
 		curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION,&callback);
+
+		Logs::getInstance().writeLogs("2");
 		curl_easy_setopt(curl,CURLOPT_WRITEDATA,&buffer);
+
+		Logs::getInstance().writeLogs("3");
 		curl_easy_setopt(curl,CURLOPT_TIMEOUT,10L);
+
+		Logs::getInstance().writeLogs("4");
 		curl_easy_setopt(curl,CURLOPT_FOLLOWLOCATION,1L);
-
+	
+		Logs::getInstance().writeLogs("5");
 		res = curl_easy_perform(curl);
-		curl_easy_getinfo(curl,CURLINFO_RESPONSE_CODE,&http_code);
 
+		Logs::getInstance().writeLogs("6");
+		curl_easy_getinfo(curl,CURLINFO_RESPONSE_CODE,&http_code);
+	
 		Logs::getInstance().writeLogs("url of request: " + url);
 
 		if (res != CURLE_OK) {

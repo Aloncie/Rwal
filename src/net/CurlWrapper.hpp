@@ -10,7 +10,7 @@ static size_t callback (void* contents, size_t size, size_t nmemb, void* userp);
 class MyCurl{
 private:
 	CURL* curl;
-	int http_code = 0;
+	long http_code = 0;
 	std::string page, buffer;
 	nlohmann::json j;
 
