@@ -40,7 +40,8 @@ void MyCurl::getRequest(std::string url){
 		Logs::getInstance().writeLogs("url of request: " + url);
 
 		if (http_code != 200 || res != CURLE_OK){
-			Logs::getInstance().writeLogs("Http error" + std::to_string(http_code));
+			std::string errStd = curl_easy_strerror(http_code);
+			Logs::getInstance().writeLogs("Http error" + std::to_string(http_code) + ". More detailed info: " + errStd);
 			return;
 		}
 		else {
