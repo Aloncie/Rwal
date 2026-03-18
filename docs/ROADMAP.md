@@ -11,7 +11,7 @@
 - [ ] **Configuration enhancements** – Allow user to specify cache size, preferred image types, and fallback behaviour.
 - [ ] **Unit tests** – Add tests for critical modules: keyword parsing, menu navigation, file operations. Use GoogleTest or Qt Test.
 
-## 🎨 Phase 2 – GUI (Optional) & Polish
+## 🎨 Phase 2 – GUI (Optional) & Addication functional
 
 - [ ] **Basic GUI mode** – Develop a simple Qt Widgets interface (non‑QML) for users who prefer a window. Keep CLI as first‑class citizen.
 - [ ] **System tray integration** – Allow quick wallpaper refresh and mode switching from tray icon.
