@@ -39,14 +39,17 @@ void MyCurl::getRequest(std::string url){
 
 		Logs::getInstance().writeLogs("url of request: " + url);
 
-		if (http_code != 200 || res != CURLE_OK){
-			std::string errStd = curl_easy_strerror(http_code);
-			Logs::getInstance().writeLogs("Http error" + std::to_string(http_code) + ". More detailed info: " + errStd);
+		if (res != CURLE_OK) {
+			std::string errStr = curl_easy_strerror(res);
+			Logs::getInstance().writeLogs("Curl Error: " + errStr);
 			return;
 		}
-		else {
+
+		if (http_code != 200) {
+			Logs::getInstance().writeLogs("HTTP Error: " + std::to_string(http_code));
+			return;
+		} else
 			Logs::getInstance().writeLogs("Successful request");
-		}
 		
 		Logs::getInstance().writeLogs("Try to parse");
 		try {
