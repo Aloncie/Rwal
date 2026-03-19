@@ -5,16 +5,16 @@ services:
       dockerfile: Dockerfile.dev
     volumes: &common-volumes
       - .:/app
-      - ~/.config/Aloncie:/home/developer/.config/Aloncie
-      - ~/.cache/Aloncie:/home/developer/.cache/Aloncie
-      - ~/Pictures/Rwal:/home/developer/Pictures/Rwal
+      - ~/.config/Aloncie:/home/rwal/.config/Aloncie
+      - ~/.cache/Aloncie:/home/rwal/.cache/Aloncie
+      - ~/Pictures/Rwal:/home/rwal/Pictures/Rwal
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /run/user/${UID:-1000}/bus:/run/user/${UID:-1000}/bus:ro
       - ./build:/app/build
     environment: &common-env
       - DISPLAY=${DISPLAY}
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID:-1000}/bus
-      - HOME=/home/developer
+      - HOME=/home/rwal
     command: ./rwal
 
   rwal:
