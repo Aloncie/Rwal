@@ -28,24 +28,15 @@ void MyCurl::getRequest(std::string url){
 	CURLcode res;
 	if (curl){
 		Logs::getInstance().writeLogs("Try to request");
+
 		curl_easy_setopt(curl,CURLOPT_URL, url.c_str());
-
-		Logs::getInstance().writeLogs("1");
 		curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION,&callback);
-
-		Logs::getInstance().writeLogs("2");
 		curl_easy_setopt(curl,CURLOPT_WRITEDATA,&buffer);
-
-		Logs::getInstance().writeLogs("3");
 		curl_easy_setopt(curl,CURLOPT_TIMEOUT,10L);
-
-		Logs::getInstance().writeLogs("4");
 		curl_easy_setopt(curl,CURLOPT_FOLLOWLOCATION,1L);
 	
-		Logs::getInstance().writeLogs("5");
 		res = curl_easy_perform(curl);
 
-		Logs::getInstance().writeLogs("6");
 		curl_easy_getinfo(curl,CURLINFO_RESPONSE_CODE,&http_code);
 	
 		Logs::getInstance().writeLogs("url of request: " + url);
@@ -119,7 +110,14 @@ std::string MyCurl::getData(std::string paragraph, std::string str){
 std::string MyCurl::downloadImage(const std::string& image_url){
 	 
 	fs::path downloads = fs::path(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) / rwal::wallpaper::DONWLOADS_DIR_NAME;	
-	std::filesystem::create_directories(downloads.parent_path());
+
+	try {
+		std::filesystem::create_directories(downloads.parent_path());
+	} 
+	catch (const std::filesystem::filesystem_error& e) {
+		Logs::getInstance().writeLogs("Filesystem Error: " + std::string(e.what()));
+	}
+
 	Logs::getInstance().writeLogs("Try to delete old image");
 
 	try {
@@ -144,9 +142,9 @@ std::string MyCurl::downloadImage(const std::string& image_url){
 		Logs::getInstance().writeLogs("Failed to init CURL to image download");
 		return "";
 	}
-	else {
+	else 
 		Logs::getInstance().writeLogs("Successful init CURL to image download");
-	}
+
 	std::ofstream fp(wallpaper.c_str(), std::ios::binary);
 	if (!fp){
 		Logs::getInstance().writeLogs("Failed to create image file");
