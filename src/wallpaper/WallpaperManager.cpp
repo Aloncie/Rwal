@@ -15,11 +15,13 @@ WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkMan
 
 
 void WallpaperManager::refresh(const std::string mode) {
-    m_keywords.GetRandomKeywords([this](std::string keyword) {
-        std::string path = m_nm.fetchImage(keyword);
-        if (!path.empty()) {
+	m_keywords.GetRandomKeywords([this](std::string keyword) {
+	std::string path = m_nm.fetchImage(keyword);
+	Logs::getInstance().writeLogs("2");
+        if (!path.empty())
             change_wallpaper(path);
-        }
+		else 
+			Logs::getInstance().writeLogs("Path is empty");
     }, mode);
 }
 

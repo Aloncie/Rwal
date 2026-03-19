@@ -6,17 +6,17 @@
 #include <QString>
 #include "logs/logs.hpp"
 
-void change_wallpaper(std::string local) {
-    QString path = "file://" + QString::fromStdString(local);
+void change_wallpaper(const std::string& imagePath) {
+    QString hostPath = QString::fromStdString(imagePath);
 
     QString script = QString(
         "var allDesktops = desktops();"
         "for (var i = 0; i < allDesktops.length; i++) {"
         "    allDesktops[i].wallpaperPlugin = 'org.kde.image';"
-        "    allDesktops[i].currentConfigGroup = Array('Wallpaper', 'org.kde.image', 'General');"
+        "    allDesktops[i].currentConfigGroup = ['Wallpaper', 'org.kde.image', 'General'];"
         "    allDesktops[i].writeConfig('Image', '%1');"
         "}"
-    ).arg(path);
+    ).arg(hostPath);
 
     auto msg = QDBusMessage::createMethodCall(
         QStringLiteral("org.kde.plasmashell"),
@@ -28,7 +28,9 @@ void change_wallpaper(std::string local) {
     msg << script;
 
     auto reply = QDBusConnection::sessionBus().call(msg);
-    if (reply.type() == QDBusMessage::ErrorMessage) {
-        Logs::getInstance().writeLogs("D-Bus Error: " + reply.errorMessage().toStdString());
-    }
+    
+    if (reply.type() == QDBusMessage::ErrorMessage)
+        Logs::getInstance().writeLogs("D-Bus Delivery Error: " + reply.errorMessage().toStdString());
+    else 
+        Logs::getInstance().writeLogs("D-Bus script executed for path: " + imagePath);
 }
