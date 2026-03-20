@@ -1,4 +1,4 @@
-# 📘 Rwal – Technical Documentation (v0.3.0-alpha)
+# 📘 Rwal – Technical Documentation
 ---
 ## 🧱 Architecture Overview
 
@@ -12,7 +12,34 @@ AppController – Qt event loop entry point; manages QSocketNotifier for asynchr
 - Settings – Configuration file handling, systemd timer integration.
 - WallpaperManager – Orchestrates wallpaper download and setting; uses callbacks to report results.
 - Logs – Simple file logger with size rotation and permission fixing (still a singleton for simplicity).
+
+---
   
+## 📦 Dependencies
+
+- Qt5 (Core, DBus, Widgets)
+- libcurl
+- nlohmann_json
+- ncurses
+- CMake ≥ 3.10
+- C++20 compiler (GCC/Clang)
+
+---
+
+## ⚙️ Configuration
+
+On first run, Rwal creates a config file at:
+- `~/.config/Aloncie/rwal/config.json` (Linux)
+- `%APPDATA%\Aloncie\rwal\config.json` (Windows)
+
+You can edit it manually or use the interactive menu to:
+- Add/remove search keywords
+- Change wallpaper resolution
+- Set sorting options
+- Configure systemd timer (Linux)
+
+**Changes are hot‑reloaded – no restart needed.**
+
 ---
 ## 📁 Detailed Module Breakdown
 1. **AppController**
