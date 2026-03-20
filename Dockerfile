@@ -21,12 +21,19 @@ ARG GID=1000
 ARG USERNAME=rwal
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libqt5core5a libqt5dbus5 libqt5widgets5 \
-	libcurl4 ca-certificates libncurses6 \
+    libqt5core5a \
+    libqt5dbus5 \
+    libqt5widgets5 \
+    libcurl4 \
+    ca-certificates \
+    libncurses6 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g ${GID} ${USERNAME} || true && \
     useradd -m -u ${UID} -g ${USERNAME} -s /bin/bash ${USERNAME} || true
+
+RUN mkdir -p /home/${USERNAME}/.local/share/Aloncie/Rwal/downloads && \
+    chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
 
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}

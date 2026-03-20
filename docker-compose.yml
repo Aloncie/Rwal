@@ -4,12 +4,15 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        UID: ${UID:-1000}
-        GID: ${GID:-1000}
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    user: "${UID:-1000}:${GID:-1000}"    
+
     volumes: &common-volumes
       - .:/app
       - ~/.config/Aloncie:/home/rwal/.config/Aloncie
       - ~/.cache/Aloncie:/home/rwal/.cache/Aloncie
+      - ${HOME}/.local/share/Aloncie/Rwal/downloads:/home/rwal/.local/share/Aloncie/Rwal/downloads      
       - ~/Pictures/Rwal:/home/rwal/Pictures/Rwal
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /run/user/${UID:-1000}/bus:/run/user/${UID:-1000}/bus:ro
