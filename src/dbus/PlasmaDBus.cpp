@@ -8,7 +8,9 @@
 
 void change_wallpaper(const std::string& imagePath) {
     std::string resolvedPath = imagePath;
-    
+
+    Logs::getInstance().writeLogs("INTERNAL PATH: " + imagePath);
+
     const char* container_home = std::getenv("HOME");
     const char* host_home = std::getenv("HOST_HOME");
 
@@ -18,6 +20,8 @@ void change_wallpaper(const std::string& imagePath) {
             resolvedPath.replace(0, c_home.length(), std::string(host_home));
         }
     }
+
+	Logs::getInstance().writeLogs("RESOLVED HOST PATH: " + resolvedPath);
 
     QString hostPathUri = "file://" + QString::fromStdString(resolvedPath);
 
