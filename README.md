@@ -20,26 +20,16 @@
 
 ## ✨ Features
 
-- 🎨 **Interactive menu** – navigate, add/remove keywords, configure timer.
-- 🔄 **Silent mode** – one‑shot wallpaper change, ideal for cron/systemd.
-- ⚙️ **Hot‑reload config** – edit `config.json` while the app runs.
-- 🧠 **Smart keyword handling** – random selection, manual editing via `$EDITOR`.
-- 🕒 **Systemd timer integration** – set hourly/daily wallpaper rotation.
-- 📝 **Built‑in logging** – with auto‑rotation and permission handling.
-- 🧩 **Modular design** – clear separation of UI, networking, and platform layers.
+- **Interactive menu** – navigate, add/remove keywords, configure timer.
+- **Silent mode** – one‑shot wallpaper change, ideal for cron/systemd.
+- **Hot‑reload config** – edit `config.json` while the app runs.
+- **Smart keyword handling** – random selection, manual editing via `$EDITOR`.
+- **Systemd timer integration** – set hourly/daily wallpaper rotation.
+- **Built‑in logging** – with auto‑rotation and permission handling.
+- **Modular design** – clear separation of UI, networking, and platform layers.
 
 ---
 
-## 📦 Dependencies
-
-- Qt5 (Core, DBus, Widgets)
-- libcurl
-- nlohmann_json
-- ncurses
-- CMake ≥ 3.10
-- C++20 compiler (GCC/Clang)
-
----
 
 ## 🚀 Installation & Quick Start
 
@@ -61,19 +51,14 @@ docker-compose run --rm rwal -c
 
 ---
 
-## ⚙️ Configuration
+## 👁️‍🗨️How it works?
 
-On first run, Rwal creates a config file at:
-- `~/.config/Aloncie/rwal/config.json` (Linux)
-- `%APPDATA%\Aloncie\rwal\config.json` (Windows)
+### Change mode
+![Image](https://github.com/user-attachments/assets/daeebb40-7a16-482b-86f5-420ff2e76fd2)
 
-You can edit it manually or use the interactive menu to:
-- Add/remove search keywords
-- Change wallpaper resolution
-- Set sorting options
-- Configure systemd timer (Linux)
-
-**Changes are hot‑reloaded – no restart needed.**
+### Interactive mode(input doesn't print)
+![Image](https://github.com/user-attachments/assets/1a9655bb-f95f-484c-ae1c-a4dda9bde489)
+---
 
 ## 🛡️ License
 
@@ -86,6 +71,7 @@ For security issues, please see our [Security Policy](SECURITY.md).
 ## 📫 Contact
 - Author: [@Aloncie](https://github.com/Aloncie)
 - Project repo: [Rwal](https://github.com/Aloncie/Rwal)
+- Email: [Aloncie@proton.me](mailto:Aloncie@proton.me) 
 
 ## 🔗 Links
 
@@ -100,7 +86,6 @@ Help shape Rwal's future: [google-form](https://forms.gle/JCewzzEUwPGxx7cY7)
 
 **Made with ❤️ and a lot of ☕ by Aloncie.**
 
-Write me: [Aloncie@proton.me](mailto:Aloncie@proton.me) 
 <details>
 <summary>tags</summary>
 
