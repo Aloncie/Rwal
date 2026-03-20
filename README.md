@@ -14,7 +14,7 @@
 
 ---
 
-**Rwal** is a hybrid CLI wallpaper utility that combines an interactive terminal interface with a silent, daemon‑like mode for regular wallpaper changes. It fetches images from [Wallhaven](https://wallhaven.cc) based on user‑defined keywords and sets them via D‑Bus on KDE Plasma (with cross‑platform support planned). Built with modern C++20 and Qt5.
+**Rwal** is a hybrid CLI wallpaper utility that combines an interactive terminal interface with a silent, daemon‑like mode for regular wallpaper changes. It fetches images from [Wallhaven](https://wallhaven.cc). Built with modern C++20 and Qt5.
 
 ---
 
