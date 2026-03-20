@@ -2,7 +2,10 @@ services:
   dev:
     build: 
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
     volumes: &common-volumes
       - .:/app
       - ~/.config/Aloncie:/home/rwal/.config/Aloncie
@@ -14,11 +17,16 @@ services:
     environment: &common-env
       - DISPLAY=${DISPLAY}
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${UID:-1000}/bus
-      - HOME=/home/rwal
+      - HOST_HOME=${HOME}
     command: ./rwal
 
   rwal:
     image: aloncie/rwal:latest
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
     network_mode: host
     dns:
       - 8.8.8.8
@@ -28,5 +36,3 @@ services:
     environment: *common-env
     stdin_open: true
     tty: true
-
-
