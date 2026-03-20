@@ -16,19 +16,21 @@ RUN mkdir build && cd build && cmake .. && make -j$(nproc)
 # Runtime stage
 FROM ubuntu:22.04
 
+ARG UID=1000
+ARG GID=1000
+ARG USERNAME=rwal
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libqt5core5a libqt5dbus5 libqt5widgets5 \
 	libcurl4 ca-certificates libncurses6 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Create non-root user
-RUN useradd -m -u 1000 rwal && \
-    mkdir -p /home/rwal/.config/Aloncie /home/rwal/.cache/Aloncie /home/rwal/Pictures/Rwal && \
-    chown -R rwal:rwal /home/rwal
+RUN groupadd -g ${GID} ${USERNAME} || true && \
+    useradd -m -u ${UID} -g ${USERNAME} -s /bin/bash ${USERNAME} || true
+
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
 
 COPY --from=builder /build/build/rwal /usr/local/bin/rwal
-
-USER rwal
-WORKDIR /home/rwal
 
 ENTRYPOINT ["/usr/local/bin/rwal"]

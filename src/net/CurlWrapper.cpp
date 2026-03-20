@@ -107,80 +107,68 @@ std::string MyCurl::getData(std::string paragraph, std::string str){
 	return "";
 }
 
-std::string MyCurl::downloadImage(const std::string& image_url){
-	 
-	fs::path downloads = fs::path(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) / rwal::wallpaper::DONWLOADS_DIR_NAME;	
+std::string MyCurl::downloadImage(const std::string& image_url) {
 
-	try {
-		std::filesystem::create_directories(downloads.parent_path());
-	} 
-	catch (const std::filesystem::filesystem_error& e) {
-		Logs::getInstance().writeLogs("Filesystem Error: " + std::string(e.what()));
-	}
+    const char* home = std::getenv("HOME");
+    fs::path base_path = home ? fs::path(home) : fs::path("/tmp");
+    fs::path downloads = base_path / ".local/share/Aloncie/Rwal" / rwal::wallpaper::DONWLOADS_DIR_NAME;
 
-	Logs::getInstance().writeLogs("Try to delete old image");
+    try {
+        if (!fs::exists(downloads)) {
+            fs::create_directories(downloads);
+        } else {
+            Logs::getInstance().writeLogs("Cleaning old images");
+            for (const auto& entry : fs::directory_iterator(downloads)) {
+                if (fs::is_regular_file(entry.path())) {
+                    fs::remove(entry.path());
+                }
+            }
+            Logs::getInstance().writeLogs("Successful cleanup");
+        }
+    } catch (const fs::filesystem_error& e) {
+        Logs::getInstance().writeLogs("Filesystem Error: " + std::string(e.what()));
+        return "";
+    }
 
-	try {
-		if (!fs::exists(downloads))
-			fs::create_directory(downloads);
-		for (const auto &i : fs::directory_iterator(downloads)){
-			if (fs::is_regular_file(i.path()))
-			   	fs::remove(i.path());	
-		}
-	   	Logs::getInstance().writeLogs("Successful deleting old image");
+    std::string filename = call_Image(image_url);
+    fs::path wallpaper_path = downloads / filename;
 
-	} catch (const fs::filesystem_error& e){
-		Logs::getInstance().writeLogs("Error of delete old image: " + std::string(e.what()));
-	}
+    CURL* image_curl = curl_easy_init();
+    if (!image_curl) {
+        Logs::getInstance().writeLogs("Failed to init CURL");
+        return "";
+    }
 
-	
-	std::string filename = call_Image(image_url);
-    fs::path wallpaper = downloads / filename;
+    std::ofstream fp(wallpaper_path, std::ios::binary);
+    if (!fp.is_open()) {
+        Logs::getInstance().writeLogs("Failed to open file for writing: " + wallpaper_path.string());
+        curl_easy_cleanup(image_curl);
+        return "";
+    }
 
-	CURL* image_curl = curl_easy_init();
-	if (!image_curl){
-		Logs::getInstance().writeLogs("Failed to init CURL to image download");
-		return "";
-	}
-	else 
-		Logs::getInstance().writeLogs("Successful init CURL to image download");
+    curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
+    curl_easy_setopt(image_curl, CURLOPT_WRITEFUNCTION, +[](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
+        auto* stream = static_cast<std::ofstream*>(userdata);
+        size_t totalSize = size * nmemb;
+        stream->write(static_cast<char*>(ptr), totalSize);
+        return totalSize;
+    });
+    curl_easy_setopt(image_curl, CURLOPT_WRITEDATA, &fp);
+    curl_easy_setopt(image_curl, CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(image_curl, CURLOPT_TIMEOUT, 15L);
 
-	std::ofstream fp(wallpaper.c_str(), std::ios::binary);
-	if (!fp){
-		Logs::getInstance().writeLogs("Failed to create image file");
-		curl_easy_cleanup(image_curl);
-		return "";
-	}
-	else
-		Logs::getInstance().writeLogs("Successful creating image file");
+    CURLcode res = curl_easy_perform(image_curl);
+    fp.close();
+    curl_easy_cleanup(image_curl);
 
-	curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
-	curl_easy_setopt(image_curl, CURLOPT_WRITEFUNCTION, +[](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
-    	auto* stream = static_cast<std::ofstream*>(userdata);
-    	size_t totalSize = size * nmemb;
-   		stream->write(static_cast<char*>(ptr), totalSize);
-    	return totalSize;
-    });	
-	curl_easy_setopt(image_curl, CURLOPT_WRITEDATA, &fp);
-	curl_easy_setopt(image_curl, CURLOPT_FOLLOWLOCATION,1L);
-	curl_easy_setopt(image_curl, CURLOPT_TIMEOUT, 15L);
-	
-	CURLcode res = curl_easy_perform(image_curl);
+    if (res != CURLE_OK) {
+        Logs::getInstance().writeLogs("Download error: " + std::string(curl_easy_strerror(res)));
+        return "";
+    }
 
-	fp.close();
-	curl_easy_cleanup(image_curl);
-
-	if (res != CURLE_OK){
-		Logs::getInstance().writeLogs("Failed download image: " + std::string(curl_easy_strerror(res)));
-		return "";
-	}
-	else
-		Logs::getInstance().writeLogs("Successful download image" + wallpaper.string());
-
-	return wallpaper;
+    Logs::getInstance().writeLogs("Successful download: " + wallpaper_path.string());
+    return wallpaper_path.string();
 }
-
-
 
 MyCurl::~MyCurl(){
 	curl_easy_cleanup(curl);
