@@ -29,9 +29,3 @@
 
 *Note: Phases may overlap; priorities can shift based on user feedback.*
 
-<details>
-<summary>tags</summary>
-
-#Rwal #Dev #cpp #Architecture 
-
-</details>

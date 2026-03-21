@@ -60,10 +60,3 @@ graph TD
     end
 
 ```
-
-<details>
-<summary>tags</summary>
-
-#Rwal #Dev #Architecture
-
-</details>

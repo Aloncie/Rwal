@@ -58,9 +58,3 @@ The project is built with clear separation of responsibilities.
 2. **Observer** – `QFileSystemWatcher` watches `config.json`; changes are hot‑reloaded.
 3. **Dependency Injection (lite)** – `Navigator` receives a pointer to the current menu, allowing easy screen switching.
 
-<details>
-<summary>tags</summary>
-
-#Rwal #Dev #cpp #Architecture 
-
-</details>
