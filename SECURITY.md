@@ -26,8 +26,8 @@ I take security seriously. If you discover a security issue in Rwal, please repo
    - Go to the repository's **Issues** tab
    - Click **"Report a security vulnerability"**
    - Follow the instructions
-
-**Do NOT open a public GitHub issue** – this could put users at risk.
+   
+   **Do NOT open a public GitHub issue** – this could put users at risk.
 
 2. Write to Aloncie@proton.me
    
