@@ -22,13 +22,15 @@ I take security seriously. If you discover a security issue in Rwal, please repo
 
 ### How to Report
 
-Use GitHub's **private vulnerability reporting** tool:
+1. Use GitHub's **private vulnerability reporting** tool:
    - Go to the repository's **Issues** tab
    - Click **"Report a security vulnerability"**
    - Follow the instructions
+   
+   **Do NOT open a public GitHub issue** – this could put users at risk.
 
-**Do NOT open a public GitHub issue** – this could put users at risk.
-
+2. Write to Aloncie@proton.me
+   
 ### What to Include
 
 - A clear description of the issue
