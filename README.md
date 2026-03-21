@@ -85,10 +85,3 @@ For security issues, please see our [Security Policy](SECURITY.md).
 Help shape Rwal's future: [google-form](https://forms.gle/JCewzzEUwPGxx7cY7)
 
 **Made with ❤️ and a lot of ☕ by Aloncie.**
-
-<details>
-<summary>tags</summary>
-
-#Rwal #Dev #cpp #Architecture #Project 
-
-</details>

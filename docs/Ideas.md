@@ -16,9 +16,3 @@
 
 ---
 
-<details>
-<summary>tags</summary>
-
-#Rwal #Dev #cpp #Architecture 
-
-</details>
