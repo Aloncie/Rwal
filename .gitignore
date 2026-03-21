@@ -67,6 +67,8 @@ Thumbs.db
 *.png
 *.jpg
 *.jpeg
+*.git
+*.webm
 
 # ==================== #
 # Package files        #
@@ -79,3 +81,4 @@ Thumbs.db
 #another
 .cache/
 assers/videos/
+
