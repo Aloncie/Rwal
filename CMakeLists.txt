@@ -1,18 +1,10 @@
-if(NOT CMAKE_INSTALL_PREFIX)
-    set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "Installation directory")
-endif()
-
 cmake_minimum_required(VERSION 3.10)
 
 project(rwal VERSION 1.0 LANGUAGES CXX)
 
-find_package(CURL REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
-find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
-find_package(Curses REQUIRED)
-
-add_subdirectory(third_party/googletest)
-add_subdirectory(src/wallpaper)
+if(NOT CMAKE_INSTALL_PREFIX)
+    set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "Installation directory")
+endif()
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -21,6 +13,17 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON) 
 set(CMAKE_AUTOUIC ON)
 
+# Dependencies
+find_package(CURL REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
+find_package(Curses REQUIRED)
+
+add_subdirectory(third_party/googletest)
+add_subdirectory(src/wallpaper)
+
+# Main App Library Sources
+# NOTE: We do NOT include src/wallpaper files here. They are in wallpaper_lib.
 set(SOURCES
     src/AppController/AppController.cpp
     src/funcs/funcs.cpp
@@ -33,10 +36,8 @@ set(SOURCES
     src/net/NetworkManager.cpp
     src/settings/config.cpp
     src/settings/settings.cpp
-	src/ui/cli/UIManager.cpp
+    src/ui/cli/UIManager.cpp
     src/ui/menus/menus.cpp
-    src/wallpaper/WallpaperManager.cpp
-	src/wallpaper/WallpaperFactory.cpp
 )
 
 set(HEADERS
@@ -53,20 +54,19 @@ set(HEADERS
     src/net/NetworkManager.hpp
     src/settings/config.hpp
     src/settings/settings.hpp
-	src/ui/cli/UIManager.hpp
+    src/ui/cli/UIManager.hpp
     src/ui/menus/menus.hpp
-    src/wallpaper/WallpaperManager.hpp
-	src/wallpaper/WallpaperFactory.hpp
-	src/wallpaper/IWallpaperSetter.hpp
 )
 
-add_library(rwal_lib ${SOURCES} ${HEADERS})
+# Create rwal_lib
+add_library(rwal_lib STATIC ${SOURCES} ${HEADERS})
 
 target_include_directories(rwal_lib PUBLIC
     ${PROJECT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src
 )
 
+# Linking
 target_link_libraries(rwal_lib PUBLIC
     CURL::libcurl
     nlohmann_json::nlohmann_json
@@ -74,15 +74,18 @@ target_link_libraries(rwal_lib PUBLIC
     Qt5::Core
     Qt5::Widgets
     ${CURSES_LIBRARIES}
+    wallpaper_lib 
 )
 
+# Executable
 add_executable(rwal src/main.cpp)
 target_link_libraries(rwal PRIVATE rwal_lib)
 
+# Installation
 install(TARGETS rwal RUNTIME DESTINATION bin)
 
+# Testing
 enable_testing()
-
 add_executable(rwal_tests
     tests/test_main.cpp
     tests/test_string_utils.cpp
