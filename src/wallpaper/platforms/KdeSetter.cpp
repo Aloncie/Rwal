@@ -6,20 +6,10 @@
 #include <QString>
 #include "logs/logs.hpp"
 
-void KdeSetter::setWallpaper(const std::string& path) {
-    std::string resolvedPath = imagePath;
+void KdeSetter::setWallpaper(const fs::path& path) {
+    std::string resolvedPath = PathResolver.toHostPath(imagePath);
 
     Logs::getInstance().writeLogs("INTERNAL PATH: " + imagePath);
-
-    const char* container_home = std::getenv("HOME");
-    const char* host_home = std::getenv("HOST_HOME");
-
-    if (container_home && host_home) {
-        std::string c_home(container_home);
-        if (resolvedPath.find(c_home) == 0) {
-            resolvedPath.replace(0, c_home.length(), std::string(host_home));
-        }
-    }
 
 	Logs::getInstance().writeLogs("RESOLVED HOST PATH: " + resolvedPath);
 
