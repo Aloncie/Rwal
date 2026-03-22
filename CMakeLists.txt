@@ -12,6 +12,7 @@ find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
 find_package(Curses REQUIRED)
 
 add_subdirectory(third_party/googletest)
+add_subdirectory(src/wallpaper/CMakeLists.txt)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -36,6 +37,7 @@ set(SOURCES
 	src/ui/cli/UIManager.cpp
     src/ui/menus/menus.cpp
     src/wallpaper/WallpaperManager.cpp
+	src/wallpaper/WallpaperFactory.cpp
 )
 
 set(HEADERS
@@ -56,6 +58,8 @@ set(HEADERS
 	src/ui/cli/UIManager.hpp
     src/ui/menus/menus.hpp
     src/wallpaper/WallpaperManager.hpp
+	src/wallpaper/WallpaperFactory.hpp
+	src/wallpaper/IWallpaperSetter.hpp
 )
 
 add_library(rwal_lib ${SOURCES} ${HEADERS})

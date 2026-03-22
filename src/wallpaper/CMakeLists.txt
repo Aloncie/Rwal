@@ -11,8 +11,16 @@ set(SETTERS_SOURCES
 if(WIN32)
 	list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
 if (UNIX AND NOT APPLE)
-	find_package(Qt5Dbus REQUIRED)
-	list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
+	set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
+
+	if (CURRENT_DE MATCHES "GNOME")
+		list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
+	if (CURRENT_DE MATCHES "KDE")
+		find_package(Qt5Dbus REQUIRED)
+		list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
+	else()
+		message(STATUS "Desktop Environment: Other (%{CURRENT_DE})")
+	endif()
 endif()
 
 # The compiler ONLY compiles the files in this list
