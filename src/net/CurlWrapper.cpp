@@ -107,7 +107,7 @@ std::string MyCurl::getData(std::string paragraph, std::string str){
 	return "";
 }
 
-std::string MyCurl::downloadImage(const std::string& image_url) {
+std::optional<fs::path> MyCurl::downloadImage(const std::string& image_url) {
 
     const char* home = std::getenv("HOME");
     fs::path base_path = home ? fs::path(home) : fs::path("/tmp");
@@ -127,7 +127,7 @@ std::string MyCurl::downloadImage(const std::string& image_url) {
         }
     } catch (const fs::filesystem_error& e) {
         Logs::getInstance().writeLogs("Filesystem Error: " + std::string(e.what()));
-        return "";
+        return std::nullopt;
     }
 
     std::string filename = call_Image(image_url);
@@ -136,14 +136,14 @@ std::string MyCurl::downloadImage(const std::string& image_url) {
     CURL* image_curl = curl_easy_init();
     if (!image_curl) {
         Logs::getInstance().writeLogs("Failed to init CURL");
-        return "";
+        return std::nullopt;
     }
 
     std::ofstream fp(wallpaper_path, std::ios::binary);
     if (!fp.is_open()) {
         Logs::getInstance().writeLogs("Failed to open file for writing: " + wallpaper_path.string());
         curl_easy_cleanup(image_curl);
-        return "";
+        return std::nullopt;
     }
 
     curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
@@ -163,11 +163,11 @@ std::string MyCurl::downloadImage(const std::string& image_url) {
 
     if (res != CURLE_OK) {
         Logs::getInstance().writeLogs("Download error: " + std::string(curl_easy_strerror(res)));
-        return "";
+        return std::nullopt;
     }
 
     Logs::getInstance().writeLogs("Successful download: " + wallpaper_path.string());
-    return wallpaper_path.string();
+    return wallpaper_path;
 }
 
 MyCurl::~MyCurl(){

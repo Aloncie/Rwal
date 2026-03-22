@@ -10,16 +10,16 @@
 
 namespace fs = std::filesystem;
 
-WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm)
-    : m_ui(ui), m_keywords(keywords), m_nm(nm) {}
+WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm, IWallpaperSetter& env)
+    : m_ui(ui), m_keywords(keywords), m_nm(nm), m_env(env) {}
 
 
 void WallpaperManager::refresh(const std::string mode) {
 	m_keywords.GetRandomKeywords([this](std::string keyword) {
-	std::string path = m_nm.fetchImage(keyword);
+	fs::path path = m_nm.fetchImage(keyword);
 	Logs::getInstance().writeLogs("2");
         if (!path.empty())
-            change_wallpaper(path);
+            m_env.setWallpaper(path);
 		else 
 			Logs::getInstance().writeLogs("Path is empty");
     }, mode);

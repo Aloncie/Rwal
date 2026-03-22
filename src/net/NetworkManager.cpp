@@ -75,11 +75,11 @@ std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::stri
 	}
 }
 
-std::string NetworkManager::fetchImage(std::string keyword){
+std::optional<fs::path> NetworkManager::fetchImage(std::string keyword){
 	int last_page;
 
 	if (!isAvailable())
-	   return "";
+	   return std::nullopt;
 
 	m_curl.getRequest(craftUrl(keyword));
 	std::string pageCount =	m_curl.getData("meta","last_page");
@@ -100,13 +100,14 @@ std::string NetworkManager::fetchImage(std::string keyword){
 		m_curl.getRequest(craftUrl(keyword, page));
 	} catch (std::exception& e){
 		Logs::getInstance().writeLogs("CURL error: " + std::string(e.what()));
+		return std::nullopt;
 	}
 
 	std::string url = m_curl.getData("data","path");
 
 	if (url.empty()) {
 		Logs::getInstance().writeLogs("No image URL found in response");
-		return "";
+		return std::nullopt;
 	}
 	return m_curl.downloadImage(url);
 }

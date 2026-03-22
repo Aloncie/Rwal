@@ -13,6 +13,8 @@
 #include "settings/config.hpp"
 #include "net/CurlWrapper.hpp"
 #include "net/NetworkManager.hpp"
+#include "wallpaper/WallpaperFactory.hpp"
+#include "wallpaper/IWallpaperSetter.hpp"
 
 int main(int argc,char* argv[]){
     QCoreApplication::setApplicationName("Rwal");
@@ -25,7 +27,9 @@ int main(int argc,char* argv[]){
     MyCurl curl;
     Timer timer;
     NetworkManager nm(curl, config);
-    WallpaperManager wm(um, keywords, nm);
+	WallpaperFactory wf;
+	std::unique<IWallpaperSetter> env = wf.create();
+    WallpaperManager wm(um, keywords, nm, env);
 
     if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
         wm.refresh("change");

@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include "IWallpaperSetter.hpp"
 
 class WallpaperFactory{
 public:
