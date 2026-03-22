@@ -1,28 +1,38 @@
-# These files are ALWAYS needed
+# src/wallpaper/CMakeLists.txt
 
 set(SETTERS_SOURCES 
-	IWallpaperSetter.hpp 
-	WallpaperManager.cpp 
-	WallpaperFactory.cpp 
-	PathResolver.cpp
+    WallpaperManager.cpp 
+    WallpaperFactory.cpp 
+    PathResolver.cpp
 )
 
-# These files are ONLY added if the OS matches
-if(WIN32)
-	list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
-if (UNIX AND NOT APPLE)
-	set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
+set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
 
-	if (CURRENT_DE MATCHES "GNOME")
-		list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
-	if (CURRENT_DE MATCHES "KDE")
-		find_package(Qt5Dbus REQUIRED)
-		list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
-	else()
-		message(STATUS "Desktop Environment: Other (%{CURRENT_DE})")
-	endif()
+if(WIN32)
+    list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
+
+elseif(UNIX AND NOT APPLE)
+    if(CURRENT_DE MATCHES "GNOME")
+        message(STATUS "Build: GNOME Support Enabled")
+        list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
+
+    elseif(CURRENT_DE MATCHES "KDE")
+        message(STATUS "Build: KDE Support Enabled")
+        find_package(Qt5 COMPONENTS DBus REQUIRED) 
+        list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
+
+    else()
+        message(STATUS "Desktop Environment: Other (${CURRENT_DE})")
+    endif()
 endif()
 
-# The compiler ONLY compiles the files in this list
+add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
-add_library(wallpaper ${SETTERS_SOURCES})
+# Every platform needs Core
+target_link_libraries(wallpaper_lib PRIVATE Qt5::Core)
+
+if(CURRENT_DE MATCHES "KDE")
+    target_link_libraries(wallpaper_lib PRIVATE Qt5::DBus)
+endif()
+
+target_include_directories(wallpaper_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
