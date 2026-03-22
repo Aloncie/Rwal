@@ -23,7 +23,6 @@ set(CMAKE_AUTOUIC ON)
 
 set(SOURCES
     src/AppController/AppController.cpp
-    src/dbus/PlasmaDBus.cpp
     src/funcs/funcs.cpp
     src/internal/platform/env_utils.cpp
     src/internal/utils/string_utils.cpp
@@ -42,7 +41,6 @@ set(SOURCES
 
 set(HEADERS
     src/AppController/AppController.hpp
-    src/dbus/PlasmaDBus.hpp
     src/funcs/funcs.hpp
     src/internal/platform/env_utils.hpp
     src/internal/utils/string_utils.hpp
