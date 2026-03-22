@@ -1,6 +1,13 @@
 #include "WallpaperFactory.hpp"
 #include "IWallpaperSetter.hpp"
 
+#ifdef _WIN32
+    #include "platforms/WindowsSetter.hpp"
+#elif defined(__linux__)
+    #include "platforms/KdeSetter.hpp"
+    #include "platforms/GnomeSetter.hpp"
+#endif
+
 std::unique_ptr<IWallpaperSetter> WallpaperFactory::create(){
 	#ifdef _WIN32
 		return std::make_unique<WindowsSetter>();	
