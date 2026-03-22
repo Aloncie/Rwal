@@ -12,7 +12,7 @@ find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
 find_package(Curses REQUIRED)
 
 add_subdirectory(third_party/googletest)
-add_subdirectory(src/wallpaper/CMakeLists.txt)
+add_subdirectory(src/wallpaper)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
