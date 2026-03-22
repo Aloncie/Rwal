@@ -17,7 +17,7 @@ WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkMan
 void WallpaperManager::refresh(const std::string mode) {
 	m_keywords.GetRandomKeywords([this](std::string keyword) {
 		fs::path path = m_nm.fetchImage(keyword);
-		if (!path.empty())
+		if (!path.empty()&&path != std::nullopt)
 			m_env.setWallpaper(path);
 		else 
 			Logs::getInstance().writeLogs("Path is empty");
