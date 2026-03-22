@@ -2,6 +2,8 @@
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
 #include <string>
+#include <filesystem>
+#include <optional>
 
 namespace fs = std::filesystem;
 
@@ -22,7 +24,7 @@ public:
 	MyCurl();
 	void getRequest(std::string url);
 	std::string getData(std::string paragraph, std::string str);
-	std::string downloadImage(const std::string& image_url);
+	std::optional<fs::path> downloadImage(const std::string& image_url);
 
    	~MyCurl();
 };
