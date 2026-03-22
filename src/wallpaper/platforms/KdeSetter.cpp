@@ -8,11 +8,6 @@
 
 void KdeSetter::setWallpaper(const fs::path& path) {
     std::string resolvedPath = PathResolver.toHostPath(imagePath);
-
-    Logs::getInstance().writeLogs("INTERNAL PATH: " + imagePath);
-
-	Logs::getInstance().writeLogs("RESOLVED HOST PATH: " + resolvedPath);
-
     QString hostPathUri = "file://" + QString::fromStdString(resolvedPath);
 
     QString script = QString(
