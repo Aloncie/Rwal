@@ -1,7 +1,7 @@
 #include "PathResolver.hpp"
 #include <string>
 
-fs::path PathResolver::toHostPath(const fs::path& path){
+void PathResolver::toHostPath(fs::path& path){
 	const char* host_home = std::getenv("HOST_HOME");
 	const char* home = std::getenv("HOME");
 	if (host_home == home) return path;	

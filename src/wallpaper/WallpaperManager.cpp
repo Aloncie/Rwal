@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <iostream>
 #include <QCoreApplication>
+#include "PathResolver.hpp"
 
 namespace fs = std::filesystem;
 
@@ -17,6 +18,7 @@ WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkMan
 void WallpaperManager::refresh(const std::string mode) {
 	m_keywords.GetRandomKeywords([this](std::string keyword) {
 		fs::path path = m_nm.fetchImage(keyword);
+		PathResolver::toHostPath(path);
 		if (!path.empty()&&path != std::nullopt)
 			m_env.setWallpaper(path);
 		else 

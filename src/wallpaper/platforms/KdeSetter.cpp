@@ -7,8 +7,7 @@
 #include "logs/logs.hpp"
 
 void KdeSetter::setWallpaper(const fs::path& path) {
-    std::string resolvedPath = PathResolver.toHostPath(imagePath);
-    QString hostPathUri = "file://" + QString::fromStdString(resolvedPath);
+    QString hostPathUri = "file://" + QString::fromStdString(path);
 
     QString script = QString(
         "var allDesktops = desktops();"
