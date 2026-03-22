@@ -2,7 +2,7 @@
 #include "logs/logs.hpp"
 #include <gio/gio.h>
 
-void GnomeSetter::setWallpaper(const fs::path& path) override{
+void GnomeSetter::setWallpaper(const fs::path& path){
 	GFile* file = g_file_new_for_path(path);
 	char* uri = g_file_get_uri(file);
 	GSettings* settings = g_settings_new("org.gnome.desktop.background");

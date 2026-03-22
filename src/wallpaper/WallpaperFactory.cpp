@@ -9,6 +9,7 @@
 #endif
 
 std::unique_ptr<IWallpaperSetter> WallpaperFactory::create(){
+
 	#ifdef _WIN32
 		return std::make_unique<WindowsSetter>();	
 	#ifdef defined(__APPLE__)
@@ -19,4 +20,5 @@ std::unique_ptr<IWallpaperSetter> WallpaperFactory::create(){
 		else if (de == "GNOME") return std::make_unique<GnomeSetter>();
 		return std::make_unique<LinuxFallbackSetter>();
 	#endif
+
 }

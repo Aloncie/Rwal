@@ -32,7 +32,7 @@ void KdeSetter::setWallpaper(const fs::path& path) {
     if (reply.type() == QDBusMessage::ErrorMessage) {
         Logs::getInstance().writeLogs("D-Bus Error: " + reply.errorMessage().toStdString());
     } else {
-        Logs::getInstance().writeLogs("Wallpaper change signal sent for: " + resolvedPath);
+        Logs::getInstance().writeLogs("Wallpaper change signal sent for: " + hostPathUri.toStdString());
     }
 }
 

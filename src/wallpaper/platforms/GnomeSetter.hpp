@@ -8,5 +8,4 @@ class GnomeSetter : public IWallpaperSetter{
 public:
 	void setWallpaper(const fs::path& path) override;
 	GnomeSetter();
-	~GnomeSetter() override = default;
 };
