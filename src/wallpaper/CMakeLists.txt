@@ -28,6 +28,11 @@ endif()
 
 add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
+target_include_directories(wallpaper_lib PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/src
+)
+
 # Every platform needs Core
 target_link_libraries(wallpaper_lib PRIVATE Qt5::Core)
 
