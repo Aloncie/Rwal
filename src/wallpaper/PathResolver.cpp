@@ -4,7 +4,7 @@
 void PathResolver::toHostPath(fs::path& path){
 	const char* host_home = std::getenv("HOST_HOME");
 	const char* home = std::getenv("HOME");
-	if (host_home == home) return path;	
+	if (host_home == home) return;	
 	else {
 		std::string pathStr = path.string();
 		if (home && host_home) {
@@ -13,6 +13,6 @@ void PathResolver::toHostPath(fs::path& path){
 				pathStr.replace(0, c_home.length(), std::string(host_home));
 			}
 		}
-		return fs::path(pathStr);
+		path = fs::path(pathStr);
 	}
 }

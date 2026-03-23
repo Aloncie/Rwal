@@ -12,7 +12,7 @@ std::unique_ptr<IWallpaperSetter> WallpaperFactory::create(){
 
 	#ifdef _WIN32
 		return std::make_unique<WindowsSetter>();	
-	#ifdef defined(__APPLE__)
+	#ifdef __APPLE__
 		return std::make_unique<MacosSetter>();
 	#else
 		std::string de = std::getenv("XDG_CURRENT_DESKTOP");
