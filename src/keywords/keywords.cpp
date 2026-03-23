@@ -48,17 +48,32 @@ void Keywords::Default(std::vector<std::string>& keywords){
 void Keywords::GetRandomKeywords(std::function<void(std::string)> callback, const std::string& mode){
     if (mode == "change"){
         std::vector<std::string> keywords = ShortWayGetKeywords();
-        if (keywords.empty()) Default(keywords);
-		else callback(keywords[random(keywords.size() - 1)]);
+        if (keywords.empty()) {
+            Default(keywords);
+        }
+        
+        if (!keywords.empty()) {
+            callback(keywords[random(keywords.size() - 1)]);
+        } else {
+			// on the black-day
+            callback("nature"); 
+        }
     }
     else if (mode == "core"){
         LongWayGetKeywords([this, callback](std::vector<std::string> keywords){
-            if (keywords.empty()) Default(keywords);
-			else callback(keywords[random(keywords.size() - 1)]);
+            if (keywords.empty()) {
+                Default(keywords);
+            }
+            
+            if (!keywords.empty()) {
+                callback(keywords[random(keywords.size() - 1)]);
+            } else {
+				// on the black-day
+                callback("nature");
+            }
         });
     }
 }
-
 void Keywords::editKeywords(){
     fs::path temp_path = fs::temp_directory_path() / "keywords.txt";    
     importToTxt(temp_path);
