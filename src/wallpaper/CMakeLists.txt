@@ -13,11 +13,13 @@ elseif(UNIX AND NOT APPLE)
     if(CURRENT_DE MATCHES "GNOME")
         message(STATUS "Build: GNOME Support Enabled")
         list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
+		add_definitions(-DRWAL_USE_GNOME)
 
     elseif(CURRENT_DE MATCHES "KDE")
         message(STATUS "Build: KDE Support Enabled")
         find_package(Qt5 COMPONENTS DBus REQUIRED) 
         list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
+		add_definitions(-DRWAL_USE_KDE)
 
     else()
         message(STATUS "Desktop Environment: Other (${CURRENT_DE})")
