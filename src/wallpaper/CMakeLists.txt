@@ -12,8 +12,15 @@ if(WIN32)
 elseif(UNIX AND NOT APPLE)
     if(CURRENT_DE MATCHES "GNOME")
         message(STATUS "Build: GNOME Support Enabled")
+
+		find_package(PkgConfig REQUIRED)
+		pkg_check_modules(GIO REQUIRED gio-2.0)
+
         list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
 		add_definitions(-DRWAL_USE_GNOME)
+
+		target_include_directories(wallpaper_lib PRIVATE ${GIO_INCLUDE_DIRS})
+        target_link_libraries(wallpaper_lib PRIVATE ${GIO_LIBRARIES})
 
     elseif(CURRENT_DE MATCHES "KDE")
         message(STATUS "Build: KDE Support Enabled")
