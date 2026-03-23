@@ -1,6 +1,5 @@
 #include "WallpaperManager.hpp"
 #include "internal/GlobalConstans.hpp"
-#include "dbus/PlasmaDBus.hpp"
 #include "logs/logs.hpp"
 #include "net/NetworkManager.hpp"
 #include <QStandardPaths>
@@ -17,10 +16,11 @@ WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkMan
 
 void WallpaperManager::refresh(const std::string mode) {
 	m_keywords.GetRandomKeywords([this](std::string keyword) {
-		fs::path path = m_nm.fetchImage(keyword);
-		PathResolver::toHostPath(path);
-		if (!path.empty()&&path != std::nullopt)
-			m_env.setWallpaper(path);
+		std::optional<fs::path> path = m_nm.fetchImage(keyword);
+		if (path.has_value()){
+			PathResolver::toHostPath(*path);
+			m_env.setWallpaper(*path);
+		}
 		else 
 			Logs::getInstance().writeLogs("Path is empty");
     }, mode);

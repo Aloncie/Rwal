@@ -6,13 +6,13 @@
 #include <exception>
 #include <optional>
 #include "net/NetworkManager.hpp"
-#include "IWallpaperManager.hpp"
+#include "IWallpaperSetter.hpp"
 
 namespace fs = std::filesystem;
 
 class WallpaperManager {
 public:
-    WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm, IWallpaperManager& env);
+    WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm, IWallpaperSetter& env);
     void refresh(const std::string mode = "core");
 	std::string saveCurrent();
     fs::path getCurrentWallpaperPath() const;
@@ -21,5 +21,5 @@ private:
     UIManager& m_ui;
     Keywords& m_keywords;
 	NetworkManager& m_nm;
-	IWallpaperManager& m_env;
+	IWallpaperSetter& m_env;
 };
