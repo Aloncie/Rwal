@@ -49,12 +49,12 @@ void Keywords::GetRandomKeywords(std::function<void(std::string)> callback, cons
     if (mode == "change"){
         std::vector<std::string> keywords = ShortWayGetKeywords();
         if (keywords.empty()) Default(keywords);
-        callback(keywords[random(keywords.size() - 1)]);
+		else callback(keywords[random(keywords.size() - 1)]);
     }
     else if (mode == "core"){
         LongWayGetKeywords([this, callback](std::vector<std::string> keywords){
             if (keywords.empty()) Default(keywords);
-            callback(keywords[random(keywords.size() - 1)]);
+			else callback(keywords[random(keywords.size() - 1)]);
         });
     }
 }
