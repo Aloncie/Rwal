@@ -28,7 +28,7 @@ int main(int argc,char* argv[]){
     Timer timer;
     NetworkManager nm(curl, config);
 	WallpaperFactory wf;
-	std::unique<IWallpaperSetter> env = wf.create();
+	std::unique_ptr<IWallpaperSetter> env = wf.create();
     WallpaperManager wm(um, keywords, nm, env);
 
     if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
