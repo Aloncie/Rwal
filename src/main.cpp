@@ -29,7 +29,7 @@ int main(int argc,char* argv[]){
     NetworkManager nm(curl, config);
 	WallpaperFactory wf;
 	std::unique_ptr<IWallpaperSetter> env = wf.create();
-    WallpaperManager wm(um, keywords, nm, env);
+    WallpaperManager wm(um, keywords, nm, *env);
 
     if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
         wm.refresh("change");
