@@ -1,5 +1,3 @@
-# src/wallpaper/CMakeLists.txt
-
 set(SETTERS_SOURCES 
     WallpaperManager.cpp 
     WallpaperFactory.cpp 
