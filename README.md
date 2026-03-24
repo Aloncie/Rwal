@@ -33,21 +33,24 @@
 
 ## 🚀 Installation & Quick Start
 
-## 🛠 Installation & Build
+## 🛠 Prerequisites & Installation
 
-### 1. Install Dependencies
+### 1. Install Dependencies by Distribution
 
-Choose the command for your distribution:
+Select the command based on your Operating System and Desktop Environment (GNOME or KDE):
 
-| Distribution | Command |
-| :--- | :--- |
-| **Fedora** | `sudo dnf install -y git cmake gcc-c++ qt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel glib2-devel` |
-| **Ubuntu / Debian** | `sudo apt update && sudo apt install -y git cmake g++ qtbase5-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev libglib2.0-dev` |
-| **Arch Linux** | `sudo pacman -S --needed git cmake gcc qt5-base ncurses curl nlohmann-json glib2` |
+| Distribution | Environment | Installation Command |
+| :--- | :--- | :--- |
+| **Fedora** | **GNOME** | `sudo dnf install -y git cmake gcc-c++ qt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel glib2-devel` |
+| **Fedora** | **KDE** | `sudo dnf install -y git cmake gcc-c++ qt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel` |
+| **Ubuntu / Debian** | **GNOME** | `sudo apt update && sudo apt install -y git cmake g++ qtbase5-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev libglib2.0-dev` |
+| **Ubuntu / Debian** | **KDE** | `sudo apt update && sudo apt install -y git cmake g++ qtbase5-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev` |
+| **Arch Linux** | **Any** | `sudo pacman -S --needed git cmake gcc qt5-base ncurses curl nlohmann-json glib2` |
+| **openSUSE** | **Any** | `sudo zypper install git cmake gcc-c++ libqt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel glib2-devel` |
 
-### 2. Universal Build Commands
+---
 
-To build Rwal from source, run the following commands in your terminal:
+### 2. Standard Build Process
 
 ```bash
 # Clone the repository 
