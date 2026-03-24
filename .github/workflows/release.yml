@@ -15,16 +15,21 @@ jobs:
           submodules: recursive
 
       - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            cmake \
-            g++ \
-            libcurl4-openssl-dev \
-            nlohmann-json3-dev \
-            qtbase5-dev \
-            libncurses5-dev \
-            rpm
+          run: |
+            sudo add-apt-repository universe
+            sudo apt-get update
+            sudo apt-get install -y \
+              cmake \
+              g++ \
+              libcurl4-openssl-dev \
+              libnlohmann-json-dev \
+              qtbase5-dev \
+              qt5-qmake \
+              qtbase5-dev-tools \
+              libncurses5-dev \
+              libncursesw5-dev \
+              rpm \
+              dpkg
 
       - name: Configure and Build
         run: |
