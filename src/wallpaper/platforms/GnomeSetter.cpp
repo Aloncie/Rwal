@@ -20,8 +20,9 @@ void GnomeSetter::setWallpaper(const fs::path& path) {
 
     g_settings_set_string(settings, "picture-uri", uri);
     g_settings_set_string(settings, "picture-uri-dark", uri);
+	g_settings_sync();    
 
-    Logs::getInstance().writeLogs("Wallpaper set to: " + std::string(uri));
+	Logs::getInstance().writeLogs("Wallpaper set to: " + std::string(uri));
 
     g_free(uri);
     g_object_unref(settings);
