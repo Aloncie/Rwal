@@ -33,20 +33,48 @@
 
 ## 🚀 Installation & Quick Start
 
-```bash
-# 1. Clone repo
-git clone https://github.com/Aloncie/Rwal.git
-# or download ZIP and extract
+## 🛠 Installation & Build
 
-# 2. Use
+### 1. Install Dependencies
+
+Choose the command for your distribution:
+
+| Distribution | Command |
+| :--- | :--- |
+| **Fedora** | `sudo dnf install -y git cmake gcc-c++ qt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel glib2-devel` |
+| **Ubuntu / Debian** | `sudo apt update && sudo apt install -y git cmake g++ qtbase5-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev libglib2.0-dev` |
+| **Arch Linux** | `sudo pacman -S --needed git cmake gcc qt5-base ncurses curl nlohmann-json glib2` |
+
+### 2. Universal Build Commands
+
+To build Rwal from source, run the following commands in your terminal:
+
+```bash
+# Clone the repository 
+git clone https://github.com/Aloncie/Rwal
+
+# Or clone with tests( for developers )
+git clone --recursive https://github.com/Aloncie/Rwal
+
 cd Rwal
 
-# Run with Docker( Interactive mode)
-docker-compose run --rm rwal
-# or change mode
-docker-compose run --rm rwal -c
-```
+# Configure the project
+# (Add -DBUILD_TESTING=ON if you want to run tests)
+cmake -B build -DCMAKE_BUILD_TYPE=Release
 
+# Build the project
+cmake --build build -j$(nproc)
+
+cd build
+
+# Run Rwal interactive mode
+./rwal
+# Run Rwal change mode
+./rwal -c
+
+# for simple 'rwal' and 'rwal -c' anywhere( add in /bin)
+sudo make install
+```
 **For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).**
 
 ---
