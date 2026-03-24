@@ -46,34 +46,31 @@ void Keywords::Default(std::vector<std::string>& keywords){
 }
 
 void Keywords::GetRandomKeywords(std::function<void(std::string)> callback, const std::string& mode){
-    if (mode == "change"){
-        std::vector<std::string> keywords = ShortWayGetKeywords();
+    auto selectRandom = [this, callback](std::vector<std::string>& keywords) {
         if (keywords.empty()) {
             Default(keywords);
         }
-        
-        if (!keywords.empty()) {
-            callback(keywords[random(keywords.size() - 1)]);
+
+        if (keywords.empty()) {
+            callback("art"); // on the 'black day'
+        } else if (keywords.size() == 1) {
+            callback(keywords[0]);
         } else {
-			// on the black-day
-            callback("nature"); 
+            callback(keywords[random(keywords.size() - 1)]);
         }
-    }
+    };
+
+    if (mode == "change"){
+        std::vector<std::string> keywords = ShortWayGetKeywords();
+        selectRandom(keywords);
+    } 
     else if (mode == "core"){
-        LongWayGetKeywords([this, callback](std::vector<std::string> keywords){
-            if (keywords.empty()) {
-                Default(keywords);
-            }
-            
-            if (!keywords.empty()) {
-                callback(keywords[random(keywords.size() - 1)]);
-            } else {
-				// on the black-day
-                callback("nature");
-            }
+        LongWayGetKeywords([this, selectRandom](std::vector<std::string> keywords){
+            selectRandom(keywords);
         });
     }
 }
+
 void Keywords::editKeywords(){
     fs::path temp_path = fs::temp_directory_path() / "keywords.txt";    
     importToTxt(temp_path);
