@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(rwal VERSION 1.0 LANGUAGES CXX)
 
+option(BUILD_TESTING "Build the testing suite" OFF)
+
 if(NOT CMAKE_INSTALL_PREFIX)
     set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "Installation directory")
 endif()
@@ -19,11 +21,9 @@ find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
 find_package(Curses REQUIRED)
 
-add_subdirectory(third_party/googletest)
 add_subdirectory(src/wallpaper)
 
 # Main App Library Sources
-# NOTE: We do NOT include src/wallpaper files here. They are in wallpaper_lib.
 set(SOURCES
     src/AppController/AppController.cpp
     src/funcs/funcs.cpp
@@ -84,15 +84,32 @@ target_link_libraries(rwal PRIVATE rwal_lib)
 # Installation
 install(TARGETS rwal RUNTIME DESTINATION bin)
 
-# Testing
-enable_testing()
-add_executable(rwal_tests
-    tests/test_main.cpp
-    tests/test_string_utils.cpp
-)
+# --- SECTION: Testing (with safety checker) ---
+if(BUILD_TESTING)
+    if(EXISTS "${PROJECT_SOURCE_DIR}/third_party/googletest/CMakeLists.txt")
+        add_subdirectory(third_party/googletest)
+        enable_testing()
+        
+        add_executable(rwal_tests
+            tests/test_main.cpp
+            tests/test_string_utils.cpp
+        )
 
-target_link_libraries(rwal_tests PRIVATE rwal_lib GTest::gtest_main)
-target_include_directories(rwal_tests PRIVATE ${PROJECT_SOURCE_DIR}/src)
+        target_link_libraries(rwal_tests PRIVATE rwal_lib GTest::gtest_main)
+        target_include_directories(rwal_tests PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
-include(GoogleTest)
-gtest_discover_tests(rwal_tests)
+        include(GoogleTest)
+        gtest_discover_tests(rwal_tests)
+    else()
+        message(WARNING "GoogleTest submodules not found. Tests will not be built. Run 'git submodule update --init' to fix this.")
+    endif()
+endif()
+
+# --- SECTION: Packaging ---
+set(CPACK_PACKAGE_NAME "rwal")
+set(CPACK_PACKAGE_VENDOR "Aloncie")
+set(CPACK_PACKAGE_VERSION_MAJOR "0")
+set(CPACK_PACKAGE_VERSION_MINOR "5")
+set(CPACK_PACKAGE_VERSION_PATCH "0")
+set(CPACK_GENERATOR "RPM;DEB;TGZ")
+include(CPack)
