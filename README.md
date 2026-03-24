@@ -85,10 +85,10 @@ sudo make install
 ## 👁️‍🗨️How it works?
 
 ### Change mode
-![Image](https://github.com/user-attachments/assets/daeebb40-7a16-482b-86f5-420ff2e76fd2)
+![Image](https://github.com/user-attachments/assets/c01c9cea-cbe5-4ddd-8f00-f4731b461fb6)
 
 ### Interactive mode(input doesn't print)
-![Image](https://github.com/user-attachments/assets/1a9655bb-f95f-484c-ae1c-a4dda9bde489)
+![Image](https://github.com/user-attachments/assets/9de86ea7-a8f6-4b4b-8098-25ccc14520bb)
 ---
 
 ## 🛡️ License
