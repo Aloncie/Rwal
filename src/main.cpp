@@ -1,22 +1,21 @@
-#include "navigator/navigator.hpp"
-#include "wallpaper/WallpaperManager.hpp"
-#include <string>
 #include <QCoreApplication>
 #include <QObject>
-#include "ui/menus/menus.hpp"
+
 #include "AppController/AppController.hpp"
-#include <iostream>
-#include "ui/cli/UIManager.hpp"
 #include "keywords/keywords.hpp"
 #include "logs/logs.hpp"
-#include "settings/settings.hpp"
-#include "settings/config.hpp"
+#include "navigator/navigator.hpp"
 #include "net/CurlWrapper.hpp"
 #include "net/NetworkManager.hpp"
-#include "wallpaper/WallpaperFactory.hpp"
+#include "settings/config.hpp"
+#include "settings/settings.hpp"
+#include "ui/cli/UIManager.hpp"
+#include "ui/menus/menus.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
+#include "wallpaper/WallpaperFactory.hpp"
+#include "wallpaper/WallpaperManager.hpp"
 
-int main(int argc,char* argv[]){
+int main(int argc, char* argv[]) {
     QCoreApplication::setApplicationName("Rwal");
     QCoreApplication::setOrganizationName("Aloncie");
     QCoreApplication app(argc, argv);
@@ -27,11 +26,12 @@ int main(int argc,char* argv[]){
     MyCurl curl;
     Timer timer;
     NetworkManager nm(curl, config);
-	WallpaperFactory wf;
-	std::unique_ptr<IWallpaperSetter> env = wf.create();
+    WallpaperFactory wf;
+    std::unique_ptr<IWallpaperSetter> env = wf.create();
     WallpaperManager wm(um, keywords, nm, *env);
 
-    if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
+    if (argc > 1 &&
+        (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
         wm.refresh("change");
         return 0;
     }

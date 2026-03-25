@@ -3,7 +3,7 @@
 
 namespace fs = std::filesystem;
 
-class PathResolver{
+class PathResolver {
 public:
-	static void toHostPath(fs::path& path);
+  static void toHostPath(fs::path &path);
 };
