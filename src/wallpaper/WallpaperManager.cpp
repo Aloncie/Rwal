@@ -15,14 +15,18 @@ WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkMan
 
 
 void WallpaperManager::refresh(const std::string mode) {
-	m_keywords.GetRandomKeywords([this](std::string keyword) {
-		std::optional<fs::path> path = m_nm.fetchImage(keyword);
-		if (path.has_value()){
-			PathResolver::toHostPath(*path);
-			m_env.setWallpaper(*path);
-		}
-		else 
-			Logs::getInstance().writeLogs("Path is empty");
+    m_keywords.GetRandomKeywords([this](std::string keyword) {
+        std::optional<fs::path> path = m_nm.fetchImage(keyword);
+        if (path.has_value()) {
+            PathResolver::toHostPath(*path);
+            bool success = m_env.setWallpaper(*path);
+            if (!success) {
+                m_ui.showMessage("Failed to set wallpaper. More info in logs");
+            }
+        } else {
+            Logs::getInstance().writeLogs("Path is empty");
+            m_ui.showMessage("Failed to download wallpaper.");
+        }
     }, mode);
 }
 
