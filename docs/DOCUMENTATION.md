@@ -1,5 +1,24 @@
 # 📖 Documentation
 
+## 💨Quick Start
+
+You must be in Rwal/build to use these commands:
+```bash
+# interactive start
+./rwal
+
+# change mode
+./rwa -c
+```
+
+For use Rwal everywhere use ```sudo make install```( you must be in Rwal/build ). It add program to /bin and you will can use:
+```bash
+# everywhere 
+rwal
+# or change mode
+rwal -c
+```
+
 ## ⚙️ Configuration
 Rwal looks for `config.json` in `~/.config/Aloncie/Rwal/`.
 
