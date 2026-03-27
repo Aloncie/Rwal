@@ -6,7 +6,7 @@
 
 ## 🚀 Phase 1 – Cross‑Platform & Core Stability
 
-- [ ] **Abstract wallpaper setting** – Create `IWallpaperSetter` interface with implementations for KDE, GNOME, Windows.
+- [x] **Abstract wallpaper setting** – Create `IWallpaperSetter` interface with implementations for KDE, GNOME and etc.
 - [ ] **Offline fallback** – Maintain a local cache of recently downloaded wallpapers; if offline, pick a random cached image.
 - [ ] **Configuration enhancements** – Allow user to specify cache size, preferred image types, and fallback behaviour.
 - [ ] **Unit tests** – Add tests for critical modules: keyword parsing, menu navigation, file operations. Use GoogleTest or Qt Test.
