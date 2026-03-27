@@ -2,6 +2,7 @@ set(SETTERS_SOURCES
     WallpaperManager.cpp 
     WallpaperFactory.cpp 
     PathResolver.cpp
+	platforms/FallbackSetter.cpp
 )
 
 set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
