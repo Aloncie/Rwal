@@ -1,4 +1,3 @@
-# 1. Сначала определяем список базовых файлов
 set(SETTERS_SOURCES 
     WallpaperManager.cpp 
     WallpaperFactory.cpp 
@@ -6,6 +5,11 @@ set(SETTERS_SOURCES
 )
 
 set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
+
+option(RWAL_FORCE_DE "Force a specific desktop environment(GNOME, KDE, Hyprland, enter - auto)" "")
+if(NOT RWAL_FORCE_DE STREQUAL "")
+    set(CURRENT_DE ${RWAL_FORCE_DE})
+endif()
 
 if(UNIX AND NOT APPLE)
     if(CURRENT_DE MATCHES "GNOME")
@@ -18,6 +22,10 @@ if(UNIX AND NOT APPLE)
         find_package(Qt5 COMPONENTS DBus REQUIRED)
         list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
         add_definitions(-DRWAL_USE_KDE)
+        
+    elseif(CURRENT_DE MATCHES "Hyprland")
+        list(APPEND SETTERS_SOURCES platforms/HyprlandSetter.cpp)
+        add_definitions(-DRWAL_USE_HYPRLAND)
     endif()
 endif()
 

@@ -17,6 +17,10 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Check formatting
+        run: |
+          find src -name "*.cpp" -o -name "*.hpp" | xargs clang-format --dry-run --Werror
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
