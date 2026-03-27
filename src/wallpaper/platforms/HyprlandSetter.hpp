@@ -3,7 +3,7 @@
 
 #include "wallpaper/IWallpaperSetter.hpp"
 
-class HyprlandSetter : public WallpaperSetter {
+class HyprlandSetter : public IWallpaperSetter {
 public:
     bool setWallpaper(const std::string& path) override;
     bool hasTool(const std::string& tool);
