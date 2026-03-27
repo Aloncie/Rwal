@@ -1,71 +1,75 @@
 #pragma once
-#include <vector>
 #include <string>
-#include <functional>
-#include "ui/cli/UIManager.hpp"
+#include <vector>
+
 #include "keywords/keywords.hpp"
-#include "settings/settings.hpp"
-#include "wallpaper/WallpaperManager.hpp"
 #include "settings/config.hpp"
+#include "settings/settings.hpp"
+#include "ui/cli/UIManager.hpp"
+#include "wallpgper/WallpaperManager.hpp"
 
 struct MenuResponce {
     std::string nextMenu;
-    bool IsWrongInput;    
+    bool IsWrongInput;
     bool needQuit;
-	std::string Message;
+    std::string Message;
 };
 
-class Menu{
-public:	
+class Menu {
+   public:
     virtual ~Menu() = default;
     virtual std::vector<std::string> getLines() = 0;
     virtual MenuResponce handleInput(const std::string& input) = 0;
     virtual std::string getValidChoices() const = 0;
 };
 
-class MainMenu : public Menu{
-private:
+class MainMenu : public Menu {
+   private:
     UIManager& m_ui;
     Keywords& m_keywords;
-	WallpaperManager& m_wm;
+    WallpaperManager& m_wm;
     const std::string m_validChoices = "1234q";
-public:
+
+   public:
     MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     std::string getValidChoices() const override { return m_validChoices; }
 };
 
-class SettingsMenu : public Menu{
-private:
+class SettingsMenu : public Menu {
+   private:
     Timer& m_timer;
-	WallpaperManager& m_wm;
+    WallpaperManager& m_wm;
     const std::string m_validChoices = "12q";
-public:
+
+   public:
     SettingsMenu(Timer& timer, WallpaperManager& wm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     std::string getValidChoices() const override { return m_validChoices; }
 };
 
-class KeywordsMenu : public Menu{
-private:
+class KeywordsMenu : public Menu {
+   private:
     Keywords& m_keywords;
     UIManager& m_ui;
-	Config& m_config;
-    const std::string m_validChoices = "armq";  
-public:
+    Config& m_config;
+    const std::string m_validChoices = "armq";
+
+   public:
     KeywordsMenu(Keywords& keywords, UIManager& ui, Config& config);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     std::string getValidChoices() const override { return m_validChoices; }
 };
 
-class TimerMenu : public Menu{
-private:
+class TimerMenu : public Menu {
+   private:
     Timer& m_timer;
     const std::string m_validChoices = "nhd";
-public:
+
+   public:
     TimerMenu(Timer& timer);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
