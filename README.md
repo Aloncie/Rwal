@@ -1,25 +1,33 @@
-<h1 align="center">Hi there, I'm <a href="https://github.com/Aloncie" target="_blank">Aloncie</a> <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px"></h1>
+<div align = center>
 
-<h3 align="center">👾 Today I'm glad to present my new(first) project... 👾</h3>
+<img width="1724" height="608" alt="Image" src="https://github.com/user-attachments/assets/11eb7013-581c-442c-8c26-ba688ae7fd47" />
 
 <br>
 
-# 🌊 Rwal – Random Wallpaper Utility
-
-![Version](https://img.shields.io/badge/version-alpha-red)
+![Version](https://img.shields.io/badge/version-alpha-darkblue)
 ![C++](https://img.shields.io/badge/C%2B%2B-20-blue?logo=c%2B%2B)
-![CMake](https://img.shields.io/badge/CMake-3.10%2B-purple?logo=cmake)
-![Qt5](https://img.shields.io/badge/Qt-5-yellowgreen?logo=qt)
-![License](https://img.shields.io/badge/license-MIT-orange)
+![CMake](https://img.shields.io/badge/CMake-3.10%2B-darkgreen?logo=cmake)
+![Qt5](https://img.shields.io/badge/Qt-5-lightblue?logo=qt)
+![License](https://img.shields.io/badge/license-MIT-gold)
+![Docker Pulls](https://img.shields.io/docker/pulls/aloncie/rwal?color=blue&logo=docker&style=flat-square)
+
+<br>
+
+Rwal is a lightweight, cross-platform wallpaper utility designed for speed and flexibility. It bridges the gap between a rich, interactive ncurses terminal interface for manual curation and a silent daemon mode for automated, scheduled background rotations.
+
+Whether you're on a minimalist Window Manager or a full Desktop Environment, Rwal provides a seamless, dependency-aware installation experience.
 
 ---
 
-**Rwal** is a hybrid CLI wallpaper utility that combines an interactive terminal interface with a silent, daemon‑like mode for regular wallpaper changes. It fetches images from [Wallhaven](https://wallhaven.cc). Built with modern C++20 and Qt5.
+[<kbd> <br> Install <br> </kbd>](https://github.com/Aloncie/Rwal/blob/main/Installation.md)
+[<kbd> <br> Build Status <br> </kbd>](https://github.com/Aloncie/Rwal/actions)
+[<kbd> <br> Suppoprted DE <br> </kbd>](https://img.shields.io/docker/pulls/aloncie/rwal?color=blue&logo=docker&style=flat-square)
 
 ---
 
+<div align = left>
+  
 ## ✨ Features
-
 - **Interactive menu** – navigate, add/remove keywords, configure timer.
 - **Silent mode** – one‑shot wallpaper change, ideal for cron/systemd.
 - **Hot‑reload config** – edit `config.json` while the app runs.
