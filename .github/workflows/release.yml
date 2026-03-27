@@ -19,8 +19,8 @@ jobs:
 
       - name: Check formatting
         run: |
+          clang-format --version
           find src -name "*.cpp" -o -name "*.hpp" | xargs clang-format --dry-run --Werror
-
       - name: Install Dependencies
         run: |
           sudo apt-get update
@@ -35,7 +35,8 @@ jobs:
             libncurses5-dev \
             libncursesw5-dev \
             rpm \
-            dpkg
+            dpkg \
+            clang-format
 
       - name: Configure and Build
         run: |
