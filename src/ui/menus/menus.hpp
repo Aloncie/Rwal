@@ -6,7 +6,7 @@
 #include "settings/config.hpp"
 #include "settings/settings.hpp"
 #include "ui/cli/UIManager.hpp"
-#include "wallpgper/WallpaperManager.hpp"
+#include "wallpaper/WallpaperManager.hpp"
 
 struct MenuResponce {
     std::string nextMenu;
@@ -16,7 +16,7 @@ struct MenuResponce {
 };
 
 class Menu {
-   public:
+public:
     virtual ~Menu() = default;
     virtual std::vector<std::string> getLines() = 0;
     virtual MenuResponce handleInput(const std::string& input) = 0;
@@ -24,13 +24,13 @@ class Menu {
 };
 
 class MainMenu : public Menu {
-   private:
+private:
     UIManager& m_ui;
     Keywords& m_keywords;
     WallpaperManager& m_wm;
     const std::string m_validChoices = "1234q";
 
-   public:
+public:
     MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
@@ -38,12 +38,12 @@ class MainMenu : public Menu {
 };
 
 class SettingsMenu : public Menu {
-   private:
+private:
     Timer& m_timer;
     WallpaperManager& m_wm;
     const std::string m_validChoices = "12q";
 
-   public:
+public:
     SettingsMenu(Timer& timer, WallpaperManager& wm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
@@ -51,13 +51,13 @@ class SettingsMenu : public Menu {
 };
 
 class KeywordsMenu : public Menu {
-   private:
+private:
     Keywords& m_keywords;
     UIManager& m_ui;
     Config& m_config;
     const std::string m_validChoices = "armq";
 
-   public:
+public:
     KeywordsMenu(Keywords& keywords, UIManager& ui, Config& config);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
@@ -65,11 +65,11 @@ class KeywordsMenu : public Menu {
 };
 
 class TimerMenu : public Menu {
-   private:
+private:
     Timer& m_timer;
     const std::string m_validChoices = "nhd";
 
-   public:
+public:
     TimerMenu(Timer& timer);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
