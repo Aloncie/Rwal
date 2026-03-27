@@ -30,58 +30,6 @@
 
 ---
 
-
-## 🚀 Installation & Quick Start
-
-## 🛠 Prerequisites & Installation
-
-### 1. Install Dependencies by Distribution
-
-Select the command based on your Operating System and Desktop Environment (GNOME or KDE):
-
-| Distribution | Environment | Installation Command |
-| :--- | :--- | :--- |
-| **Fedora** | **GNOME** | `sudo dnf install -y git cmake gcc-c++ qt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel glib2-devel` |
-| **Fedora** | **KDE** | `sudo dnf install -y git cmake gcc-c++ qt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel` |
-| **Ubuntu / Debian** | **GNOME** | `sudo apt update && sudo apt install -y git cmake g++ qtbase5-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev libglib2.0-dev` |
-| **Ubuntu / Debian** | **KDE** | `sudo apt update && sudo apt install -y git cmake g++ qtbase5-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev` |
-| **Arch Linux** | **Any** | `sudo pacman -S --needed git cmake gcc qt5-base ncurses curl nlohmann-json glib2` |
-| **openSUSE** | **Any** | `sudo zypper install git cmake gcc-c++ libqt5-qtbase-devel ncurses-devel libcurl-devel nlohmann-json-devel glib2-devel` |
-
----
-
-### 2. Standard Build Process
-
-```bash
-# Clone the repository 
-git clone https://github.com/Aloncie/Rwal
-
-# Or clone with tests( for developers )
-git clone --recursive https://github.com/Aloncie/Rwal
-
-cd Rwal
-
-# Configure the project
-# (Add -DBUILD_TESTING=ON if you want to run tests)
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-
-# Build the project
-cmake --build build -j$(nproc)
-
-cd build
-
-# Run Rwal interactive mode
-./rwal
-# Run Rwal change mode
-./rwal -c
-
-# for simple 'rwal' and 'rwal -c' anywhere( add in /bin)
-sudo make install
-```
-**For full documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).**
-
----
-
 ## 👁️‍🗨️How it works?
 
 ### Change mode
