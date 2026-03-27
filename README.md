@@ -1,74 +1,93 @@
 <div align = center>
 
-<img width="1724" height="608" alt="Image" src="https://github.com/user-attachments/assets/11eb7013-581c-442c-8c26-ba688ae7fd47" />
+<img src="https://github.com/Aloncie/Rwal/raw/main/assets/banner.png" width="750" alt="Rwal Banner">
 
 <br>
 
-![Version](https://img.shields.io/badge/version-alpha-darkblue)
-![C++](https://img.shields.io/badge/C%2B%2B-20-blue?logo=c%2B%2B)
-![CMake](https://img.shields.io/badge/CMake-3.10%2B-darkgreen?logo=cmake)
-![Qt5](https://img.shields.io/badge/Qt-5-lightblue?logo=qt)
-![License](https://img.shields.io/badge/license-MIT-gold)
-![Docker Pulls](https://img.shields.io/docker/pulls/aloncie/rwal?color=blue&logo=docker&style=flat-square)
+[![Badge Workflow]][Workflow]
+[![Badge Version]][Version]
+[![Badge License]][License]
+![Badge Language]
+![Badge Hi Mom]
 
 <br>
 
-Rwal is a lightweight, cross-platform wallpaper utility designed for speed and flexibility. It bridges the gap between a rich, interactive ncurses terminal interface for manual curation and a silent daemon mode for automated, scheduled background rotations.
-
-Whether you're on a minimalist Window Manager or a full Desktop Environment, Rwal provides a seamless, dependency-aware installation experience.
-
----
-
-[<kbd> <br> Install <br> </kbd>](https://github.com/Aloncie/Rwal/blob/main/Installation.md)
-[<kbd> <br> Build Status <br> </kbd>](https://github.com/Aloncie/Rwal/actions)
-[<kbd> <br> Suppoprted DE <br> </kbd>]()
+**Rwal** is a lightweight, cross-platform wallpaper utility designed for speed and flexibility. 
+It bridges the gap between a rich, interactive **ncurses** interface and a silent **daemon** for automation.
 
 ---
 
-<div align = left>
-  
-## ✨ Features
-- **Interactive menu** – navigate, add/remove keywords, configure timer.
-- **Silent mode** – one‑shot wallpaper change, ideal for cron/systemd.
-- **Hot‑reload config** – edit `config.json` while the app runs.
-- **Smart keyword handling** – random selection, manual editing via `$EDITOR`.
-- **Systemd timer integration** – set hourly/daily wallpaper rotation.
-- **Built‑in logging** – with auto‑rotation and permission handling.
-- **Modular design** – clear separation of UI, networking, and platform layers.
+**[<kbd> <br> Install <br> </kbd>][Install]** 
+**[<kbd> <br> Quick Start <br> </kbd>][Quick Start]** 
+**[<kbd> <br> Configure <br> </kbd>][Configure]** 
+**[<kbd> <br> Contribute <br> </kbd>][Contribute]**
 
 ---
 
-## 👁️‍🗨️How it works?
+</div>
 
-### Change mode
-![Image](https://github.com/user-attachments/assets/c01c9cea-cbe5-4ddd-8f00-f4731b461fb6)
+# ✨ Features
 
-### Interactive mode(input doesn't print)
-![Image](https://github.com/user-attachments/assets/9de86ea7-a8f6-4b4b-8098-25ccc14520bb)
----
+- **Interactive TUI** – Navigate, tag, and preview wallpapers without leaving the terminal.
+- **Silent Daemon Mode** – Efficient background rotation ideal for cron or systemd.
+- **Hot‑Reload** – Configuration updates instantly without restarting the service.
+- **Modern C++20** – Built for performance with a clean, modular codebase.
+- **Smart Keyword Logic** – Advanced wallpaper selection based on user-defined tags.
+- **Systemd Integration** – Native support for timers and automated rotations.
+- **Cross-DE Support** – Works seamlessly on Hyprland, KDE, GNOME, and more.
 
-## 🛡️ License
+# 👁️‍🗨️ Previews
 
-This project is licensed under the MIT License – see the LICENSE file for details.
+<div align="center">
 
-## 🔒 Security
+### Interactive Mode
+![Interactive Preview][PreviewA]
 
-For security issues, please see our [Security Policy](SECURITY.md).
+### Change Mode (Daemon)
+![Daemon Preview][PreviewB]
 
-## 📫 Contact
-- Author: [@Aloncie](https://github.com/Aloncie)
-- Project repo: [Rwal](https://github.com/Aloncie/Rwal)
-- Email: [Aloncie@proton.me](mailto:Aloncie@proton.me) 
+</div>
 
-## 🔗 Links
+# 🛡️ Maintenance
 
-- [Philosophy](https://github.com/Aloncie/Rwal/blob/main/docs/PHILOSOPHY.md)
-- [Documentation](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md)
-- [Roadmap](https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md)
-- [Flow Graphs](https://github.com/Aloncie/Rwal/blob/main/docs/FlowGraphs.md)
+- **Security:** Please see our [Security Policy][Security].
+- **Roadmap:** Check our upcoming features [here][Roadmap].
+- **Survey:** Help shape Rwal's future via our [Google Form][Survey].
 
-## 📊 2-Minute Survey
+# 🤝 Special Thanks
 
-Help shape Rwal's future: [google-form](https://forms.gle/JCewzzEUwPGxx7cY7)
+- **[Qt Project]** - For the robust framework.
+- **[ncurses]** - For the classic terminal UI capabilities.
+- **[nlohmann/json]** - For making C++ JSON handling sane.
 
-**Made with ❤️ and a lot of ☕ by Aloncie.**
+<br>
+
+<div align="center">
+Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
+</div>
+
+[Install]: https://github.com/Aloncie/Rwal/blob/main/Installation.md
+[Quick Start]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md#quick-start
+[Configure]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md
+[Contribute]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
+
+[Workflow]: https://github.com/Aloncie/Rwal/actions
+[Version]: https://img.shields.io/badge/version-alpha-blue
+[License]: https://github.com/Aloncie/Rwal/blob/main/LICENSE
+[Security]: https://github.com/Aloncie/Rwal/blob/main/SECURITY.md
+[Roadmap]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
+[Survey]: https://forms.gle/JCewzzEUwPGxx7cY7
+
+[PreviewA]: https://github.com/user-attachments/assets/9de86ea7-a8f6-4b4b-8098-25ccc14520bb
+[PreviewB]: https://github.com/user-attachments/assets/c01c9cea-cbe5-4ddd-8f00-f4731b461fb6
+
+[Qt Project]: https://www.qt.io/
+[ncurses]: https://invisible-island.net/ncurses/
+[nlohmann/json]: https://github.com/nlohmann/json
+
+[Badge Workflow]: https://github.com/Aloncie/Rwal/actions/workflows/release.yml/badge.svg
+[Badge Version]: https://img.shields.io/badge/version-alpha-darkblue?style=flat-square
+[Badge License]: https://img.shields.io/badge/license-MIT-gold?style=flat-square
+[Badge Platform]: https://img.shields.io/badge/platform-linux%20%20-lightgrey?style=flat-square
+[Badge Language]: https://img.shields.io/github/languages/top/Aloncie/Rwal?style=flat-square
+[Badge Hi Mom]: https://img.shields.io/badge/Hi-mom!-ff69b4?style=flat-square
