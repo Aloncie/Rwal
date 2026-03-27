@@ -1,12 +1,10 @@
 #pragma once
-#include <string>
 #include <filesystem>
-
 namespace fs = std::filesystem;
 
-class IWallpaperSetter{
+class IWallpaperSetter {
 public:
-	IWallpaperSetter() = default;
-	virtual void setWallpaper(const fs::path& path) = 0;	
-	virtual ~IWallpaperSetter() = default;
+    IWallpaperSetter() = default;
+    virtual bool setWallpaper(const fs::path& path) = 0;
+    virtual ~IWallpaperSetter() = default;
 };

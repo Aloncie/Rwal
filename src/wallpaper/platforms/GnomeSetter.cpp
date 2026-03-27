@@ -8,13 +8,12 @@
 
 #include <gio/gio.h>
 
-void GnomeSetter::setWallpaper(const fs::path& path) {
+bool GnomeSetter::setWallpaper(const fs::path& path) {
     GFile* file = g_file_new_for_path(path.c_str());
 
     if (!file) {
-        Logs::getInstance().writeLogs(
-            "GnomeSetter: Failed to create GFile from path");
-        return;
+        Logs::getInstance().writeLogs("GnomeSetter: Failed to create GFile from path");
+        return false;
     }
 
     char* uri = g_file_get_uri(file);
@@ -29,6 +28,7 @@ void GnomeSetter::setWallpaper(const fs::path& path) {
     g_free(uri);
     g_object_unref(settings);
     g_object_unref(file);
+	return true;
 }
 
 GnomeSetter::GnomeSetter() {

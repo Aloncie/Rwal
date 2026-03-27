@@ -6,7 +6,7 @@
 #include <QString>
 #include "logs/logs.hpp"
 
-void KdeSetter::setWallpaper(const fs::path& path) {
+bool KdeSetter::setWallpaper(const fs::path& path) {
     QString hostPathUri = "file://" + QString::fromStdString(path);
 
     QString script = QString(
@@ -31,8 +31,10 @@ void KdeSetter::setWallpaper(const fs::path& path) {
     
     if (reply.type() == QDBusMessage::ErrorMessage) {
         Logs::getInstance().writeLogs("D-Bus Error: " + reply.errorMessage().toStdString());
+		return false;
     } else {
         Logs::getInstance().writeLogs("Wallpaper change signal sent for: " + hostPathUri.toStdString());
+		return true;
     }
 }
 

@@ -5,6 +5,6 @@ namespace fs = std::filesystem;
 
 class FallbackSetter : public IWallpaperSetter {
 public:
-    void setWallpaper(const fs::path& path) override;
+    bool setWallpaper(const fs::path& path) override;
 	~FallbackSetter() = default;
 };
