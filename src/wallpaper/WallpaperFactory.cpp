@@ -1,4 +1,5 @@
-#include "WallpaperFactory.hpp#include <memory>
+#include "WallpaperFactory.hpp
+#include <memory>
 
 #include "IWallpaperSetter.hpp"
 
@@ -12,12 +13,12 @@
 
 std::unique_ptr<IWallpaperSetter> WallpaperFactory::create() {
 #ifdef RWAL_USE_KDE
-    return std::make_unique<KdeSetter>();
+  return std::make_unique<KdeSetter>();
 #elif defined(RWAL_USE_GNOME)
-    return std::make_unique<GnomeSetter>();
+  return std::make_unique<GnomeSetter>();
 #elif defined(RWAL_USE_HYPRLAND)
-    return std::make_unique<HyprlandSetter>();
+  return std::make_unique<HyprlandSetter>();
 #else
-    return nullptr;
+  return nullptr;
 #endif
 }
