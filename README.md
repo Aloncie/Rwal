@@ -21,7 +21,7 @@ Whether you're on a minimalist Window Manager or a full Desktop Environment, Rwa
 
 [<kbd> <br> Install <br> </kbd>](https://github.com/Aloncie/Rwal/blob/main/Installation.md)
 [<kbd> <br> Build Status <br> </kbd>](https://github.com/Aloncie/Rwal/actions)
-[<kbd> <br> Suppoprted DE <br> </kbd>](https://img.shields.io/docker/pulls/aloncie/rwal?color=blue&logo=docker&style=flat-square)
+[<kbd> <br> Suppoprted DE <br> </kbd>]()
 
 ---
 
