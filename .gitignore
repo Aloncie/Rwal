@@ -64,11 +64,6 @@ Thumbs.db
 *.temp
 *.backup
 *.autosave
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.webm
 
 # ==================== #
 # Package files        #
@@ -80,5 +75,4 @@ Thumbs.db
 
 #another
 .cache/
-assers/videos/
 
