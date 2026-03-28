@@ -20,7 +20,7 @@ We do **not** backport security patches to previous releases. This keeps develop
 
 I take security seriously. If you discover a security issue in Rwal, please report it privately.
 
-### How to Report
+### Ways to report
 
 1. Use GitHub's **private vulnerability reporting** tool:
    - Go to the repository's **Issues** tab
