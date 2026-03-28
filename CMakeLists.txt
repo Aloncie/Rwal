@@ -93,6 +93,7 @@ if(BUILD_TESTING)
         add_executable(rwal_tests
             tests/test_main.cpp
             tests/test_string_utils.cpp
+			tests/test_random.cpp
         )
 
         target_link_libraries(rwal_tests PRIVATE rwal_lib GTest::gtest_main)
