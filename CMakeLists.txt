@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
 
 project(rwal VERSION 0.5.0 LANGUAGES CXX)
 
+# --- SECTION: Configuration ---
 option(BUILD_TESTING "Build the testing suite" OFF)
 
 if(NOT CMAKE_INSTALL_PREFIX)
@@ -10,20 +11,24 @@ endif()
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Qt5 standard automation
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON) 
 set(CMAKE_AUTOUIC ON)
 
-# Dependencies
+# --- SECTION: Dependencies ---
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
 find_package(Curses REQUIRED)
 
+# Include the wallpaper subdirectory first so wallpaper_lib is available
 add_subdirectory(src/wallpaper)
 
-# Main App Library Sources
+# --- SECTION: Main Library (rwal_lib) ---
+# We keep the logic in a library to make it easy to link against the test suite
 set(SOURCES
     src/AppController/AppController.cpp
     src/funcs/funcs.cpp
@@ -40,97 +45,86 @@ set(SOURCES
     src/ui/menus/menus.cpp
 )
 
-set(HEADERS
-    src/AppController/AppController.hpp
-    src/funcs/funcs.hpp
-    src/internal/platform/env_utils.hpp
-    src/internal/utils/string_utils.hpp
-    src/internal/utils/vector_utils.hpp
-    src/internal/GlobalConstans.hpp
-    src/keywords/keywords.hpp
-    src/logs/logs.hpp
-    src/navigator/navigator.hpp
-    src/net/CurlWrapper.hpp
-    src/net/NetworkManager.hpp
-    src/settings/config.hpp
-    src/settings/settings.hpp
-    src/ui/cli/UIManager.hpp
-    src/ui/menus/menus.hpp
-)
-
-# Create rwal_lib
-add_library(rwal_lib STATIC ${SOURCES} ${HEADERS})
+add_library(rwal_lib STATIC ${SOURCES})
 
 target_include_directories(rwal_lib PUBLIC
-    ${PROJECT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src
+	${PROJECT_SOURCE_DIR}/tests
 )
 
-# Linking
 target_link_libraries(rwal_lib PUBLIC
     CURL::libcurl
     nlohmann_json::nlohmann_json
-    Qt5::DBus
     Qt5::Core
+    Qt5::DBus
     Qt5::Widgets
     ${CURSES_LIBRARIES}
     wallpaper_lib 
 )
 
-# Executable
+# --- SECTION: Main Executable ---
 add_executable(rwal src/main.cpp)
 target_link_libraries(rwal PRIVATE rwal_lib)
 
-# Installation
-install(TARGETS rwal RUNTIME DESTINATION bin)
-
-# --- SECTION: Testing (with safety checker) ---
+# --- SECTION: Testing (Submodule Version) ---
 if(BUILD_TESTING)
     if(EXISTS "${PROJECT_SOURCE_DIR}/third_party/googletest/CMakeLists.txt")
+        set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
         add_subdirectory(third_party/googletest)
-        enable_testing()
-        
-        # Auto-discover all test files
-        file(GLOB_RECURSE TEST_SOURCES 
-            "tests/*.cpp"
-            "tests/unit/*.cpp"
-            "tests/integration/*.cpp"
-        )
-        
-        # Remove test_main.cpp from the list (we'll add it separately)
-        list(REMOVE_ITEM TEST_SOURCES "${PROJECT_SOURCE_DIR}/tests/test_main.cpp")
-        
-        add_executable(rwal_tests
-            tests/test_main.cpp
-            ${TEST_SOURCES}
-        )
-
-        target_link_libraries(rwal_tests PRIVATE rwal_lib GTest::gtest_main)
-        target_include_directories(rwal_tests PRIVATE ${PROJECT_SOURCE_DIR}/src)
-
-        include(GoogleTest)
-        gtest_discover_tests(rwal_tests)
     else()
-        message(WARNING "GoogleTest submodules not found. Tests will not be built. Run 'git submodule update --init' to fix this.")
+        message(FATAL_ERROR "GoogleTest submodule not found! Run: git submodule update --init --recursive")
     endif()
+
+    enable_testing()
+
+    # GLOB ONLY actual .cpp test files. 
+    file(GLOB_RECURSE TEST_SOURCES 
+        "tests/unit/*.cpp"
+        "tests/integration/*.cpp"
+    )
+    
+    # Ensure test_main.cpp is the only entry point
+    list(REMOVE_ITEM TEST_SOURCES "${PROJECT_SOURCE_DIR}/tests/test_main.cpp")
+    
+    add_executable(rwal_tests
+        tests/test_main.cpp
+        ${TEST_SOURCES}
+    )
+
+    # Force C++20 for tests to ensure GTest 1.14+ features work
+    target_compile_features(rwal_tests PRIVATE cxx_std_20)
+
+    # Add Mocks and Fixtures as INCLUDE paths so tests can find them
+    target_include_directories(rwal_tests PRIVATE 
+        ${PROJECT_SOURCE_DIR}/src
+        ${PROJECT_SOURCE_DIR}/tests/mocks
+        ${PROJECT_SOURCE_DIR}/tests/fixtures
+    )
+    
+    target_link_libraries(rwal_tests PRIVATE 
+        rwal_lib 
+        gtest_main 
+        gmock_main
+    )
+
+    include(GoogleTest)
+    gtest_discover_tests(rwal_tests)
 endif()
 
-# --- SECTION: Packaging ---
+# --- SECTION: Installation & Packaging ---
+install(TARGETS rwal RUNTIME DESTINATION bin)
+
 set(CPACK_PACKAGE_NAME "rwal")
 set(CPACK_PACKAGE_VENDOR "Aloncie")
 set(CPACK_PACKAGE_CONTACT "Aloncie@proton.me")
-set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
-
 set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}-alpha")
-
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Wallpaper manager for KDE and GNOME")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Wallpaper manager for KDE, GNOME, and Hyprland")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
 
+# Debian/Ubuntu specific
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Aloncie <Aloncie@proton.me>")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libcurl4, libstdc++6, libqt5core5a, libqt5widgets5, libqt5dbus5, libncurses6")
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 
 set(CPACK_GENERATOR "DEB;RPM;TGZ")
-set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 include(CPack)

@@ -22,7 +22,7 @@ public:
 	Config();
 
 	std::string getConfigPath();
-	nlohmann::json& all() { return data; }
+	virtual nlohmann::json& all() { return data; }
 
 	template<typename G>
 	G get(const std::string& key){
