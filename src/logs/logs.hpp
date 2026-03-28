@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include <filesystem> #include <fstream>
+#include <filesystem> 
+#include <fstream>
 #include <QStandardPaths>
 #include "ui/cli/UIManager.hpp"
 

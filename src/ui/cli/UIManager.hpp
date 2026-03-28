@@ -19,11 +19,11 @@ public:
 	void shutdownUI();
 
 	UIManager();
-	void showMessage(std::string message);
-	void dodgeMessage(std::string message);
-	bool isInputActive() const;
-
-	void processInputChar(int ch);
+	virtual ~UIManager() = default;
+	virtual void showMessage(std::string message);
+	virtual void dodgeMessage(std::string message);
+	virtual bool isInputActive() const;
+	virtual void processInputChar(int ch);
 
 	template<typename T>
 	void requestInput(std::function<void(T)> callback, std::optional<std::string> message = std::nullopt) {

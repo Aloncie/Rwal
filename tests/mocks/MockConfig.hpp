@@ -6,8 +6,9 @@
 class MockConfig : public Config {
 public:
     // Mock template methods need non-template wrappers
-    MOCK_METHOD(nlohmann::json, getJson, (const std::string& key), (override));
-    MOCK_METHOD(bool, setJson, (const std::string& key, const nlohmann::json& value), (override));
+    MOCK_METHOD(nlohmann::json, getJson, (const std::string& key));
+    MOCK_METHOD(bool, setJson, (const std::string& key, const nlohmann::json& value));
+	MOCK_METHOD(std::string, getConfigPath, ());
 
     // Template wrappers
     template <typename G>
@@ -23,8 +24,7 @@ public:
     }
 	
 	// Mock non-template method
-	MOCK_METHOD(nlohmann::json& all, (), (override));
-	MOCK_METHOD(std::string, getConfigPath, (), (override));
+	MOCK_METHOD(nlohmann::json&, all, (), (override));
 
 	void setDefaultConfig() {
 		nlohmann::json defaultData = {
@@ -49,8 +49,8 @@ public:
 			}}
 		};
         ON_CALL(*this, getJson("search"))
-            .WillByDefault(Return(defaultConfig["search"]));
+            .WillByDefault(testing::Return(defaultData["search"]));
         ON_CALL(*this, all())
-            .WillByDefault(ReturnRef(defaultConfig));	
+            .WillByDefault(testing::ReturnRef(defaultData));	
 	}
 };
