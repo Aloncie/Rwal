@@ -27,7 +27,7 @@ sudo ./setup.sh
 ```bash
 # Configure the project
 # (Add -DBUILD_TESTING=ON if you want to run tests)
-cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake -B build 
 
 # Build the project
 cmake --build build -j$(nproc)
