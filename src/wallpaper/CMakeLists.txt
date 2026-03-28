@@ -5,9 +5,8 @@ set(SETTERS_SOURCES
     platforms/FallbackSetter.cpp
 )
 
-set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
 # Option to force a specific desktop environment
-option(RWAL_FORCE_DE "Force a specific desktop environment (GNOME, KDE, Hyprland)" "")
+set(RWAL_FORCE_DE "" CACHE STRING "Force a specific desktop environment (GNOME, KDE, Hyprland)")
 
 # Determine which DE to use
 if(NOT RWAL_FORCE_DE STREQUAL "")
