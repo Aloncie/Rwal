@@ -40,7 +40,7 @@ if(UNIX AND NOT APPLE)
         
     else()
         message(STATUS "No supported DE detected. Using fallback setter.")
-        message(STATUS "  (To force a specific DE, use: -DRWAL_FORCE_DE=GNOME/KDE/Hyprland)")
+		message(STATUS "  (To force a specific DE, use: -DRWAL_FORCE_DE=<DE_NAME>)")
     endif()
 endif()
 
