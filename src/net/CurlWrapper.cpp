@@ -19,7 +19,7 @@ MyCurl::MyCurl(){
 	if (curl == nullptr)
 		throw std::runtime_error("Failed to initialize CURL");
 	else 
-		curl_easy_setopt(curl,CURLOPT_USERAGENT,"rwal/1.0");
+		curl_easy_setopt(curl,CURLOPT_USERAGENT,"rwal/5.0");
 }
 
 void MyCurl::getRequest(std::string url){

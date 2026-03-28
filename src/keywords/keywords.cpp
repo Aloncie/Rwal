@@ -3,7 +3,6 @@
 #include "internal/platform/env_utils.hpp"
 #include "funcs/funcs.hpp"
 #include <filesystem>
-#include <iostream>
 #include <unistd.h>
 #include <sys/stat.h>
 #include "internal/utils/string_utils.hpp"
