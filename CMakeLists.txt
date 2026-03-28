@@ -90,10 +90,19 @@ if(BUILD_TESTING)
         add_subdirectory(third_party/googletest)
         enable_testing()
         
+        # Auto-discover all test files
+        file(GLOB_RECURSE TEST_SOURCES 
+            "tests/*.cpp"
+            "tests/unit/*.cpp"
+            "tests/integration/*.cpp"
+        )
+        
+        # Remove test_main.cpp from the list (we'll add it separately)
+        list(REMOVE_ITEM TEST_SOURCES "${PROJECT_SOURCE_DIR}/tests/test_main.cpp")
+        
         add_executable(rwal_tests
             tests/test_main.cpp
-            tests/test_string_utils.cpp
-			tests/test_random.cpp
+            ${TEST_SOURCES}
         )
 
         target_link_libraries(rwal_tests PRIVATE rwal_lib GTest::gtest_main)
