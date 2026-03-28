@@ -7,11 +7,9 @@ TEST(StringUtilsTest, FormatRemovesWhitespace) {
     EXPECT_EQ(input, "testing message");
 }
 
-/*
-TEST(StringUtilsTest, SplitRemovesWhitespace){
-	const std::string input = "testing message";
-	std::vector<std::string> result = rwal::utils::string::split_by_space(input);
-	EXPECT_EQ(result, {"testing", "message"};
+TEST(StringUtilsTest, SplitRemovesWhitespace) {
+    const std::string input = "testing message";
+    std::vector<std::string> result = rwal::utils::string::split_by_space(input);
+    std::vector<std::string> expected = {"testing", "message"};
+    EXPECT_EQ(result, expected);
 }
-
-*/
