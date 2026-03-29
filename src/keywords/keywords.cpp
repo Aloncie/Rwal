@@ -15,8 +15,7 @@ Keywords::Keywords(UIManager& ui, IConfigReader& config) : m_ui(ui), m_config(co
 void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> callback) {
     m_ui.requestInput<std::string>(
         [this, callback](std::string input) {
-            rwal::utils::string::format(input);
-            auto keywords = rwal::utils::string::split_by_space(input);
+            rwal::utils::string::format(input); auto keywords = rwal::utils::string::split_by_space(input);
             
             if (keywords.empty()) {
                 m_ui.showMessage("Input cannot be empty! Try again.");
