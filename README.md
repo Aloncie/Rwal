@@ -43,7 +43,7 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 ### Interactive Mode
 ![Interactive Preview][PreviewA]
 
-### Change Mode (Daemon)
+### Change Mode
 ![Daemon Preview][PreviewB]
 
 </div>
