@@ -4,6 +4,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 #include "logs/logs.hpp"
+#include "IConfigReader.hpp"
 
 class Config : public QObject, public IConfigReader {
     Q_OBJECT
