@@ -24,7 +24,7 @@ public:
         	}}
     		}},
     		{"search", {
-        		{"keywords", {}},
+        		{"keywords", keywords},
         		{"sorting", "random"},
         		{"res", "1920x1080"}
     		}},
