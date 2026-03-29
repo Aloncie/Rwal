@@ -18,7 +18,7 @@ protected:
         keywords = std::make_unique<Keywords>(*mockUI, *mockConfig);
     }
 
-    void TearDown() override = default;
+    void TearDown() override {};
 
     std::shared_ptr<MockUIManager> mockUI;
     std::shared_ptr<MockConfigReader> mockConfig;
@@ -69,7 +69,7 @@ TEST_F(KeywordsTest, GetRandomKeywords_Empty_FallsBackToArt) {
     keywords->GetRandomKeywords([&capturedKeyword](std::string kw) { capturedKeyword = kw; },
                                 "change");
 
-    EXPECT_FALSE(capturedKeyword.empty();
+    EXPECT_FALSE(capturedKeyword.empty());
 }
 
 TEST_F(KeywordsTest, PromptForKeywords_UserEntersValidInput) {
