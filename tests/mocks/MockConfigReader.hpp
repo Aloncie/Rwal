@@ -12,25 +12,11 @@ public:
     // Helper to inject test data
     void setSearchKeywords(const std::vector<std::string>& keywords) {
 		nlohmann::json searchJson = {
-			{"services", {
-        		{"wallhaven", {
-            		{"apikey", "apikey="},
-            		{"base_url", "https://wallhaven.cc/api/v1/search"},
-            		{"param_names", {
-                		{"query", "?q="},
-                		{"sorting", "sorting"},
-                		{"res", "resolutions"}
-            	}}
-        	}}
-    		}},
-    		{"search", {
+    		"search", {
         		{"keywords", keywords},
         		{"sorting", "random"},
         		{"res", "1920x1080"}
-    		}},
-			{"settings", {
-				{"cursor-visibility", "true"}
-			}}
+    		}
 		};
 
 
