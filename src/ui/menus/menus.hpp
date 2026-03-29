@@ -54,7 +54,7 @@ class KeywordsMenu : public Menu {
 private:
     Keywords& m_keywords;
     UIManager& m_ui;
-	IconfigReader& m_config;
+	IConfigReader& m_config;
     const std::string m_validChoices = "armq";
 
 public:
