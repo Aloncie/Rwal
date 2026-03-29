@@ -5,45 +5,63 @@
 #include <string>
 #include "logs/logs.hpp"
 
-class Config : public QObject{
-	Q_OBJECT
+class Config : public QObject, public IConfigReader {
+    Q_OBJECT
 private:
-	QFileSystemWatcher* watcher;
-	nlohmann::json data;
-	std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
-	std::string configPath;
+    QFileSystemWatcher* watcher;
+    nlohmann::json data;
+    std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
+    std::string configPath;
 
-	void saveConfig();
-	void initValidators();
+    void saveConfig();
+    void initValidators();
 
 public slots:
-	void loadConfig();
+    void loadConfig();
+
 public:
-	Config();
+    Config();
 
-	std::string getConfigPath();
-	virtual nlohmann::json& all() { return data; }
+    void reload() override { loadConfig(); }
 
-	template<typename G>
-	G get(const std::string& key){
-		try {
-			return data[key].get<G>();
-		}catch(std::invalid_argument& e){
-			 
-			Logs::getInstance().writeLogs("Error of getting config data: " + std::string(e.what()));
-			return G{};
-		}
-	}
+    std::string getConfigPath();
+    nlohmann::json& all() override { return data; }
+    nlohmann::json getImpl(const std::string& key) override {
+        if (data.contains(nlohmann::json::json_pointer(key))) {
+            return data[nlohmann::json::json_pointer(key)];
+        } else {
+            throw std::invalid_argument("Key not found: " + key);
+        }
+    }
+    void setImpl(const std::string& key, const nlohmann::json& value) override {
+        if (validators.count(key) && !validators.at(key)(value)) {
+            Logs::getInstance().writeLogs("Validation failed for key: " + key);
+            return;
+        }
+        data[nlohmann::json::json_pointer(key)] = value;
+        saveConfig();
+    }
 
-	template<typename S>
-	bool set(const std::string& key, const S& value){
-		nlohmann::json jValue = value;
+    template <typename G>
+    G get(const std::string& key) {
+        try {
+            nlohmann::json j = getImpl(key);
+            return j.get<G>();
+        } catch (std::invalid_argument& e) {
+            Logs::getInstance().writeLogs("Error of getting config data for key: " + key + ". " +
+                                          std::string(e.what()));
+            return G{};
+        }
+    }
 
-		if (validators.count(key) && !validators.at(key)(jValue))
-			return false;
+    template <typename S>
+    bool set(const std::string& key, const S& value) {
+        nlohmann::json jValue = value;
 
-		data[nlohmann::json::json_pointer(key)] = jValue;
-		saveConfig();	
-		return true;
-	}
+        if (validators.count(key) && !validators.at(key)(jValue)) return false;
+
+        data[nlohmann::json::json_pointer(key)] = jValue;
+        saveConfig();
+        return true;
+    }
 };

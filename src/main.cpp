@@ -7,7 +7,7 @@
 #include "navigator/navigator.hpp"
 #include "net/CurlWrapper.hpp"
 #include "net/NetworkManager.hpp"
-#include "settings/config.hpp"
+#include "settings/IConfigReader.hpp"
 #include "settings/settings.hpp"
 #include "ui/cli/UIManager.hpp"
 #include "ui/menus/menus.hpp"
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     QCoreApplication app(argc, argv);
 
     UIManager um;
-    Config config;
+    IConfigReader config;
     Keywords keywords(um, config);
     MyCurl curl;
     Timer timer;
@@ -30,8 +30,7 @@ int main(int argc, char* argv[]) {
     std::unique_ptr<IWallpaperSetter> env = wf.create();
     WallpaperManager wm(um, keywords, nm, *env);
 
-    if (argc > 1 &&
-        (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
+    if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
         wm.refresh("change");
         return 0;
     }

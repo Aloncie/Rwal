@@ -3,10 +3,10 @@
 #include <type_traits>
 #include <vector>
 #include <nlohmann/json.hpp>
-#include "settings/config.hpp"
 #include <filesystem>
 #include "ui/cli/UIManager.hpp"
 #include <type_traits>
+#include "settings/IConfigReader.hpp"
 
 namespace fs = std::filesystem;
 
@@ -18,11 +18,11 @@ private:
 	void importToTxt(fs::path& path);
 	std::vector<std::string> exportFromTxt(fs::path& path);
 	UIManager& m_ui;
-	Config& m_config;
+	IConfigReader& m_config;
 
 	template<typename> struct always_false : std::false_type {};
 public:
-	Keywords(UIManager& ui,Config& config);
+	Keywords(UIManager& ui,IConfigReader& config);
 
 	void LongWayGetKeywords(std::function<void(std::vector<std::string>)> callback);
 	void Default(std::vector<std::string>& Keywords);

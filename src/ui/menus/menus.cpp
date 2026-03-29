@@ -64,7 +64,7 @@ MenuResponce SettingsMenu::handleInput(const std::string& input) {
 }
 
 // ========== KeywordsMenu ==========
-KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui, Config& config)
+KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui, IConfigReader& config)
     : m_keywords(keywords), m_ui(ui), m_config(config) {}
 
 std::vector<std::string> KeywordsMenu::getLines() {
@@ -107,7 +107,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
         return {"", false, false, "Enter index to remove: "};
     } else if (input == "m") {
         m_keywords.editKeywords();
-        m_config.loadConfig();
+        m_config.reload();
         return {"", false, false};
     } else if (input == "q") {
         return {MenuId::MAIN, false, false};
