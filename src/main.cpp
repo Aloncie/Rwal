@@ -7,7 +7,7 @@
 #include "navigator/navigator.hpp"
 #include "net/CurlWrapper.hpp"
 #include "net/NetworkManager.hpp"
-#include "settings/IConfigReader.hpp"
+#include "settings/config.hpp"
 #include "settings/settings.hpp"
 #include "ui/cli/UIManager.hpp"
 #include "ui/menus/menus.hpp"
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     QCoreApplication app(argc, argv);
 
     UIManager um;
-    IConfigReader config;
+    Config config;
     Keywords keywords(um, config);
     MyCurl curl;
     Timer timer;
