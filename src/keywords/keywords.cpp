@@ -8,7 +8,7 @@
 #include "internal/utils/string_utils.hpp"
 #include "internal/utils/vector_utils.hpp"
 
-Keywords::Keywords(UIManager& ui, Config& config) : m_ui(ui), m_config(config){};
+Keywords::Keywords(UIManager& ui, IConfigReader& config) : m_ui(ui), m_config(config){};
 
 void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> callback) {
     m_ui.requestInput<std::string>(

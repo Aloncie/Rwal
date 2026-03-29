@@ -3,8 +3,8 @@
 #include <vector>
 
 #include "keywords/keywords.hpp"
-#include "settings/config.hpp"
 #include "settings/settings.hpp"
+#include "settings/IConfigReader.hpp"
 #include "ui/cli/UIManager.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 
@@ -54,11 +54,11 @@ class KeywordsMenu : public Menu {
 private:
     Keywords& m_keywords;
     UIManager& m_ui;
-    Config& m_config;
+	IconfigReader& m_config;
     const std::string m_validChoices = "armq";
 
 public:
-    KeywordsMenu(Keywords& keywords, UIManager& ui, Config& config);
+    KeywordsMenu(Keywords& keywords, UIManager& ui, IConfigReader& config);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     std::string getValidChoices() const override { return m_validChoices; }
