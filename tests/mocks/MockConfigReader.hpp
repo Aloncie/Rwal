@@ -1,9 +1,9 @@
 #pragma once
 #include <gmock/gmock.h>
 #include <nlohmann/json.hpp>
-#include "settings/IIConfigReaderReader.hpp"
+#include "settings/IConfigReader.hpp"
 
-class MockIConfigReader : public IConfigReader {
+class MockConfigReader : public IConfigReader {
 public:
     MOCK_METHOD(nlohmann::json&, all, (), (override));
     MOCK_METHOD(void, reload, (), (override));
