@@ -21,7 +21,7 @@ protected:
     void TearDown() override = default;
 
     std::shared_ptr<MockUIManager> mockUI;
-    std::shared_ptr<MockConfig> mockConfig;
+    std::shared_ptr<MockConfigReader> mockConfig;
     std::unique_ptr<Keywords> keywords;
 };
 
