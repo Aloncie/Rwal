@@ -34,13 +34,14 @@ public:
             throw std::invalid_argument("Key not found: " + key);
         }
     }
-    void setImpl(const std::string& key, const nlohmann::json& value) override {
+    bool setImpl(const std::string& key, const nlohmann::json& value) override {
         if (validators.count(key) && !validators.at(key)(value)) {
             Logs::getInstance().writeLogs("Validation failed for key: " + key);
-            return;
+            return false;
         }
         data[nlohmann::json::json_pointer(key)] = value;
         saveConfig();
+        return true;
     }
 
     template <typename G>
@@ -59,8 +60,10 @@ public:
     bool set(const std::string& key, const S& value) {
         nlohmann::json jValue = value;
 
-        if (validators.count(key) && !validators.at(key)(jValue)) return false;
-
+        if (validators.count(key) && !validators.at(key)(jValue)) {
+            Logs::getInstance().writeLogs("Validation failed for key: " + key);
+            return false;
+        }
         data[nlohmann::json::json_pointer(key)] = jValue;
         saveConfig();
         return true;

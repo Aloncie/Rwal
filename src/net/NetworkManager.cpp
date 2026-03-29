@@ -6,7 +6,6 @@
 #include "funcs/funcs.hpp"
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <cstring>
 #include <string>
 
 struct SocketGuard{
@@ -18,7 +17,7 @@ struct SocketGuard{
 	}
 };
 
-NetworkManager::NetworkManager(MyCurl& curl, Config& config) : m_curl(curl), m_config(config){}
+NetworkManager::NetworkManager(MyCurl& curl, IConfigReader& config) : m_curl(curl), m_config(config){}
 
 bool NetworkManager::isAvailable() {
     auto& logger = Logs::getInstance();
@@ -32,8 +31,7 @@ bool NetworkManager::isAvailable() {
 
     SocketGuard guard(sock); 
 
-    sockaddr_in server{};
-    server.sin_family = AF_INET;
+    sockaddr_in server{}; server.sin_family = AF_INET;
     server.sin_port = htons(53);
     
     if (inet_pton(AF_INET, "8.8.8.8", &server.sin_addr) <= 0) {
