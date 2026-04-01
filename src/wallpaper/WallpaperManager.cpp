@@ -5,6 +5,7 @@
 #include <QStandardPaths>
 #include <filesystem>
 #include <QCoreApplication>
+#include "PathResolver.hpp"
 
 namespace fs = std::filesystem;
 
