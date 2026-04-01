@@ -10,12 +10,12 @@ namespace fs = std::filesystem;
 
 class NetworkManager{
 public:
-	NetworkManager(MyCurl& curl, IConfigReader& config);
+	NetworkManager(CurlWrapper& curl, IConfigReader& config);
 	std::optional<fs::path> fetchImage(std::string keyword);
 	bool isAvailable();
 	std::string craftUrl(std::string keyword, std::optional<std::string> page = std::nullopt);
 	~NetworkManager() = default;
 private:
-	MyCurl& m_curl;
+	CurlWrapper& m_curl;
 	IConfigReader& m_config;
 };

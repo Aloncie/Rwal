@@ -7,111 +7,101 @@
 #include <string>
 #include <fstream>
 
-static size_t callback (void* contents, size_t size, size_t nmemb, void* userp) {
+static size_t callback(void* contents, size_t size, size_t nmemb, void* userp) {
     size_t realsize = size * nmemb;
     std::string* buffer = static_cast<std::string*>(userp);
-    buffer->append(static_cast<char*>(contents), realsize);    
-	return realsize;
+    buffer->append(static_cast<char*>(contents), realsize);
+    return realsize;
 }
 
-MyCurl::MyCurl(){
-	curl = curl_easy_init();
-	if (curl == nullptr)
-		throw std::runtime_error("Failed to initialize CURL");
-	else 
-		curl_easy_setopt(curl,CURLOPT_USERAGENT,"rwal/5.0");
+CurlWrapper::CurlWrapper() : curl(curl_easy_init(), curl_easy_cleanup) {
+    if (!curl) {
+        throw std::runtime_error("Failed to initialize CURL");
+    }
 }
 
-void MyCurl::getRequest(std::string url){
-	clearning();
+void CurlWrapper::getRequest(std::string url) {
+    clearning();
+    CURLcode res;
+    if (curl) {
+        curl_easy_setopt(curl.get(), CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, &callback);
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &buffer);
 
-	CURLcode res;
-	if (curl){
-		Logs::getInstance().writeLogs("Try to request");
+        res = curl_easy_perform(curl.get());
 
-		curl_easy_setopt(curl,CURLOPT_URL, url.c_str());
-		curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION,&callback);
-		curl_easy_setopt(curl,CURLOPT_WRITEDATA,&buffer);
-		curl_easy_setopt(curl,CURLOPT_TIMEOUT,10L);
-		curl_easy_setopt(curl,CURLOPT_FOLLOWLOCATION,1L);
-	
-		res = curl_easy_perform(curl);
+        curl_easy_getinfo(curl.get(), CURLINFO_RESPONSE_CODE, &http_code);
+        Logs::getInstance().writeLogs("url of request: " + url);
 
-		curl_easy_getinfo(curl,CURLINFO_RESPONSE_CODE,&http_code);
-	
-		Logs::getInstance().writeLogs("url of request: " + url);
+        if (res != CURLE_OK) {
+            std::string errStr = curl_easy_strerror(res);
+            Logs::getInstance().writeLogs("Curl Error: " + errStr);
+            return;
+        }
 
-		if (res != CURLE_OK) {
-			std::string errStr = curl_easy_strerror(res);
-			Logs::getInstance().writeLogs("Curl Error: " + errStr);
-			return;
-		}
+        if (http_code != 200) {
+            Logs::getInstance().writeLogs("HTTP Error: " + std::to_string(http_code));
+            return;
+        } else
+            Logs::getInstance().writeLogs("Successful request");
 
-		if (http_code != 200) {
-			Logs::getInstance().writeLogs("HTTP Error: " + std::to_string(http_code));
-			return;
-		} else
-			Logs::getInstance().writeLogs("Successful request");
-		
-		Logs::getInstance().writeLogs("Try to parse");
-		try {
-			j = nlohmann::json::parse(buffer);
-			Logs::getInstance().writeLogs("Successful parse JSON");
-		} catch (const std::exception& e) {
-			Logs::getInstance().writeLogs("JSON parse error: " + std::string(e.what()));
-			return;
-		}
-	}
-	else 
-		return;
-
+        Logs::getInstance().writeLogs("Try to parse");
+        try {
+            j = nlohmann::json::parse(buffer);
+            Logs::getInstance().writeLogs("Successful parse JSON");
+        } catch (const std::exception& e) {
+            Logs::getInstance().writeLogs("JSON parse error: " + std::string(e.what()));
+            return;
+        }
+    } else
+        return;
 }
 
-std::string MyCurl::getData(std::string paragraph, std::string str){
-	if (!j.contains(paragraph)){
-		 
-		Logs::getInstance().writeLogs("Error: paragraph " + paragraph + " not found in JSON");
-		return "";
-	}
-	try {
-		if (j[paragraph].is_array()){
-			for (auto& item : j[paragraph]){
-				if (item.contains(str)){
-					 
-					if (item[str].is_string()){
-						Logs::getInstance().writeLogs("Data of JSON: " + item[str].get<std::string>());
-						return item[str].get<std::string>();
-					}
-					Logs::getInstance().writeLogs("Data of JSON: " + std::to_string(item[str].get<int>()));
-					return std::to_string(item[str].get<int>());
-				}
-			}
-		}
+std::string CurlWrapper::getData(std::string paragraph, std::string str) {
+    if (!j.contains(paragraph)) {
+        Logs::getInstance().writeLogs("Error: paragraph " + paragraph + " not found in JSON");
+        return "";
+    }
+    try {
+        if (j[paragraph].is_array()) {
+            for (auto& item : j[paragraph]) {
+                if (item.contains(str)) {
+                    if (item[str].is_string()) {
+                        Logs::getInstance().writeLogs("Data of JSON: " +
+                                                      item[str].get<std::string>());
+                        return item[str].get<std::string>();
+                    }
+                    Logs::getInstance().writeLogs("Data of JSON: " +
+                                                  std::to_string(item[str].get<int>()));
+                    return std::to_string(item[str].get<int>());
+                }
+            }
+        }
 
-		else if (j[paragraph].is_object()){
-			if (j[paragraph].contains(str)){
-				 
-				if (j[paragraph][str].is_string()){
-					Logs::getInstance().writeLogs("Data of JSON: " + j[paragraph][str].get<std::string>());
-					return j[paragraph][str].get<std::string>();
-				}
+        else if (j[paragraph].is_object()) {
+            if (j[paragraph].contains(str)) {
+                if (j[paragraph][str].is_string()) {
+                    Logs::getInstance().writeLogs("Data of JSON: " +
+                                                  j[paragraph][str].get<std::string>());
+                    return j[paragraph][str].get<std::string>();
+                }
 
-				Logs::getInstance().writeLogs("Data of JSON: " + std::to_string(j[paragraph][str].get<int>()));
-				return std::to_string(j[paragraph][str].get<int>());
-			}
-		}
-	} catch (const std::exception& e){
-		 
-		Logs::getInstance().writeLogs("JSON parsing error: " + std::string(e.what()));
-	}
-	return "";
+                Logs::getInstance().writeLogs("Data of JSON: " +
+                                              std::to_string(j[paragraph][str].get<int>()));
+                return std::to_string(j[paragraph][str].get<int>());
+            }
+        }
+    } catch (const std::exception& e) {
+        Logs::getInstance().writeLogs("JSON parsing error: " + std::string(e.what()));
+    }
+    return "";
 }
 
-std::optional<fs::path> MyCurl::downloadImage(const std::string& image_url) {
-
+std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url) {
     const char* home = std::getenv("HOME");
     fs::path base_path = home ? fs::path(home) : fs::path("/tmp");
-    fs::path downloads = base_path / ".local/share/Aloncie/Rwal" / rwal::wallpaper::DONWLOADS_DIR_NAME;
+    fs::path downloads =
+        base_path / ".local/share/Aloncie/Rwal" / rwal::wallpaper::DONWLOADS_DIR_NAME;
 
     try {
         if (!fs::exists(downloads)) {
@@ -141,18 +131,21 @@ std::optional<fs::path> MyCurl::downloadImage(const std::string& image_url) {
 
     std::ofstream fp(wallpaper_path, std::ios::binary);
     if (!fp.is_open()) {
-        Logs::getInstance().writeLogs("Failed to open file for writing: " + wallpaper_path.string());
+        Logs::getInstance().writeLogs("Failed to open file for writing: " +
+                                      wallpaper_path.string());
         curl_easy_cleanup(image_curl);
         return std::nullopt;
     }
 
     curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
-    curl_easy_setopt(image_curl, CURLOPT_WRITEFUNCTION, +[](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
-        auto* stream = static_cast<std::ofstream*>(userdata);
-        size_t totalSize = size * nmemb;
-        stream->write(static_cast<char*>(ptr), totalSize);
-        return totalSize;
-    });
+    curl_easy_setopt(
+        image_curl, CURLOPT_WRITEFUNCTION,
+        +[](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
+            auto* stream = static_cast<std::ofstream*>(userdata);
+            size_t totalSize = size * nmemb;
+            stream->write(static_cast<char*>(ptr), totalSize);
+            return totalSize;
+        });
     curl_easy_setopt(image_curl, CURLOPT_WRITEDATA, &fp);
     curl_easy_setopt(image_curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(image_curl, CURLOPT_TIMEOUT, 15L);
@@ -170,31 +163,26 @@ std::optional<fs::path> MyCurl::downloadImage(const std::string& image_url) {
     return wallpaper_path;
 }
 
-MyCurl::~MyCurl(){
-	curl_easy_cleanup(curl);
+void CurlWrapper::clearning() {
+    buffer.clear();
+    j.clear();
 }
 
-void MyCurl::clearning(){
-	buffer.clear();
-	j.clear();
-}
-
-void MyCurl::generateUniqueSuffix(std::string& filename) {
+void CurlWrapper::generateUniqueSuffix(std::string& filename) {
     const std::string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
     for (int i = 0; i < rwal::wallpaper::SUFFIX_LENGTH; ++i) {
-	   	filename += chars[random(chars.size() - 1)];
+        filename += chars[random(chars.size() - 1)];
     }
 }
 
-std::string MyCurl::call_Image(const std::string& image_url) {
+std::string CurlWrapper::call_Image(const std::string& image_url) {
     size_t lastSlash = image_url.find_last_of('/');
     std::string filename = rwal::wallpaper::FILE_PREFIX;
 
     if (lastSlash == std::string::npos) {
         generateUniqueSuffix(filename);
         filename += ".jpg";
-    }
-    else {
+    } else {
         std::string raw_tail = image_url.substr(lastSlash + 1);
         size_t firstDash = raw_tail.find('-');
 
@@ -206,8 +194,7 @@ std::string MyCurl::call_Image(const std::string& image_url) {
             } else {
                 filename += ".jpg";
             }
-        }
-        else {
+        } else {
             filename += raw_tail.substr(firstDash + 1);
         }
     }
