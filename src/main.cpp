@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     UIManager um;
     Config config;
     Keywords keywords(um, config);
-    MyCurl curl;
+    CurlWrapper curl;
     Timer timer;
     NetworkManager nm(curl, config);
     WallpaperFactory wf;

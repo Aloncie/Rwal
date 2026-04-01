@@ -17,7 +17,7 @@ struct SocketGuard{
 	}
 };
 
-NetworkManager::NetworkManager(MyCurl& curl, IConfigReader& config) : m_curl(curl), m_config(config){}
+NetworkManager::NetworkManager(CurlWrapper& curl, IConfigReader& config) : m_curl(curl), m_config(config){}
 
 bool NetworkManager::isAvailable() {
     auto& logger = Logs::getInstance();
