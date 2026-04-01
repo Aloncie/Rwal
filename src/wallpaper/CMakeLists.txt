@@ -12,6 +12,7 @@ set(RWAL_FORCE_DE "" CACHE STRING "Force a specific desktop environment (GNOME, 
 if(NOT RWAL_FORCE_DE STREQUAL "")
     # User forced a specific DE
     set(CURRENT_DE ${RWAL_FORCE_DE})
+	add_definitions(-DSTR_FORCE_DE="${RWAL_FORCE_DE}")
     message(STATUS "Using forced desktop environment: ${CURRENT_DE}")
 else()
     # Auto-detect from environment
