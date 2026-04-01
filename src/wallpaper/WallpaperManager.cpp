@@ -9,24 +9,28 @@
 
 namespace fs = std::filesystem;
 
-WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm, IWallpaperSetter& env)
+WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm,
+                                   IWallpaperSetter& env)
     : m_ui(ui), m_keywords(keywords), m_nm(nm), m_env(env) {}
 
-
-void WallpaperManager::refresh(const std::string mode) {
-    m_keywords.GetRandomKeywords([this](std::string keyword) {
-        std::optional<fs::path> path = m_nm.fetchImage(keyword);
-        if (path.has_value()) {
-            PathResolver::toHostPath(*path);
-            bool success = m_env.setWallpaper(*path);
-            if (!success) {
-                m_ui.showMessage("Failed to set wallpaper. More info in logs");
-            }
-        } else {
-            Logs::getInstance().writeLogs("Path is empty");
-            m_ui.showMessage("Failed to download wallpaper.");
-        }
-    }, mode);
+std::string WallpaperManager::refresh(const std::string mode) {
+	std::string returnMessage = "Wallpaper refreshed successfully";
+    m_keywords.GetRandomKeywords(
+        [&](std::string keyword) {
+            std::optional<fs::path> path = m_nm.fetchImage(keyword);
+            if (path.has_value()) {
+                PathResolver::toHostPath(*path);
+                bool success = m_env.setWallpaper(*path);
+                if (!success) {
+					returnMessage = "Failed to set wallpaper. More info in logs";
+					Logs::getInstance().writeLogs("Failed to set wallpaper: " + path->string());
+                }
+            } else {
+                Logs::getInstance().writeLogs("Path is empty");
+				returnMessage = "Failed to fetch image. More info in logs";
+            } },
+        mode);
+	return returnMessage;
 }
 
 std::string WallpaperManager::saveCurrent() {
@@ -38,7 +42,7 @@ std::string WallpaperManager::saveCurrent() {
 
     auto picturesPathOpt = getPicturesPath();
     if (picturesPathOpt->empty()) {
-		Logs::getInstance().writeLogs("Could not determine Pictures folder");
+        Logs::getInstance().writeLogs("Could not determine Pictures folder");
         return "Could not determine Pictures folder";
     }
 
@@ -51,12 +55,14 @@ std::string WallpaperManager::saveCurrent() {
         Logs::getInstance().writeLogs("Failed to save wallpaper: " + std::string(e.what()));
         return "Failed to save wallpaper";
     }
-	return "";
+    return "";
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {
-    fs::path dir = fs::path(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString())
-                   / rwal::wallpaper::DONWLOADS_DIR_NAME;
+    fs::path dir =
+        fs::path(
+            QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) /
+        rwal::wallpaper::DONWLOADS_DIR_NAME;
     if (!fs::exists(dir)) return "";
 
     try {
@@ -82,8 +88,9 @@ std::optional<fs::path> WallpaperManager::getPicturesPath() {
         return std::nullopt;
     }
 
-	fs::path rwalDir = fs::path(path.toStdString()) / QCoreApplication::applicationName().toStdString();  	
-	std::error_code ec;
+    fs::path rwalDir =
+        fs::path(path.toStdString()) / QCoreApplication::applicationName().toStdString();
+    std::error_code ec;
     fs::create_directories(rwalDir, ec);
     if (ec) {
         m_ui.showMessage("Failed to create rwal directory");

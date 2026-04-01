@@ -24,8 +24,8 @@ std::vector<std::string> MainMenu::getLines() {
 }
 MenuResponce MainMenu::handleInput(const std::string& input) {
     if (input == "1") {
-        m_wm.refresh();
-        return {"", false, false};
+		std::string message = m_wm.refresh();
+        return {"", false, false, message};
     } else if (input == "2") {
         std::string message = m_wm.saveCurrent();
         return {"", false, false, message};
