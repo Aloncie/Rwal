@@ -1,5 +1,4 @@
 #include "AppController.hpp"
-#include <iostream>
 #include "logs/logs.hpp"
 
 AppController::AppController(Navigator* nav, UIManager& ui, QObject* parent) : QObject(parent), m_navigator(nav), m_ui(ui)
