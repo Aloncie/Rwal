@@ -4,9 +4,7 @@
 #include "net/NetworkManager.hpp"
 #include <QStandardPaths>
 #include <filesystem>
-#include <iostream>
 #include <QCoreApplication>
-#include "PathResolver.hpp"
 
 namespace fs = std::filesystem;
 
