@@ -32,7 +32,7 @@ public:
 
     template<typename T = std::vector<std::string>>
     T ShortWayGetKeywords() {
-        auto search = m_config.getImpl("search");
+        auto search = m_config.getImpl("/search");
         std::vector<std::string> keywords;
 
         if (search.contains("keywords") && search["keywords"].is_array()) {

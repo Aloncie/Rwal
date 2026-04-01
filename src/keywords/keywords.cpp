@@ -30,7 +30,7 @@ void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> c
 }
 
 void Keywords::LongWayGetKeywords(std::function<void(std::vector<std::string>)> callback) {
-    auto search = m_config.getImpl("search");
+    auto search = m_config.getImpl("/search");
 
     if (search.contains("keywords") && search["keywords"].is_array() && !search["keywords"].empty()) {
         callback(search["keywords"].get<std::vector<std::string>>());
