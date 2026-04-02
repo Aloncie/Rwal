@@ -1,7 +1,8 @@
 #include "WallpaperFactory.hpp"
-#include <memory>
-#include "IWallpaperSetter.hpp"
 #include "platforms/FallbackSetter.hpp"
+#include "IWallpaperSetter.hpp"
+
+#include <memory>
 
 #ifdef RWAL_USE_KDE
     #include "platforms/KdeSetter.hpp"

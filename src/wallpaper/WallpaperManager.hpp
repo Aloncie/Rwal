@@ -1,11 +1,12 @@
 #pragma once
-#include <string>
 #include "ui/cli/UIManager.hpp"
 #include "keywords/keywords.hpp"
-#include <filesystem>
-#include <optional>
 #include "net/NetworkManager.hpp"
 #include "IWallpaperSetter.hpp"
+
+#include <string>
+#include <filesystem>
+#include <optional>
 
 namespace fs = std::filesystem;
 

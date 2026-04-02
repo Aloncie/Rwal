@@ -1,10 +1,10 @@
 #include "menus.hpp"
-
-#include <QCoreApplication>
-
 #include "internal/utils/string_utils.hpp"
 #include "menu_ids.hpp"
 #include "settings/config.hpp"
+
+#include <QCoreApplication>
+
 
 namespace MenuId = rwal::ui::MenuId;
 

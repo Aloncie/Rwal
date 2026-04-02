@@ -1,9 +1,10 @@
 #include "NetworkManager.hpp"
 #include "logs/logs.hpp"
+#include "funcs/funcs.hpp"
+
 #include <optional>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include "funcs/funcs.hpp"
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string>

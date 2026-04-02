@@ -1,6 +1,7 @@
 #include "HyprlandSetter.hpp" 
-#include <cstdlib>
 #include "logs/logs.hpp"
+
+#include <cstdlib>
 
 static bool hasTool(const std::string& tool) {
     std::string cmd = "which " + tool + " > /dev/null 2>&1";

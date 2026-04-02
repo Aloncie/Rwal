@@ -2,10 +2,11 @@
 #include "internal/GlobalConstans.hpp"
 #include "logs/logs.hpp"
 #include "net/NetworkManager.hpp"
+#include "PathResolver.hpp"
+
 #include <QStandardPaths>
 #include <filesystem>
 #include <QCoreApplication>
-#include "PathResolver.hpp"
 
 namespace fs = std::filesystem;
 

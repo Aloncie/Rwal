@@ -1,6 +1,7 @@
 #pragma once
 #include "CurlWrapper.hpp"
 #include "settings/IConfigReader.hpp"
+
 #include <optional>
 #include <string>
 #include <filesystem>

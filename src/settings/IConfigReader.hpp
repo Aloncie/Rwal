@@ -1,7 +1,8 @@
 #pragma once
+#include "logs/logs.hpp"
+
 #include <nlohmann/json.hpp>
 #include <string>
-#include "logs/logs.hpp"
 
 class IConfigReader {
 public:

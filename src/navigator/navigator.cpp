@@ -1,7 +1,8 @@
 #include "navigator.hpp"
+#include "logs/logs.hpp"
+
 #include <QCoreApplication>
 #include <ncurses.h>
-#include "logs/logs.hpp"
 
 void Navigator::registerMenu(const std::string& name, std::unique_ptr<Menu> menu) {
     m_menus[name] = std::move(menu);
@@ -16,8 +17,9 @@ void Navigator::start(const std::string InitialMenu){
 		m_currentMenu = it->second.get();
 		printCurrentMenu();
 	}
-	else
+	else{
 		Logs::getInstance().writeLogs("Failed InitialMenu in Navigator::start: " + InitialMenu);
+	}
 }
 
 void Navigator::printCurrentMenu() {

@@ -1,8 +1,8 @@
-#include <algorithm>
-#include <cctype>
-#include <map>
 #include "UIManager.hpp"
 #include "logs/logs.hpp"
+
+#include <algorithm>
+#include <cctype>
 
 bool UIManager::isInputActive() const {return inputActive;}
 

@@ -1,7 +1,8 @@
 #pragma once
+#include "wallpaper/IWallpaperSetter.hpp"
+
 #include <string>
 #include <filesystem>
-#include "wallpaper/IWallpaperSetter.hpp"
 
 class HyprlandSetter : public IWallpaperSetter {
 public:

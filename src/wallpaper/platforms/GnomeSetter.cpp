@@ -1,10 +1,5 @@
 #include "GnomeSetter.hpp"
-
 #include "logs/logs.hpp"
-
-#ifdef signals
-#undef signals
-#endif
 
 #include <gio/gio.h>
 

@@ -1,8 +1,8 @@
 #include "config.hpp"
+
 #include <QDir>
 #include <QCoreApplication>
 #include <QStandardPaths>
-#include <fstream>
 
 std::string Config::getConfigPath(){
 	QString configDir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
