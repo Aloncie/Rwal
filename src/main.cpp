@@ -1,6 +1,3 @@
-#include <QCoreApplication>
-#include <QObject>
-
 #include "AppController/AppController.hpp"
 #include "keywords/keywords.hpp"
 #include "logs/logs.hpp"
@@ -14,6 +11,9 @@
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"
 #include "wallpaper/WallpaperManager.hpp"
+
+#include <QCoreApplication>
+#include <QObject>
 
 int main(int argc, char* argv[]) {
     QCoreApplication::setApplicationName("Rwal");
