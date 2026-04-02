@@ -5,21 +5,30 @@ set(SETTERS_SOURCES
     platforms/FallbackSetter.cpp
 )
 
-# Option to force a specific desktop environment
+# Add an option to force a specific desktop environment for testing or if auto-detection fails
 set(RWAL_FORCE_DE "" CACHE STRING "Force a specific desktop environment (GNOME, KDE, Hyprland)")
 
-# Determine which DE to use
+# Check if the user has set a forced DE and validate it
 if(NOT RWAL_FORCE_DE STREQUAL "")
-    # User forced a specific DE
-    set(CURRENT_DE ${RWAL_FORCE_DE})
-	add_definitions(-DSTR_FORCE_DE="${RWAL_FORCE_DE}")
-    message(STATUS "Using forced desktop environment: ${CURRENT_DE}")
-else()
-    # Auto-detect from environment
+    string(TOUPPER "${RWAL_FORCE_DE}" FORCE_DE_UPPER)
+    
+    if(FORCE_DE_UPPER MATCHES "GNOME|KDE|HYPRLAND")
+        set(CURRENT_DE ${FORCE_DE_UPPER})
+        message(STATUS "Using forced desktop environment: ${CURRENT_DE}")
+    else()
+        message(WARNING "Forced DE '${RWAL_FORCE_DE}' is invalid. Switching to auto-detect.")
+        set(RWAL_FORCE_DE "" CACHE STRING "" FORCE) # Сбрасываем кэш
+    endif()
+endif()
+
+# If no forced DE, try to auto-detect
+if(RWAL_FORCE_DE STREQUAL "")
     set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
+    string(TOUPPER "${CURRENT_DE}" CURRENT_DE) # Приводим к верхнему регистру для надежности
     message(STATUS "Auto-detected desktop environment: ${CURRENT_DE}")
 endif()
 
+# Add platform-specific sources and definitions based on the detected desktop environment
 if(UNIX AND NOT APPLE)
     if(CURRENT_DE MATCHES "GNOME")
         find_package(PkgConfig REQUIRED)
@@ -34,17 +43,18 @@ if(UNIX AND NOT APPLE)
         add_definitions(-DRWAL_USE_KDE)
         message(STATUS "Using KDE wallpaper setter")
         
-    elseif(CURRENT_DE MATCHES "Hyprland")
+    elseif(CURRENT_DE MATCHES "HYPRLAND")
         list(APPEND SETTERS_SOURCES platforms/HyprlandSetter.cpp)
         add_definitions(-DRWAL_USE_HYPRLAND)
         message(STATUS "Using Hyprland wallpaper setter")
         
     else()
-        message(STATUS "No supported DE detected. Using fallback setter.")
-		message(STATUS "  (To force a specific DE, use: -DRWAL_FORCE_DE=<DE_NAME>)")
+        message(STATUS "No supported DE detected ('${CURRENT_DE}'). Using fallback setter.")
+        message(STATUS "  (To force a specific DE, use: cmake .. -DRWAL_FORCE_DE=GNOME|KDE|Hyprland)")
     endif()
 endif()
 
+# Add the library target for the wallpaper setters
 add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
 target_include_directories(wallpaper_lib PUBLIC 
@@ -52,6 +62,7 @@ target_include_directories(wallpaper_lib PUBLIC
     ${PROJECT_SOURCE_DIR}/src
 )
 
+# Platform-specific libraries if needed
 if(CURRENT_DE MATCHES "GNOME")
     target_include_directories(wallpaper_lib PRIVATE ${GIO_INCLUDE_DIRS})
     target_link_libraries(wallpaper_lib PRIVATE ${GIO_LIBRARIES})
