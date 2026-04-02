@@ -15,5 +15,5 @@ public:
 	void start(const std::string InitialMenu);
 	MenuResponce processInput(std::string& input, UIManager& uimanager);
 	void registerMenu(const std::string& name, std::unique_ptr<Menu> menu);
-	std::string getCurrentValidChoices() const;
+	const std::string& getCurrentValidChoices() const;
 };

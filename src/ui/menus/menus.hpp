@@ -20,7 +20,7 @@ public:
     virtual ~Menu() = default;
     virtual std::vector<std::string> getLines() = 0;
     virtual MenuResponce handleInput(const std::string& input) = 0;
-    virtual const std::string getValidChoices() const = 0;
+    virtual const std::string& getValidChoices() const = 0;
 };
 
 class MainMenu : public Menu {
@@ -34,7 +34,7 @@ public:
     MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
-    const std::string getValidChoices() const override { return m_validChoices; }
+    const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
 class SettingsMenu : public Menu {
@@ -47,7 +47,7 @@ public:
     SettingsMenu(Timer& timer, WallpaperManager& wm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
-    const std::string getValidChoices() const override { return m_validChoices; }
+    const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
 class KeywordsMenu : public Menu {
@@ -61,7 +61,7 @@ public:
     KeywordsMenu(Keywords& keywords, UIManager& ui, IConfigReader& config);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
-    const std::string getValidChoices() const override { return m_validChoices; }
+    const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
 class TimerMenu : public Menu {
@@ -73,5 +73,5 @@ public:
     TimerMenu(Timer& timer);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
-    const std::string getValidChoices() const override { return m_validChoices; }
+    const std::string& getValidChoices() const override { return m_validChoices; }
 };
