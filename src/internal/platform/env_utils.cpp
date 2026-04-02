@@ -1,7 +1,8 @@
 #include "env_utils.hpp"
 #include <sys/wait.h>
 #include <unistd.h>
-#include <vector>
+#include <cstdlib>
+#include <string>
 
 namespace rwal::platform::executor {
     void open_editor(fs::path& path) {

@@ -1,7 +1,8 @@
 #pragma once
 #include "ui/menus/menus.hpp"
-#include <string>
 #include "ui/cli/UIManager.hpp"
+
+#include <string>
 #include <map>
 #include <memory>
 

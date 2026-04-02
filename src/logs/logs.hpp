@@ -1,9 +1,10 @@
 #pragma once
+#include "ui/cli/UIManager.hpp"
+
 #include <string>
-#include <filesystem> 
+#include <filesystem>
 #include <fstream>
 #include <QStandardPaths>
-#include "ui/cli/UIManager.hpp"
 
 namespace fs = std::filesystem;
 

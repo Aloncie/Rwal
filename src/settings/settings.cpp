@@ -1,5 +1,6 @@
 #include "settings.hpp"
 #include "logs/logs.hpp"
+
 #include <filesystem>
 #include <fstream>
 #include <QCoreApplication>
@@ -7,9 +8,7 @@
 #include <QFileInfo>
 #include <exception>
 #include <optional>
-#include <vector>
 #include <unistd.h>
-#include <iostream>
 
 std::optional<fs::path> Timer::getUserTimerPath() const {
 	const char* home_dir = std::getenv("HOME");	

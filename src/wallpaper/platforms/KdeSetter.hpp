@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
 #include "wallpaper/IWallpaperSetter.hpp"
+#include <filesystem>
 
 namespace fs = std::filesystem;
 

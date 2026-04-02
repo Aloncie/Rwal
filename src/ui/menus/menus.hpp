@@ -1,12 +1,12 @@
 #pragma once
-#include <string>
-#include <vector>
-
 #include "keywords/keywords.hpp"
 #include "settings/settings.hpp"
 #include "settings/IConfigReader.hpp"
 #include "ui/cli/UIManager.hpp"
 #include "wallpaper/WallpaperManager.hpp"
+
+#include <string>
+#include <vector>
 
 struct MenuResponce {
     std::string nextMenu;

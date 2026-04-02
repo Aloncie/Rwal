@@ -1,10 +1,14 @@
 #pragma once
+#include "logs/logs.hpp"
+#include "IConfigReader.hpp"
+
 #include <functional>
 #include <QFileSystemWatcher>
 #include <nlohmann/json.hpp>
 #include <string>
-#include "logs/logs.hpp"
-#include "IConfigReader.hpp"
+#include <map>
+#include <stdexcept>
+#include <QObject>
 
 class Config : public QObject, public IConfigReader {
     Q_OBJECT

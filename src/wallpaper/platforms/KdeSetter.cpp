@@ -1,10 +1,11 @@
 #include "KdeSetter.hpp"
+#include "logs/logs.hpp"
+
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QVariantMap>
 #include <QDebug>
 #include <QString>
-#include "logs/logs.hpp"
 
 bool KdeSetter::setWallpaper(const fs::path& path) {
     QString hostPathUri = "file://" + QString::fromStdString(path);
