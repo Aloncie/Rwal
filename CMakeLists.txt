@@ -12,13 +12,11 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Qt5 standard automation
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON) 
 set(CMAKE_AUTOUIC ON)
 
-# --- SECTION: Dependencies ---
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
@@ -27,8 +25,6 @@ find_package(Curses REQUIRED)
 # Include the wallpaper subdirectory first so wallpaper_lib is available
 add_subdirectory(src/wallpaper)
 
-# --- SECTION: Main Library (rwal_lib) ---
-# We keep the logic in a library to make it easy to link against the test suite
 set(SOURCES
     src/AppController/AppController.cpp
     src/funcs/funcs.cpp
@@ -43,6 +39,7 @@ set(SOURCES
     src/settings/settings.cpp
     src/ui/cli/UIManager.cpp
     src/ui/menus/menus.cpp
+	src/Application/Application.cpp
 )
 
 add_library(rwal_lib STATIC ${SOURCES})
@@ -62,7 +59,6 @@ target_link_libraries(rwal_lib PUBLIC
     wallpaper_lib 
 )
 
-# --- SECTION: Main Executable ---
 add_executable(rwal src/main.cpp)
 target_link_libraries(rwal PRIVATE rwal_lib)
 
