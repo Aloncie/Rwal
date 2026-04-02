@@ -17,14 +17,15 @@ void AppController::handleStdin() {
     if (m_ui.isInputActive()) {
         m_ui.processInputChar(ch);
     } else {
-        if (ch > 31 && ch < 127) {
+		const std::string validChoices = m_navigator->getCurrentValidChoices();
+		char inputChar = static_cast<char>(ch);
+        if (validChoices.find(inputChar) != std::string::npos) {
             std::string input(1, static_cast<char>(ch));
             resp = m_navigator->processInput(input, m_ui); 
             if (resp.needQuit) return;
         }
     }
 	
-	//throw away other input
     while(getch() != ERR); 
 
     m_navigator->printCurrentMenu();
