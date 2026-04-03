@@ -23,7 +23,7 @@ bool GnomeSetter::setWallpaper(const fs::path& path) {
     g_free(uri);
     g_object_unref(settings);
     g_object_unref(file);
-	return true;
+    return true;
 }
 
 GnomeSetter::GnomeSetter() {
@@ -31,3 +31,4 @@ GnomeSetter::GnomeSetter() {
     g_type_init();
 #endif
 }
+

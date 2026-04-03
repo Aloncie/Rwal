@@ -57,6 +57,8 @@ endif()
 # Add the library target for the wallpaper setters
 add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
+target_compile_definitions(wallpaper_lib PRIVATE QT_NO_KEYWORDS)
+
 target_include_directories(wallpaper_lib PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src
@@ -73,3 +75,4 @@ if(CURRENT_DE MATCHES "KDE")
 endif()
 
 target_link_libraries(wallpaper_lib PRIVATE Qt5::Core)
+
