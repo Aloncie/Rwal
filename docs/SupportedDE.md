@@ -51,6 +51,8 @@ cmake -B build -DRWAL_FORCED_DE=GnoME
 | **HyprlandSetter** | `HYPRLAND_INSTANCE_SIGNATURE` set; `which hyprpaper` or `which swww` |
 | **FallbackSetter** | None (always logs error) |
 
+> **Are there problems with one of DE?**
+> **[Report an issue](https://github.com)**
 
 ## 📁 Code Locations
 
@@ -75,7 +77,8 @@ src/wallpaper/
 | **KdeSetter** | Arch Linux (KDE)|
 | **HyprlandSetter** | not tested |
 
-> **Your distribution not listed?** The setter should work as long as the required tools/APIs are present.
+> **Your distribution not listed? Open an issue – we'd love to hear about your setup!**
+> **[Request a setter](https://github.com/Aloncie/Rwal/discussions)**
 
 ---
 
@@ -89,16 +92,13 @@ src/wallpaper/
 
 - Add Windows support.
 - Add Cinnamon support.
+  
+---
 
 <div align="center">
 
-# Rwal – one build, one desktop, reliable wallpaper switching. 🐧
-
-[![GitHub Repository](https://shields.io)](https://github.com/Aloncie/Rwal)
-
-[Report an issue](https://github.com) • [Request a setter](https://github.com)
+### Rwal – one build, one desktop, reliable wallpaper switching. 🐧
 
 </div>
 
----
 
