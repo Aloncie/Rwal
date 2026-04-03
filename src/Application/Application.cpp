@@ -28,8 +28,10 @@ int Application::run(int argc, char* argv[]) {
     parser.addVersionOption();
 
     QCommandLineOption changeOption({"c", "change"}, "Change wallpaper one and exit");
+	QCommandLineOption saveOption({"s", "save"}, "Save current wallpaper");
 
     parser.addOption(changeOption);
+	parser.addOption(saveOption);
     parser.process(app);
 
     if (parser.isSet(changeOption)) {
@@ -40,13 +42,27 @@ int Application::run(int argc, char* argv[]) {
         NetworkManager nm(curl, config);
         WallpaperFactory wf;
         std::unique_ptr<IWallpaperSetter> env = wf.create();
-        WallpaperManager wm(um, keywords, nm, *env);
-        std::string message = wm.refresh();
+        WallpaperManager wm(um, nm, *env);
+		std::string message = wm.refresh(keywords);
         Logs::init(um);
         Logs::getInstance().writeLogs("Rwal's start in change mode");
         Logs::getInstance().writeLogs(message);
         return 0;
     }
+	else if (parser.isSet(saveOption)) {
+		UIManager um;
+		Config config;
+		CurlWrapper curl;
+		NetworkManager nm(curl, config);
+		WallpaperFactory wf;
+		std::unique_ptr<IWallpaperSetter> env = wf.create();
+		WallpaperManager wm(um, nm, *env);
+		std::string message = wm.saveCurrent();
+		Logs::init(um);
+		Logs::getInstance().writeLogs("Rwal's start for save current wallpaper");
+		Logs::getInstance().writeLogs(message);
+		return 0;
+	}
 
     UIManager um;
     Config config;
@@ -56,7 +72,7 @@ int Application::run(int argc, char* argv[]) {
     NetworkManager nm(curl, config);
     WallpaperFactory wf;
     std::unique_ptr<IWallpaperSetter> env = wf.create();
-    WallpaperManager wm(um, keywords, nm, *env);
+    WallpaperManager wm(um, nm, *env);
 
     um.initUI();
 

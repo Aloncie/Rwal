@@ -60,7 +60,7 @@ void Timer::createSystemdTimer(){
 			"ExecStart=/usr/local/bin/rwal --change\n"
 			"Restart=on-failure\n"
 			"RestartSec=2s\n"
-			"StartLimitBurst=3\n"
+			"StartLimitBurst=3\n";
 			service.close();
 			Logs::getInstance().writeLogs("Success creation service file");
 		}
