@@ -201,3 +201,4 @@ std::string CurlWrapper::call_Image(const std::string& image_url) {
     }
     return filename;
 }
+

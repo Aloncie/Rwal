@@ -8,3 +8,4 @@ class KdeSetter : public IWallpaperSetter {
 public:
 	bool setWallpaper(const fs::path& path) override;
 };
+

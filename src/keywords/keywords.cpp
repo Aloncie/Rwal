@@ -122,3 +122,4 @@ std::vector<std::string> Keywords::exportFromTxt(fs::path& path) {
     }
     return keywords;
 }
+

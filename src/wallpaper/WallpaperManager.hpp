@@ -24,3 +24,4 @@ private:
     NetworkManager& m_nm;
     IWallpaperSetter& m_env;
 };
+

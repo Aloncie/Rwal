@@ -18,3 +18,4 @@ void PathResolver::toHostPath(fs::path& path) {
         path = fs::path(pathStr);
     }
 }
+

@@ -23,3 +23,4 @@ std::unique_ptr<IWallpaperSetter> WallpaperFactory::create() {
     return std::make_unique<FallbackSetter>();
 #endif
 }
+

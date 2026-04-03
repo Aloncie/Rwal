@@ -13,3 +13,4 @@ namespace rwal::utils::string{
         return result;
     }
 }
+

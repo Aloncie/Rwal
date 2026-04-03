@@ -17,3 +17,4 @@ public:
 	void registerMenu(const std::string& name, std::unique_ptr<Menu> menu);
 	const std::string& getCurrentValidChoices() const;
 };
+

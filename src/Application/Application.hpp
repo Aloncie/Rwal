@@ -4,5 +4,6 @@ class Application {
 public:
     Application() = default;
     ~Application() = default;
-    int run(int argc, char *argv[]);
+    int run(int argc, char* argv[]);
 };
+

@@ -50,3 +50,4 @@ public:
 
     virtual void writeLogs(std::string message);
 };
+

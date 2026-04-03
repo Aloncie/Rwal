@@ -9,3 +9,4 @@ namespace rwal{
 		static inline const std::string DONWLOADS_DIR_NAME = "downloads";
 	}
 }
+

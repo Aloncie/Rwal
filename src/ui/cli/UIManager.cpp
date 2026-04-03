@@ -94,3 +94,4 @@ void UIManager::showMessage(std::string message) {
 
     refresh();
 }
+

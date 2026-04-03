@@ -195,3 +195,4 @@ bool Timer::TimerStatus(){
 	return system("systemctl --user is-active rwal.timer >/dev/null 2>&1") == 0;
 }
 
+

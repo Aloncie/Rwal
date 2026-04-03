@@ -75,3 +75,4 @@ public:
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
+

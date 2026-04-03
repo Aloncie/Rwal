@@ -2,7 +2,6 @@
 #include "logs/logs.hpp"
 
 #include <gio/gio.h>
-
 bool GnomeSetter::setWallpaper(const fs::path& path) {
     if (std::getenv("XDG_CURRENT_DESKTOP") == nullptr ||
         std::string(std::getenv("XDG_CURRENT_DESKTOP")).find("GNOME") == std::string::npos) {

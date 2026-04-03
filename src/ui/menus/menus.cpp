@@ -140,3 +140,4 @@ MenuResponce TimerMenu::handleInput(const std::string& input) {
         return {"", true, false};
     }
 }
+

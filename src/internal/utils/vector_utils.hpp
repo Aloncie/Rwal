@@ -10,3 +10,4 @@ namespace rwal::utils::vector {
         }
     }
 }
+
