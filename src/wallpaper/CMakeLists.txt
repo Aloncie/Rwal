@@ -17,14 +17,14 @@ if(NOT RWAL_FORCE_DE STREQUAL "")
         message(STATUS "Using forced desktop environment: ${CURRENT_DE}")
     else()
         message(WARNING "Forced DE '${RWAL_FORCE_DE}' is invalid. Switching to auto-detect.")
-        set(RWAL_FORCE_DE "" CACHE STRING "" FORCE) # Сбрасываем кэш
+        set(RWAL_FORCE_DE "" CACHE STRING "" FORCE)
     endif()
 endif()
 
 # If no forced DE, try to auto-detect
 if(RWAL_FORCE_DE STREQUAL "")
     set(CURRENT_DE "$ENV{XDG_CURRENT_DESKTOP}")
-    string(TOUPPER "${CURRENT_DE}" CURRENT_DE) # Приводим к верхнему регистру для надежности
+    string(TOUPPER "${CURRENT_DE}" CURRENT_DE)
     message(STATUS "Auto-detected desktop environment: ${CURRENT_DE}")
 endif()
 
