@@ -1,9 +1,10 @@
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
-#include <memory>
 #include "keywords/keywords.hpp"
 #include "mocks/MockUIManager.hpp"
 #include "mocks/MockConfigReader.hpp"
+
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include <memory>
 
 using ::testing::_;
 using ::testing::Invoke;
@@ -14,7 +15,7 @@ protected:
     void SetUp() override {
         mockUI = std::make_shared<MockUIManager>();
         mockConfig = std::make_shared<MockConfigReader>();
-        keywords = std::make_unique<Keywords>(*mockConfig);  // No UI in constructor
+        keywords = std::make_unique<Keywords>(*mockConfig);
     }
 
     std::shared_ptr<MockUIManager> mockUI;
