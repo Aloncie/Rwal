@@ -24,3 +24,4 @@ public:
         ON_CALL(*this, getImpl("search")).WillByDefault(::testing::Return(searchJson));
     }
 };
+

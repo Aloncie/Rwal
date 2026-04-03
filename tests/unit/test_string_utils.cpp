@@ -13,3 +13,4 @@ TEST(StringUtilsTest, SplitRemovesWhitespace) {
     std::vector<std::string> expected = {"testing", "message"};
     EXPECT_EQ(result, expected);
 }
+

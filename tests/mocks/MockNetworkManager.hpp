@@ -23,3 +23,4 @@ public:
     // Helper to set up offline mode
     void setOffline() { ON_CALL(*this, isAvailable()).WillByDefault(Return(false)); }
 };
+
