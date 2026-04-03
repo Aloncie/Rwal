@@ -10,11 +10,9 @@
 
 namespace fs = std::filesystem;
 
-WallpaperManager::WallpaperManager(UIManager& ui, Keywords& keywords, NetworkManager& nm,
-                                   IWallpaperSetter& env)
-    : m_ui(ui), m_keywords(keywords), m_nm(nm), m_env(env) {}
+WallpaperManager::WallpaperManager(UIManager& ui, NetworkManager& nm, IWallpaperSetter& env): m_ui(ui), m_nm(nm), m_env(env) {}
 
-std::string WallpaperManager::refresh(const std::string mode) {
+std::string WallpaperManager::refresh(Keywords& m_keywords, const std::string mode) {
     std::string keyword;
     if (mode == "change") {
         keyword = m_keywords.SilentGetKeyword();
@@ -33,7 +31,7 @@ std::string WallpaperManager::saveCurrent() {
     fs::path current = getCurrentWallpaperPath();
     if (current.empty()) {
         Logs::getInstance().writeLogs("saveCurrent: no wallpaper path");
-        return "No current wallpaper to save";
+        return "No current wallpaper file to save";
     }
 
     auto picturesPathOpt = getPicturesPath();
@@ -55,10 +53,7 @@ std::string WallpaperManager::saveCurrent() {
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {
-    fs::path dir =
-        fs::path(
-            QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) /
-        rwal::wallpaper::DONWLOADS_DIR_NAME;
+    fs::path dir = fs::path( QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) / rwal::wallpaper::DONWLOADS_DIR_NAME;
     if (!fs::exists(dir)) return "";
 
     try {
@@ -84,8 +79,7 @@ std::optional<fs::path> WallpaperManager::getPicturesPath() {
         return std::nullopt;
     }
 
-    fs::path rwalDir =
-        fs::path(path.toStdString()) / QCoreApplication::applicationName().toStdString();
+    fs::path rwalDir = fs::path(path.toStdString()) / QCoreApplication::applicationName().toStdString();
     std::error_code ec;
     fs::create_directories(rwalDir, ec);
     if (ec) {
