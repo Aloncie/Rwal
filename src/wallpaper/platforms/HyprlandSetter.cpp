@@ -52,3 +52,4 @@ bool HyprlandSetter::setWallpaper(const fs::path& path) {
     Logs::getInstance().writeLogs("No Hyprland tools (hyprpaper/swww) found.");
     return false;
 }
+

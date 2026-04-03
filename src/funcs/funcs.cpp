@@ -12,3 +12,4 @@ int random(int count) {
     std::uniform_int_distribution<> distrib(1, count);
     return distrib(gen);
 }
+

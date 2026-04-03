@@ -9,3 +9,4 @@ public:
 	bool setWallpaper(const fs::path& path) override;
 	GnomeSetter();
 };
+

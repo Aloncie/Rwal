@@ -90,3 +90,4 @@ void Config::initValidators(){
    	validators["api/wallhaven_api_key"] = is_not_empty_string;
 }
 
+

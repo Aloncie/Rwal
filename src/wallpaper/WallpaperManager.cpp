@@ -100,3 +100,4 @@ std::optional<fs::path> WallpaperManager::getPicturesPath() {
     }
     return rwalDir;
 }
+

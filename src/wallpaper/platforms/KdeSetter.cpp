@@ -39,3 +39,4 @@ bool KdeSetter::setWallpaper(const fs::path& path) {
     }
 }
 
+

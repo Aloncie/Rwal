@@ -27,3 +27,4 @@ public:
     std::string getData(std::string paragraph, std::string str);
     std::optional<fs::path> downloadImage(const std::string& image_url);
 };
+

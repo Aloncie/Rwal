@@ -64,3 +64,4 @@ void Logs::refresh(fs::path& logs_path){
 		}	
 	}	
 }
+

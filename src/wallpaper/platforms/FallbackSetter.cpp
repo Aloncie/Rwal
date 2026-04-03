@@ -6,3 +6,4 @@ bool FallbackSetter::setWallpaper(const fs::path& path) {
 	Logs::getInstance().writeLogs("No wallpaper setter available for this environment.");
 	return false;
 }
+

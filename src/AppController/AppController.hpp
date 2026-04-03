@@ -19,3 +19,4 @@ private:
     Navigator* m_navigator;
     UIManager& m_ui;
 };
+

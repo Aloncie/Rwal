@@ -33,3 +33,4 @@ public:
 	virtual bool setImpl(const std::string& key, const nlohmann::json& value) = 0;
 
 };
+

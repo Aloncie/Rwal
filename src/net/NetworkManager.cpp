@@ -110,3 +110,4 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword){
 	}
 	return m_curl.downloadImage(url);
 }
+

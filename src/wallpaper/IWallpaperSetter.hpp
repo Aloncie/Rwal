@@ -8,3 +8,4 @@ public:
     virtual bool setWallpaper(const fs::path& path) = 0;
     virtual ~IWallpaperSetter() = default;
 };
+

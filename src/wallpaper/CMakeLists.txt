@@ -76,3 +76,4 @@ endif()
 
 target_link_libraries(wallpaper_lib PRIVATE Qt5::Core)
 
+

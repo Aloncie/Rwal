@@ -49,3 +49,4 @@ MenuResponce Navigator::processInput(std::string& input, UIManager& uimanager) {
 
     return resp;
 }
+

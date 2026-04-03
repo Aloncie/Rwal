@@ -16,7 +16,7 @@
 #include <QCoreApplication>
 #include <QObject>
 
-int Application::run(int argc, char *argv[]){
+int Application::run(int argc, char* argv[]) {
     QCoreApplication::setApplicationName("Rwal");
     QCoreApplication::setOrganizationName("Aloncie");
     QCoreApplication app(argc, argv);
@@ -59,3 +59,4 @@ int Application::run(int argc, char *argv[]){
     um.shutdownUI();
     return one;
 }
+

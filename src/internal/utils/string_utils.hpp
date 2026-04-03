@@ -28,3 +28,4 @@ namespace rwal::utils::string{
 	}
 	std::vector<std::string> split_by_space(const std::string& input);
 }
+

@@ -7,3 +7,4 @@ class PathResolver {
 public:
   static void toHostPath(fs::path &path);
 };
+

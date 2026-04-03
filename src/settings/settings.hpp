@@ -22,3 +22,4 @@ public:
 	bool TimerStatus();
 	bool check_timer_mask_status();
 };
+

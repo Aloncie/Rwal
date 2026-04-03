@@ -7,3 +7,4 @@ namespace rwal::ui::MenuId {
     inline const std::string KEYWORDS = "keywords";
     inline const std::string TIMER = "timer";
 }
+

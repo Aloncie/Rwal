@@ -20,3 +20,4 @@ private:
 	CurlWrapper& m_curl;
 	IConfigReader& m_config;
 };
+
