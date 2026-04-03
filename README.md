@@ -68,7 +68,7 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 
 [Install]: https://github.com/Aloncie/Rwal/blob/main/Installation.md
 [Quick Start]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md#quick-start
-[Configure]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md
+[Configure]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md#Configuration
 [Contribute]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
 
 [Workflow]: https://github.com/Aloncie/Rwal/actions

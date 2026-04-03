@@ -13,7 +13,7 @@ git clone --recursive https://github.com/Aloncie/Rwal
 
 cd Rwal
 
-#G ive the permission to file
+# Give the permission to file
 chmod +x setup.sh
 
 # Run
