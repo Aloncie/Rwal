@@ -20,7 +20,7 @@ std::string Logs::getCurrentTime(){
 	return ss.str();
 }
 
-void Logs::writeLogs(std::string message){ 
+void Logs::writeLogs(std::string_view message){ 
 	if (f.is_open()){
 		f << getCurrentTime() << " " << message << std::endl;
 	}
