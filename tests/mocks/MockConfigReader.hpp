@@ -13,13 +13,13 @@ public:
     // Helper to inject test data
     void setSearchKeywords(const std::vector<std::string>& keywords) {
 		nlohmann::json searchJson = {
-    		"search", {
-        		{"keywords", keywords},
-        		{"sorting", "random"},
-        		{"res", "1920x1080"}
-    		}
+			{"search", {
+				{"keywords", keywords},
+				{"sorting", "random"},
+				{"res", "1920x1080"}
+			}}
 		};
-        ON_CALL(*this, getImpl("search")).WillByDefault(::testing::Return(searchJson));
+		ON_CALL(*this, getImpl("/search")).WillByDefault(::testing::Return(searchJson["search"]));
     }
 };
 
