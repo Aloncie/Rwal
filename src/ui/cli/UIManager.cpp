@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <sstream>
 
 bool UIManager::isInputActive() const {return inputActive;}
 
@@ -95,3 +96,54 @@ void UIManager::showMessage(std::string_view message) {
     refresh();
 }
 
+void UIManager::requestInputString(std::function<void(std::string)> callback, std::optional<std::string> message) {
+	if (message) {
+		showMessage(*message);
+	}
+	if (inputActive) return;
+
+	prompt = message.value_or("");
+	inputBuffer.clear();
+	inputActive = true;
+	inputCallback = [this, callback](std::string raw){
+		callback(raw);
+		move(LINES - 1, 0);
+		clrtoeol();
+		refresh();
+		inputActive = false;
+	};
+	move(LINES - 1, 0);
+	clrtoeol();
+	printw("%s", prompt.c_str());
+	refresh();
+}
+
+void UIManager::requestInputInt(std::function<void(int)> callback, std::optional<std::string> message) {
+	if (message) {
+		showMessage(*message);
+	}
+	if (inputActive) return;
+	prompt = message.value_or("");
+	inputBuffer.clear();
+	inputActive = true;
+	inputCallback = [this, callback](std::string raw){
+		std::stringstream ss(raw);
+		int result;
+		if ((ss >> result) && (ss >> std::ws).eof()) {
+			callback(result);
+		} else {
+			showMessage("Failed input. Try again.");
+			inputActive = false;
+			requestInputInt(callback, prompt);
+			return;
+		}
+		move(LINES - 1, 0);
+		clrtoeol();
+		refresh();
+		inputActive = false;
+	};
+	move(LINES - 1, 0);
+	clrtoeol();
+	printw("%s", prompt.c_str());
+	refresh();
+}
