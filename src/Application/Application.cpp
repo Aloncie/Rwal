@@ -35,7 +35,7 @@ int Application::run(int argc, char* argv[]) {
     if (parser.isSet(changeOption)) {
         UIManager um;
         Config config;
-        Keywords keywords(um, config);
+        Keywords keywords(config);
         CurlWrapper curl;
         NetworkManager nm(curl, config);
         WallpaperFactory wf;
@@ -50,7 +50,7 @@ int Application::run(int argc, char* argv[]) {
 
     UIManager um;
     Config config;
-    Keywords keywords(um, config);
+    Keywords keywords(config);
     CurlWrapper curl;
     Timer timer;
     NetworkManager nm(curl, config);
