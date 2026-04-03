@@ -4,32 +4,28 @@
 
 class MockUIManager : public UIManager {
 public:
-    // Mock non-template methods directly
     MOCK_METHOD(void, showMessage, (std::string_view message), (override));
     MOCK_METHOD(void, dodgeMessage, (std::string message), (override));
     MOCK_METHOD(bool, isInputActive, (), (const, override));
     MOCK_METHOD(void, processInputChar, (int ch), (override));
+	MOCK_METHOD(void, requestInputCalled, (std::string message), ());
 
-    // For requestInput (template) we need to provide a non-template wrapper
-    // that we can mock, and store the callback for later simulation
+	void requestInputString(std::function<void(std::string)> callback, std::optional<std::string> message = std::nullopt) override {
+		lastStringCallback_ = callback;
+		if (message) {
+			lastMessage_ = *message;
+			requestInputCalled(lastMessage_);
+		}
+	}
 
-    void requestInput(std::function<void(std::string)> callback,
-                      std::optional<std::string> message = std::nullopt) {
-        // Store the callback and message
-        lastStringCallback_ = callback;
-        lastMessage_ = message.value_or("");
-        requestInputCalled(lastMessage_);
-    }
+	void requestInputInt(std::function<void(int)> callback, std::optional<std::string> message = std::nullopt) override {
+		lastIntCallback_ = callback;
+		if (message) {
+			lastMessage_ = *message;
+			requestInputCalled(lastMessage_);
+		}
+	}
 
-    void requestInput(std::function<void(int)> callback,
-                      std::optional<std::string> message = std::nullopt) {
-        lastIntCallback_ = callback;
-        lastMessage_ = message.value_or("");
-        requestInputCalled(lastMessage_);
-    }
-
-    // Mock the "wrapper" method (non-template)
-    MOCK_METHOD(void, requestInputCalled, (std::string message));
     void simulateStringInput(std::string input) {
         if (lastStringCallback_) {
             lastStringCallback_(input);

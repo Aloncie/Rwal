@@ -84,7 +84,7 @@ std::vector<std::string> KeywordsMenu::getLines() {
 
 MenuResponce KeywordsMenu::handleInput(const std::string& input) {
     if (input == "a") {
-        m_ui.requestInput<std::string>([this](std::string keyword) {
+        m_ui.requestInputString([this](std::string keyword) {
 			auto keywords = m_keywords.loadKeywordsFromConfig();
             rwal::utils::string::format(keyword);
             keywords.push_back(keyword);
@@ -92,7 +92,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
         });
         return {"", false, false, "Write new keyword: "};
     } else if (input == "r") {
-        m_ui.requestInput<int>([this](int display_index) {
+        m_ui.requestInputInt([this](int display_index) {
 			auto keywords = m_keywords.loadKeywordsFromConfig();
             if (display_index >= 1) {
                 int real_index = display_index - 1;

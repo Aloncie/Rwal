@@ -9,6 +9,7 @@ public:
     MOCK_METHOD(void, reload, (), (override));
     MOCK_METHOD(nlohmann::json, getImpl, (const std::string& key), (override));
     MOCK_METHOD(bool, setImpl, (const std::string& key, const nlohmann::json& value), (override));
+
     // Helper to inject test data
     void setSearchKeywords(const std::vector<std::string>& keywords) {
 		nlohmann::json searchJson = {
@@ -18,9 +19,6 @@ public:
         		{"res", "1920x1080"}
     		}
 		};
-
-
-
         ON_CALL(*this, getImpl("search")).WillByDefault(::testing::Return(searchJson));
     }
 };

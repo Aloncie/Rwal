@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <iostream>
-#include <sstream>
 #include <optional>
 #include <ncurses.h>
 #include <functional>
@@ -25,38 +23,8 @@ public:
 	virtual bool isInputActive() const;
 	virtual void processInputChar(int ch);
 
-	template<typename T>
-	void requestInput(std::function<void(T)> callback, std::optional<std::string> message = std::nullopt) {
-		if (inputActive) return;
-
-		prompt = message.value_or("");
-		inputBuffer.clear();
-		inputActive = true;
-		inputCallback = [this, callback](std::string raw){
-			if constexpr (std::is_same_v<T, std::string>)
-				callback(raw);
-			else{
-				std::stringstream ss(raw);
-				T result;
-				if ((ss >> result)&&(ss >> std::ws).eof())
-					callback(result);
-				else{
-					showMessage("Failed input. Try again.");
-					inputActive = false;
-					requestInput(callback, prompt);
-					return;
-				}
-			}
-			move(LINES - 1, 0);
-			clrtoeol();
-			refresh();
-			inputActive = false;
-		};
-		move(LINES - 1, 0);
-		clrtoeol();
-		printw("%s", prompt.c_str());
-		refresh();
-	}
+	virtual void requestInputString(std::function<void(std::string)> callback, std::optional<std::string> message = std::nullopt);
+    virtual void requestInputInt(std::function<void(int)> callback, std::optional<std::string> message = std::nullopt);
 };
 
 

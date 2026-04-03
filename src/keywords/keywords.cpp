@@ -35,7 +35,7 @@ std::string Keywords::SilentGetKeyword() {
 }
 
 void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> callback, UIManager& ui) {
-    ui.requestInput<std::string>(
+    ui.requestInputString(
         [this, callback, &ui](std::string input) {
             rwal::utils::string::format(input);
             auto keywords = rwal::utils::string::split_by_space(input);
