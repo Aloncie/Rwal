@@ -15,11 +15,38 @@
 
 #include <QCoreApplication>
 #include <QObject>
+#include <QCommandLineParser>
 
 int Application::run(int argc, char* argv[]) {
     QCoreApplication::setApplicationName("Rwal");
     QCoreApplication::setOrganizationName("Aloncie");
     QCoreApplication app(argc, argv);
+
+    QCommandLineParser parser;
+    parser.setApplicationDescription("Rwal - cross-platform wallpaper utility");
+    parser.addHelpOption();
+    parser.addVersionOption();
+
+    QCommandLineOption changeOption({"c", "change"}, "Change wallpaper one and exit");
+
+    parser.addOption(changeOption);
+    parser.process(app);
+
+    if (parser.isSet(changeOption)) {
+        UIManager um;
+        Config config;
+        Keywords keywords(um, config);
+        CurlWrapper curl;
+        NetworkManager nm(curl, config);
+        WallpaperFactory wf;
+        std::unique_ptr<IWallpaperSetter> env = wf.create();
+        WallpaperManager wm(um, keywords, nm, *env);
+        std::string message = wm.refresh();
+        Logs::init(um);
+        Logs::getInstance().writeLogs("Rwal's start in change mode");
+        Logs::getInstance().writeLogs(message);
+        return 0;
+    }
 
     UIManager um;
     Config config;
@@ -30,11 +57,6 @@ int Application::run(int argc, char* argv[]) {
     WallpaperFactory wf;
     std::unique_ptr<IWallpaperSetter> env = wf.create();
     WallpaperManager wm(um, keywords, nm, *env);
-
-   if (argc > 1 && (strcmp(argv[1], "--change") == 0 || strcmp(argv[1], "-c") == 0)) {
-        wm.refresh("change");
-        return 0;
-    }
 
     um.initUI();
 
@@ -53,7 +75,7 @@ int Application::run(int argc, char* argv[]) {
 
     AppController controller(&navigator, um);
     Logs::init(um);
-    Logs::getInstance().writeLogs("Rwal's start");
+    Logs::getInstance().writeLogs("Rwal's start in normal mode");
 
     int one = app.exec();
     um.shutdownUI();
