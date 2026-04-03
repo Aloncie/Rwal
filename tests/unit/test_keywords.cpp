@@ -12,82 +12,48 @@ using ::testing::Return;
 class KeywordsTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        // Create mock instances
         mockUI = std::make_shared<MockUIManager>();
         mockConfig = std::make_shared<MockConfigReader>();
-        keywords = std::make_unique<Keywords>(*mockUI, *mockConfig);
+        keywords = std::make_unique<Keywords>(*mockConfig);  // No UI in constructor
     }
-
-    void TearDown() override {};
 
     std::shared_ptr<MockUIManager> mockUI;
     std::shared_ptr<MockConfigReader> mockConfig;
     std::unique_ptr<Keywords> keywords;
 };
 
-// ========== Tests ==========
-
-TEST_F(KeywordsTest, ShortWayGetKeywords_ReturnsKeywords) {
+// ========== Tests for SilentGetKeyword ==========
+TEST_F(KeywordsTest, SilentGetKeyword_ReturnsRandomFromConfig) {
     std::vector<std::string> expected = {"nature", "anime", "cars"};
     mockConfig->setSearchKeywords(expected);
-
-    auto result = keywords->ShortWayGetKeywords<std::vector<std::string>>();
-
-    EXPECT_EQ(result, expected);
+    std::string result = keywords->SilentGetKeyword();
+    EXPECT_TRUE(result == "nature" || result == "anime" || result == "cars");
 }
 
-TEST_F(KeywordsTest, ShortWayGetKeywords_Empty_ReturnsEmpty) {
+TEST_F(KeywordsTest, SilentGetKeyword_EmptyConfig_UsesDefault) {
     mockConfig->setSearchKeywords({});
-
-    auto result = keywords->ShortWayGetKeywords<std::vector<std::string>>();
-
-    EXPECT_TRUE(result.empty());
+    std::string result = keywords->SilentGetKeyword();
+    EXPECT_FALSE(result.empty());
 }
 
-TEST_F(KeywordsTest, ShortWayGetKeywords_AsString_ReturnsCommaSeparated) {
+// ========== Tests for InteractiveGetKeyword ==========
+TEST_F(KeywordsTest, InteractiveGetKeyword_WithExistingKeywords_ReturnsRandom) {
     mockConfig->setSearchKeywords({"nature", "anime"});
-
-    std::string result = keywords->ShortWayGetKeywords<std::string>();
-
-    EXPECT_EQ(result, "nature, anime");
+    std::string result = keywords->InteractiveGetKeyword(*mockUI);
+    EXPECT_TRUE(result == "nature" || result == "anime");
 }
 
-TEST_F(KeywordsTest, GetRandomKeywords_SingleKeyword_ReturnsIt) {
-    mockConfig->setSearchKeywords({"onlyone"});
-    std::string capturedKeyword;
-
-    keywords->GetRandomKeywords([&capturedKeyword](std::string kw) { capturedKeyword = kw; },
-                                "change");
-
-    EXPECT_EQ(capturedKeyword, "onlyone");
-}
-
-TEST_F(KeywordsTest, GetRandomKeywords_Empty_FallsBackToArt) {
+TEST_F(KeywordsTest, InteractiveGetKeyword_EmptyConfig_PromptsUser) {
     mockConfig->setSearchKeywords({});
-    std::string capturedKeyword;
-
-    keywords->GetRandomKeywords([&capturedKeyword](std::string kw) { capturedKeyword = kw; },
-                                "change");
-
-    EXPECT_FALSE(capturedKeyword.empty());
-}
-
-TEST_F(KeywordsTest, PromptForKeywords_UserEntersValidInput) {
-    mockConfig->setSearchKeywords({});
-    std::vector<std::string> capturedKeywords;
-
     EXPECT_CALL(*mockUI,
                 requestInputCalled("Keywords not found. Enter keywords (space separated): "))
         .WillOnce(Invoke([this](std::string) { mockUI->simulateInput("nature anime cars"); }));
 
-    keywords->LongWayGetKeywords(
-        [&capturedKeywords](std::vector<std::string> kw) { capturedKeywords = kw; });
-
-    std::vector<std::string> expected = {"nature", "anime", "cars"};
-    EXPECT_EQ(capturedKeywords, expected);
+    std::string result = keywords->InteractiveGetKeyword(*mockUI);
+    EXPECT_TRUE(result == "nature" || result == "anime" || result == "cars");
 }
 
-TEST_F(KeywordsTest, PromptForKeywords_UserEntersEmpty_Retries) {
+TEST_F(KeywordsTest, InteractiveGetKeyword_UserEntersEmpty_Retries) {
     mockConfig->setSearchKeywords({});
     int callCount = 0;
 
@@ -103,10 +69,16 @@ TEST_F(KeywordsTest, PromptForKeywords_UserEntersEmpty_Retries) {
 
     EXPECT_CALL(*mockUI, showMessage("Input cannot be empty! Try again.")).Times(1);
 
-    std::vector<std::string> result;
-    keywords->LongWayGetKeywords([&result](std::vector<std::string> kw) { result = kw; });
-
+    std::string result = keywords->InteractiveGetKeyword(*mockUI);
     EXPECT_EQ(callCount, 2);
-    EXPECT_EQ(result, std::vector<std::string>({"nature"}));
+    EXPECT_EQ(result, "nature");
 }
 
+// ========== Tests for Default method ==========
+TEST_F(KeywordsTest, Default_PopulatesDefaultKeywords) {
+    std::vector<std::string> expected = {"nature",       "landscape", "abstract", "space",
+                                         "architecture", "animals",   "anime",    "cars"};
+    std::vector<std::string> result;
+    keywords->Default(result);
+    EXPECT_EQ(result, expected);
+}

@@ -9,8 +9,7 @@
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm)
-    : m_ui(ui), m_keywords(keywords), m_wm(wm) {}
+MainMenu::MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm) : m_ui(ui), m_keywords(keywords), m_wm(wm) {}
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -69,7 +68,7 @@ KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui, IConfigReader& con
 
 std::vector<std::string> KeywordsMenu::getLines() {
     std::vector<std::string> lines = {"--- Keywords Editor ---"};
-    auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
+	auto keywords = m_keywords.loadKeywordsFromConfig();
 
     if (keywords.empty()) {
         lines.push_back("None");
@@ -86,7 +85,7 @@ std::vector<std::string> KeywordsMenu::getLines() {
 MenuResponce KeywordsMenu::handleInput(const std::string& input) {
     if (input == "a") {
         m_ui.requestInput<std::string>([this](std::string keyword) {
-            auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
+			auto keywords = m_keywords.loadKeywordsFromConfig();
             rwal::utils::string::format(keyword);
             keywords.push_back(keyword);
             m_config.set("/search/keywords", keywords);
@@ -94,7 +93,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
         return {"", false, false, "Write new keyword: "};
     } else if (input == "r") {
         m_ui.requestInput<int>([this](int display_index) {
-            auto keywords = m_keywords.ShortWayGetKeywords<std::vector<std::string>>();
+			auto keywords = m_keywords.loadKeywordsFromConfig();
             if (display_index >= 1) {
                 int real_index = display_index - 1;
                 if (real_index < (int)keywords.size()) {
@@ -106,7 +105,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
 
         return {"", false, false, "Enter index to remove: "};
     } else if (input == "m") {
-        m_keywords.editKeywords();
+        m_keywords.editKeywords(m_ui);
         m_config.reload();
         return {"", false, false};
     } else if (input == "q") {
