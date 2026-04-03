@@ -109,3 +109,4 @@ TEST_F(KeywordsTest, PromptForKeywords_UserEntersEmpty_Retries) {
     EXPECT_EQ(callCount, 2);
     EXPECT_EQ(result, std::vector<std::string>({"nature"}));
 }
+

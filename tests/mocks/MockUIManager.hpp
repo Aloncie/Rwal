@@ -51,3 +51,4 @@ private:
     std::function<void(int)> lastIntCallback_;
     std::string lastMessage_;
 };
+
