@@ -36,8 +36,9 @@ void Timer::createSystemdTimer(){
 	Logs::getInstance().writeLogs("Try to create/check service&timer files");
 
 	auto path = getUserTimerPath();
-	if (!path)
+	if (!path){
 		return;
+	}
 
 	const fs::path service_dir = *path;
 	const std::string service_name = "rwal";
