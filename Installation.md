@@ -26,7 +26,10 @@ sudo ./setup.sh
 
 ```bash
 # Configure the project
+# Flags:
 # (Add -DBUILD_TESTING=ON if you want to run tests)
+# (Add -DRWAL_FORCE_DE= if you want to build for forced DE. Check supported DE before using)
+
 cmake -B build 
 
 # Build the project
