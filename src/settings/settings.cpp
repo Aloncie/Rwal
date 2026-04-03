@@ -51,14 +51,16 @@ void Timer::createSystemdTimer(){
 		std::ofstream service(service_file);
 		if (service.is_open()){
 			service <<
+			"[Unit]\n"
+			"Description=Changes wallpaper\n\n"
+			"[Install]\n"
+			"WantedBy=default.target\n\n"
 			"[Service]\n"
-			"Type=simple\n"
+			"Type=oneshot\n"
 			"ExecStart=/usr/local/bin/rwal --change\n"
 			"Restart=on-failure\n"
 			"RestartSec=2s\n"
 			"StartLimitBurst=3\n"
-			"[Install]\n"
-			"WantedBy=default.target\n";
 			service.close();
 			Logs::getInstance().writeLogs("Success creation service file");
 		}
