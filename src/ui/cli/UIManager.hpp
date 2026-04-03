@@ -20,7 +20,7 @@ public:
 
 	UIManager();
 	virtual ~UIManager() = default;
-	virtual void showMessage(std::string message);
+	virtual void showMessage(std::string_view message);
 	virtual void dodgeMessage(std::string message);
 	virtual bool isInputActive() const;
 	virtual void processInputChar(int ch);

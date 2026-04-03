@@ -48,6 +48,6 @@ public:
 
     static void setInstanceForTesting(Logs* mock) { s_instance = mock; }
 
-    virtual void writeLogs(std::string message);
+    virtual void writeLogs(std::string_view message);
 };
 

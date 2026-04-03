@@ -4,6 +4,6 @@
 
 class MockLogs : public Logs {
 public:
-    MOCK_METHOD(void, writeLogs, (std::string msg), (override));
+    MOCK_METHOD(void, writeLogs, (std::string_view msg), (override));
 };
 

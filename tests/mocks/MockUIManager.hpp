@@ -5,7 +5,7 @@
 class MockUIManager : public UIManager {
 public:
     // Mock non-template methods directly
-    MOCK_METHOD(void, showMessage, (std::string message), (override));
+    MOCK_METHOD(void, showMessage, (std::string_view message), (override));
     MOCK_METHOD(void, dodgeMessage, (std::string message), (override));
     MOCK_METHOD(bool, isInputActive, (), (const, override));
     MOCK_METHOD(void, processInputChar, (int ch), (override));

@@ -72,13 +72,13 @@ void UIManager::initUI(){
 
 void UIManager::shutdownUI(){endwin();}
 
-void UIManager::showMessage(std::string message) {
+void UIManager::showMessage(std::string_view message) {
     if (message.empty()) return;
 
     move(LINES - 1, 0);
     clrtoeol();
 
-    std::string lower = message;
+    std::string lower(message);
     std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
 
     int colorPair = 0;
@@ -88,7 +88,7 @@ void UIManager::showMessage(std::string message) {
 
     if (colorPair != 0) attron(COLOR_PAIR(colorPair));
     
-    mvprintw(LINES - 1, 0, "%s", message.c_str());
+    mvprintw(LINES - 1, 0, "%s", lower.c_str());
     
     if (colorPair != 0) attroff(COLOR_PAIR(colorPair));
 
