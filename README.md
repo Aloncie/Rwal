@@ -34,7 +34,7 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 - **Modern C++20** – Built for performance with a clean, modular codebase.
 - **Smart Keyword Logic** – Advanced wallpaper selection based on user-defined tags.
 - **Systemd Integration** – Native support for timers and automated rotations.
-- **Cross-DE Support** – Works seamlessly on KDE, GNOME now.
+- **Cross-DE Support** – Works seamlessly on KDE, GNOME, Hyprland now.
 
 # 👁️‍🗨️ Previews
 
