@@ -39,9 +39,9 @@ std::string WallpaperManager::saveCurrent() const {
     }
 
     auto picturesPathOpt = getPicturesPath();
-    if (picturesPathOpt->empty()) {
-        Logs::getInstance().writeLogs("Could not determine Pictures folder");
-        return "Could not determine Pictures folder";
+    if (!picturesPathOpt {
+        Logs::getInstance().writeLogs("No Pictures folder found");
+        return "No Pictures folder found";
     }
 
     fs::path dest = *picturesPathOpt / current.filename();
