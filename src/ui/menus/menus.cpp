@@ -42,9 +42,11 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
 SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, UIManager& ui) : m_timer(timer), m_wm(wm), m_ui(ui) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
+	auto PicturesPathOpt = m_wm.getPicturesPath(&m_ui);
+	if (!PicturesPathOpt) PicturesPathOpt = "Not found";
     return {
         "--- Settings ---", "1) Timer: " + m_timer.seeTimer(),
-        "2) Wallpapers's path: " + m_wm.getPicturesPath(&m_ui)->string(), 
+        "2) Wallpapers's path: " + PicturesPathOpt->string(),
 		"q) Back",
         ""  // Empty line for spacing
     };
