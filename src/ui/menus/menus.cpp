@@ -9,7 +9,7 @@
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm) : m_ui(ui), m_keywords(keywords), m_wm(wm) {}
+MainMenu::MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_ui(ui), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -23,7 +23,7 @@ std::vector<std::string> MainMenu::getLines() {
 }
 MenuResponce MainMenu::handleInput(const std::string& input) {
     if (input == "1") {
-		std::string message = m_wm.refresh(m_keywords);
+		std::string message = m_wm.refresh(m_env, m_nm, m_keywords, &m_ui, "core");
         return {"", false, false, message};
     } else if (input == "2") {
         std::string message = m_wm.saveCurrent();
@@ -39,12 +39,13 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
     }
 }
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm) : m_timer(timer), m_wm(wm) {}
+SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, UIManager& ui) : m_timer(timer), m_wm(wm), m_ui(ui) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
     return {
         "--- Settings ---", "1) Timer: " + m_timer.seeTimer(),
-        "2) Wallpapers's path: " + m_wm.getPicturesPath()->string(), "q) Back",
+        "2) Wallpapers's path: " + m_wm.getPicturesPath(&m_ui)->string(), 
+		"q) Back",
         ""  // Empty line for spacing
     };
 }

@@ -4,6 +4,8 @@
 #include "settings/IConfigReader.hpp"
 #include "ui/cli/UIManager.hpp"
 #include "wallpaper/WallpaperManager.hpp"
+#include "IWallpaperSetter.hpp"
+#include "net/NetworkManager.hpp"
 
 #include <string>
 #include <vector>
@@ -28,10 +30,12 @@ private:
     UIManager& m_ui;
     Keywords& m_keywords;
     WallpaperManager& m_wm;
+	IWallpaperSetter& m_env;
+	NetworkManager& m_nm;
     inline static const std::string m_validChoices = "1234q";
 
 public:
-    MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm);
+    MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -41,10 +45,11 @@ class SettingsMenu : public Menu {
 private:
     Timer& m_timer;
     WallpaperManager& m_wm;
+	UIManager& m_ui;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(Timer& timer, WallpaperManager& wm);
+    SettingsMenu(Timer& timer, WallpaperManager& wm, UIManager& ui);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }

@@ -10,14 +10,18 @@
 
 namespace fs = std::filesystem;
 
-WallpaperManager::WallpaperManager(UIManager& ui, NetworkManager& nm, IWallpaperSetter& env): m_ui(ui), m_nm(nm), m_env(env) {}
-
-std::string WallpaperManager::refresh(Keywords& m_keywords, const std::string mode) {
+std::string WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui, const std::string mode) {
     std::string keyword;
     if (mode == "change") {
         keyword = m_keywords.SilentGetKeyword();
     } else {
-        keyword = m_keywords.InteractiveGetKeyword(m_ui);
+		if (m_ui != nullptr) {
+			Logs::getInstance().writeLogs("UI isn null, using SilentGetKeyword");
+			keyword = m_keywords.SilentGetKeyword();
+		}
+		else {
+			keyword = m_keywords.InteractiveGetKeyword(*m_ui);
+		}
     }
 
     auto path = m_nm.fetchImage(keyword);
@@ -27,7 +31,7 @@ std::string WallpaperManager::refresh(Keywords& m_keywords, const std::string mo
     return "";
 }
 
-std::string WallpaperManager::saveCurrent() {
+std::string WallpaperManager::saveCurrent() const {
     fs::path current = getCurrentWallpaperPath();
     if (current.empty()) {
         Logs::getInstance().writeLogs("saveCurrent: no wallpaper path");
@@ -71,11 +75,13 @@ fs::path WallpaperManager::getCurrentWallpaperPath() const {
     return "";
 }
 
-std::optional<fs::path> WallpaperManager::getPicturesPath() {
+std::optional<fs::path> WallpaperManager::getPicturesPath(UIManager* m_ui) const {
     Logs::getInstance().writeLogs("Trying to locate Pictures folder");
     QString path = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     if (path.isEmpty()) {
-        m_ui.showMessage("Could not find Pictures folder");
+		if (m_ui != nullptr) {
+			m_ui->showMessage("Could not find Pictures folder");
+		}
         return std::nullopt;
     }
 
@@ -83,7 +89,9 @@ std::optional<fs::path> WallpaperManager::getPicturesPath() {
     std::error_code ec;
     fs::create_directories(rwalDir, ec);
     if (ec) {
-        m_ui.showMessage("Failed to create rwal directory");
+		if (m_ui != nullptr) {
+			m_ui->showMessage("Failed to create rwal directory");
+		}
         Logs::getInstance().writeLogs("Failed to create " + rwalDir.string() + ": " + ec.message());
         return std::nullopt;
     }

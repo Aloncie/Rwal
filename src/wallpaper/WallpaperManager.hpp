@@ -12,15 +12,10 @@ namespace fs = std::filesystem;
 
 class WallpaperManager {
 public:
-    WallpaperManager(UIManager& ui, NetworkManager& nm, IWallpaperSetter& env);
-	std::string refresh(Keywords& m_keywords, const std::string mode = "core");
-    std::string saveCurrent();
+    WallpaperManager() = default;
+	std::string refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui = nullptr, const std::string mode = "core");
+    std::string saveCurrent() const;
     fs::path getCurrentWallpaperPath() const;
-    std::optional<fs::path> getPicturesPath();
-
-private:
-    UIManager& m_ui;
-    NetworkManager& m_nm;
-    IWallpaperSetter& m_env;
+    std::optional<fs::path> getPicturesPath(UIManager* m_ui = nullptr) const;
 };
 

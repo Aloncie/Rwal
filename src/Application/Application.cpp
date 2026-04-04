@@ -35,36 +35,36 @@ int Application::run(int argc, char* argv[]) {
     parser.process(app);
 
     if (parser.isSet(changeOption)) {
-        UIManager um;
+        UIManager uim;
         Config config;
         Keywords keywords(config);
         CurlWrapper curl;
         NetworkManager nm(curl, config);
         WallpaperFactory wf;
         std::unique_ptr<IWallpaperSetter> env = wf.create();
-        WallpaperManager wm(um, nm, *env);
-		std::string message = wm.refresh(keywords);
-        Logs::init(um);
+        WallpaperManager wm;
+		std::string message = wm.refresh(*env, nm, keywords, nullptr, "change");
+        Logs::init(uim);
         Logs::getInstance().writeLogs("Rwal's start in change mode");
         Logs::getInstance().writeLogs(message);
         return 0;
     }
 	else if (parser.isSet(saveOption)) {
-		UIManager um;
+		UIManager uim;
 		Config config;
 		CurlWrapper curl;
 		NetworkManager nm(curl, config);
 		WallpaperFactory wf;
 		std::unique_ptr<IWallpaperSetter> env = wf.create();
-		WallpaperManager wm(um, nm, *env);
+		WallpaperManager wm;
 		std::string message = wm.saveCurrent();
-		Logs::init(um);
+		Logs::init(uim);
 		Logs::getInstance().writeLogs("Rwal's start for save current wallpaper");
 		Logs::getInstance().writeLogs(message);
 		return 0;
 	}
 
-    UIManager um;
+    UIManager uim;
     Config config;
     Keywords keywords(config);
     CurlWrapper curl;
@@ -72,13 +72,13 @@ int Application::run(int argc, char* argv[]) {
     NetworkManager nm(curl, config);
     WallpaperFactory wf;
     std::unique_ptr<IWallpaperSetter> env = wf.create();
-    WallpaperManager wm(um, nm, *env);
+    WallpaperManager wm;
 
-    um.initUI();
+    uim.initUI();
 
-    auto mainMenu = std::make_unique<MainMenu>(um, keywords, wm);
-    auto settingsMenu = std::make_unique<SettingsMenu>(timer, wm);
-    auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, um, config);
+    auto mainMenu = std::make_unique<MainMenu>(uim, keywords, wm, *env, nm);
+    auto settingsMenu = std::make_unique<SettingsMenu>(timer, wm, uim);
+    auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, uim, config);
     auto timerMenu = std::make_unique<TimerMenu>(timer);
 
     Navigator navigator;
@@ -89,12 +89,12 @@ int Application::run(int argc, char* argv[]) {
 
     navigator.start("main");
 
-    AppController controller(&navigator, um);
-    Logs::init(um);
+    AppController controller(&navigator, uim);
+    Logs::init(uim);
     Logs::getInstance().writeLogs("Rwal's start in normal mode");
 
     int one = app.exec();
-    um.shutdownUI();
+    uim.shutdownUI();
     return one;
 }
 
