@@ -39,7 +39,7 @@ std::string WallpaperManager::saveCurrent() const {
     }
 
     auto picturesPathOpt = getPicturesPath();
-    if (!picturesPathOpt {
+    if (!picturesPathOpt) {
         Logs::getInstance().writeLogs("No Pictures folder found");
         return "No Pictures folder found";
     }
