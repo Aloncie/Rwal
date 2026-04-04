@@ -15,7 +15,7 @@ std::string WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m
     if (mode == "change") {
         keyword = m_keywords.SilentGetKeyword();
     } else {
-		if (m_ui != nullptr) {
+		if (m_ui == nullptr) {
 			Logs::getInstance().writeLogs("UI isn null, using SilentGetKeyword");
 			keyword = m_keywords.SilentGetKeyword();
 		}
