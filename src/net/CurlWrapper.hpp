@@ -21,8 +21,8 @@ private:
     void generateUniqueSuffix(std::string& filename);
     std::string call_Image(const std::string& image_url);
 
-    namespace CurlDeleter{
-        void operator()(Curl* ptr) const;
+    struct CurlDeleter{
+        void operator()(CURL* ptr) const;
     } 
 
 public:
