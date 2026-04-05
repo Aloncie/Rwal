@@ -53,7 +53,9 @@ void Config::loadConfig(){
     		{"search", {
         		{"keywords", {}},
         		{"sorting", "random"},
-        		{"res", "1920x1080"}
+        		{"res", "1920x1080"},
+				{"random_page", "true"}
+
     		}},
 			{"settings", {
 				{"cursor-visibility", "true"}

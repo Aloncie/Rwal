@@ -25,7 +25,7 @@ std::string WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m
     }
 
     auto path = m_nm.fetchImage(keyword);
-    if (!path) return "Failed to fetch image";
+    if (!path.has_value()) return "Failed to fetch image";
     PathResolver::toHostPath(*path);
     if (!m_env.setWallpaper(*path)) return "Failed to set wallpaper";
     return "";
