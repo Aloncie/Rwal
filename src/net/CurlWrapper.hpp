@@ -21,14 +21,14 @@ private:
     void generateUniqueSuffix(std::string& filename);
     std::string call_Image(const std::string& image_url);
 
-    struct CurlDeleter{
-        void operator()(CURL* ptr) const;
-    } 
-
 public:
-	CurlWrapper();
+    CurlWrapper();
     void getRequest(std::string url);
     std::string getData(std::string paragraph, std::string str);
     std::optional<fs::path> downloadImage(const std::string& image_url);
+
+    struct CurlDeleter {
+        void operator()(CURL* curl) const { curl_easy_cleanup(curl); }
+    };
 };
 

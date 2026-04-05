@@ -8,13 +8,8 @@
 #include <string>
 #include <fstream>
 
-struct CurlWrapper::CurlDeleter{
-    void operator()(CURL* ptr) const {
-        if (ptr) curl_easy_cleanup(ptr);
-    }
-};
+using CurlRaiiPtr = std::unique_ptr<CURL, CurlWrapper::CurlDeleter>;
 
-using CurlRaiiPtr = std::unique_ptr<CURL, CurlDeleter>;
 static size_t callback(void* contents, size_t size, size_t nmemb, void* userp) {
     size_t realsize = size * nmemb;
     std::string* buffer = static_cast<std::string*>(userp);
@@ -131,7 +126,7 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
     std::string filename = call_Image(image_url);
     fs::path wallpaper_path = downloads / filename;
 
-    std::unique_ptr<CURL, CurlDeleter> image_curl(curl_easy_init());
+    CurlRaiiPtr image_curl(curl_easy_init());
     if (!image_curl) {
         Logs::getInstance().writeLogs("Failed to init CURL");
         return std::nullopt;
@@ -139,27 +134,26 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
 
     std::ofstream fp(wallpaper_path, std::ios::binary);
     if (!fp.is_open()) {
-        Logs::getInstance().writeLogs("Failed to open file for writing: " +
-                                      wallpaper_path.string());
+        Logs::getInstance().writeLogs("Failed to open file for writing: " + wallpaper_path.string());
         return std::nullopt;
     }
 
-    curl_easy_setopt(image_curl, CURLOPT_URL, image_url.c_str());
+    curl_easy_setopt(image_curl.get(), CURLOPT_URL, image_url.c_str());
     curl_easy_setopt(
-        image_curl, CURLOPT_WRITEFUNCTION,
+        image_curl.get(), CURLOPT_WRITEFUNCTION,
         +[](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
             auto* stream = static_cast<std::ofstream*>(userdata);
             size_t totalSize = size * nmemb;
             stream->write(static_cast<char*>(ptr), totalSize);
             return totalSize;
         });
-    curl_easy_setopt(image_curl, CURLOPT_WRITEDATA, &fp);
-    curl_easy_setopt(image_curl, CURLOPT_FOLLOWLOCATION, 1L);
-    curl_easy_setopt(image_curl, CURLOPT_TIMEOUT, 15L);
+    curl_easy_setopt(image_curl.get(), CURLOPT_WRITEDATA, &fp);
+    curl_easy_setopt(image_curl.get(), CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(image_curl.get(), CURLOPT_TIMEOUT, 15L);
 
-    CURLcode res = curl_easy_perform(image_curl);
+    CURLcode res = curl_easy_perform(image_curl.get());
     fp.close();
-	
+
     if (res != CURLE_OK) {
         Logs::getInstance().writeLogs("Download error: " + std::string(curl_easy_strerror(res)));
         return std::nullopt;
