@@ -34,19 +34,28 @@ std::string Keywords::SilentGetKeyword() {
     return pickRandomKeyword(keywords);
 }
 
-void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> callback, UIManager& ui) {
+void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> callback, UIManager& ui, int attempts) {
+	// Prevent infinite recursion if user keeps entering invalid input.
+	if (attempts > 100) {
+		ui.showMessage("Too many failed attempts. Using default keywords.");
+		std::vector<std::string> defaults;
+		Default(defaults);
+		callback(defaults);
+		return;
+	}
     ui.requestInputString(
-        [this, callback, &ui](std::string input) {
+        [this, callback, &ui, &attempts](std::string input) {
             rwal::utils::string::format(input);
             auto keywords = rwal::utils::string::split_by_space(input);
             if (keywords.empty()) {
                 ui.showMessage("Input cannot be empty! Try again.");
-                promptForKeywords(callback, ui);
+                promptForKeywords(callback, ui, attempts + 1);
             } else {
                 m_config.setImpl("search", {{"keywords", keywords}});
                 callback(keywords);
             }
-        }, "Keywords not found. Enter keywords (space separated): "); }
+        }, "Keywords not found. Enter keywords (space separated): "); 
+}
 
 std::string Keywords::InteractiveGetKeyword(UIManager& ui) {
     auto keywords = loadKeywordsFromConfig();

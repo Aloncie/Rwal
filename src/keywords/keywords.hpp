@@ -14,7 +14,7 @@ class Keywords {
 private:
 	IConfigReader& m_config;
 
-    void promptForKeywords(std::function<void(std::vector<std::string>)> callback, UIManager& ui);
+    void promptForKeywords(std::function<void(std::vector<std::string>)> callback, UIManager& ui, int attempts = 0);
     void importToTxt(const fs::path& path) const;
 	std::vector<std::string> exportFromTxt(const fs::path& path, UIManager& ui) const;
 	std::string pickRandomKeyword(const std::vector<std::string>& keywords) const;
