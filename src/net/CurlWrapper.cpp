@@ -103,8 +103,7 @@ std::string CurlWrapper::getData(std::string paragraph, std::string str) {
 std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url) {
     const char* home = std::getenv("HOME");
     fs::path base_path = home ? fs::path(home) : fs::path("/tmp");
-    fs::path downloads =
-        base_path / ".local/share/Aloncie/Rwal" / rwal::wallpaper::DONWLOADS_DIR_NAME;
+    fs::path downloads = base_path / ".local/share/Aloncie/Rwal" / rwal::wallpaper::DONWLOADS_DIR_NAME;
 
     try {
         if (!fs::exists(downloads)) {

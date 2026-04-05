@@ -1,6 +1,7 @@
 #include "NetworkManager.hpp"
 #include "logs/logs.hpp"
 #include "funcs/funcs.hpp"
+#include "settings/IConfigReader.hpp"
 
 #include <optional>
 #include <sys/socket.h>
@@ -76,33 +77,48 @@ std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::stri
 
 std::optional<fs::path> NetworkManager::fetchImage(std::string keyword){
 	int last_page;
+	std::string url;
 
-	if (!isAvailable())
+	if (!isAvailable()){
 	   return std::nullopt;
+	}
 
 	m_curl.getRequest(craftUrl(keyword));
-	std::string pageCount =	m_curl.getData("meta","last_page");
-	
-
-	try {
-		last_page = std::stoi(pageCount);
-	} catch(std::exception& e){
-
-		Logs::getInstance().writeLogs("Failed to stoi pageCount: " + std::string(e.what()));
-		last_page = 1;
-	}
-
-	int max_p = std::min(last_page, 100);
-	std::string page = std::to_string(random(max_p));
-
-	try {
-		m_curl.getRequest(craftUrl(keyword, page));
-	} catch (std::exception& e){
-		Logs::getInstance().writeLogs("CURL error: " + std::string(e.what()));
+	auto search = m_config.getImpl("/search");
+	if (search.is_null()) {
+		Logs::getInstance().writeLogs("Search config is missing");
 		return std::nullopt;
 	}
+	else if (!search.contains("random_page") || search["random_page"].get<bool>() == false) {
+		Logs::getInstance().writeLogs("Fetch image from first page");
+		url = m_curl.getData("data","path");
+	}
+	else if (search.contains("random_page") && search["random_page"].get<bool>() == true) {
+		Logs::getInstance().writeLogs("Fetch image from random page");
+	
+		std::string pageCount =	m_curl.getData("meta","last_page");
+		
+		try {
+			last_page = std::stoi(pageCount);
+		} catch(std::exception& e){
 
-	std::string url = m_curl.getData("data","path");
+			Logs::getInstance().writeLogs("Failed to stoi pageCount: " + std::string(e.what()));
+			last_page = 1;
+		}
+
+		int max_p = std::min(last_page, 100);
+		std::string page = std::to_string(random(max_p));
+
+		try {
+			m_curl.getRequest(craftUrl(keyword, page));
+		} catch (std::exception& e){
+			Logs::getInstance().writeLogs("CURL error: " + std::string(e.what()));
+			return std::nullopt;
+		}
+
+		url = m_curl.getData("data","path");
+
+	}
 
 	if (url.empty()) {
 		Logs::getInstance().writeLogs("No image URL found in response");
