@@ -1,6 +1,7 @@
 #pragma once
 #include "ui/cli/UIManager.hpp"
 #include "settings/IConfigReader.hpp"
+#include "logs/logs.hpp"
 
 #include <string>
 #include <vector>
@@ -13,6 +14,7 @@ namespace fs = std::filesystem;
 class Keywords {
 private:
 	IConfigReader& m_config;
+	Logs& m_logs;
 
     void promptForKeywords(std::function<void(std::vector<std::string>)> callback, UIManager& ui, int attempts = 0);
     void importToTxt(const fs::path& path) const;
@@ -20,7 +22,7 @@ private:
 	std::string pickRandomKeyword(const std::vector<std::string>& keywords) const;
 	
 public:
-    explicit Keywords(IConfigReader& config);
+    explicit Keywords(IConfigReader& config, Logs& logs);
 	[[nodiscard]] std::vector<std::string> loadKeywordsFromConfig() const;
 	[[nodiscard]] std::string SilentGetKeyword();
     void Default(std::vector<std::string>& keywords) const;

@@ -1,4 +1,6 @@
 #pragma once
+#include "logs/logs.hpp"
+
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
 #include <string>
@@ -20,9 +22,10 @@ private:
     void clearning();
     void generateUniqueSuffix(std::string& filename);
     std::string call_Image(const std::string& image_url);
-
+	
+	Logs& m_logs;
 public:
-    CurlWrapper();
+    CurlWrapper(Logs& logs);
     void getRequest(std::string url);
     std::string getData(std::string paragraph, std::string str);
     std::optional<fs::path> downloadImage(const std::string& image_url);

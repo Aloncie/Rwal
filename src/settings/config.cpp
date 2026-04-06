@@ -15,7 +15,7 @@ std::string Config::getConfigPath(){
 	return ((configDir + "/config.json").toStdString());
 }
 
-Config::Config() {
+Config::Config(Logs& logs) : IConfigReader(logs) {
     configPath = getConfigPath();
     initValidators();
 
@@ -32,9 +32,9 @@ void Config::loadConfig(){
         if (file.is_open()) {
             try {
                 data = nlohmann::json::parse(file);
-                Logs::getInstance().writeLogs("Config loaded/reloaded: " + configPath);
+                m_logs.writeLogs("Config loaded/reloaded: " + configPath);
             } catch (nlohmann::json::parse_error& e) {
-                Logs::getInstance().writeLogs("JSON Parse Error: " + std::string(e.what()));
+                m_logs.writeLogs("JSON Parse Error: " + std::string(e.what()));
             }
         }
     } else {	

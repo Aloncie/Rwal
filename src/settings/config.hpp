@@ -20,12 +20,12 @@ private:
 
     void saveConfig();
     void initValidators();
-
+	
 public slots:
     void loadConfig();
 
 public:
-    Config();
+    Config(Logs& logs);
 
     void reload() override { loadConfig(); }
 
@@ -40,7 +40,7 @@ public:
     }
     bool setImpl(const std::string& key, const nlohmann::json& value) override {
         if (validators.count(key) && !validators.at(key)(value)) {
-            Logs::getInstance().writeLogs("Validation failed for key: " + key);
+            m_logs.writeLogs("Validation failed for key: " + key);
             return false;
         }
         data[nlohmann::json::json_pointer(key)] = value;
@@ -54,8 +54,7 @@ public:
             nlohmann::json j = getImpl(key);
             return j.get<G>();
         } catch (std::invalid_argument& e) {
-            Logs::getInstance().writeLogs("Error of getting config data for key: " + key + ". " +
-                                          std::string(e.what()));
+            m_logs.writeLogs("Error of getting config data for key: " + key + ". " + std::string(e.what()));
             return G{};
         }
     }
@@ -65,7 +64,7 @@ public:
         nlohmann::json jValue = value;
 
         if (validators.count(key) && !validators.at(key)(jValue)) {
-            Logs::getInstance().writeLogs("Validation failed for key: " + key);
+            m_logs.writeLogs("Validation failed for key: " + key);
             return false;
         }
         data[nlohmann::json::json_pointer(key)] = jValue;

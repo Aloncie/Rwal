@@ -3,6 +3,9 @@ set(SETTERS_SOURCES
     WallpaperFactory.cpp 
     PathResolver.cpp
     platforms/FallbackSetter.cpp
+
+	${PROJECT_SOURCE_DIR}/src/net/NetworkManager.cpp
+    ${PROJECT_SOURCE_DIR}/src/net/CurlWrapper.cpp
 )
 
 # Add an option to force a specific desktop environment for testing or if auto-detection fails

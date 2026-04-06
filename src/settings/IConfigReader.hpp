@@ -5,16 +5,18 @@
 #include <string>
 
 class IConfigReader {
+protected:
+	Logs& m_logs;
 public:
 	virtual ~IConfigReader() = default;
-	IConfigReader() = default;
+	explicit IConfigReader(Logs& logs) : m_logs(logs) {}
 	template<typename G>
 	G get(const std::string& key) {
 		try {
 			nlohmann::json j = getImpl(key);
 			return j.get<G>();
 		} catch (std::invalid_argument& e) {
-			Logs::getInstance().writeLogs("Error of getting config data for key: " + key + ". " + std::string(e.what()));
+			m_logs.writeLogs("Error of getting config data for key: " + key + ". " + std::string(e.what()));
 			return G{};
 		}
 	}
@@ -23,7 +25,7 @@ public:
 	void set(const std::string& key, const S& value) {
 		nlohmann::json jValue = value;
 		if (!setImpl(key, jValue)) {
-			Logs::getInstance().writeLogs("Failed to set config data for key: " + key);
+			m_logs.writeLogs("Failed to set config data for key: " + key);
 		}
 	}
 

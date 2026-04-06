@@ -8,7 +8,7 @@
 #include <fstream>
 #include <curses.h>
 
-Keywords::Keywords(IConfigReader& config) : m_config(config) {}
+Keywords::Keywords(IConfigReader& config, Logs& logs) : m_config(config), m_logs(logs) {}
 
 std::vector<std::string> Keywords::loadKeywordsFromConfig() const {
     auto search = m_config.getImpl("/search");
@@ -74,7 +74,7 @@ std::string Keywords::InteractiveGetKeyword(UIManager& ui) {
 }
 
 void Keywords::Default(std::vector<std::string>& keywords) const {
-    Logs::getInstance().writeLogs("Use default keywords.");
+    m_logs.writeLogs("Use default keywords.");
     keywords = {"nature", "landscape", "abstract", "space",
                 "architecture", "animals", "anime", "cars"};
 }
@@ -121,7 +121,7 @@ std::vector<std::string> Keywords::exportFromTxt(const fs::path& path, UIManager
         }
         file.close();
     } else {
-        Logs::getInstance().writeLogs("Failed opening keywords.txt in " + path.string());
+        m_logs.writeLogs("Failed opening keywords.txt in " + path.string());
         ui.showMessage("Failed operation. More info in logs");
     }
     return keywords;

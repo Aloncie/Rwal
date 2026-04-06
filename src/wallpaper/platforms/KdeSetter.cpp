@@ -1,5 +1,4 @@
 #include "KdeSetter.hpp"
-#include "logs/logs.hpp"
 
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -31,10 +30,10 @@ bool KdeSetter::setWallpaper(const fs::path& path) {
     auto reply = QDBusConnection::sessionBus().call(msg);
     
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        Logs::getInstance().writeLogs("D-Bus Error: " + reply.errorMessage().toStdString());
+        m_logs.writeLogs("D-Bus Error: " + reply.errorMessage().toStdString());
 		return false;
     } else {
-        Logs::getInstance().writeLogs("Wallpaper change signal sent for: " + hostPathUri.toStdString());
+        m_logs.writeLogs("Wallpaper change signal sent for: " + hostPathUri.toStdString());
 		return true;
     }
 }

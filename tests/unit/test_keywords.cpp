@@ -1,6 +1,7 @@
 #include "keywords/keywords.hpp"
 #include "mocks/MockUIManager.hpp"
 #include "mocks/MockConfigReader.hpp"
+#include "mocks/MockLogs.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -12,15 +13,17 @@ using ::testing::Return;
 
 class KeywordsTest : public ::testing::Test {
 protected:
+	std::shared_ptr<MockUIManager> mockUI;
+    std::shared_ptr<MockConfigReader> mockConfig;
+	std::shared_ptr<MockLogs> mockLogs;
+    std::unique_ptr<Keywords> keywords;
+
     void SetUp() override {
         mockUI = std::make_shared<MockUIManager>();
-        mockConfig = std::make_shared<MockConfigReader>();
-        keywords = std::make_unique<Keywords>(*mockConfig);
+		mockLogs = std::make_shared<MockLogs>();
+        mockConfig = std::make_shared<MockConfigReader>(*mockLogs);
+        keywords = std::make_unique<Keywords>(*mockConfig, *mockLogs);
     }
-
-    std::shared_ptr<MockUIManager> mockUI;
-    std::shared_ptr<MockConfigReader> mockConfig;
-    std::unique_ptr<Keywords> keywords;
 };
 
 // ========== Tests for SilentGetKeyword ==========

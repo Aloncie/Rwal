@@ -11,8 +11,10 @@
 namespace fs = std::filesystem;
 
 class WallpaperManager {
+private:
+	Logs& m_logs;
 public:
-    WallpaperManager() = default;
+    WallpaperManager(Logs& logs) : m_logs(logs) {}
 	std::string refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui = nullptr, const std::string mode = "core");
     std::string saveCurrent() const;
     fs::path getCurrentWallpaperPath() const;
