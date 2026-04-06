@@ -1,4 +1,4 @@
-#!/bin/bas#!/bin/bash
+#!/bin/bas#
 
 if [[ $EUID -ne 0 ]]; then
    echo "[ERROR] Please run this script with sudo."
