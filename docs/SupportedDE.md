@@ -22,15 +22,15 @@ Rwal use auto-detect system for know DE to build only needly sources. This gives
 - more faster building
 - takes up less space
 
-You can use special flag ```-DRWAL_FORCED_DE=```, If Rwal incorrect detect your DE. Flag command supports any writing case.
+You can use special flag ```-DRWAL_FORCE_DE=```, If Rwal incorrect detect your DE. Flag command supports any writing case.
 
 *Example for GNOME:*
 ```bash
 # this command works fine
-cmake -B build -DRWAL_FORCED_DE=GNOME
+cmake -B build -DRWAL_FORCE_DE=GNOME
 
 # this too
-cmake -B build -DRWAL_FORCED_DE=GnoME
+cmake -B build -DRWAL_FORCE_DE=GnoME
 ```
 
 ## 🐧 Runtime Behaviour
