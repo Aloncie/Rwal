@@ -33,8 +33,6 @@ set(SOURCES
     src/keywords/keywords.cpp
     src/logs/logs.cpp
     src/navigator/navigator.cpp
-    src/net/CurlWrapper.cpp
-    src/net/NetworkManager.cpp
     src/settings/config.cpp
     src/settings/settings.cpp
     src/ui/cli/UIManager.cpp
@@ -60,7 +58,7 @@ target_link_libraries(rwal_lib PUBLIC
 )
 
 add_executable(rwal src/main.cpp)
-target_link_libraries(rwal PRIVATE rwal_lib)
+target_link_libraries(rwal PRIVATE rwal_lib wallpaper_lib)
 
 # --- SECTION: Testing (Submodule Version) ---
 if(BUILD_TESTING)

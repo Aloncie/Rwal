@@ -1,4 +1,6 @@
 #pragma once
+#include "logs/logs.hpp"
+
 #include <string>
 #include <filesystem>
 #include <QDir>
@@ -15,7 +17,9 @@ public:
 class Timer{
 private:
 	std::optional<fs::path> getUserTimerPath() const;
+	Logs& m_logs;
 public:
+	Timer(Logs& logs) : m_logs(logs) {}
 	void createSystemdTimer();
 	std::string seeTimer();
 	std::string editTimer(std::string value);

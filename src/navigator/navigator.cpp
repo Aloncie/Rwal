@@ -18,7 +18,7 @@ void Navigator::start(const std::string InitialMenu) {
         m_currentMenu = it->second.get();
         printCurrentMenu();
     } else {
-        Logs::getInstance().writeLogs("Failed InitialMenu in Navigator::start: " + InitialMenu);
+        m_logs.writeLogs("Failed InitialMenu in Navigator::start: " + InitialMenu);
     }
 }
 

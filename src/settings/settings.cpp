@@ -19,13 +19,13 @@ std::optional<fs::path> Timer::getUserTimerPath() const {
 			fs::create_directory(service_dir);
 		} catch (const std::exception& e){
 			 
-			Logs::getInstance().writeLogs("Failed create service directory(" + std::string(service_dir) + "\nError: " + std::string(e.what()));
+			m_logs.writeLogs("Failed create service directory(" + std::string(service_dir) + "\nError: " + std::string(e.what()));
 		}
 		return service_dir;
 	}
 	else{
 		 
-		Logs::getInstance().writeLogs("Error: HOME environment variable is not set!");	
+		m_logs.writeLogs("Error: HOME environment variable is not set!");	
 		return std::nullopt;
 	}
 }
@@ -33,7 +33,7 @@ std::optional<fs::path> Timer::getUserTimerPath() const {
 void Timer::createSystemdTimer(){
 	
 	 
-	Logs::getInstance().writeLogs("Try to create/check service&timer files");
+	m_logs.writeLogs("Try to create/check service&timer files");
 
 	auto path = getUserTimerPath();
 	if (!path){
@@ -46,8 +46,8 @@ void Timer::createSystemdTimer(){
 	const fs::path timer_file = service_dir / (service_name + ".timer");
 
 	if (!fs::exists(service_file)||fs::file_size(service_file) == 0){
-		Logs::getInstance().writeLogs("There is not service file");
-		Logs::getInstance().writeLogs("Try to create service file");
+		m_logs.writeLogs("There is not service file");
+		m_logs.writeLogs("Try to create service file");
 		std::ofstream service(service_file);
 		if (service.is_open()){
 			service <<
@@ -62,17 +62,17 @@ void Timer::createSystemdTimer(){
 			"RestartSec=2s\n"
 			"StartLimitBurst=3\n";
 			service.close();
-			Logs::getInstance().writeLogs("Success creation service file");
+			m_logs.writeLogs("Success creation service file");
 		}
 		else{
-			Logs::getInstance().writeLogs("Failed to create service file");
+			m_logs.writeLogs("Failed to create service file");
 			return;		
 		}
 	} else
-		Logs::getInstance().writeLogs("Service file already exists");
+		m_logs.writeLogs("Service file already exists");
 	if (!fs::exists(timer_file)||fs::file_size(timer_file) == 0){
-		Logs::getInstance().writeLogs("There is not timer file");
-			Logs::getInstance().writeLogs("Try to create timer file");
+		m_logs.writeLogs("There is not timer file");
+			m_logs.writeLogs("Try to create timer file");
 			std::ofstream service(timer_file);
 			if (service.is_open()){
 				service <<
@@ -84,14 +84,14 @@ void Timer::createSystemdTimer(){
 				"[Install]\n"
 				"WantedBy=timers.target\n";
 				service.close();
-				Logs::getInstance().writeLogs("Success creation timer file");
+				m_logs.writeLogs("Success creation timer file");
 			}
 			else{
-				Logs::getInstance().writeLogs("Failed to create timer file");
+				m_logs.writeLogs("Failed to create timer file");
 				return;		
 			}
 	} else
-		Logs::getInstance().writeLogs("Timer file already exists");
+		m_logs.writeLogs("Timer file already exists");
 
 	system("systemctl --user daemon-reload");
 }
@@ -104,7 +104,7 @@ std::string Timer::seeTimer(){
 	std::ifstream file(*path / "rwal.timer");
 	std::string str;
 	 
-	Logs::getInstance().writeLogs("Try to read timer file");
+	m_logs.writeLogs("Try to read timer file");
 
 	if (file.is_open()){
 
@@ -114,18 +114,18 @@ std::string Timer::seeTimer(){
 		while (getline(file,str)){
 			if (str.starts_with("OnCalendar=")){
 				str.erase(0,str.find("=")+1);
-				Logs::getInstance().writeLogs("Successful reading. Data: " + str);
+				m_logs.writeLogs("Successful reading. Data: " + str);
 				return str;
 			}
 		}
 	}
-	Logs::getInstance().writeLogs("No data");
+	m_logs.writeLogs("No data");
 	return "None";
 }
 
 std::string Timer::editTimer(std::string value){
 	 
-	Logs::getInstance().writeLogs("Try to edit timer");
+	m_logs.writeLogs("Try to edit timer");
 		
 	createSystemdTimer();
 
@@ -139,7 +139,7 @@ std::string Timer::editTimer(std::string value){
 	bool found = false;
 
 	if (!in_file){
-		Logs::getInstance().writeLogs("Failed to open rwal.timer to read");
+		m_logs.writeLogs("Failed to open rwal.timer to read");
 		return "Failed set timer. More info in logs.";
 	}	
 	while (getline(in_file,line)){
@@ -148,12 +148,12 @@ std::string Timer::editTimer(std::string value){
 		else {
 			found = true;
 			if (value == "None"){
-				Logs::getInstance().writeLogs("value is 'None'\nTry to disactivate timer");
+				m_logs.writeLogs("value is 'None'\nTry to disactivate timer");
 				lines.push_back("OnCalendar=");
 				system("systemctl unmask rwal.timer >/dev/null 2>&1");
 				system("systemctl --user daemon-reload");
 				system("systemctl --user disable --now rwal.timer");
-				Logs::getInstance().writeLogs("Timer successfuly disactivated");
+				m_logs.writeLogs("Timer successfuly disactivated");
 				return "Timer successfuly disactivated!";
 			}
 			else
@@ -164,20 +164,20 @@ std::string Timer::editTimer(std::string value){
 	in_file.close();
 
 	if (!found){
-		Logs::getInstance().writeLogs("Failed to find string");
+		m_logs.writeLogs("Failed to find string");
 		return "Failed set timer. More info in logs.";
 	}
 
 	std::fstream out_file(*path / "rwal.timer");	
 	if (!out_file){
-		Logs::getInstance().writeLogs("Failed to create/open rwal.timer to write");
+		m_logs.writeLogs("Failed to create/open rwal.timer to write");
 		return "Failed set timer. More info in logs.";
 	}
 	for (auto& l : lines)
 		out_file << l << "\n";
 
 	out_file.close();
-	Logs::getInstance().writeLogs("Successful edit timer. Try to active timer");
+	m_logs.writeLogs("Successful edit timer. Try to active timer");
 	
 	system("systemctl unmask rwal.timer >/dev/null 2>&1");
 	system("systemctl --user daemon-reload");	
@@ -185,11 +185,11 @@ std::string Timer::editTimer(std::string value){
 	system("systemctl --user enable --now rwal.timer");
 
 	if (TimerStatus()){
-		Logs::getInstance().writeLogs("Timer successfuly activated");
+		m_logs.writeLogs("Timer successfuly activated");
 		return "Timer successfuly activated!";
 	}
 	else{
-		Logs::getInstance().writeLogs("Failed to activate timer");
+		m_logs.writeLogs("Failed to activate timer");
 		return "Failed set timer. More info in logs.";
 	}
 }

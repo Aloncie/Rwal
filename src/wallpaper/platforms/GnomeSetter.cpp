@@ -1,22 +1,21 @@
 #include "GnomeSetter.hpp"
-#include "logs/logs.hpp"
 
 #include <gio/gio.h>
 bool GnomeSetter::setWallpaper(const fs::path& path) {
     if (std::getenv("XDG_CURRENT_DESKTOP") == nullptr ||
         std::string(std::getenv("XDG_CURRENT_DESKTOP")).find("GNOME") == std::string::npos) {
-        Logs::getInstance().writeLogs(
+        m_logs.writeLogs(
             "Skipping GnomeSetter: XDG_CURRENT_DESKTOP does not indicate GNOME.");
         return false;
     }
     if (!g_file_test(path.c_str(), G_FILE_TEST_EXISTS)) {
-        Logs::getInstance().writeLogs("GnomeSetter: File does not exist - " + path.string());
+        m_logs.writeLogs("GnomeSetter: File does not exist - " + path.string());
         return false;
     }
     GFile* file = g_file_new_for_path(path.c_str());
 
     if (!file) {
-        Logs::getInstance().writeLogs("GnomeSetter: Failed to create GFile from path");
+        m_logs.writeLogs("GnomeSetter: Failed to create GFile from path");
         return false;
     }
 
@@ -27,7 +26,7 @@ bool GnomeSetter::setWallpaper(const fs::path& path) {
     g_settings_set_string(settings, "picture-uri-dark", uri);
     g_settings_sync();
 
-    Logs::getInstance().writeLogs("Wallpaper set to: " + std::string(uri));
+    m_logs.writeLogs("Wallpaper set to: " + std::string(uri));
 
     g_free(uri);
     g_object_unref(settings);
@@ -35,7 +34,7 @@ bool GnomeSetter::setWallpaper(const fs::path& path) {
     return true;
 }
 
-GnomeSetter::GnomeSetter() {
+GnomeSetter::GnomeSetter(Logs& logs) : m_logs(logs) {
 #if !GLIB_CHECK_VERSION(2, 36, 0)
     g_type_init();
 #endif
