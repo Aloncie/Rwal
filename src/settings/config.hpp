@@ -13,7 +13,6 @@
 class Config : public QObject, public IConfigReader {
     Q_OBJECT
 private:
-    QFileSystemWatcher* watcher;
     nlohmann::json data;
     std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
     std::string configPath;
@@ -25,6 +24,8 @@ public slots:
     void loadConfig();
 
 public:
+    QFileSystemWatcher* watcher;
+
     Config(Logs& logs);
 
     void reload() override { loadConfig(); }
