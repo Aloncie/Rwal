@@ -15,9 +15,11 @@ private:
 	Logs& m_logs;
 public:
     WallpaperManager(Logs& logs) : m_logs(logs) {}
-	std::optional<std::string> refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui = nullptr, const std::string mode = "core");
-    std::string saveCurrent() const;
-    fs::path getCurrentWallpaperPath() const;
-    std::optional<fs::path> getPicturesPath(UIManager* m_ui = nullptr) const;
+	virtual ~WallpaperManager() = default;
+	virtual std::optional<std::string> refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui = nullptr, const std::string mode = "core");
+    virtual std::string saveCurrent() const;
+    virtual fs::path getCurrentWallpaperPath() const;
+    virtual std::optional<fs::path> getPicturesPath(UIManager* m_ui = nullptr) const;
+	virtual std::string CopyFile(const fs::path& current, const fs::path& dest) const;
 };
 

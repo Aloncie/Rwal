@@ -7,12 +7,12 @@
 
 class MockLogs : public Logs {
 public:
-	void writeLogs(std::string_view message) override {
-		lastLogMessage = message;
-	}
+	std::string lastLogMessage;
+
+	MOCK_METHOD(void, writeLogs, (std::string_view message), (override));
+
 	bool contains(std::string_view substring) {
 		return lastLogMessage.find(substring) != std::string::npos;
 	}
-	std::string lastLogMessage;
 };
 
