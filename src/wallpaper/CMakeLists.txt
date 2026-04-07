@@ -1,4 +1,3 @@
-# 1. Сначала определяем список базовых файлов
 set(SETTERS_SOURCES 
     WallpaperManager.cpp 
     WallpaperFactory.cpp 
