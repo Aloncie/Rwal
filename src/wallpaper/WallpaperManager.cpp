@@ -10,8 +10,9 @@
 
 namespace fs = std::filesystem;
 
-std::string WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui, const std::string mode) {
+void WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, std::function<void(const std::string&)> callback, UIManager* m_ui, const std::string mode) {
     std::string keyword;
+	std::optional<fs::path> path;
     if (mode == "change") {
         keyword = m_keywords.SilentGetKeyword();
     } else {
@@ -23,12 +24,25 @@ std::string WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m
 			keyword = m_keywords.InteractiveGetKeyword(*m_ui);
 		}
     }
-
-    auto path = m_nm.fetchImage(keyword);
-    if (!path.has_value()) return "Failed to fetch image";
-    PathResolver::toHostPath(*path);
-    if (!m_env.setWallpaper(*path)) return "Failed to set wallpaper";
-    return "";
+	
+	m_nm.fetchImage(keyword, [this, &m_env, callback](std::optional<fs::path> path) {
+        if (!path.has_value()) {
+            m_logs.writeLogs("Failed to fetch image");
+            callback("Failed to fetch image");
+			return;
+        }
+        
+        PathResolver::toHostPath(*path);
+        
+        if (!m_env.setWallpaper(*path)) {
+            m_logs.writeLogs("Failed to set wallpaper: " + path->string());
+            callback("Failed to set wallpaper");
+            return;
+        }
+        
+        m_logs.writeLogs("Wallpaper set successfully: " + path->string());
+        callback("");
+    });
 }
 
 std::string WallpaperManager::saveCurrent() const {

@@ -35,6 +35,7 @@ logs.txt
 *.log
 *.sql
 *.sqlite
+valgrind_out.txt
 
 # ==================== #
 # IDE files            #
@@ -75,4 +76,4 @@ Thumbs.db
 
 # another
 .cache/
-.directory
+.directory/

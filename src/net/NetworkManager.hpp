@@ -6,7 +6,7 @@
 #include <optional>
 #include <string>
 #include <filesystem>
-#include <optional>
+#include <functional>
 #include <nlohmann/json.hpp>
 
 namespace fs = std::filesystem;
@@ -14,7 +14,7 @@ namespace fs = std::filesystem;
 class NetworkManager{
 public:
 	NetworkManager(CurlWrapper& curl, IConfigReader& config, Logs& logs) : m_curl(curl), m_config(config),m_logs(logs) {}
-	std::optional<fs::path> fetchImage(std::string keyword);
+	void fetchImage(std::string keyword, std::function<void(std::optional<fs::path>)> callback);
 	bool isAvailable();
 	std::string craftUrl(std::string keyword, std::optional<std::string> page = std::nullopt);
 	~NetworkManager() = default;
