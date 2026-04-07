@@ -70,12 +70,10 @@ std::string CurlWrapper::getData(std::string paragraph, std::string str) {
             for (auto& item : j[paragraph]) {
                 if (item.contains(str)) {
                     if (item[str].is_string()) {
-                        m_logs.writeLogs("Data of JSON: " +
-                                                      item[str].get<std::string>());
+                        m_logs.writeLogs("Data of JSON: " + item[str].get<std::string>());
                         return item[str].get<std::string>();
                     }
-                    m_logs.writeLogs("Data of JSON: " +
-                                                  std::to_string(item[str].get<int>()));
+                    m_logs.writeLogs("Data of JSON: " + std::to_string(item[str].get<int>()));
                     return std::to_string(item[str].get<int>());
                 }
             }
@@ -84,13 +82,11 @@ std::string CurlWrapper::getData(std::string paragraph, std::string str) {
         else if (j[paragraph].is_object()) {
             if (j[paragraph].contains(str)) {
                 if (j[paragraph][str].is_string()) {
-                    m_logs.writeLogs("Data of JSON: " +
-                                                  j[paragraph][str].get<std::string>());
+                    m_logs.writeLogs("Data of JSON: " + j[paragraph][str].get<std::string>());
                     return j[paragraph][str].get<std::string>();
                 }
 
-                m_logs.writeLogs("Data of JSON: " +
-                                              std::to_string(j[paragraph][str].get<int>()));
+                m_logs.writeLogs("Data of JSON: " + std::to_string(j[paragraph][str].get<int>()));
                 return std::to_string(j[paragraph][str].get<int>());
             }
         }

@@ -14,7 +14,6 @@
 #endif
 
 std::unique_ptr<IWallpaperSetter> WallpaperFactory::create() {
-	Logs logs;
 #ifdef RWAL_USE_KDE
     return std::make_unique<KdeSetter>(m_logs);
 #elif defined(RWAL_USE_GNOME)
@@ -22,7 +21,7 @@ std::unique_ptr<IWallpaperSetter> WallpaperFactory::create() {
 #elif defined(RWAL_USE_HYPRLAND)
     return std::make_unique<HyprlandSetter>(m_logs);
 #else
-    return std::make_unique<FallbackSetter>();
+    return std::make_unique<FallbackSetter>(m_logs);
 #endif
 }
 

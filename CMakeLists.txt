@@ -19,7 +19,7 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets)
+find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets Concurrent)
 find_package(Curses REQUIRED)
 
 # Include the wallpaper subdirectory first so wallpaper_lib is available
@@ -45,6 +45,7 @@ add_library(rwal_lib STATIC ${SOURCES})
 target_include_directories(rwal_lib PUBLIC
     ${PROJECT_SOURCE_DIR}/src
 	${PROJECT_SOURCE_DIR}/tests
+	${Qt5Concurrent_INCLUDE_DIRS}
 )
 
 target_link_libraries(rwal_lib PUBLIC
@@ -53,6 +54,8 @@ target_link_libraries(rwal_lib PUBLIC
     Qt5::Core
     Qt5::DBus
     Qt5::Widgets
+	Qt5::Concurrent
+	${CURL_LIBRARIES}
     ${CURSES_LIBRARIES}
     wallpaper_lib 
 )
