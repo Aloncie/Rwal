@@ -27,7 +27,7 @@ public:
 
 class MainMenu : public Menu {
 private:
-    UIManager& m_ui;
+    UIManager& m_uim;
     Keywords& m_keywords;
     WallpaperManager& m_wm;
 	IWallpaperSetter& m_env;
@@ -35,7 +35,7 @@ private:
     inline static const std::string m_validChoices = "1234q";
 
 public:
-    MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm);
+    MainMenu(UIManager& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -45,7 +45,7 @@ class SettingsMenu : public Menu {
 private:
     Timer& m_timer;
     WallpaperManager& m_wm;
-	UIManager& m_ui;
+	UIManager& m_uim;
     inline static const std::string m_validChoices = "12q";
 
 public:
@@ -58,7 +58,7 @@ public:
 class KeywordsMenu : public Menu {
 private:
     Keywords& m_keywords;
-    UIManager& m_ui;
+    UIManager& m_uim;
 	IConfigReader& m_config;
     inline static const std::string m_validChoices = "armq";
 

@@ -48,6 +48,8 @@ if(UNIX AND NOT APPLE)
         
     elseif(CURRENT_DE MATCHES "HYPRLAND")
         list(APPEND SETTERS_SOURCES platforms/HyprlandSetter.cpp)
+		find_program(HYPRPAPER_EXECUTABLE hyprpaper)
+		find_program(HYPRCTL_EXECUTABLE hyprctl)
         add_definitions(-DRWAL_USE_HYPRLAND)
         message(STATUS "Using Hyprland wallpaper setter")
         
