@@ -56,14 +56,23 @@ std::string WallpaperManager::saveCurrent() const {
     }
 
     fs::path dest = *picturesPathOpt / current.filename();
-    try {
-        fs::copy_file(current, dest, fs::copy_options::overwrite_existing); m_logs.writeLogs("Wallpaper saved to " + dest.string());
-        return "Wallpaper saved successfully";
-    } catch (const std::exception& e) {
-        m_logs.writeLogs("Failed to save wallpaper: " + std::string(e.what()));
-        return "Failed to save wallpaper";
-    }
-    return "";
+	if (CopyFile(current, dest) != "Wallpaper copied successfully"){
+		return "Failed to save wallpaper";
+	}
+	else {
+		return "Wallpaper saved successfully";
+	}
+}
+
+std::string WallpaperManager::CopyFile(const fs::path& current, const fs::path& dest) const {
+	try {
+		fs::copy_file(current, dest, fs::copy_options::overwrite_existing); 
+		m_logs.writeLogs("Wallpaper copied to " + dest.string());
+		return "Wallpaper copied successfully";
+	} catch (const std::exception& e) {
+		m_logs.writeLogs("Failed to copy wallpaper: " + std::string(e.what()));
+		return "Failed to copy wallpaper";
+	}
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {

@@ -23,10 +23,11 @@ private:
 	
 public:
     explicit Keywords(IConfigReader& config, Logs& logs);
-	[[nodiscard]] std::vector<std::string> loadKeywordsFromConfig() const;
-	[[nodiscard]] std::string SilentGetKeyword();
-    void Default(std::vector<std::string>& keywords) const;
+	[[nodiscard]] virtual std::vector<std::string> loadKeywordsFromConfig() const;
+	[[nodiscard]] virtual std::string SilentGetKeyword();
+    virtual void Default(std::vector<std::string>& keywords) const;
     void editKeywords(UIManager& ui);
-    [[nodiscard]] std::string InteractiveGetKeyword(UIManager& ui);
+    [[nodiscard]] virtual std::string InteractiveGetKeyword(UIManager& ui);
+	virtual ~Keywords() = default;
 };
 
