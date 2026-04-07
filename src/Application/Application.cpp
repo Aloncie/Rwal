@@ -49,10 +49,7 @@ int Application::run(int argc, char* argv[]) {
         WallpaperManager wm(logs);
 		logs.writeLogs("Rwal's start in change mode");
 
-		wm.refresh(*env, nm, keywords, [&loop](const std::string& message){
-			loop.quit();
-		});
-		loop.exec();
+		wm.refresh(*env, nm, keywords, nullptr, "change");
         return 0;
     } else if (parser.isSet(saveOption)) {
         UIManager uim;

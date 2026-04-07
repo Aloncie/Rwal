@@ -3,8 +3,14 @@
 #include "menu_ids.hpp"
 #include "settings/config.hpp"
 
-#include <QCoreApplication>
+// Undefine any existing timeout macro to avoid conflicts with socket options
+#ifdef timeout
+#undef timeout
+#endif
 
+#include <QCoreApplication>
+#include <QtConcurrent/QtConcurrent>
+#include <QMetaObject>
 
 namespace MenuId = rwal::ui::MenuId;
 
@@ -23,7 +29,9 @@ std::vector<std::string> MainMenu::getLines() {
 }
 MenuResponce MainMenu::handleInput(const std::string& input) {
     if (input == "1") {
-		m_wm.refresh(m_env, m_nm, m_keywords, [this](const std::string& message){});
+		QtConcurrent::run([this] {
+			m_wm.refresh(m_env, m_nm, m_keywords, &m_ui);
+		});
         return {"", false, false, ""};
     } else if (input == "2") {
         std::string message = m_wm.saveCurrent();
