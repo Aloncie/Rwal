@@ -15,7 +15,7 @@
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(UIManager& ui, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_ui(ui), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
+MainMenu::MainMenu(UIManager& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -28,11 +28,18 @@ std::vector<std::string> MainMenu::getLines() {
     };
 }
 MenuResponce MainMenu::handleInput(const std::string& input) {
-    if (input == "1") {
+	if (input == "1") {
 		QtConcurrent::run([this] {
-			m_wm.refresh(m_env, m_nm, m_keywords, &m_ui);
-		});
-        return {"", false, false, ""};
+			UIManager* uiPtr = &this->m_uim;
+			auto error = m_wm.refresh(m_env, m_nm, m_keywords, uiPtr);
+			
+			QMetaObject::invokeMethod(qApp, [uiPtr, error] {
+				if (error.has_value()) {
+					uiPtr->showMessage(error.value());
+				}
+			}, Qt::QueuedConnection);
+    	});
+    	return {"", false, false, ""};
     } else if (input == "2") {
         std::string message = m_wm.saveCurrent();
         return {"", false, false, message};
@@ -47,10 +54,10 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
     }
 }
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, UIManager& ui) : m_timer(timer), m_wm(wm), m_ui(ui) {}
+SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, UIManager& ui) : m_timer(timer), m_wm(wm), m_uim(ui) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
-	auto PicturesPathOpt = m_wm.getPicturesPath(&m_ui);
+	auto PicturesPathOpt = m_wm.getPicturesPath(&m_uim);
 	if (!PicturesPathOpt) PicturesPathOpt = "Not found";
     return {
         "--- Settings ---", "1) Timer: " + m_timer.seeTimer(),
@@ -75,7 +82,7 @@ MenuResponce SettingsMenu::handleInput(const std::string& input) {
 
 // ========== KeywordsMenu ==========
 KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui, IConfigReader& config)
-    : m_keywords(keywords), m_ui(ui), m_config(config) {}
+    : m_keywords(keywords), m_uim(ui), m_config(config) {}
 
 std::vector<std::string> KeywordsMenu::getLines() {
     std::vector<std::string> lines = {"--- Keywords Editor ---"};
@@ -95,7 +102,7 @@ std::vector<std::string> KeywordsMenu::getLines() {
 
 MenuResponce KeywordsMenu::handleInput(const std::string& input) {
     if (input == "a") {
-        m_ui.requestInputString([this](std::string keyword) {
+        m_uim.requestInputString([this](std::string keyword) {
 			auto keywords = m_keywords.loadKeywordsFromConfig();
             rwal::utils::string::format(keyword);
             keywords.push_back(keyword);
@@ -103,7 +110,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
         });
         return {"", false, false, "Write new keyword: "};
     } else if (input == "r") {
-        m_ui.requestInputInt([this](int display_index) {
+        m_uim.requestInputInt([this](int display_index) {
 			auto keywords = m_keywords.loadKeywordsFromConfig();
             if (display_index >= 1) {
                 int real_index = display_index - 1;
@@ -116,7 +123,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
 
         return {"", false, false, "Enter index to remove: "};
     } else if (input == "m") {
-        m_keywords.editKeywords(m_ui);
+        m_keywords.editKeywords(m_uim);
         m_config.reload();
         return {"", false, false};
     } else if (input == "q") {

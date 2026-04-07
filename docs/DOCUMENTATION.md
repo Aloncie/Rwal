@@ -64,7 +64,11 @@ Rwal looks for `config.json` in `~/.config/Aloncie/Rwal/`.
 
 | Flag | Long Flag | Description |
 | :--- | :--- | :--- |
-| `-c` | `--change` | One-shot wallpaper change based on config. |
+| `-c` | `--change` | Change wallpaper one and exit |
+| '-s' | '--save' | Save current wallpaper |
+| '-v' | '--version' | Displays version information |
+| '-h' | '--help' | Displays version information |
+
 
 ### Terminal UI Controls
 
@@ -76,6 +80,7 @@ Rwal uses different backends depending on your Desktop Environment:
 
 *   **KDE Plasma**: D-Bus `org.kde.plasmashell`
 *   **GNOME**: `gsettings` (requires glib2)
+*   **Hyprland**: 'hyprpaper' or 'hyprctl'
 
 ## 🛠️ Known issues
 
