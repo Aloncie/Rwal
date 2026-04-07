@@ -10,9 +10,8 @@
 
 namespace fs = std::filesystem;
 
-void WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, std::function<void(const std::string&)> callback, UIManager* m_ui, const std::string mode) {
+std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui, const std::string mode) {
     std::string keyword;
-	std::optional<fs::path> path;
     if (mode == "change") {
         keyword = m_keywords.SilentGetKeyword();
     } else {
@@ -25,24 +24,22 @@ void WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Ke
 		}
     }
 	
-	m_nm.fetchImage(keyword, [this, &m_env, callback](std::optional<fs::path> path) {
-        if (!path.has_value()) {
-            m_logs.writeLogs("Failed to fetch image");
-            callback("Failed to fetch image");
-			return;
-        }
-        
-        PathResolver::toHostPath(*path);
-        
-        if (!m_env.setWallpaper(*path)) {
-            m_logs.writeLogs("Failed to set wallpaper: " + path->string());
-            callback("Failed to set wallpaper");
-            return;
-        }
-        
-        m_logs.writeLogs("Wallpaper set successfully: " + path->string());
-        callback("");
-    });
+	std::optional<fs::path> path = m_nm.fetchImage(keyword);
+
+	if (!path.has_value()) {
+		m_logs.writeLogs("Failed to fetch image");
+		return "Failed to fetch image";
+	}
+	
+	PathResolver::toHostPath(*path);
+	
+	if (!m_env.setWallpaper(*path)) {
+		m_logs.writeLogs("Failed to set wallpaper: " + path->string());
+		return "Failed to set wallpaper";
+	}
+	
+	m_logs.writeLogs("Wallpaper set successfully: " + path->string());
+	return std::nullopt;
 }
 
 std::string WallpaperManager::saveCurrent() const {
@@ -60,8 +57,7 @@ std::string WallpaperManager::saveCurrent() const {
 
     fs::path dest = *picturesPathOpt / current.filename();
     try {
-        fs::copy_file(current, dest, fs::copy_options::overwrite_existing);
-        m_logs.writeLogs("Wallpaper saved to " + dest.string());
+        fs::copy_file(current, dest, fs::copy_options::overwrite_existing); m_logs.writeLogs("Wallpaper saved to " + dest.string());
         return "Wallpaper saved successfully";
     } catch (const std::exception& e) {
         m_logs.writeLogs("Failed to save wallpaper: " + std::string(e.what()));

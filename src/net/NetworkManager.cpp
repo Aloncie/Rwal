@@ -1,16 +1,6 @@
 #include "NetworkManager.hpp"
 #include "funcs/funcs.hpp"
 
-// Undefine any existing timeout macro to avoid conflicts with socket options
-#ifdef timeout
-#undef timeout
-#endif
-
-#include <QtConcurrent/QtConcurrent>
-#include <QFutureWatcher>
-#include <QMetaObject>
-#include <QCoreApplication>
-
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -77,65 +67,56 @@ std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::stri
 	}
 }
 
-void NetworkManager::fetchImage(std::string keyword, std::function<void(std::optional<fs::path>)> callback) {
-	QtConcurrent::run([this, keyword, callback](){
+std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
+	int last_page;
+	std::string url;
 
-		int last_page;
-		std::string url;
+	if (!isAvailable()){
+		return std::nullopt;
+	}
 
-		if (!isAvailable()){
-			callback(std::nullopt);
-		}
-
-		m_curl.getRequest(craftUrl(keyword));
-		auto search = m_config.getImpl("/search");
-		if (search.is_null()) {
-			m_logs.writeLogs("Search config is missing");
-			callback(std::nullopt);
-			return;
-		}
-		else if (!search.contains("random_page") || search["random_page"].get<bool>() == false) {
-			m_logs.writeLogs("Fetch image from first page");
-			url = m_curl.getData("data","path");
-		}
-		else if (search.contains("random_page") && search["random_page"].get<bool>() == true) {
-			m_logs.writeLogs("Fetch image from random page");
+	m_curl.getRequest(craftUrl(keyword));
+	auto search = m_config.getImpl("/search");
+	if (search.is_null()) {
+		m_logs.writeLogs("Search config is missing");
+		return std::nullopt;
+	}
+	else if (!search.contains("random_page") || search["random_page"].get<bool>() == false) {
+		m_logs.writeLogs("Fetch image from first page");
+		url = m_curl.getData("data","path");
+	}
+	else if (search.contains("random_page") && search["random_page"].get<bool>() == true) {
+		m_logs.writeLogs("Fetch image from random page");
+	
+		std::string pageCount =	m_curl.getData("meta","last_page");
 		
-			std::string pageCount =	m_curl.getData("meta","last_page");
-			
-			try {
-				last_page = std::stoi(pageCount);
-			} catch(std::exception& e){
+		try {
+			last_page = std::stoi(pageCount);
+		} catch(std::exception& e){
 
-				m_logs.writeLogs("Failed to stoi pageCount: " + std::string(e.what()));
-				last_page = 1;
-			}
-
-			int max_p = std::min(last_page, 100);
-			std::string page = std::to_string(random(max_p));
-
-			try {
-				m_curl.getRequest(craftUrl(keyword, page));
-			} catch (std::exception& e){
-				m_logs.writeLogs("CURL error: " + std::string(e.what()));
-				callback(std::nullopt);
-				return;
-			}
-
-			url = m_curl.getData("data","path");
-
+			m_logs.writeLogs("Failed to stoi pageCount: " + std::string(e.what()));
+			last_page = 1;
 		}
 
-		if (url.empty()) {
-			m_logs.writeLogs("No image URL found in response");
-			callback(std::nullopt);
-			return;
+		int max_p = std::min(last_page, 100);
+		std::string page = std::to_string(random(max_p));
+
+		try {
+			m_curl.getRequest(craftUrl(keyword, page));
+		} catch (std::exception& e){
+			m_logs.writeLogs("CURL error: " + std::string(e.what()));
+			return std::nullopt;
 		}
 
-		auto result = m_curl.downloadImage(url);
-		QMetaObject::invokeMethod(QCoreApplication::instance(), [callback, result](){
-			callback(result);
-		});
-	});
+		url = m_curl.getData("data","path");
+
+	}
+
+	if (url.empty()) {
+		m_logs.writeLogs("No image URL found in response");
+		return std::nullopt;
+	}
+
+	return m_curl.downloadImage(url);
 }
 
