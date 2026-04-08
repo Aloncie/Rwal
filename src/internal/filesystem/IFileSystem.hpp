@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <filesystem>
+#include <memory>
 
 namespace fs = std::filesystem;
 
@@ -31,5 +32,8 @@ public:
 	
 	virtual std::string getLastError() const = 0;
 	virtual void clearError() const = 0;
+
+	// Factory method for platform-specific implementation
+	virtual std::unique_ptr<IFileSystem> createPlatformFileSystem() const = 0;
 };
 

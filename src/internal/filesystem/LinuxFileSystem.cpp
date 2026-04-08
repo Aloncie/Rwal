@@ -4,7 +4,6 @@
 #include <QCoreApplication>
 #include <system_error>
 
-
 class LinuxFileSystem : public IFileSystem{
 private:
 	mutable std::string m_LastError;
@@ -88,6 +87,10 @@ public:
 	
 	void clearError() const override {
 		m_LastError.clear();
+	}
+
+	std::unique_ptr<IFileSystem> createPlatformFileSystem() const override{
+		return std::make_unique<LinuxFileSystem>();
 	}
 };
 
