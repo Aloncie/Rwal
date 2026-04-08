@@ -17,7 +17,7 @@
 #include <QCoreApplication>
 #include <QObject>
 #include <QCommandLineParser>
-#include <QEventLoop>
+#include <memory>
 
 int Application::run(int argc, char* argv[]) {
     QCoreApplication::setApplicationName("Rwal");
@@ -44,11 +44,10 @@ int Application::run(int argc, char* argv[]) {
 	}
 
     if (parser.isSet(changeOption)) {
-		QEventLoop loop;
         UIManager uim;
         Config config(logs);
         Keywords keywords(config, logs);
-        CurlWrapper* curl = new CurlWrapper(logs);
+    	std::unique_ptr curl = std::make_unique<CurlWrapper>(logs);
         NetworkManager nm(*curl, config, logs);
         WallpaperFactory wf(logs);
         std::unique_ptr<IWallpaperSetter> env = wf.create();
