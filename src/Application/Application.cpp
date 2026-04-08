@@ -12,7 +12,7 @@
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"
 #include "wallpaper/WallpaperManager.hpp"
-#include "internal/filesystem/IFileSystem.hpp"
+#include "internal/filesystem/FileSystemFactory.hpp"
 
 #include <QCoreApplication>
 #include <QObject>
@@ -37,8 +37,7 @@ int Application::run(int argc, char* argv[]) {
     parser.process(app);
 
 	Logs logs;
-	IFileSystem* IFS;
-	std::unique_ptr<IFileSystem> fs = IFS->createPlatformFileSystem();
+	auto fs = createPlatformFileSystem();
 	if (!fs) {
 		logs.writeLogs("Failed to initialize file system");
 		return 1;
