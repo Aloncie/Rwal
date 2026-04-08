@@ -26,12 +26,13 @@ private:
 	Logs& m_logs;
 public:
     CurlWrapper(Logs& logs);
-    void getRequest(std::string url);
-    std::string getData(std::string paragraph, std::string str);
-    std::optional<fs::path> downloadImage(const std::string& image_url);
+    virtual void getRequest(std::string url);
+    virtual std::string getData(std::string paragraph, std::string str);
+    virtual std::optional<fs::path> downloadImage(const std::string& image_url);
 
     struct CurlDeleter {
         void operator()(CURL* curl) const { curl_easy_cleanup(curl); }
     };
+	virtual ~CurlWrapper() = default;
 };
 
