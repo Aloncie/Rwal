@@ -44,26 +44,23 @@ std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& m_env, Ne
 
 std::string WallpaperManager::saveCurrent() const {
     fs::path current = getCurrentWallpaperPath();
-    if (current.empty()) {
+    if (!m_fs.exists(current)) {
         m_logs.writeLogs("saveCurrent: no wallpaper path");
         return "No current wallpaper file to save";
     }
 
-    auto picturesPathOpt = getPicturesPath();
-    if (!picturesPathOpt) {
+	fs::path picturesPath = getPicturesPath().value();
+    if (picturesPath.empty() || !m_fs.exists(picturesPath)) {
         m_logs.writeLogs("No Pictures folder found");
         return "No Pictures folder found";
     }
 
-    fs::path dest = *picturesPathOpt / current.filename();
-    try {
-        fs::copy_file(current, dest, fs::copy_options::overwrite_existing); m_logs.writeLogs("Wallpaper saved to " + dest.string());
-        return "Wallpaper saved successfully";
-    } catch (const std::exception& e) {
-        m_logs.writeLogs("Failed to save wallpaper: " + std::string(e.what()));
-        return "Failed to save wallpaper";
-    }
-    return "";
+    fs::path dest = picturesPath / current.filename();
+	if (!m_fs.copyFile(current, dest)) {
+		m_logs.writeLogs("Failed to copy file: " + current.string() + " to " + dest.string());
+		return "Failed to save wallpaper: " + m_fs.getLastError();
+	}
+	return "Wallpaper saved to: " + dest.string();
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {

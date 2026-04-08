@@ -12,11 +12,12 @@
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"
 #include "wallpaper/WallpaperManager.hpp"
+#include "internal/filesystem/FileSystemFactory.hpp"
 
 #include <QCoreApplication>
 #include <QObject>
 #include <QCommandLineParser>
-#include <QEventLoop>
+#include <memory>
 
 int Application::run(int argc, char* argv[]) {
     QCoreApplication::setApplicationName("Rwal");
@@ -36,17 +37,21 @@ int Application::run(int argc, char* argv[]) {
     parser.process(app);
 
 	Logs logs;
+	auto fs = createPlatformFileSystem();
+	if (!fs) {
+		logs.writeLogs("Failed to initialize file system");
+		return 1;
+	}
 
     if (parser.isSet(changeOption)) {
-		QEventLoop loop;
         UIManager uim;
         Config config(logs);
         Keywords keywords(config, logs);
-        CurlWrapper* curl = new CurlWrapper(logs);
+    	std::unique_ptr curl = std::make_unique<CurlWrapper>(logs);
         NetworkManager nm(*curl, config, logs);
         WallpaperFactory wf(logs);
         std::unique_ptr<IWallpaperSetter> env = wf.create();
-        WallpaperManager wm(logs);
+        WallpaperManager wm(logs, *fs);
 		logs.writeLogs("Rwal's start in change mode");
 
 		wm.refresh(*env, nm, keywords, nullptr, "change");
@@ -58,7 +63,7 @@ int Application::run(int argc, char* argv[]) {
         NetworkManager nm(curl, config, logs);
         WallpaperFactory wf(logs);
         std::unique_ptr<IWallpaperSetter> env = wf.create();
-        WallpaperManager wm(logs);
+        WallpaperManager wm(logs, *fs);
         std::string message = wm.saveCurrent();
 
         logs.writeLogs("Rwal's start for save current wallpaper");
@@ -74,7 +79,7 @@ int Application::run(int argc, char* argv[]) {
     NetworkManager nm(curl, config, logs);
     WallpaperFactory wf(logs);
     std::unique_ptr<IWallpaperSetter> env = wf.create();
-    WallpaperManager wm(logs);
+    WallpaperManager wm(logs, *fs);
 
     uim.initUI();
 

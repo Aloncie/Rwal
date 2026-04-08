@@ -22,8 +22,9 @@ find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets Concurrent)
 find_package(Curses REQUIRED)
 
-# Include the wallpaper subdirectory first so wallpaper_lib is available
+# --- SECTION: Source Files & Targets ---
 add_subdirectory(src/wallpaper)
+add_subdirectory(src/internal/filesystem)
 
 set(SOURCES
     src/AppController/AppController.cpp
@@ -38,6 +39,7 @@ set(SOURCES
     src/ui/cli/UIManager.cpp
     src/ui/menus/menus.cpp
 	src/Application/Application.cpp
+	src/internal/filesystem/FileSystemFactory.cpp
 )
 
 add_library(rwal_lib STATIC ${SOURCES})
@@ -58,6 +60,7 @@ target_link_libraries(rwal_lib PUBLIC
 	${CURL_LIBRARIES}
     ${CURSES_LIBRARIES}
     wallpaper_lib 
+	filesystem_lib
 )
 
 add_executable(rwal src/main.cpp)
