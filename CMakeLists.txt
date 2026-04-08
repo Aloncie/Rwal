@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(rwal VERSION 0.6.0 LANGUAGES CXX)
+project(rwal VERSION 0.6.1 LANGUAGES CXX)
 
 # --- SECTION: Configuration ---
 option(BUILD_TESTING "Build the testing suite" OFF)
