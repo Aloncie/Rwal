@@ -1,5 +1,3 @@
-#include "FileSystemFactory.hpp"
-
 #ifdef __linux__
 	#include "LinuxFileSystem.hpp"
 #endif
@@ -9,3 +7,4 @@ std::unique_ptr<IFileSystem> createPlatformFileSystem() {
 	return std::make_unique<LinuxFileSystem>();
 #endif
 }
+
