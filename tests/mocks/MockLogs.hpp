@@ -8,7 +8,8 @@
 class MockLogs : public Logs {
 public:
 	std::string lastLogMessage;
-
+	
+	explicit MockLogs() : Logs() {}
 	MOCK_METHOD(void, writeLogs, (std::string_view message), (override));
 
 	bool contains(std::string_view substring) {

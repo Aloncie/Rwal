@@ -6,6 +6,7 @@
 
 class MockIWallpaperSetter : public IWallpaperSetter {
 public:
+	MockIWallpaperSetter() = default;
 	MOCK_METHOD(bool, setWallpaper, (const std::filesystem::path& path), (override));
 };
 
