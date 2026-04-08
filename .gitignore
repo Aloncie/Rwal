@@ -35,7 +35,7 @@ logs.txt
 *.log
 *.sql
 *.sqlite
-valgrind_out.txt
+valgrind*
 
 # ==================== #
 # IDE files            #
