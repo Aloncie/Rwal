@@ -4,6 +4,7 @@
 
 class MockUIManager : public UIManager {
 public:
+	MockUIManager() = default;
     MOCK_METHOD(void, showMessage, (std::string_view message), (override));
     MOCK_METHOD(void, dodgeMessage, (std::string message), (override));
     MOCK_METHOD(bool, isInputActive, (), (const, override));

@@ -6,6 +6,10 @@
 
 class MockConfigReader : public IConfigReader {
 public:
+	using IConfigReader::IConfigReader;
+	MockConfigReader() = default;
+	~MockConfigReader() override = default;
+
     MOCK_METHOD(nlohmann::json&, all, (), (override));
     MOCK_METHOD(void, reload, (), (override));
     MOCK_METHOD(nlohmann::json, getImpl, (const std::string& key), (override));
