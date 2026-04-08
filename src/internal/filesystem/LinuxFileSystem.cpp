@@ -61,7 +61,7 @@ public:
 				m_LastError = ec.message();
 				break;
 			}
-			if (fs::is_regular_file(entry.status(), ec){
+			if (fs::is_regular_file(entry.status(), ec)) {
 				if (prefix.empty() || entry.path().filename().string().starts_with(prefix)){
 					result.push_back(entry.path());
 				}
