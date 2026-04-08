@@ -53,7 +53,7 @@ public:
 
 	std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix) override{
 		std::vector<fs::path> result;
-		if (!exists(path, prefix)) return result;
+		if (!exists(path)) return result;
 		
 		std::error_code ec;
 		for (const auto& entry : fs::directory_iterator(path, ec)){
