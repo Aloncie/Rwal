@@ -41,6 +41,16 @@ public:
 		return true;
 	}
 
+	bool copyFile(const fs::path& current, const fs::path& dest) const override{
+		std::error_code ec;
+		fs::copy_file(current, dest, fs::copy_options::overwrite_existing, ec);
+		if (ec){
+			m_LastError = ec.message();
+			return false;
+		}
+		return true;
+	}
+
 	std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix) override{
 		std::vector<fs::path> result;
 		if (!exists(path, prefix)) return result;
@@ -79,6 +89,5 @@ public:
 	void clearError() const override {
 		m_LastError.clear();
 	}
-
 };
 
