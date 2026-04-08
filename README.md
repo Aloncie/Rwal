@@ -66,7 +66,7 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 </div>
 
-[Install]: https://github.com/Aloncie/Rwal/blob/main/Installation.md
+[Install]: https://github.com/Aloncie/Rwal/blob/main/docs/Installation.md
 [Quick Start]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md#quick-start
 [Configure]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md#Configuration
 [Contribute]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
