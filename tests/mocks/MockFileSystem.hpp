@@ -25,6 +25,5 @@ public:
 	MOCK_METHOD(std::string, getApplicationName, (), (const, override));
 	MOCK_METHOD(std::string, getLastError, (), (const, override));
 	MOCK_METHOD(void, clearError, (), (const, override));
-	MOCK_METHOD(std::unique_ptr<IFileSystem>, createPlatformFileSystem, (), (const, override));
 };
 
