@@ -6,6 +6,7 @@
 #include "mocks/MockUIManager.hpp"
 #include "mocks/MockConfigReader.hpp"
 #include "mocks/MockFileSystem.hpp"
+#include "mocks/MockCurlWrapper.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -28,16 +29,18 @@ protected:
 	std::shared_ptr<testing::NiceMock<MockConfigReader>> mockConfigReader;
 	std::shared_ptr<testing::NiceMock<MockFileSystem>> mockFileSystem;
 	std::shared_ptr<testing::NiceMock<MockUIManager>> mockUIManager;
+	std::shared_ptr<testing::NiceMock<MockCurlWrapper>> mockCurlWrapper;
 	std::unique_ptr<WallpaperManager> wallpaperManager;
 	fs::path temp_dir;
 
 
 	void SetUp() override {
 		mockLogs = std::make_shared<testing::NiceMock<MockLogs>>();
+		mockCurlWrapper = std::make_shared<testing::NiceMock<MockCurlWrapper>>(*mockLogs);
 		mockSetter = std::make_shared<testing::NiceMock<MockIWallpaperSetter>>();
-		mockKeywords = std::make_shared<testing::NiceMock<MockKeywords>>();
-		mockNetworkManager = std::make_shared<testing::NiceMock<MockNetworkManager>>();
 		mockConfigReader = std::make_shared<testing::NiceMock<MockConfigReader>>(*mockLogs);
+		mockKeywords = std::make_shared<testing::NiceMock<MockKeywords>>(*mockConfigReader, *mockLogs);
+		mockNetworkManager = std::make_shared<testing::NiceMock<MockNetworkManager>>(*mockCurlWrapper, *mockConfigReader, *mockLogs);
 		mockUIManager = std::make_shared<testing::NiceMock<MockUIManager>>();
 		mockFileSystem = std::make_shared<testing::NiceMock<MockFileSystem>>();
 		wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
@@ -68,7 +71,7 @@ TEST_F(WallpaperManagerTest, Refresh_Successful) {
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(fakeWallpaper));
 	EXPECT_CALL(*mockSetter, setWallpaper(fakeWallpaper)).WillOnce(Return(true));
 
-	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 	auto result = wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_FALSE(result.has_value());
 }
@@ -76,7 +79,7 @@ TEST_F(WallpaperManagerTest, Refresh_Successful) {
 TEST_F(WallpaperManagerTest, Refresh_FetchImageFails) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(std::nullopt));
-	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 	auto result = wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_TRUE(result.has_value());
 	EXPECT_EQ(result.value(), "Failed to fetch image");
@@ -87,7 +90,7 @@ TEST_F(WallpaperManagerTest, Refresh_SetWallpaperFails) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(fakeWallpaper));
 	EXPECT_CALL(*mockSetter, setWallpaper(fakeWallpaper)).WillOnce(Return(false));
-	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 	auto result = wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_TRUE(result.has_value());
 	EXPECT_EQ(result.value(), "Failed to set wallpaper");
@@ -99,7 +102,7 @@ TEST_F(WallpaperManagerTest, Refresh_LogsFetchImageFails) {
 	ON_CALL(*mockLogs, writeLogs("Failed to fetch image")).WillByDefault(testing::Invoke([this](std::string_view message) {
 		mockLogs->lastLogMessage = message;
 	}));
-	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 	wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_TRUE(mockLogs->contains("Failed to fetch image"));
 }
@@ -112,7 +115,7 @@ TEST_F(WallpaperManagerTest, Refresh_LogsSetWallpaperFails) {
 	ON_CALL(*mockLogs, writeLogs("Failed to set wallpaper")).WillByDefault(testing::Invoke([this](std::string_view message) {
 		mockLogs->lastLogMessage = message;
 	}));
-	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 	wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_TRUE(mockLogs->contains("Failed to set wallpaper"));
 }
@@ -122,10 +125,11 @@ TEST_F(WallpaperManagerTest, Refresh_LogsSetWallpaperSuccess) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(fakeWallpaper));
 	EXPECT_CALL(*mockSetter, setWallpaper(fakeWallpaper)).WillOnce(Return(true));
-	ON_CALL(*mockLogs, writeLogs(testing::HasSubstr("Wallpaper set successfully"))).WillByDefault(testing::Invoke([this](std::string_view message) {
-		mockLogs->lastLogMessage = message;
-	}));
-	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+	ON_CALL(*mockLogs, writeLogs(testing::_))
+		.WillByDefault(testing::Invoke([this](std::string_view msg) {
+			mockLogs->lastLogMessage = msg;
+    }));
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 	wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_TRUE(mockLogs->contains("Wallpaper set successfully"));
 }
@@ -135,10 +139,11 @@ TEST_F(WallpaperManagerTest, Refresh_LogsSetWallpaperPath) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(fakeWallpaper));
 	EXPECT_CALL(*mockSetter, setWallpaper(fakeWallpaper)).WillOnce(Return(true));
-	ON_CALL(*mockLogs, writeLogs(testing::HasSubstr(fakeWallpaper.string()))).WillByDefault(testing::Invoke([this, &fakeWallpaper](std::string_view message) {
-		mockLogs->lastLogMessage = message;
-	}));
-	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+	ON_CALL(*mockLogs, writeLogs(testing::_))
+		.WillByDefault(testing::Invoke([this](std::string_view msg) {
+			mockLogs->lastLogMessage = msg;
+    }));
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 	wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_TRUE(mockLogs->contains(fakeWallpaper.string()));
 }
