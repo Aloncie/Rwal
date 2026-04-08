@@ -1,96 +1,80 @@
-#include "IFileSystem.hpp"
+#include "LinuxFileSystem.hpp"
 
 #include <QStandardPaths>
 #include <QCoreApplication>
 #include <system_error>
 
-class LinuxFileSystem : public IFileSystem{
-private:
-	mutable std::string m_LastError;
-public:
-	~LinuxFileSystem() override = default;
-	
-	bool createDirectories(const fs::path& path) override{
-		std::error_code ec;
-		fs::create_directories(path, ec);
-		if (ec){
-			m_LastError = ec.message();
-			return false;
+bool LinuxFileSystem::createDirectories(const fs::path& path) {
+	std::error_code ec;
+	fs::create_directories(path, ec);
+	if (ec) {
+		m_LastError = "Failed to create directories: " + ec.message();
+		return false;
+	}
+	return true;
+}
+
+bool LinuxFileSystem::exists(const fs::path& path) const {
+	std::error_code ec;
+	bool result = fs::exists(path, ec);
+	if (ec) {
+		m_LastError = "Failed to check existence: " + ec.message();
+		return false;
+	}
+	return result;
+}
+
+bool LinuxFileSystem::removeAll(const fs::path& path) {
+	std::error_code ec;
+	fs::remove_all(path, ec);
+	if (ec) {
+		m_LastError = "Failed to remove: " + ec.message();
+		return false;
+	}
+	return true;
+}
+
+bool LinuxFileSystem::copyFile(const fs::path& current, const fs::path& dest) const {
+	std::error_code ec;
+	fs::copy_file(current, dest, fs::copy_options::overwrite_existing, ec);
+	if (ec) {
+		m_LastError = "Failed to copy file: " + ec.message();
+		return false;
+	}
+	return true;
+}
+
+std::vector<fs::path> LinuxFileSystem::listDirectory(const fs::path& path, const std::string& prefix) const {
+	std::vector<fs::path> result;
+	std::error_code ec;
+	for (const auto& entry : fs::directory_iterator(path, ec)) {
+		if (ec) {
+			m_LastError = "Failed to list directory: " + ec.message();
+			return {};
 		}
-		return true;
-	}
-
-	bool exists(const fs::path& path) override{}
-		std::error_code ec;
-		bool result = fs::exists(path, ec);
-		if (ec){
-			m_LastError = ec.message();
-			return false;
+		if (entry.is_regular_file() && entry.path().filename().string().starts_with(prefix) == 0) {
+			result.push_back(entry.path());
 		}
-		return result;
 	}
-	
-	bool removeAll(const fs::path& path) override{
-		std::error_code ec;
-		fs::remove_all(path, ec);
-		if (ec){
-			m_LastError = ec.message();
-			return false;
-		}
-		return true;
-	}
+	return result;
+}
 
-	bool copyFile(const fs::path& current, const fs::path& dest) const override{
-		std::error_code ec;
-		fs::copy_file(current, dest, fs::copy_options::overwrite_existing, ec);
-		if (ec){
-			m_LastError = ec.message();
-			return false;
-		}
-		return true;
-	}
+fs::path LinuxFileSystem::getAppLocalDataLocation() const {
+	return QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString();
+}
 
-	std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix) override{
-		std::vector<fs::path> result;
-		if (!exists(path)) return result;
-		
-		std::error_code ec;
-		for (const auto& entry : fs::directory_iterator(path, ec)){
-			if (ec){
-				m_LastError = ec.message();
-				break;
-			}
-			if (fs::is_regular_file(entry.status(), ec)) {
-				if (prefix.empty() || entry.path().filename().string().starts_with(prefix) == 0){
-					result.push_back(entry.path());
-				}
-			}
-		}
-		return result;
-	}
+fs::path LinuxFileSystem::getPicturesLocation() const {
+	return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation).toStdString();
 
-	fs::path getAppLocalDataLocation() const override{
-		return fs::path(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString());
-	}
+}
+std::string LinuxFileSystem::getApplicationName() const {
+	return QCoreApplication::applicationName().toStdString();
+}
 
-	fs::path getPicturesLocation() const override{
-		return fs::path(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation).toStdString());
-	}
-	
-	std::string getApplicationName() const override{
-		return QCoreApplication::applicationName().toStdString();
-	}
+std::string LinuxFileSystem::getLastError() const {
+	return m_LastError;
+}
 
-	std::string getLastError() const override{
-		return m_LastError;
-	}
-	
-	void clearError() const override {
-		m_LastError.clear();
-	}
-
-	std::unique_ptr<IFileSystem> createPlatformFileSystem() const override{
-		return std::make_unique<LinuxFileSystem>();
-	}
-};
-
+void LinuxFileSystem::clearError() const {
+	m_LastError.clear();
+}
