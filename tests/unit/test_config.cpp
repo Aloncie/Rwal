@@ -67,6 +67,10 @@ TEST_F(ConfigTest, LoadConfig_InvalidJson_LogsError) {
 	std::ofstream file(configPath);
 	file << "invalid json";
 	file.close();
+	ON_CALL(*mockLogs, writeLogs(testing::_))
+		.WillByDefault(testing::Invoke([this](std::string_view message) {
+			mockLogs->lastLogMessage = message;
+	}));
 	config->loadConfig();
 	EXPECT_TRUE(mockLogs->contains("JSON Parse Error"));
 }
