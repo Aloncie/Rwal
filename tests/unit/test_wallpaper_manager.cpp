@@ -5,6 +5,7 @@
 #include "mocks/MockNetworkManager.hpp"
 #include "mocks/MockUIManager.hpp"
 #include "mocks/MockConfigReader.hpp"
+#include "mocks/MockFileSystem.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -16,7 +17,7 @@ using ::testing::Return;
 using ::testing::_;
 using ::testing::NiceMock;
 
-namespace fs = std::filesystem;
+namespace fs = fs;
 
 class WallpaperManagerTest : public ::testing::Test {
 protected:
@@ -25,9 +26,10 @@ protected:
 	std::shared_ptr<testing::NiceMock<MockKeywords>> mockKeywords;
 	std::shared_ptr<testing::NiceMock<MockNetworkManager>> mockNetworkManager;
 	std::shared_ptr<testing::NiceMock<MockConfigReader>> mockConfigReader;
+	std::shared_ptr<testing::NiceMock<MockFileSystem>> mockFileSystem;
 	std::shared_ptr<testing::NiceMock<MockUIManager>> mockUIManager;
 	std::unique_ptr<WallpaperManager> wallpaperManager;
-	std::filesystem::path temp_dir;
+	fs::path temp_dir;
 
 
 	void SetUp() override {
@@ -37,14 +39,15 @@ protected:
 		mockNetworkManager = std::make_shared<testing::NiceMock<MockNetworkManager>>();
 		mockConfigReader = std::make_shared<testing::NiceMock<MockConfigReader>>(*mockLogs);
 		mockUIManager = std::make_shared<testing::NiceMock<MockUIManager>>();
-		wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
+		mockFileSystem = std::make_shared<testing::NiceMock<MockFileSystem>>();
+		wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 
-		temp_dir = std::filesystem::temp_directory_path() / "wallpaper_manager_test";
-		std::filesystem::create_directory(temp_dir);
+		temp_dir = fs::temp_directory_path() / "wallpaper_manager_test";
+		fs::create_directory(temp_dir);
 	}
 
 	void TearDown() override {
-		std::filesystem::remove_all(temp_dir);
+		fs::remove_all(temp_dir);
 	}
 
 	fs::path createFakeWallpaper(const std::string& filename) {
@@ -138,5 +141,17 @@ TEST_F(WallpaperManagerTest, Refresh_LogsSetWallpaperPath) {
 	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs);
 	wallpaperManager->refresh(*mockSetter, *mockNetworkManager, *mockKeywords);
 	EXPECT_TRUE(mockLogs->contains(fakeWallpaper.string()));
+}
+
+// ========== Tests for saveCurrent method ==========
+
+TEST_F(WallpaperManagerTest, SaveCurrent_ReturnsPath) {
+	fs::path fakeWallpaper = createFakeWallpaper("wallpaper.jpg");
+	EXPECT_CALL(*mockFileSystem, exists(_)).WillOnce(Return(true));
+	EXPECT_CALL(*mockFileSystem, getPicturesLocation()).WillOnce(Return(temp_dir));
+	EXPECT_CALL(*mockFileSystem, copyFile(fakeWallpaper, temp_dir / "current_wallpaper.jpg")).WillOnce(Return(true));
+	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
+	std::string result = wallpaperManager->saveCurrent();
+	EXPECT_EQ(result, (temp_dir / "current_wallpaper.jpg").string());
 }
 
