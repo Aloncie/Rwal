@@ -18,6 +18,7 @@ public:
 	virtual bool exists(const fs::path& path) const = 0;
 	virtual bool createDirectories(const fs::path& path) = 0;
 	virtual bool removeAll(const fs::path& path) = 0;
+	virtual bool copyFile(const fs::path& current, const fs::path& dest) const = 0;
 	virtual std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix = "") const = 0;
 
 	// Qt path resolution
@@ -30,4 +31,5 @@ public:
 	
 	virtual std::string getLastError() const = 0;
 	virtual void clearError() const = 0;
-}
+};
+

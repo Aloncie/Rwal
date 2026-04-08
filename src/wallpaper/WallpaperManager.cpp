@@ -44,35 +44,23 @@ std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& m_env, Ne
 
 std::string WallpaperManager::saveCurrent() const {
     fs::path current = getCurrentWallpaperPath();
-    if (current.empty()) {
+    if (!m_fs->exists(current)) {
         m_logs.writeLogs("saveCurrent: no wallpaper path");
         return "No current wallpaper file to save";
     }
 
-    auto picturesPathOpt = getPicturesPath();
-    if (!picturesPathOpt) {
+	fs::path picturesPath = getPicturesPath().value();
+    if (picturesPath.empty() || !m_fs->exists(picturesPath)) {
         m_logs.writeLogs("No Pictures folder found");
         return "No Pictures folder found";
     }
 
-    fs::path dest = *picturesPathOpt / current.filename();
-	if (CopyFile(current, dest) != "Wallpaper copied successfully"){
-		return "Failed to save wallpaper";
+    fs::path dest = picturesPath / current.filename();
+	if (!m_fs->copyFile(current, dest)) {
+		m_logs.writeLogs("Failed to copy file: " + current.string() + " to " + dest.string());
+		return "Failed to save wallpaper: " + m_fs->getLastError();
 	}
-	else {
-		return "Wallpaper saved successfully";
-	}
-}
-
-std::string WallpaperManager::CopyFile(const fs::path& current, const fs::path& dest) const {
-	try {
-		fs::copy_file(current, dest, fs::copy_options::overwrite_existing); 
-		m_logs.writeLogs("Wallpaper copied to " + dest.string());
-		return "Wallpaper copied successfully";
-	} catch (const std::exception& e) {
-		m_logs.writeLogs("Failed to copy wallpaper: " + std::string(e.what()));
-		return "Failed to copy wallpaper";
-	}
+	return "Wallpaper saved to: " + dest.string();
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {
