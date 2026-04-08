@@ -15,9 +15,9 @@ namespace fs = std::filesystem;
 class WallpaperManager {
 private:
 	Logs& m_logs;
-	std::unique_ptr<IFileSystem> m_fs;
+	IFileSystem& m_fs;
 public:
-    WallpaperManager(Logs& logs, std::unique_ptr<IFileSystem> fs) : m_logs(logs), m_fs(std::move(fs)) {}
+    WallpaperManager(Logs& logs, IFileSystem& fs) : m_logs(logs), m_fs(fs) {}
 	virtual ~WallpaperManager() = default;
 	virtual std::optional<std::string> refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui = nullptr, const std::string mode = "core");
     virtual std::string saveCurrent() const;
