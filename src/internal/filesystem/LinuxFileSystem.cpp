@@ -62,7 +62,7 @@ public:
 				break;
 			}
 			if (fs::is_regular_file(entry.status(), ec)) {
-				if (prefix.empty() || entry.path().filename().string().starts_with(prefix)){
+				if (prefix.empty() || entry.path().filename().string().starts_with(prefix) == 0){
 					result.push_back(entry.path());
 				}
 			}
