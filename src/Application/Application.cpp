@@ -21,9 +21,10 @@
 #include <memory>
 
 int Application::run(int argc, char* argv[]) {
-    QCoreApplication::setApplicationName("Rwal");
-    QCoreApplication::setOrganizationName("Aloncie");
+    QCoreApplication::setApplicationName(APP_NAME);
+    QCoreApplication::setOrganizationName(ORGANIZATION_NAME);
 	QCoreApplication::setApplicationVersion(APP_VERSION);
+	QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
     QCoreApplication app(argc, argv);
 
     QCommandLineParser parser;

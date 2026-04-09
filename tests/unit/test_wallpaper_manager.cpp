@@ -154,6 +154,7 @@ TEST_F(WallpaperManagerTest, SaveCurrent_ReturnsSuccess) {
     fs::path fakeWallpaper = createFakeWallpaper("wallpaper.jpg");
     fs::path downloadsDir = "/fake/downloads";
     fs::path picturesDir = temp_dir;
+	fs::path rwalDir = picturesDir / "rwal";
     fs::path expectedDest = picturesDir / fakeWallpaper.filename();
 
     EXPECT_CALL(*mockFileSystem, getAppLocalDataLocation()).WillOnce(Return(downloadsDir));
@@ -162,7 +163,8 @@ TEST_F(WallpaperManagerTest, SaveCurrent_ReturnsSuccess) {
 
     EXPECT_CALL(*mockFileSystem, getPicturesLocation()).WillOnce(Return(picturesDir));
     EXPECT_CALL(*mockFileSystem, getApplicationName()).WillOnce(Return("rwal"));
-    EXPECT_CALL(*mockFileSystem, createDirectories(picturesDir / "rwal")).WillOnce(Return(true));
+	EXPECT_CALL(*mockFileSystem, exists(rwalDir)).WillOnce(Return(false));
+    EXPECT_CALL(*mockFileSystem, createDirectories(rwalDir)).WillOnce(Return(true));
 
     EXPECT_CALL(*mockFileSystem, copyFile(fakeWallpaper, expectedDest)).WillOnce(Return(true));
 
