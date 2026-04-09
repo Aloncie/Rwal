@@ -66,3 +66,21 @@ void Logs::refresh(fs::path& logs_path) {
     }
 }
 
+std::string Logs::getLogs(int LinesCount) {
+	std::ifstream f(logs_path);
+	if (!f.is_open()) {
+		return "Failed to open logs";
+	}
+	std::string line;
+	std::vector<std::string> lines;
+	while (std::getline(f, line) && lines.size() < static_cast<size_t>(LinesCount)) {
+		lines.push_back(line);
+	}
+	std::string result;
+	int start = std::max(0, static_cast<int>(lines.size()) - LinesCount);
+	for (size_t i = start; i < lines.size(); ++i) {
+		result += lines[i] + "\n";
+	}
+	return result;
+}
+
