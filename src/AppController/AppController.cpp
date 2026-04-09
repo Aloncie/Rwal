@@ -1,7 +1,7 @@
 #include "AppController.hpp"
 #include "logs/logs.hpp"
 
-AppController::AppController(Navigator* nav, UIManager& ui, QObject* parent)
+AppController::AppController(Navigator* nav, TUIManager& ui, QObject* parent)
     : QObject(parent), m_navigator(nav), m_ui(ui) {
     m_notifier = new QSocketNotifier(STDIN_FILENO, QSocketNotifier::Read, this);
     connect(m_notifier, &QSocketNotifier::activated, this, &AppController::handleStdin);

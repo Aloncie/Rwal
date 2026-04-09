@@ -7,7 +7,7 @@
 #include "net/NetworkManager.hpp"
 #include "settings/config.hpp"
 #include "settings/settings.hpp"
-#include "ui/cli/UIManager.hpp"
+#include "ui/tui/TUIManager.hpp"
 #include "ui/menus/menus.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"
@@ -59,7 +59,7 @@ int Application::run(int argc, char* argv[]) {
 		std::cout << COPYRIGHT_STR << std::endl;
 		return 0;
 	} else if (parser.isSet(changeOption)) {
-        UIManager uim;
+        TUIManager uim;
         Config config(logs);
         Keywords keywords(config, logs);
         std::unique_ptr curl = std::make_unique<CurlWrapper>(logs);
@@ -72,7 +72,7 @@ int Application::run(int argc, char* argv[]) {
         wm.refresh(*env, nm, keywords, nullptr, "change");
         return 0;
     } else if (parser.isSet(saveOption)) {
-        UIManager uim;
+        TUIManager uim;
         Config config(logs);
         CurlWrapper curl(logs);
         NetworkManager nm(curl, config, logs);
@@ -114,7 +114,7 @@ int Application::run(int argc, char* argv[]) {
 		return 0;
 	};
 
-    UIManager uim;
+    TUIManager uim;
     Config config(logs);
     Keywords keywords(config, logs);
     CurlWrapper curl(logs);

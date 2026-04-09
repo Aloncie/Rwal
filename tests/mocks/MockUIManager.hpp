@@ -1,8 +1,8 @@
 #pragma once
 #include <gmock/gmock.h>
-#include "ui/cli/UIManager.hpp"
+#include "ui/tui/TUIManager.hpp"
 
-class MockUIManager : public UIManager {
+class MockUIManager : public TUIManager {
 public:
 	MockUIManager() = default;
     MOCK_METHOD(void, showMessage, (std::string_view message), (override));

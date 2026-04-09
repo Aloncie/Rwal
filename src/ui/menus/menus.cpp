@@ -15,7 +15,7 @@
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(UIManager& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
+MainMenu::MainMenu(TUIManager& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -30,7 +30,7 @@ std::vector<std::string> MainMenu::getLines() {
 MenuResponce MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
 		QtConcurrent::run([this] {
-			UIManager* uiPtr = &this->m_uim;
+			TUIManager* uiPtr = &this->m_uim;
 			auto error = m_wm.refresh(m_env, m_nm, m_keywords, uiPtr);
 			
 			QMetaObject::invokeMethod(qApp, [uiPtr, error] {
@@ -54,7 +54,7 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
     }
 }
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, UIManager& ui) : m_timer(timer), m_wm(wm), m_uim(ui) {}
+SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, TUIManager& ui) : m_timer(timer), m_wm(wm), m_uim(ui) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
 	auto PicturesPathOpt = m_wm.getPicturesPath(&m_uim);
@@ -81,7 +81,7 @@ MenuResponce SettingsMenu::handleInput(const std::string& input) {
 }
 
 // ========== KeywordsMenu ==========
-KeywordsMenu::KeywordsMenu(Keywords& keywords, UIManager& ui, IConfigReader& config)
+KeywordsMenu::KeywordsMenu(Keywords& keywords, TUIManager& ui, IConfigReader& config)
     : m_keywords(keywords), m_uim(ui), m_config(config) {}
 
 std::vector<std::string> KeywordsMenu::getLines() {

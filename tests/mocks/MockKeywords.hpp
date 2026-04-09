@@ -12,7 +12,7 @@ public:
 
 	MOCK_METHOD(std::vector<std::string>, loadKeywordsFromConfig, (), (const, override));
 	MOCK_METHOD(std::string, SilentGetKeyword, (), (override));
-	MOCK_METHOD(std::string, InteractiveGetKeyword, (UIManager& ui), (override));
+	MOCK_METHOD(std::string, InteractiveGetKeyword, (TUIManager& ui), (override));
 	MOCK_METHOD(void, Default, (std::vector<std::string>& keywords), (const, override));
 
 	~MockKeywords() override = default;

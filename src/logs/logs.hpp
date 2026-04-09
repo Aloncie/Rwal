@@ -1,5 +1,5 @@
 #pragma once
-#include "ui/cli/UIManager.hpp"
+#include "ui/tui/TUIManager.hpp"
 
 #include <string>
 #include <filesystem>
