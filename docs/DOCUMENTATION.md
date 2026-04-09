@@ -68,6 +68,7 @@ Rwal looks for `config.json` in `~/.config/Aloncie/Rwal/`.
 | '-s' | '--save' | Save current wallpaper |
 | '-v' | '--version' | Displays version information |
 | '-h' | '--help' | Displays version information |
+| none | '--contact' | Displays contact methods |
 
 
 ### Terminal UI Controls
