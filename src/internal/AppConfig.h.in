@@ -1,4 +1,14 @@
 #pragma once
 
 #define APP_VERSION "@PROJECT_VERSION@"
+#define APP_NAME "@PROJECT_NAME@"
+
+#define ORGANIZATION_NAME "Aloncie"
+#define ORGANIZATION_DOMAIN "io.github.aloncie.rwal"
+
+#define APP_EMAIL "Aloncie@proton.me"
+#define APP_REPOSITORY_URL "https://github.com/${ORGANIZATION_DOMAIN}/${APP_NAME}"
+#define APP_ISSUES_URL "https://github.com/${ORGANIZATION_DOMAIN}/${APP_NAME}/issues"
+
+#define COPYRIGHT_STR "Copyright (c) 2025-2026 Aloncie"
 
