@@ -19,18 +19,17 @@ std::vector<std::string> Keywords::loadKeywordsFromConfig() const {
 }
 
 std::string Keywords::pickRandomKeyword(const std::vector<std::string>& keywords) const {
-    if (keywords.empty()) {
-        std::vector<std::string> defaults;
-        Default(defaults);
-        if (defaults.empty()) return "art";
-        return defaults[random(defaults.size() - 1)];
-    }
-    if (keywords.size() == 1) return keywords[0];
-    return keywords[random(keywords.size() - 1)];
+	if (keywords.empty()) return "";
+	if (keywords.size() == 1) return keywords[0];
+	return keywords[random(keywords.size() - 1)];
 }
 
 std::string Keywords::SilentGetKeyword() {
-    auto keywords = loadKeywordsFromConfig();
+	std::vector<std::string> keywords = loadKeywordsFromConfig();
+	if (keywords.empty()) {
+		Default(keywords);
+		m_logs.writeLogs("No keywords found in config. Using default keywords.");
+	}
     return pickRandomKeyword(keywords);
 }
 
