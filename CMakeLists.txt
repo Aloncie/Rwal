@@ -11,11 +11,15 @@ endif()
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON) 
 set(CMAKE_AUTOUIC ON)
+
+configure_file(
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/internal/AppConfig.h.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/generated/AppConfig.h"
+)
 
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
@@ -47,6 +51,7 @@ add_library(rwal_lib STATIC ${SOURCES})
 target_include_directories(rwal_lib PUBLIC
     ${PROJECT_SOURCE_DIR}/src
 	${PROJECT_SOURCE_DIR}/tests
+	${CMAKE_CURRENT_BINARY_DIR}/generated
 	${Qt5Concurrent_INCLUDE_DIRS}
 )
 

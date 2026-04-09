@@ -13,6 +13,7 @@
 #include "wallpaper/WallpaperFactory.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 #include "internal/filesystem/FileSystemFactory.hpp"
+#include "AppConfig.h"
 
 #include <QCoreApplication>
 #include <QObject>
@@ -22,6 +23,7 @@
 int Application::run(int argc, char* argv[]) {
     QCoreApplication::setApplicationName("Rwal");
     QCoreApplication::setOrganizationName("Aloncie");
+	QCoreApplication::setApplicationVersion(APP_VERSION);
     QCoreApplication app(argc, argv);
 
     QCommandLineParser parser;
