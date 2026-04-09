@@ -37,12 +37,14 @@ int Application::run(int argc, char* argv[]) {
 	QCommandLineOption contactOption("contact", "Show contact information");
 	QCommandLineOption versionOption({"v","version"}, "Show application version");
 	QCommandLineOption logOption("log", "Show latest logs");
+	QCommandLineOption clearLogsOption("clear-logs", "Clear logs file");
 
     parser.addOption(changeOption);
     parser.addOption(saveOption);
 	parser.addOption(contactOption);
 	parser.addOption(versionOption);
 	parser.addOption(logOption);
+	parser.addOption(clearLogsOption);
     parser.process(app);
 
     Logs logs;
@@ -103,7 +105,14 @@ int Application::run(int argc, char* argv[]) {
     		std::string logsContent = logs.getLogs();
     		std::cout << logsContent << std::endl;
     		return 0;
-	}
+	} else if (parser.isSet(clearLogsOption)) {
+		if (logs.refresh()) {
+			std::cout << "Logs cleared successfully." << std::endl;
+		} else {
+			std::cout << "Failed to clear logs." << std::endl;
+		}
+		return 0;
+	};
 
     UIManager uim;
     Config config(logs);
