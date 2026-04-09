@@ -31,15 +31,16 @@ int Application::run(int argc, char* argv[]) {
     QCommandLineParser parser;
     parser.setApplicationDescription("Rwal - cross-platform wallpaper utility");
     parser.addHelpOption();
-    parser.addVersionOption();
 
     QCommandLineOption changeOption({"c", "change"}, "Change wallpaper one and exit");
     QCommandLineOption saveOption({"s", "save"}, "Save current wallpaper");
 	QCommandLineOption contactOption("contact", "Show contact information");
+	QCommandLineOption versionOption({"v","version"}, "Show application version");
 
     parser.addOption(changeOption);
     parser.addOption(saveOption);
 	parser.addOption(contactOption);
+	parser.addOption(versionOption);
     parser.process(app);
 
     Logs logs;
@@ -48,7 +49,12 @@ int Application::run(int argc, char* argv[]) {
         logs.writeLogs("Failed to initialize file system");
         return 1;
     }
-
+	
+	if (parser.isSet(versionOption)) {
+		std::cout << APP_NAME << " " << APP_VERSION << std::endl;
+		std::cout << COPYRIGHT_STR << std::endl;
+		return 0;
+	}
     if (parser.isSet(changeOption)) {
         UIManager uim;
         Config config(logs);
@@ -85,7 +91,11 @@ int Application::run(int argc, char* argv[]) {
             std::string(APP_REPOSITORY_URL) +
             "\n"
             "Issues: " +
-            std::string(APP_ISSUES_URL);
+            std::string(APP_ISSUES_URL) +
+			"\n"
+			"\n"
+			"Copyright: " +
+			std::string(COPYRIGHT_STR);
         std::cout << contactInfo << std::endl;
         return 0;
     }
