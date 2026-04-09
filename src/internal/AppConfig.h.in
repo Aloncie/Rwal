@@ -3,12 +3,12 @@
 #define APP_VERSION "@PROJECT_VERSION@"
 #define APP_NAME "@PROJECT_NAME@"
 
-#define ORGANIZATION_NAME "Aloncie"
-#define ORGANIZATION_DOMAIN "io.github.aloncie.rwal"
+#define ORGANIZATION_NAME "@ORGANIZATION_NAME@"
+#define ORGANIZATION_DOMAIN "@ORGANIZATION_DOMAIN@"
 
-#define APP_EMAIL "Aloncie@proton.me"
-#define APP_REPOSITORY_URL "https://github.com/${ORGANIZATION_DOMAIN}/${APP_NAME}"
-#define APP_ISSUES_URL "https://github.com/${ORGANIZATION_DOMAIN}/${APP_NAME}/issues"
+#define APP_EMAIL "@APP_EMAIL@"
+#define APP_REPOSITORY_URL "@APP_REPOSITORY_URL@"
+#define APP_ISSUES_URL "@APP_ISSUES_URL@"
 
 #define COPYRIGHT_STR "Copyright (c) 2025-2026 Aloncie"
 

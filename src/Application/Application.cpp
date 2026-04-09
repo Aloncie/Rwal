@@ -19,12 +19,13 @@
 #include <QObject>
 #include <QCommandLineParser>
 #include <memory>
+#include <iostream>
 
 int Application::run(int argc, char* argv[]) {
     QCoreApplication::setApplicationName(APP_NAME);
     QCoreApplication::setOrganizationName(ORGANIZATION_NAME);
-	QCoreApplication::setApplicationVersion(APP_VERSION);
-	QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
+    QCoreApplication::setApplicationVersion(APP_VERSION);
+    QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
     QCoreApplication app(argc, argv);
 
     QCommandLineParser parser;
@@ -34,30 +35,32 @@ int Application::run(int argc, char* argv[]) {
 
     QCommandLineOption changeOption({"c", "change"}, "Change wallpaper one and exit");
     QCommandLineOption saveOption({"s", "save"}, "Save current wallpaper");
+	QCommandLineOption contactOption("contact", "Show contact information");
 
     parser.addOption(changeOption);
     parser.addOption(saveOption);
+	parser.addOption(contactOption);
     parser.process(app);
 
-	Logs logs;
-	auto fs = createPlatformFileSystem();
-	if (!fs) {
-		logs.writeLogs("Failed to initialize file system");
-		return 1;
-	}
+    Logs logs;
+    auto fs = createPlatformFileSystem();
+    if (!fs) {
+        logs.writeLogs("Failed to initialize file system");
+        return 1;
+    }
 
     if (parser.isSet(changeOption)) {
         UIManager uim;
         Config config(logs);
         Keywords keywords(config, logs);
-    	std::unique_ptr curl = std::make_unique<CurlWrapper>(logs);
+        std::unique_ptr curl = std::make_unique<CurlWrapper>(logs);
         NetworkManager nm(*curl, config, logs);
         WallpaperFactory wf(logs);
         std::unique_ptr<IWallpaperSetter> env = wf.create();
         WallpaperManager wm(logs, *fs);
-		logs.writeLogs("Rwal's start in change mode");
+        logs.writeLogs("Rwal's start in change mode");
 
-		wm.refresh(*env, nm, keywords, nullptr, "change");
+        wm.refresh(*env, nm, keywords, nullptr, "change");
         return 0;
     } else if (parser.isSet(saveOption)) {
         UIManager uim;
@@ -72,11 +75,24 @@ int Application::run(int argc, char* argv[]) {
         logs.writeLogs("Rwal's start for save current wallpaper");
         logs.writeLogs(message);
         return 0;
+    } else if (parser.isSet(contactOption)) {
+        std::string contactInfo =
+            "Contact Information:\n"
+            "Email: " +
+            std::string(APP_EMAIL) +
+            "\n"
+            "Repository: " +
+            std::string(APP_REPOSITORY_URL) +
+            "\n"
+            "Issues: " +
+            std::string(APP_ISSUES_URL);
+        std::cout << contactInfo << std::endl;
+        return 0;
     }
 
     UIManager uim;
     Config config(logs);
-    Keywords keywords(config,logs);
+    Keywords keywords(config, logs);
     CurlWrapper curl(logs);
     Timer timer(logs);
     NetworkManager nm(curl, config, logs);

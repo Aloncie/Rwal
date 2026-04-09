@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(rwal VERSION 0.6.1.2 LANGUAGES CXX)
+project(Rwal VERSION 0.6.1.2 LANGUAGES CXX)
 
 # --- SECTION: Configuration ---
 option(BUILD_TESTING "Build the testing suite" OFF)
@@ -16,6 +16,12 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON) 
 set(CMAKE_AUTOUIC ON)
 
+set(ORGANIZATION_NAME "Aloncie")
+set(ORGANIZATION_DOMAIN "io.github.aloncie.rwal")
+set(APP_EMAIL "Aloncie@proton.me")
+
+set(APP_REPOSITORY_URL "https://github.com/${ORGANIZATION_NAME}/${PROJECT_NAME}")
+set(APP_ISSUES_URL "${APP_REPOSITORY_URL}/issues")
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/internal/AppConfig.h.in"
 	"${CMAKE_CURRENT_BINARY_DIR}/generated/AppConfig.h"
