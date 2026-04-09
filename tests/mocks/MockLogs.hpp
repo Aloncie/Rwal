@@ -11,6 +11,7 @@ public:
 	
 	explicit MockLogs() : Logs() {}
 	MOCK_METHOD(void, writeLogs, (std::string_view message), (override));
+	MOCK_METHOD(std::string, getLogs, (int LinesCount), (override));
 
 	bool contains(std::string_view substring) {
 		return lastLogMessage.find(substring) != std::string::npos;

@@ -19,5 +19,6 @@ private:
 public:
     Logs(); 
     virtual void writeLogs(std::string_view message);
+	virtual std::string getLogs(int LinesCount = 100);
 };
 

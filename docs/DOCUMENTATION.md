@@ -69,7 +69,7 @@ Rwal looks for `config.json` in `~/.config/Aloncie/Rwal/`.
 | `-v` | `--version` | Displays version information |
 | `-h` | `--help` | Displays version information |
 | none | `--contact` | Displays contact methods |
-
+| none | `--log` | Show latest logs |
 
 ### Terminal UI Controls
 

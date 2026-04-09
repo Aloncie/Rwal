@@ -36,11 +36,13 @@ int Application::run(int argc, char* argv[]) {
     QCommandLineOption saveOption({"s", "save"}, "Save current wallpaper");
 	QCommandLineOption contactOption("contact", "Show contact information");
 	QCommandLineOption versionOption({"v","version"}, "Show application version");
+	QCommandLineOption logOption("log", "Show latest logs");
 
     parser.addOption(changeOption);
     parser.addOption(saveOption);
 	parser.addOption(contactOption);
 	parser.addOption(versionOption);
+	parser.addOption(logOption);
     parser.process(app);
 
     Logs logs;
@@ -54,8 +56,7 @@ int Application::run(int argc, char* argv[]) {
 		std::cout << APP_NAME << " " << APP_VERSION << std::endl;
 		std::cout << COPYRIGHT_STR << std::endl;
 		return 0;
-	}
-    if (parser.isSet(changeOption)) {
+	} else if (parser.isSet(changeOption)) {
         UIManager uim;
         Config config(logs);
         Keywords keywords(config, logs);
@@ -98,7 +99,11 @@ int Application::run(int argc, char* argv[]) {
 			std::string(COPYRIGHT_STR);
         std::cout << contactInfo << std::endl;
         return 0;
-    }
+    } else if (parser.isSet(logOption)) {
+    		std::string logsContent = logs.getLogs();
+    		std::cout << logsContent << std::endl;
+    		return 0;
+	}
 
     UIManager uim;
     Config config(logs);
