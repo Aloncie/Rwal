@@ -16,9 +16,13 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON) 
 set(CMAKE_AUTOUIC ON)
 
+string(TIMESTAMP CURRENT_YEAR "%Y")
+
 set(ORGANIZATION_NAME "Aloncie")
 set(ORGANIZATION_DOMAIN "io.github.aloncie.rwal")
 set(APP_EMAIL "Aloncie@proton.me")
+set(APP_COPYRIGHT "Copyright (c) 2025-${CURRENT_YEAR} Aloncie")
+
 
 set(APP_REPOSITORY_URL "https://github.com/${ORGANIZATION_NAME}/${PROJECT_NAME}")
 set(APP_ISSUES_URL "${APP_REPOSITORY_URL}/issues")
