@@ -4,7 +4,6 @@
 #include <string>
 #include <filesystem>
 #include <fstream>
-#include <QStandardPaths>
 
 namespace fs = std::filesystem;
 
@@ -13,12 +12,12 @@ private:
     fs::path logs_path;
     std::ofstream f;
   
-    std::string getCurrentTime();
-    void refresh(fs::path& logs_path);
-
+    std::string getCurrentTime() const;
 public:
+	virtual bool refresh();
+
     Logs(); 
     virtual void writeLogs(std::string_view message);
-	virtual std::string getLogs(int LinesCount = 100);
+	virtual std::string getLogs(const int& LinesCount = 100) const;
 };
 

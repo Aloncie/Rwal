@@ -1,13 +1,12 @@
 #include "logs.hpp"
 
-#include <chrono>
 #include <filesystem>
-#include <iomanip>
-#include <iostream>
 #include <fstream>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <sys/types.h>
+#include <QTime>
+#include <QStandardPaths>
+#include <unistd.h>
 #include <pwd.h>
 
 Logs::Logs() {
@@ -17,32 +16,32 @@ Logs::Logs() {
         const std::uintmax_t fileSize = fs::file_size(logs_path);
         const std::uintmax_t limit_size = 1024 * 1024;
 
-        if (fileSize > limit_size) refresh(logs_path);
+        if (fileSize > limit_size){
+			writeLogs("Logs file size (" + std::to_string(fileSize) + " bytes) exceeds the limit (" + std::to_string(limit_size) + " bytes). Try to refresh logs.");
+			refresh();
+		}
     }
     f.open(logs_path, std::ios::app);
 };
 
-std::string Logs::getCurrentTime() {
-    auto now = std::chrono::system_clock::now();
-    auto in_time_t = std::chrono::system_clock::to_time_t(now);
-
-    std::stringstream ss;
-    ss << std::put_time(std::localtime(&in_time_t), "[%Y-%m-%d | %H:%M:%S]");
-    return ss.str();
+std::string Logs::getCurrentTime() const {
+	QTime currentTime = QTime::currentTime();
+	return currentTime.toString("HH:mm:ss").toStdString();
 }
 
-void Logs::writeLogs(std::string_view message) {
+void Logs::writeLogs(std::string_view message){
     if (f.is_open()) {
         f << getCurrentTime() << " " << message << std::endl;
     }
 }
 
-void Logs::refresh(fs::path& logs_path) {
+bool Logs::refresh() {
     try {
-        if (fs::remove(logs_path))
+        if (fs::remove(logs_path)){
             writeLogs("Successful deleting old logs");
-        else
-            writeLogs("Failed deleting old logs");
+			return true;
+		}
+		return false;
     } catch (const std::exception& e) {
         writeLogs("Failed to refresh logs: " + std::string(e.what()));
     }
@@ -52,6 +51,7 @@ void Logs::refresh(fs::path& logs_path) {
 
     if (chmod(logs_path.c_str(), 0644) != 0) {
         writeLogs("Failed to change mod of logs\n Try to fix it yourself");
+		return false;
     }
     if (geteuid() == 0) {
         const char* sudo_user = std::getenv("SUDO_USER");
@@ -60,13 +60,15 @@ void Logs::refresh(fs::path& logs_path) {
             if (pw) {
                 if (chown(logs_path.c_str(), pw->pw_uid, pw->pw_gid) != 0) {
                     writeLogs("Failed to change owner of logs\n Try to fix it yourself");
+					return false;
                 }
             }
         }
     }
+	return true;
 }
 
-std::string Logs::getLogs(int LinesCount) {
+std::string Logs::getLogs(const int& LinesCount) const {
 	std::ifstream f(logs_path);
 	if (!f.is_open()) {
 		return "Failed to open logs";
