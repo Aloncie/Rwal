@@ -50,7 +50,7 @@ set(SOURCES
     src/navigator/navigator.cpp
     src/settings/config.cpp
     src/settings/settings.cpp
-    src/ui/cli/UIManager.cpp
+    src/ui/tui/TUIManager.cpp
     src/ui/menus/menus.cpp
 	src/Application/Application.cpp
 	src/internal/filesystem/FileSystemFactory.cpp

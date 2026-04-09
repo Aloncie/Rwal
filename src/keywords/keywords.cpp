@@ -34,7 +34,7 @@ std::string Keywords::SilentGetKeyword() {
     return pickRandomKeyword(keywords);
 }
 
-void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> callback, UIManager& ui, int attempts) {
+void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> callback, TUIManager& ui, int attempts) {
 	// Prevent infinite recursion if user keeps entering invalid input.
 	if (attempts > 100) {
 		ui.showMessage("Too many failed attempts. Using default keywords.");
@@ -57,7 +57,7 @@ void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> c
         }, "Keywords not found. Enter keywords (space separated): "); 
 }
 
-std::string Keywords::InteractiveGetKeyword(UIManager& ui) {
+std::string Keywords::InteractiveGetKeyword(TUIManager& ui) {
     auto keywords = loadKeywordsFromConfig();
     if (!keywords.empty()) {
         return pickRandomKeyword(keywords);
@@ -79,7 +79,7 @@ void Keywords::Default(std::vector<std::string>& keywords) const {
                 "architecture", "animals", "anime", "cars"};
 }
 
-void Keywords::editKeywords(UIManager& ui) {
+void Keywords::editKeywords(TUIManager& ui) {
     fs::path temp_path = fs::temp_directory_path() / "keywords.txt";
     importToTxt(temp_path);
 
@@ -106,7 +106,7 @@ void Keywords::importToTxt(const fs::path& path) const {
     file.close();
 }
 
-std::vector<std::string> Keywords::exportFromTxt(const fs::path& path, UIManager& ui) const {
+std::vector<std::string> Keywords::exportFromTxt(const fs::path& path, TUIManager& ui) const {
     std::ifstream file(path);
     std::string line;
     std::vector<std::string> keywords;

@@ -5,7 +5,7 @@
 #include <ncurses.h>
 #include <functional>
 
-class UIManager{
+class TUIManager{
 private:
 	static std::vector<std::string> dontShowAgain;
 	bool inputActive = false;
@@ -16,8 +16,8 @@ public:
 	void initUI();
 	void shutdownUI();
 
-	UIManager();
-	virtual ~UIManager() = default;
+	TUIManager();
+	virtual ~TUIManager() = default;
 	virtual void showMessage(std::string_view message);
 	virtual void dodgeMessage(std::string message);
 	virtual bool isInputActive() const;

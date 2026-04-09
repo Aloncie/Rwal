@@ -1,6 +1,6 @@
 #pragma once
 #include "ui/menus/menus.hpp"
-#include "ui/cli/UIManager.hpp"
+#include "ui/tui/TUIManager.hpp"
 #include "logs/logs.hpp"
 
 #include <string>
@@ -16,7 +16,7 @@ public:
 	Navigator(Logs& logs) : m_logs(logs) {}
 	void printCurrentMenu();
 	void start(const std::string InitialMenu);
-	MenuResponce processInput(std::string& input, UIManager& uimanager);
+	MenuResponce processInput(std::string& input, TUIManager& uimanager);
 	void registerMenu(const std::string& name, std::unique_ptr<Menu> menu);
 	const std::string& getCurrentValidChoices() const;
 };

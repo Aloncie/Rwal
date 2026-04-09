@@ -1,13 +1,13 @@
-#include "UIManager.hpp"
+#include "TUIManager.hpp"
 #include "logs/logs.hpp"
 
 #include <algorithm>
 #include <cctype>
 #include <sstream>
 
-bool UIManager::isInputActive() const {return inputActive;}
+bool TUIManager::isInputActive() const {return inputActive;}
 
-void UIManager::processInputChar(int ch) {
+void TUIManager::processInputChar(int ch) {
     if (!inputActive) return;
 
     if (ch == '\n' || ch == '\r' || ch == KEY_ENTER) {
@@ -44,17 +44,17 @@ void UIManager::processInputChar(int ch) {
     }
 }
 
-std::vector<std::string> UIManager::dontShowAgain;
+std::vector<std::string> TUIManager::dontShowAgain;
 
-void UIManager::dodgeMessage(std::string message){
+void TUIManager::dodgeMessage(std::string message){
 	if (std::find(dontShowAgain.begin(),dontShowAgain.end(),message) != dontShowAgain.end())
 		return;
 	dontShowAgain.push_back(message);
 }
 
-UIManager::UIManager(){}
+TUIManager::TUIManager(){}
 
-void UIManager::initUI(){
+void TUIManager::initUI(){
     initscr();
     cbreak();
     noecho();
@@ -71,9 +71,9 @@ void UIManager::initUI(){
 	}
 }
 
-void UIManager::shutdownUI(){endwin();}
+void TUIManager::shutdownUI(){endwin();}
 
-void UIManager::showMessage(std::string_view message) {
+void TUIManager::showMessage(std::string_view message) {
     if (message.empty()) return;
 
     move(LINES - 1, 0);
@@ -96,7 +96,7 @@ void UIManager::showMessage(std::string_view message) {
     refresh();
 }
 
-void UIManager::requestInputString(std::function<void(std::string)> callback, std::optional<std::string> message) {
+void TUIManager::requestInputString(std::function<void(std::string)> callback, std::optional<std::string> message) {
 	if (message) {
 		showMessage(*message);
 	}
@@ -118,7 +118,7 @@ void UIManager::requestInputString(std::function<void(std::string)> callback, st
 	refresh();
 }
 
-void UIManager::requestInputInt(std::function<void(int)> callback, std::optional<std::string> message) {
+void TUIManager::requestInputInt(std::function<void(int)> callback, std::optional<std::string> message) {
 	if (message) {
 		showMessage(*message);
 	}

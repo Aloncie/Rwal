@@ -10,7 +10,7 @@
 
 namespace fs = std::filesystem;
 
-std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, UIManager* m_ui, const std::string mode) {
+std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, TUIManager* m_ui, const std::string mode) {
     std::string keyword;
     if (mode == "change") {
         keyword = m_keywords.SilentGetKeyword();
@@ -82,7 +82,7 @@ fs::path WallpaperManager::getCurrentWallpaperPath() const {
     return "";
 }
 
-std::optional<fs::path> WallpaperManager::getPicturesPath(UIManager* m_ui) const {
+std::optional<fs::path> WallpaperManager::getPicturesPath(TUIManager* m_ui) const {
     m_logs.writeLogs("Trying to locate Pictures folder");
     QString path = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     if (path.isEmpty()) {
