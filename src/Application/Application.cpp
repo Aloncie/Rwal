@@ -14,6 +14,7 @@
 #include "wallpaper/WallpaperManager.hpp"
 #include "internal/filesystem/FileSystemFactory.hpp"
 #include "AppConfig.h"
+#include "internal/utils/string_utils.hpp"
 
 #include <QCoreApplication>
 #include <QObject>
@@ -38,6 +39,8 @@ int Application::run(int argc, char* argv[]) {
 	QCommandLineOption versionOption({"v","version"}, "Show application version");
 	QCommandLineOption logOption("log", "Show latest logs");
 	QCommandLineOption clearLogsOption("clear-logs", "Clear logs file");
+	QCommandLineOption setKeywordsOption({"k","set-keywords"}, "Set keywords for wallpaper search (space-separated)", "keywords");
+	
 
     parser.addOption(changeOption);
     parser.addOption(saveOption);
@@ -45,9 +48,12 @@ int Application::run(int argc, char* argv[]) {
 	parser.addOption(versionOption);
 	parser.addOption(logOption);
 	parser.addOption(clearLogsOption);
+	parser.addOption(setKeywordsOption);
+
     parser.process(app);
 
     Logs logs;
+	Config config(logs);
     auto fs = createPlatformFileSystem();
     if (!fs) {
         logs.writeLogs("Failed to initialize file system");
@@ -60,7 +66,6 @@ int Application::run(int argc, char* argv[]) {
 		return 0;
 	} else if (parser.isSet(changeOption)) {
         TUIManager uim;
-        Config config(logs);
         Keywords keywords(config, logs);
         std::unique_ptr curl = std::make_unique<CurlWrapper>(logs);
         NetworkManager nm(*curl, config, logs);
@@ -73,7 +78,6 @@ int Application::run(int argc, char* argv[]) {
         return 0;
     } else if (parser.isSet(saveOption)) {
         TUIManager uim;
-        Config config(logs);
         CurlWrapper curl(logs);
         NetworkManager nm(curl, config, logs);
         WallpaperFactory wf(logs);
@@ -112,10 +116,23 @@ int Application::run(int argc, char* argv[]) {
 			std::cout << "Failed to clear logs." << std::endl;
 		}
 		return 0;
-	};
+	} else if (parser.isSet(setKeywordsOption)) {
+		std::string option = parser.value(setKeywordsOption).toStdString();
+		if (option.empty()) {
+			std::cout << "No keywords provided. Please provide comma-separated keywords." << std::endl;
+			return 0;
+		}
+
+		rwal::utils::string::format(option);
+		std::vector<std::string> keywords = rwal::utils::string::split_by_space(option);
+
+		config.setImpl("/search/keywords", keywords);
+		std::cout << "New keywords have been set successfully: " << option << std::endl;
+		return 0;
+	}
+
 
     TUIManager uim;
-    Config config(logs);
     Keywords keywords(config, logs);
     CurlWrapper curl(logs);
     Timer timer(logs);
