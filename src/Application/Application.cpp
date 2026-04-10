@@ -39,7 +39,7 @@ int Application::run(int argc, char* argv[]) {
 	QCommandLineOption versionOption({"v","version"}, "Show application version");
 	QCommandLineOption logOption("log", "Show latest logs");
 	QCommandLineOption clearLogsOption("clear-logs", "Clear logs file");
-	QCommandLineOption setKeywordsOption({"k","set-keywords"}, "Set keywords for wallpaper search (space-separated)", "keywords");
+	QCommandLineOption setKeywordsOption({"k","set-keywords"}, "Set keywords for wallpaper search (space-separated, e.g.: nature,ocean,town)", "keywords");
 	
 
     parser.addOption(changeOption);
