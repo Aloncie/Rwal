@@ -39,8 +39,9 @@ int Application::run(int argc, char* argv[]) {
 	QCommandLineOption versionOption({"v","version"}, "Show application version");
 	QCommandLineOption logOption("log", "Show latest logs");
 	QCommandLineOption clearLogsOption("clear-logs", "Clear logs file");
-	QCommandLineOption setKeywordsOption({"k","set-keywords"}, "Set keywords for wallpaper search (space-separated, e.g.: nature,ocean,town)", "keywords");
-	
+	QCommandLineOption keywordsOption({"k","keywords"}, "Show keywords");
+	QCommandLineOption setKeywordsOption("set-keywords", "Set keywords for wallpaper search (comma-separated, e.g.: nature,ocean,town)", "keywords");
+	QCommandLineOption addKeywordsOption("add-keywords", "Add keywords for wallpaper search (comma-separated, e.g.: nature,ocean,town)", "keywords");
 
     parser.addOption(changeOption);
     parser.addOption(saveOption);
@@ -48,7 +49,9 @@ int Application::run(int argc, char* argv[]) {
 	parser.addOption(versionOption);
 	parser.addOption(logOption);
 	parser.addOption(clearLogsOption);
+	parser.addOption(keywordsOption);
 	parser.addOption(setKeywordsOption);
+	parser.addOption(addKeywordsOption);
 
     parser.process(app);
 
@@ -116,6 +119,20 @@ int Application::run(int argc, char* argv[]) {
 			std::cout << "Failed to clear logs." << std::endl;
 		}
 		return 0;
+	} else if (parser.isSet(keywordsOption)) {
+		std::vector<std::string> keywords = config.getImpl("/search/keywords");
+		if (keywords.empty()) {
+			std::cout << "There are no keywords in your config file." << std::endl;
+		}
+		std::cout << "Keywords: ";
+		for (int i = 0; i < keywords.size(); i++) {
+			std::cout << keywords[i];
+			if (i < keywords.size() - 1) {
+				std::cout << ", ";
+			}
+		}
+		std::cout << std::endl;
+		return 0;
 	} else if (parser.isSet(setKeywordsOption)) {
 		std::string option = parser.value(setKeywordsOption).toStdString();
 		if (option.empty()) {
@@ -129,8 +146,23 @@ int Application::run(int argc, char* argv[]) {
 		config.setImpl("/search/keywords", keywords);
 		std::cout << "New keywords have been set successfully: " << option << std::endl;
 		return 0;
-	}
+	} else if (parser.isSet(addKeywordsOption)) {
+        std::string option = parser.value(addKeywordsOption).toStdString();
+        if (option.empty()) {
+            std::cout << "No keywords provided. Please provide comma-separated keywords." << std::endl;
+            return 0;
+        }
+		
+		rwal::utils::string::format(option);
+		std::vector<std::string> oldKeywords = config.getImpl("/search/keywords");
+		std::vector<std::string> newKeywords = rwal::utils::string::split_by_space(option);
 
+		oldKeywords.insert(oldKeywords.end(), newKeywords.begin(), newKeywords.end());
+
+		config.setImpl("/search/keywords", oldKeywords);
+        std::cout << "Keywords have been added successfully: " << option << std::endl;
+        return 0;
+	} 
 
     TUIManager uim;
     Keywords keywords(config, logs);
