@@ -42,6 +42,7 @@ int Application::run(int argc, char* argv[]) {
 	QCommandLineOption keywordsOption({"k","keywords"}, "Show keywords");
 	QCommandLineOption setKeywordsOption("set-keywords", "Set keywords for wallpaper search (comma-separated, e.g.: nature,ocean,town)", "keywords");
 	QCommandLineOption addKeywordsOption("add-keywords", "Add keywords for wallpaper search (comma-separated, e.g.: nature,ocean,town)", "keywords");
+	QCommandLineOption removeKeywordsOption("remove-keywords", "Remove keywords for wallpaper search (comma-separated, e.g.: nature,ocean,town)", "keywords");
 
     parser.addOption(changeOption);
     parser.addOption(saveOption);
@@ -52,6 +53,7 @@ int Application::run(int argc, char* argv[]) {
 	parser.addOption(keywordsOption);
 	parser.addOption(setKeywordsOption);
 	parser.addOption(addKeywordsOption);
+	parser.addOption(removeKeywordsOption);
 
     parser.process(app);
 
@@ -162,7 +164,26 @@ int Application::run(int argc, char* argv[]) {
 		config.setImpl("/search/keywords", oldKeywords);
         std::cout << "Keywords have been added successfully: " << option << std::endl;
         return 0;
-	} 
+	} else if (parser.isSet(removeKeywordsOption)) {
+		std::string option = parser.value(removeKeywordsOption).toStdString();
+		std::vector<std::string> keywords = config.getImpl("/search/keywords");
+		rwal::utils::string::format(option);
+		std::vector<std::string> needRemove = rwal::utils::string::split_by_space(option);
+		std::string removedStr = "Removed keywords: ";
+		for (int i = 0; i < needRemove.size(); i++) {
+            for (int j = 0; j < keywords.size(); j++) {
+                if (keywords[j] == needRemove[i]) {
+					removedStr += keywords[j] + " ";
+                    keywords.erase(keywords.begin() + j);
+                    j--;
+                }
+            }
+        }
+		std::cout << removedStr << std::endl;
+        config.setImpl("/search/keywords", keywords);
+        return 0;
+	}
+
 
     TUIManager uim;
     Keywords keywords(config, logs);
