@@ -21,5 +21,5 @@ namespace rwal::cli{
 		std::optional<std::string> addKeywords;
 		std::optional<std::string> removeKeywords;
 	};	
-	QString parse(int argc, char** argv[]);
+	Options parse(int argc, char** argv[]);
 }
