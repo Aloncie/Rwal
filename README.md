@@ -67,9 +67,9 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 </div>
 
 [Install]: https://github.com/Aloncie/Rwal/blob/main/docs/Installation.md
-[Quick Start]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md#quick-start
-[Configure]: https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md#Configuration
-[Contribute]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
+[Quick Start]: https://github.com/Aloncie/Rwal/blob/main/docs/Usage.md
+[Configure]: https://github.com/Aloncie/Rwal/blob/main/docs/Configuration.md
+[Contribute]: https://github.com/Aloncie/Rwal/blob/main/docs/Roadmap.md
 
 [Workflow]: https://github.com/Aloncie/Rwal/actions
 [Version]: https://img.shields.io/badge/version-alpha-blue
