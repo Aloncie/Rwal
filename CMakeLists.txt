@@ -54,6 +54,8 @@ set(SOURCES
     src/ui/menus/menus.cpp
 	src/Application/Application.cpp
 	src/internal/filesystem/FileSystemFactory.cpp
+	src/ui/cli/CommandLineParser.cpp
+	src/ui/cli/CommandLineHandlers.cpp
 )
 
 add_library(rwal_lib STATIC ${SOURCES})
