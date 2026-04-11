@@ -1,11 +1,10 @@
 #include "CommandLineParser.hpp"
 
 #include <QCommandLineParser>
-#include <QCoreApplication>
+#include <QString>
 
-namespace rwal::cli{
-	Options parse(int argc, char** argv[]) {
-		QApplication app(argc, argv);
+namespace rwal::cli {
+	Options parse(QCoreApplication& app){
 		QCommandLineParser parser;
 			
 		parser.setApplicationDescription("Rwal - cross-platform wallpaper utility");
@@ -36,7 +35,7 @@ namespace rwal::cli{
 		parser.process(app);
 
 		Options options;
-		options.showHelp = parser.isSet(changeOption);
+		options.showHelp = parser.isSet("help");
 		options.showVersion = parser.isSet(versionOption);
 		options.changeWallpaper = parser.isSet(changeOption);
 		options.saveWallpaper = parser.isSet(saveOption);
@@ -46,13 +45,13 @@ namespace rwal::cli{
 		options.showKeywords = parser.isSet(keywordsOption);
 		
 		if (parser.isSet(setKeywordsOption)) {
-            options.setKeywords = parser.value(setKeywordsOption);
+            options.setKeywords = parser.value(setKeywordsOption).toStdString();
         } else if (parser.isSet(addKeywordsOption)) {
-			options.addKeywords = parser.value(addKeywordsOption);
+			options.addKeywords = parser.value(addKeywordsOption).toStdString();
 		} else if (parser.isSet(removeKeywordsOption)) {
-			options.removeKeywords = parser.value(removeKeywordsOption);
+			options.removeKeywords = parser.value(removeKeywordsOption).toStdString();
 		}
 
 		return options;
-	};
+	}
 }
