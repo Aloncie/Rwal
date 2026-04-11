@@ -8,6 +8,7 @@
 #include <QStandardPaths>
 #include <unistd.h>
 #include <pwd.h>
+#include <deque>
 
 Logs::Logs() {
 	logs_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::CacheLocation).toStdString()) / "logs.txt";
@@ -73,16 +74,22 @@ std::string Logs::getLogs(const int& LinesCount) const {
 	if (!f.is_open()) {
 		return "Failed to open logs";
 	}
-	std::string line;
-	std::vector<std::string> lines;
-	while (std::getline(f, line) && lines.size() < static_cast<size_t>(LinesCount)) {
-		lines.push_back(line);
-	}
-	std::string result;
-	int start = std::max(0, static_cast<int>(lines.size()) - LinesCount);
-	for (size_t i = start; i < lines.size(); ++i) {
-		result += lines[i] + "\n";
-	}
-	return result;
+
+	// we use deque because logs.size() less 1MB, deque has no-overhead
+	std::deque<std::string> lines;
+    std::string line;
+    while (std::getline(f, line)) {
+        lines.push_back(line);
+		if (lines.size() > LinesCount) {
+            lines.pop_front();
+        }
+    }
+    f.close();
+    std::string result;
+    for (int i = 0; i < LinesCount && !lines.empty(); ++i) {
+        result += lines.front() + "\n";
+        lines.pop_front();
+    }
+    return result;
 }
 
