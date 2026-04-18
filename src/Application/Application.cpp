@@ -17,6 +17,10 @@
 	#include "navigator/navigator.hpp"
 	#include "AppController/AppController.hpp"
 	#include "ui/tui/menus/menus.hpp"
+	// Qt headers may be included later; avoid macro collision with QPixmap::scroll
+	#ifdef scroll
+	#undef scroll
+	#endif
 #endif
 
 #if RWAL_USE_CLI

@@ -7,6 +7,11 @@
 #include <ncurses.h>
 #include <functional>
 
+// Qt headers may be included later; avoid macro collision with QPixmap::scroll
+#ifdef scroll
+#undef scroll
+#endif
+
 class TUIManager : public IUserInterface{
 private:
 	static std::vector<std::string> dontShowAgain;

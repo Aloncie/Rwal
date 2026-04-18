@@ -4,6 +4,11 @@
 #include <QCoreApplication>
 #include <ncurses.h>
 
+// Qt headers may be included later; avoid macro collision with QPixmap::scroll
+#ifdef scroll
+#undef scroll
+#endif
+
 void Navigator::registerMenu(const std::string& name, std::unique_ptr<Menu> menu) {
     m_menus[name] = std::move(menu);
 }

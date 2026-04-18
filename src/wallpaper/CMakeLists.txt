@@ -39,7 +39,7 @@ if(CURRENT_DE MATCHES "GNOME")
 	message(STATUS "Using GNOME wallpaper setter")
 	
 elseif(CURRENT_DE MATCHES "KDE")
-	find_package(Qt5 COMPONENTS DBus REQUIRED)
+	find_package(Qt6 COMPONENTS DBus REQUIRED)
 	list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
 	add_definitions(-DRWAL_USE_KDE)
 	message(STATUS "Using KDE wallpaper setter")
@@ -79,13 +79,13 @@ if(CURRENT_DE MATCHES "GNOME")
 endif()
 
 if(CURRENT_DE MATCHES "KDE")
-    target_link_libraries(wallpaper_lib PRIVATE Qt5::DBus)
+    target_link_libraries(wallpaper_lib PRIVATE Qt6::DBus)
 endif()
 
 if (CURRENT_DE MATCHES "WINDOWS")
 	target_link_libraries(wallpaper_lib PRIVATE user32 shell32)
 endif()
 
-target_link_libraries(wallpaper_lib PRIVATE Qt5::Core)
+target_link_libraries(wallpaper_lib PRIVATE Qt6::Core)
 
 
