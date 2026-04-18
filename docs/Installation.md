@@ -26,9 +26,6 @@ sudo ./setup.sh
 
 ```bash
 # Configure the project
-# Flags:
-# (Add -DBUILD_TESTING=ON if you want to run tests)
-# (Add -DRWAL_FORCE_DE= if you want to build for forced DE. Check supported DE before using)
 
 cmake -B build 
 
@@ -36,4 +33,30 @@ cmake -B build
 cmake --build build -j$(nproc)
 ```
 
-**For documentation, see [DOCUMENTATION.md](https://github.com/Aloncie/Rwal/blob/main/docs/DOCUMENTATION.md).**
+## 🔧 Build Configuration Flags
+
+Rwal supports several CMake options to customize your build:
+
+| Flag | Default | Purpose |
+|------|---------|---------|
+| `-DBUILD_TUI` | `ON` | Build with ncurses Terminal UI support (Linux/macOS only) |
+| `-DBUILD_CLI` | `ON` | Build with command‑line interface support |
+| `-DRWAL_FORCE_DE` | (auto) | Force a specific desktop environment. See [Supported DE](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md) |
+| `-DBUILD_TESTING`| `OFF` | Build unit tests (requires `--recursive` clone) |
+
+### Examples
+
+```bash
+# Build CLI‑only (no ncurses dependency)
+cmake -B build -DBUILD_TUI=OFF
+
+# Build TUI‑only (minimal binary)
+cmake -B build -DBUILD_CLI=OFF
+
+# Build with tests for development
+cmake -B build -DBUILD_TESTING=ON
+
+# Build with force DE
+cmake -B build -DRWAL_FORCE_DE=GNOME
+```
+
