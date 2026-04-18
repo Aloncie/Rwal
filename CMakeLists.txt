@@ -4,6 +4,8 @@ project(Rwal VERSION 0.6.1.2 LANGUAGES CXX)
 
 # --- SECTION: Configuration ---
 option(BUILD_TESTING "Build the testing suite" OFF)
+option(BUILD_TUI "Build the TUI(requires ncurses)" ON)
+option(BUILD_CLI "Build the CLI" ON)
 
 if(NOT CMAKE_INSTALL_PREFIX)
     set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "Installation directory")
@@ -34,40 +36,87 @@ configure_file(
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets Concurrent)
-find_package(Curses REQUIRED)
 
 # --- SECTION: Source Files & Targets ---
 add_subdirectory(src/wallpaper)
 add_subdirectory(src/internal/filesystem)
 
-set(SOURCES
-    src/AppController/AppController.cpp
+add_library(rwal-core STATIC
     src/funcs/funcs.cpp
     src/internal/platform/env_utils.cpp
     src/internal/utils/string_utils.cpp
     src/keywords/keywords.cpp
     src/logs/logs.cpp
-    src/navigator/navigator.cpp
     src/settings/config.cpp
     src/settings/settings.cpp
-    src/ui/tui/TUIManager.cpp
-    src/ui/menus/menus.cpp
-	src/Application/Application.cpp
 	src/internal/filesystem/FileSystemFactory.cpp
-	src/ui/cli/CommandLineParser.cpp
-	src/ui/cli/CommandLineHandlers.cpp
 )
 
-add_library(rwal_lib STATIC ${SOURCES})
 
-target_include_directories(rwal_lib PUBLIC
+# Configure the CLI&TUI both
+if (BUILD_TUI AND NOT WIN32 AND BUILD_CLI)
+	find_package(Curses REQUIRED)
+	add_executable(rwal
+		src/main.cpp
+		src/Application/Application.cpp
+	)
+	target_link_libraries(rwal PRIVATE rwal-core ${CURSES_LIBRARIES})
+	target_sources(rwal PRIVATE
+		# TUI sources
+		src/ui/tui/TUIManager.cpp
+		src/AppController/AppController.cpp
+		src/navigator/navigator.cpp
+		src/ui/tui/menus/menus.cpp
+		# CLI sources
+		src/ui/cli/CommandLineParser.cpp
+		src/ui/cli/CommandLineHandlers.cpp
+	)
+	target_compile_definitions(rwal PUBLIC -DRWAL_USE_TUI=1 -DRWAL_USE_CLI=1)
+	install(TARGETS rwal RUNTIME DESTINATION bin)
+	message(STATUS "Building with TUI and CLI support")
+# Configure the CLI
+elseif (BUILD_CLI)
+	add_executable(rwal-cli 
+		src/ui/cli/main_cli.cpp
+		src/Application/Application.cpp
+	)
+	target_link_libraries(rwal-cli PRIVATE rwal-core)
+	target_sources(rwal-cli PRIVATE
+		src/ui/cli/CommandLineParser.cpp
+		src/ui/cli/CommandLineHandlers.cpp
+	)
+	target_compile_definitions(rwal-core PUBLIC -DRWAL_USE_CLI=1)
+	install(TARGETS rwal-cli RUNTIME DESTINATION bin)
+	message(STATUS "Building with CLI support")
+# Configure the TUI
+elseif (BUILD_TUI AND NOT WIN32)
+	add_executable(rwal-tui 
+		src/ui/tui/main_tui.cpp
+		src/Application/Application.cpp
+	)
+	find_package(Curses REQUIRED)
+	target_link_libraries(rwal-tui PRIVATE rwal-core ncurses)
+	target_sources(rwal-tui PRIVATE 
+		src/ui/tui/TUIManager.cpp
+		src/AppController/AppController.cpp
+		src/navigator/navigator.cpp
+		src/ui/tui/menus/menus.cpp
+	)
+	target_compile_definitions(rwal-core PUBLIC -DRWAL_USE_TUI=1)
+	install(TARGETS rwal-tui RUNTIME DESTINATION bin)
+	message(STATUS "Building with TUI support")
+else()
+	message(FATAL_ERROR "There is any UI to build. Use -DBUILD_TUI=ON or/and -DBUILD_CLI=ON")
+endif()
+
+target_include_directories(rwal-core PUBLIC
     ${PROJECT_SOURCE_DIR}/src
 	${PROJECT_SOURCE_DIR}/tests
 	${CMAKE_CURRENT_BINARY_DIR}/generated
 	${Qt5Concurrent_INCLUDE_DIRS}
 )
 
-target_link_libraries(rwal_lib PUBLIC
+target_link_libraries(rwal-core PUBLIC
     CURL::libcurl
     nlohmann_json::nlohmann_json
     Qt5::Core
@@ -79,9 +128,6 @@ target_link_libraries(rwal_lib PUBLIC
     wallpaper_lib 
 	filesystem_lib
 )
-
-add_executable(rwal src/main.cpp)
-target_link_libraries(rwal PRIVATE rwal_lib wallpaper_lib)
 
 # --- SECTION: Testing (Submodule Version) ---
 if(BUILD_TESTING)
@@ -119,7 +165,7 @@ if(BUILD_TESTING)
     )
     
     target_link_libraries(rwal_tests PRIVATE 
-        rwal_lib 
+        rwal-core 
         gtest_main 
         gmock_main
     )
@@ -129,8 +175,6 @@ if(BUILD_TESTING)
 endif()
 
 # --- SECTION: Installation & Packaging ---
-install(TARGETS rwal RUNTIME DESTINATION bin)
-
 set(CPACK_PACKAGE_NAME "rwal")
 set(CPACK_PACKAGE_VENDOR "Aloncie")
 set(CPACK_PACKAGE_CONTACT "Aloncie@proton.me")

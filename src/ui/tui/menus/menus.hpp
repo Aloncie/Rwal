@@ -2,7 +2,7 @@
 #include "keywords/keywords.hpp"
 #include "settings/settings.hpp"
 #include "settings/IConfigReader.hpp"
-#include "ui/tui/TUIManager.hpp"
+#include "ui/IUserInterface.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 #include "IWallpaperSetter.hpp"
 #include "net/NetworkManager.hpp"
@@ -27,7 +27,7 @@ public:
 
 class MainMenu : public Menu {
 private:
-    TUIManager& m_uim;
+    IUserInterface& m_uim;
     Keywords& m_keywords;
     WallpaperManager& m_wm;
 	IWallpaperSetter& m_env;
@@ -35,7 +35,7 @@ private:
     inline static const std::string m_validChoices = "1234q";
 
 public:
-    MainMenu(TUIManager& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm);
+    MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -45,11 +45,11 @@ class SettingsMenu : public Menu {
 private:
     Timer& m_timer;
     WallpaperManager& m_wm;
-	TUIManager& m_uim;
+	IUserInterface& m_uim;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(Timer& timer, WallpaperManager& wm, TUIManager& ui);
+    SettingsMenu(Timer& timer, WallpaperManager& wm, IUserInterface& ui);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -58,12 +58,12 @@ public:
 class KeywordsMenu : public Menu {
 private:
     Keywords& m_keywords;
-    TUIManager& m_uim;
+    IUserInterface& m_uim;
 	IConfigReader& m_config;
     inline static const std::string m_validChoices = "armq";
 
 public:
-    KeywordsMenu(Keywords& keywords, TUIManager& ui, IConfigReader& config);
+    KeywordsMenu(Keywords& keywords, IUserInterface& ui, IConfigReader& config);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }

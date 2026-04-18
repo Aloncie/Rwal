@@ -11,6 +11,7 @@ private:
 	Logs& m_logs;
 public:
 	bool setWallpaper(const fs::path& path) override;
-	GnomeSetter(Logs& logs);
+	explicit GnomeSetter(Logs& logs);
+	~GnomeSetter() override = default;
 };
 

@@ -10,21 +10,21 @@
 
 namespace fs = std::filesystem;
 
-std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& m_env, NetworkManager& m_nm, Keywords& m_keywords, TUIManager* m_ui, const std::string mode) {
+std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& env, NetworkManager& nm, Keywords& keywords, IUserInterface* ui, const std::string mode) {
     std::string keyword;
     if (mode == "change") {
-        keyword = m_keywords.SilentGetKeyword();
+        keyword = keywords.SilentGetKeyword();
     } else {
-		if (m_ui == nullptr) {
+		if (ui == nullptr) {
 			m_logs.writeLogs("UI isn null, using SilentGetKeyword");
-			keyword = m_keywords.SilentGetKeyword();
+			keyword = keywords.SilentGetKeyword();
 		}
 		else {
-			keyword = m_keywords.InteractiveGetKeyword(*m_ui);
+			keyword = keywords.InteractiveGetKeyword(*ui);
 		}
     }
 	
-	std::optional<fs::path> path = m_nm.fetchImage(keyword);
+	std::optional<fs::path> path = nm.fetchImage(keyword);
 
 	if (!path.has_value()) {
 		m_logs.writeLogs("Failed to fetch image");
@@ -33,7 +33,7 @@ std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& m_env, Ne
 	
 	PathResolver::toHostPath(*path);
 	
-	if (!m_env.setWallpaper(*path)) {
+	if (!env.setWallpaper(*path)) {
 		m_logs.writeLogs("Failed to set wallpaper: " + path->string());
 		return "Failed to set wallpaper";
 	}
@@ -82,12 +82,12 @@ fs::path WallpaperManager::getCurrentWallpaperPath() const {
     return "";
 }
 
-std::optional<fs::path> WallpaperManager::getPicturesPath(TUIManager* m_ui) const {
+std::optional<fs::path> WallpaperManager::getPicturesPath(IUserInterface* ui) const {
     m_logs.writeLogs("Trying to locate Pictures folder");
     QString path = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     if (path.isEmpty()) {
-		if (m_ui != nullptr) {
-			m_ui->showMessage("Could not find Pictures folder");
+		if (ui != nullptr) {
+			ui->showMessage("Could not find Pictures folder");
 		}
         return std::nullopt;
     }
@@ -96,8 +96,8 @@ std::optional<fs::path> WallpaperManager::getPicturesPath(TUIManager* m_ui) cons
     std::error_code ec;
     fs::create_directories(rwalDir, ec);
     if (ec) {
-		if (m_ui != nullptr) {
-			m_ui->showMessage("Failed to create rwal directory");
+		if (ui != nullptr) {
+			ui->showMessage("Failed to create rwal directory");
 		}
         m_logs.writeLogs("Failed to create " + rwalDir.string() + ": " + ec.message());
         return std::nullopt;

@@ -12,6 +12,7 @@ Makefile
 *.so
 *.dll
 *.exe
+*.exe.*
 
 # ==================== #
 # Compiled Object files #
