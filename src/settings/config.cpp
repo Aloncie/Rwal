@@ -41,7 +41,7 @@ void Config::loadConfig(){
 		data = {
    			{"services", {
         		{"wallhaven", {
-            		{"apikey", "apikey="},
+            		{"apikey", ""},
             		{"base_url", "https://wallhaven.cc/api/v1/search"},
             		{"param_names", {
                 		{"query", "?q="},
@@ -54,11 +54,11 @@ void Config::loadConfig(){
         		{"keywords", {}},
         		{"sorting", "random"},
         		{"res", "1920x1080"},
-				{"random_page", "true"}
+				{"random_page", true}
 
     		}},
 			{"settings", {
-				{"cursor-visibility", "true"}
+				{"cursor-visibility", true}
 			}}
 		};
 		saveConfig();
@@ -82,12 +82,6 @@ void Config::initValidators(){
 		return j.is_array() && !j.empty();
 	};
 
-
-	validators["/timer"] = [is_not_empty_string](const nlohmann::json& j){
-		if (!is_not_empty_string(j)) return false;
-		char x = j.get<std::string>().back();
-		return (x == 'm' || x == 'h');
-	};
 	validators["/search/keywords"] = is_not_empty_array;
    	validators["api/wallhaven_api_key"] = is_not_empty_string;
 }
