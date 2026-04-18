@@ -1,10 +1,9 @@
 # 🏛️ Rwal: Architecture and Philosophy
 
 [Aloncie](https://github.com/Aloncie):
-> Rwal is first and foremost a **learning project** for me. But I have been triyng upgrade Rwal. This project always will be in my heart.
+> Rwal is first and foremost a **learning project** for me. I am constantly evolving it, and every line of code serves as a lesson in professional software development.
 > 
-> It's not a commercial product, but it's built with professional intent – every line is a lesson.
-
+> It's not a commercial product, but it's built with professional intent — every line is a lesson.
 
 ---
 
@@ -12,30 +11,31 @@
 
 Rwal is a **mood‑management tool**. It doesn't just set pretty pictures – it manages the visual context of your desktop.
 
-- **Modern c++:** Use the power of Qt, thread, smart unique.
-- **Hybrid run:** Two modes – interactive configuration (Core) and silent daemon‑like operation (Change).
+- **Modern C++:** Leveraging Qt, threading, and modern memory management (RAII, smart pointers like `std::unique_ptr`).
+- **Hybrid execution:** Two modes – interactive configuration (**Core**) and silent daemon‑like operation (**Change**).
 
 Unlike heavy all‑in‑one tools (like Wallpaper Engine), Rwal aims to be:
 1. **Lightweight** – written in C++, minimal RAM usage (no Electron/JS).
-2. **Smart** – search by tags, filters, colour, resolution.
+2. **Smart** – search by tags, filters, color, resolution.
 3. **Modular** – clear separation of concerns.
 
 ---
 
 ## 🛠 Interaction Methods
 
-The tool is available in two flavors:
-* **Graphical User Interface (GUI):** Ideal for visual configuration and quick starts.
+Rwal is evolving to support three interaction tiers:
 * **Command Line Interface (CLI):** Built for speed, scripting, and headless environments.
+* **Terminal Interface (TUI):** The minimalistic, console‑only interface for quick, manual control.
+* **Graphical User Interface (GUI):** (Planned) Ideal for visual configuration and ease of use.
 
 ---
 
 ## 👾 Modes of Operation
 
 ### Core Mode
-Full interactive terminal UI. The user can:
+Full interactive terminal UI (TUI). The user can:
 - Navigate menus
-- Edit keywords (opens `$EDITOR`)
+- Edit keywords (integrates with your system `$EDITOR`; falls back to `nano` if unset)
 - Configure the systemd timer
 - Save the current wallpaper to `~/Pictures/rwal`
 
@@ -54,7 +54,7 @@ The project is built with clear separation of responsibilities.
 
 ### Key Design Patterns
 
-1. **Singleton** – used for `Config`, `Logs`, `UIManager`, `NetworkManager` to provide global access. (May be refactored later for testability.)
-2. **Observer** – `QFileSystemWatcher` watches `config.json`; changes are hot‑reloaded.
-3. **Dependency Injection (lite)** – `Navigator` receives a pointer to the current menu, allowing easy screen switching.
+1. **Singleton (Transitioning):** `Config` and `Logs` are currently managed as single instances. The codebase is moving toward **Dependency Injection** for better testability.
+2. **Observer:** `QFileSystemWatcher` watches `config.json`; changes trigger hot‑reload of configuration.
+3. **Abstraction:** Interfaces `IUserInterface` and `IWallpaperSetter` decouple core logic from platform‑specific UI and desktop environment code.
 

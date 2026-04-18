@@ -42,3 +42,4 @@ Control what kind of images Rwal fetches:
 ### 💡 Pro Tips
 - **Automation:** Add `rwal -c` to your OS startup applications to get a fresh wallpaper every time you log in.
 - **Logging:** If something goes wrong, check the logs with `rwal --log`. Rwal now uses a high-precision format: `[YYYY-MM-DD | HH:MM:SS]`.
+
