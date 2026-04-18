@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 #include "ui/tui/TUIManager.hpp"
 
-class MockUIManager : public TUIManager {
+class MockTUIManager : public TUIManager {
 public:
 	MockUIManager() = default;
     MOCK_METHOD(void, showMessage, (std::string_view message), (override));
@@ -11,16 +11,8 @@ public:
     MOCK_METHOD(void, processInputChar, (int ch), (override));
 	MOCK_METHOD(void, requestInputCalled, (std::string message), ());
 
-	void requestInputString(std::function<void(std::string)> callback, std::optional<std::string> message = std::nullopt) override {
+	void requestInput(std::function<void(std::string)> callback, std::optional<std::string> message = std::nullopt) override {
 		lastStringCallback_ = callback;
-		if (message) {
-			lastMessage_ = *message;
-			requestInputCalled(lastMessage_);
-		}
-	}
-
-	void requestInputInt(std::function<void(int)> callback, std::optional<std::string> message = std::nullopt) override {
-		lastIntCallback_ = callback;
 		if (message) {
 			lastMessage_ = *message;
 			requestInputCalled(lastMessage_);
