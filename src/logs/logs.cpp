@@ -1,7 +1,5 @@
 #include "logs.hpp"
 
-#include <filesystem>
-#include <fstream>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <QDateTime>
@@ -31,9 +29,9 @@ std::string Logs::getCurrentTime() const {
     return formatted.toStdString();
 }
 
-void Logs::writeLogs(std::string_view message){
+void Logs::writeLogs(std::string_view type, std::stirng_view module, std::string_view message){
     if (f.is_open()) {
-        f << getCurrentTime() << " " << message << std::endl;
+        f << getCurrentTime() << type << module << " " << message << std::endl;
     }
 }
 
