@@ -32,9 +32,9 @@ void Config::loadConfig(){
         if (file.is_open()) {
             try {
                 data = nlohmann::json::parse(file);
-                m_logs.writeLogs("Config loaded/reloaded: " + configPath);
+                m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Config, "Config loaded/reloaded: " + configPath);
             } catch (nlohmann::json::parse_error& e) {
-                m_logs.writeLogs("JSON Parse Error: " + std::string(e.what()));
+                m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "JSON Parse Error: " + std::string(e.what()));
             }
         }
     } else {	

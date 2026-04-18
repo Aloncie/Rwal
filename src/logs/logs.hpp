@@ -1,10 +1,39 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 #include <filesystem>
 #include <fstream>
 
 namespace fs = std::filesystem;
+
+// ============================================================
+// Logging Types & Modules
+// ============================================================
+
+namespace rwal::logs{
+	namespace modules{
+		inline constexpr std::string_view Network = "[NETWORK]";
+		inline constexpr std::string_view UI = "[UI]";
+		inline constexpr std::string_view Wallpaper = "[WALLPAPER]";
+		inline constexpr std::string_view Config = "[CONFIG]";
+		inline constexpr std::string_view Keywords = "[KEYWORDS]";
+		inline constexpr std::string_view Filesystem = "[FILESYSTEM]";
+		inline constexpr std::string_view Core = "[CORE]";
+		inline constexpr std::string_view Navigator = "[NAVIGATOR]";
+	}
+	namespace types {
+		inline constexpr std::string_view Debug = "[DEBUG]";
+		inline constexpr std::string_view Info = "[INFO]";
+		inline constexpr std::string_view Warning = "[WARNING]";
+		inline constexpr std::string_view Error = "[ERROR]";
+		inline constexpr std::string_view Fatal = "[FATAL]";
+	}
+}
+
+// ============================================================
+// Logs Class
+// ============================================================
 
 class Logs {
 private:
@@ -14,9 +43,15 @@ private:
     std::string getCurrentTime() const;
 public:
 	virtual bool refresh();
-
     Logs(); 
-    virtual void writeLogs(std::string_view message);
+
+	/*
+	Q: Why pass string_view by value instead of const&?
+	A: string_view is just {ptr, size} (16 bytes). Copying it is cheaper than
+		dereferencing a pointer (8 bytes + indirection cost). Modern ABIs pass
+		small structs in registers - this is zero-cost at the hardware level.
+	*/
+    virtual void writeLogs(std::string_view type, std::string_view module, std::string_view message);
 	virtual std::string getLogs(const int& LinesCount = 100) const;
 };
 
