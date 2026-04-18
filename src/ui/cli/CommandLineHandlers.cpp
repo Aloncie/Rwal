@@ -48,7 +48,7 @@ int handleClearLogs(Logs& logs) {
 }
 
 int handleKeywords(Config& config) {
-    auto keywordsJson = config.getImpl("/search/keywords");
+    auto keywordsJson = config.get<nlohmann::json>("/search/keywords");
     std::vector<std::string> keywords;
     if (keywordsJson.is_array()) {
         keywords = keywordsJson.get<std::vector<std::string>>();
@@ -74,7 +74,7 @@ int handleSetKeywords(Config& config, const std::string& option) {
     std::string processed = option;
     rwal::utils::string::format(processed);
     std::vector<std::string> keywords = rwal::utils::string::split_by_space(processed);
-    config.setImpl("/search/keywords", keywords);
+    config.set("/search/keywords", keywords);
     std::cout << "New keywords have been set successfully: " << processed << std::endl;
     return 0;
 }
@@ -88,13 +88,13 @@ int handleAddKeywords(Config& config, const std::string& option) {
     rwal::utils::string::format(processed);
     std::vector<std::string> newKeywords = rwal::utils::string::split_by_space(processed);
     
-    auto oldKeywordsJson = config.getImpl("/search/keywords");
+    auto oldKeywordsJson = config.get<nlohmann::json>("/search/keywords");
     std::vector<std::string> oldKeywords;
     if (oldKeywordsJson.is_array()) {
         oldKeywords = oldKeywordsJson.get<std::vector<std::string>>();
     }
     oldKeywords.insert(oldKeywords.end(), newKeywords.begin(), newKeywords.end());
-    config.setImpl("/search/keywords", oldKeywords);
+    config.set("/search/keywords", oldKeywords);
     std::cout << "Keywords have been added successfully: " << processed << std::endl;
     return 0;
 }
@@ -104,7 +104,7 @@ int handleRemoveKeywords(Config& config, const std::string& option) {
     rwal::utils::string::format(processed);
     std::vector<std::string> toRemove = rwal::utils::string::split_by_space(processed);
     
-    auto keywordsJson = config.getImpl("/search/keywords");
+    auto keywordsJson = config.get<nlohmann::json>("/search/keywords");
     std::vector<std::string> keywords;
     if (keywordsJson.is_array()) {
         keywords = keywordsJson.get<std::vector<std::string>>();
@@ -122,7 +122,7 @@ int handleRemoveKeywords(Config& config, const std::string& option) {
         }
     }
     std::cout << removedStr << std::endl;
-    config.setImpl("/search/keywords", keywords);
+    config.set("/search/keywords", keywords);
     return 0;
 }
 

@@ -11,7 +11,7 @@
 Keywords::Keywords(IConfigReader& config, Logs& logs) : m_config(config), m_logs(logs) {}
 
 std::vector<std::string> Keywords::loadKeywordsFromConfig() const {
-    auto search = m_config.getImpl("/search");
+    auto search = m_config.get<nlohmann::json>("/search");
     if (search.contains("keywords") && search["keywords"].is_array()) {
         return search["keywords"].get<std::vector<std::string>>();
     }
@@ -56,7 +56,7 @@ void Keywords::promptForKeywords(std::function<void(std::vector<std::string>)> c
 				ui.showMessage("Input cannot be empty! Try again.");
 				promptForKeywords(callback, ui, attempts + 1);
 			} else {
-				m_config.setImpl("search", {{"keywords", keywords}});
+				m_config.set("search", nlohmann::json{{"keywords", keywords}});
 				callback(keywords);
 			}
 		}, "Keywords not found. Enter keywords (space separated): "); 
@@ -122,7 +122,7 @@ void Keywords::editKeywords(IUserInterface& ui) {
 		ui.showMessage("Failed operation. More info in logs");
 	}
 
-	m_config.setImpl("search", {{"keywords", input_keywords}});
+	m_config.set("search", nlohmann::json{{"keywords", input_keywords}});
 	fs::remove(temp_path);
 }
 
