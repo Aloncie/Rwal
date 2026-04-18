@@ -11,6 +11,8 @@
     #include "platforms/GnomeSetter.hpp"
 #elif defined(RWAL_USE_HYPRLAND)
     #include "platforms/HyprlandSetter.hpp"
+#elif defined(RWAL_USE_WINDOWS)
+	#include "platforms/WindowsSetter.hpp"
 #endif
 
 std::unique_ptr<IWallpaperSetter> WallpaperFactory::create() {
@@ -20,6 +22,8 @@ std::unique_ptr<IWallpaperSetter> WallpaperFactory::create() {
     return std::make_unique<GnomeSetter>(m_logs);
 #elif defined(RWAL_USE_HYPRLAND)
     return std::make_unique<HyprlandSetter>(m_logs);
+#elif defined(RWAL_USE_WINDOWS)
+	return std::make_unique<WindowsSetter>(m_logs);
 #else
     return std::make_unique<FallbackSetter>(m_logs);
 #endif

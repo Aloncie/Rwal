@@ -31,14 +31,14 @@ void Navigator::printCurrentMenu() {
     }
 }
 
-MenuResponce Navigator::processInput(std::string& input, TUIManager& uimanager) {
+MenuResponce Navigator::processInput(std::string& input, TUIManager& ui) {
     if (!m_currentMenu) return {"", false, false, ""};
 
     MenuResponce resp = m_currentMenu->handleInput(input);
 
     if (resp.needQuit) QCoreApplication::quit();
 
-    if (resp.IsWrongInput) uimanager.showMessage("Invalid choice: " + input);
+    if (resp.IsWrongInput) ui.showMessage("Invalid choice: " + input);
 
     if (!resp.nextMenu.empty()) {
         auto it = m_menus.find(resp.nextMenu);

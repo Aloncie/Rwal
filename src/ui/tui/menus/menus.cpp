@@ -11,11 +11,12 @@
 #include <QCoreApplication>
 #include <QtConcurrent/QtConcurrent>
 #include <QMetaObject>
+#include <memory>
 
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(TUIManager& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
+MainMenu::MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -30,13 +31,9 @@ std::vector<std::string> MainMenu::getLines() {
 MenuResponce MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
 		QtConcurrent::run([this] {
-			TUIManager* uiPtr = &this->m_uim;
-			auto error = m_wm.refresh(m_env, m_nm, m_keywords, uiPtr);
+			auto error = m_wm.refresh(m_env, m_nm, m_keywords, &m_uim);
 			
-			QMetaObject::invokeMethod(qApp, [uiPtr, error] {
-				if (error.has_value()) {
-					uiPtr->showMessage(error.value());
-				}
+			QMetaObject::invokeMethod(qApp, [error] {
 			}, Qt::QueuedConnection);
     	});
     	return {"", false, false, ""};
@@ -54,14 +51,14 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
     }
 }
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, TUIManager& ui) : m_timer(timer), m_wm(wm), m_uim(ui) {}
+SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, IUserInterface& ui) : m_timer(timer), m_wm(wm), m_uim(ui) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
 	auto PicturesPathOpt = m_wm.getPicturesPath(&m_uim);
-	if (!PicturesPathOpt) PicturesPathOpt = "Not found";
-    return {
+	std::string pathStr = PicturesPathOpt ? PicturesPathOpt->string() : "Not found";    
+	return {
         "--- Settings ---", "1) Timer: " + m_timer.seeTimer(),
-        "2) Wallpapers's path: " + PicturesPathOpt->string(),
+        "2) Wallpapers's path: " + pathStr,
 		"q) Back",
         ""  // Empty line for spacing
     };
@@ -81,7 +78,7 @@ MenuResponce SettingsMenu::handleInput(const std::string& input) {
 }
 
 // ========== KeywordsMenu ==========
-KeywordsMenu::KeywordsMenu(Keywords& keywords, TUIManager& ui, IConfigReader& config)
+KeywordsMenu::KeywordsMenu(Keywords& keywords, IUserInterface& ui, IConfigReader& config)
     : m_keywords(keywords), m_uim(ui), m_config(config) {}
 
 std::vector<std::string> KeywordsMenu::getLines() {
@@ -102,7 +99,7 @@ std::vector<std::string> KeywordsMenu::getLines() {
 
 MenuResponce KeywordsMenu::handleInput(const std::string& input) {
     if (input == "a") {
-        m_uim.requestInputString([this](std::string keyword) {
+        m_uim.requestInput([this](std::string keyword) {
 			auto keywords = m_keywords.loadKeywordsFromConfig();
             rwal::utils::string::format(keyword);
             keywords.push_back(keyword);
@@ -110,15 +107,16 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
         });
         return {"", false, false, "Write new keyword: "};
     } else if (input == "r") {
-        m_uim.requestInputInt([this](int display_index) {
+        m_uim.requestInput([this](std::string indexStr) {
+			int display_index = std::stoi(indexStr);
 			auto keywords = m_keywords.loadKeywordsFromConfig();
-            if (display_index >= 1) {
-                int real_index = display_index - 1;
-                if (real_index < (int)keywords.size()) {
-                    keywords.erase(keywords.begin() + real_index);
-                    m_config.set("/search/keywords", keywords);
-                }
-            }
+			if (display_index >= 1) {
+				int real_index = display_index - 1;
+				if (real_index < (int)keywords.size()) {
+					keywords.erase(keywords.begin() + real_index);
+					m_config.set("/search/keywords", keywords);
+				}
+			}
         });
 
         return {"", false, false, "Enter index to remove: "};

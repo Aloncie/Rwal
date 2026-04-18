@@ -1,22 +1,28 @@
 #include "Application.hpp"
-#include "AppController/AppController.hpp"
 #include "keywords/keywords.hpp"
 #include "logs/logs.hpp"
-#include "navigator/navigator.hpp"
 #include "net/CurlWrapper.hpp"
 #include "net/NetworkManager.hpp"
 #include "settings/config.hpp"
 #include "settings/settings.hpp"
-#include "ui/tui/TUIManager.hpp"
-#include "ui/menus/menus.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 #include "internal/filesystem/FileSystemFactory.hpp"
 #include "AppConfig.h"
 #include "internal/utils/string_utils.hpp"
-#include "ui/cli/CommandLineParser.hpp"
-#include "ui/cli/CommandLineHandlers.hpp"
+
+#if RWAL_USE_TUI
+	#include "ui/tui/TUIManager.hpp"
+	#include "navigator/navigator.hpp"
+	#include "AppController/AppController.hpp"
+	#include "ui/tui/menus/menus.hpp"
+#endif
+
+#if RWAL_USE_CLI
+	#include "ui/cli/CommandLineParser.hpp"
+	#include "ui/cli/CommandLineHandlers.hpp"
+#endif
 
 #include <QCoreApplication>
 #include <QObject>
@@ -41,6 +47,7 @@ int Application::run(int argc, char* argv[]) {
     std::unique_ptr<IWallpaperSetter> env = wf.create();
     WallpaperManager wm(logs, *fs);
 
+#if RWAL_USE_CLI
     bool hasCliOptions = false;
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
@@ -53,9 +60,15 @@ int Application::run(int argc, char* argv[]) {
 	if (hasCliOptions) {
 		rwal::cli::CLIDependencies deps(*fs, config, nm, logs);
 		rwal::cli::Options opts = rwal::cli::parse(app);
-		return execute(opts, deps);
+		return rwal::cli::execute(opts, deps);
 	}
+#endif
 
+#if RWAL_USE_TUI
+	if (argc > 1) { 
+		std::cerr << "Error: Rwal TUI mode doesn't support flags yet. \nPlease run without arguments to start TUI." << std::endl;
+		return 1;
+	}
     TUIManager tuim;
 	Timer timer(logs);
 
@@ -74,11 +87,18 @@ int Application::run(int argc, char* argv[]) {
 
     navigator.start("main");
 
-    AppController controller(&navigator, tuim);
+    AppController controller(navigator, tuim);
     logs.writeLogs("Rwal's start in normal mode");
 
     int one = app.exec();
     tuim.shutdownUI();
     return one;
+#endif
+	std::cout << R"(Failed to start Rwal, this binary doesn't touch TUI and CLI.
+		Try to use these flags: 
+		For TUI support -DRWAL_USE_TUI=ON 
+		For CLI support -DRWAL_USE_CLI=ON 
+		You can also use both flags.)" << std::endl;
+	return 1;
 }
 

@@ -4,9 +4,30 @@
 #include <algorithm>
 #include <cctype>
 #include <sstream>
+#include <iostream>
 
 bool TUIManager::isInputActive() const {return inputActive;}
 
+bool TUIManager::refresh() {
+	try {
+		::refresh();
+	} catch (std::exception const& e) {
+		std::cerr << "Failed to refresh UI: " << e.what() << std::endl;
+		return false;
+	}
+	return true;
+}
+
+bool TUIManager::prepareForExternalCommand() {
+	try {
+		def_prog_mode();
+		endwin();
+	} catch (std::exception const& e) {	
+		std::cerr << "Failed to prepare for external command: " << e.what() << std::endl;
+		return false;
+	}
+	return true;
+}
 void TUIManager::processInputChar(int ch) {
     if (!inputActive) return;
 
@@ -73,7 +94,7 @@ void TUIManager::initUI(){
 
 void TUIManager::shutdownUI(){endwin();}
 
-void TUIManager::showMessage(std::string_view message) {
+void TUIManager::showMessage(std::string_view message)  {
     if (message.empty()) return;
 
     move(LINES - 1, 0);
@@ -96,7 +117,7 @@ void TUIManager::showMessage(std::string_view message) {
     refresh();
 }
 
-void TUIManager::requestInputString(std::function<void(std::string)> callback, std::optional<std::string> message) {
+void TUIManager::requestInput(std::function<void(std::string)> callback, std::optional<std::string> message)  {
 	if (message) {
 		showMessage(*message);
 	}
@@ -118,32 +139,3 @@ void TUIManager::requestInputString(std::function<void(std::string)> callback, s
 	refresh();
 }
 
-void TUIManager::requestInputInt(std::function<void(int)> callback, std::optional<std::string> message) {
-	if (message) {
-		showMessage(*message);
-	}
-	if (inputActive) return;
-	prompt = message.value_or("");
-	inputBuffer.clear();
-	inputActive = true;
-	inputCallback = [this, callback](std::string raw){
-		std::stringstream ss(raw);
-		int result;
-		if ((ss >> result) && (ss >> std::ws).eof()) {
-			callback(result);
-		} else {
-			showMessage("Failed input. Try again.");
-			inputActive = false;
-			requestInputInt(callback, prompt);
-			return;
-		}
-		move(LINES - 1, 0);
-		clrtoeol();
-		refresh();
-		inputActive = false;
-	};
-	move(LINES - 1, 0);
-	clrtoeol();
-	printw("%s", prompt.c_str());
-	refresh();
-}

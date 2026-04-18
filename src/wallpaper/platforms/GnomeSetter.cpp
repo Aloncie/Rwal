@@ -4,8 +4,7 @@
 bool GnomeSetter::setWallpaper(const fs::path& path) {
     if (std::getenv("XDG_CURRENT_DESKTOP") == nullptr ||
         std::string(std::getenv("XDG_CURRENT_DESKTOP")).find("GNOME") == std::string::npos) {
-        m_logs.writeLogs(
-            "Skipping GnomeSetter: XDG_CURRENT_DESKTOP does not indicate GNOME.");
+        m_logs.writeLogs("Skipping GnomeSetter: XDG_CURRENT_DESKTOP does not indicate GNOME.");
         return false;
     }
     if (!g_file_test(path.c_str(), G_FILE_TEST_EXISTS)) {
