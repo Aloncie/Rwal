@@ -80,7 +80,7 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 	}
 
 	m_curl.getRequest(craftUrl(keyword));
-	auto search = m_config.getImpl("/search");
+	auto search = m_config.get<nlohmann::json>("/search");
 	if (search.is_null()) {
 		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Search config is missing");
 		return std::nullopt;
