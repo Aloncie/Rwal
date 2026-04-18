@@ -16,7 +16,7 @@ Logs::Logs() {
         const std::uintmax_t limit_size = 1024 * 1024;
 
         if (fileSize > limit_size){
-			writeLogs("Logs file size (" + std::to_string(fileSize) + " bytes) exceeds the limit (" + std::to_string(limit_size) + " bytes). Try to refresh logs.");
+			writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Core, "Logs file size (" + std::to_string(fileSize) + " bytes) exceeds the limit (" + std::to_string(limit_size) + " bytes). Try to refresh logs.");
 			refresh();
 		}
     }
@@ -38,19 +38,19 @@ void Logs::writeLogs(std::string_view type, std::string_view module, std::string
 bool Logs::refresh() {
     try {
         if (fs::remove(logs_path)){
-            writeLogs("Successful deleting old logs");
+            writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Successful deleting old logs");
 			return true;
 		}
 		return false;
     } catch (const std::exception& e) {
-        writeLogs("Failed to refresh logs: " + std::string(e.what()));
+        writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to refresh logs: " + std::string(e.what()));
     }
 
     std::ofstream f(logs_path, std::ios::out);
     f.close();
 
     if (chmod(logs_path.c_str(), 0644) != 0) {
-        writeLogs("Failed to change mod of logs\n Try to fix it yourself");
+        writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to change mod of logs\n Try to fix it yourself");
 		return false;
     }
     if (geteuid() == 0) {
@@ -59,7 +59,7 @@ bool Logs::refresh() {
             struct passwd* pw = getpwnam(sudo_user);
             if (pw) {
                 if (chown(logs_path.c_str(), pw->pw_uid, pw->pw_gid) != 0) {
-                    writeLogs("Failed to change owner of logs\n Try to fix it yourself");
+                    writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to change owner of logs\n Try to fix it yourself");
 					return false;
                 }
             }

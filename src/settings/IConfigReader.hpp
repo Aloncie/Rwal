@@ -16,7 +16,7 @@ public:
 			nlohmann::json j = getImpl(key);
 			return j.get<G>();
 		} catch (std::invalid_argument& e) {
-			m_logs.writeLogs("Error of getting config data for key: " + key + ". " + std::string(e.what()));
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Error getting config data for key: " + key + ". " + std::string(e.what()));
 			return G{};
 		}
 	}
@@ -25,7 +25,7 @@ public:
 	void set(const std::string& key, const S& value) {
 		nlohmann::json jValue = value;
 		if (!setImpl(key, jValue)) {
-			m_logs.writeLogs("Failed to set config data for key: " + key);
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Failed to set config data for key: " + key);
 		}
 	}
 

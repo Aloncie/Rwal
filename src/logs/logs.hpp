@@ -12,7 +12,7 @@ namespace fs = std::filesystem;
 // ============================================================
 
 namespace rwal::logs{
-	namespace types{
+	namespace modules{
 		inline constexpr std::string_view Network = "[NETWORK]";
 		inline constexpr std::string_view UI = "[UI]";
 		inline constexpr std::string_view Wallpaper = "[WALLPAPER]";
@@ -22,7 +22,7 @@ namespace rwal::logs{
 		inline constexpr std::string_view Core = "[CORE]";
 		inline constexpr std::string_view Navigator = "[NAVIGATOR]";
 	}
-	namespace modules {
+	namespace types {
 		inline constexpr std::string_view Debug = "[DEBUG]";
 		inline constexpr std::string_view Info = "[INFO]";
 		inline constexpr std::string_view Warning = "[WARNING]";

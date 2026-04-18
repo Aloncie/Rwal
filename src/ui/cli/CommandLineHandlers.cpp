@@ -129,8 +129,8 @@ int handleRemoveKeywords(Config& config, const std::string& option) {
 int handleSave(const CLIDependencies& deps) {
     WallpaperManager wm(deps.logs, deps.fs);
     std::string message = wm.saveCurrent();
-    deps.logs.writeLogs("Rwal's start for save current wallpaper");
-    deps.logs.writeLogs(message);
+    deps.logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Rwal's start for save current wallpaper");
+    deps.logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, message);
     return 0;
 }
 
@@ -141,7 +141,7 @@ int handleChange(const CLIDependencies& deps) {
     WallpaperFactory wf(deps.logs);
     std::unique_ptr<IWallpaperSetter> env = wf.create();
     WallpaperManager wm(deps.logs, deps.fs);
-    deps.logs.writeLogs("Rwal's start in change mode");
+    deps.logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Rwal's start in change mode");
     wm.refresh(*env, nm, keywords, nullptr, "change");
     return 0;
 }

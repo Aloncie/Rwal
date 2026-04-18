@@ -9,10 +9,10 @@ bool setWallpaper(const fs::path& path) {
 	BOOL result = SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, widePath.c_str(), SPIF_SENDWININICHANGE | SPIF_UPDATEINIFILE);
 	if (!result) {
 		DWORD error = GetLastError();
-		m_logs.writeLogs("Failed to set wallpaper: " + std::to_string(error));
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Wallpaper, "Failed to set wallpaper: " + std::to_string(error));
 		return false;
     }
-	m_logs.writeLogs("Wallpaper set successfully: " + path.string());
+	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Wallpaper, "Wallpaper set successfully: " + path.string());
     return true;
 }
 

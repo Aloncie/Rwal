@@ -28,13 +28,13 @@ std::string Keywords::SilentGetKeyword() {
 	std::vector<std::string> keywords = loadKeywordsFromConfig();
 	if (keywords.empty()) {
 		Default(keywords);
-		m_logs.writeLogs("No keywords found in config. Using default keywords.");
+		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Keywords, "No keywords found in config. Using default keywords.");
 	}
     return pickRandomKeyword(keywords);
 }
 
 void Keywords::Default(std::vector<std::string>& keywords) const {
-    m_logs.writeLogs("Use default keywords.");
+    m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Keywords, "Use default keywords.");
     keywords = {"nature", "landscape", "abstract", "space",
                 "architecture", "animals", "anime", "cars"};
 }
@@ -118,7 +118,7 @@ void Keywords::editKeywords(IUserInterface& ui) {
 		}
 		ifile.close();
 	} else {
-		m_logs.writeLogs("Failed opening keywords.txt in " + temp_path.string());
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Keywords, "Failed opening keywords.txt in " + temp_path.string());
 		ui.showMessage("Failed operation. More info in logs");
 	}
 
