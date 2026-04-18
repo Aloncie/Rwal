@@ -101,7 +101,7 @@ void Config::initValidators(){
     };
 
 	validators["/search/keywords"] = is_not_empty_array;
-   	validators["/services/wallhaven/apikey"] = is_not_empty_string;
+	validators["/services/wallhaven/apikey"] = is_not_empty_string;
 	validators["/search/sorting"] = is_not_empty_string;
     validators["/search/res"] = is_not_empty_string;
     validators["/settings/cursor-visibility"] = is_not_empty_bool;

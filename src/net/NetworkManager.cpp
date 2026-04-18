@@ -6,6 +6,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#define PLANNED_LOCAL_FETCH // Warning instead of Error, because local fetching is coming
+
 struct SocketGuard{
 	int fd;
 	SocketGuard(int s) : fd(s){}
@@ -16,7 +18,7 @@ struct SocketGuard{
 };
 
 bool NetworkManager::isAvailable() {
-   	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to check internet connection");
+	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to check internet connection");
 
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == -1) {
@@ -41,7 +43,7 @@ bool NetworkManager::isAvailable() {
         m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Internet check: SUCCESS");
         return true;
     }
-
+	PLANNED_LOCAL_FETCH
     m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Internet check: FAILED (No connection to 8.8.8.8:53)");
     return false;
 }
@@ -58,7 +60,9 @@ std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::stri
 		if (page.has_value()) url += "&page=" + *page;
 		url += "&" + wh["param_names"]["sorting"].get<std::string>() + "=" + search["sorting"].get<std::string>();
 		url += "&" + wh["param_names"]["res"].get<std::string>() + "=" + search["res"].get<std::string>();
-		url += "&" + wh["apikey"].get<std::string>();
+		if (!wh["apikey"].get<std::string>().empty()){
+			url += "&" + wh["apikey"].get<std::string>();
+		}
 
 		return url;
 	} catch (std::exception& e){
@@ -111,8 +115,13 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 		url = m_curl.getData("data","path");
 
 	}
-
+	else {
+		PLANNED_LOCAL_FETCH
+		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Search config contains invalid value");
+        return std::nullopt;
+	}
 	if (url.empty()) {
+		PLANNED_LOCAL_FETCH
 		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "No image URL found in response");
 		return std::nullopt;
 	}
