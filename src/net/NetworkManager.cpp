@@ -16,11 +16,11 @@ struct SocketGuard{
 };
 
 bool NetworkManager::isAvailable() {
-   	m_logs.writeLogs("Try to check internet connection");
+   	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to check internet connection");
 
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == -1) {
-        m_logs.writeLogs("Socket creation failed");
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Socket creation failed");
         return false;
     }
 
@@ -30,7 +30,7 @@ bool NetworkManager::isAvailable() {
     server.sin_port = htons(53);
     
     if (inet_pton(AF_INET, "8.8.8.8", &server.sin_addr) <= 0) {
-        m_logs.writeLogs("IP conversion failed");
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "IP conversion failed");
         return false;
     }
 
@@ -38,11 +38,11 @@ bool NetworkManager::isAvailable() {
     setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
 
     if (connect(sock, reinterpret_cast<sockaddr*>(&server), sizeof(server)) == 0) {
-        m_logs.writeLogs("Internet check: SUCCESS");
+        m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Internet check: SUCCESS");
         return true;
     }
 
-    m_logs.writeLogs("Internet check: FAILED (No connection to 8.8.8.8:53)");
+    m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Internet check: FAILED (No connection to 8.8.8.8:53)");
     return false;
 }
 
@@ -62,7 +62,7 @@ std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::stri
 
 		return url;
 	} catch (std::exception& e){
-		m_logs.writeLogs("Failed craft url: " + std::string(e.what()));
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed craft url: " + std::string(e.what()));
 		return "";
 	}
 }
@@ -78,15 +78,15 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 	m_curl.getRequest(craftUrl(keyword));
 	auto search = m_config.getImpl("/search");
 	if (search.is_null()) {
-		m_logs.writeLogs("Search config is missing");
+		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Search config is missing");
 		return std::nullopt;
 	}
 	else if (!search.contains("random_page") || search["random_page"].get<bool>() == false) {
-		m_logs.writeLogs("Fetch image from first page");
+		m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Fetch image from first page");
 		url = m_curl.getData("data","path");
 	}
 	else if (search.contains("random_page") && search["random_page"].get<bool>() == true) {
-		m_logs.writeLogs("Fetch image from random page");
+		m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Fetch image from random page");
 	
 		std::string pageCount =	m_curl.getData("meta","last_page");
 		
@@ -94,7 +94,7 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 			last_page = std::stoi(pageCount);
 		} catch(std::exception& e){
 
-			m_logs.writeLogs("Failed to stoi pageCount: " + std::string(e.what()));
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to stoi pageCount: " + std::string(e.what()));
 			last_page = 1;
 		}
 
@@ -104,7 +104,7 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 		try {
 			m_curl.getRequest(craftUrl(keyword, page));
 		} catch (std::exception& e){
-			m_logs.writeLogs("CURL error: " + std::string(e.what()));
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "CURL error: " + std::string(e.what()));
 			return std::nullopt;
 		}
 
@@ -113,7 +113,7 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 	}
 
 	if (url.empty()) {
-		m_logs.writeLogs("No image URL found in response");
+		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "No image URL found in response");
 		return std::nullopt;
 	}
 

@@ -30,10 +30,10 @@ bool KdeSetter::setWallpaper(const fs::path& path) {
     auto reply = QDBusConnection::sessionBus().call(msg);
     
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        m_logs.writeLogs("D-Bus Error: " + reply.errorMessage().toStdString());
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Wallpaper, "D-Bus Error: " + reply.errorMessage().toStdString());
 		return false;
     } else {
-        m_logs.writeLogs("Wallpaper change signal sent for: " + hostPathUri.toStdString());
+        m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Wallpaper, "Wallpaper change signal sent for: " + hostPathUri.toStdString());
 		return true;
     }
 }

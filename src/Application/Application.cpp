@@ -88,7 +88,7 @@ int Application::run(int argc, char* argv[]) {
     navigator.start("main");
 
     AppController controller(navigator, tuim);
-    logs.writeLogs("Rwal's start in normal mode");
+    logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Rwal's start in normal mode");
 
     int one = app.exec();
     tuim.shutdownUI();

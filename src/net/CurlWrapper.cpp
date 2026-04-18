@@ -1,7 +1,6 @@
 #include "CurlWrapper.hpp"
 #include "internal/GlobalConstans.hpp"
 #include "funcs/funcs.hpp"
-
 #include <exception>
 #include <filesystem>
 #include <string>
@@ -19,7 +18,7 @@ static size_t callback(void* contents, size_t size, size_t nmemb, void* userp) {
 CurlWrapper::CurlWrapper(Logs& logs) : m_logs(logs), curl(curl_easy_init(),curl_easy_cleanup) {
 	curl_global_init(CURL_GLOBAL_DEFAULT);
 	if (!curl) {
-		m_logs.writeLogs("Failed to init CURL");
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to init CURL");
 	}
 }
 
@@ -34,26 +33,26 @@ void CurlWrapper::getRequest(std::string url) {
         res = curl_easy_perform(curl.get());
 
         curl_easy_getinfo(curl.get(), CURLINFO_RESPONSE_CODE, &http_code);
-        m_logs.writeLogs("url of request: " + url);
+		m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to request");
 
         if (res != CURLE_OK) {
             std::string errStr = curl_easy_strerror(res);
-            m_logs.writeLogs("Curl Error: " + errStr);
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Request error: " + errStr);
             return;
         }
 
         if (http_code != 200) {
-            m_logs.writeLogs("HTTP Error: " + std::to_string(http_code));
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Error HTTP code: " + std::to_string(http_code));
             return;
         } else
-            m_logs.writeLogs("Successful request");
+			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Successful request");
 
-        m_logs.writeLogs("Try to parse");
+        m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to parse JSON");
         try {
             j = nlohmann::json::parse(buffer);
-            m_logs.writeLogs("Successful parse JSON");
+            m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Successful parse JSON");
         } catch (const std::exception& e) {
-            m_logs.writeLogs("JSON parse error: " + std::string(e.what()));
+            m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "JSON parse error: " + std::string(e.what()));
             return;
         }
     } else
@@ -62,7 +61,7 @@ void CurlWrapper::getRequest(std::string url) {
 
 std::string CurlWrapper::getData(std::string paragraph, std::string str) {
     if (!j.contains(paragraph)) {
-        m_logs.writeLogs("Error: paragraph " + paragraph + " not found in JSON");
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "JSON does not contain paragraph: " + paragraph);
         return "";
     }
     try {
@@ -70,10 +69,10 @@ std::string CurlWrapper::getData(std::string paragraph, std::string str) {
             for (auto& item : j[paragraph]) {
                 if (item.contains(str)) {
                     if (item[str].is_string()) {
-                        m_logs.writeLogs("Data of JSON: " + item[str].get<std::string>());
+                        m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Data of JSON: " + item[str].get<std::string>());
                         return item[str].get<std::string>();
                     }
-                    m_logs.writeLogs("Data of JSON: " + std::to_string(item[str].get<int>()));
+                    m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Data of JSON: " + std::to_string(item[str].get<int>()));
                     return std::to_string(item[str].get<int>());
                 }
             }
@@ -82,16 +81,16 @@ std::string CurlWrapper::getData(std::string paragraph, std::string str) {
         else if (j[paragraph].is_object()) {
             if (j[paragraph].contains(str)) {
                 if (j[paragraph][str].is_string()) {
-                    m_logs.writeLogs("Data of JSON: " + j[paragraph][str].get<std::string>());
+                    m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Data of JSON: " + j[paragraph][str].get<std::string>());
                     return j[paragraph][str].get<std::string>();
                 }
 
-                m_logs.writeLogs("Data of JSON: " + std::to_string(j[paragraph][str].get<int>()));
+                m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Data of JSON: " + std::to_string(j[paragraph][str].get<int>()));
                 return std::to_string(j[paragraph][str].get<int>());
             }
         }
     } catch (const std::exception& e) {
-        m_logs.writeLogs("JSON parsing error: " + std::string(e.what()));
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "JSON parse error: " + std::string(e.what()));
     }
     return "";
 }
@@ -105,16 +104,16 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
         if (!fs::exists(downloads)) {
             fs::create_directories(downloads);
         } else {
-            m_logs.writeLogs("Cleaning old images");
+            m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Try to cleanup");
             for (const auto& entry : fs::directory_iterator(downloads)) {
                 if (fs::is_regular_file(entry.path())) {
                     fs::remove(entry.path());
                 }
             }
-            m_logs.writeLogs("Successful cleanup");
+            m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Successful cleanup");
         }
     } catch (const fs::filesystem_error& e) {
-        m_logs.writeLogs("Filesystem Error: " + std::string(e.what()));
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Filesystem error: " + std::string(e.what()));
         return std::nullopt;
     }
 
@@ -123,13 +122,13 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
 
     CurlRaiiPtr image_curl(curl_easy_init());
     if (!image_curl) {
-        m_logs.writeLogs("Failed to init CURL");
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to init CURL");
         return std::nullopt;
     }
 
     std::ofstream fp(wallpaper_path, std::ios::binary);
     if (!fp.is_open()) {
-        m_logs.writeLogs("Failed to open file for writing: " + wallpaper_path.string());
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to open file");
         return std::nullopt;
     }
 
@@ -150,11 +149,11 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
     fp.close();
 
     if (res != CURLE_OK) {
-        m_logs.writeLogs("Download error: " + std::string(curl_easy_strerror(res)));
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to download image: " + std::string(curl_easy_strerror(res)));
         return std::nullopt;
     }
 
-    m_logs.writeLogs("Successful download: " + wallpaper_path.string());
+    m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Successful download image: " + wallpaper_path.string());
     return wallpaper_path;
 }
 
