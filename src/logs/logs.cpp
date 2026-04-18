@@ -29,7 +29,7 @@ std::string Logs::getCurrentTime() const {
     return formatted.toStdString();
 }
 
-void Logs::writeLogs(std::string_view type, std::stirng_view module, std::string_view message){
+void Logs::writeLogs(std::string_view type, std::string_view module, std::string_view message){
     if (f.is_open()) {
         f << getCurrentTime() << type << module << " " << message << std::endl;
     }
