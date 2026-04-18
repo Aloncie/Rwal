@@ -4,7 +4,7 @@
 #include <fstream>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <QTime>
+#include <QDateTime>
 #include <QStandardPaths>
 #include <unistd.h>
 #include <pwd.h>
@@ -26,8 +26,9 @@ Logs::Logs() {
 };
 
 std::string Logs::getCurrentTime() const {
-	QTime currentTime = QTime::currentTime();
-	return currentTime.toString("HH:mm:ss").toStdString();
+    QDateTime now = QDateTime::currentDateTime();
+    QString formatted = now.toString("[yyyy-MM-dd | HH:mm:ss]");
+    return formatted.toStdString();
 }
 
 void Logs::writeLogs(std::string_view message){
