@@ -23,15 +23,7 @@ private:
 public slots:
     void loadConfig();
 
-public:
-    QFileSystemWatcher* watcher;
-
-    Config(Logs& logs);
-
-    void reload() override { loadConfig(); }
-
-    std::string getConfigPath();
-    nlohmann::json& all() override { return data; }
+protected:
     nlohmann::json getImpl(const std::string& key) override {
         if (data.contains(nlohmann::json::json_pointer(key))) {
             return data[nlohmann::json::json_pointer(key)];
@@ -49,28 +41,14 @@ public:
         return true;
     }
 
-    template <typename G>
-    G get(const std::string& key) {
-        try {
-            nlohmann::json j = getImpl(key);
-            return j.get<G>();
-        } catch (std::invalid_argument& e) {
-            m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Error getting config data for key: " + key + ". " + std::string(e.what()));
-            return G{};
-        }
-    }
+public:
+    QFileSystemWatcher* watcher;
 
-    template <typename S>
-    bool set(const std::string& key, const S& value) {
-        nlohmann::json jValue = value;
+    Config(Logs& logs);
 
-        if (validators.count(key) && !validators.at(key)(jValue)) {
-            m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Config, "Validation failed for key: " + key);
-            return false;
-        }
-        data[nlohmann::json::json_pointer(key)] = jValue;
-        saveConfig();
-        return true;
-    }
+    void reload() override { loadConfig(); }
+
+    std::string getConfigPath();
+    nlohmann::json& all() override { return data; }
 };
 

@@ -70,8 +70,20 @@ void Config::loadConfig(){
 }
 
 void Config::saveConfig(){
+	if (watcher) watcher->blockSignals(true); // Stops the watcher from triggering the fileChanged signal
+	try {
 		std::ofstream file(configPath);
-		file << data.dump(4);
+		if (file.is_open()){
+			file << data.dump(4);
+			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Config, "Config saved: " + configPath);
+		}
+		else {
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Failed to open file: " + configPath);
+		}
+	} catch (nlohmann::json::exception& e) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "JSON Save Error: " + std::string(e.what()));
+	}
+	if (watcher) watcher->blockSignals(false); // Turns the watcher back on
 }
 
 void Config::initValidators(){
@@ -81,9 +93,28 @@ void Config::initValidators(){
 	auto is_not_empty_array = [](const nlohmann::json& j){
 		return j.is_array() && !j.empty();
 	};
+	auto is_not_empty_bool = [](const nlohmann::json& j){
+        return j.is_boolean();
+    };
+	auto is_not_empty_object = [](const nlohmann::json& j){
+        return (j.is_object() || j.is_array()) && !j.empty();
+    };
 
 	validators["/search/keywords"] = is_not_empty_array;
-   	validators["api/wallhaven_api_key"] = is_not_empty_string;
+   	validators["/services/wallhaven/apikey"] = is_not_empty_string;
+	validators["/search/sorting"] = is_not_empty_string;
+    validators["/search/res"] = is_not_empty_string;
+    validators["/settings/cursor-visibility"] = is_not_empty_bool;
+	validators["/search/random_page"] = is_not_empty_bool;
+	validators["/services/wallhaven/base_url"] = is_not_empty_string;
+	validators["/services/wallhaven/param_names/query"] = is_not_empty_string;
+    validators["/services/wallhaven/param_names/sorting"] = is_not_empty_string;
+    validators["/services/wallhaven/param_names/res"] = is_not_empty_string;
+	validators["/services/wallhaven/param_names"] = is_not_empty_array;
+	validators["/services/wallhaven"] = is_not_empty_object;
+	validators["/search"] = is_not_empty_object;
+	validators["/services"] = is_not_empty_object;
+    validators["/"] = is_not_empty_object;
 }
 
 

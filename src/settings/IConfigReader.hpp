@@ -29,6 +29,7 @@ public:
 		}
 	}
 
+protected:
 	virtual void reload() = 0;
 	virtual nlohmann::json& all() = 0;
 	virtual nlohmann::json getImpl(const std::string& key) = 0;
