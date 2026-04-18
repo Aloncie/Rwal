@@ -44,7 +44,7 @@ configure_file(
 # -------------------------------------------------------------------
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(Qt5 REQUIRED COMPONENTS Core DBus Widgets Concurrent)
+find_package(Qt6 REQUIRED COMPONENTS Core DBus Widgets Concurrent)
 
 # -------------------------------------------------------------------
 # Core Library (UI‑agnostic)
@@ -67,16 +67,16 @@ target_include_directories(rwal-core PUBLIC
     ${PROJECT_SOURCE_DIR}/src
     ${PROJECT_SOURCE_DIR}/tests
     ${CMAKE_CURRENT_BINARY_DIR}/generated
-    ${Qt5Concurrent_INCLUDE_DIRS}
+    ${Qt6Concurrent_INCLUDE_DIRS}
 )
 
 target_link_libraries(rwal-core PUBLIC
     CURL::libcurl
     nlohmann_json::nlohmann_json
-    Qt5::Core
-    Qt5::DBus
-    Qt5::Widgets
-    Qt5::Concurrent
+    Qt6::Core
+    Qt6::DBus
+    Qt6::Widgets
+    Qt6::Concurrent
     wallpaper_lib 
     filesystem_lib
 )
@@ -167,7 +167,7 @@ set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}-alpha")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Wallpaper manager for KDE, GNOME, and Hyprland")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Aloncie <Aloncie@proton.me>")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libcurl4, libstdc++6, libqt5core5a, libqt5widgets5, libqt5dbus5, libncurses6")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libcurl4, libstdc++6, libqt6core6, libqt6widgets6, libqt6dbus6, libncurses6")
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 set(CPACK_GENERATOR "DEB;RPM;TGZ")
 include(CPack)

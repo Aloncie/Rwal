@@ -30,7 +30,8 @@ std::vector<std::string> MainMenu::getLines() {
 }
 MenuResponce MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
-		QtConcurrent::run([this] {
+		// We don't need to get value from the thread, so we use (void) for tell compiler
+		(void)QtConcurrent::run([this] {
 			auto error = m_wm.refresh(m_env, m_nm, m_keywords, &m_uim);
 			
 			QMetaObject::invokeMethod(qApp, [error] {

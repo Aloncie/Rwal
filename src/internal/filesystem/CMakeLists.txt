@@ -8,5 +8,5 @@ add_library(filesystem_lib
 )
 
 target_include_directories(filesystem_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(filesystem_lib PUBLIC Qt5::Core)
+target_link_libraries(filesystem_lib PUBLIC Qt6::Core)
 
