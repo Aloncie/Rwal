@@ -1,5 +1,5 @@
-if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-	set(PLATFORM_FS_SOURCE LinuxFileSystem.cpp)
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux" OR CMAKE_SYSTEM_NAME STREQUAL "Windows")
+	set(PLATFORM_FS_SOURCE NativeFileSystem.cpp)
 endif()
 
 add_library(filesystem_lib
