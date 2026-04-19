@@ -31,7 +31,11 @@ std::string Logs::getCurrentTime() const {
 
 void Logs::writeLogs(std::string_view type, std::string_view module, std::string_view message){
     if (f.is_open()) {
-        f << getCurrentTime() << type << module << " " << message << std::endl;
+        f << getCurrentTime() << type << module << " " << message << "\n";
+		
+		if (type == rwal::logs::types::Fatal){
+			f.flush();
+		}
     }
 }
 
