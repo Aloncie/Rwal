@@ -1,10 +1,12 @@
-#ifdef __linux__
-	#include "LinuxFileSystem.hpp"
+#if defined __linux__ || defined _WIN32
+	#include "NativeFileSystem.hpp"
 #endif
 
 std::unique_ptr<IFileSystem> createPlatformFileSystem() {
-#ifdef __linux__
-	return std::make_unique<LinuxFileSystem>();
+#if defined __linux__ || defined _WIN32
+	return std::make_unique<NativeFileSystem>();
+#else
+	#error "Unsupported platform"
 #endif
 }
 

@@ -1,10 +1,10 @@
-#include "LinuxFileSystem.hpp"
+#include "NativeFileSystem.hpp"
 
 #include <QStandardPaths>
 #include <QCoreApplication>
 #include <system_error>
 
-bool LinuxFileSystem::createDirectories(const fs::path& path) {
+bool NativeFileSystem::createDirectories(const fs::path& path) {
 	std::error_code ec;
 	fs::create_directories(path, ec);
 	if (ec) {
@@ -14,7 +14,7 @@ bool LinuxFileSystem::createDirectories(const fs::path& path) {
 	return true;
 }
 
-bool LinuxFileSystem::exists(const fs::path& path) const {
+bool NativeFileSystem::exists(const fs::path& path) const {
 	std::error_code ec;
 	bool result = fs::exists(path, ec);
 	if (ec) {
@@ -24,7 +24,7 @@ bool LinuxFileSystem::exists(const fs::path& path) const {
 	return result;
 }
 
-bool LinuxFileSystem::removeAll(const fs::path& path) {
+bool NativeFileSystem::removeAll(const fs::path& path) {
 	std::error_code ec;
 	fs::remove_all(path, ec);
 	if (ec) {
@@ -34,7 +34,7 @@ bool LinuxFileSystem::removeAll(const fs::path& path) {
 	return true;
 }
 
-bool LinuxFileSystem::copyFile(const fs::path& current, const fs::path& dest) const {
+bool NativeFileSystem::copyFile(const fs::path& current, const fs::path& dest) const {
 	std::error_code ec;
 	fs::copy_file(current, dest, fs::copy_options::overwrite_existing, ec);
 	if (ec) {
@@ -44,7 +44,7 @@ bool LinuxFileSystem::copyFile(const fs::path& current, const fs::path& dest) co
 	return true;
 }
 
-std::vector<fs::path> LinuxFileSystem::listDirectory(const fs::path& path, const std::string& prefix) const {
+std::vector<fs::path> NativeFileSystem::listDirectory(const fs::path& path, const std::string& prefix) const {
 	std::vector<fs::path> result;
 	std::error_code ec;
 	for (const auto& entry : fs::directory_iterator(path, ec)) {
@@ -52,29 +52,29 @@ std::vector<fs::path> LinuxFileSystem::listDirectory(const fs::path& path, const
 			m_LastError = "Failed to list directory: " + ec.message();
 			return {};
 		}
-		if (entry.is_regular_file() && entry.path().filename().string().starts_with(prefix) == 0) {
+		if (entry.is_regular_file() && entry.path().filename().string().starts_with(prefix)) {
 			result.push_back(entry.path());
 		}
 	}
 	return result;
 }
 
-fs::path LinuxFileSystem::getAppLocalDataLocation() const {
+fs::path NativeFileSystem::getAppLocalDataLocation() const {
 	return QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString();
 }
 
-fs::path LinuxFileSystem::getPicturesLocation() const {
+fs::path NativeFileSystem::getPicturesLocation() const {
 	return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation).toStdString();
 
 }
-std::string LinuxFileSystem::getApplicationName() const {
+std::string NativeFileSystem::getApplicationName() const {
 	return QCoreApplication::applicationName().toStdString();
 }
 
-std::string LinuxFileSystem::getLastError() const {
+std::string NativeFileSystem::getLastError() const {
 	return m_LastError;
 }
 
-void LinuxFileSystem::clearError() const {
+void NativeFileSystem::clearError() const {
 	m_LastError.clear();
 }

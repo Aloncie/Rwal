@@ -1,3 +1,4 @@
+#pragma once
 #include "IFileSystem.hpp"
 
 #include <vector>
@@ -5,13 +6,13 @@
 
 namespace fs = std::filesystem;
 
-class LinuxFileSystem : public IFileSystem{
+class NativeFileSystem : public IFileSystem{
 private:
 	mutable std::string m_LastError;
 public:
 	
-	LinuxFileSystem() = default;
-	~LinuxFileSystem() override = default;
+	NativeFileSystem() = default;
+	~NativeFileSystem() override = default;
 
 	bool exists(const fs::path& path) const override;
 	bool createDirectories(const fs::path& path) override;
