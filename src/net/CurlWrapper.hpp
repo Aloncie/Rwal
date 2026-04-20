@@ -33,6 +33,6 @@ public:
     struct CurlDeleter {
         void operator()(CURL* curl) const { curl_easy_cleanup(curl); }
     };
-	virtual ~CurlWrapper() = default;
+	virtual ~CurlWrapper();
 };
 
