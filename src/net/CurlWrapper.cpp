@@ -21,7 +21,9 @@ CurlWrapper::CurlWrapper(Logs& logs) : m_logs(logs), curl(curl_easy_init(),curl_
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to init CURL");
 	}
 }
-
+CurlWrapper::~CurlWrapper() {
+	curl_global_cleanup();	
+}
 void CurlWrapper::getRequest(std::string url) {
     clearning();
     CURLcode res;
