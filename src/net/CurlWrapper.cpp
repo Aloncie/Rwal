@@ -35,7 +35,7 @@ void CurlWrapper::getRequest(std::string url) {
         res = curl_easy_perform(curl.get());
 
         curl_easy_getinfo(curl.get(), CURLINFO_RESPONSE_CODE, &http_code);
-		m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to request");
+		m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to request: " + url);
 
         if (res != CURLE_OK) {
             std::string errStr = curl_easy_strerror(res);
