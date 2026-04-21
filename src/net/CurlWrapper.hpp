@@ -26,8 +26,8 @@ private:
 	Logs& m_logs;
 public:
     CurlWrapper(Logs& logs);
-    virtual void getRequest(std::string url);
-    virtual std::string getData(std::string paragraph, std::string str);
+    virtual void getRequest(const std::string& url);
+    virtual std::string getData(const std::string& paragraph, const std::string& str);
     virtual std::optional<fs::path> downloadImage(const std::string& image_url);
 
     struct CurlDeleter {

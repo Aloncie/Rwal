@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <optional>
 #include <memory>
+#include <string_view>
 
 namespace fs = std::filesystem;
 
@@ -20,7 +21,7 @@ private:
 public:
     WallpaperManager(Logs& logs, IFileSystem& fs) : m_logs(logs), m_fs(fs) {}
 	virtual ~WallpaperManager() = default;
-	virtual std::optional<std::string> refresh(IWallpaperSetter& env, NetworkManager& nm, Keywords& keywords, IUserInterface* ui = nullptr, const std::string mode = "core");
+	virtual std::optional<std::string> refresh(IWallpaperSetter& env, NetworkManager& nm, Keywords& keywords, IUserInterface* ui = nullptr, std::string_view mode = "core");
     virtual std::string saveCurrent() const;
     virtual fs::path getCurrentWallpaperPath() const;
     virtual std::optional<fs::path> getPicturesPath(IUserInterface* ui = nullptr) const;

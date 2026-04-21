@@ -48,7 +48,7 @@ bool NetworkManager::isAvailable() {
     return false;
 }
 
-std::string NetworkManager::craftUrl(std::string& keyword, std::optional<std::string> page) {
+std::string NetworkManager::craftUrl(std::string_view keyword, std::optional<std::string>& page) {
     try {
         auto& cfg = m_config.all();
         auto& wh = cfg["services"]["wallhaven"];
@@ -84,7 +84,7 @@ std::string NetworkManager::craftUrl(std::string& keyword, std::optional<std::st
         return "";
     }
 }
-std::optional<fs::path> NetworkManager::fetchImage(std::string& keyword) {
+std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 	int last_page;
 	std::string url;
 
