@@ -48,37 +48,50 @@ bool NetworkManager::isAvailable() {
     return false;
 }
 
-std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::string> page){
-	try {
-		auto& cfg = m_config.all();
+std::string NetworkManager::craftUrl(std::string& keyword, std::optional<std::string> page) {
+    try {
+        auto& cfg = m_config.all();
+        auto& wh = cfg["services"]["wallhaven"];
+        auto& search = cfg["search"];
 
-		auto& wh = cfg["services"]["wallhaven"];
-		auto& search = cfg["search"];
+        std::string base = wh["base_url"].get<std::string>();
+        std::vector<std::string> params;
+		
+		// Must-have parametr
+        std::string query_param = wh["param_names"]["query"].get<std::string>() + "=" + keyword;
+        params.push_back(query_param);
+        
+        if (page.has_value()) {
+            std::string page_param = wh["param_names"]["page"].get<std::string>() + "=" + *page;
+            params.push_back(page_param);
+        }
+        
+        params.push_back(wh["param_names"]["sorting"].get<std::string>() + "=" + search["sorting"].get<std::string>());
+        params.push_back(wh["param_names"]["res"].get<std::string>() + "=" + search["res"].get<std::string>());
+        
+        if (!wh["apikey"].get<std::string>().empty()) {
+            params.push_back(wh["param_names"]["apikey"].get<std::string>() + "=" + wh["apikey"].get<std::string>());
+        }
 
-		std::string url = wh["base_url"].get<std::string>();
-		url += wh["param_names"]["query"].get<std::string>() + keyword;
-		if (page.has_value()) url += "&page=" + *page;
-		url += "&" + wh["param_names"]["sorting"].get<std::string>() + "=" + search["sorting"].get<std::string>();
-		url += "&" + wh["param_names"]["res"].get<std::string>() + "=" + search["res"].get<std::string>();
-		if (!wh["apikey"].get<std::string>().empty()){
-			url += "&" + wh["apikey"].get<std::string>();
-		}
-
-		return url;
-	} catch (std::exception& e){
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed craft url: " + std::string(e.what()));
-		return "";
-	}
+        std::string url = base + "?";
+        for (size_t i = 0; i < params.size(); ++i) {
+            if (i > 0) url += "&";
+            url += params[i];
+        }
+        return url;
+    } catch (std::exception& e) {
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed craft url: " + std::string(e.what()));
+        return "";
+    }
 }
-
-std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
+std::optional<fs::path> NetworkManager::fetchImage(std::string& keyword) {
 	int last_page;
 	std::string url;
 
 	if (!isAvailable()){
 		return std::nullopt;
 	}
-
+	
 	m_curl.getRequest(craftUrl(keyword));
 	auto search = m_config.get<nlohmann::json>("/search");
 	if (search.is_null()) {

@@ -13,9 +13,9 @@ namespace fs = std::filesystem;
 class NetworkManager{
 public:
 	NetworkManager(CurlWrapper& curl, IConfigReader& config, Logs& logs) : m_curl(curl), m_config(config),m_logs(logs) {}
-	virtual std::optional<fs::path> fetchImage(std::string keyword);
+	virtual std::optional<fs::path> fetchImage(std::string& keyword);
 	virtual bool isAvailable();
-	virtual std::string craftUrl(std::string keyword, std::optional<std::string> page = std::nullopt);
+	virtual std::string craftUrl(std::string& keyword, std::optional<std::string> page = std::nullopt);
 	virtual ~NetworkManager() = default;
 private:
 	Logs& m_logs;
