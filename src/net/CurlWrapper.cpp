@@ -24,7 +24,7 @@ CurlWrapper::CurlWrapper(Logs& logs) : m_logs(logs), curl(curl_easy_init(),curl_
 CurlWrapper::~CurlWrapper() {
 	curl_global_cleanup();	
 }
-void CurlWrapper::getRequest(std::string url) {
+void CurlWrapper::getRequest(const std::string& url) {
     clearning();
     CURLcode res;
     if (curl) {
@@ -61,7 +61,7 @@ void CurlWrapper::getRequest(std::string url) {
         return;
 }
 
-std::string CurlWrapper::getData(std::string paragraph, std::string str) {
+std::string CurlWrapper::getData(const std::string& paragraph, const std::string& str) {
     if (!j.contains(paragraph)) {
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "JSON does not contain paragraph: " + paragraph);
         return "";

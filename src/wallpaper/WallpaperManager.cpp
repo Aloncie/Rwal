@@ -10,7 +10,7 @@
 
 namespace fs = std::filesystem;
 
-std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& env, NetworkManager& nm, Keywords& keywords, IUserInterface* ui, const std::string mode) {
+std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& env, NetworkManager& nm, Keywords& keywords, IUserInterface* ui, std::string_view mode) {
     std::string keyword;
     if (mode == "change") {
         keyword = keywords.SilentGetKeyword();

@@ -7,7 +7,7 @@ void PathResolver::toHostPath(fs::path& path) {
     const char* home = std::getenv("HOME");
 	if (host_home == nullptr || home == nullptr) return;
 
-	// Use fs;:path to avoid bugs of dividers for the different OS
+	// Use fs::path to avoid bugs of dividers for the different OS
 	fs::path homePath = home;
 	fs::path hostHomePath = host_home;
 	
