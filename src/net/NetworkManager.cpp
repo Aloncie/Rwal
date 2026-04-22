@@ -5,6 +5,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <format>
 
 #define PLANNED_LOCAL_FETCH // Warning instead of Error, because local fetching is coming
 
@@ -48,35 +49,34 @@ bool NetworkManager::isAvailable() {
     return false;
 }
 
-std::string NetworkManager::craftUrl(std::string_view keyword, std::optional<std::string>& page) {
+std::string NetworkManager::craftUrl(std::string_view keyword, const std::optional<std::string>& page) {
     try {
         auto& cfg = m_config.all();
         auto& wh = cfg["services"]["wallhaven"];
         auto& search = cfg["search"];
+		auto& p_names = wh["param_names"];
 
-        std::string base = wh["base_url"].get<std::string>();
         std::vector<std::string> params;
 		
+		auto add_param = [&](std::string_view name, std::string_view value) {
+			params.push_back(std::format("{}={}", name, value));
+		};
 		// Must-have parametr
-        std::string query_param = wh["param_names"]["query"].get<std::string>() + "=" + keyword;
-        params.push_back(query_param);
-        
-        if (page.has_value()) {
-            std::string page_param = wh["param_names"]["page"].get<std::string>() + "=" + *page;
-            params.push_back(page_param);
+        add_param(p_names["query"].get<std::string>(), keyword);        
+        if (page) {
+			add_param(p_names["page"].get<std::string>(), *page);
         }
         
-        params.push_back(wh["param_names"]["sorting"].get<std::string>() + "=" + search["sorting"].get<std::string>());
-        params.push_back(wh["param_names"]["res"].get<std::string>() + "=" + search["res"].get<std::string>());
+		add_param(p_names["sorting"].get<std::string>(), search["sorting"].get<std::string>());
+		add_param(p_names["res"].get<std::string>(), search["res"].get<std::string>());
         
         if (!wh["apikey"].get<std::string>().empty()) {
-            params.push_back(wh["param_names"]["apikey"].get<std::string>() + "=" + wh["apikey"].get<std::string>());
+			add_param(p_names["apikey"].get<std::string>(), wh["apikey"].get<std::string>());
         }
 
-        std::string url = base + "?";
+        std::string url = wh["base_url"].get<std::string>() + "?";
         for (size_t i = 0; i < params.size(); ++i) {
-            if (i > 0) url += "&";
-            url += params[i];
+            url += (i > 0 ? "&" : "") + params[i];
         }
         return url;
     } catch (std::exception& e) {
