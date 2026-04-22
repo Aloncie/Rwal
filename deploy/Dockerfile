@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     cmake \
     ca-certificates \
     qtbase5-dev \
-    libqt5dbus5 \
-    libqt5widgets5 \
+    libqt6dbus6 \
+    libqt6widgets6 \
     libcurl4-openssl-dev \
     libncurses-dev \
     nlohmann-json3-dev \
@@ -32,9 +32,9 @@ ARG USERNAME=rwal
 
 # Install runtime dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
-    libqt5core5a \
-    libqt5dbus5 \
-    libqt5widgets5 \
+    libqt6core6a \
+    libqt6dbus6 \
+    libqt6widgets6r\
     libcurl4 \
     ca-certificates \
     libncurses6 \
