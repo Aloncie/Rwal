@@ -2,7 +2,7 @@
 
 ## ⚙️ Installation of dependencies
 
-To automatically install all required dependencies (compiler, CMake, Qt5, ncurses, curl, etc.), use the provided `setup.sh` script. It detects your distribution and desktop environment to install the correct packages.
+To automatically install all required dependencies (compiler, CMake, Qt6, ncurses, curl, etc.), use the provided `setup.sh` script. It detects your distribution and desktop environment to install the correct packages.
 
 ```bash
 # Clone the repository 
@@ -26,7 +26,6 @@ sudo ./setup.sh
 
 ```bash
 # Configure the project
-
 cmake -B build 
 
 # Build the project
@@ -39,7 +38,7 @@ Rwal supports several CMake options to customize your build:
 
 | Flag | Default | Purpose |
 |------|---------|---------|
-| `-DBUILD_TUI` | `ON` | Build with ncurses Terminal UI support (Linux/macOS only) |
+| `-DBUILD_TUI` | `ON` | Build with ncurses Terminal UI support (Linux only) |
 | `-DBUILD_CLI` | `ON` | Build with command‑line interface support |
 | `-DRWAL_FORCE_DE` | (auto) | Force a specific desktop environment. See [Supported DE](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md) |
 | `-DBUILD_TESTING`| `OFF` | Build unit tests (requires `--recursive` clone) |
