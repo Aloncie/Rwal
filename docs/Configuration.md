@@ -16,15 +16,18 @@ Rwal looks for `config.json` in `~/.config/Aloncie/Rwal/`.
             "city",
             "architecture"
         ],
+        "random_page": true,
         "res": "1920x1080",
         "sorting": "random"
     },
     "services": {
         "wallhaven": {
-            "apikey": "apikey=" // for VERY often refreshing,
+            "apikey": ""
             "base_url": "https://wallhaven.cc/api/v1/search",
             "param_names": {
-                "query": "?q=",
+                "query": "q",
+                "apikey": "apikey",
+                "page": "page",
                 "res": "resolutions",
                 "sorting": "sorting"
             }
