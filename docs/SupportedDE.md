@@ -15,8 +15,8 @@ The following setters are implemented and maintained.
 | **Windows** | `WindowsSetter` | `windows.h`| Use `SPI_SETDESKWALLPAPER` with `SetSystemDirectory` to set the wallpaper` |
 | **Fallback** | `FallbackSetter` | Always available (if no DE matches) | Logs an error and returns `false` – no wallpaper change |
 
-> **Are there problems with one of DE?**
-> **[Report an issue](https://github.com)**
+> **Your distribution not listed? Open an issue – we'd love to hear about your setup!**
+> **[Request a setter](https://github.com/Aloncie/Rwal/discussions)**
 
 ---
 
@@ -64,8 +64,8 @@ src/wallpaper/
 | **HyprlandSetter** | not tested |
 | **WindowsSetter** | not tested |
 
-> **Your distribution not listed? Open an issue – we'd love to hear about your setup!**
-> **[Request a setter](https://github.com/Aloncie/Rwal/discussions)**
+> **Are there problems with one of DE?**
+> **[Report an issue](https://github.com)**
 
 ---
 
