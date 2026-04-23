@@ -96,7 +96,7 @@ All other fields will use their default values.
 A: Not for occasional use. Wallhaven allows ~45 requests per minute anonymously. If you use systemd timers or refresh very often, add an API key.
 
 **Q: Where do I get a Wallhaven API key?**  
-A: Create a free account at [wallhaven.cc](https://wallhaven.cc/), then go to [Settings → API Token](https://wallhaven.cc/settings/apitoken).
+A: Create a free account at [wallhaven.cc](https://wallhaven.cc/), then go to [Settings → API Token](https://wallhaven.cc/settings/account).
 
 **Q: Can I add support for Unsplash, Pexels or any other service?**  
 A: Not yet — currently only Wallhaven is supported. Contributions welcome!
