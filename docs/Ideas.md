@@ -1,7 +1,7 @@
 # 💡 Rwal Ideas Backlog
 
 > ⚠️ **This is a brainstorming list, not a roadmap.**  
-> These ideas may or may not be implemented. If something gains traction, it moves to `[Roadmap](https://github.com/Aloncie/Rwal/blob/main/docs/Roadmap.md)`
+> These ideas may or may not be implemented. If something gains traction, it moves to [Roadmap](https://github.com/Aloncie/Rwal/blob/main/docs/Roadmap.md)
 
 ## 🧩 Feature Ideas
 - [ ] **Multi‑monitor support** – different wallpapers per screen.
