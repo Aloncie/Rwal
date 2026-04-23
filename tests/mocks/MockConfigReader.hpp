@@ -25,7 +25,7 @@ public:
 				{"res", "1920x1080"}
 			}}
 		};
-		ON_CALL(*this, getImpl("/search")).WillByDefault(::testing::Return(searchJson["search"]));
+		ON_CALL(*this, getImpl("/search")).WillByDefault(Return(searchJson["search"]));
     }
 };
 

@@ -1,5 +1,5 @@
 #include "keywords/keywords.hpp"
-#include "mocks/MockUIManager.hpp"
+#include "mocks/MockTUIManager.hpp"
 #include "mocks/MockConfigReader.hpp"
 #include "mocks/MockLogs.hpp"
 
@@ -13,13 +13,13 @@ using ::testing::Return;
 
 class KeywordsTest : public ::testing::Test {
 protected:
-	std::shared_ptr<MockUIManager> mockUI;
+	std::shared_ptr<MockTUIManager> mockUI;
     std::shared_ptr<MockConfigReader> mockConfig;
 	std::shared_ptr<MockLogs> mockLogs;
     std::unique_ptr<Keywords> keywords;
 
     void SetUp() override {
-        mockUI = std::make_shared<MockUIManager>();
+        mockUI = std::make_shared<MockTUIManager>();
 		mockLogs = std::make_shared<MockLogs>();
         mockConfig = std::make_shared<MockConfigReader>(*mockLogs);
         keywords = std::make_unique<Keywords>(*mockConfig, *mockLogs);
@@ -49,9 +49,7 @@ TEST_F(KeywordsTest, InteractiveGetKeyword_WithExistingKeywords_ReturnsRandom) {
 
 TEST_F(KeywordsTest, InteractiveGetKeyword_EmptyConfig_PromptsUser) {
     mockConfig->setSearchKeywords({});
-    EXPECT_CALL(*mockUI,
-                requestInputCalled("Keywords not found. Enter keywords (space separated): "))
-        .WillOnce(Invoke([this](std::string) { mockUI->simulateInput("nature anime cars"); }));
+    EXPECT_CALL(*mockUI, requestInputCalled("Keywords not found. Enter keywords (space separated): ")) .WillOnce(Invoke([this](std::string) { mockUI->simulateInput("nature anime cars"); }));
 
     std::string result = keywords->InteractiveGetKeyword(*mockUI);
     EXPECT_TRUE(result == "nature" || result == "anime" || result == "cars");

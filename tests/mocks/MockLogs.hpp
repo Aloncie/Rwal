@@ -13,7 +13,7 @@ public:
 	std::string lastLogMessage;
 	
 	explicit MockLogs() : Logs() {}
-	MOCK_METHOD(void, writeLogs, (std::string_view message), (override));
+	MOCK_METHOD(void, writeLogs, (std::string_view type, std::string_view module, std::string_view message), (override));
 	MOCK_METHOD(std::string, getLogs, (const int& LinesCount), (const, override));
 	MOCK_METHOD(bool, refresh, (), (override));
 

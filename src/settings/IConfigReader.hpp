@@ -22,11 +22,13 @@ public:
 	}
 	
 	template<typename S>
-	void set(const std::string& key, const S& value) {
+	bool set(const std::string& key, const S& value) {
 		nlohmann::json jValue = value;
 		if (!setImpl(key, jValue)) {
 			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Failed to set config data for key: " + key);
+			return false;
 		}
+		return true;
 	}
 
 	virtual nlohmann::json& all() = 0;

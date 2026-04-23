@@ -15,8 +15,8 @@ public:
 
 	~MockCurlWrapper() override = default;
 
-	MOCK_METHOD(void, getRequest, (std::string url), (override));
-	MOCK_METHOD(std::string, getData, (std::string paragraph, std::string str), (override));
+	MOCK_METHOD(void, getRequest, (const std::string& url), (override));
+	MOCK_METHOD(std::string, getData, (const std::string& paragraph, const std::string& str), (override));
 	MOCK_METHOD(std::optional<fs::path>, downloadImage, (const std::string& image_url), (override));
 
 };
