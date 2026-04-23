@@ -14,7 +14,7 @@ public:
 
     MOCK_METHOD(std::optional<std::filesystem::path>, fetchImage, (std::string_view keyword),(override));
     MOCK_METHOD(bool, isAvailable, (), (override));
-    MOCK_METHOD(std::string, craftUrl, (std::string_view keyword, std::optional<std::string>& page),(override));
+    MOCK_METHOD(std::string, craftUrl, (std::string_view keyword, const std::optional<std::string>& page),(override));
 
 	~MockNetworkManager() override = default;
     // Helper to set up successful fetch

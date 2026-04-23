@@ -11,6 +11,10 @@
 #include <QFileSystemWatcher>
 #include <QCoreApplication>
 
+using ::testing::_;
+using ::tesing::Return;
+using ::testing::Invoke;
+
 class ConfigTest : public ::testing::Test {
 protected:
 	std::shared_ptr<MockLogs> mockLogs;
@@ -67,8 +71,8 @@ TEST_F(ConfigTest, LoadConfig_InvalidJson_LogsError) {
 	std::ofstream file(configPath);
 	file << "invalid json";
 	file.close();
-	ON_CALL(*mockLogs, writeLogs(testing::_))
-		.WillByDefault(testing::Invoke([this](std::string_view message) {
+	ON_CALL(*mockLogs, writeLogs(_, _, _))
+		.WillByDefault(Invoke([this](std::string_view message) {
 			mockLogs->lastLogMessage = message;
 	}));
 	config->loadConfig();
@@ -111,21 +115,21 @@ TEST_F(ConfigTest, LoadConfig_WatcherAddedIfFileRecreated) {
 // ========== Tests for get and set methods ==========
 
 TEST_F(ConfigTest, Get_Set_StringValue) {
-	bool setResult = config->set("/test_string", "test_value");
+	bool setResult = config->set("test_string", "test_value");
 	EXPECT_TRUE(setResult);
 	std::string getResult = config->get<std::string>("/test_string");
 	EXPECT_EQ(getResult, "test_value");
 }
 
 TEST_F(ConfigTest, Get_Set_IntValue) {
-	bool setResult = config->set("/test_int", 42);
+	bool setResult = config->set("test_int", 42);
 	EXPECT_TRUE(setResult);
 	int getResult = config->get<int>("/test_int");
 	EXPECT_EQ(getResult, 42);
 }
 
 TEST_F(ConfigTest, Get_Set_BoolValue) {
-	bool setResult = config->set("/test_bool", true);
+	bool setResult = config->set("test_bool", true);
 	EXPECT_TRUE(setResult);
 	bool getResult = config->get<bool>("/test_bool");
 	EXPECT_TRUE(getResult);
