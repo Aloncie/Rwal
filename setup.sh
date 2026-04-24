@@ -19,3 +19,4 @@ else
     echo "Linux detected. Starting Linux setup..."
     exec bash scripts/setup-linux.sh
 fi
+
