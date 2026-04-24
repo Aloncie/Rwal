@@ -1,8 +1,11 @@
 #pragma once
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 #include "settings/IConfigReader.hpp"
 #include "mocks/MockLogs.hpp"
+
+using ::testing::Return;
 
 class MockConfigReader : public IConfigReader {
 public:
