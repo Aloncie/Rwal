@@ -14,16 +14,18 @@ public:
 	void switchCursorVisiable();
 };
 
-class Timer{
+class LinuxSystemScheduler : public ISystemScheduler{
 private:
 	std::optional<fs::path> getUserTimerPath() const;
 	Logs& m_logs;
 public:
-	Timer(Logs& logs) : m_logs(logs) {}
-	void createSystemdTimer();
-	std::string seeTimer();
-	std::string editTimer(std::string value);
-	bool TimerStatus();
+	Timer(Logs& logs) : m_logs(logs) override {}
+	bool createScheduler() override;
+	bool reload() override;
+	std::string get() const override;
+	bool set(const std::string& value) override;
+	bool status() const override;
+
 	bool check_timer_mask_status();
 };
 
