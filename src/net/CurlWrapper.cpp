@@ -1,5 +1,5 @@
 #include "CurlWrapper.hpp"
-#include "internal/GlobalConstans.hpp"
+#include "wallpaper/WallpaperManager.hpp"
 #include "funcs/funcs.hpp"
 #include <exception>
 #include <filesystem>

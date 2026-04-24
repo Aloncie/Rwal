@@ -1,5 +1,4 @@
 #include "WallpaperManager.hpp"
-#include "internal/GlobalConstans.hpp"
 #include "logs/logs.hpp"
 #include "net/NetworkManager.hpp"
 #include "PathResolver.hpp"
