@@ -7,7 +7,6 @@
 #include "mocks/MockConfigReader.hpp"
 #include "mocks/MockFileSystem.hpp"
 #include "mocks/MockCurlWrapper.hpp"
-#include "internal/GlobalConstans.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
