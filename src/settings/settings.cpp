@@ -8,7 +8,10 @@
 #include <QFileInfo>
 #include <exception>
 #include <optional>
-#include <unistd.h>
+
+#ifndef _WIN32
+	#include <unistd.h>
+#endif
 
 std::optional<fs::path> Timer::getUserTimerPath() const {
 	const char* home_dir = std::getenv("HOME");	

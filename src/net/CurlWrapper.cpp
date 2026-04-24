@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <string>
 #include <fstream>
+#include <QStandardPaths>
 
 using CurlRaiiPtr = std::unique_ptr<CURL, CurlWrapper::CurlDeleter>;
 
@@ -98,9 +99,10 @@ std::string CurlWrapper::getData(const std::string& paragraph, const std::string
 }
 
 std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url) {
-    const char* home = std::getenv("HOME");
-    fs::path base_path = home ? fs::path(home) : fs::path("/tmp");
-    fs::path downloads = base_path / ".local/share/Aloncie/Rwal" / rwal::wallpaper::DONWLOADS_DIR_NAME;
+	fs::path base_path = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+	if (base_path.empty()) base_path = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+
+    fs::path downloads = base_path / rwal::wallpaper::DONWLOADS_DIR_NAME;
 
     try {
         if (!fs::exists(downloads)) {

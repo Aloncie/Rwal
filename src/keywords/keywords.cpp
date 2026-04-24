@@ -6,7 +6,9 @@
 #include "internal/utils/vector_utils.hpp"
 
 #include <fstream>
-#include <curses.h>
+#ifndef _WIN32
+	#include <curses.h>
+#endif
 
 Keywords::Keywords(IConfigReader& config, Logs& logs) : m_config(config), m_logs(logs) {}
 

@@ -58,6 +58,7 @@ endif()
 
 elseif(CURRENT_DE MATCHES "WINDOWS")
 	list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
+	target_link_libraries(wallpaper_lib PRIVATE user32 shell32 ws2_32)
 	add_definitions(-DRWAL_USE_WINDOWS)
 	message(STATUS "Using Windows wallpaper setter")
 else()
@@ -69,6 +70,7 @@ endif()
 # Add the library target for the wallpaper setters
 add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
+target_link_libraries(wallpaper_lib PUBLIC CURL::libcurl nlohmann_json::nlohmann_json)
 
 target_compile_definitions(wallpaper_lib PRIVATE QT_NO_KEYWORDS)
 
