@@ -9,7 +9,13 @@
 #include <exception>
 #include <optional>
 
-#ifndef _WIN32
+#ifdef _WIN32
+	#include <Windows.h>
+	#include <taskschd.h>
+	#include <comdef.h>
+    #pragma comment(lib, "taskschd.lib")
+    #pragma comment(lib, "comsupp.lib")
+#else
 	#include <unistd.h>
 #endif
 

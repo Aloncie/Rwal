@@ -26,8 +26,7 @@ namespace rwal::platform::executor {
 
         pid_t pid = fork();
 
-        if (pid == -1)
-            return;
+        if (pid == -1)	return;
 
         if (pid == 0) {
 			if (std::system("stty sane") != 0) {}

@@ -63,7 +63,7 @@ elseif(CURRENT_DE MATCHES "WINDOWS")
 	message(STATUS "Using Windows wallpaper setter")
 else()
 	message(STATUS "No supported DE detected ('${CURRENT_DE}'). Using fallback setter.")
-	message(STATUS "  (To force a specific DE, use: cmake .. -DRWAL_FORCE_DE=GNOME|KDE|Hyprland)")
+	message(STATUS "(To force a specific DE, use: cmake .. -DRWAL_FORCE_DE=GNOME|KDE|Hyprland)")
 
 endif()
 

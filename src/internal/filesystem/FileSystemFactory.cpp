@@ -1,3 +1,5 @@
+#include "FileSystemFactory.hpp"
+
 #if defined __linux__ || defined _WIN32
 	#include "NativeFileSystem.hpp"
 #endif
