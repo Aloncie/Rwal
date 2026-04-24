@@ -1,52 +1,88 @@
+#define NOMINMAX // Must be before any Windows headers
 #include "NetworkManager.hpp"
+
+#ifdef _WIN32
+    #include <winsock2.h>
+    #include <ws2tcpip.h>
+#else
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+    #include <unistd.h>
+    #include <format>
+#endif
+
 #include "funcs/funcs.hpp"
+#include <algorithm>
 
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <format>
+#define PLANNED_LOCAL_FETCH
 
-#define PLANNED_LOCAL_FETCH // Warning instead of Error, because local fetching is coming
-
+#ifndef _WIN32
 struct SocketGuard{
-	int fd;
-	SocketGuard(int s) : fd(s){}
-	~SocketGuard(){
-		if (fd != -1)
-			close(fd);
-	}
+    SOCKET fd;
+    SocketGuard(int s) : fd(s) {}
+    ~SocketGuard() {
+        if (fd != -1)
+            close(fd);
+    }
 };
+#endif
 
 bool NetworkManager::isAvailable() {
-	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to check internet connection");
+    m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to check internet connection");
 
+#ifdef _WIN32
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "WSAStartup failed");
+        return false;
+    }
+    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock == INVALID_SOCKET) {
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Socket creation failed");
+        WSACleanup();
+        return false;
+    }
+    sockaddr_in server{};
+    server.sin_family = AF_INET;
+    server.sin_port = htons(53);
+    inet_pton(AF_INET, "8.8.8.8", &server.sin_addr);
+    int timeout = 3000;
+    setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof(timeout));
+    int result = connect(sock, (sockaddr*)&server, sizeof(server));
+    bool connected = (result == 0);
+    closesocket(sock);
+    WSACleanup();
+    if (connected) {
+        m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Internet check: SUCCESS");
+        return true;
+    } else {
+        m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Internet check: FAILED");
+        return false;
+    }
+#else
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == -1) {
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Socket creation failed");
         return false;
     }
-
     SocketGuard guard(sock); 
-
     sockaddr_in server{}; server.sin_family = AF_INET;
     server.sin_port = htons(53);
-    
     if (inet_pton(AF_INET, "8.8.8.8", &server.sin_addr) <= 0) {
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "IP conversion failed");
         return false;
     }
-
     timeval tv{.tv_sec = 3, .tv_usec = 0};
     setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
-
     if (connect(sock, reinterpret_cast<sockaddr*>(&server), sizeof(server)) == 0) {
         m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Internet check: SUCCESS");
         return true;
     }
-	PLANNED_LOCAL_FETCH
+    PLANNED_LOCAL_FETCH
     m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Internet check: FAILED (No connection to 8.8.8.8:53)");
     return false;
+#endif
 }
 
 std::string NetworkManager::craftUrl(std::string_view keyword, const std::optional<std::string>& page) {

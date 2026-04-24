@@ -1,11 +1,13 @@
 #include "logs.hpp"
 
-#include <unistd.h>
-#include <sys/stat.h>
+#ifndef _WIN32
+	#include <unistd.h>
+	#include <sys/stat.h>
+	#include <pwd.h>
+#endif
+
 #include <QDateTime>
 #include <QStandardPaths>
-#include <unistd.h>
-#include <pwd.h>
 #include <deque>
 
 Logs::Logs() {
@@ -53,6 +55,7 @@ bool Logs::refresh() {
     std::ofstream f(logs_path, std::ios::out);
     f.close();
 
+#ifndef _WIN32
     if (chmod(logs_path.c_str(), 0644) != 0) {
         writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to change mod of logs\n Try to fix it yourself");
 		return false;
@@ -69,6 +72,7 @@ bool Logs::refresh() {
             }
         }
     }
+#endif
 	return true;
 }
 
