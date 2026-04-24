@@ -12,7 +12,7 @@
 #include <QCoreApplication>
 
 using ::testing::_;
-using ::tesing::Return;
+using ::testing::Return;
 using ::testing::Invoke;
 
 class ConfigTest : public ::testing::Test {
@@ -72,7 +72,7 @@ TEST_F(ConfigTest, LoadConfig_InvalidJson_LogsError) {
 	file << "invalid json";
 	file.close();
 	ON_CALL(*mockLogs, writeLogs(_, _, _))
-		.WillByDefault(Invoke([this](std::string_view message) {
+		.WillByDefault(Invoke([this](std::string_view, std::string_view, std::string_view message) {
 			mockLogs->lastLogMessage = message;
 	}));
 	config->loadConfig();

@@ -1,24 +1,34 @@
 #pragma once
 #include <gmock/gmock.h>
-#include "ui/tui/TUIManager.hpp"
+#include "ui/IUserInterface.hpp"
 
-class MockTUIManager : public TUIManager {
+class MockTUIManager : public IUserInterface {
 public:
-	MockTUIManager() = default;
+    MockTUIManager() = default;
+
+    // IUserInterface overrides
     MOCK_METHOD(void, showMessage, (std::string_view message), (override));
-    MOCK_METHOD(void, dodgeMessage, (std::string message), (override));
-    MOCK_METHOD(bool, isInputActive, (), (const, override));
-    MOCK_METHOD(void, processInputChar, (int ch), (override));
-	MOCK_METHOD(void, requestInputCalled, (std::string message), ());
+    MOCK_METHOD(bool, prepareForExternalCommand, (), (override));
+    MOCK_METHOD(bool, refresh, (), (override));
 
-	void requestInput(std::function<void(std::string)> callback, std::optional<std::string> message = std::nullopt) override {
-		lastStringCallback_ = callback;
-		if (message) {
-			lastMessage_ = *message;
-			requestInputCalled(lastMessage_);
-		}
-	}
+    void requestInput(std::function<void(std::string)> callback,
+                      std::optional<std::string> message = std::nullopt) override {
+        lastStringCallback_ = callback;
+        if (message) {
+            lastMessage_ = *message;
+            requestInputCalled(lastMessage_);
+        }
+    }
 
+    // TUI-specific methods (not in IUserInterface)
+    MOCK_METHOD(void, dodgeMessage, (std::string message));
+    MOCK_METHOD(bool, isInputActive, (), (const));
+    MOCK_METHOD(void, processInputChar, (int ch));
+
+    // Helper for test expectations
+    MOCK_METHOD(void, requestInputCalled, (std::string message), ());
+
+    // Simulate methods
     void simulateStringInput(std::string input) {
         if (lastStringCallback_) {
             lastStringCallback_(input);
@@ -32,7 +42,6 @@ public:
     }
 
     void simulateInput(std::string input) { simulateStringInput(input); }
-
     void simulateInput(int input) { simulateIntInput(input); }
 
 private:
@@ -40,4 +49,3 @@ private:
     std::function<void(int)> lastIntCallback_;
     std::string lastMessage_;
 };
-
