@@ -61,6 +61,7 @@ add_library(rwal-core STATIC
     src/settings/config.cpp
     src/settings/settings.cpp
     src/internal/filesystem/FileSystemFactory.cpp
+	src/settings/SchedulerFactory.cpp
 )
 
 target_include_directories(rwal-core PUBLIC

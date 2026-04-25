@@ -1,7 +1,6 @@
 #include "WallpaperFactory.hpp"
 #include "platforms/FallbackSetter.hpp"
 #include "IWallpaperSetter.hpp"
-#include "logs/logs.hpp"
 
 #include <memory>
 
@@ -15,7 +14,7 @@
 	#include "platforms/WindowsSetter.hpp"
 #endif
 
-std::unique_ptr<IWallpaperSetter> WallpaperFactory::create() {
+std::unique_ptr<IWallpaperSetter> createWallpaperSetter(Logs& m_logs) {
 #ifdef RWAL_USE_KDE
     return std::make_unique<KdeSetter>(m_logs);
 #elif defined(RWAL_USE_GNOME)

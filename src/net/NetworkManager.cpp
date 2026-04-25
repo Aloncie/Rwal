@@ -19,7 +19,7 @@
 
 #ifndef _WIN32
 struct SocketGuard{
-    SOCKET fd;
+    int fd;
     SocketGuard(int s) : fd(s) {}
     ~SocketGuard() {
         if (fd != -1)

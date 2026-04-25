@@ -7,13 +7,13 @@ public:
 	ISystemScheduler() = default;
 	virtual ~ISystemScheduler() = default;
 	
-	virtual std::string set(const std::string& value);
-	virtual std::string get() const;
+	virtual std::string set(const std::string& value) = 0;
+	virtual std::string get() const = 0;
 protected:
-	virtual bool create();
-	virtual bool status() const;
-	virtual bool reload() const;
-	virtual bool start() const;
-	virtual bool disable() const;
+	virtual bool create() = 0;
+	virtual bool status() const = 0;
+	virtual bool reload() const = 0;
+	virtual bool start() const = 0;
+	virtual bool disable() const = 0;
 };
 

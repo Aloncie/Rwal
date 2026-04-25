@@ -52,13 +52,13 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
     }
 }
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(Timer& timer, WallpaperManager& wm, IUserInterface& ui) : m_timer(timer), m_wm(wm), m_uim(ui) {}
+SettingsMenu::SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui) : m_scheduler(scheduler), m_wm(wm), m_uim(ui) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
 	auto PicturesPathOpt = m_wm.getPicturesPath(&m_uim);
 	std::string pathStr = PicturesPathOpt ? PicturesPathOpt->string() : "Not found";    
 	return {
-        "--- Settings ---", "1) Timer: " + m_timer.seeTimer(),
+        "--- Settings ---", "1) Scheduler: " + m_scheduler.get(),
         "2) Wallpapers's path: " + pathStr,
 		"q) Back",
         ""  // Empty line for spacing
@@ -67,7 +67,7 @@ std::vector<std::string> SettingsMenu::getLines() {
 
 MenuResponce SettingsMenu::handleInput(const std::string& input) {
     if (input == "1") {
-        return {MenuId::TIMER, false, false};
+        return {MenuId::SCHEDULER, false, false};
     } else if (input == "2") {
         // Space for path logic
         return {"", false, false};
@@ -132,25 +132,25 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
     }
 }
 
-// ========== TimerMenu ==========
-TimerMenu::TimerMenu(ISystemScheduler& scheduler) : m_scheduler(scheduler) {}
+// ========== Scheduler Menu ==========
+SchedulerMenu::SchedulerMenu(ISystemScheduler& scheduler) : m_scheduler(scheduler) {}
 
-std::vector<std::string> TimerMenu::getLines() {
+std::vector<std::string> SchedulerMenu::getLines() {
     return {
         "(n)one", "(h)ourly", "(d)aily",
         ""  // Empty line for spacing
     };
 }
 
-MenuResponce TimerMenu::handleInput(const std::string& input) {
+MenuResponce SchedulerMenu::handleInput(const std::string& input) {
     if (input == "h") {
-		std::string_view result = m_timer.set("hourly");
+		std::string result = m_scheduler.set("hourly");
         return {MenuId::SETTINGS, false, false, result};
     } else if (input == "d") {
-		std::string_view result = m_timer.set("daily");
-        return {MenuId::SETTINGS, false, false, result;};
+		std::string result = m_scheduler.set("daily");
+        return {MenuId::SETTINGS, false, false, result};
     } else if (input == "n") {
-		std::string_view result = m_timer.set("None");
+		std::string result = m_scheduler.set("None");
         return {MenuId::SETTINGS, false, false, result};
     } else {
         return {"", true, false};
