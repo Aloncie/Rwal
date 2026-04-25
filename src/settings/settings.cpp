@@ -1,29 +1,21 @@
 #include "settings.hpp"
 #include "logs/logs.hpp"
+#include "internal/AppConstants.hpp"
 
-#include <filesystem>
 #include <fstream>
 #include <QCoreApplication>
 #include <QStandardPaths>
 #include <QFileInfo>
 #include <exception>
-#include <optional>
 
-#ifdef _WIN32
-	#include <Windows.h>
-	#include <taskschd.h>
-	#include <comdef.h>
-    #pragma comment(lib, "taskschd.lib")
-    #pragma comment(lib, "comsupp.lib")
-#else
-	#include <unistd.h>
-#endif
+// Dependence on Linux
+#include <unistd.h>
 
-std::optional<fs::path> LinuxSystemScheduler::getUserLinuxSystemSchedulerPath() const {
+std::optional<fs::path> LinuxSystemScheduler::getLocation() const {
 	const char* home_dir = std::getenv("HOME");	
 	
 	if (home_dir){
-		const fs::path service_dir = fs::path(home_dir) / ".config" / "systemd" / "user";
+		const fs::path service_dir = fs::path(home_dir) / rwal::constants::dirs::LINUX_SERVICE_DIR;
 		try{
 			fs::create_directory(service_dir);
 		} catch (const std::exception& e){
@@ -33,24 +25,23 @@ std::optional<fs::path> LinuxSystemScheduler::getUserLinuxSystemSchedulerPath() 
 		return service_dir;
 	}
 	else{
-		 
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Error: HOME environment variable is not set!");	
 		return std::nullopt;
 	}
 }
 
-void LinuxSystemScheduler::createScheduler(){
+bool LinuxSystemScheduler::create(){
 	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Try to create/check service&timer files");
 
-	auto path = getUserLinuxSystemSchedulerPath();
+	auto path = getLocation();
 	if (!path){
-		return;
+		return false;
 	}
 
 	const fs::path service_dir = *path;
-	const std::string service_name = "rwal";
-	const fs::path service_file = service_dir / (service_name + ".service");
-	const fs::path timer_file = service_dir / (service_name + ".timer");
+	const std::string service_name = rwal::constants::service::SERVICE_NAME;
+	const fs::path service_file = rwal::constants::service::SERVICE_FILE;
+	const fs::path timer_file = service_dir / rwal::constants::names::TIMER_FILE;
 
 	if (!fs::exists(service_file)||fs::file_size(service_file) == 0){
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "There is not service file");
@@ -73,7 +64,7 @@ void LinuxSystemScheduler::createScheduler(){
 		}
 		else{
 			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Filesystem, "Failed to create service file");
-			return;		
+			return false;		
 		}
 	} else
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Service file already exists");
@@ -84,10 +75,10 @@ void LinuxSystemScheduler::createScheduler(){
 			if (service.is_open()){
 				service <<
 				"[Unit]\n"
-				"Description=Activates rwal.service periodically\n\n"
-				"[LinuxSystemScheduler]\n"
+				"Description=Activates " + rwal::constants::service::SERVICE_NAME + " periodically\n\n"
+				"[Timer]\n"
 				"OnCalendar=\n"
-				"Unit=rwal.service\n\n"
+				"Unit="+rwal::constants::service::SERVICE_NAME+"\n\n"
 				"[Install]\n"
 				"WantedBy=timers.target\n";
 				service.close();
@@ -95,28 +86,55 @@ void LinuxSystemScheduler::createScheduler(){
 			}
 			else{
 				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Filesystem, "Failed to create timer file");
-				return;		
+				return false;		
 			}
 	} else
-		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "LinuxSystemScheduler file already exists");
-
-	system("systemctl --user daemon-reload");
+		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Scheduler file already exists");
+	return reload();
 }
 
-std::string LinuxSystemScheduler::seeLinuxSystemScheduler(){
-	auto path = getUserLinuxSystemSchedulerPath();
-	if (!path)
-		return "None";
+bool reload() const {
+	try {
+		system("systemctl --user daemon-reload");	
+	} catch (const std::exception& e) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to reload daemon: " + std::string(e.what()));
+		return false;
+	}
+	return true;
+}
 
-	std::ifstream file(*path / "rwal.timer");
+bool start() const {
+	try {
+		system("systemctl --user start " + rwal::constants::service::SERVICE_NAME);
+		system("systemctl --user enable --now " + rwal::constants::service::SERVICE_NAME);
+	} catch (const std::exception& e) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to start daemon: " + std::string(e.what()));
+		return false;
+	}
+	return true;
+}
+
+bool disable() const {
+	try {
+		system("systemctl --user disable " + rwal::constants::service::SERVICE_NAME);
+	} catch (const std::exception& e) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to disable daemon: " + std::string(e.what()));
+		return false;
+	}
+	return true;
+}
+std::string LinuxSystemScheduler::get(){
+	auto path = getLocation();
+	if (!path) return "None";
+
+	std::ifstream file(*path / rwal::constants::names::TIMER_FILE);
 	std::string str;
 	 
 	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Try to read timer file");
 
 	if (file.is_open()){
 
-		if (!LinuxSystemSchedulerStatus())
-			return "None";
+		if (!status()) return "None";
 
 		while (getline(file,str)){
 			if (str.starts_with("OnCalendar=")){
@@ -130,23 +148,22 @@ std::string LinuxSystemScheduler::seeLinuxSystemScheduler(){
 	return "None";
 }
 
-bool LinuxSystemScheduler::set(const std::string& value) override {
+std::string LinuxSystemScheduler::set(const std::string& value) override {
 	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Try to edit timer");
-		
-	createSystemdLinuxSystemScheduler();
+	const std::strinv_view failedLog = "Failed set timer. More info in logs.";	
+	if (!createScheduler()) return failedLog;
 
-	auto path = getUserLinuxSystemSchedulerPath();
-	if (!path)
-		return "None";
+	auto path = getLocation();
+	if (!path) return "None";
 
-	std::ifstream in_file(*path / "rwal.timer");
+	std::ifstream in_file(*path / rwal::constants::files::TIMER_FILE);
 	std::vector<std::string> lines;
 	std::string line;
 	bool found = false;
 
 	if (!in_file){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Filesystem, "Failed to open rwal.timer to read");
-		return "Failed set timer. More info in logs.";
+		return failedLog;
 	}	
 	while (getline(in_file,line)){
 		if (line.find("OnCalendar=") == std::string::npos)
@@ -156,14 +173,15 @@ bool LinuxSystemScheduler::set(const std::string& value) override {
 			if (value == "None"){
 				m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "value is 'None'\nTry to disactivate timer");
 				lines.push_back("OnCalendar=");
-				system("systemctl unmask rwal.timer >/dev/null 2>&1");
-				system("systemctl --user daemon-reload");
-				system("systemctl --user disable --now rwal.timer");
+				system("systemctl unmask " rwal::constants::service::TIMER_NAME " >/dev/null 2>&1");
+				reload();
+				disable();
 				m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Scheduler successfuly disactivated");
-				return "LinuxSystemScheduler successfuly disactivated!";
+				return "Scheduler successfuly disactivated!";
 			}
-			else
+			else{
 				lines.push_back("OnCalendar=" + value);
+			}
 		}
 	}
 
@@ -171,24 +189,22 @@ bool LinuxSystemScheduler::set(const std::string& value) override {
 
 	if (!found){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Filesystem, "Failed to find string");
-		return "Failed set timer. More info in logs.";
+		return failedLog;
 	}
 
-	std::fstream out_file(*path / "rwal.timer");	
+	std::fstream out_file(*path / rwal::constants::files::TIMER_FILE, std::ios::out);	
 	if (!out_file){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Filesystem, "Failed to create/open rwal.timer to write");
-		return "Failed set timer. More info in logs.";
+		return failedLog;
 	}
-	for (auto& l : lines)
+	for (auto& l : lines){
 		out_file << l << "\n";
+	}
 
 	out_file.close();
 	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Successful edit timer. Try to active timer");
 	
-	system("systemctl unmask rwal.timer >/dev/null 2>&1");
-	system("systemctl --user daemon-reload");	
-	system("systemctl --user start rwal.timer");
-	system("systemctl --user enable --now rwal.timer");
+	system("systemctl unmask " + rwal::constants::names::TIMER_FILE " >/dev/null 2>&1");
 
 	if (LinuxSystemSchedulerStatus()){
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Filesystem, "Scheduler successfuly activated");
@@ -196,12 +212,12 @@ bool LinuxSystemScheduler::set(const std::string& value) override {
 	}
 	else{
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Filesystem, "Failed to activate timer");
-		return "Failed set timer. More info in logs.";
+		return failedLog;
 	}
 }
 
 bool LinuxSystemScheduler::status(){
-	return system("systemctl --user is-active rwal.timer >/dev/null 2>&1") == 0;
+	return system("systemctl --user is-active " + rwal::constants::service::TIMER_NAME " >/dev/null 2>&1") == 0;
 }
 
 
