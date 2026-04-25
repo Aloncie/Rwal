@@ -2,16 +2,18 @@
 
 #include <string>
 
-namespace rwal::platform:: {
-
 class ISystemScheduler {
 public:
 	ISystemScheduler() = default;
 	virtual ~ISystemScheduler() = default;
-
-	virtual bool status() const;
-	virtual bool set(const std::string& value);
+	
+	virtual std::string set(const std::string& value);
 	virtual std::string get() const;
-	virtual bool reload();
-	virtual bool createScheduler();
+protected:
+	virtual bool create();
+	virtual bool status() const;
+	virtual bool reload() const;
+	virtual bool start() const;
+	virtual bool disable() const;
 };
+

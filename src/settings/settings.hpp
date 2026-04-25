@@ -16,16 +16,17 @@ public:
 
 class LinuxSystemScheduler : public ISystemScheduler{
 private:
-	std::optional<fs::path> getUserTimerPath() const;
+	std::optional<fs::path> getLocation() const;
 	Logs& m_logs;
 public:
 	Timer(Logs& logs) : m_logs(logs) override {}
-	bool createScheduler() override;
-	bool reload() override;
 	std::string get() const override;
-	bool set(const std::string& value) override;
+	std::string set(const std::string& value) override;
+protected:
+	bool create() override;
+	bool reload() const override;
 	bool status() const override;
-
-	bool check_timer_mask_status();
+	bool start() const override;
+	bool disable() const override;
 };
 

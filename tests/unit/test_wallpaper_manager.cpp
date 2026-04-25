@@ -159,7 +159,7 @@ TEST_F(WallpaperManagerTest, SaveCurrent_ReturnsSuccess) {
 
     EXPECT_CALL(*mockFileSystem, getAppLocalDataLocation()).WillOnce(Return(downloadsDir));
     EXPECT_CALL(*mockFileSystem, exists(downloadsDir)).WillOnce(Return(true));
-    EXPECT_CALL(*mockFileSystem, listDirectory(downloadsDir, rwal::wallpaper::FILE_PREFIX)).WillOnce(Return(std::vector<fs::path>{fakeWallpaper}));
+    EXPECT_CALL(*mockFileSystem, listDirectory(downloadsDir, rwal::constants::wallpaperFILE_PREFIX)).WillOnce(Return(std::vector<fs::path>{fakeWallpaper}));
 
     EXPECT_CALL(*mockFileSystem, getPicturesLocation()).WillOnce(Return(picturesDir));
     EXPECT_CALL(*mockFileSystem, getApplicationName()).WillOnce(Return("rwal"));
