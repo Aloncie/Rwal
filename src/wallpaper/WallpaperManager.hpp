@@ -14,13 +14,6 @@
 
 namespace fs = std::filesystem;
 
-namespace rwal::wallpaper{
-	inline constexpr std::string_view FILE_PREFIX = "wallpaper-";
-	inline constexpr std::string_view DEFAULT_EXT = ".jpg";
-	inline constexpr int SUFFIX_LENGTH = 6;
-	inline constexpr std::string_view DONWLOADS_DIR_NAME = "downloads";
-
-}
 class WallpaperManager {
 private:
 	Logs& m_logs;
