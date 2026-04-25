@@ -2,6 +2,7 @@
 #include "logs/logs.hpp"
 #include "net/NetworkManager.hpp"
 #include "PathResolver.hpp"
+#include "internal/AppConstants.hpp"
 
 #include <QStandardPaths>
 #include <filesystem>
@@ -63,14 +64,14 @@ std::string WallpaperManager::saveCurrent() const {
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {
-    fs::path dir = fs::path( QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) / rwal::wallpaper::DONWLOADS_DIR_NAME;
+    fs::path dir = fs::path( QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString()) / rwal::constants::dirs::DOWNLOADS_DIR;
     if (!fs::exists(dir)) return "";
 
     try {
         for (const auto& entry : fs::directory_iterator(dir)) {
             if (fs::is_regular_file(entry.path())) {
                 std::string name = entry.path().filename().string();
-                if (name.rfind(rwal::wallpaper::FILE_PREFIX, 0) == 0) {
+                if (name.rfind(rwal::constants::wallpaper::FILE_PREFIX, 0) == 0) {
                     return entry.path();
                 }
             }

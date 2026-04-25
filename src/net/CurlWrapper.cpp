@@ -1,5 +1,6 @@
 #include "CurlWrapper.hpp"
 #include "wallpaper/WallpaperManager.hpp"
+#include "internal/AppConstants.hpp"
 #include "funcs/funcs.hpp"
 #include <exception>
 #include <filesystem>
@@ -99,10 +100,10 @@ std::string CurlWrapper::getData(const std::string& paragraph, const std::string
 }
 
 std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url) {
-	fs::path base_path = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
-	if (base_path.empty()) base_path = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+	fs::path base_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString());
+	if (base_path.empty()) base_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::CacheLocation).toStdString());
 
-    fs::path downloads = base_path / rwal::wallpaper::DONWLOADS_DIR_NAME;
+    fs::path downloads = base_path / rwal::constants::dirs::DOWNLOADS_DIR;
 
     try {
         if (!fs::exists(downloads)) {
@@ -121,7 +122,7 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
         return std::nullopt;
     }
 
-    std::string filename = call_Image(image_url);
+    std::string_view filename = call_Image(image_url);
     fs::path wallpaper_path = downloads / filename;
 
     CurlRaiiPtr image_curl(curl_easy_init());
@@ -168,14 +169,14 @@ void CurlWrapper::clearning() {
 
 void CurlWrapper::generateUniqueSuffix(std::string& filename) {
     const std::string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for (int i = 0; i < rwal::wallpaper::SUFFIX_LENGTH; ++i) {
+    for (int i = 0; i < rwal::constants::wallpaper::SUFFIX_LENGTH; ++i) {
         filename += chars[random(chars.size() - 1)];
     }
 }
 
 std::string CurlWrapper::call_Image(const std::string& image_url) {
     size_t lastSlash = image_url.find_last_of('/');
-    std::string filename = rwal::wallpaper::FILE_PREFIX;
+    std::string filename = std::string(rwal::constants::wallpaper::FILE_PREFIX);
 
     if (lastSlash == std::string::npos) {
         generateUniqueSuffix(filename);
