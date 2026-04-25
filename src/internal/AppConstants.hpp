@@ -9,13 +9,12 @@ namespace rwal::constants {
         inline constexpr std::string_view CONFIG_FILE = "config.json";
         inline constexpr std::string_view LOGS_FILE = "logs.txt";
         inline constexpr std::string_view KEYWORDS_TEMP = "keywords.txt";
- 
+        inline constexpr std::string_view SERVICE_FILE = "rwal.service";
+        inline constexpr std::string_view TIMER_FILE = "rwal.timer";
+
 	}
     namespace names {
         inline constexpr std::string_view SERVICE_NAME = "rwal";
-        inline constexpr std::string_view SERVICE_FILE = "rwal.service";
-        inline constexpr std::string_view TIMER_FILE = "rwal.timer";
-        
         inline constexpr std::wstring_view WIN_TASK_NAME = L"Rwal Wallpaper Changer";
     }
 

@@ -10,6 +10,8 @@
 #include "wallpaper/WallpaperManager.hpp"
 #include "internal/filesystem/FileSystemFactory.hpp"
 #include "AppConfig.h"
+#include "settings/ISystemScheduler.hpp"
+#include "settings/SchedulerFactory.hpp"
 #include "internal/utils/string_utils.hpp"
 
 #if RWAL_USE_TUI
@@ -47,8 +49,7 @@ int Application::run(int argc, char* argv[]) {
     Keywords keywords(config, logs);
     CurlWrapper curl(logs);
     NetworkManager nm(curl, config, logs);
-    WallpaperFactory wf(logs);
-    std::unique_ptr<IWallpaperSetter> env = wf.create();
+    std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
     WallpaperManager wm(logs, *fs);
 
 #if RWAL_USE_CLI
@@ -74,20 +75,20 @@ int Application::run(int argc, char* argv[]) {
 		return 1;
 	}
     TUIManager tuim;
-	Timer timer(logs);
+	std::unique_ptr<ISystemScheduler> scheduler = createPlatformScheduler(logs);
 
     tuim.initUI();
 
     auto mainMenu = std::make_unique<MainMenu>(tuim, keywords, wm, *env, nm);
-    auto settingsMenu = std::make_unique<SettingsMenu>(timer, wm, tuim);
+    auto settingsMenu = std::make_unique<SettingsMenu>(*scheduler, wm, tuim);
     auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, tuim, config);
-    auto timerMenu = std::make_unique<TimerMenu>(timer);
+    auto schedulerMenu = std::make_unique<SchedulerMenu>(*scheduler);
 
     Navigator navigator(logs);
     navigator.registerMenu("main", std::move(mainMenu));
     navigator.registerMenu("settings", std::move(settingsMenu));
     navigator.registerMenu("keywords", std::move(keywordsMenu));
-    navigator.registerMenu("timer", std::move(timerMenu));
+    navigator.registerMenu("scheduler", std::move(schedulerMenu));
 
     navigator.start("main");
 

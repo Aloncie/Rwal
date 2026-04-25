@@ -7,6 +7,7 @@
 #include "mocks/MockConfigReader.hpp"
 #include "mocks/MockFileSystem.hpp"
 #include "mocks/MockCurlWrapper.hpp"
+#include "internal/AppConstants.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -159,7 +160,7 @@ TEST_F(WallpaperManagerTest, SaveCurrent_ReturnsSuccess) {
 
     EXPECT_CALL(*mockFileSystem, getAppLocalDataLocation()).WillOnce(Return(downloadsDir));
     EXPECT_CALL(*mockFileSystem, exists(downloadsDir)).WillOnce(Return(true));
-    EXPECT_CALL(*mockFileSystem, listDirectory(downloadsDir, rwal::constants::wallpaperFILE_PREFIX)).WillOnce(Return(std::vector<fs::path>{fakeWallpaper}));
+    EXPECT_CALL(*mockFileSystem, listDirectory(downloadsDir, rwal::constants::wallpaper::FILE_PREFIX.data())).WillOnce(Return(std::vector<fs::path>{fakeWallpaper}));
 
     EXPECT_CALL(*mockFileSystem, getPicturesLocation()).WillOnce(Return(picturesDir));
     EXPECT_CALL(*mockFileSystem, getApplicationName()).WillOnce(Return("rwal"));

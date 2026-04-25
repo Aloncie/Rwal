@@ -122,7 +122,7 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
         return std::nullopt;
     }
 
-    std::string_view filename = call_Image(image_url);
+    std::string filename = call_Image(image_url);
     fs::path wallpaper_path = downloads / filename;
 
     CurlRaiiPtr image_curl(curl_easy_init());

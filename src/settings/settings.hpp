@@ -1,5 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
+#include "ISystemScheduler.hpp"
 
 #include <string>
 #include <filesystem>
@@ -19,7 +20,7 @@ private:
 	std::optional<fs::path> getLocation() const;
 	Logs& m_logs;
 public:
-	Timer(Logs& logs) : m_logs(logs) override {}
+	explicit LinuxSystemScheduler(Logs& logs) : m_logs(logs) {}
 	std::string get() const override;
 	std::string set(const std::string& value) override;
 protected:

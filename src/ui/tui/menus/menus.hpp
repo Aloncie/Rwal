@@ -44,13 +44,13 @@ public:
 
 class SettingsMenu : public Menu {
 private:
-    Timer& m_timer;
+    ISystemScheduler& m_scheduler;
     WallpaperManager& m_wm;
 	IUserInterface& m_uim;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(Timer& timer, WallpaperManager& wm, IUserInterface& ui);
+    SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -70,13 +70,13 @@ public:
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
-class TimerMenu : public Menu {
+class SchedulerMenu : public Menu {
 private:
     ISystemScheduler& m_scheduler;
     inline static const std::string m_validChoices = "nhd";
 
 public:
-    TimerMenu(ISystemScheduler& scheduler);
+    SchedulerMenu(ISystemScheduler& scheduler);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
