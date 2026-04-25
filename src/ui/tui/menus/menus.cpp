@@ -133,7 +133,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
 }
 
 // ========== TimerMenu ==========
-TimerMenu::TimerMenu(Timer& timer) : m_timer(timer) {}
+TimerMenu::TimerMenu(ISystemScheduler& scheduler) : m_scheduler(scheduler) {}
 
 std::vector<std::string> TimerMenu::getLines() {
     return {
@@ -144,14 +144,14 @@ std::vector<std::string> TimerMenu::getLines() {
 
 MenuResponce TimerMenu::handleInput(const std::string& input) {
     if (input == "h") {
-        m_timer.editTimer("hourly");
-        return {MenuId::SETTINGS, false, false};
+		std::string_view result = m_timer.set("hourly");
+        return {MenuId::SETTINGS, false, false, result};
     } else if (input == "d") {
-        m_timer.editTimer("daily");
-        return {MenuId::SETTINGS, false, false};
+		std::string_view result = m_timer.set("daily");
+        return {MenuId::SETTINGS, false, false, result;};
     } else if (input == "n") {
-        m_timer.editTimer("None");
-        return {MenuId::SETTINGS, false, false};
+		std::string_view result = m_timer.set("None");
+        return {MenuId::SETTINGS, false, false, result};
     } else {
         return {"", true, false};
     }

@@ -1,6 +1,7 @@
 #pragma once
 #include "keywords/keywords.hpp"
 #include "settings/settings.hpp"
+#include "settings/ISystemScheduler.hpp"
 #include "settings/IConfigReader.hpp"
 #include "ui/IUserInterface.hpp"
 #include "wallpaper/WallpaperManager.hpp"
@@ -71,11 +72,11 @@ public:
 
 class TimerMenu : public Menu {
 private:
-    Timer& m_timer;
+    ISystemScheduler& m_scheduler;
     inline static const std::string m_validChoices = "nhd";
 
 public:
-    TimerMenu(Timer& timer);
+    TimerMenu(ISystemScheduler& scheduler);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
