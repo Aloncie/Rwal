@@ -27,5 +27,8 @@ namespace rwal::constants {
         inline constexpr int SUFFIX_LENGTH = 6;
         inline constexpr std::string_view DEFAULT_EXT = ".jpg";
     }
+	namespace systemd {
+		inline constexpr std::string_view SUPPRESS_OUTPUT = " >/dev/null 2>&1";
+	}
 
 }

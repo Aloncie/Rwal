@@ -1,33 +1,9 @@
 #pragma once
-#include "logs/logs.hpp"
-#include "ISystemScheduler.hpp"
 
-#include <string>
-#include <filesystem>
-#include <QDir>
-#include <optional>
-
-namespace fs = std::filesystem;
-
+// planned implementation
 class AppSettings{
 public:
 	bool isCurcorVisible() const;
 	void switchCursorVisiable();
-};
-
-class LinuxSystemScheduler : public ISystemScheduler{
-private:
-	std::optional<fs::path> getLocation() const;
-	Logs& m_logs;
-public:
-	explicit LinuxSystemScheduler(Logs& logs) : m_logs(logs) {}
-	std::string get() const override;
-	std::string set(const std::string& value) override;
-protected:
-	bool create() override;
-	bool reload() const override;
-	bool status() const override;
-	bool start() const override;
-	bool disable() const override;
 };
 

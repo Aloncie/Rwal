@@ -51,6 +51,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core DBus Widgets Concurrent)
 # -------------------------------------------------------------------
 add_subdirectory(src/wallpaper)
 add_subdirectory(src/internal/filesystem)
+add_subdirectory(src/settings)
 
 add_library(rwal-core STATIC
     src/funcs/funcs.cpp
@@ -58,10 +59,9 @@ add_library(rwal-core STATIC
     src/internal/utils/string_utils.cpp
     src/keywords/keywords.cpp
     src/logs/logs.cpp
-    src/settings/config.cpp
-    src/settings/settings.cpp
+	src/settings/settings.cpp
+	src/settings/config.cpp
     src/internal/filesystem/FileSystemFactory.cpp
-	src/settings/SchedulerFactory.cpp
 )
 
 target_include_directories(rwal-core PUBLIC
@@ -80,6 +80,7 @@ target_link_libraries(rwal-core PUBLIC
     Qt6::Concurrent
     wallpaper_lib 
     filesystem_lib
+	scheduler-lib
 )
 
 # -------------------------------------------------------------------
