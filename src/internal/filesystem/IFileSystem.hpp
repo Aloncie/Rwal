@@ -23,7 +23,6 @@ public:
 	virtual std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix = "") const = 0;
 
 	// Qt path resolution
-	
 	virtual fs::path getAppLocalDataLocation() const = 0;
 	virtual fs::path getPicturesLocation() const = 0;
 	virtual std::string getApplicationName() const = 0;
