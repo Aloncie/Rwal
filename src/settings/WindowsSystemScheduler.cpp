@@ -4,17 +4,16 @@
 #pragma comment(lib, "taskschd.lib")
 #pragma comment(lib, "comsuppw.lib")
 
-WindowsSystemScheduler::WindowsSystemScheduler(Logs& logs) : m_logs(logs){
-	CoInitializeEx(NULL, COINIT_MULTITHREADED);
-	CoCreateInstance(CLSID_CTaskScheduler, NULL, CLSCTX_INPROC_SERVER, IID_ITaskScheduler, (void**)&m_scheduler);
-	pService->Connect(_variant_t(), _variant_t(), _variant_t(), _variant_t());
-	pService->GetFolder(_bstr_t(L"\\").c_str(), &pFolder);
-}
+_COM_SMARTPTR_TYPEDEF(ITaskService, __uuidof(ITaskService));
 
-WindowsSystemScheduler::~WindowsSystemScheduler() {
-	if (pFolder) pFolder->Release();
-	if (pService) pService->Release();
-    CoUninitialize();
+WindowsSystemScheduler::WindowsSystemScheduler(Logs& logs) : m_logs(logs){
+	// Init COM
+	CoInitializeEx(NULL, COINIT_MULTITHREADED);
+	CoCreateInstance(CLSID_CTaskScheduler, NULL, CLSCTX_INPROC_SERVER, IID_ITaskScheduler, (void**)&pService);
+	// Connect to server
+	pService->Connect(VARIANT(), VARIANT(), VARIANT(), VARIANT());
+	// Get root folder
+	pService->GetFolder(_bstr_t(L"\\").c_str(), &pFolder);
 }
 
 bool WindowsSystemScheduler::create() {

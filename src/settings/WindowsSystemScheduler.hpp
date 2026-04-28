@@ -12,7 +12,7 @@ private:
 	ITaskFolder* pFolder = nullptr;
 public:
     explicit WindowsSystemScheduler(Logs& logs) : m_logs(logs) {}
-	~WindowsSystemScheduler() override;
+	~WindowsSystemScheduler() override {};
 	std::string get() const override;
 	std::string set(const std::string& value) override;
 protected:
