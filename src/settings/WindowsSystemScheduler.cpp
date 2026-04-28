@@ -1,10 +1,4 @@
 #include "WindowsSystemScheduler.hpp"
-#include <comdef.h>
-
-#pragma comment(lib, "taskschd.lib")
-#pragma comment(lib, "comsuppw.lib")
-
-_COM_SMARTPTR_TYPEDEF(ITaskService, __uuidof(ITaskService));
 
 WindowsSystemScheduler::WindowsSystemScheduler(Logs& logs) : m_logs(logs){
 	// Init COM

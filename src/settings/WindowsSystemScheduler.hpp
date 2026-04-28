@@ -5,11 +5,17 @@
 #include <optional>
 #include <string>
 #include <taskschd.h>
+#include <comdef.h>
+
+#pragma comment(lib, "taskschd.lib")
+#pragma comment(lib, "comsuppw.lib")
+
+_COM_SMARTPTR_TYPEDEF(ITaskService, __uuidof(ITaskService));
 
 class WindowsSystemScheduler : public ISystemScheduler {
 private:
-	ITaskService* pService = nullptr;
-	ITaskFolder* pFolder = nullptr;
+	ITaskService m_pService;
+	ITaskFolder m_pFolder;
 public:
     explicit WindowsSystemScheduler(Logs& logs) : m_logs(logs) {}
 	~WindowsSystemScheduler() override {};
