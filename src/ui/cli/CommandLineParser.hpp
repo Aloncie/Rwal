@@ -21,3 +21,4 @@ namespace rwal::cli{
 	};	
 	Options parse(QCoreApplication& app);
 }
+

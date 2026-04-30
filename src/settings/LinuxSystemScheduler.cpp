@@ -119,7 +119,7 @@ bool LinuxSystemScheduler::disable() const {
 }
 std::string LinuxSystemScheduler::get() const {
 	if (location.empty()) location = getLocation();
-	if (!location) return "None";
+	if (!location) return "Not found";
 
 	std::ifstream file(*location / rwal::constants::files::TIMER_FILE);
 	std::string str;
@@ -132,7 +132,7 @@ std::string LinuxSystemScheduler::get() const {
 			if (status().value() == 0) return "None";
 		}
 		else {
-			return "Unknown";
+			return "Not found";
 		}
 
 		while (getline(file,str)){
@@ -144,7 +144,7 @@ std::string LinuxSystemScheduler::get() const {
 		}
 	}
 	m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Scheduler, "Can't read timer file");
-	return "None";
+	return "Not found";
 }
 
 std::string LinuxSystemScheduler::set(const std::string& value) {
