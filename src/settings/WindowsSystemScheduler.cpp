@@ -1,5 +1,6 @@
 #include "WindowsSystemScheduler.hpp"
 #include "internal/AppConstants.hpp"
+#include "SchedulerTypes.hpp"
 
 WindowsSystemScheduler::WindowsSystemScheduler(Logs& logs) : m_logs(logs){
 	// Init COM
@@ -81,11 +82,15 @@ bool WindowsSystemScheduler::disable() const {
 }
 
 std::string WindowsSystemScheduler::get() const {
-	TaskTiming getTiming(rwal::constants::names::WIN_TASK_NAME, TaskScheduleType::None); {
+	TaskTiming getTiming(rwal::constants::names::WIN_TASK_NAME, TaskScheduleType::None);
     TaskTiming info;
     IRegisteredTaskPtr pTask;
-    
-    if (pRootFolder->GetTask(_bstr_t(name.c_str()), &pTask) != S_OK) return info;
+
+	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+    if (!SUCCEEDED(hr)){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Task not found");
+		return "Not found";
+	}
 
     ITaskDefinitionPtr pDef;
     pTask->get_Definition(&pDef);
@@ -99,11 +104,13 @@ std::string WindowsSystemScheduler::get() const {
     if (count > 0) {
         ITriggerPtr pTrigger;
         pTriggers->get_Item(1, &pTrigger);
-
-        BSTR start;
+		
+		// BSTR is a COM-managed string; must be freed with SysFreeString
+		// after copying data to std::wstring to avoid memory leak
+		BSTR start;
         pTrigger->get_StartBoundary(&start);
-        info.startBoundary = start;
-        SysFreeString(start);
+        info.startBoundary = start; // std::wstring copies the data
+        SysFreeString(start); // safe to free up
 
         TASK_TRIGGER_TYPE2 type;
         pTrigger->get_Type(&type);
@@ -121,10 +128,12 @@ std::string WindowsSystemScheduler::set(const std::string& value) {
 
     ITaskDefinitionPtr pDef;
     pTask->get_Definition(&pDef);
-
+	
     ITriggerCollectionPtr pTriggers;
     pDef->get_Triggers(&pTriggers);
     pTriggers->Clear();
+	
+	TaskScheduleType type = rwal::ui::Scheduler::tyType(value);
 
     if (type != TaskScheduleType::None) {
         ITriggerPtr pTrigger;
@@ -137,7 +146,7 @@ std::string WindowsSystemScheduler::set(const std::string& value) {
         } 
         else if (type == TaskScheduleType::Hourly) {
             pTriggers->Create(TASK_TRIGGER_TIME, &pTrigger);
-            IRepetitionPattern* pRep = nullptr;
+            IRepetitionPatternPtr pRep;
             pTrigger->get_Repetition(&pRep);
             pRep->put_Interval(_bstr_t(L"PT1H"));
         }
@@ -149,6 +158,9 @@ std::string WindowsSystemScheduler::set(const std::string& value) {
     pRootFolder->RegisterTaskDefinition(_bstr_t(name.c_str()), pDef, TASK_UPDATE, 
         _variant_t(), _variant_t(), TASK_LOGON_INTERACTIVE_TOKEN, _variant_t(L""), &pUpdatedTask);
 
-    if (!pUpdatedTask) return "Failed to update task";
+    if (!pUpdatedTask){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to update task");
+		return "Failed to set scheduler";
+	}
 }
 

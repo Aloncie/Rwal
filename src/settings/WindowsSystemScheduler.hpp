@@ -27,6 +27,7 @@ _COM_SMARTPTR_TYPEDEF(ITrigget, __uuidof(ITriger));
 _COM_SMARTPTR_TYPEDEF(IExecAction, __uuidof(IExecAction));
 _COM_SMARTPTR_TYPEDEF(IDailyTrigget, __uuidof(IDailyTrigger));
 _COM_SMARTPTR_TYPEDEF(ITaskActions, __uuidof(ITaskActions));
+_COM_SMARTPTR_TYPEDEF(IRepetetionPattern, __uuidof(IRepetetionPattern));
 
 class WindowsSystemScheduler : public ISystemScheduler {
 private:

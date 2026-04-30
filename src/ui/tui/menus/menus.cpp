@@ -2,6 +2,7 @@
 #include "internal/utils/string_utils.hpp"
 #include "menu_ids.hpp"
 #include "settings/config.hpp"
+#include "settings/SchedulerTypes.hpp"
 
 // Undefine any existing timeout macro to avoid conflicts with socket options
 #ifdef timeout
@@ -136,8 +137,9 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
 SchedulerMenu::SchedulerMenu(ISystemScheduler& scheduler) : m_scheduler(scheduler) {}
 
 std::vector<std::string> SchedulerMenu::getLines() {
+	using namespace rwal::ui::Scheduler;
     return {
-        "(n)one", "(h)ourly", "(d)aily",
+		Scheduler::toString(None), Scheduler::toString(Hourly), Scheduler::toString(Daily),
         ""  // Empty line for spacing
     };
 }
