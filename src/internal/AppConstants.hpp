@@ -1,4 +1,3 @@
-// src/internal/AppConstants.hpp
 #pragma once
 
 #include <string_view>
@@ -6,11 +5,17 @@
 namespace rwal::constants {
 
     namespace files {
+		// core
         inline constexpr std::string_view CONFIG_FILE = "config.json";
         inline constexpr std::string_view LOGS_FILE = "logs.txt";
         inline constexpr std::string_view KEYWORDS_TEMP = "keywords.txt";
+
+		// linux scheduler 
         inline constexpr std::string_view SERVICE_FILE = "rwal.service";
         inline constexpr std::string_view TIMER_FILE = "rwal.timer";
+		
+		// windows scheduler
+		inline constexpr std::wstring_view EXEC_FILE = L"rwal.exe";
 
 	}
     namespace names {
