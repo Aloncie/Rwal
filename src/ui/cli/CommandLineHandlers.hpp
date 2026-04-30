@@ -34,3 +34,4 @@ namespace rwal::cli {
 		int handleAddKeywords(Config& config, const std::string& keywords);
 	}
 }
+
