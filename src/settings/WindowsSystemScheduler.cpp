@@ -1,14 +1,15 @@
 #include "WindowsSystemScheduler.hpp"
+#include "internal/AppConstants.hpp"
 
 WindowsSystemScheduler::WindowsSystemScheduler(Logs& logs) : m_logs(logs){
 	// Init COM
 	HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
 	if (hr != S_OK) {
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::WindowsSystemScheduler, "Failed to init COM");
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to init COM");
 	}
 	hr = CoCreateInstance(CLSID_CTaskScheduler, NULL, CLSCTX_INPROC_SERVER, IID_ITaskScheduler, (void**)&pServicePtr);
 	if (hr != S_OK) {
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::WindowsSystemScheduler, "Failed to create COM instance");
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to create COM instance");
 	}
 	// Connect to server
 	pService->Connect(VARIANT(), VARIANT(), VARIANT(), VARIANT());
@@ -24,7 +25,7 @@ bool WindowsSystemScheduler::create() {
 	ITastDefinitionPtr pTask;
 
 	pService->NewTask(0, &pTask);
-    pTask->SetApplicationName(L"Rwal");
+    pTask->SetApplicationName(rwal::constants::names::WIN_TASK_NAME);
     pTask->SetWorkingDirectory(L"");
     pTask->SetPriority(1);
 	
@@ -33,13 +34,13 @@ bool WindowsSystemScheduler::create() {
 
 	IExecActionPtr pExecAction;
     pActions->Create(L"Exec", &pExecAction);
-	pExecAction->SetPath(L"rwal.exe");
+	pExecAction->SetPath(rwal::constants::files::EXE_FILE);
     pExecAction->SetArguments(L"change");
 }
 
 bool WindowsSystemScheduler::start() const {
 	IRegisteredTaskPtr pTask;
-	if (pFolder->GetTask(L"Rwal", &pTask) == S_OK) {
+	if (pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask) == S_OK) {
 		TASK_STATE state;
 		if (pTask->get_State(&state) == S_OK && state == TASK_STATE_DISABLED) {
 			return false;
@@ -50,25 +51,37 @@ bool WindowsSystemScheduler::start() const {
 
 bool WindowsSystemScheduler::reload() const {
     IRegisteredTaskPtr pTask;
-    if (pFolder->GetTask(L"Rwal", &pTask) == S_OK) {
-        pTask->Delete(0);
+	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+    if (pTask != nullptr) {
+		if (SUCCEEDED(hr)){
+			pTask->Delete(0);
+			return true;
+		}
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to reload task");
+		return false;
     }
-    return true;
+	m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Task not found");
+	return false;
 }
 
 bool WindowsSystemScheduler::disable() const {
 	if (m_pFolder == nullptr) return false;
     IRegisteredTaskPtr pTask;
-	HRESULT hr = pFolder->GetTask(L"Rwal", &pTask);
-    if (SUCCEEDED(hr) && pTask != nullptr) {
-		hr = pTask->put_Enabled(VARIANT_FALSE);
-		return SUCCEEDED(hr);
+	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+    if (pTask != nullptr) {
+		if (SUCCEEDED(hr){
+			hr = pTask->put_Enabled(VARIANT_FALSE);
+			return SUCCEEDED(hr);
+		}
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to disable task");
+		return false;
     }
+	m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Task not found");
     return false;
 }
 
 std::string WindowsSystemScheduler::get() const {
-	TaskTiming getTiming("Rwal", TaskScheduleType::None); {
+	TaskTiming getTiming(rwal::constants::names::WIN_TASK_NAME, TaskScheduleType::None); {
     TaskTiming info;
     IRegisteredTaskPtr pTask;
     
@@ -104,7 +117,7 @@ std::string WindowsSystemScheduler::get() const {
 
 std::string WindowsSystemScheduler::set(const std::string& value) {
 	IRegisteredTaskPtr pTask;
-    if (pRootFolder->GetTask(_bstr_t("Rwal", &pTask) != S_OK) return;
+    if (pRootFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME, &pTask) != S_OK) return;
 
     ITaskDefinitionPtr pDef;
     pTask->get_Definition(&pDef);
