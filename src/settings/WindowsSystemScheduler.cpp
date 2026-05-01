@@ -127,6 +127,8 @@ std::string WindowsSystemScheduler::get() const {
 			return "Error";
 		}
 
+		// There are only 3 types of triggers now so using if-else is good approach.
+		// It will has more elegant solution later when this logic will be duplicated in another place or become hard mountain
         if (type == TASK_TRIGGER_DAILY) {
 			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Scheduler, "Daily trigger found");
 			TaskType = TaskScheduleType::Daily;
