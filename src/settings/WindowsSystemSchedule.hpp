@@ -1,6 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
-#include "ISystemScheduler.hpp"
+#include "ISystemSchedule.hpp"
 
 #include <optional>
 #include <string>
@@ -29,15 +29,15 @@ _COM_SMARTPTR_TYPEDEF(IDailyTrigget, __uuidof(IDailyTrigger));
 _COM_SMARTPTR_TYPEDEF(ITaskActions, __uuidof(ITaskActions));
 _COM_SMARTPTR_TYPEDEF(IRepetetionPattern, __uuidof(IRepetetionPattern));
 
-class WindowsSystemScheduler : public ISystemScheduler {
+class WindowsSystemSchedule : public ISystemSchedule {
 private:
 	// Class smart pointers for COM interfaces.
 	ITaskServicePtr m_pService;
 	ITaskFolderPtr m_pFolder;
 	Logs& m_logs;
 public:
-    explicit WindowsSystemScheduler(Logs& logs) : m_logs(logs) {}
-	~WindowsSystemScheduler() override;
+    explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs) {}
+	~WindowsSystemSchedule() override;
 	std::string get() const override;
 	std::string set(const std::string& value) override;
 protected:

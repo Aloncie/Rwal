@@ -1,8 +1,11 @@
 #pragma once
 #include <string>
 
-namespace rwal::ui::Scheduler {
+namespace rwal::ui::Schedule {
+	// TaskScheduleType defines the type of task schedule
+	// Used by every scheduler implementation and ScheduleMenu
 	enum class TaskScheduleType {
+		// None = no running task. Don't use if task not found
 		None,
 		Hourly,
 		Daily
@@ -10,9 +13,9 @@ namespace rwal::ui::Scheduler {
 
 	inline std::string toString(TaskScheduleType type) {
 		switch (type) {
-			case SchedulerType::None: return "(n)one";
-			case SchedulerType::Hourly: return "(h)ourly";
-			case SchedulerType::Daily: return "(d)aily";
+			case ScheduleType::None: return "(n)one";
+			case ScheduleType::Hourly: return "(h)ourly";
+			case ScheduleType::Daily: return "(d)aily";
 			default: return "unknown";
 		}
 	}
