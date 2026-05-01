@@ -139,7 +139,7 @@ SchedulerMenu::SchedulerMenu(ISystemScheduler& scheduler) : m_scheduler(schedule
 std::vector<std::string> SchedulerMenu::getLines() {
 	using namespace rwal::ui::Scheduler;
     return {
-		Scheduler::toString(None), Scheduler::toString(Hourly), Scheduler::toString(Daily),
+		Scheduler::toString(TaskScheduleType::None), Scheduler::toString(TaskScheduleType::Hourly), Scheduler::toString(TaskScheduleType::Daily),
         ""  // Empty line for spacing
     };
 }

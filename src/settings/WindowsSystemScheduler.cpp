@@ -82,44 +82,70 @@ bool WindowsSystemScheduler::disable() const {
 }
 
 std::string WindowsSystemScheduler::get() const {
-	TaskTiming getTiming(rwal::constants::names::WIN_TASK_NAME, TaskScheduleType::None);
-    TaskTiming info;
     IRegisteredTaskPtr pTask;
+	// TaskScheduleType is enum in SchedulerTypes.hpp. It has all of the options: None, Hourly, Daily
+	rwal::ui::Scheduler::TaskScheduleType TaskType = rwal::ui::Scheduler::TaskScheduleType::None;
 
 	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
-    if (!SUCCEEDED(hr)){
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Task not found");
+    if (FAILED(hr)){
+		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Scheduler, "Task not found");
 		return "Not found";
 	}
-
     ITaskDefinitionPtr pDef;
-    pTask->get_Definition(&pDef);
+    hr = pTask->get_Definition(&pDef);
+	if (FAILED(hr)){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to get task definition");
+		return "Error";
+	}
 
     ITriggerCollectionptr pTriggers;
-    pDef->get_Triggers(&pTriggers);
+    hr = pDef->get_Triggers(&pTriggers);
+	if (FAILED(hr)){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to get triggers");
+		return "Error";
+	}
 
     long count = 0;
-    pTriggers->get_Count(&count);
+    hr = pTriggers->get_Count(&count);
+	if (FAILED(hr)){
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to get trigger count");
+        return "Error";
+    }
 
     if (count > 0) {
         ITriggerPtr pTrigger;
-        pTriggers->get_Item(1, &pTrigger);
-		
-		// BSTR is a COM-managed string; must be freed with SysFreeString
-		// after copying data to std::wstring to avoid memory leak
-		BSTR start;
-        pTrigger->get_StartBoundary(&start);
-        info.startBoundary = start; // std::wstring copies the data
-        SysFreeString(start); // safe to free up
+        hr = pTriggers->get_Item(1, &pTrigger);
+		if (FAILED(hr)){
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to get trigger");
+			return "Error";
+		}
 
         TASK_TRIGGER_TYPE2 type;
-        pTrigger->get_Type(&type);
+        hr = pTrigger->get_Type(&type);
+		if (FAILED(hr)){
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Scheduler, "Failed to get trigger type");
+			return "Error";
+		}
 
-        if (type == TASK_TRIGGER_DAILY) info.type = TaskScheduleType::Daily;
-        else if (type == TASK_TRIGGER_TIME) info.type = TaskScheduleType::Hourly;
-    }
-
-    return info;
+        if (type == TASK_TRIGGER_DAILY) {
+			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Scheduler, "Daily trigger found");
+			TaskType = TaskScheduleType::Daily;
+		}
+        else if (type == TASK_TRIGGER_TIME) {
+			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Scheduler, "Hourly trigger found");
+			TaskType = TaskScheduleType::Hourly;
+		} 
+		else if (type == TASK_TRIGGER_NONE) {
+			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Scheduler, "None trigger found");
+			TaskType = TaskScheduleType::None;	
+		} else {
+			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Scheduler, "Unknown trigger type");
+		}
+    } else{
+		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Scheduler, "No triggers found");
+		return "Not found";
+	}
+    return rwal::ui::Scheduler::toString(TaskType);
 }
 
 std::string WindowsSystemScheduler::set(const std::string& value) {
