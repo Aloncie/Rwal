@@ -1,6 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
-#include "ISystemScheduler.hpp"
+#include "ISystemSchedule.hpp"
 
 #include <string>
 #include <filesystem>
@@ -9,7 +9,7 @@
 
 namespace fs = std::filesystem;
 
-class LinuxSystemScheduler : public ISystemScheduler{
+class LinuxSystemSchedule : public ISystemSchedule{
 private:
 	fs::path location;
 	Logs& m_logs;
@@ -19,7 +19,7 @@ private:
 	bool createService();
 
 public:
-	explicit LinuxSystemScheduler(Logs& logs) : m_logs(logs) {}
+	explicit LinuxSystemSchedule(Logs& logs) : m_logs(logs) {}
 	std::string get() const override;
 	std::string set(const std::string& value) override;
 protected:

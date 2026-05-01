@@ -3,10 +3,10 @@
 #include <optional>
 #include <string>
 
-class ISystemScheduler {
+class ISystemSchedule {
 public:
-	ISystemScheduler() = default;
-	virtual ~ISystemScheduler() = default;
+	ISystemSchedule() = default;
+	virtual ~ISystemSchedule() = default;
 	
 	virtual std::string set(const std::string& value) = 0;
 	virtual std::string get() const = 0;

@@ -1,7 +1,7 @@
 #pragma once
 #include "keywords/keywords.hpp"
 #include "settings/settings.hpp"
-#include "settings/ISystemScheduler.hpp"
+#include "settings/ISystemSchedule.hpp"
 #include "settings/IConfigReader.hpp"
 #include "ui/IUserInterface.hpp"
 #include "wallpaper/WallpaperManager.hpp"
@@ -44,13 +44,13 @@ public:
 
 class SettingsMenu : public Menu {
 private:
-    ISystemScheduler& m_scheduler;
+    ISystemSchedule& m_scheduler;
     WallpaperManager& m_wm;
 	IUserInterface& m_uim;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui);
+    SettingsMenu(ISystemSchedule& scheduler, WallpaperManager& wm, IUserInterface& ui);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -70,13 +70,13 @@ public:
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
-class SchedulerMenu : public Menu {
+class ScheduleMenu : public Menu {
 private:
-    ISystemScheduler& m_scheduler;
+    ISystemSchedule& m_scheduler;
     inline static const std::string m_validChoices = "nhd";
 
 public:
-    SchedulerMenu(ISystemScheduler& scheduler);
+    ScheduleMenu(ISystemSchedule& scheduler);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
