@@ -13,9 +13,9 @@ namespace rwal::ui::Schedule {
 
 	inline std::string toString(TaskScheduleType type) {
 		switch (type) {
-			case ScheduleType::None: return "(n)one";
-			case ScheduleType::Hourly: return "(h)ourly";
-			case ScheduleType::Daily: return "(d)aily";
+			case TaskScheduleType::None: return "(n)one";
+			case TaskScheduleType::Hourly: return "(h)ourly";
+			case TaskScheduleType::Daily: return "(d)aily";
 			default: return "unknown";
 		}
 	}
@@ -25,5 +25,4 @@ namespace rwal::ui::Schedule {
         return TaskScheduleType::None;
     }
 }
-
 
