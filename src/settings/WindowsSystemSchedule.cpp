@@ -8,24 +8,36 @@ WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
 	if (hr != S_OK) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to init COM");
 	}
-	hr = CoCreateInstance(CLSID_CTaskSchedule, NULL, CLSCTX_INPROC_SERVER, IID_ITaskSchedule, (void**)&pServicePtr);
+	hr = CoCreateInstance(CLSID_TaskScheduler, NULL, CLSCTX_INPROC_SERVER, IID_ITaskService, (void**)&m_pService);
 	if (hr != S_OK) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create COM instance");
 	}
 	// Connect to server
-	pService->Connect(VARIANT(), VARIANT(), VARIANT(), VARIANT());
+	m_pService->Connect(VARIANT(), VARIANT(), VARIANT(), VARIANT());
 	// Get root folder
-	pService->GetFolder(_bstr_t(L"\\").c_str(), &pFolderPtr);
+	m_pService->GetFolder(_bstr_t(L"\\").c_str(), &m_pFolder);
 }
 
 WindowsSystemSchedule::~WindowsSystemSchedule() {
 	CoUninitialize();
 }
 
+std::optional<bool> WindowsSystemSchedule::status() const {
+	IRegisteredTaskPtr pTask;
+	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+	if (FAILED(hr)) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task status");
+		return std::nullopt;
+	}
+	VARIANT_BOOL enabled;
+	pTask->get_Enabled(&enabled);
+	return enabled == VARIANT_TRUE;
+}
+
 bool WindowsSystemSchedule::create() {
 	ITastDefinitionPtr pTask;
 
-	pService->NewTask(0, &pTask);
+	m_pService->NewTask(0, &pTask);
     pTask->SetApplicationName(rwal::constants::names::WIN_TASK_NAME);
     pTask->SetWorkingDirectory(L"");
     pTask->SetPriority(1);
@@ -41,7 +53,7 @@ bool WindowsSystemSchedule::create() {
 
 bool WindowsSystemSchedule::start() const {
 	IRegisteredTaskPtr pTask;
-	if (pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask) == S_OK) {
+	if (m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask) == S_OK) {
 		TASK_STATE state;
 		if (pTask->get_State(&state) == S_OK && state == TASK_STATE_DISABLED) {
 			return false;
@@ -52,7 +64,7 @@ bool WindowsSystemSchedule::start() const {
 
 bool WindowsSystemSchedule::reload() const {
     IRegisteredTaskPtr pTask;
-	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
     if (pTask != nullptr) {
 		if (SUCCEEDED(hr)){
 			pTask->Delete(0);
@@ -66,9 +78,9 @@ bool WindowsSystemSchedule::reload() const {
 }
 
 bool WindowsSystemSchedule::disable() const {
-	if (m_pFolder == nullptr) return false;
+	if (m_m_pFolder == nullptr) return false;
     IRegisteredTaskPtr pTask;
-	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
     if (pTask != nullptr) {
 		if (SUCCEEDED(hr){
 			hr = pTask->put_Enabled(VARIANT_FALSE);
@@ -86,7 +98,7 @@ std::string WindowsSystemSchedule::get() const {
     IRegisteredTaskPtr pTask;
 	rwal::ui::Schedule::TaskScheduleType TaskType = rwal::ui::Schedule::TaskScheduleType::None;
 
-	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
     if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Task not found");
 		return "";
@@ -155,7 +167,7 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to set task");
 	IRegisteredTaskPtr pTask;
 
-	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
+	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
 	if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task");
 		return failedLog;
@@ -224,7 +236,6 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 				return failedLog;
 			}
         }
-
         hr = pTrigger->put_StartBoundary(_bstr_t(startTime.c_str()));
 		if (FAILED(hr)){
 			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set start boundary");
@@ -233,7 +244,7 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
     }
 
     IRegisteredTaskPtr pUpdatedTask;
-    hr = pRootFolder->RegisterTaskDefinition(_bstr_t(name.c_str()), pDef, TASK_UPDATE, 
+    hr = m_pFolder->RegisterTaskDefinition(_bstr_t(name.c_str()), pDef, TASK_UPDATE, 
         _variant_t(), _variant_t(), TASK_LOGON_INTERACTIVE_TOKEN, _variant_t(L""), &pUpdatedTask);
 	if (FAILED(hr)){
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to update task");
