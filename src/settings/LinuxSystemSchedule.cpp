@@ -18,7 +18,7 @@ std::optional<fs::path> LinuxSystemSchedule::getLocation() const {
 	const char* home_dir = std::getenv("HOME");	
 	
 	if (home_dir){
-		const fs::path service_dir = fs::path(home_dir) / fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER.data());
+		const fs::path service_dir = fs::path(home_dir) / fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER);
 		try{
 			fs::create_directory(service_dir);
 		} catch (const std::exception& e){
@@ -34,8 +34,8 @@ std::optional<fs::path> LinuxSystemSchedule::getLocation() const {
 }
 
 bool LinuxSystemSchedule::create() {
-	const fs::path service_file = fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER.data()) / fs::path(rwal::constants::files::SERVICE_FILE.data());
-	const fs::path timer_file = fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER.data()) / fs::path(rwal::constants::files::TIMER_FILE.data());
+	const fs::path service_file = fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER) / fs::path(rwal::constants::files::SERVICE_FILE);
+	const fs::path timer_file = fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER) / fs::path(rwal::constants::files::TIMER_FILE);
 
 	// Not log because failure logging is done in createService and createTimer methods
 	if (!fs::exists(service_file)){
@@ -66,7 +66,7 @@ std::optional<bool> LinuxSystemSchedule::status() const {
 }
 bool LinuxSystemSchedule::createService(){
 	const char* home_dir = std::getenv("HOME");
-	const fs::path service_file = fs::path(home_dir) / fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER.data()) / fs::path(rwal::constants::files::SERVICE_FILE.data());
+	const fs::path service_file = fs::path(home_dir) / fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER) / fs::path(rwal::constants::files::SERVICE_FILE);
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to create service file");
 	std::ofstream service(service_file);
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Service file path: " + std::string(service_file));
@@ -94,7 +94,7 @@ bool LinuxSystemSchedule::createService(){
 
 bool LinuxSystemSchedule::createTimer(){
 	const char* home_dir = std::getenv("HOME");
-	const fs::path timer_file = fs::path(home_dir) / fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER.data()) / fs::path(rwal::constants::files::TIMER_FILE.data());
+	const fs::path timer_file = fs::path(home_dir) / fs::path(rwal::constants::dirs::LINUX_SYSTEMD_USER) / fs::path(rwal::constants::files::TIMER_FILE);
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to create timer file");
 	std::ofstream timer(timer_file);
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Timer file path: " + std::string(timer_file));
@@ -154,7 +154,7 @@ std::string LinuxSystemSchedule::get() const {
 	} 
 	fs::path location = getLocationInput.value();
 	std::string line;
-	std::ifstream file(location / rwal::constants::files::TIMER_FILE.data());
+	std::ifstream file(location / rwal::constants::files::TIMER_FILE);
 	 
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to read timer file");
 	
@@ -192,7 +192,7 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 		return failedLog;
 	}
 	fs::path location = getLocationInput.value();
-	std::ifstream in_file(location  / rwal::constants::files::TIMER_FILE.data());
+	std::ifstream in_file(location  / rwal::constants::files::TIMER_FILE);
 	std::vector<std::string> lines;
 	std::string line;
 	bool found = false;
@@ -232,7 +232,7 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 		return failedLog;
 	}
 
-	std::fstream out_file(location  / rwal::constants::files::TIMER_FILE.data(), std::ios::out);	
+	std::fstream out_file(location  / rwal::constants::files::TIMER_FILE, std::ios::out);	
 	if (!out_file.is_open()){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create/open rwal.timer to write");
 		return failedLog;
@@ -242,12 +242,15 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 
 	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Successful rewrite file");
 	if (value != "None") {
-		exec("systemctl --user unmask " + std::string(rwal::constants::files::TIMER_FILE.data()));
+		exec("systemctl --user unmask " + std::string(rwal::constants::files::TIMER_FILE));
 		reload();
+		start();
 		if (status().has_value() && status().value() == 1) {
 			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Schedule successfuly activated");
 			return "Schedule successfuly activated!";
 		}
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to activate schedule. Status: " + std::to_string(status().value()));
+		return "Failed to activate schedule. More info in logs.";
 	}
 	else{
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set timer. Value: " + value + ". Status: " + std::to_string(status().value()));
