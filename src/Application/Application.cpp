@@ -75,20 +75,20 @@ int Application::run(int argc, char* argv[]) {
 		return 1;
 	}
     TUIManager tuim;
-	std::unique_ptr<ISystemSchedule> scheduler = createPlatformSchedule(logs);
+	std::unique_ptr<ISystemSchedule> schedule = createPlatformSchedule(logs);
 
     tuim.initUI();
 
     auto mainMenu = std::make_unique<MainMenu>(tuim, keywords, wm, *env, nm);
-    auto settingsMenu = std::make_unique<SettingsMenu>(*scheduler, wm, tuim);
+    auto settingsMenu = std::make_unique<SettingsMenu>(*schedule, wm, tuim);
     auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, tuim, config);
-    auto schedulerMenu = std::make_unique<ScheduleMenu>(*scheduler);
+    auto scheduleMenu = std::make_unique<ScheduleMenu>(*schedule);
 
     Navigator navigator(logs);
     navigator.registerMenu("main", std::move(mainMenu));
     navigator.registerMenu("settings", std::move(settingsMenu));
     navigator.registerMenu("keywords", std::move(keywordsMenu));
-    navigator.registerMenu("scheduler", std::move(schedulerMenu));
+    navigator.registerMenu("scheduler", std::move(scheduleMenu));
 
     navigator.start("main");
 

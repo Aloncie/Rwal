@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <sys/wait.h>
+#include <QProcess>
 
 #ifdef _WIN32
 	#include <Windows.h>
@@ -46,15 +47,10 @@ namespace rwal::platform::executor {
 
 namespace rwal::systemd{
 	int exec(const std::string& command){
-		try {
-			std::string full = command + std::string(rwal::constants::systemd::SUPPRESS_OUTPUT);
-			int status = system(full.c_str());
-
-			if (status == -1) return -1;
-
-			return WEXITSTATUS(status);
-		} catch (const std::exception& e) {
-			return 1;
-		}
+		QProcess process;
+		process.setProcessChannelMode(QProcess::MergedChannels);
+		process.start("/bin/bash", QStringList() << "-c" << QString::fromStdString(command));
+		process.waitForFinished(-1);
+		return process.exitCode();
 	}
 }

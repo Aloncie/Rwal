@@ -89,7 +89,7 @@ std::string WindowsSystemSchedule::get() const {
 	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
     if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Task not found");
-		return "Not found";
+		return "";
 	}
     ITaskDefinitionPtr pDef;
     hr = pTask->get_Definition(&pDef);
@@ -151,59 +151,94 @@ std::string WindowsSystemSchedule::get() const {
 }
 
 std::string WindowsSystemSchedule::set(const std::string& value) {
+	const std::string failedLog = "Failed set task. More info in logs.";
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to set task");
 	IRegisteredTaskPtr pTask;
 
 	HRESULT hr = pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
 	if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task");
-		return "Error";
+		return failedLog;
 	}
 
     ITaskDefinitionPtr pDef;
     hr = pTask->get_Definition(&pDef);
 	if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task definition");
-		return "Error";
+		return failedLog;
 	}
 	
     ITriggerCollectionPtr pTriggers;
     hr = pDef->get_Triggers(&pTriggers);
 	if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get triggers");
-		return "Error";
+		return failedLog;
 	}
-    pTriggers->Clear();
+    hr = pTriggers->Clear();
+	if (FAILED(hr)){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to clear triggers");
+		return failedLog;
+	}
 	
 	
-	TaskScheduleType type = rwal::ui::Schedule::toType(value);
+	rwal::ui::Schedule::TaskScheduleType type = rwal::ui::Schedule::toType(value);
 
+	// There are only 3 types of triggers now so using if-else is good approach.
+	// It will has more elegant solution later when this logic will be duplicated in another place or become hard mountain
     if (type != TaskScheduleType::None) {
         ITriggerPtr pTrigger;
         
         if (type == TaskScheduleType::Daily) {
-            pTriggers->Create(TASK_TRIGGER_DAILY, &pTrigger);
+            hr = pTriggers->Create(TASK_TRIGGER_DAILY, &pTrigger);
+			if (FAILED(hr)){
+				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create daily trigger");
+				return failedLog;
+			}
             IDailyTriggerPtr pDaily;
-            pTrigger->QueryInterface(IID_IDailyTrigger, (void**)&pDaily);
-            pDaily->put_DaysInterval(1);
+            hr = pTrigger->QueryInterface(IID_IDailyTrigger, (void**)&pDaily);
+			if (FAILED(hr)){
+				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get daily trigger interface");
+				return failedLog;
+			}
+            hr = pDaily->put_DaysInterval(1);
+			if (FAILED(hr)){
+				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set daily trigger interval");
+				return failedLog;
+			}
         } 
         else if (type == TaskScheduleType::Hourly) {
-            pTriggers->Create(TASK_TRIGGER_TIME, &pTrigger);
+            hr = pTriggers->Create(TASK_TRIGGER_TIME, &pTrigger);
+			if (FAILED(hr)){
+				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create hourly trigger");
+				return failedLog;
+			}
             IRepetitionPatternPtr pRep;
-            pTrigger->get_Repetition(&pRep);
-            pRep->put_Interval(_bstr_t(L"PT1H"));
+            hr = pTrigger->get_Repetition(&pRep);
+			if (FAILED(hr)){
+				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get repetition pattern");
+				return failedLog;
+			}
+            hr = pRep->put_Interval(_bstr_t(L"PT1H"));
+			if (FAILED(hr)){
+				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set repetition pattern interval");
+				return failedLog;
+			}
         }
 
-        pTrigger->put_StartBoundary(_bstr_t(startTime.c_str()));
+        hr = pTrigger->put_StartBoundary(_bstr_t(startTime.c_str()));
+		if (FAILED(hr)){
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set start boundary");
+			return failedLog;
+		}
     }
 
     IRegisteredTaskPtr pUpdatedTask;
-    pRootFolder->RegisterTaskDefinition(_bstr_t(name.c_str()), pDef, TASK_UPDATE, 
+    hr = pRootFolder->RegisterTaskDefinition(_bstr_t(name.c_str()), pDef, TASK_UPDATE, 
         _variant_t(), _variant_t(), TASK_LOGON_INTERACTIVE_TOKEN, _variant_t(L""), &pUpdatedTask);
-
-    if (!pUpdatedTask){
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to update task");
-		return "Failed to set scheduler";
-	}
+	if (FAILED(hr)){
+        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to update task");
+        return failedLog;
+    }
+    }
 }
 

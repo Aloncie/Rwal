@@ -11,7 +11,6 @@ namespace fs = std::filesystem;
 
 class LinuxSystemSchedule : public ISystemSchedule{
 private:
-	fs::path location;
 	Logs& m_logs;
 
 	std::optional<fs::path> getLocation() const;
