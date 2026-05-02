@@ -56,7 +56,9 @@ bool LinuxSystemSchedule::create() {
 std::optional<bool> LinuxSystemSchedule::status() const {
 	try {
 		int code = exec("systemctl --user is-active " + std::string(rwal::constants::files::TIMER_FILE));
-		return code == 0;
+		if (code == 0) return true;
+		else if (code == 3) return false;
+		else return std::nullopt;
 	} catch (const std::exception& e) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to check timer status: " + std::string(e.what()));
 		return std::nullopt;
@@ -156,16 +158,17 @@ std::string LinuxSystemSchedule::get() const {
 	 
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to read timer file");
 	
-	bool active = status().value_or(false);
+	auto statusInput = status();
+	if (!statusInput.has_value()) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get status");
+		return "Not found";
+	}
+	bool active = statusInput.value();
 	if (file.is_open()){
-		if (active) {
+		if (!active) {
 			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Timer isn't active");
 			return "None";
 		}
-		else {
-			return "Not found";
-		}
-
 		while (getline(file,line)){
 			if (line.starts_with("OnCalendar=")){
 				line.erase(0,line.find("=")+1);
