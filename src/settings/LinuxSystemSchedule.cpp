@@ -8,7 +8,6 @@
 #include <QFileInfo>
 #include <exception>
 #include <string_view>
-#include <iostream>
 
 // Dependence on Linux
 #include <unistd.h>
@@ -152,9 +151,8 @@ std::string LinuxSystemSchedule::get() const {
 		return "Not found";
 	} 
 	fs::path location = getLocationInput.value();
+	std::string line;
 	std::ifstream file(location / rwal::constants::files::TIMER_FILE.data());
-	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Timer file path: " + std::string(location / rwal::constants::files::TIMER_FILE.data()));
-	std::string str;
 	 
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to read timer file");
 	
@@ -168,11 +166,11 @@ std::string LinuxSystemSchedule::get() const {
 			return "Not found";
 		}
 
-		while (getline(file,str)){
-			if (str.starts_with("OnCalendar=")){
-				str.erase(0,str.find("=")+1);
-				m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Successful reading. Data: " + str);
-				return str;
+		while (getline(file,line)){
+			if (line.starts_with("OnCalendar=")){
+				line.erase(0,line.find("=")+1);
+				m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Successful reading. Data: " + line);
+				return line;
 			}
 		}
 	}
@@ -191,9 +189,7 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 		return failedLog;
 	}
 	fs::path location = getLocationInput.value();
-	std::cout << "Location: " << std::string(location) << std::endl;
 	std::ifstream in_file(location  / rwal::constants::files::TIMER_FILE.data());
-	std::cout << "Path to file: " << std::string(location / rwal::constants::files::TIMER_FILE.data()) << std::endl;
 	std::vector<std::string> lines;
 	std::string line;
 	bool found = false;
@@ -205,7 +201,6 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 	while (getline(in_file,line)){
 		if (line.find("OnCalendar=") == std::string::npos){
 			lines.push_back(line);
-			std::cout << "Pushed line: " << line << std::endl;	
 		} else {
 			found = true;
 			if (value == "None") {
