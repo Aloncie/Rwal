@@ -35,6 +35,8 @@ private:
 	ITaskServicePtr m_pService;
 	ITaskFolderPtr m_pFolder;
 	Logs& m_logs;
+
+	std::optional<ITriggetCollectionPtr> getTaskTriggers() const;
 public:
     explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs) {}
 	~WindowsSystemSchedule() override;
