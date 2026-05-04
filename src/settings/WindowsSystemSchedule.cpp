@@ -113,26 +113,37 @@ bool WindowsSystemSchedule::create() {
 }
 
 bool WindowsSystemSchedule::start() const {
+	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Try to start task");
 	IRegisteredTaskPtr pTask;
 	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
-	if (SUCCEEDED(hr)){
-		TASK_STATE state;
-		HRESULT hr = pTask->get_State(&state);
-		if (SUCCEEDED(hr) && state == TASK_STATE_DISABLED){
-			hr = pTask->Enable(VARIANT_TRUE);
-			if (FAILED(hr)) {
-				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to enable task");
-				return false;
-			}
-			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Task enabled successfully");
-			return true;
-		}
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to start task");
-		return false;
-    } else {
+	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task");
 		return false;
 	}
+
+	TASK_STATE oldState;
+	hr = pTask->get_State(&oldState);
+
+	if (FAILED(hr)){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to check task state");
+		return false;
+	} 
+	if (oldState == TASK_STATE_ENABLED) {
+        m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Task already enabled");
+        return true;
+    }
+	
+	hr = pTask->Enable(VARIANT_TRUE);
+	TASK_STATE newState;
+	HRESULT Statehr = pTask->get_State(&newState);
+
+	if (FAILED(Statehr) || FAILED(hr) || newState != TASK_STATE_ENABLED) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to enable task");
+		return false;
+	}
+
+	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Task enabled successfully");
+	return true;
 }
 
 bool WindowsSystemSchedule::reload() const {
@@ -145,8 +156,7 @@ bool WindowsSystemSchedule::reload() const {
 				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to delete task");
 				return false;
 			}
-			bool created = create();
-			if (!created){
+			if (!create()){
 				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create task");
 				return false;
 			}
@@ -182,8 +192,7 @@ std::string WindowsSystemSchedule::get() const {
 	if (statusInput == std::nullopt){
 		return "Error";
 	}
-	bool active = statusInput.value();
-	if (!active){
+	if (!statusInput.value()){
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Task isn't active");
 		return "None";
 	}
