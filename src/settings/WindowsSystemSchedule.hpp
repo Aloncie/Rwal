@@ -47,6 +47,9 @@ private:
 	Logs& m_logs;
 
 	std::optional<ITriggetCollectionPtr> getTaskTriggers() const;
+
+	// One check pointers in constructor, don't check in other methods.
+	bool isComReady() const;
 public:
     explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs) {}
 	~WindowsSystemSchedule() override = default;

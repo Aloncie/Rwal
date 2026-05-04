@@ -12,12 +12,22 @@ ComGuard::~ComGuard(){
 	}
 }
 
+bool WindowsSystemSchedule::isComReady() const{
+	if (m_pFolder == nullptr || m_pService == nullptr){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: COM instance not initialized");
+		return false;
+	}
+	return true;
+}
+
 WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
 	HRESULT hr = m_comguard.initResult();
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: " + std::string(ex.what()));
 		return;
 	}
+	if (!isComReady()) return;
+
 	hr = CoCreateInstance(CLSID_TaskScheduler, NULL, CLSCTX_INPROC_SERVER, IID_ITaskService, (void**)&m_pService);
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create COM instance");
@@ -150,11 +160,6 @@ bool WindowsSystemSchedule::reload() const {
 }
 
 bool WindowsSystemSchedule::disable() const {
-	if (m_pFolder == nullptr){
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get folder");
-		return false;
-	}
-
     IRegisteredTaskPtr pTask;
 	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
     if (pTask != nullptr) {
