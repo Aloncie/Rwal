@@ -29,8 +29,18 @@ _COM_SMARTPTR_TYPEDEF(IDailyTrigget, __uuidof(IDailyTrigger));
 _COM_SMARTPTR_TYPEDEF(ITaskActions, __uuidof(ITaskActions));
 _COM_SMARTPTR_TYPEDEF(IRepetetionPattern, __uuidof(IRepetetionPattern));
 
+class ComGuard{
+	HRESULT m_initResult;
+public:
+	ComGuard();
+	~ComGuard();
+	HRESULT initResult() const { return m_initResult; }
+}
+
 class WindowsSystemSchedule : public ISystemSchedule {
 private:
+	// Guard class for COM initialization and uninitialization for any way of exception.
+	ComGuard m_comguard;
 	// Class smart pointers for COM interfaces.
 	ITaskServicePtr m_pService;
 	ITaskFolderPtr m_pFolder;
@@ -39,7 +49,7 @@ private:
 	std::optional<ITriggetCollectionPtr> getTaskTriggers() const;
 public:
     explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs) {}
-	~WindowsSystemSchedule() override;
+	~WindowsSystemSchedule() override = default;
 	std::string get() const override;
 	std::string set(const std::string& value) override;
 protected:

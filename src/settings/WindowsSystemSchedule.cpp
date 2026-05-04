@@ -2,24 +2,39 @@
 #include "internal/AppConstants.hpp"
 #include "ScheduleTypes.hpp"
 
+ComGuard::ComGuard(){
+	m_initResult = CoInitializeEx(NULL, COINIT_MULTITHREADED);
+}
+
+ComGuard::~ComGuard(){
+	if (SUCCEEDED(m_initResult)){
+		CoUninitialize();
+	}
+}
+
 WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
-	// Init COM
-	HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
+	HRESULT hr = m_comguard.initResult();
 	if (FAILED(hr)) {
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to init COM");
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: " + std::string(ex.what()));
+		return;
 	}
 	hr = CoCreateInstance(CLSID_TaskScheduler, NULL, CLSCTX_INPROC_SERVER, IID_ITaskService, (void**)&m_pService);
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create COM instance");
+		return;
 	}
 	// Connect to server
-	m_pService->Connect(VARIANT(), VARIANT(), VARIANT(), VARIANT());
+	hr = m_pService->Connect(VARIANT(), VARIANT(), VARIANT(), VARIANT());
+	if (FAILED(hr)) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to connect to server");
+		return;
+	}
 	// Get root folder
-	m_pService->GetFolder(_bstr_t(L"\\").c_str(), &m_pFolder);
-}
-
-WindowsSystemSchedule::~WindowsSystemSchedule() {
-	CoUninitialize();
+	hr = m_pService->GetFolder(_bstr_t(L"\\").c_str(), &m_pFolder);
+	if (FAILED(hr)) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get root folder");
+		return;
+	}
 }
 
 std::optional<bool> WindowsSystemSchedule::status() const {
