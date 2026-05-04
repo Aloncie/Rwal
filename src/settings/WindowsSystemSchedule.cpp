@@ -186,7 +186,7 @@ bool WindowsSystemSchedule::disable() const {
 
 std::string WindowsSystemSchedule::get() const {
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to get task schedule");
-
+	rwal::system::Schedule::TaskScheduleType TaskType;
 	// Check for the disabled task before any other actions.
 	auto statusInput = status();
 	if (statusInput == std::nullopt){
@@ -204,7 +204,7 @@ std::string WindowsSystemSchedule::get() const {
 	ITriggersPtr pTriggers = getTaskTriggersInput.value();
 
     long count = 0;
-    hr = pTriggers->get_Count(&count);
+    HRESULT hr = pTriggers->get_Count(&count);
 	if (FAILED(hr)){
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get trigger count");
         return "Error";
@@ -246,7 +246,7 @@ std::string WindowsSystemSchedule::get() const {
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "No triggers found");
 		return "Not found";
 	}
-    return rwal::ui::Schedule::toString(TaskType);
+    return rwal::system::Schedule::toString(TaskType);
 }
 
 std::string WindowsSystemSchedule::set(const std::string& value) {
@@ -260,12 +260,11 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 
 	ITriggersPtr pTriggers = getTaskTriggersInput.value();
 
-    hr = pTriggers->Clear();
+    HRESULT hr = pTriggers->Clear();
 	if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to clear triggers");
 		return failedLog;
 	}
-	
 	
 	rwal::ui::Schedule::TaskScheduleType type = rwal::ui::Schedule::toType(value);
 
@@ -313,6 +312,7 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
     }
 
     IRegisteredTaskPtr pUpdatedTask;
+	ITaskDefinitionPtr pDef = getTaskDefinition();
     hr = m_pFolder->RegisterTaskDefinition(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), pDef, TASK_UPDATE, 
         _variant_t(), _variant_t(), TASK_LOGON_INTERACTIVE_TOKEN, _variant_t(L""), &pUpdatedTask);
 	if (FAILED(hr)){
@@ -323,6 +323,18 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 }
 
 std::optional<ITriggerCollectionPtr> WindowsSystemSchedule::getTaskTriggers() const {
+	ITaskDefinitionPtr pDef = getTaskDefinition();
+
+    ITriggerCollectionPtr pTriggers;
+    hr = pDef->get_Triggers(&pTriggers);
+	if (FAILED(hr)){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get triggers");
+		return std::nullopt;
+	}
+	return pTriggers;
+}
+
+std::optional<IRegisteredTaskPtr> WindowsSystemSchedule::getTaskDefinition() const {
 	IRegisteredTaskPtr pTask;
 
 	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
@@ -337,12 +349,5 @@ std::optional<ITriggerCollectionPtr> WindowsSystemSchedule::getTaskTriggers() co
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task definition");
 		return std::nullopt;
 	}
-	
-    ITriggerCollectionPtr pTriggers;
-    hr = pDef->get_Triggers(&pTriggers);
-	if (FAILED(hr)){
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get triggers");
-		return std::nullopt;
-	}
-	return pTriggers;
+	return pDef;
 }

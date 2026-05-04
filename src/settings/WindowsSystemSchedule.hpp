@@ -47,6 +47,7 @@ private:
 	Logs& m_logs;
 
 	std::optional<ITriggetCollectionPtr> getTaskTriggers() const;
+	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
 
 	// One check pointers in constructor, don't check in other methods.
 	bool isComReady() const;
