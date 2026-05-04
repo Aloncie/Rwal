@@ -136,9 +136,12 @@ bool WindowsSystemSchedule::start() const {
 	hr = pTask->Enable(VARIANT_TRUE);
 	TASK_STATE newState;
 	HRESULT Statehr = pTask->get_State(&newState);
-
-	if (FAILED(Statehr) || FAILED(hr) || newState != TASK_STATE_ENABLED) {
+	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to enable task");
+		return false;
+	}
+	if (FAILED(Statehr) || newState != TASK_STATE_ENABLED) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to check task state");
 		return false;
 	}
 
@@ -172,16 +175,26 @@ bool WindowsSystemSchedule::reload() const {
 bool WindowsSystemSchedule::disable() const {
     IRegisteredTaskPtr pTask;
 	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
-    if (pTask != nullptr) {
-		if (SUCCEEDED(hr)){
-			hr = pTask->put_Enabled(VARIANT_FALSE);
-			return SUCCEEDED(hr);
-		}
+
+    if (FAILED(hr)) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Task not found");
+		return false;
+	}
+
+	hr = pTask->put_Enabled(VARIANT_FALSE);
+	TASK_STATE newState;
+	HRESULT Statehr = pTask->get_State(&newState);
+
+	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to disable task");
 		return false;
-    }
-	m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Task not found");
-    return false;
+	}
+
+	if (FAILED(Statehr) || newState != TASK_STATE_DISABLED) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to check task state");
+		return false;
+	}
+	return true;
 }
 
 std::string WindowsSystemSchedule::get() const {
@@ -197,11 +210,9 @@ std::string WindowsSystemSchedule::get() const {
 		return "None";
 	}
 
-	auto getTaskTriggersInput = getTaskTriggers();
-	if (getTaskTriggersInput == std::nullopt){
-		return "Error";
-	}
-	ITriggersPtr pTriggers = getTaskTriggersInput.value();
+	auto triggersInput = getTaskTriggers();
+	if (triggersInput == std::nullopt) return "Error";
+	ITriggersPtr pTriggers = triggersInput.value();
 
     long count = 0;
     HRESULT hr = pTriggers->get_Count(&count);
@@ -253,12 +264,10 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 	const std::string failedLog = "Failed set task. More info in logs.";
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to set task");
 
-	auto getTaskTriggersInput = getTaskTriggers();
-	if (getTaskTriggersInput == std::nullopt){
-		return "Error";
-	}
+	auto triggersInput = getTaskTriggers();
+	if (triggersInput == std::nullopt) return "Error";
 
-	ITriggersPtr pTriggers = getTaskTriggersInput.value();
+	ITriggersCollectionPtr pTriggers = triggersInput.value();
 
     HRESULT hr = pTriggers->Clear();
 	if (FAILED(hr)){
@@ -312,7 +321,10 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
     }
 
     IRegisteredTaskPtr pUpdatedTask;
-	ITaskDefinitionPtr pDef = getTaskDefinition();
+	auto definitionInput = getTaskDefinition();
+	if (definitionInput == std::nullopt) return "Error";
+
+	ITaskDefinitionPtr pDef = definitionInput.value();
     hr = m_pFolder->RegisterTaskDefinition(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), pDef, TASK_UPDATE, 
         _variant_t(), _variant_t(), TASK_LOGON_INTERACTIVE_TOKEN, _variant_t(L""), &pUpdatedTask);
 	if (FAILED(hr)){
@@ -323,8 +335,10 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 }
 
 std::optional<ITriggerCollectionPtr> WindowsSystemSchedule::getTaskTriggers() const {
-	ITaskDefinitionPtr pDef = getTaskDefinition();
+	auto definitionInput = getTaskDefinition();
+	if (definitionInput == std::nullopt) return std::nullopt;
 
+	ITaskDefinitionPtr pDef = definitionInput.value();
     ITriggerCollectionPtr pTriggers;
     hr = pDef->get_Triggers(&pTriggers);
 	if (FAILED(hr)){
@@ -351,3 +365,4 @@ std::optional<IRegisteredTaskPtr> WindowsSystemSchedule::getTaskDefinition() con
 	}
 	return pDef;
 }
+
