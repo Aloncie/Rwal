@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace rwal::ui::Schedule {
+namespace rwal::system::Schedule {
 	// TaskScheduleType defines the type of task schedule
 	// Used by every scheduler implementation and ScheduleMenu
 	enum class TaskScheduleType {

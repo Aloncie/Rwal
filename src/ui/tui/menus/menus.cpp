@@ -137,7 +137,7 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
 ScheduleMenu::ScheduleMenu(ISystemSchedule& scheduler) : m_scheduler(scheduler) {}
 
 std::vector<std::string> ScheduleMenu::getLines() {
-	using namespace rwal::ui::Schedule;
+	using namespace rwal::system::Schedule;
     return {
 		toString(TaskScheduleType::None), toString(TaskScheduleType::Hourly), toString(TaskScheduleType::Daily),
         ""  // Empty line for spacing
