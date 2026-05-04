@@ -2,16 +2,6 @@
 #include "internal/AppConstants.hpp"
 #include "ScheduleTypes.hpp"
 
-ComGuard::ComGuard(){
-	m_initResult = CoInitializeEx(NULL, COINIT_MULTITHREADED);
-}
-
-ComGuard::~ComGuard(){
-	if (SUCCEEDED(m_initResult)){
-		CoUninitialize();
-	}
-}
-
 bool WindowsSystemSchedule::isComReady() const{
 	if (m_pFolder == nullptr || m_pService == nullptr){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: COM instance not initialized");
