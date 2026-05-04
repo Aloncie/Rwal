@@ -15,3 +15,4 @@ std::unique_ptr<ISystemSchedule> createPlatformSchedule(Logs& logs) {
     return std::nullptr;
 #endif
 }
+

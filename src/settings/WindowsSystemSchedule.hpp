@@ -32,8 +32,8 @@ _COM_SMARTPTR_TYPEDEF(IRepetetionPattern, __uuidof(IRepetetionPattern));
 class ComGuard{
 	HRESULT m_initResult;
 public:
-	ComGuard();
-	~ComGuard();
+	ComGuard(){m_initResult = CoInitializeEx(nullptr, COINIT_MULTITHREADED); }
+	~ComGuard(){if (SUCCEEDED(m_initResult)) CoUninitialize();}
 	HRESULT initResult() const { return m_initResult; }
 }
 
