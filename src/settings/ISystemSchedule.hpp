@@ -13,7 +13,7 @@ public:
 protected:
 	virtual bool create() = 0;
 	virtual std::optional<bool> status() const = 0;
-	virtual bool reload() const = 0;
+	virtual bool reload() = 0;
 	virtual bool start() const = 0;
 	virtual bool disable() const = 0;
 };
