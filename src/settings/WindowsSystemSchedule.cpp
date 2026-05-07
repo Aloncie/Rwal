@@ -139,7 +139,7 @@ bool WindowsSystemSchedule::start() const {
 	return true;
 }
 
-bool WindowsSystemSchedule::reload() const {
+bool WindowsSystemSchedule::reload() {
     IRegisteredTaskPtr pTask;
 	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);
     if (pTask != nullptr) {
@@ -202,7 +202,7 @@ std::string WindowsSystemSchedule::get() const {
 
 	auto triggersInput = getTaskTriggers();
 	if (triggersInput == std::nullopt) return "Error";
-	ITriggersPtr pTriggers = triggersInput.value();
+	ITriggerPtr pTriggers = triggersInput.value();
 
     long count = 0;
     HRESULT hr = pTriggers->get_Count(&count);
@@ -257,7 +257,7 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 	auto triggersInput = getTaskTriggers();
 	if (triggersInput == std::nullopt) return "Error";
 
-	ITriggersCollectionPtr pTriggers = triggersInput.value();
+	ITriggerCollectionPtr pTriggers = triggersInput.value();
 
     HRESULT hr = pTriggers->Clear();
 	if (FAILED(hr)){
@@ -265,10 +265,11 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 		return failedLog;
 	}
 	
-	rwal::ui::Schedule::TaskScheduleType type = rwal::ui::Schedule::toType(value);
+	rwal::system::Schedule::TaskScheduleType type = rwal::system::Schedule::toType(value);
 
 	// There are only 3 types of triggers now so using if-else is good approach.
-	// It will has more elegant solution later when this logic will be duplicated in another place or become hard mountain
+	// It will has more elegant solution later 
+	// when this logic will be duplicated in another place or become hard mountain
     if (type != TaskScheduleType::None) {
         ITriggerPtr pTrigger;
         
@@ -338,7 +339,7 @@ std::optional<ITriggerCollectionPtr> WindowsSystemSchedule::getTaskTriggers() co
 	return pTriggers;
 }
 
-std::optional<IRegisteredTaskPtr> WindowsSystemSchedule::getTaskDefinition() const {
+std::optional<ITaskDefinitionPtr> WindowsSystemSchedule::getTaskDefinition() const {
 	IRegisteredTaskPtr pTask;
 
 	HRESULT hr = m_pFolder->GetTask(rwal::constants::names::WIN_TASK_NAME, &pTask);

@@ -3,10 +3,13 @@
 #include <windows.h>
 #include <string>
 
-bool setWallpaper(const fs::path& path) {
+bool WindowsSetter::setWallpaper(const fs::path& path) {
 	std::wstring widePath = path.wstring();
 
-	BOOL result = SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, (PVOID)widePath.data(), SPIF_SENDWININICHANGE | SPIF_UPDATEINIFILE);
+	BOOL result = SystemParametersInfoW(SPI_SETDESKWALLPAPER, 
+			0, 
+			(PVOID)widePath.data(), 
+			SPIF_SENDWININICHANGE | SPIF_UPDATEINIFILE);
 	if (!result) {
 		DWORD error = GetLastError();
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Wallpaper, "Failed to set wallpaper: " + std::to_string(error));

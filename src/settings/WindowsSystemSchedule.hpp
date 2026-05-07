@@ -23,7 +23,7 @@ _COM_SMARTPTR_TYPEDEF(ITaskFolder, __uuidof(ITaskFolder));
 _COM_SMARTPTR_TYPEDEF(IRegisteredTask, __uuidof(IRegisteredTask));
 _COM_SMARTPTR_TYPEDEF(ITriggerCollection, __uuidof(ITriggerCollection));
 _COM_SMARTPTR_TYPEDEF(ITaskDefinition, __uuidof(ITaskDefinition));
-_COM_SMARTPTR_TYPEDEF(ITrigget, __uuidof(ITriger));
+_COM_SMARTPTR_TYPEDEF(ITrigger, __uuidof(ITriger));
 _COM_SMARTPTR_TYPEDEF(IExecAction, __uuidof(IExecAction));
 _COM_SMARTPTR_TYPEDEF(IDailyTrigget, __uuidof(IDailyTrigger));
 _COM_SMARTPTR_TYPEDEF(ITaskActions, __uuidof(ITaskActions));
@@ -44,6 +44,7 @@ private:
 	// Class smart pointers for COM interfaces.
 	ITaskServicePtr m_pService;
 	ITaskFolderPtr m_pFolder;
+
 	Logs& m_logs;
 
 	std::optional<ITriggetCollectionPtr> getTaskTriggers() const;
@@ -58,7 +59,7 @@ public:
 	std::string set(const std::string& value) override;
 protected:
 	bool create() override;
-	bool reload() const override;
+	bool reload() override;
 	bool start() const override;
 	bool disable() const override;
 	std::optional<bool> status() const override;
