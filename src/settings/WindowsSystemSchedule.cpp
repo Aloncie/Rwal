@@ -2,21 +2,12 @@
 #include "internal/AppConstants.hpp"
 #include "ScheduleTypes.hpp"
 
-bool WindowsSystemSchedule::isComReady() const{
-	if (m_pFolder == nullptr || m_pService == nullptr){
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: COM instance not initialized");
-		return false;
-	}
-	return true;
-}
-
 WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
 	HRESULT hr = m_comguard.initResult();
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: " + std::string(ex.what()));
 		return;
 	}
-	if (!isComReady()) return;
 
 	hr = CoCreateInstance(CLSID_TaskScheduler, NULL, CLSCTX_INPROC_SERVER, IID_ITaskService, (void**)&m_pService);
 	if (FAILED(hr)) {
@@ -35,6 +26,11 @@ WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get root folder");
 		return;
 	}
+	if (m_pFolder == nullptr || m_pService == nullptr) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get root folder or service");
+		return;
+	}
+	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Schedule initialized");
 }
 
 std::optional<bool> WindowsSystemSchedule::status() const {
@@ -189,7 +185,7 @@ bool WindowsSystemSchedule::disable() const {
 
 std::string WindowsSystemSchedule::get() const {
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to get task schedule");
-	rwal::system::Schedule::TaskScheduleType TaskType;
+	auto TaskType = rwal::system::Schedule::None;
 	// Check for the disabled task before any other actions.
 	auto statusInput = status();
 	if (statusInput == std::nullopt){
@@ -210,7 +206,7 @@ std::string WindowsSystemSchedule::get() const {
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get trigger count");
         return "Error";
     }
-
+	
     if (count > 0) {
         ITriggerPtr pTrigger;
         hr = pTriggers->get_Item(1, &pTrigger);
@@ -331,7 +327,7 @@ std::optional<ITriggerCollectionPtr> WindowsSystemSchedule::getTaskTriggers() co
 
 	ITaskDefinitionPtr pDef = definitionInput.value();
     ITriggerCollectionPtr pTriggers;
-    hr = pDef->get_Triggers(&pTriggers);
+    HRESULT hr = pDef->get_Triggers(&pTriggers);
 	if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get triggers");
 		return std::nullopt;

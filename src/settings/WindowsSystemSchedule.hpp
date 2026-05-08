@@ -32,10 +32,19 @@ _COM_SMARTPTR_TYPEDEF(IRepetetionPattern, __uuidof(IRepetetionPattern));
 class ComGuard{
 	HRESULT m_initResult;
 public:
-	ComGuard(){m_initResult = CoInitializeEx(nullptr, COINIT_MULTITHREADED); }
-	~ComGuard(){if (SUCCEEDED(m_initResult)) CoUninitialize();}
+	ComGuard() : m_initResult(CoInitializeEx(nullptr, COINIT_MULTITHREADED)) {}
+	~ComGuard(){
+		if (SUCCEEDED(m_initResult)) CoUninitialize();
+	}
+
 	HRESULT initResult() const { return m_initResult; }
-}
+	
+	// Disallow copying.
+	// Needed to ensure the existence of a single object.
+	// Can lead to undefined behavior when using more than one object.
+	ComGuard(const ComGuard&) = delete;
+    ComGuard& operator=(const ComGuard&) = delete;
+};
 
 class WindowsSystemSchedule : public ISystemSchedule {
 private:
@@ -49,9 +58,6 @@ private:
 
 	std::optional<ITriggetCollectionPtr> getTaskTriggers() const;
 	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
-
-	// One check pointers in constructor, don't check in other methods.
-	bool isComReady() const;
 public:
     explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs) {}
 	~WindowsSystemSchedule() override = default;

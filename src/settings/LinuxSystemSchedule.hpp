@@ -23,7 +23,7 @@ public:
 	std::string set(const std::string& value) override;
 protected:
 	bool create() override;
-	bool reload() const override;
+	bool reload() override;
 	std::optional<bool> status() const override;
 	bool start() const override;
 	bool disable() const override;

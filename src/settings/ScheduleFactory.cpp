@@ -1,15 +1,15 @@
 #include "ScheduleFactory.hpp"
 
-#ifdef __linux__
+#if defined(__linux__)
     #include "LinuxSystemSchedule.hpp"
-#ifdef _WIN32
+#elif defined(_WIN32)
 	#include "WindowsSystemSchedule.hpp"
 #endif
 
 std::unique_ptr<ISystemSchedule> createPlatformSchedule(Logs& logs) {
-#ifdef __linux__
+#if defined(__linux__)
     return std::make_unique<LinuxSystemSchedule>(logs);
-#ifdef _WIN32
+#elif defined(_WIN32)
 	return std::make_unique<WindowsSystemSchedule>(logs);
 #else
     return std::nullptr;
