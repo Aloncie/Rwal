@@ -58,7 +58,6 @@ endif()
 
 elseif(CURRENT_DE MATCHES "WINDOWS")
 	list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
-	target_link_libraries(wallpaper_lib PRIVATE user32 shell32 ws2_32)
 	add_definitions(-DRWAL_USE_WINDOWS)
 	message(STATUS "Using Windows wallpaper setter")
 else()
