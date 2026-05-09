@@ -1,6 +1,7 @@
 #pragma once
 #include "logs/logs.hpp"
 #include "ISystemSchedule.hpp"
+#include "internal/AppConstants.hpp"
 
 #include <optional>
 #include <string>
@@ -59,7 +60,7 @@ private:
 	std::optional<ITriggerCollectionPtr> getTaskTriggers() const;
 	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
 public:
-    explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs) {}
+    explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs);
 	~WindowsSystemSchedule() override = default;
 	std::string get() const override;
 	std::string set(const std::string& value) override;
