@@ -15,8 +15,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Setup script for macOS is not yet available."
     echo "Please install dependencies manually: git, cmake, qt6, curl, nlohmann-json"
     exit 0
-else
+elif [[ "$OSTYPE" == "linux"* ]]; then
     echo "Linux detected. Starting Linux setup..."
     exec bash scripts/setup-linux.sh
+else
+	echo "Unknown OS: $OSTYPE"
+	echo "Please install dependencies manually: git, cmake, qt6, curl, nlohmann-json"
+	exit 1
 fi
 
