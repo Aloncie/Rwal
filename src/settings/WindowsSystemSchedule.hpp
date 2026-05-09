@@ -23,11 +23,11 @@ _COM_SMARTPTR_TYPEDEF(ITaskFolder, __uuidof(ITaskFolder));
 _COM_SMARTPTR_TYPEDEF(IRegisteredTask, __uuidof(IRegisteredTask));
 _COM_SMARTPTR_TYPEDEF(ITriggerCollection, __uuidof(ITriggerCollection));
 _COM_SMARTPTR_TYPEDEF(ITaskDefinition, __uuidof(ITaskDefinition));
-_COM_SMARTPTR_TYPEDEF(ITrigger, __uuidof(ITriger));
+_COM_SMARTPTR_TYPEDEF(ITrigger, __uuidof(ITrigger));
 _COM_SMARTPTR_TYPEDEF(IExecAction, __uuidof(IExecAction));
-_COM_SMARTPTR_TYPEDEF(IDailyTrigget, __uuidof(IDailyTrigger));
-_COM_SMARTPTR_TYPEDEF(ITaskActions, __uuidof(ITaskActions));
-_COM_SMARTPTR_TYPEDEF(IRepetetionPattern, __uuidof(IRepetetionPattern));
+_COM_SMARTPTR_TYPEDEF(IDailyTrigger, __uuidof(IDailyTrigger));
+_COM_SMARTPTR_TYPEDEF(IActionCollection, __uuidof(IActionCollection));
+_COM_SMARTPTR_TYPEDEF(IRepetitionPattern, __uuidof(IRepetitionPattern));
 
 class ComGuard{
 	HRESULT m_initResult;
