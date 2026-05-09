@@ -71,7 +71,7 @@ bool WindowsSystemSchedule::create() {
 		return false;
 	}
 	
-	ITaskActionsPtr pActions; 
+	IActionCollectionPtr pActions;
 	hr = pTask->get_Actions(&pActions);
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task actions");
@@ -198,7 +198,7 @@ std::string WindowsSystemSchedule::get() const {
 
 	auto triggersInput = getTaskTriggers();
 	if (triggersInput == std::nullopt) return "Error";
-	ITriggerPtr pTriggers = triggersInput.value();
+	ITriggerCollectionPtr pTriggers = triggersInput.value();
 
     long count = 0;
     HRESULT hr = pTriggers->get_Count(&count);
