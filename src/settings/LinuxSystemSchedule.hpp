@@ -24,7 +24,7 @@ public:
 protected:
 	bool create() override;
 	bool reload() override;
-	std::optional<bool> status() const override;
+	bool status() const override;
 	bool start() const override;
 	bool disable() const override;
 };
