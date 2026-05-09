@@ -56,7 +56,7 @@ private:
 
 	Logs& m_logs;
 
-	std::optional<ITriggetCollectionPtr> getTaskTriggers() const;
+	std::optional<ITriggerCollectionPtr> getTaskTriggers() const;
 	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
 public:
     explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs) {}
