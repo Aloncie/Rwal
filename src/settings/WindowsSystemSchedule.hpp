@@ -1,7 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
 #include "ISystemSchedule.hpp"
-#include "internal/AppConstants.hpp"
 
 #include <optional>
 #include <string>
@@ -32,13 +31,21 @@ _COM_SMARTPTR_TYPEDEF(IRepetitionPattern, __uuidof(IRepetitionPattern));
 
 class ComGuard{
 	HRESULT m_initResult;
+	std::exception m_exception;
 public:
-	ComGuard() : m_initResult(CoInitializeEx(nullptr, COINIT_MULTITHREADED)) {}
+	ComGuard() {
+		try {
+			m_initResult = CoInitializeEx(NULL, COINIT_MULTITHREADED);
+		} catch(const std::exception& e) {
+			m_exception = e;
+		}
+	}
 	~ComGuard(){
 		if (SUCCEEDED(m_initResult)) CoUninitialize();
 	}
 
 	HRESULT initResult() const { return m_initResult; }
+	std::exception getException() const { return m_exception; }
 	
 	// Disallow copying.
 	// Needed to ensure the existence of a single object.
@@ -60,7 +67,7 @@ private:
 	std::optional<ITriggerCollectionPtr> getTaskTriggers() const;
 	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
 public:
-    explicit WindowsSystemSchedule(Logs& logs) : m_logs(logs);
+    explicit WindowsSystemSchedule(Logs& logs);
 	~WindowsSystemSchedule() override = default;
 	std::string get() const override;
 	std::string set(const std::string& value) override;
@@ -69,5 +76,5 @@ protected:
 	bool reload() override;
 	bool start() const override;
 	bool disable() const override;
-	std::optional<bool> status() const override;
+	bool status() const override;
 };

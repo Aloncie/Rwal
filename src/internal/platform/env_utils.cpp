@@ -2,7 +2,6 @@
 #include "internal/AppConstants.hpp"
 
 #include <cstdlib>
-#include <sys/wait.h>
 #include <QProcess>
 
 #ifdef _WIN32

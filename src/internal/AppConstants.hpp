@@ -38,3 +38,4 @@ namespace rwal::constants {
         inline constexpr std::string_view SUPPRESS_OUTPUT = " >/dev/null 2>&1";
     }
 }
+

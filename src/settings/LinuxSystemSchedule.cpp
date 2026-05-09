@@ -53,7 +53,7 @@ bool LinuxSystemSchedule::create() {
     return true;
 }
 
-std::optional<bool> LinuxSystemSchedule::status() const {
+bool LinuxSystemSchedule::status() const {
 	try {
 		int code = exec("systemctl --user is-active " + std::string(rwal::constants::files::TIMER_FILE));
 		if (code == 0) return true;
@@ -61,7 +61,7 @@ std::optional<bool> LinuxSystemSchedule::status() const {
 		else return std::nullopt;
 	} catch (const std::exception& e) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to check timer status: " + std::string(e.what()));
-		return std::nullopt;
+		return false;
 	}
 }
 bool LinuxSystemSchedule::createService(){
