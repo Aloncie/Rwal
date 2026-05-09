@@ -44,7 +44,7 @@ EXTRA_PKGS=""
 
 case "$OS_ID" in
     ubuntu|debian|linuxmint|pop)
-        COMMON_PKGS="git cmake g++ qtbase5-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev"
+        COMMON_PKGS="git cmake g++ qtbase6-dev libncurses5-dev libcurl4-openssl-dev libnlohmann-json-dev"
         [[ "$DE" == "GNOME" ]] && EXTRA_PKGS="libglib2.0-dev"
         [[ "$DE" == "Hyprland" ]] && EXTRA_PKGS="hyprpaper swww"
         INSTALL_CMD="apt update && apt install -y"
