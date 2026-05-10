@@ -35,7 +35,7 @@ WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
 
 bool WindowsSystemSchedule::status() const {
 	IRegisteredTaskPtr pTask;
-	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), &pTask);
+	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), &pTask);
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task status");
 		return false;
@@ -63,7 +63,7 @@ bool WindowsSystemSchedule::create() {
 	}
 
 	IExecActionPtr pExecAction;
-    hr = pActions->Create(TASK_ACTION_EXEC, &pExecAction);
+    hr = pActions->Create(TASK_ACTION_EXEC, (IAction**)&pExecAction);
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create exec action");
 		return false;
@@ -82,7 +82,7 @@ bool WindowsSystemSchedule::create() {
 	IRegisteredTaskPtr pRegisteredTask;
 
 	hr = m_pFolder->RegisterTaskDefinition(
-		_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()),
+		_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()),
 		pTask,
 		TASK_CREATE_OR_UPDATE,
 		_variant_t(),
@@ -103,7 +103,7 @@ bool WindowsSystemSchedule::create() {
 bool WindowsSystemSchedule::start() const {
 	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Try to start task");
 	IRegisteredTaskPtr pTask;
-	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), &pTask);
+	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), &pTask);
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task");
 		return false;
@@ -137,10 +137,10 @@ bool WindowsSystemSchedule::start() const {
 
 bool WindowsSystemSchedule::reload() {
     IRegisteredTaskPtr pTask;
-	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), &pTask);
+	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), &pTask);
     if (pTask != nullptr) {
 		if (SUCCEEDED(hr)){
-			hr = m_pFolder->DeleteTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), 0);
+			hr = m_pFolder->DeleteTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), 0);
 			if (FAILED(hr)) {
 				m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to delete task");
 				return false;
@@ -161,7 +161,7 @@ bool WindowsSystemSchedule::reload() {
 
 bool WindowsSystemSchedule::disable() const {
     IRegisteredTaskPtr pTask;
-	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), &pTask);
+	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), &pTask);
 
     if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Task not found");
@@ -247,12 +247,18 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to set task");
 
 	auto triggersInput = getTaskTriggers();
-	if (triggersInput == std::nullopt && !create()){
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create task");
-		return failedLog;
+	if (triggersInput == std::nullopt){
+		if (!create()){
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create task");
+			return failedLog;
+		}
+		triggersInput = getTaskTriggers();
+		if (triggersInput == std::nullopt){
+			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task triggers after creation");
+			return failedLog;
+		}
 	}
 		
-
 	ITriggerCollectionPtr pTriggers = triggersInput.value();
 
     HRESULT hr = pTriggers->Clear();
@@ -312,7 +318,7 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 	if (definitionInput == std::nullopt) return "Error";
 
 	ITaskDefinitionPtr pDef = definitionInput.value();
-    hr = m_pFolder->RegisterTaskDefinition(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), pDef, TASK_UPDATE, 
+    hr = m_pFolder->RegisterTaskDefinition(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), pDef, TASK_UPDATE, 
         _variant_t(), _variant_t(), TASK_LOGON_INTERACTIVE_TOKEN, _variant_t(L""), &pUpdatedTask);
 	if (FAILED(hr)){
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to update task");
@@ -338,7 +344,7 @@ std::optional<ITriggerCollectionPtr> WindowsSystemSchedule::getTaskTriggers() co
 std::optional<ITaskDefinitionPtr> WindowsSystemSchedule::getTaskDefinition() const {
 	IRegisteredTaskPtr pTask;
 
-	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.data()), &pTask);
+	HRESULT hr = m_pFolder->GetTask(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), &pTask);
 	if (FAILED(hr)){
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get task");
 		return std::nullopt;
