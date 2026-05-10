@@ -315,7 +315,7 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 
     IRegisteredTaskPtr pUpdatedTask;
 	auto definitionInput = getTaskDefinition();
-	if (definitionInput == std::nullopt) return "Error";
+	if (definitionInput == std::nullopt) return failedLog;
 
 	ITaskDefinitionPtr pDef = definitionInput.value();
     hr = m_pFolder->RegisterTaskDefinition(_bstr_t(rwal::constants::names::WIN_TASK_NAME.c_str()), pDef, TASK_UPDATE, 
