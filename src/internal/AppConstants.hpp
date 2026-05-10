@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string_view>
+#include <string>
 
 namespace rwal::constants {
 
@@ -15,12 +16,13 @@ namespace rwal::constants {
         inline constexpr std::string_view TIMER_FILE = "rwal.timer";
 
         // windows scheduler
-        inline constexpr std::wstring_view EXEC_FILE = L"rwal.exe";
+		// use wstring instead of wstring_view to avoid not null-terminated.
+        inline const std::wstring EXEC_FILE = L"rwal.exe";
     }
 
     namespace names {
         inline constexpr std::string_view SERVICE_NAME = "rwal";
-        inline constexpr std::wstring_view WIN_TASK_NAME = L"Rwal Wallpaper Changer";
+        inline const std::wstring WIN_TASK_NAME = L"Rwal Wallpaper Changer";
     }
 
     namespace dirs {
