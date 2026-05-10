@@ -4,6 +4,8 @@
     #include "LinuxSystemSchedule.hpp"
 #elif defined(_WIN32)
 	#include "WindowsSystemSchedule.hpp"
+#else
+	#include "NullSystemSchedule.hpp"
 #endif
 
 std::unique_ptr<ISystemSchedule> createPlatformSchedule(Logs& logs) {
@@ -12,7 +14,7 @@ std::unique_ptr<ISystemSchedule> createPlatformSchedule(Logs& logs) {
 #elif defined(_WIN32)
 	return std::make_unique<WindowsSystemSchedule>(logs);
 #else
-    return std::nullptr;
+	return std::make_unique<NullSystemSchedule>(logs);
 #endif
 }
 
