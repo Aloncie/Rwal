@@ -187,6 +187,7 @@ bool WindowsSystemSchedule::disable() const {
 std::string WindowsSystemSchedule::get() const {
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to get task schedule");
 	auto TaskType = rwal::system::Schedule::TaskScheduleType::None;
+
 	// Check for the disabled task before any other actions.
 	bool enabled = status();
 	if (!enabled){
@@ -246,7 +247,11 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to set task");
 
 	auto triggersInput = getTaskTriggers();
-	if (triggersInput == std::nullopt) return "Error";
+	if (triggersInput == std::nullopt && !create()){
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create task");
+		return failedLog;
+	}
+		
 
 	ITriggerCollectionPtr pTriggers = triggersInput.value();
 
