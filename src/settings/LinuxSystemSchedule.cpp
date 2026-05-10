@@ -57,12 +57,10 @@ bool LinuxSystemSchedule::status() const {
 	try {
 		int code = exec("systemctl --user is-active " + std::string(rwal::constants::files::TIMER_FILE));
 		if (code == 0) return true;
-		else if (code == 3) return false;
-		else return std::nullopt;
 	} catch (const std::exception& e) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to check timer status: " + std::string(e.what()));
-		return false;
 	}
+	return false;
 }
 bool LinuxSystemSchedule::createService(){
 	const char* home_dir = std::getenv("HOME");
