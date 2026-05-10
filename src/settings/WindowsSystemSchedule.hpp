@@ -31,21 +31,15 @@ _COM_SMARTPTR_TYPEDEF(IRepetitionPattern, __uuidof(IRepetitionPattern));
 
 class ComGuard{
 	HRESULT m_initResult;
-	std::exception m_exception;
 public:
 	ComGuard() {
-		try {
-			m_initResult = CoInitializeEx(NULL, COINIT_MULTITHREADED);
-		} catch(const std::exception& e) {
-			m_exception = e;
-		}
+		m_initResult = CoInitializeEx(NULL, COINIT_MULTITHREADED);
 	}
 	~ComGuard(){
 		if (SUCCEEDED(m_initResult)) CoUninitialize();
 	}
 
 	HRESULT initResult() const { return m_initResult; }
-	std::exception getException() const { return m_exception; }
 	
 	// Disallow copying.
 	// Needed to ensure the existence of a single object.
