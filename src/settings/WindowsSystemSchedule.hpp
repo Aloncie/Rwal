@@ -57,7 +57,8 @@ private:
 	ITaskFolderPtr m_pFolder;
 
 	Logs& m_logs;
-
+	
+	// use optional for these methods to separate 'no data' from 'failure'
 	std::optional<ITriggerCollectionPtr> getTaskTriggers() const;
 	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
 public:

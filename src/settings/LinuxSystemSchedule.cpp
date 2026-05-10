@@ -114,7 +114,7 @@ bool LinuxSystemSchedule::createTimer(){
 	return reload();
 }
 
-bool LinuxSystemSchedule::reload() const {
+bool LinuxSystemSchedule::reload() {
 	try {
 		exec("systemctl --user daemon-reload ");
 	} catch (const std::exception& e) {
@@ -163,7 +163,7 @@ std::string LinuxSystemSchedule::get() const {
 			return "None";
 		}
 		while (getline(file,line)){
-			if (line.starts_with("OnCalendar=")){
+			if (line.starts_with("OnCalendar=") != std::string::npos) {
 				line.erase(0,line.find("=")+1);
 				m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Successful reading. Data: " + line);
 				return line;
@@ -195,7 +195,7 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 		return failedLog;
 	}	
 	while (getline(in_file,line)){
-		if (line.find("OnCalendar=") == std::string::npos){
+		if (line.starts_with("OnCalendar=") == std::string::npos){
 			lines.push_back(line);
 		} else {
 			found = true;
@@ -242,11 +242,11 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Schedule successfuly activated");
 			return "Schedule successfuly activated!";
 		}
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to activate schedule. Status: " + std::to_string(status());
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to activate schedule. Status: " + std::to_string(status()));
 		return "Failed to activate schedule. More info in logs.";
 	}
 	else{
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set timer. Value: " + value + ". Status: " + std::to_string(status());
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set timer. Value: " + value + ". Status: " + std::to_string(status()));
 		return failedLog;
 	}
 }

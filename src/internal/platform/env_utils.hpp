@@ -5,7 +5,7 @@
 namespace fs = std::filesystem;
 
 namespace rwal::platform::executor{
-	void open_editor(fs::path& path);
+	void open_editor(const fs::path& path);
 }
 
 namespace rwal::systemd{
