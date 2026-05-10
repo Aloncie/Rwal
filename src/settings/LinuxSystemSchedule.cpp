@@ -156,14 +156,9 @@ std::string LinuxSystemSchedule::get() const {
 	 
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to read timer file");
 	
-	auto statusInput = status();
-	if (!statusInput.has_value()) {
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to get status");
-		return "Not found";
-	}
-	bool active = statusInput.value();
+	bool enabled = status();
 	if (file.is_open()){
-		if (!active) {
+		if (!enabled) {
 			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Timer isn't active");
 			return "None";
 		}
@@ -207,7 +202,7 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 			if (value == "None") {
 				m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to disable timer");
 				lines.push_back(line);
-				if (status().has_value() && status().value() == 0){
+				if (!status()){
 					bool disabled = disable();
 					if (disabled) return "Successfully disabled";
 					else return failedLog;
@@ -243,15 +238,15 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 		exec("systemctl --user unmask " + std::string(rwal::constants::files::TIMER_FILE));
 		reload();
 		start();
-		if (status().has_value() && status().value() == 1) {
+		if (status()){
 			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Schedule successfuly activated");
 			return "Schedule successfuly activated!";
 		}
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to activate schedule. Status: " + std::to_string(status().value()));
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to activate schedule. Status: " + std::to_string(status());
 		return "Failed to activate schedule. More info in logs.";
 	}
 	else{
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set timer. Value: " + value + ". Status: " + std::to_string(status().value()));
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set timer. Value: " + value + ". Status: " + std::to_string(status());
 		return failedLog;
 	}
 }
