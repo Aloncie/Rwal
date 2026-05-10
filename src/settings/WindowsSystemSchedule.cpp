@@ -188,11 +188,8 @@ std::string WindowsSystemSchedule::get() const {
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to get task schedule");
 	auto TaskType = rwal::system::Schedule::TaskScheduleType::None;
 	// Check for the disabled task before any other actions.
-	auto statusInput = status();
-	if (statusInput == std::nullopt){
-		return "Error";
-	}
-	if (!statusInput.value()){
+	bool enabled = status();
+	if (!enabled){
 		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Task isn't active");
 		return "None";
 	}
