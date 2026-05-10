@@ -20,7 +20,7 @@ public:
 protected:
 	bool create() override { return false; }
     bool disable() override { return false; }
-    bool enable() override { return false; }
     bool status() override { return false; }
-    bool remove() override { return false; }
+	bool start() override { return false; }
+	bool reload() override { return false; }
 };
