@@ -4,7 +4,6 @@
 
 WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
 	HRESULT hr = m_comguard.initResult();
-	std::exception ex = m_comguard.getException();
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: " + std::string(ex.what()));
 		return;
