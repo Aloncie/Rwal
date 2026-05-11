@@ -1,5 +1,6 @@
 #include "AppController.hpp"
 #include "logs/logs.hpp"
+#include <unistd.h>
 
 AppController::AppController(Navigator* nav, TUIManager& ui, QObject* parent)
     : QObject(parent), m_navigator(nav), m_ui(ui) {
