@@ -55,7 +55,7 @@ bool LinuxSystemSchedule::create() {
 
 bool LinuxSystemSchedule::status() const {
 	try {
-		int code = exec("systemctl --user is-active " + std::string(rwal::constants::files::TIMER_FILE));
+		int code = rwal::systemd::exec("systemctl --user is-active " + std::string(rwal::constants::files::TIMER_FILE));
 		if (code == 0) return true;
 	} catch (const std::exception& e) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Core, "Failed to check timer status: " + std::string(e.what()));
@@ -116,7 +116,7 @@ bool LinuxSystemSchedule::createTimer(){
 
 bool LinuxSystemSchedule::reload() {
 	try {
-		exec("systemctl --user daemon-reload ");
+		rwal::systemd::exec("systemctl --user daemon-reload ");
 	} catch (const std::exception& e) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to reload daemon: " + std::string(e.what()));
 		return false;
@@ -126,7 +126,7 @@ bool LinuxSystemSchedule::reload() {
 
 bool LinuxSystemSchedule::start() const {
 	try {
-		exec("systemctl --user enable --now " + std::string(rwal::constants::files::TIMER_FILE));
+		rwal::systemd::exec("systemctl --user enable --now " + std::string(rwal::constants::files::TIMER_FILE));
 	} catch (const std::exception& e) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to start daemon: " + std::string(e.what()));
 		return false;
@@ -136,7 +136,7 @@ bool LinuxSystemSchedule::start() const {
 
 bool LinuxSystemSchedule::disable() const {
 	try {
-		exec("systemctl --user disable --now " + std::string(rwal::constants::files::TIMER_FILE));
+		rwal::systemd::exec("systemctl --user disable --now " + std::string(rwal::constants::files::TIMER_FILE));
 	} catch (const std::exception& e) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to disable daemon: " + std::string(e.what()));
 		return false;
@@ -235,7 +235,7 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 
 	m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Schedule, "Successful rewrite file");
 	if (value != "None") {
-		exec("systemctl --user unmask " + std::string(rwal::constants::files::TIMER_FILE));
+		rwal::systemd::exec("systemctl --user unmask " + std::string(rwal::constants::files::TIMER_FILE));
 		reload();
 		start();
 		if (status()){

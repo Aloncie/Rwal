@@ -13,7 +13,7 @@
 #endif
 
 namespace rwal::platform::executor {
-    void open_editor(fs::path& path) {
+    void open_editor(const fs::path& path) {
 #ifdef _WIN32
 		std::wstring widePath = path.wstring();
 		SHELLEXECUTEINFOW sei = { sizeof(sei) };
