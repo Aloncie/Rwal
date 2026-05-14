@@ -8,7 +8,18 @@
 #include <fstream>
 #include <QStandardPaths>
 
-using CurlRaiiPtr = std::unique_ptr<CURL, CurlWrapper::CurlDeleter>;
+using CurlPtr = std::unique_ptr<CURL, CurlDeleter>;
+
+CurlWrapper::CurlWrapper(Logs& logs) : m_logs(logs), curl(curl_easy_init(),curl_easy_cleanup) {
+	curl_global_init(CURL_GLOBAL_DEFAULT);
+	if (!curl) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to init CURL");
+	}
+}
+
+CurlWrapper::~CurlWrapper() {
+	curl_global_cleanup();	
+}
 
 static size_t callback(void* contents, size_t size, size_t nmemb, void* userp) {
     size_t realsize = size * nmemb;
@@ -17,15 +28,6 @@ static size_t callback(void* contents, size_t size, size_t nmemb, void* userp) {
     return realsize;
 }
 
-CurlWrapper::CurlWrapper(Logs& logs) : m_logs(logs), curl(curl_easy_init(),curl_easy_cleanup) {
-	curl_global_init(CURL_GLOBAL_DEFAULT);
-	if (!curl) {
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to init CURL");
-	}
-}
-CurlWrapper::~CurlWrapper() {
-	curl_global_cleanup();	
-}
 void CurlWrapper::getRequest(const std::string& url) {
     clearning();
     CURLcode res;
@@ -125,7 +127,7 @@ std::optional<fs::path> CurlWrapper::downloadImage(const std::string& image_url)
     std::string filename = call_Image(image_url);
     fs::path wallpaper_path = downloads / filename;
 
-    CurlRaiiPtr image_curl(curl_easy_init());
+    CurlPtr image_curl(curl_easy_init());
     if (!image_curl) {
         m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to init CURL");
         return std::nullopt;
