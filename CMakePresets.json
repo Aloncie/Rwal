@@ -1,0 +1,49 @@
+{
+  "version": 8,
+  "configurePresets": [
+    {
+      "name": "base-windows-msvc",
+      "hidden": true,
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "toolset": "host=x64",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": {
+          "type": "FILEPATH",
+          "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        },
+        "VCPKG_TARGET_TRIPLET": "x64-windows"
+      }
+    },
+    {
+      "name": "msvc-debug",
+      "displayName": "MSVC Debug (Rwal)",
+      "description": "Target Windows x64 Debug with vcpkg integration",
+      "inherits": "base-windows-msvc",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "msvc-release",
+      "displayName": "MSVC Release (Rwal)",
+      "description": "Target Windows x64 Release with vcpkg integration",
+      "inherits": "base-windows-msvc",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-debug",
+      "configurePreset": "msvc-debug"
+    },
+    {
+      "name": "msvc-release",
+      "configurePreset": "msvc-release"
+    }
+  ]
+}
+
