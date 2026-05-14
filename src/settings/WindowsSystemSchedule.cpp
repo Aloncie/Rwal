@@ -5,7 +5,7 @@
 WindowsSystemSchedule::WindowsSystemSchedule(Logs& logs) : m_logs(logs){
 	HRESULT hr = m_comguard.initResult();
 	if (FAILED(hr)) {
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM: " + std::string(ex.what()));
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to initialize COM");
 		return;
 	}
 
@@ -41,7 +41,11 @@ bool WindowsSystemSchedule::status() const {
 		return false;
 	}
 	VARIANT_BOOL enabled;
-	pTask->get_Enabled(&enabled);
+	hr = pTask->get_Enabled(&enabled);
+	if (FAILED(hr)) {
+		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to check task enabled status");
+		return false;
+	}
 	return enabled == VARIANT_TRUE;
 }
 
@@ -68,7 +72,7 @@ bool WindowsSystemSchedule::create() {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to create exec action");
 		return false;
 	}
-	hr = pExecAction->put_Path(_bstr_t(rwal::constants::files::EXEC_FILE));
+	hr = pExecAction->put_Path(_bstr_t(rwal::constants::files::EXEC_FILE.c_str()));
 	if (FAILED(hr)) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Schedule, "Failed to set exec action path");
 		return false;
@@ -185,8 +189,9 @@ bool WindowsSystemSchedule::disable() const {
 }
 
 std::string WindowsSystemSchedule::get() const {
+	using rwal::system::Schedule::TaskScheduleType;
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to get task schedule");
-	auto TaskType = rwal::system::Schedule::TaskScheduleType::None;
+	auto TaskType = TaskScheduleType::None;
 
 	// Check for the disabled task before any other actions.
 	bool enabled = status();
@@ -242,7 +247,8 @@ std::string WindowsSystemSchedule::get() const {
 }
 
 std::string WindowsSystemSchedule::set(const std::string& value) {
-	using namespace rwal::system::Schedule;
+	using rwal::system::Schedule::TaskScheduleType;
+
 	const std::string failedLog = "Failed set task. More info in logs.";
 	m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Schedule, "Try to set task");
 
@@ -267,7 +273,7 @@ std::string WindowsSystemSchedule::set(const std::string& value) {
 		return failedLog;
 	}
 	
-	TaskScheduleType type = toType(value);
+	TaskScheduleType type = rwal::system::Schedule::toType(value);
 
 	// There are only 3 types of triggers now so using if-else is good approach.
 	// It will has more elegant solution later 
