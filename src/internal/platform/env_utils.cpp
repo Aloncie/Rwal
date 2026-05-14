@@ -39,8 +39,8 @@ namespace rwal::platform::executor {
         } else {
             int status;
             waitpid(pid, &status, 0);
+		}
 #endif
-        }
     }
 }
 
