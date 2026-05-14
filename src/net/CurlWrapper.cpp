@@ -10,7 +10,7 @@
 
 using CurlPtr = std::unique_ptr<CURL, CurlDeleter>;
 
-CurlWrapper::CurlWrapper(Logs& logs) : m_logs(logs), curl(curl_easy_init(),curl_easy_cleanup) {
+CurlWrapper::CurlWrapper(Logs& logs) : m_logs(logs), curl(curl_easy_init(), CurlDeleter{}) {
 	curl_global_init(CURL_GLOBAL_DEFAULT);
 	if (!curl) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to init CURL");
