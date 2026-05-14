@@ -89,7 +89,7 @@ if(CURRENT_DE MATCHES "KDE")
 endif()
 
 if (CURRENT_DE MATCHES "WINDOWS")
-	target_link_libraries(wallpaper_lib PRIVATE user32 shell32)
+	target_link_libraries(wallpaper_lib PRIVATE user32 shell32 ws2_32)
 endif()
 
 target_link_libraries(wallpaper_lib PRIVATE Qt6::Core)
