@@ -65,14 +65,14 @@ src/wallpaper/
 | **WindowsSetter** | not tested |
 
 > **Are there problems with one of DE?**
-> **[Report an issue](https://github.com)**
+> **[Report an issue](https://github.com/Aloncie/Rwal/issues)**
 
 ---
 
 ## 🚧 Limitations & Future Work
 
 *   **No runtime DE switching** – the binary is tied to one DE at compile time.
-*   **Multi‑monitor** is handled by the underlying desktop API (KDE script applies to all desktops; GNOME applies to primary monitor; Hyprland depends on the tool used).
+*   **Multi‑monitor** is handled by the underlying desktop API.
 *   **Wayland/X11** – GNOME and KDE setters work under both; Hyprland is Wayland‑only.
 
 <div align="center">
