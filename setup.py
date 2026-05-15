@@ -35,7 +35,7 @@ def main():
     elif platform == "darwin":
         print("macOS detected.")
         print("Setup script for macOS is not yet available.")
-        print("Please install dependencies manually: git, cmake, qt6, curl, nlohmann-json")
+        print("Please install dependencies manually: git, cmake, qt6, curl, nlohmann-json, ncurses")
         sys.exit(0)
         
     # Linux Detection
@@ -51,7 +51,7 @@ def main():
     # Unknown OS Fallback
     else:
         print(f"Unknown OS: {platform}")
-        print("Please install dependencies manually: git, cmake, qt6, curl, nlohmann-json")
+        print("Please install dependencies manually: git, cmake, qt6, curl, nlohmann-json, ncurses")
         sys.exit(1)
 
 if __name__ == "__main__":
