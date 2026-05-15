@@ -28,9 +28,9 @@ Use flags for quick actions or to integrate Rwal into your startup scripts (e.g.
 **🏷 Keyword Management**
 Control what kind of images Rwal fetches:
 - `rwal -k` : Show currently active keywords.
-- `rwal --set-keywords "nature,ocean"` : Overwrite all keywords.
-- `rwal --add-keywords "dark,space"` : Add new tags to the existing list.
-- `rwal --remove-keywords "town"` : Remove specific tags.
+- `rwal --set-keywords nature,ocean` : Overwrite all keywords.
+- `rwal --add-keywords dark,space` : Add new tags to the existing list.
+- `rwal --remove-keywords town` : Remove specific tags.
 
 **📜 Maintenance & Info**
 - `rwal --log` : Display the latest logs (with timestamp and module info).
