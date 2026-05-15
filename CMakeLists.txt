@@ -112,7 +112,22 @@ elseif (BUILD_CLI)
     target_compile_definitions(rwal-cli PRIVATE RWAL_USE_CLI=1)
     install(TARGETS rwal-cli RUNTIME DESTINATION bin)
     message(STATUS "Building CLI-only executable (rwal-cli)")
-
+	if (WIN32)
+		find_program(WINDEPLOYQT_EXECUTABLE windeployqt
+        	HINTS "${Qt6_DIR}/bin"
+              "$ENV{QTDIR}/bin"
+              "C:/Qt"
+        	PATH_SUFFIXES bin
+		)		
+		if (WINDEPLOYQT_EXECUTABLE)
+			add_custom_command(TARGET rwal-cli POST_BUILD
+				COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:rwal-cli>
+				COMMENT "Deploying Qt running dependencies"
+			)
+		else()
+			message(WARNING "windeployqt not found. Run it manually to deploy Qt DLLs.")
+		endif()
+	endif()
 elseif (BUILD_TUI AND NOT WIN32)
     find_package(Curses REQUIRED)
     add_executable(rwal-tui src/ui/tui/main_tui.cpp src/Application/Application.cpp)
@@ -126,7 +141,6 @@ elseif (BUILD_TUI AND NOT WIN32)
     target_compile_definitions(rwal-tui PRIVATE RWAL_USE_TUI=1)
     install(TARGETS rwal-tui RUNTIME DESTINATION bin)
     message(STATUS "Building TUI-only executable (rwal-tui)")
-
 else()
     message(FATAL_ERROR "No UI selected. Enable at least one of BUILD_TUI or BUILD_CLI.")
 endif()
@@ -166,10 +180,10 @@ set(CPACK_PACKAGE_NAME "rwal")
 set(CPACK_PACKAGE_VENDOR "Aloncie")
 set(CPACK_PACKAGE_CONTACT "Aloncie@proton.me")
 set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}-alpha")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Wallpaper manager for KDE, GNOME, and Hyprland")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Wallpaper manager for Windows, KDE, GNOME and Hyprland")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Aloncie <Aloncie@proton.me>")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libcurl4, libstdc++6, libqt6core6, libqt6widgets6, libqt6dbus6, libncurses6")
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
-set(CPACK_GENERATOR "DEB;RPM;TGZ")
+set(CPACK_GENERATOR "DEB;RPM;TGZ;ZIP")
 include(CPack)

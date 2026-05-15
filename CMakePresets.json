@@ -1,49 +1,35 @@
 {
-  "version": 8,
+  "version": 6,
   "configurePresets": [
     {
-      "name": "base-windows-msvc",
-      "hidden": true,
-      "generator": "Visual Studio 17 2022",
+      "name": "windows-release",
+      "displayName": "Windows Release (MSVC)",
+      "generator": "Visual Studio 18 2026",
       "architecture": "x64",
-      "toolset": "host=x64",
-      "binaryDir": "${sourceDir}/build/${presetName}",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": {
-          "type": "FILEPATH",
-          "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
-        },
-        "VCPKG_TARGET_TRIPLET": "x64-windows"
+        "BUILD_TUI": "OFF",
+        "RWAL_FORCE_DE": "Windows"
       }
     },
     {
-      "name": "msvc-debug",
-      "displayName": "MSVC Debug (Rwal)",
-      "description": "Target Windows x64 Debug with vcpkg integration",
-      "inherits": "base-windows-msvc",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
-    },
-    {
-      "name": "msvc-release",
-      "displayName": "MSVC Release (Rwal)",
-      "description": "Target Windows x64 Release with vcpkg integration",
-      "inherits": "base-windows-msvc",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
-      }
+      "name": "linux-release",
+      "displayName": "Linux Release (GCC)",
+      "generator": "Ninja",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {}
     }
   ],
   "buildPresets": [
     {
-      "name": "msvc-debug",
-      "configurePreset": "msvc-debug"
+      "name": "windows-release",
+      "configurePreset": "windows-release",
+      "configuration": "Release"
     },
     {
-      "name": "msvc-release",
-      "configurePreset": "msvc-release"
+      "name": "linux-release",
+      "configurePreset": "linux-release",
+      "configuration": "Release"
     }
   ]
 }
-
