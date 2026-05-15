@@ -5,7 +5,7 @@
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
     echo "[ERROR] This script is for Linux only."
     echo "For Windows, please install dependencies manually:"
-    echo "  - Git, CMake, Qt6, cURL, nlohmann-json"
+    echo "  - Git, CMake, Qt6, curl, nlohmann-json"
     echo "Or use the Windows PowerShell script: ./setup-windows.ps1"
     exit 1
 fi
