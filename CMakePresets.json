@@ -6,10 +6,12 @@
       "displayName": "Windows Release (MSVC)",
       "generator": "Visual Studio 18 2026",
       "architecture": "x64",
+	  "binaryDir": "${sourceDir}/build/${presetName}",
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
         "BUILD_TUI": "OFF",
-        "RWAL_FORCE_DE": "Windows"
+        "RWAL_FORCE_DE": "Windows",
+		"CMAKE_PREFIX_PATH": "$env{QTDIR}"
       }
     },
     {

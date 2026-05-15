@@ -19,7 +19,7 @@ Options:
   -Help          Show this help message
 
 What this script does:
-  1. Checks for Git, CMake, C++ compiler
+  1. Checks for Git, CMake, Qt6, vcpkg and C++ compiler.
   2. Installs missing tools via winget (or shows manual URLs)
   3. Bootstraps vcpkg for C++ libraries
   4. Installs nlohmann-json and curl via vcpkg
@@ -120,9 +120,9 @@ if ($clangPath) {
 if (-not $hasCompiler) {
     Write-Warning "No C++ compiler found."
     Write-Host "  Options:"
-    Write-Host "    1. Install Visual Studio Build Tools: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022"
+    Write-Host "    1. Install Visual Studio Build Tools: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2026"
     Write-Host "    2. Install MinGW-w64: https://www.mingw-w64.org/"
-    Write-Host "    3. Install via winget: 'winget install Microsoft.VisualStudio.2022.BuildTools'"
+    Write-Host "    3. Install via winget: 'winget install Microsoft.VisualStudio.2026.BuildTools'"
 }
 
 # ============================================================
@@ -150,6 +150,9 @@ if (-not $SkipVcpkg) {
         .\vcpkg.exe install curl:x64-windows
         
         Write-Success "vcpkg libraries installed."
+		[Environment]::SetEnvironmentVariable("VCPKG_ROOT", "$ScriptDir\vcpkg", "User")
+		$env:VCPKG_ROOT = "$ScriptDir\vcpkg"
+
         Write-Info "To use vcpkg with CMake, add: -DCMAKE_TOOLCHAIN_FILE=$vcpkgRoot\scripts\buildsystems\vcpkg.cmake"
     } finally {
         Pop-Location
