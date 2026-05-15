@@ -93,7 +93,7 @@ All other fields will use their default values.
 ## ❓ FAQ
 
 **Q: Do I need an API key?**  
-A: Not for occasional use. Wallhaven allows ~45 requests per minute anonymously. If you use systemd timers or refresh very often, add an API key.
+A: Not for occasional use. Wallhaven allows ~45 requests per minute anonymously. If you use systemd timers or refresh almost momently, add an API key.
 
 **Q: Where do I get a Wallhaven API key?**  
 A: Create a free account at [wallhaven.cc](https://wallhaven.cc/), then go to [Settings → API Token](https://wallhaven.cc/settings/account).
