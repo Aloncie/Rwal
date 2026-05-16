@@ -128,38 +128,22 @@ if (-not $hasCompiler) {
 # ============================================================
 # 5. Setup vcpkg for C++ libraries
 # ============================================================
-$vcpkgRoot = "$ScriptDir\vcpkg"
-if (-not $SkipVcpkg) {
-    Write-Info "Setting up vcpkg..."
-    
-    if (-not (Test-Path $vcpkgRoot)) {
-        Write-Info "Cloning vcpkg..."
-        git clone https://github.com/microsoft/vcpkg.git $vcpkgRoot
-    }
-    
-    Push-Location $vcpkgRoot
-    try {
-        Write-Info "Bootstrapping vcpkg..."
-        .\bootstrap-vcpkg.bat -disableMetrics
-        Write-Success "vcpkg bootstrapped."
-        
-        Write-Info "Installing nlohmann-json..."
-        .\vcpkg.exe install nlohmann-json:x64-windows
-        
-        Write-Info "Installing curl..."
-        .\vcpkg.exe install curl:x64-windows
-        
-        Write-Success "vcpkg libraries installed."
-		[Environment]::SetEnvironmentVariable("VCPKG_ROOT", "$ScriptDir\vcpkg", "User")
-		$env:VCPKG_ROOT = "$ScriptDir\vcpkg"
 
-        Write-Info "To use vcpkg with CMake, add: -DCMAKE_TOOLCHAIN_FILE=$vcpkgRoot\scripts\buildsystems\vcpkg.cmake"
-    } finally {
-        Pop-Location
-    }
+# Determine vcpkg root: respect existing env var, then %LOCALAPPDATA%
+if ($env:VCPKG_ROOT -and (Test-Path $env:VCPKG_ROOT)) {
+    $vcpkgRoot = $env:VCPKG_ROOT
+    Write-Success "Using existing vcpkg at $vcpkgRoot"
+} elseif (Test-Path "$env:LOCALAPPDATA\vcpkg") {
+    $vcpkgRoot = "$env:LOCALAPPDATA\vcpkg"
+    Write-Success "Using existing vcpkg at $vcpkgRoot"
 } else {
-    Write-Warning "Skipping vcpkg. You'll need to provide nlohmann-json and curl manually."
+    $vcpkgRoot = "$env:LOCALAPPDATA\vcpkg"
+    Write-Info "Cloning vcpkg to $vcpkgRoot..."
+    git clone https://github.com/microsoft/vcpkg.git $vcpkgRoot
 }
+# Then bootstrap if vcpkg.exe missing, etc.
+[Environment]::SetEnvironmentVariable("VCPKG_ROOT", $vcpkgRoot, "User")
+$env:VCPKG_ROOT = $vcpkgRoot
 
 # ============================================================
 # 6. Check for Qt6

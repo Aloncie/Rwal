@@ -50,39 +50,27 @@ check_pkg_suse()   { rpm -q "$1" >/dev/null 2>&1; }
 # Deep checkers for tools that need version validation
 # These return 0 (found) or 1 (not found)
 # ============================================================
-check_git()   { command -v git >/dev/null 2>&1; }
-check_cmake() { command -v cmake >/dev/null 2>&1; }
-check_gxx()   { command -v g++ >/dev/null 2>&1; }
-check_qt6() {
-    # 1. qtpaths6 (official Qt6 tool)
-    if command -v qtpaths6 &>/dev/null; then
-        return 0
-    elif command -v qtpaths &>/dev/null; then
-        if qtpaths --query QT_VERSION 2>/dev/null | grep -q '^6\.'; then
-            return 0
-        fi
-    fi
+check_git()   { git --version >/dev/null 2>&1; }
+check_gxx()   { g++ --version >/dev/null 2>&1; }
+check_cmake() { cmake --version >/dev/null 2>&1; }
 
-    # 2. pkg-config
-    if pkg-config --exists Qt6Core 2>/dev/null; then
-        return 0
-    fi
-
-    # 3. Filesystem search in common roots
-    local search_roots=("/usr/lib" "/usr/lib64" "/usr/share" "/opt" "$HOME/Qt")
-    for root in "${search_roots[@]}"; do
-        if [ -d "$root" ]; then
-            local found_cmake
-            found_cmake=$(find "$root" -maxdepth 5 -path "*/cmake/Qt6/Qt6Config.cmake" -print -quit 2>/dev/null)
-            if [ -n "$found_cmake" ]; then
-                return 0
-            fi
-        fi
-    done
-
-    return 1
+# Ultimate fallback: ask CMake
+check_cmake_qt5() {
+    local tmpdir=$(mktemp -d)
+    cat > "$tmpdir/CMakeLists.txt" <<EOF
+	cmake_minimum_required(VERSION 3.16)
+	project(Qt6Check)
+	find_package(Qt6 REQUIRED COMPONENTS Core)
+EOF
+    cmake -S "$tmpdir" -B "$tmpdir/build" -DCMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH:-}" &>/dev/null
+    local ret=$?
+    rm -rf "$tmpdir"
+    return $ret
 }
-check_curl() { command -v curl >/dev/null 2>&1 || pkg-config --exists libcurl 2>/dev/null; }
+
+# Use big V
+check_curl() { curl -V >/dev/null 2>&1 || pkg-config --exists libcurl 2>/dev/null; }
+
 check_json() { pkg-config --exists nlohmann_json 2>/dev/null; }
 
 # ============================================================
