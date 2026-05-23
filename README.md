@@ -33,7 +33,7 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 - **Hot‑Reload** – Configuration updates instantly without restarting the service.
 - **Modern C++20** – Built for performance with a clean, modular codebase.
 - **Smart Keyword Logic** – Advanced wallpaper selection based on user-defined tags.
-- **Systemd Integration** – Native support for timers and automated rotations.
+- **Schedule Integration** – Native support for timers and automated rotations.
 - **Cross-DE Support** – Works seamlessly for every DE from [here](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md).
 
 # 👁️‍🗨️ Previews

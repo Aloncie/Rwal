@@ -4,22 +4,28 @@
     {
       "name": "windows-release",
       "displayName": "Windows Release (MSVC)",
+      "description": "Windows CLI build with Qt6 via QTDIR, vcpkg for curl/json",
       "generator": "Visual Studio 18 2026",
       "architecture": "x64",
-	  "binaryDir": "${sourceDir}/build/${presetName}",
+      "binaryDir": "${sourceDir}/build/${presetName}",
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
         "BUILD_TUI": "OFF",
         "RWAL_FORCE_DE": "Windows",
-		"CMAKE_PREFIX_PATH": "$env{QTDIR}"
+        "CMAKE_PREFIX_PATH": "$env{QTDIR}"
       }
     },
     {
       "name": "linux-release",
-      "displayName": "Linux Release (GCC)",
+      "displayName": "Linux Release (Ninja)",
+      "description": "Linux TUI+CLI build with Qt6 via QTDIR, vcpkg for curl/json",
       "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-      "cacheVariables": {}
+      "cacheVariables": {
+        "BUILD_TESTING": "ON",
+        "CMAKE_PREFIX_PATH": "$env{QTDIR}"
+      }
     }
   ],
   "buildPresets": [
