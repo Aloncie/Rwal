@@ -55,7 +55,7 @@ check_gxx()   { g++ --version >/dev/null 2>&1; }
 check_cmake() { cmake --version >/dev/null 2>&1; }
 
 # Ultimate fallback: ask CMake
-check_cmake_qt5() {
+check_qt6() {
     local tmpdir=$(mktemp -d)
     cat > "$tmpdir/CMakeLists.txt" <<EOF
 	cmake_minimum_required(VERSION 3.16)
