@@ -10,7 +10,7 @@
 
 namespace fs = std::filesystem;
 
-std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& env, NetworkManager& nm, Keywords& keywords, IUserInterface* ui, std::string_view mode) {
+std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& env, NetworkManager& netmanager, Keywords& keywords, IUserInterface* ui, std::string_view mode) {
     std::string keyword;
     if (mode == "change") {
         keyword = keywords.SilentGetKeyword();
@@ -24,7 +24,7 @@ std::optional<std::string> WallpaperManager::refresh(IWallpaperSetter& env, Netw
 		}
     }
 	
-	std::optional<fs::path> path = nm.fetchImage(keyword);
+	std::optional<fs::path> path = netmanager.fetchImage(keyword);
 
 	if (!path.has_value()) {
 		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Wallpaper, "Failed to fetch image");

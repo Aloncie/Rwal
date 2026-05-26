@@ -48,7 +48,7 @@ int Application::run(int argc, char* argv[]) {
     std::unique_ptr<IFileSystem> fs = createPlatformFileSystem();
     Keywords keywords(config, logs);
     CurlWrapper curl(logs);
-    NetworkManager nm(curl, config, logs);
+    NetworkManager netmanager(curl, config, logs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
     WallpaperManager wm(logs, *fs);
 

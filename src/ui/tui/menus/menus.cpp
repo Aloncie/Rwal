@@ -17,7 +17,7 @@
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_nm(nm) {};
+MainMenu::MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& netmanager) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_netmanager(netmanager) {};
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -33,7 +33,7 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
 		// We don't need to get value from the thread, so we use (void) for tell compiler
 		(void)QtConcurrent::run([this] {
-			auto error = m_wm.refresh(m_env, m_nm, m_keywords, &m_uim);
+			auto error = m_wm.refresh(m_env, m_netmanager, m_keywords, &m_uim);
 			
 			QMetaObject::invokeMethod(qApp, [error] {
 			}, Qt::QueuedConnection);

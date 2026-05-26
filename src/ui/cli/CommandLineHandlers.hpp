@@ -9,7 +9,7 @@ namespace rwal::cli {
 	struct CLIDependencies{
 		IFileSystem& fs;
 		Config& config;
-		NetworkManager& nm;
+		NetworkManager& netmanager;
 		Logs& logs;
 	};
 
@@ -25,7 +25,7 @@ namespace rwal::cli {
 		int handleVersion();
 		int handleContact();
 		int handleLogs(const Logs& logs);
-		int handleChange(Logs& logs, Config& config, IFileSystem& fs, NetworkManager& nm);
+		int handleChange(Logs& logs, Config& config, IFileSystem& fs, NetworkManager& netmanager);
 		int handleSave(Logs& logs, Config& config, IFileSystem& fs);
 		int handleClearLogs(Logs& logs);
 		int handleKeywords(const Config& config);

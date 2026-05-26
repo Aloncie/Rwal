@@ -32,11 +32,11 @@ private:
     Keywords& m_keywords;
     WallpaperManager& m_wm;
 	IWallpaperSetter& m_env;
-	NetworkManager& m_nm;
+	NetworkManager& m_netmanager;
     inline static const std::string m_validChoices = "1234q";
 
 public:
-    MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm);
+    MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& netmanager);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
