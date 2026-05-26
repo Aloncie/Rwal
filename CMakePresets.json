@@ -3,9 +3,9 @@
   "configurePresets": [
     {
       "name": "windows-release",
-      "displayName": "Windows Release (MSVC)",
+      "displayName": "Windows Release (Ninja)",
       "description": "Windows CLI build with Qt6 via QTDIR, vcpkg for curl/json",
-      "generator": "Visual Studio 18 2026",
+      "generator": "Ninja",
       "architecture": "x64",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
