@@ -128,13 +128,37 @@ if ($cmakePath) {
 }
 
 # ============================================================
-# 4. Check for C++ Compiler (Visual Studio, MinGW, or Clang)
+# 4. Check for Ninja
+# ============================================================
+Write-Info "Checking for Ninja..."
+$ninjaPath = Get-Command ninja -ErrorAction SilentlyContinue
+if ($ninjaPath) {
+    $ninjaVersion = (ninja --version) 2>$null
+    Write-Success "Ninja $ninjaVersion found at $($ninjaPath.Source)"
+} else {
+    Write-Warning "Ninja not found."
+    if (-not $SkipWinget -and (Get-Command winget -ErrorAction SilentlyContinue)) {
+        Write-Info "Installing Ninja via winget..."
+        winget install -e --id Ninja-build.Ninja
+        Write-Success "Ninja installed."
+    } else {
+        Write-Warning "Please install Ninja manually: https://ninja-build.org/"
+    }
+}
+
+# ============================================================
+# 5. Check for C++ Compiler (Visual Studio, MinGW, or Clang)
 # ============================================================
 Write-Info "Checking for C++ compiler..."
 
 # Helper: try to run a compiler and return its version string
 function Test-CompilerVersion {
     param([string]$ExePath, [string]$Flag = "--version")
+	# Check for Visual Studio compiler
+    if ($ExePath -like "*\cl.exe") {
+        return Test-Path $ExePath
+    }
+	# Any other compiler
     try {
         $output = & $ExePath $Flag 2>&1 | Select-Object -First 1
         return $output
@@ -171,17 +195,14 @@ if ($vswherePath -and (Test-Path $vswherePath)) {
 	# Look inside every folder and find the cl.exe
     foreach ($vsRoot in $vsPaths) {
         if (-not $vsRoot) { continue }
-        $clCandidates = Get-ChildItem -Path "$vsRoot\VC\Tools\MSVC" -Filter "cl.exe" -Recurse -Depth 4 -ErrorAction SilentlyContinue |
+        $clCandidates = Get-ChildItem -Path "$vsRoot\VC\Tools\MSVC" -Filter "cl.exe" -Recurse -Depth 8 -ErrorAction SilentlyContinue |
                         Where-Object { $_.FullName -like "*Hostx64\x64*" } |
                         Select-Object -First 1
         if ($clCandidates) {
-            $ver = Test-CompilerVersion $clCandidates.FullName
-            if ($ver) {
-                Write-Success "MSVC found via vswhere: $($clCandidates.FullName)"
-                $hasCompiler = $true
-                $foundCompilers.Add($clCandidates.FullName)
-                break # first working MSVC is enough
-            }
+			Write-Success "MSVC found via vswhere: $($clCandidates.FullName)"
+			$hasCompiler = $true
+			$foundCompilers.Add($clCandidates.FullName)
+			break # first working MSVC is enough
         }
     }
 }
@@ -210,6 +231,7 @@ if (-not $hasCompiler) {
         "${env:ProgramFiles}", # C:\Program Files
         "${env:ProgramFiles(x86)}", # C:\Program Files (x86)
         "$env:USERPROFILE", # C:\Users\username
+		"$env:LocalAppData", # C:\Users\username\AppData\Local
         "$env:SystemDrive\" # C:\
     )
 
@@ -254,7 +276,7 @@ if (-not $hasCompiler) {
 }
 
 # ============================================================
-# 5. Setup vcpkg for C++ libraries
+# 6. Setup vcpkg for C++ libraries
 # ============================================================
 
 $vcpkgRoot = $null
@@ -343,7 +365,7 @@ if (-not $SkipVcpkg) {
 }
 
 # ============================================================
-# 6. Check for Qt6
+# 7. Check for Qt6
 # ============================================================
 
 $QtBinPath = $null
