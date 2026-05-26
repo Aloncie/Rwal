@@ -26,8 +26,7 @@
 #endif
 
 #if RWAL_USE_CLI
-	#include "ui/cli/CommandLineParser.hpp"
-	#include "ui/cli/CommandLineHandlers.hpp"
+	#include "ui/cli/CLI.hpp"
 #endif
 
 #include <QCoreApplication>
@@ -63,9 +62,9 @@ int Application::run(int argc, char* argv[]) {
     }
 	
 	if (hasCliOptions) {
-		rwal::cli::CLIDependencies deps(*fs, config, nm, logs);
-		rwal::cli::Options opts = rwal::cli::parse(app);
-		return rwal::cli::execute(opts, deps);
+		CLI cli(*fs, config, netmanager, logs);
+		cli.parse(argc, argv);
+		return cli.execute();
 	}
 #endif
 
@@ -79,7 +78,7 @@ int Application::run(int argc, char* argv[]) {
 
     tuim.initUI();
 
-    auto mainMenu = std::make_unique<MainMenu>(tuim, keywords, wm, *env, nm);
+    auto mainMenu = std::make_unique<MainMenu>(tuim, keywords, wm, *env, netmanager);
     auto settingsMenu = std::make_unique<SettingsMenu>(*schedule, wm, tuim);
     auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, tuim, config);
     auto scheduleMenu = std::make_unique<ScheduleMenu>(*schedule);

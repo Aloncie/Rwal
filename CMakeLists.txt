@@ -95,8 +95,8 @@ if (BUILD_TUI AND NOT WIN32 AND BUILD_CLI)
         src/AppController/AppController.cpp
         src/navigator/navigator.cpp
         src/ui/tui/menus/menus.cpp
-        src/ui/cli/CommandLineParser.cpp
-        src/ui/cli/CommandLineHandlers.cpp
+		src/ui/cli/CLIParser.cpp
+		src/ui/cli/CLIHandlers.cpp
     )
     target_compile_definitions(rwal PRIVATE RWAL_USE_TUI=1 RWAL_USE_CLI=1)
     install(TARGETS rwal RUNTIME DESTINATION bin)
@@ -106,8 +106,8 @@ elseif (BUILD_CLI)
     add_executable(rwal-cli src/ui/cli/main_cli.cpp src/Application/Application.cpp)
     target_link_libraries(rwal-cli PRIVATE rwal-core)
     target_sources(rwal-cli PRIVATE
-        src/ui/cli/CommandLineParser.cpp
-        src/ui/cli/CommandLineHandlers.cpp
+		src/ui/cli/CLIParser.cpp
+		src/ui/cli/CLIHandlers.cpp
     )
     target_compile_definitions(rwal-cli PRIVATE RWAL_USE_CLI=1)
     install(TARGETS rwal-cli RUNTIME DESTINATION bin)
