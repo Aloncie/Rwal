@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+"""
+setup.py — Cross-platform installer for Rwal
+Usage: python setup.py
+"""
+
 import sys
 import os
 import subprocess

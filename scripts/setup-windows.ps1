@@ -131,46 +131,126 @@ if ($cmakePath) {
 # 4. Check for C++ Compiler (Visual Studio, MinGW, or Clang)
 # ============================================================
 Write-Info "Checking for C++ compiler..."
-$hasCompiler = $false
 
-# Check for Visual Studio WITH C++ Workload (Safe approach)
-# We find vswhere dynamically via standard system variables
+# Helper: try to run a compiler and return its version string
+function Test-CompilerVersion {
+    param([string]$ExePath, [string]$Flag = "--version")
+    try {
+        $output = & $ExePath $Flag 2>&1 | Select-Object -First 1
+        return $output
+    } catch { return $null }
+}
+
+$hasCompiler = $false
+$foundCompilers = [System.Collections.Generic.List[string]]::new()
+
+# ================================================================
+# Echelon 1 – PATH (fast, zero disk I/O)
+# ================================================================
+foreach ($cmd in @("g++", "clang++")) {
+    $p = Get-Command $cmd -ErrorAction SilentlyContinue
+    if ($p) {
+        $ver = Test-CompilerVersion $p.Source
+        Write-Success "$cmd found on PATH: $ver"
+        $hasCompiler = $true
+        $foundCompilers.Add($p.Source)
+    }
+}
+
+# ================================================================
+# Echelon 2 – vswhere for official MSVC installs
+# ================================================================
 $vswherePath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
 if (-not (Test-Path $vswherePath)) {
     $vswherePath = Get-Command vswhere.exe -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source
 }
 
 if ($vswherePath -and (Test-Path $vswherePath)) {
-    # -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 ensures C++ compiler package is actually installed
-    $vsPath = & $vswherePath -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath 2>$null
-    if ($vsPath) {
-        Write-Success "Visual Studio (with C++ Toolset) found at $vsPath"
-        $hasCompiler = $true
+    # Get ALL installations, then verify cl.exe manually
+    $vsPaths = & $vswherePath -products * -property installationPath 2>$null
+	# Look inside every folder and find the cl.exe
+    foreach ($vsRoot in $vsPaths) {
+        if (-not $vsRoot) { continue }
+        $clCandidates = Get-ChildItem -Path "$vsRoot\VC\Tools\MSVC" -Filter "cl.exe" -Recurse -Depth 4 -ErrorAction SilentlyContinue |
+                        Where-Object { $_.FullName -like "*Hostx64\x64*" } |
+                        Select-Object -First 1
+        if ($clCandidates) {
+            $ver = Test-CompilerVersion $clCandidates.FullName
+            if ($ver) {
+                Write-Success "MSVC found via vswhere: $($clCandidates.FullName)"
+                $hasCompiler = $true
+                $foundCompilers.Add($clCandidates.FullName)
+                break # first working MSVC is enough
+            }
+        }
     }
 }
 
-# Check for MinGW G++
-$gppPath = Get-Command g++ -ErrorAction SilentlyContinue
-if ($gppPath) {
-    $gppVersion = (g++ --version | Select-Object -First 1)
-    Write-Success "MinGW g++ found: $gppVersion"
-    $hasCompiler = $true
+# ================================================================
+# Echelon 3 – Smart filesystem scan (portable / unregistered installs)
+# ================================================================
+if (-not $hasCompiler) {
+    Write-Info "No compiler on PATH or vswhere. Scanning known locations on all drives..."
+
+    # Compiler search map: executable name -> folder names where it typically lives
+    $compilerMap = @{
+        "g++.exe" = @("MinGW", "mingw64", "mingw32", "msys64", "msys2", "CodeBlocks")
+        "clang++.exe" = @("LLVM", "llvm", "clang")
+        "cl.exe" = @("Microsoft Visual Studio", "BuildTools", "VC")
+    }
+
+    # Get all fixed (non-removable) drives
+	# DriveType 3 = local hard disk
+    $drives = Get-CimInstance -ClassName Win32_LogicalDisk |
+              Where-Object { $_.DriveType -eq 3 } |
+              Select-Object -ExpandProperty DeviceID
+
+    # Additional root locations on the system drive
+    $extraRoots = @(
+        "${env:ProgramFiles}", # C:\Program Files
+        "${env:ProgramFiles(x86)}", # C:\Program Files (x86)
+        "$env:USERPROFILE", # C:\Users\username
+        "$env:SystemDrive\" # C:\
+    )
+
+    # Collect all unique search roots
+    $searchRoots = [System.Collections.Generic.HashSet[string]]::new()
+    foreach ($d in $drives) { $searchRoots.Add("$d\") | Out-Null }
+    foreach ($r in $extraRoots) { if ($r) { $searchRoots.Add($r) | Out-Null } }
+		
+	# Look inside every folder and find the compiler
+    :compilerSearch foreach ($root in $searchRoots) {
+        if (-not (Test-Path $root)) { continue }
+        foreach ($exeName in $compilerMap.Keys) {
+            $folderNames = $compilerMap[$exeName]
+            foreach ($folder in $folderNames) {
+                $candidateDirs = Get-ChildItem -Path $root -Directory -Filter $folder -Depth 2 -ErrorAction SilentlyContinue
+                foreach ($dir in $candidateDirs) {
+                    $found = Get-ChildItem -Path $dir.FullName -Filter $exeName -Recurse -Depth 5 -ErrorAction SilentlyContinue |
+                             Select-Object -First 1
+                    if ($found) {
+                        $ver = Test-CompilerVersion $found.FullName
+                        if ($ver) {
+                            Write-Success "$exeName found via scan: $($found.FullName)"
+                            $hasCompiler = $true
+                            $foundCompilers.Add($found.FullName)
+                            break compilerSearch # one working compiler is enough
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
-# Check for Clang
-$clangPath = Get-Command clang++ -ErrorAction SilentlyContinue
-if ($clangPath) {
-    Write-Success "Clang found at $($clangPath.Source)"
-    $hasCompiler = $true
-}
-
-# Final Validation
+# Final verdict
 if (-not $hasCompiler) {
     Write-ErrorMsg "No functional C++ compiler (MSVC, G++, Clang) found!"
     Write-Host "  Options to resolve:"
     Write-Host "    1. Install Visual Studio Build Tools: https://visualstudio.microsoft.com/downloads/"
     Write-Host "    2. Install MinGW-w64: https://www.mingw-w64.org/"
     Write-Host "    3. Install via winget: 'winget install Microsoft.VisualStudio.BuildTools'"
+    Write-Host "    4. Add your compiler to the system PATH and re-run this script."
 }
 
 # ============================================================
