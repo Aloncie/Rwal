@@ -137,7 +137,7 @@ int handleSave(const CLIDependencies& deps) {
 int handleChange(const CLIDependencies& deps) {
     Keywords keywords(deps.config, deps.logs);
     auto curl = std::make_unique<CurlWrapper>(deps.logs);
-    NetworkManager nm(*curl, deps.config, deps.logs);
+    NetworkManager netmanager(*curl, deps.config, deps.logs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(deps.logs);
     WallpaperManager wm(deps.logs, deps.fs);
     deps.logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Rwal's start in change mode");
