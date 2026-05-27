@@ -1,5 +1,7 @@
 #pragma once
 
+#include "internal/filesystem/IFileSystem.hpp"
+
 #include <string>
 #include <string_view>
 #include <filesystem>
@@ -42,9 +44,11 @@ private:
     std::ofstream f;
   
     std::string getCurrentTime() const;
+
+	IFileSystem& m_fs;
 public:
 	virtual bool refresh();
-    Logs(); 
+    Logs(IFileSystem& fs); 
 
 	virtual void writeLogs(std::string_view type, std::string_view module, std::string_view message);
 	virtual std::string getLogs(const int& LinesCount = 100) const;

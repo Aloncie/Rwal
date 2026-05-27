@@ -1,28 +1,25 @@
 #pragma once
 #include "logs/logs.hpp"
 #include "IConfigReader.hpp"
+#include "internal/filesystem/IFileSystem.hpp"
 
 #include <functional>
-#include <QFileSystemWatcher>
 #include <nlohmann/json.hpp>
 #include <string>
 #include <map>
 #include <stdexcept>
-#include <QObject>
 
-class Config : public QObject, public IConfigReader {
-    Q_OBJECT
+class Config : public IConfigReader {
 private:
     nlohmann::json data;
     std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
     std::string configPath;
 
-    void saveConfig();
+    void saveToFile();
     void initValidators();
 	
-public slots:
-    void loadConfig();
-
+    void getConfigFileData();
+	std::string getConfigPath();
 protected:
     nlohmann::json getImpl(const std::string& key) override {
         if (data.contains(nlohmann::json::json_pointer(key))) {
@@ -33,22 +30,18 @@ protected:
     }
     bool setImpl(const std::string& key, const nlohmann::json& value) override {
         if (validators.count(key) && !validators.at(key)(value)) {
-            m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Config, "Validation failed for key: " + key);
+            m_logs.writeLogs(lvl::Warning, mod::Config, "Validation failed for key: " + key);
             return false;
         }
         data[nlohmann::json::json_pointer(key)] = value;
-        saveConfig();
+        saveToFile();
         return true;
     }
 
 public:
-    QFileSystemWatcher* watcher;
+    Config(Logs& logs, IFileSystem& fs);
+    void reload() override { getConfigFileData(); }
 
-    Config(Logs& logs);
-
-    void reload() override { loadConfig(); }
-
-    std::string getConfigPath();
     nlohmann::json& all() override { return data; }
 };
 
