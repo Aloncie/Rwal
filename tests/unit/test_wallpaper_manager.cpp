@@ -13,7 +13,6 @@
 #include <gmock/gmock.h>
 #include <memory>
 #include <filesystem>
-#include <QCoreApplication>
 
 using ::testing::Return;
 using ::testing::_;

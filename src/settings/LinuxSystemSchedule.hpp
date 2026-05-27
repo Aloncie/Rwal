@@ -4,7 +4,6 @@
 
 #include <string>
 #include <filesystem>
-#include <QDir>
 #include <optional>
 
 namespace fs = std::filesystem;

@@ -10,11 +10,11 @@ public:
 	explicit NullSystemSchedule(Logs& logs) : m_logs(logs) {}
 
     std::string set(const std::string& value) override {
-		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Config, "Cannot set schedule: no scheduler available");
+		m_logs.writeLogs(lvl::Info, mod::Config, "Cannot set schedule: no scheduler available");
 		return "Unavailable";
     }
     std::string get() const override {
-		m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Config, "No scheduler available on this platform");
+		m_logs.writeLogs(lvl::Info, mod::Config, "No scheduler available on this platform");
 		return "None";
     }
 protected:
