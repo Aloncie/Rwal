@@ -2,6 +2,9 @@
 #include <string_view>
 #include <unordered_map>
 
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
+
 void CLI::parse(int argc, char* argv[]) {
 	std::unordered_map<std::string_view, std::function<void()>> flagMap = {
 		{"-h",           [&] { m_opts.showHelp = true; }},
@@ -35,7 +38,7 @@ void CLI::parse(int argc, char* argv[]) {
 			if (it != flagMap.end()) {
 				it->second();  // invoke the lambda
 			} else {
-				m_deps.m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::CLI, "Failed to parse CLI, unknown flag: " + arg);
+				m_deps.m_logs.writeLogs(lvl::Error, mod::UI, "Failed to parse CLI, unknown flag: " + arg);
 				std::cerr << "Failed to parse CLI, unknown flag: " << arg <<
 					"\n Use --help to show available options.\n";
 			}

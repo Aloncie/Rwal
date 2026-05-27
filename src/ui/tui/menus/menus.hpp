@@ -7,6 +7,7 @@
 #include "wallpaper/WallpaperManager.hpp"
 #include "IWallpaperSetter.hpp"
 #include "net/NetworkManager.hpp"
+#include "internal/filesystem/IFileSystem.hpp"
 
 #include <string>
 #include <vector>
@@ -47,10 +48,11 @@ private:
     ISystemSchedule& m_scheduler;
     WallpaperManager& m_wm;
 	IUserInterface& m_uim;
+	IFileSystem& m_fs;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(ISystemSchedule& scheduler, WallpaperManager& wm, IUserInterface& ui);
+    SettingsMenu(ISystemSchedule& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs);
     std::vector<std::string> getLines() override;
     MenuResponce handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
