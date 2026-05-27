@@ -4,6 +4,9 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
+
 class IConfigReader {
 protected:
 	Logs& m_logs;
@@ -16,7 +19,7 @@ public:
 			nlohmann::json j = getImpl(key);
 			return j.get<G>();
 		} catch (std::invalid_argument& e) {
-			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Error getting config data for key: " + key + ". " + std::string(e.what()));
+			m_logs.writeLogs(lvl::Error, mod::Config, "Error getting config data for key: " + key + ". " + std::string(e.what()));
 			return G{};
 		}
 	}
@@ -25,7 +28,7 @@ public:
 	bool set(const std::string& key, const S& value) {
 		nlohmann::json jValue = value;
 		if (!setImpl(key, jValue)) {
-			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Failed to set config data for key: " + key);
+			m_logs.writeLogs(lvl::Error, mod::Config, "Failed to set config data for key: " + key);
 			return false;
 		}
 		return true;
@@ -36,6 +39,5 @@ public:
 protected:
 	virtual nlohmann::json getImpl(const std::string& key) = 0;
 	virtual bool setImpl(const std::string& key, const nlohmann::json& value) = 0;
-
 };
 

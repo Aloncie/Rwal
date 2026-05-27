@@ -1,40 +1,35 @@
 #include "config.hpp"
+#include "internal/AppConfig.h.in"
 
-#include <QDir>
-#include <QCoreApplication>
-#include <QStandardPaths>
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
 
 std::string Config::getConfigPath(){
-	QString configDir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+	fs::path configPath = m_fs.getAppLocalDataLocation() / ORGANIZATION_NAME / APPLICATION_NAME / "config.json";
 
-	QDir dir;
+	if (!m_fs.exists(configPath.parent_path())) {{
+		m_logs.writeLogs(lvl::Info, mod::Config, "Config directory not found, creating it");
+		m_fs.createDirectories(configPath);
+	}
 
-	if (!dir.exists(configDir))
-		dir.mkpath(configDir);
-
-	return ((configDir + "/config.json").toStdString());
+	return configPath.string();
 }
 
-Config::Config(Logs& logs) : IConfigReader(logs) {
+Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs), m_fs(fs) {
     configPath = getConfigPath();
     initValidators();
-
-    watcher = new QFileSystemWatcher(this);
-    watcher->addPath(QString::fromStdString(configPath));
-    
-	loadConfig();
-    connect(watcher, &QFileSystemWatcher::fileChanged, this, &Config::loadConfig);
+	getConfigFileData();
 }
 
-void Config::loadConfig(){
+void Config::getConfigFileData(){
 	if (std::filesystem::exists(configPath)) {
         std::ifstream file(configPath);
         if (file.is_open()) {
             try {
                 data = nlohmann::json::parse(file);
-                m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Config, "Config loaded/reloaded: " + configPath);
+                m_logs.writeLogs(lvl::Info, mod::Config, "Config loaded/reloaded: " + configPath);
             } catch (nlohmann::json::parse_error& e) {
-                m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "JSON Parse Error: " + std::string(e.what()));
+                m_logs.writeLogs(lvl::Error, mod::Config, "JSON Parse Error: " + std::string(e.what()));
             }
         }
     } else {	
@@ -64,29 +59,17 @@ void Config::loadConfig(){
 				{"cursor-visibility", true}
 			}}
 		};
-		saveConfig();
+		saveToFile();
 	};		
-
-	if (watcher && watcher->files().isEmpty()) {
-        watcher->addPath(QString::fromStdString(configPath));
-    }
 }
 
-void Config::saveConfig(){
-	if (watcher) watcher->blockSignals(true); // Stops the watcher from triggering the fileChanged signal
-	try {
-		std::ofstream file(configPath);
-		if (file.is_open()){
-			file << data.dump(4);
-			m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Config, "Config saved: " + configPath);
-		}
-		else {
-			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "Failed to open file: " + configPath);
-		}
-	} catch (nlohmann::json::exception& e) {
-		m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Config, "JSON Save Error: " + std::string(e.what()));
-	}
-	if (watcher) watcher->blockSignals(false); // Turns the watcher back on
+void Config::saveToFile(){
+	// Use temporary file to avoid data loss
+	auto tmp = m_path.string() + ".tmp";
+    std::ofstream file(tmp);
+    file << m_data.dump(2);
+    file.close();
+    std::filesystem::rename(tmp, configPath);  // replacement
 }
 
 void Config::initValidators(){
@@ -119,5 +102,4 @@ void Config::initValidators(){
 	validators["/services"] = is_not_empty_object;
     validators["/"] = is_not_empty_object;
 }
-
 
