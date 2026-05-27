@@ -15,6 +15,9 @@
 #include "funcs/funcs.hpp"
 #include <algorithm>
 
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
+
 #define PLANNED_LOCAL_FETCH
 
 #ifndef _WIN32
@@ -29,17 +32,17 @@ struct SocketGuard{
 #endif
 
 bool NetworkManager::isAvailable() {
-    m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Try to check internet connection");
+    m_logs.writeLogs(lvl::Debug, mod::Network, "Try to check internet connection");
 
 #ifdef _WIN32
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
-        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "WSAStartup failed");
+        m_logs.writeLogs(lvl::Error, mod::Network, "WSAStartup failed");
         return false;
     }
     SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == INVALID_SOCKET) {
-        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Socket creation failed");
+        m_logs.writeLogs(lvl::Error, mod::Network, "Socket creation failed");
         WSACleanup();
         return false;
     }
@@ -54,33 +57,33 @@ bool NetworkManager::isAvailable() {
     closesocket(sock);
     WSACleanup();
     if (connected) {
-        m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Internet check: SUCCESS");
+        m_logs.writeLogs(lvl::Info, mod::Network, "Internet check: SUCCESS");
         return true;
     } else {
-        m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Internet check: FAILED");
+        m_logs.writeLogs(lvl::Warning, mod::Network, "Internet check: FAILED");
         return false;
     }
 #else
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == -1) {
-        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Socket creation failed");
+        m_logs.writeLogs(lvl::Error, mod::Network, "Socket creation failed");
         return false;
     }
     SocketGuard guard(sock); 
     sockaddr_in server{}; server.sin_family = AF_INET;
     server.sin_port = htons(53);
     if (inet_pton(AF_INET, "8.8.8.8", &server.sin_addr) <= 0) {
-        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "IP conversion failed");
+        m_logs.writeLogs(lvl::Error, mod::Network, "IP conversion failed");
         return false;
     }
     timeval tv{.tv_sec = 3, .tv_usec = 0};
     setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
     if (connect(sock, reinterpret_cast<sockaddr*>(&server), sizeof(server)) == 0) {
-        m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Network, "Internet check: SUCCESS");
+        m_logs.writeLogs(lvl::Info, mod::Network, "Internet check: SUCCESS");
         return true;
     }
     PLANNED_LOCAL_FETCH
-    m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Internet check: FAILED (No connection to 8.8.8.8:53)");
+    m_logs.writeLogs(lvl::Warning, mod::Network, "Internet check: FAILED (No connection to 8.8.8.8:53)");
     return false;
 #endif
 }
@@ -116,7 +119,7 @@ std::string NetworkManager::craftUrl(std::string_view keyword, const std::option
         }
         return url;
     } catch (std::exception& e) {
-        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed craft url: " + std::string(e.what()));
+        m_logs.writeLogs(lvl::Error, mod::Network, "Failed craft url: " + std::string(e.what()));
         return "";
     }
 }
@@ -131,15 +134,15 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 	m_curl.getRequest(craftUrl(keyword));
 	auto search = m_config.get<nlohmann::json>("/search");
 	if (search.is_null()) {
-		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Search config is missing");
+		m_logs.writeLogs(lvl::Warning, mod::Network, "Search config is missing");
 		return std::nullopt;
 	}
 	else if (!search.contains("random_page") || search["random_page"].get<bool>() == false) {
-		m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Fetch image from first page");
+		m_logs.writeLogs(lvl::Debug, mod::Network, "Fetch image from first page");
 		url = m_curl.getData("data","path");
 	}
 	else if (search.contains("random_page") && search["random_page"].get<bool>() == true) {
-		m_logs.writeLogs(rwal::logs::types::Debug, rwal::logs::modules::Network, "Fetch image from random page");
+		m_logs.writeLogs(lvl::Debug, mod::Network, "Fetch image from random page");
 	
 		std::string pageCount =	m_curl.getData("meta","last_page");
 		
@@ -147,7 +150,7 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 			last_page = std::stoi(pageCount);
 		} catch(std::exception& e){
 
-			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "Failed to stoi pageCount: " + std::string(e.what()));
+			m_logs.writeLogs(lvl::Error, mod::Network, "Failed to stoi pageCount: " + std::string(e.what()));
 			last_page = 1;
 		}
 
@@ -157,7 +160,7 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 		try {
 			m_curl.getRequest(craftUrl(keyword, page));
 		} catch (std::exception& e){
-			m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Network, "CURL error: " + std::string(e.what()));
+			m_logs.writeLogs(lvl::Error, mod::Network, "CURL error: " + std::string(e.what()));
 			return std::nullopt;
 		}
 
@@ -166,12 +169,12 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 	}
 	else {
 		PLANNED_LOCAL_FETCH
-		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "Search config contains invalid value");
+		m_logs.writeLogs(lvl::Warning, mod::Network, "Search config contains invalid value");
         return std::nullopt;
 	}
 	if (url.empty()) {
 		PLANNED_LOCAL_FETCH
-		m_logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Network, "No image URL found in response");
+		m_logs.writeLogs(lvl::Warning, mod::Network, "No image URL found in response");
 		return std::nullopt;
 	}
 

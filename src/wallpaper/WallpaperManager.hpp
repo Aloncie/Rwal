@@ -24,6 +24,5 @@ public:
 	virtual std::optional<std::string> refresh(IWallpaperSetter& env, NetworkManager& netmanager, Keywords& keywords, IUserInterface* ui = nullptr, std::string_view mode = "core");
     virtual std::string saveCurrent() const;
     virtual fs::path getCurrentWallpaperPath() const;
-    virtual std::optional<fs::path> getPicturesPath(IUserInterface* ui = nullptr) const;
 };
 

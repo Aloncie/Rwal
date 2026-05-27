@@ -1,5 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
+#include "internal/filesystem/IFileSystem.hpp"
 
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
@@ -22,12 +23,13 @@ class CurlWrapper {
     std::string page, buffer;
     nlohmann::json j;
 	Logs& m_logs;
+	IFileSystem& m_fs;
 
     void clearning();
     void generateUniqueSuffix(std::string& filename);
-    std::string call_Image(const std::string& image_url);
+    std::string getFilenameFromUrl(const std::string& image_url);
 public:
-	CurlWrapper(Logs& logs);
+	CurlWrapper(Logs& logs, IFileSystem& fs);
 	virtual ~CurlWrapper();
 	
     virtual void getRequest(const std::string& url);
