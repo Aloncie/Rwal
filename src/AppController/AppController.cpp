@@ -2,7 +2,6 @@
 #include "logs/logs.hpp"
 
 #include <ncurses.h>
-#include <QApplication>
 #include <unistd.h>
 
 // Qt headers may be included later; avoid macro collision with QPixmap::scroll

@@ -29,11 +29,10 @@
 	#include "ui/cli/CLI.hpp"
 #endif
 
-#include <QCoreApplication>
-#include <QObject>
-#include <QCommandLineParser>
-#include <QApplication>
 #include <memory>
+
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
 
 int Application::run(int argc, char* argv[]) {
     QCoreApplication::setApplicationName(APP_NAME);
@@ -92,7 +91,7 @@ int Application::run(int argc, char* argv[]) {
     navigator.start("main");
 
     AppController controller(navigator, tuim);
-    logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Rwal's start in normal mode");
+    logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in normal mode");
 
     int one = app.exec();
     tuim.shutdownUI();

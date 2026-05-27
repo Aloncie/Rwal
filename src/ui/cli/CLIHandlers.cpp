@@ -8,6 +8,9 @@
 
 #include <iostream>
 
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
+
 // ---------------------------------------------------------------------
 // Helper functions
 // ---------------------------------------------------------------------
@@ -39,7 +42,7 @@ int CLI::handleHelp() {
 	  -s,  --save                 Save current wallpaper
 		   --contact              Show contact information
 	  -v,  --version              Show application version
-		   --log                  Show latest logs
+		   --log                 Show latest logs
 		   --clear-logs           Clear log file
 	  -k,  --keywords             Show keywords
 		   --set-keywords <kw>    Set keywords (comma-separated, e.g.: nature,ocean,town)
@@ -87,7 +90,7 @@ int CLI::handleKeywords() {
     if (keywordsJson.is_array()) {
         keywords = keywordsJson.get<std::vector<std::string>>();
     } else {
-		m_deps.logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Core, "No keywords array found in config file");
+		m_deps.logs.writeLogs(lvl::Warning, mod::Core, "No keywords array found in config file");
 		std::cerr << "No keywords array found in config file." << std::endl;
 		return 1;
 	}
@@ -133,7 +136,7 @@ int CLI::handleAddKeywords() {
     if (oldKeywordsJson.is_array()) {
         oldKeywords = oldKeywordsJson.get<std::vector<std::string>>();
     } else{
-		m_deps.logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Core, "No keywords array found in config file");
+		m_deps.logs.writeLogs(lvl::Warning, mod::Core, "No keywords array found in config file");
 		std::cerr << "No keywords array found in config file. Nothing to add.\n";
         return 1;
 	}
@@ -153,7 +156,7 @@ int CLI::handleRemoveKeywords() {
     if (keywordsJson.is_array()) {
         keywords = keywordsJson.get<std::vector<std::string>>();
     } else {
-		m_deps.logs.writeLogs(rwal::logs::types::Warning, rwal::logs::modules::Core, "No keywords array found in config file");
+		m_deps.logs.writeLogs(lvl::Warning, mod::Core, "No keywords array found in config file");
 		std::cerr << "No keywords array found in config file. Nothing to remove.\n";
         return 1;
 	}
@@ -177,8 +180,8 @@ int CLI::handleRemoveKeywords() {
 int CLI::handleSave() {
     WallpaperManager wm(m_deps.logs, m_deps.fs);
     std::string message = wm.saveCurrent();
-    m_deps.logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Rwal's start for save current wallpaper");
-    m_deps.logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Wallpaper, message);
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for save current wallpaper");
+    m_deps.logs.writeLogs(lvl::Info, mod::Wallpaper, message);
     return 0;
 }
 
@@ -188,7 +191,7 @@ int CLI::handleChange() {
     NetworkManager m_netmanager(*curl, m_deps.config, m_deps.logs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(m_deps.logs);
     WallpaperManager wm(m_deps.logs, m_deps.fs);
-    m_deps.m_logs.writeLogs(rwal::logs::types::Info, rwal::logs::modules::Core, "Rwal's start in change mode");
+    m_deps.m_logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in change mode");
     wm.refresh(*env, m_netmanager, keywords, nullptr, "change");
     return 0;
 }

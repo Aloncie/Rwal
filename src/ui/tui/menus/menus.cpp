@@ -3,16 +3,10 @@
 #include "menu_ids.hpp"
 #include "settings/config.hpp"
 #include "settings/ScheduleTypes.hpp"
+#include "internal/AppConfig.h.in"
 
-// Undefine any existing timeout macro to avoid conflicts with socket options
-#ifdef timeout
-#undef timeout
-#endif
-
-#include <QCoreApplication>
-#include <QtConcurrent/QtConcurrent>
-#include <QMetaObject>
 #include <memory>
+#include <thread>
 
 namespace MenuId = rwal::ui::MenuId;
 
@@ -31,13 +25,10 @@ std::vector<std::string> MainMenu::getLines() {
 }
 MenuResponce MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
-		// We don't need to get value from the thread, so we use (void) for tell compiler
-		(void)QtConcurrent::run([this] {
+		std::thread([this] {
 			auto error = m_wm.refresh(m_env, m_netmanager, m_keywords, &m_uim);
-			
-			QMetaObject::invokeMethod(qApp, [error] {
-			}, Qt::QueuedConnection);
-    	});
+			if (error.has_value()) m_uim.showMessage(error.value());
+    	}).detach();
     	return {"", false, false, ""};
     } else if (input == "2") {
         std::string message = m_wm.saveCurrent();
@@ -53,13 +44,14 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
     }
 }
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(ISystemSchedule& scheduler, WallpaperManager& wm, IUserInterface& ui) : m_scheduler(scheduler), m_wm(wm), m_uim(ui) {}
+SettingsMenu::SettingsMenu(ISystemSchedule& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs) : m_scheduler(scheduler), m_wm(wm), m_uim(ui), m_fs(fs) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
-	auto PicturesPathOpt = m_wm.getPicturesPath(&m_uim);
-	std::string pathStr = PicturesPathOpt ? PicturesPathOpt->string() : "Not found";    
+	std::string pathStr = (m_fs.getPicturesLocation() / APP_NAME).string();
+	if (pathStr.empty()) pathStr = "Not found";
 	return {
-        "--- Settings ---", "1) Schedule: " + m_scheduler.get(),
+        "--- Settings ---", 
+		"1) Schedule: " + m_scheduler.get(),
         "2) Wallpapers's path: " + pathStr,
 		"q) Back",
         ""  // Empty line for spacing

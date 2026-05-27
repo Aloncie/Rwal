@@ -4,9 +4,7 @@
 #include "ui/tui/TUIManager.hpp"
 
 #include <memory>
-#include <QObject>
 
-#include <QSocketNotifier>
 
 class AppController : public QObject {
     Q_OBJECT;

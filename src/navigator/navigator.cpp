@@ -1,8 +1,10 @@
 #include "navigator.hpp"
 #include "logs/logs.hpp"
 
-#include <QCoreApplication>
 #include <ncurses.h>
+
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
 
 // Qt headers may be included later; avoid macro collision with QPixmap::scroll
 #ifdef scroll
@@ -23,7 +25,7 @@ void Navigator::start(const std::string InitialMenu) {
         m_currentMenu = it->second.get();
         printCurrentMenu();
     } else {
-        m_logs.writeLogs(rwal::logs::types::Error, rwal::logs::modules::Navigator, "Failed InitialMenu in Navigator::start: " + InitialMenu);
+        m_logs.writeLogs(lvl::Error, mod::Navigator, "Failed InitialMenu in Navigator::start: " + InitialMenu);
     }
 }
 
