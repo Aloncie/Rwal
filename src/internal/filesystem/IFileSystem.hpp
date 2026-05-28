@@ -13,6 +13,8 @@ namespace fs = std::filesystem;
  */
 
 class IFileSystem{
+protected:
+	virtual void clearError() const = 0;
 public:
 	virtual ~IFileSystem() = default;
 
@@ -35,6 +37,5 @@ public:
 
 	// Error handling
 	virtual std::string getLastError() const = 0;
-	virtual void clearError() const = 0;
 };
 

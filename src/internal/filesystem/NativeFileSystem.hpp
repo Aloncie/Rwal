@@ -6,6 +6,8 @@ namespace fs = std::filesystem;
 class NativeFileSystem : public IFileSystem{
 private:
 	mutable std::string m_LastError = "";
+protected:
+	void clearError() const override;
 public:
 	NativeFileSystem() = default;
 	~NativeFileSystem() override = default;
@@ -31,6 +33,5 @@ public:
 	
 	// Handle errors
 	std::string getLastError() const override;
-	void clearError() const override;
 };
 

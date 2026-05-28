@@ -49,7 +49,7 @@ Options:
  --set-keywords <kw>        Set keywords (comma-separated, e.g.: nature,ocean,town)
  --add-keywords <kw>        Add keywords (comma-separated)
  --remove-keywords <kw>     Remove keywords (comma-separated)
-	)";
+	)" << std::endl;
 	return 0;
 }
 
@@ -179,20 +179,20 @@ int CLI::handleRemoveKeywords() {
 }
 
 int CLI::handleSave() {
+	m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for save current wallpaper");
     WallpaperManager wm(m_deps.logs, m_deps.fs);
     std::string message = wm.saveCurrent();
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for save current wallpaper");
     m_deps.logs.writeLogs(lvl::Info, mod::Wallpaper, message);
     return 0;
 }
 
 int CLI::handleChange() {
+	m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in change mode");
     Keywords keywords(m_deps.config, m_deps.logs);
     auto curl = std::make_unique<CurlWrapper>(m_deps.logs, m_deps.fs);
     NetworkManager m_netmanager(*curl, m_deps.config, m_deps.logs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(m_deps.logs);
     WallpaperManager wm(m_deps.logs, m_deps.fs);
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in change mode");
     wm.refresh(*env, m_netmanager, keywords, nullptr, "change");
     return 0;
 }

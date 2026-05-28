@@ -66,54 +66,50 @@ std::string WallpaperManager::saveCurrent() const {
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {
     fs::path dir = m_fs.getAppLocalDataLocation() / ORGANIZATION_NAME / APP_NAME / rwal::constants::dirs::DOWNLOADS_DIR;
+	m_logs.writeLogs(lvl::Info, mod::Wallpaper, "Trying to get wallpaper from: " + dir.string());
     if (!fs::exists(dir)){
 		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Downloads directory doesn't exist: " + dir.string());
 		return "";
 	}
-	std::vector<fs::path> foundedFiles;
-    try {
-		std::vector<fs::path> downloads_files = m_fs.listDirectory(dir);
-		for (auto file : downloads_files) {
-			std::string name = file.filename().string();
-			if (name.rfind(rwal::constants::wallpaper::FILE_PREFIX, 0) == 0) {
-				foundedFiles.push_back(file);
-			}
-		}
-    } catch (const fs::filesystem_error& e) {
-        m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Error scanning downloads: " + std::string(e.what()));
-    }
+	std::vector<fs::path> foundFiles = m_fs.listDirectory(dir, std::string(rwal::constants::wallpaper::FILE_PREFIX));
+	std::string error = m_fs.getLastError();
+	if (error != "") {
+		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to list directory: " + dir.string() + " with error: " + error);
+	}
 
-	if (foundedFiles.size() == 0) {
+	if (foundFiles.size() == 0) {
 		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "No wallpaper found in downloads");
 		return "";
-	} else if (foundedFiles.size() == 1) {
-		m_logs.writeLogs(lvl::Info, mod::Wallpaper, "Wallpaper found in downloads: " + foundedFiles[0].string());
-		return foundedFiles[0];
+	} else if (foundFiles.size() == 1) {
+		m_logs.writeLogs(lvl::Info, mod::Wallpaper, "Wallpaper found: " + foundFiles[0].string());
+		return foundFiles[0];
 	}
 
 	m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Some wallpapers found in downloads, but CurlWrapper must guarantee only one. The latest one will be saved.");
 	
 	int i = 0;
-	auto input = m_fs.getLastModifiedTime(foundedFiles[i]);
+	auto input = m_fs.getLastModifiedTime(foundFiles[i]);
 	while (input == std::nullopt) {
-		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to get last modified time of " + std::to_string(i) + " wallpaper file: " + foundedFiles[i].string());	
+		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to get last modified time of " + std::to_string(i) + " wallpaper file: " + foundFiles[i].string());	
 		i++;
-		input = m_fs.getLastModifiedTime(foundedFiles[i]);
+		input = m_fs.getLastModifiedTime(foundFiles[i]);
 	}
 	
 	fs::file_time_type latestModifiedTime = input.value();
-	fs::path latestFile = foundedFiles[i];
-	for (int k = i + 1; k < foundedFiles.size(); k++){
-		input = m_fs.getLastModifiedTime(foundedFiles[k]);
+	m_logs.writeLogs(lvl::Debug, mod::Wallpaper, "First file: " + std::to_string(latestModifiedTime.time_since_epoch().count()));
+	fs::path latestFile = foundFiles[i];
+	for (int k = i + 1; k < foundFiles.size(); k++){
+		input = m_fs.getLastModifiedTime(foundFiles[k]);
 		while (input == std::nullopt) {
-			m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to get last modified time of " + std::to_string(k) + " wallpaper file: " + foundedFiles[k].string());
+			m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to get last modified time of " + std::to_string(k) + " wallpaper file: " + foundFiles[k].string());
 			k++;
-			input = m_fs.getLastModifiedTime(foundedFiles[k]);
+			input = m_fs.getLastModifiedTime(foundFiles[k]);
 		}
 		fs::file_time_type modifiedTime = input.value();
+		m_logs.writeLogs(lvl::Debug, mod::Wallpaper, "File " + std::to_string(k) + ": " + std::to_string(modifiedTime.time_since_epoch().count()));
 		if (modifiedTime < latestModifiedTime) {
             latestModifiedTime = modifiedTime;
-			latestFile = foundedFiles[k];
+			latestFile = foundFiles[k];
         }
     }
 	return latestFile;
