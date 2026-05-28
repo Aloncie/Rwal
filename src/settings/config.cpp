@@ -5,7 +5,7 @@ namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
 fs::path Config::getConfigPath(){
-	fs::path configPath = m_fs.getAppLocalDataLocation() / ORGANIZATION_NAME / APP_NAME / "config.json";
+	fs::path configPath = m_fs.getConfigLocation() / ORGANIZATION_NAME / APP_NAME / "config.json";
 
 	if (!m_fs.exists(configPath.parent_path())) {
 		m_logs.writeLogs(lvl::Info, mod::Config, "Config directory not found, creating it");

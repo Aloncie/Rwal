@@ -24,9 +24,18 @@ fs::path WindowsFileSystem::getPicturesLocation() const {
 }
 
 fs::path WindowsFileSystem::getTempLocation() const {
-    if (const char* temp = std::getenv("TMP")) {
-    	return fs::path(temp);
-    }
-    // Fallback value
+    if (const char* tmp = std::getenv("TMP")) return fs::path(tmp);
+    if (const char* temp = std::getenv("TEMP")) return fs::path(temp); 
+
+	// Fallback value
     return fs::current_path() / "tmp";
 }
+
+fs::path WindowsFileSystem::getConfigLocation() const {
+    if (const char* appdata = std::getenv("APPDATA")) {
+    	return fs::path(appdata);
+    }
+    // Fallback value
+    return fs::current_path() / "AppData";
+}
+

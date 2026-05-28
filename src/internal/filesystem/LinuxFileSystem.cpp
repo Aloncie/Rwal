@@ -34,3 +34,11 @@ fs::path LinuxFileSystem::getTempLocation() const {
     return fs::current_path() / "tmp";
 }
 
+fs::path LinuxFileSystem::getConfigLocation() const {
+    if (const char* home = std::getenv("HOME")) {
+        return fs::path(home) / ".config";
+    }
+    // Fallback value
+    return fs::current_path() / ".config";
+}
+
