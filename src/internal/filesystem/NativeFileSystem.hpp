@@ -30,6 +30,7 @@ public:
 	fs::path getAppLocalDataLocation() const override = 0;
 	fs::path getPicturesLocation() const override = 0;
 	fs::path getTempLocation() const override = 0;
+	fs::path getConfigLocation() const override = 0;
 	
 	// Handle errors
 	std::string getLastError() const override;
