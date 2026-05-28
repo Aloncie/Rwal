@@ -24,6 +24,7 @@ namespace rwal::logs{
 		inline constexpr std::string_view Core = "[CORE]";
 		inline constexpr std::string_view Navigator = "[NAVIGATOR]";
 		inline constexpr std::string_view Schedule = "[SCHEDULER]";
+		inline constexpr std::string_view Logs = "[LOGS]";
 	}
 	namespace types {
 		inline constexpr std::string_view Debug = "[DEBUG]";

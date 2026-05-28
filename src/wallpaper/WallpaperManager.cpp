@@ -3,7 +3,7 @@
 #include "net/NetworkManager.hpp"
 #include "PathResolver.hpp"
 #include "internal/AppConstants.hpp"
-#include "internal/AppConfig.h.in"
+#include "AppConfig.h"
 
 #include <filesystem>
 
@@ -92,18 +92,30 @@ fs::path WallpaperManager::getCurrentWallpaperPath() const {
 	}
 
 	m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Some wallpapers found in downloads, but CurlWrapper must guarantee only one. The latest one will be saved.");
-
-	fs::file_time_type latestModificationTime = m_fs.getLastModifiedTime(foundedFiles[0]);
-	fs::path latestFile = foundedFiles[0];
-	for (auto file : foundedFiles) {
-		fs::file_time_type modificationTime = m_fs.getLastModifiedTime(file);
-		if (modificationTime < lastModificationTime) {
-            lastModificationTime = modificationTime;
-			latestFile = file;
+	
+	int i = 0;
+	auto input = m_fs.getLastModifiedTime(foundedFiles[i]);
+	while (input == std::nullopt) {
+		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to get last modified time of " + std::to_string(i) + " wallpaper file: " + foundedFiles[i].string());	
+		i++;
+		input = m_fs.getLastModifiedTime(foundedFiles[i]);
+	}
+	
+	fs::file_time_type latestModifiedTime = input.value();
+	fs::path latestFile = foundedFiles[i];
+	for (int k = i + 1; k < foundedFiles.size(); k++){
+		input = m_fs.getLastModifiedTime(foundedFiles[k]);
+		while (input == std::nullopt) {
+			m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to get last modified time of " + std::to_string(k) + " wallpaper file: " + foundedFiles[k].string());
+			k++;
+			input = m_fs.getLastModifiedTime(foundedFiles[k]);
+		}
+		fs::file_time_type modifiedTime = input.value();
+		if (modifiedTime < latestModifiedTime) {
+            latestModifiedTime = modifiedTime;
+			latestFile = foundedFiles[k];
         }
     }
 	return latestFile;
-}
-
 }
 

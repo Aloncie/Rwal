@@ -1,18 +1,18 @@
 #include "config.hpp"
-#include "internal/AppConfig.h.in"
+#include "AppConfig.h"
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
-std::string Config::getConfigPath(){
-	fs::path configPath = m_fs.getAppLocalDataLocation() / ORGANIZATION_NAME / APPLICATION_NAME / "config.json";
+fs::path Config::getConfigPath(){
+	fs::path configPath = m_fs.getAppLocalDataLocation() / ORGANIZATION_NAME / APP_NAME / "config.json";
 
-	if (!m_fs.exists(configPath.parent_path())) {{
+	if (!m_fs.exists(configPath.parent_path())) {
 		m_logs.writeLogs(lvl::Info, mod::Config, "Config directory not found, creating it");
-		m_fs.createDirectories(configPath);
+		m_fs.createDirectories(configPath.parent_path());
 	}
 
-	return configPath.string();
+	return configPath;
 }
 
 Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs), m_fs(fs) {
@@ -26,14 +26,14 @@ void Config::getConfigFileData(){
         std::ifstream file(configPath);
         if (file.is_open()) {
             try {
-                data = nlohmann::json::parse(file);
+                m_data = nlohmann::json::parse(file);
                 m_logs.writeLogs(lvl::Info, mod::Config, "Config loaded/reloaded: " + configPath);
             } catch (nlohmann::json::parse_error& e) {
                 m_logs.writeLogs(lvl::Error, mod::Config, "JSON Parse Error: " + std::string(e.what()));
             }
         }
     } else {	
-		data = {
+		m_data = {
    			{"services", {
         		{"wallhaven", {
             		{"apikey", ""},
@@ -65,7 +65,7 @@ void Config::getConfigFileData(){
 
 void Config::saveToFile(){
 	// Use temporary file to avoid data loss
-	auto tmp = m_path.string() + ".tmp";
+	auto tmp = getConfigPath().string() + ".tmp";
     std::ofstream file(tmp);
     file << m_data.dump(2);
     file.close();

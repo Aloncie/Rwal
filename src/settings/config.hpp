@@ -8,10 +8,13 @@
 #include <string>
 #include <map>
 #include <stdexcept>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 class Config : public IConfigReader {
 private:
-    nlohmann::json data;
+    nlohmann::json m_data;
     std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
     std::string configPath;
 
@@ -19,11 +22,13 @@ private:
     void initValidators();
 	
     void getConfigFileData();
-	std::string getConfigPath();
+	fs::path getConfigPath();
+
+	IFileSystem& m_fs;
 protected:
     nlohmann::json getImpl(const std::string& key) override {
-        if (data.contains(nlohmann::json::json_pointer(key))) {
-            return data[nlohmann::json::json_pointer(key)];
+        if (m_data.contains(nlohmann::json::json_pointer(key))) {
+            return m_data[nlohmann::json::json_pointer(key)];
         } else {
             throw std::invalid_argument("Key not found: " + key);
         }
@@ -33,7 +38,7 @@ protected:
             m_logs.writeLogs(lvl::Warning, mod::Config, "Validation failed for key: " + key);
             return false;
         }
-        data[nlohmann::json::json_pointer(key)] = value;
+        m_data[nlohmann::json::json_pointer(key)] = value;
         saveToFile();
         return true;
     }
@@ -42,6 +47,6 @@ public:
     Config(Logs& logs, IFileSystem& fs);
     void reload() override { getConfigFileData(); }
 
-    nlohmann::json& all() override { return data; }
+    nlohmann::json& all() override { return m_data; }
 };
 

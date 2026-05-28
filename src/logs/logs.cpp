@@ -1,5 +1,5 @@
 #include "logs.hpp"
-#include "internal/AppConfig.h.in"
+#include "AppConfig.h"
 
 #ifndef _WIN32
 	#include <unistd.h>
@@ -15,17 +15,29 @@ namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
 Logs::Logs(IFileSystem& fs) : m_fs(fs) {
-	logs_path = m_fs.getTempLocation() / ORGANIZATION_NAME / APPLICATION_NAME / "logs.txt";
+	logs_path = m_fs.getTempLocation() / ORGANIZATION_NAME / APP_NAME / "logs.txt";
 	if (!m_fs.exists(logs_path.parent_path())) {
-		m_logs.writeLogs(lvl::Info, mod::Core, "Logs directory not found, creating it");
+		writeLogs(lvl::Info, mod::Logs, "Logs directory not found, creating it");
 		m_fs.createDirectories(logs_path);
 	}
     if (m_fs.exists(logs_path)) {
-        const uintmax_t fileSize = m_fs.getFileSize(logs_path);
-        const uintmax_t limit_size = 1024 * 1024; // 1 MB
+		auto input = m_fs.getFileSize(logs_path);
 
-        if (fileSize > limit_size){
-			writeLogs(lvl::Warning, mod::Core, "Logs file size (" + std::to_string(fileSize) + " bytes) exceeds the limit (" + std::to_string(limit_size) + " bytes). Try to refresh logs.");
+		uintmax_t fileSize = 0;
+		const uintmax_t limit_size = 1024 * 1024; // 1 MB
+
+		if (input == std::nullopt){
+			writeLogs(lvl::Error, mod::Logs, "Failed to get logs file size: " + m_fs.getLastError());
+			writeLogs(lvl::Info, mod::Logs, "Try to refresh logs to avoid possible memory filling");
+			// input == std::nullopt is meaning that file doesn't exist or error occurred
+			// So we can try to refresh logs to avoid possible memory filling
+			refresh();
+			return;
+		}
+        fileSize = input.value();
+
+        if (fileSize >= limit_size){
+			writeLogs(lvl::Warning, mod::Logs, "Logs file size (" + std::to_string(fileSize) + " bytes) exceeds the limit (" + std::to_string(limit_size) + " bytes). Try to refresh logs.");
 			refresh();
 		}
     }
@@ -52,12 +64,12 @@ void Logs::writeLogs(std::string_view type, std::string_view module, std::string
 bool Logs::refresh() {
     try {
         if (fs::remove(logs_path)){
-            writeLogs(lvl::Info, mod::Core, "Successful deleting old logs");
+            writeLogs(lvl::Info, mod::Logs, "Successful deleting old logs");
 			return true;
 		}
 		return false;
     } catch (const std::exception& e) {
-        writeLogs(lvl::Error, mod::Core, "Failed to refresh logs: " + std::string(e.what()));
+        writeLogs(lvl::Error, mod::Logs, "Failed to refresh logs: " + std::string(e.what()));
     }
 
     std::ofstream f(logs_path, std::ios::out);
@@ -65,7 +77,7 @@ bool Logs::refresh() {
 
 #ifndef _WIN32
     if (chmod(logs_path.c_str(), 0644) != 0) {
-        writeLogs(lvl::Error, mod::Core, "Failed to change mod of logs\n Try to fix it yourself");
+        writeLogs(lvl::Error, mod::Logs, "Failed to change mod of logs\n Try to fix it yourself");
 		return false;
     }
     if (geteuid() == 0) {
@@ -74,7 +86,7 @@ bool Logs::refresh() {
             struct passwd* pw = getpwnam(sudo_user);
             if (pw) {
                 if (chown(logs_path.c_str(), pw->pw_uid, pw->pw_gid) != 0) {
-                    writeLogs(lvl::Error, mod::Core, "Failed to change owner of logs\n Try to fix it yourself");
+                    writeLogs(lvl::Error, mod::Logs, "Failed to change owner of logs\n Try to fix it yourself");
 					return false;
                 }
             }

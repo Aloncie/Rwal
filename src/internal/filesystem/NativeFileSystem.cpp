@@ -87,7 +87,7 @@ std::vector<fs::path> NativeFileSystem::listDirectory(const fs::path& path, cons
     while (it != fs::directory_iterator()) {
         const auto& entry = *it;
 
-        if (isRegularFile(entry.path) && entry.path().filename().string().starts_with(prefix)) {
+        if (isRegularFile(path) && entry.path().filename().string().starts_with(prefix)) {
             result.push_back(entry.path());
         }
 
@@ -101,18 +101,18 @@ std::vector<fs::path> NativeFileSystem::listDirectory(const fs::path& path, cons
     return result;
 }
 
-uintmax_t NativeFileSystem::getFileSize(const fs::path& path) const {
+std::optional<uintmax_t> NativeFileSystem::getFileSize(const fs::path& path) const {
     std::error_code ec;
     return fs::file_size(path, ec);
 }
 
-fs::file_time_type NativeFileSystem::getLastModifiedTime(const fs::path& path) const {
+std::optional<fs::file_time_type> NativeFileSystem::getLastModifiedTime(const fs::path& path) const {
 	std::error_code ec;
 
 	auto time = fs::last_write_time(path, ec);
 	if (ec){
 		m_LastError = "Failed to get last modified time: " + ec.message();
-        return 0;
+        return fs::file_time_type().min();
 	}
 	return time;
 }

@@ -1,14 +1,11 @@
 #pragma once
 #include "IFileSystem.hpp"
 
-#include <vector>
-#include <filesystem>
-
 namespace fs = std::filesystem;
 
 class NativeFileSystem : public IFileSystem{
 private:
-	mutable std::string m_LastError;
+	mutable std::string m_LastError = "";
 public:
 	NativeFileSystem() = default;
 	~NativeFileSystem() override = default;
@@ -20,10 +17,12 @@ public:
 	bool removeAll(const fs::path& path) override;
 	bool copyFile(const fs::path& current, const fs::path& dest) const override;
 	std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix = "") const override;
-	uintmax_t getFileSize(const fs::path& path) const override;
 	bool remove(const fs::path& path) override;
+	// Returns false if the file isn't regular or error
 	bool isRegularFile(const fs::path& path) const override;
-	fs::file_time_type getLastModifiedTime(const fs::path& path) const override;
+	// Methods these can return std::nullopt
+	std::optional<fs::file_time_type> getLastModifiedTime(const fs::path& path) const override;
+	std::optional<uintmax_t> getFileSize(const fs::path& path) const override;
 	
 	// Os specific methods, will be implemented by <OS>FileSystem classes
 	fs::path getAppLocalDataLocation() const override = 0;
