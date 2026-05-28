@@ -86,8 +86,7 @@ std::vector<fs::path> NativeFileSystem::listDirectory(const fs::path& path, cons
     // Loop manually using the safe end-iterator comparison
     while (it != fs::directory_iterator()) {
         const auto& entry = *it;
-
-        if (isRegularFile(path) && entry.path().filename().string().starts_with(prefix)) {
+        if (isRegularFile(entry.path()) && entry.path().filename().string().starts_with(prefix)) {
             result.push_back(entry.path());
         }
 
@@ -118,7 +117,9 @@ std::optional<fs::file_time_type> NativeFileSystem::getLastModifiedTime(const fs
 }
 
 std::string NativeFileSystem::getLastError() const {
-	return m_LastError;
+	std::string tmp = m_LastError;
+	clearError();
+	return tmp;
 }
 
 void NativeFileSystem::clearError() const {
