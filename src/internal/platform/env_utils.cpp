@@ -2,6 +2,8 @@
 #include "internal/AppConstants.hpp"
 
 #include <cstdlib>
+#include <array>
+#include <cstdio>
 
 #ifdef _WIN32
 	#include <Windows.h>
@@ -44,11 +46,32 @@ namespace rwal::platform::executor {
 }
 
 namespace rwal::systemd{
-	int exec(const std::string& command){
-		QProcess process;
-		process.setProcessChannelMode(QProcess::MergedChannels);
-		process.start("/bin/bash", QStringList() << "-c" << QString::fromStdString(command));
-		process.waitForFinished(-1);
-		return process.exitCode();
+	int exec(const std::string& command) {
+#ifdef _WIN32
+		FILE* pipe = _popen(command.c_str(), "r");
+#else
+		FILE* pipe = popen(command.c_str(), "r");
+#endif
+		if (!pipe) return -1;
+
+		// Drain the output
+		std::array<char, 256> buffer;
+		while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {}
+
+#ifdef _WIN32
+		int status = _pclose(pipe);
+#else
+		int status = pclose(pipe);
+#endif
+
+		if (status == -1) return -1;
+
+#ifdef _WIN32
+		return status;  // Windows: status IS the exit code
+#else
+		if (WIFEXITED(status)) return WEXITSTATUS(status);
+		return -1;  // process terminated abnormally
+#endif
 	}
 }
+
