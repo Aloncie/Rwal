@@ -1,6 +1,7 @@
 #include "CLI.hpp"
 #include <string_view>
 #include <unordered_map>
+#include <iostream>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
@@ -38,8 +39,8 @@ void CLI::parse(int argc, char* argv[]) {
 			if (it != flagMap.end()) {
 				it->second();  // invoke the lambda
 			} else {
-				m_deps.m_logs.writeLogs(lvl::Error, mod::UI, "Failed to parse CLI, unknown flag: " + arg);
-				std::cerr << "Failed to parse CLI, unknown flag: " << arg <<
+				m_deps.logs.writeLogs(lvl::Error, mod::UI, "Failed to parse CLI, unknown flag: " + std::string(arg));
+				std::cerr << "Failed to parse CLI, unknown flag: " << std::string(arg) <<
 					"\n Use --help to show available options.\n";
 			}
 		}

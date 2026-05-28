@@ -36,6 +36,7 @@ private:
 	Dependencies m_deps;
 
 	// Handlers
+	int handleHelp();
 	int handleVersion();
 	int handleContact();
 	int handleLogs();
@@ -54,4 +55,5 @@ public:
 	~CLI() = default;
 	void parse(int argc, char* argv[]);
 	int execute();
+};
 

@@ -19,10 +19,6 @@
 	#include "navigator/navigator.hpp"
 	#include "AppController/AppController.hpp"
 	#include "ui/tui/menus/menus.hpp"
-	// Qt headers may be included later; avoid macro collision with QPixmap::scroll
-	#ifdef scroll
-	#undef scroll
-	#endif
 #endif
 
 #if RWAL_USE_CLI
@@ -30,22 +26,18 @@
 #endif
 
 #include <memory>
+#include <thread>
+#include <iostream>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
 int Application::run(int argc, char* argv[]) {
-    QCoreApplication::setApplicationName(APP_NAME);
-    QCoreApplication::setOrganizationName(ORGANIZATION_NAME);
-    QCoreApplication::setApplicationVersion(APP_VERSION);
-    QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
-	QCoreApplication app(argc, argv);
-
-    Logs logs;
-	Config config(logs);
     std::unique_ptr<IFileSystem> fs = createPlatformFileSystem();
+	Logs logs(*fs);
+	Config config(logs, *fs);
     Keywords keywords(config, logs);
-    CurlWrapper curl(logs);
+    CurlWrapper curl(logs, *fs);
     NetworkManager netmanager(curl, config, logs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
     WallpaperManager wm(logs, *fs);
@@ -66,7 +58,7 @@ int Application::run(int argc, char* argv[]) {
 		return cli.execute();
 	}
 #endif
-
+// two different if-endif because file can be TUI and CLI in the one binary
 #if RWAL_USE_TUI
 	if (argc > 1) { 
 		std::cerr << "Error: Rwal TUI mode doesn't support flags yet. \nPlease run without arguments to start TUI." << std::endl;
@@ -78,7 +70,7 @@ int Application::run(int argc, char* argv[]) {
     tuim.initUI();
 
     auto mainMenu = std::make_unique<MainMenu>(tuim, keywords, wm, *env, netmanager);
-    auto settingsMenu = std::make_unique<SettingsMenu>(*schedule, wm, tuim);
+    auto settingsMenu = std::make_unique<SettingsMenu>(*schedule, wm, tuim, *fs);
     auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, tuim, config);
     auto scheduleMenu = std::make_unique<ScheduleMenu>(*schedule);
 
@@ -92,10 +84,12 @@ int Application::run(int argc, char* argv[]) {
 
     AppController controller(navigator, tuim);
     logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in normal mode");
-
-    int one = app.exec();
+	while (controller.handleStdin()) {
+		// small sleep to avoid CPU usage	
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	}
     tuim.shutdownUI();
-    return one;
+    return 0;
 #endif
 	std::cout << R"(Failed to start Rwal, this binary doesn't touch TUI and CLI.
 		Try to use these flags: 

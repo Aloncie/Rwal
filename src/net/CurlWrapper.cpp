@@ -1,7 +1,7 @@
 #include "CurlWrapper.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 #include "internal/AppConstants.hpp"
-#include "internal/AppConfig.h.in"
+#include "AppConfig.h"
 
 #include "funcs/funcs.hpp"
 #include <exception>
