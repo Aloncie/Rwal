@@ -7,7 +7,6 @@ target_include_directories(scheduler-lib PUBLIC
 
 if (UNIX AND NOT APPLE)
 	target_sources(scheduler-lib PRIVATE LinuxSystemSchedule.cpp)
-	target_link_libraries(scheduler-lib PRIVATE Qt6::Core)
 	message(STATUS "Detected Linux system. Using Linux system scheduler")
 elseif(WIN32)
 	target_sources(scheduler-lib PRIVATE WindowsSystemSchedule.cpp)

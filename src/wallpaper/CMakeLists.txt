@@ -39,7 +39,6 @@ if(CURRENT_DE MATCHES "GNOME")
 	message(STATUS "Using GNOME wallpaper setter")
 	
 elseif(CURRENT_DE MATCHES "KDE")
-	find_package(Qt6 COMPONENTS DBus REQUIRED)
 	list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
 	add_definitions(-DRWAL_USE_KDE)
 	message(STATUS "Using KDE wallpaper setter")
@@ -71,11 +70,10 @@ add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
 target_link_libraries(wallpaper_lib PUBLIC CURL::libcurl nlohmann_json::nlohmann_json)
 
-target_compile_definitions(wallpaper_lib PRIVATE QT_NO_KEYWORDS)
-
 target_include_directories(wallpaper_lib PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src
+	${CMAKE_BINARY_DIR}/generated
 )
 
 # Platform-specific libraries if needed
@@ -84,14 +82,7 @@ if(CURRENT_DE MATCHES "GNOME")
     target_link_libraries(wallpaper_lib PRIVATE ${GIO_LIBRARIES})
 endif()
 
-if(CURRENT_DE MATCHES "KDE")
-    target_link_libraries(wallpaper_lib PRIVATE Qt6::DBus)
-endif()
-
 if (CURRENT_DE MATCHES "WINDOWS")
 	target_link_libraries(wallpaper_lib PRIVATE user32 shell32 ws2_32)
 endif()
-
-target_link_libraries(wallpaper_lib PRIVATE Qt6::Core)
-
 
