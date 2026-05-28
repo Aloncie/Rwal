@@ -3,7 +3,7 @@
 #include "menu_ids.hpp"
 #include "settings/config.hpp"
 #include "settings/ScheduleTypes.hpp"
-#include "internal/AppConfig.h.in"
+#include "AppConfig.h"
 
 #include <memory>
 #include <thread>

@@ -2,48 +2,34 @@
 #include "logs/logs.hpp"
 
 #include <ncurses.h>
-#include <unistd.h>
 
-// Qt headers may be included later; avoid macro collision with QPixmap::scroll
-#ifdef scroll
-#undef scroll
-#endif
-
-AppController::AppController(Navigator& nav, TUIManager& ui, QObject* parent)
-    : QObject(parent), m_navigator(nav), m_ui(ui) {
-#ifdef Q_OS_UNIX
-    m_notifier = std::make_unique<QSocketNotifier>(STDIN_FILENO, QSocketNotifier::Read, this);
-    connect(m_notifier.get(), &QSocketNotifier::activated, this, &AppController::handleStdin);
-#elif defined(Q_OS_WIN)
-    m_notifier = std::make_unique<QWinEventNotifier>(GetStdHandle(STD_INPUT_HANDLE), this);
-    connect(m_notifier.get(), &QWinEventNotifier::activated, this, [this](HANDLE) { handleStdin(); });
-#endif    
+AppController::AppController(Navigator& nav, TUIManager& tui)
+    : m_navigator(nav), m_tui(tui)
+{
     m_navigator.printCurrentMenu();
 }
 
-void AppController::handleStdin() {
+bool AppController::handleStdin() {
     int ch = getch();
-    if (ch == ERR) return;
+    if (ch == ERR) return true;  // no input, keep going
 
     MenuResponce resp;
-    if (m_ui.isInputActive()) {
-        m_ui.processInputChar(ch);
+    if (m_tui.isInputActive()) {
+        m_tui.processInputChar(ch);
     } else {
         const std::string validChoices = m_navigator.getCurrentValidChoices();
         char inputChar = static_cast<char>(ch);
         if (validChoices.find(inputChar) != std::string::npos) {
             std::string input(1, static_cast<char>(ch));
-            resp = m_navigator.processInput(input, m_ui);
-            if (resp.needQuit) {
-				QCoreApplication::quit();
-				return;
-			}
+            resp = m_navigator.processInput(input, m_tui);
+            if (resp.needQuit) return false;  // signal the loop to stop
         }
     }
 
     m_navigator.printCurrentMenu();
     if (!resp.Message.empty()) {
-        m_ui.showMessage(resp.Message);
+        m_tui.showMessage(resp.Message);
     }
+    return true;  // keep going
 }
 

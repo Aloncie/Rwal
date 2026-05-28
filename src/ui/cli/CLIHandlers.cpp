@@ -33,21 +33,22 @@ std::string CLI::getBinaryLocation() {
 
 int CLI::handleHelp() {
 	std::string usage = getBinaryLocation() + " [options]";
-	std::cout << "Usage: " << usage << "\n";
+	std::cout << "Usage: " << usage;
 	std::cout << R"(
-	Rwal - cross-platform wallpaper utility
+Rwal - cross-platform wallpaper utility
 
-	Options:
-	  -c,  --change               Change wallpaper once and exit
-	  -s,  --save                 Save current wallpaper
-		   --contact              Show contact information
-	  -v,  --version              Show application version
-		   --log                 Show latest logs
-		   --clear-logs           Clear log file
-	  -k,  --keywords             Show keywords
-		   --set-keywords <kw>    Set keywords (comma-separated, e.g.: nature,ocean,town)
-		   --add-keywords <kw>    Add keywords (comma-separated)
-		   --remove-keywords <kw> Remove keywords (comma-separated)
+Options:
+ -h,  --help                Show this help message
+ -c,  --change              Change wallpaper once and exit
+ -s,  --save                Save current wallpaper
+ --contact                  Show contact information
+ -v,  --version             Show application version
+ --log                      Show latest logs
+ --clear-logs          	    Clear log file
+ -k,  --keywords            Show keywords
+ --set-keywords <kw>        Set keywords (comma-separated, e.g.: nature,ocean,town)
+ --add-keywords <kw>        Add keywords (comma-separated)
+ --remove-keywords <kw>     Remove keywords (comma-separated)
 	)";
 	return 0;
 }
@@ -80,7 +81,7 @@ int CLI::handleClearLogs() {
         std::cout << "Logs cleared successfully." << std::endl;
 		return 0;
     }
-	std::cerr << "Failed to clear m_logs." << std::endl;
+	std::cerr << "Failed to clear logs." << std::endl;
 	return 1;
 }
 
@@ -187,11 +188,11 @@ int CLI::handleSave() {
 
 int CLI::handleChange() {
     Keywords keywords(m_deps.config, m_deps.logs);
-    auto curl = std::make_unique<CurlWrapper>(m_deps.logs);
+    auto curl = std::make_unique<CurlWrapper>(m_deps.logs, m_deps.fs);
     NetworkManager m_netmanager(*curl, m_deps.config, m_deps.logs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(m_deps.logs);
     WallpaperManager wm(m_deps.logs, m_deps.fs);
-    m_deps.m_logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in change mode");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in change mode");
     wm.refresh(*env, m_netmanager, keywords, nullptr, "change");
     return 0;
 }

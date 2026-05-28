@@ -6,11 +6,6 @@
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
-// Qt headers may be included later; avoid macro collision with QPixmap::scroll
-#ifdef scroll
-#undef scroll
-#endif
-
 void Navigator::registerMenu(const std::string& name, std::unique_ptr<Menu> menu) {
     m_menus[name] = std::move(menu);
 }
@@ -42,8 +37,6 @@ MenuResponce Navigator::processInput(std::string& input, TUIManager& ui) {
     if (!m_currentMenu) return {"", false, false, ""};
 
     MenuResponce resp = m_currentMenu->handleInput(input);
-
-    if (resp.needQuit) QCoreApplication::quit();
 
     if (resp.IsWrongInput) ui.showMessage("Invalid choice: " + input);
 

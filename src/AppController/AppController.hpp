@@ -5,17 +5,14 @@
 
 #include <memory>
 
-
-class AppController : public QObject {
-    Q_OBJECT;
+class AppController {
 public:
-    AppController(Navigator& nav, TUIManager& ui, QObject* parent = nullptr);
-	~AppController() override = default;
-private slots:
-    void handleStdin();
+    AppController(Navigator& nav, TUIManager& tui);
+	~AppController() = default;
+
+	bool handleStdin();
 private:
     Navigator& m_navigator;
-	TUIManager& m_ui;
-    std::unique_ptr<QSocketNotifier> m_notifier;
+	TUIManager& m_tui;
 };
 
