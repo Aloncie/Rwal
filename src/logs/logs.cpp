@@ -45,10 +45,16 @@ Logs::Logs(IFileSystem& fs) : m_fs(fs) {
 };
 
 std::string Logs::getCurrentTime() const {
-	auto now = std::chrono::system_clock::now();
-	auto local_time = std::chrono::current_zone()->to_local(now);
+    auto now = std::chrono::system_clock::now();
 
-	return std::format("[:%Y-%m-%d | %H:%M:%S]", local_time);
+	// Get time
+    auto local_time = std::chrono::current_zone()->to_local(now);
+
+	// Hard round to seconds
+    auto local_seconds = std::chrono::time_point_cast<std::chrono::seconds>(local_time);
+	
+	// Return formatted string
+    return std::format("[{:%F | %T}]", local_seconds);
 }
 
 void Logs::writeLogs(std::string_view type, std::string_view module, std::string_view message){
