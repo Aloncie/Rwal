@@ -23,7 +23,7 @@ namespace rwal::logs{
 		inline constexpr std::string_view Filesystem = "[FILESYSTEM]";
 		inline constexpr std::string_view Core = "[CORE]";
 		inline constexpr std::string_view Navigator = "[NAVIGATOR]";
-		inline constexpr std::string_view Schedule = "[SCHEDULE]";
+		inline constexpr std::string_view Scheduler = "[SCHEDULER]";
 		inline constexpr std::string_view Logs = "[LOGS]";
 	}
 	namespace types {

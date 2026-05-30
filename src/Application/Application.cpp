@@ -10,8 +10,8 @@
 #include "wallpaper/WallpaperManager.hpp"
 #include "internal/filesystem/FileSystemFactory.hpp"
 #include "AppConfig.h"
-#include "settings/ISystemSchedule.hpp"
-#include "settings/ScheduleFactory.hpp"
+#include "settings/ISystemScheduler.hpp"
+#include "settings/SchedulerFactory.hpp"
 #include "internal/utils/string_utils.hpp"
 
 #if RWAL_USE_TUI
@@ -65,14 +65,14 @@ int Application::run(int argc, char* argv[]) {
 		return 1;
 	}
     TUIManager tuim;
-	std::unique_ptr<ISystemSchedule> schedule = createPlatformSchedule(logs, *fs);
+	std::unique_ptr<ISystemScheduler> schedule = createPlatformScheduler(logs, *fs);
 
     tuim.initUI();
 
     auto mainMenu = std::make_unique<MainMenu>(tuim, keywords, wm, *env, netmanager);
     auto settingsMenu = std::make_unique<SettingsMenu>(*schedule, wm, tuim, *fs);
     auto keywordsMenu = std::make_unique<KeywordsMenu>(keywords, tuim, config);
-    auto scheduleMenu = std::make_unique<ScheduleMenu>(*schedule);
+    auto scheduleMenu = std::make_unique<SchedulerMenu>(*schedule);
 
     Navigator navigator(logs);
     navigator.registerMenu("main", std::move(mainMenu));

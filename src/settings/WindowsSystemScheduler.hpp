@@ -1,6 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
-#include "ISystemSchedule.hpp"
+#include "ISystemScheduler.hpp"
 
 #include <optional>
 #include <string>
@@ -48,7 +48,7 @@ public:
     ComGuard& operator=(const ComGuard&) = delete;
 };
 
-class WindowsSystemSchedule : public ISystemSchedule {
+class WindowsSystemScheduler : public ISystemScheduler {
 private:
 	// Guard class for COM initialization and uninitialization for any way of exception.
 	ComGuard m_comguard;
@@ -62,8 +62,8 @@ private:
 	std::optional<ITriggerCollectionPtr> getTaskTriggers() const;
 	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
 public:
-    explicit WindowsSystemSchedule(Logs& logs);
-	~WindowsSystemSchedule() override = default;
+    explicit WindowsSystemScheduler(Logs& logs);
+	~WindowsSystemScheduler() override = default;
 	std::string get() const override;
 	std::string set(const std::string& value) override;
 protected:

@@ -2,7 +2,7 @@
 #include "internal/utils/string_utils.hpp"
 #include "menu_ids.hpp"
 #include "settings/config.hpp"
-#include "settings/ScheduleTypes.hpp"
+#include "settings/SchedulerTypes.hpp"
 #include "AppConfig.h"
 
 #include <memory>
@@ -44,14 +44,14 @@ MenuResponce MainMenu::handleInput(const std::string& input) {
     }
 }
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(ISystemSchedule& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs) : m_scheduler(scheduler), m_wm(wm), m_uim(ui), m_fs(fs) {}
+SettingsMenu::SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs) : m_scheduler(scheduler), m_wm(wm), m_uim(ui), m_fs(fs) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
 	std::string pathStr = (m_fs.getPicturesLocation() / APP_NAME).string();
 	if (pathStr.empty()) pathStr = "Not found";
 	return {
         "--- Settings ---", 
-		"1) Schedule: " + m_scheduler.get(),
+		"1) Scheduler: " + m_scheduler.get(),
         "2) Wallpapers's path: " + pathStr,
 		"q) Back",
         ""  // Empty line for spacing
@@ -125,18 +125,18 @@ MenuResponce KeywordsMenu::handleInput(const std::string& input) {
     }
 }
 
-// ========== Schedule Menu ==========
-ScheduleMenu::ScheduleMenu(ISystemSchedule& scheduler) : m_scheduler(scheduler) {}
+// ========== Scheduler Menu ==========
+SchedulerMenu::SchedulerMenu(ISystemScheduler& scheduler) : m_scheduler(scheduler) {}
 
-std::vector<std::string> ScheduleMenu::getLines() {
-	using namespace rwal::system::Schedule;
+std::vector<std::string> SchedulerMenu::getLines() {
+	using namespace rwal::system::Scheduler;
     return {
-		toString(TaskScheduleType::None), toString(TaskScheduleType::Hourly), toString(TaskScheduleType::Daily),
+		toString(TaskSchedulerType::None), toString(TaskSchedulerType::Hourly), toString(TaskSchedulerType::Daily),
         ""  // Empty line for spacing
     };
 }
 
-MenuResponce ScheduleMenu::handleInput(const std::string& input) {
+MenuResponce SchedulerMenu::handleInput(const std::string& input) {
     if (input == "h") {
 		std::string result = m_scheduler.set("hourly");
         return {MenuId::SETTINGS, false, false, result};

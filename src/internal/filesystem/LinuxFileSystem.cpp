@@ -44,7 +44,7 @@ fs::path LinuxFileSystem::getConfigLocation() const {
     return fs::current_path() / ".config";
 }
 
-fs::path LinuxFileSystem::getScheduleLocation() const {
+fs::path LinuxFileSystem::getSchedulerLocation() const {
     if (const char* home = std::getenv("HOME")) {
         return fs::path(home) / ".config/systemd/user";
     }
