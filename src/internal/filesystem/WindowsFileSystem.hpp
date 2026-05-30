@@ -11,5 +11,6 @@ public:
 	fs::path getTempLocation() const override;
 	fs::path getConfigLocation() const override;
 	fs::path getScheduleLocation() const override;
+	fs::path getBinaryLocation() const override;
 };
 
