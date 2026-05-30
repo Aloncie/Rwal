@@ -3,11 +3,11 @@
 #include "logs/logs.hpp"
 #include <string>
 
-class NullSystemSchedule : public ISystemSchedule {
+class NullSystemScheduler : public ISystemScheduler {
 private:
 	Logs& m_logs;
 public:
-	explicit NullSystemSchedule(Logs& logs) : m_logs(logs) {}
+	explicit NullSystemScheduler(Logs& logs) : m_logs(logs) {}
 
     std::string set(const std::string& value) override {
 		m_logs.writeLogs(lvl::Info, mod::Config, "Cannot set schedule: no scheduler available");

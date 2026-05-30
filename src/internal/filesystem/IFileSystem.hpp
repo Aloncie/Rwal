@@ -35,7 +35,7 @@ public:
 	virtual fs::path getPicturesLocation() const = 0;
 	virtual fs::path getTempLocation() const = 0;
 	virtual fs::path getConfigLocation() const = 0;
-	virtual fs::path getScheduleLocation() const = 0;
+	virtual fs::path getSchedulerLocation() const = 0;
 	virtual fs::path getBinaryLocation() const = 0;
 
 	// Error handling

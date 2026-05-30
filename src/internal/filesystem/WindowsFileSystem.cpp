@@ -39,7 +39,7 @@ fs::path WindowsFileSystem::getConfigLocation() const {
     return fs::current_path() / "AppData";
 }
 
-fs::path WindowsFileSystem::getScheduleLocation() const {
+fs::path WindowsFileSystem::getSchedulerLocation() const {
     // Fallback value
 	// I don't know how should I correct impelemt this now, but I must give a value.
     return fs::current_path();

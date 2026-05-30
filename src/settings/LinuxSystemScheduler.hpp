@@ -1,6 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
-#include "ISystemSchedule.hpp"
+#include "ISystemScheduler.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
 #include "internal/AppConstants.hpp"
 
@@ -10,7 +10,7 @@
 
 namespace fs = std::filesystem;
 
-class LinuxSystemSchedule : public ISystemSchedule{
+class LinuxSystemScheduler : public ISystemScheduler{
 private:
 	Logs& m_logs;
 	IFileSystem& m_fs;
@@ -20,10 +20,10 @@ private:
 	const fs::path m_serviceFile;
 	const fs::path m_timerFile;
 public:
-	LinuxSystemSchedule(Logs& logs, IFileSystem& fs) : 
+	LinuxSystemScheduler(Logs& logs, IFileSystem& fs) : 
 		m_logs(logs), m_fs(fs),
-		m_serviceFile(fs.getScheduleLocation() / fs::path(rwal::constants::files::SERVICE_FILE)),
-		m_timerFile(fs.getScheduleLocation() / fs::path(rwal::constants::files::TIMER_FILE))
+		m_serviceFile(fs.getSchedulerLocation() / fs::path(rwal::constants::files::SERVICE_FILE)),
+		m_timerFile(fs.getSchedulerLocation() / fs::path(rwal::constants::files::TIMER_FILE))
 	{}
 	std::string get() const override;
 	std::string set(const std::string& value) override;
