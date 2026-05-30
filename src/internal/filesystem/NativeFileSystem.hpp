@@ -31,6 +31,7 @@ public:
 	fs::path getPicturesLocation() const override = 0;
 	fs::path getTempLocation() const override = 0;
 	fs::path getConfigLocation() const override = 0;
+	fs::path getScheduleLocation() const override = 0;
 	
 	// Handle errors
 	std::string getLastError() const override;

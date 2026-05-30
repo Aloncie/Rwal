@@ -9,5 +9,6 @@ public:
 	fs::path getPicturesLocation() const override;
 	fs::path getTempLocation() const override;
 	fs::path getConfigLocation() const override;
+	fs::path getScheduleLocation() const override;
 };
 
