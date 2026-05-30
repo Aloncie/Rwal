@@ -2,6 +2,7 @@
 #include "logs/logs.hpp"
 #include "ISystemSchedule.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
+#include "internal/AppConstants.hpp"
 
 #include <string>
 #include <filesystem>

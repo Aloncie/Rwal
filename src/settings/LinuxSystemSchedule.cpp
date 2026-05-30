@@ -1,5 +1,4 @@
 #include "LinuxSystemSchedule.hpp"
-#include "internal/AppConstants.hpp"
 #include "internal/platform/env_utils.hpp"
 
 #include <fstream>
@@ -14,16 +13,13 @@ namespace mod = rwal::logs::modules;
 using namespace rwal::systemd;
 
 bool LinuxSystemSchedule::create() {
-	const fs::path service_file = m_fs.getScheduleLocation() / fs::path(rwal::constants::files::SERVICE_FILE);
-	const fs::path timer_file = m_fs.getScheduleLocation() / fs::path(rwal::constants::files::TIMER_FILE);
-	
-	if (!m_fs.exists(service_file)){
+	if (!m_fs.exists(m_serviceFile)){
 		bool success = createService();
 		if (!success){
 			return false;
 		}
 	}
-	if (!m_fs.exists(timer_file)){
+	if (!m_fs.exists(m_timerFile)){
         bool success = createTimer();
         if (!success){
             return false;
@@ -36,17 +32,18 @@ bool LinuxSystemSchedule::status() const {
 	try {
 		int code = rwal::systemd::exec("systemctl --user is-active " + std::string(rwal::constants::files::TIMER_FILE));
 		if (code == 0) {
-			m_logs.writeLogs(lvl::Info, mod::Core, "Success status check, result is true");
+			m_logs.writeLogs(lvl::Info, mod::Schedule, "Success status check, result is true");
 			return true;
 		}
 	} catch (const std::exception& e) {
-		m_logs.writeLogs(lvl::Error, mod::Core, "Failed to check timer status: " + std::string(e.what()));
+		m_logs.writeLogs(lvl::Error, mod::Schedule, "Failed to check timer status: " + std::string(e.what()));
 	}
-	m_logs.writeLogs(lvl::Error, mod::Core, "Success status check, result is false");
+	m_logs.writeLogs(lvl::Info, mod::Schedule, "Success status check, result is false");
 	return false;
 }
 bool LinuxSystemSchedule::createService(){
 	m_logs.writeLogs(lvl::Debug, mod::Schedule, "Try to create service file");
+	std::string executable_path = m_fs.getBinaryLocation().string();
 	std::ofstream service(m_serviceFile);
 	if (service.is_open()){
 		service <<
@@ -56,7 +53,7 @@ bool LinuxSystemSchedule::createService(){
 		"WantedBy=default.target\n\n"
 		"[Service]\n"
 		"Type=oneshot\n"
-		"ExecStart=/usr/local/bin/rwal --change\n"
+		"ExecStart=\"" + executable_path + "\" --change\n"
 		"Restart=on-failure\n"
 		"RestartSec=2s\n"
 		"StartLimitBurst=3\n";
@@ -74,13 +71,14 @@ bool LinuxSystemSchedule::createTimer(){
 	m_logs.writeLogs(lvl::Debug, mod::Schedule, "Try to create timer file");
 	std::ofstream timer(m_timerFile);
 	if (timer.is_open()){
-		timer << "[Unit]\n"
-		<< "Description=Activates " << rwal::constants::files::SERVICE_FILE << " periodically\n\n"
-		<< "[Timer]\n"
-		<< "OnCalendar=\n"
-		<< "Unit=" << rwal::constants::files::SERVICE_FILE << "\n\n"
-		<< "[Install]\n"
-		<< "WantedBy=timers.target\n";
+		timer <<
+		"[Unit]\n"
+		"Description=Activates " + std::string(rwal::constants::files::SERVICE_FILE) + " periodically\n\n"
+		"[Timer]\n"
+		"OnCalendar=\n"
+		"Unit=" + std::string(rwal::constants::files::SERVICE_FILE) + "\n\n"
+		"[Install]\n"
+		"WantedBy=timers.target\n";
 		timer.close();
 		m_logs.writeLogs(lvl::Info, mod::Schedule, "Success creation timer file");
 	}
@@ -133,15 +131,13 @@ std::string LinuxSystemSchedule::get() const {
 		return "None";
 	}
 
-	auto getLocationInput = getLocation();
-	if (!getLocationInput.has_value()){
-		m_logs.writeLogs(lvl::Error, mod::Schedule, "Failed to get location");
+	if (!m_fs.exists(m_timerFile)){
+		m_logs.writeLogs(lvl::Error, mod::Schedule, "Timer file doesn't exist");
 		return "Not found";
 	}
 
-	fs::path location = getLocationInput.value();
 	std::string line;
-	std::ifstream file(location / rwal::constants::files::TIMER_FILE);
+	std::ifstream file(m_timerFile);
 
 	if (file.is_open()){
 		while (getline(file,line)){
@@ -207,7 +203,7 @@ std::string LinuxSystemSchedule::set(const std::string& value) {
 		return failedLog;
 	}
 
-	std::fstream out_file(location / rwal::constants::files::TIMER_FILE, std::ios::out);	
+	std::fstream out_file(m_timerFile, std::ios::out);	
 	if (!out_file.is_open()){
 		m_logs.writeLogs(lvl::Error, mod::Schedule, "Failed to create/open rwal.timer to write");
 		return failedLog;
