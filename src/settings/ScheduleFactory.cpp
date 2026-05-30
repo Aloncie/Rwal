@@ -8,9 +8,9 @@
 	#include "NullSystemSchedule.hpp"
 #endif
 
-std::unique_ptr<ISystemSchedule> createPlatformSchedule(Logs& logs) {
+std::unique_ptr<ISystemSchedule> createPlatformSchedule(Logs& logs, IFileSystem& fs) {
 #if defined(__linux__)
-    return std::make_unique<LinuxSystemSchedule>(logs);
+    return std::make_unique<LinuxSystemSchedule>(logs, fs);
 #elif defined(_WIN32)
 	return std::make_unique<WindowsSystemSchedule>(logs);
 #else

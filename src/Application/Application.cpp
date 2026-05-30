@@ -65,7 +65,7 @@ int Application::run(int argc, char* argv[]) {
 		return 1;
 	}
     TUIManager tuim;
-	std::unique_ptr<ISystemSchedule> schedule = createPlatformSchedule(logs);
+	std::unique_ptr<ISystemSchedule> schedule = createPlatformSchedule(logs, *fs);
 
     tuim.initUI();
 
