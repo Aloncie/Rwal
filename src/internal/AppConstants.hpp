@@ -26,7 +26,6 @@ namespace rwal::constants {
     }
 
     namespace dirs {
-        inline constexpr std::string_view LINUX_SYSTEMD_USER = ".config/systemd/user";
         inline constexpr std::string_view DOWNLOADS_DIR = "downloads";
     }
 

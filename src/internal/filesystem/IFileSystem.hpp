@@ -30,11 +30,12 @@ public:
 	virtual bool isRegularFile(const fs::path& path) const = 0;
 	virtual std::optional<fs::file_time_type> getLastModifiedTime(const fs::path& path) const = 0;
 
-	// Qt path resolution
+	// OS specific methods
 	virtual fs::path getAppLocalDataLocation() const = 0;
 	virtual fs::path getPicturesLocation() const = 0;
 	virtual fs::path getTempLocation() const = 0;
 	virtual fs::path getConfigLocation() const = 0;
+	virtual fs::path getScheduleLocation() const = 0;
 
 	// Error handling
 	virtual std::string getLastError() const = 0;
