@@ -41,6 +41,12 @@ fs::path WindowsFileSystem::getConfigLocation() const {
 
 fs::path WindowsFileSystem::getScheduleLocation() const {
     // Fallback value
-	// I don't know how to correct impelemt this, but I must give a value.
+	// I don't know how should I correct impelemt this now, but I must give a value.
     return fs::current_path();
+}
+
+fs::path WindowsFileSystem::getBinaryLocation() const {
+    // Fallback value
+	// I don't know how should I correct impelemt this now, but I must give a value.
+    return fs::current_path() / "rwal";
 }

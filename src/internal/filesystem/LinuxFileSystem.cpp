@@ -1,10 +1,12 @@
 #include "LinuxFileSystem.hpp"
 
 #include <cstdlib>
+#include <unistd.h>
+#include <limits.h>
 
 // Question: Why fallback value instead of std::optional?
 //
-// The contract is: "I will always give you a usable directory path." 
+// The contract is: "I will always give you a usable path." 
 // current_path() guarantees that. No optional, no error propagation, no caller burden.
 
 fs::path LinuxFileSystem::getAppLocalDataLocation() const {
@@ -15,7 +17,7 @@ fs::path LinuxFileSystem::getAppLocalDataLocation() const {
         return fs::path(home) / ".local" / "share";
 	}
 	// Fallback value
-    return fs::current_path();
+    return fs::current_path() / ".local" / "share";
 }
 
 fs::path LinuxFileSystem::getPicturesLocation() const {
@@ -49,3 +51,15 @@ fs::path LinuxFileSystem::getScheduleLocation() const {
     // Fallback value
     return fs::current_path() / ".config/systemd/user";
 }
+
+fs::path LinuxFileSystem::getBinaryLocation() const {
+	char buffer[PATH_MAX];
+	ssize_t len = readlink("/proc/self/exe", buffer, sizeof(buffer));
+	if (len != -1) {
+		buffer[len] = '\0';
+        return fs::path(buffer);
+    }
+    // Fallback value
+	return fs::current_path() / "rwal";
+}
+
