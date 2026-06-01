@@ -85,7 +85,7 @@ int Application::run(int argc, char* argv[]) {
     AppController controller(navigator, tuim);
     logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in normal mode");
 	while (controller.handleStdin()) {
-		// small sleep to avoid CPU usage	
+		// small sleep to avoid CPU usage
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
     tuim.shutdownUI();
