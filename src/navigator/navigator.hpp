@@ -16,7 +16,7 @@ public:
 	Navigator(Logs& logs) : m_logs(logs) {}
 	void printCurrentMenu();
 	void start(const std::string InitialMenu);
-	MenuResponce processInput(std::string& input, TUIManager& ui);
+	MenuResponse processInput(std::string& input, TUIManager& ui);
 	void registerMenu(const std::string& name, std::unique_ptr<Menu> menu);
 	const std::string& getCurrentValidChoices() const;
 };

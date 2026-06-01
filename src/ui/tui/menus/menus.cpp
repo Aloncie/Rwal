@@ -23,7 +23,7 @@ std::vector<std::string> MainMenu::getLines() {
         ""  // Empty line for spacing
     };
 }
-MenuResponce MainMenu::handleInput(const std::string& input) {
+MenuResponse MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
 		std::thread([this] {
 			auto error = m_wm.refresh(m_env, m_netmanager, m_keywords, &m_uim);
@@ -58,7 +58,7 @@ std::vector<std::string> SettingsMenu::getLines() {
     };
 }
 
-MenuResponce SettingsMenu::handleInput(const std::string& input) {
+MenuResponse SettingsMenu::handleInput(const std::string& input) {
     if (input == "1") {
         return {MenuId::SCHEDULER, false, false};
     } else if (input == "2") {
@@ -91,7 +91,7 @@ std::vector<std::string> KeywordsMenu::getLines() {
     return lines;
 }
 
-MenuResponce KeywordsMenu::handleInput(const std::string& input) {
+MenuResponse KeywordsMenu::handleInput(const std::string& input) {
     if (input == "a") {
         m_uim.requestInput([this](std::string keyword) {
 			auto keywords = m_keywords.loadKeywordsFromConfig();
@@ -136,7 +136,7 @@ std::vector<std::string> SchedulerMenu::getLines() {
     };
 }
 
-MenuResponce SchedulerMenu::handleInput(const std::string& input) {
+MenuResponse SchedulerMenu::handleInput(const std::string& input) {
     if (input == "h") {
 		std::string result = m_scheduler.set("hourly");
         return {MenuId::SETTINGS, false, false, result};

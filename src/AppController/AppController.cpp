@@ -13,7 +13,7 @@ bool AppController::handleStdin() {
     int ch = getch();
     if (ch == ERR) return true;  // no input, keep going
 
-    MenuResponce resp;
+    MenuResponse resp;
     if (m_tui.isInputActive()) {
         m_tui.processInputChar(ch);
     } else {

@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-struct MenuResponce {
+struct MenuResponse {
     std::string nextMenu;
     bool IsWrongInput;
     bool needQuit;
@@ -23,7 +23,7 @@ class Menu {
 public:
     virtual ~Menu() = default;
     virtual std::vector<std::string> getLines() = 0;
-    virtual MenuResponce handleInput(const std::string& input) = 0;
+    virtual MenuResponse handleInput(const std::string& input) = 0;
     virtual const std::string& getValidChoices() const = 0;
 };
 
@@ -39,7 +39,7 @@ private:
 public:
     MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& netmanager);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
@@ -54,7 +54,7 @@ private:
 public:
     SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
@@ -68,7 +68,7 @@ private:
 public:
     KeywordsMenu(Keywords& keywords, IUserInterface& ui, IConfigReader& config);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
@@ -80,7 +80,7 @@ private:
 public:
     SchedulerMenu(ISystemScheduler& scheduler);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
