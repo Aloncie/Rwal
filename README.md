@@ -56,7 +56,7 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 
 # 🤝 Special Thanks
 
-- **[Qt Project]** - For the robust framework.
+- **[libcurl]** — For network requests and image downloads.
 - **[ncurses]** - For the classic terminal UI capabilities.
 - **[nlohmann/json]** - For making C++ JSON handling sane.
 
@@ -81,7 +81,7 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 [PreviewA]: https://github.com/user-attachments/assets/9de86ea7-a8f6-4b4b-8098-25ccc14520bb
 [PreviewB]: https://github.com/user-attachments/assets/c01c9cea-cbe5-4ddd-8f00-f4731b461fb6
 
-[Qt Project]: https://www.qt.io/
+[libcurl]: https://curl.se/libcurl/
 [ncurses]: https://invisible-island.net/ncurses/
 [nlohmann/json]: https://github.com/nlohmann/json
 
