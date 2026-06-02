@@ -13,8 +13,6 @@ namespace mod = rwal::logs::modules;
 	#include <curses.h>
 #endif
 
-Keywords::Keywords(IConfigReader& config, Logs& logs) : m_config(config), m_logs(logs) {}
-
 std::vector<std::string> Keywords::loadKeywordsFromConfig() const {
     auto search = m_config.get<nlohmann::json>("/search");
     if (search.contains("keywords") && search["keywords"].is_array()) {
@@ -86,7 +84,7 @@ std::string Keywords::InteractiveGetKeyword(IUserInterface& ui) {
 }
 
 void Keywords::editKeywords(IUserInterface& ui) {
-	fs::path temp_path = fs::temp_directory_path() / "keywords.txt";
+	fs::path temp_path = m_fs.getTempLocation() / "keywords.txt";
 
 	std::ofstream ofile(temp_path);
 	if (!ofile.is_open()) return;
@@ -99,6 +97,7 @@ void Keywords::editKeywords(IUserInterface& ui) {
 	
 	if (!ui.prepareForExternalCommand()) {
 		ui.showMessage("Failed to open editor");
+		m_logs.writeLogs(lvl::Error, mod::Keywords, "Failed to open editor");
 		return;
 	}
 
@@ -106,6 +105,7 @@ void Keywords::editKeywords(IUserInterface& ui) {
 
 	if (!ui.refresh()){
 		ui.showMessage("Failed to refresh UI");
+		m_logs.writeLogs(lvl::Error, mod::Keywords, "Failed to refresh UI");
         return;
 	}
 
@@ -127,7 +127,7 @@ void Keywords::editKeywords(IUserInterface& ui) {
 		ui.showMessage("Failed operation. More info in logs");
 	}
 
-	m_config.set("search", nlohmann::json{{"keywords", input_keywords}});
-	fs::remove(temp_path);
+	m_config.set("/search/keywords", input_keywords);
+	m_fs.remove(temp_path);
 }
 
