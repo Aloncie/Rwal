@@ -14,6 +14,7 @@
 
 #include "funcs/funcs.hpp"
 #include <algorithm>
+#include <format>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
