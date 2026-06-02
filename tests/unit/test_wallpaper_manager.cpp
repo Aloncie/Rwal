@@ -36,14 +36,14 @@ protected:
 
 
 	void SetUp() override {
-		mockLogs = std::make_shared<testing::NiceMock<MockLogs>>();
-		mockCurlWrapper = std::make_shared<testing::NiceMock<MockCurlWrapper>>(*mockLogs);
+		mockFileSystem = std::make_shared<testing::NiceMock<MockFileSystem>>();
+		mockLogs = std::make_shared<testing::NiceMock<MockLogs>>(*mockFileSystem);
+		mockCurlWrapper = std::make_shared<testing::NiceMock<MockCurlWrapper>>(*mockLogs, *mockFileSystem);
 		mockSetter = std::make_shared<testing::NiceMock<MockIWallpaperSetter>>();
 		mockConfigReader = std::make_shared<testing::NiceMock<MockConfigReader>>(*mockLogs);
-		mockKeywords = std::make_shared<testing::NiceMock<MockKeywords>>(*mockConfigReader, *mockLogs);
+		mockKeywords = std::make_shared<testing::NiceMock<MockKeywords>>(*mockConfigReader, *mockLogs, *mockFileSystem);
 		mockNetworkManager = std::make_shared<testing::NiceMock<MockNetworkManager>>(*mockCurlWrapper, *mockConfigReader, *mockLogs);
 		mockTUIManager = std::make_shared<testing::NiceMock<MockTUIManager>>();
-		mockFileSystem = std::make_shared<testing::NiceMock<MockFileSystem>>();
 		wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 
 		temp_dir = fs::temp_directory_path() / "wallpaper_manager_test";
@@ -57,7 +57,7 @@ protected:
 	fs::path createFakeWallpaper(const std::string& filename) {
 		fs::path filePath = temp_dir / filename;
 		std::ofstream file(filePath);
-		file << "test wallpaper content";
+		file << "Fake wallpaper content for rwal tests";
 		file.close();
 		return filePath;
 	}
@@ -162,7 +162,6 @@ TEST_F(WallpaperManagerTest, SaveCurrent_ReturnsSuccess) {
     EXPECT_CALL(*mockFileSystem, listDirectory(downloadsDir, rwal::constants::wallpaper::FILE_PREFIX.data())).WillOnce(Return(std::vector<fs::path>{fakeWallpaper}));
 
     EXPECT_CALL(*mockFileSystem, getPicturesLocation()).WillOnce(Return(picturesDir));
-    EXPECT_CALL(*mockFileSystem, getApplicationName()).WillOnce(Return("rwal"));
 	EXPECT_CALL(*mockFileSystem, exists(rwalDir)).WillOnce(Return(false));
     EXPECT_CALL(*mockFileSystem, createDirectories(rwalDir)).WillOnce(Return(true));
 
