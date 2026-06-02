@@ -13,13 +13,13 @@ using ::testing::Invoke;
 class ConfigTest : public ::testing::Test {
 protected:
     std::shared_ptr<MockLogs> mockLogs;
-    std::shared_ptr<MockFileSystem> mockFs;
+    std::shared_ptr<MockFileSystem> mockFileSystem;
     std::unique_ptr<Config> config;
 
     void SetUp() override {
-        mockLogs = std::make_shared<MockLogs>();
-        mockFs = std::make_shared<MockFileSystem>();
-        config = std::make_unique<Config>(*mockLogs, *mockFs);
+		mockFileSystem = std::make_shared<MockFileSystem>();
+        mockLogs = std::make_shared<MockLogs>(*mockFileSystem);
+        config = std::make_unique<Config>(*mockLogs, *mockFileSystem);
     }
 };
 
