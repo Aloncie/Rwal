@@ -6,8 +6,8 @@
       "displayName": "Windows Release (Ninja)",
       "description": "Windows CLI build with vcpkg for curl/json",
       "generator": "Ninja",
-      "architecture": "x64",
       "binaryDir": "${sourceDir}/build/${presetName}",
+	  "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
         "BUILD_TUI": "OFF",
         "BUILD_CLI": "ON",
