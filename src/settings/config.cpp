@@ -27,7 +27,7 @@ void Config::getConfigFileData(){
         if (file.is_open()) {
             try {
                 m_data = nlohmann::json::parse(file);
-                m_logs.writeLogs(lvl::Info, mod::Config, "Config loaded/reloaded: " + configPath);
+                m_logs.writeLogs(lvl::Info, mod::Config, "Config loaded/reloaded: " + configPath.string());
             } catch (nlohmann::json::parse_error& e) {
                 m_logs.writeLogs(lvl::Error, mod::Config, "JSON Parse Error: " + std::string(e.what()));
             }
