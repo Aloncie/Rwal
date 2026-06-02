@@ -102,7 +102,8 @@ void TUIManager::showMessage(std::string_view message)  {
 
     std::string lower(message);
     std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
-
+	
+	// Message color
     int colorPair = 0;
     if (lower.find("success") != std::string::npos) colorPair = 1;
     else if (lower.find("failed") != std::string::npos || 
