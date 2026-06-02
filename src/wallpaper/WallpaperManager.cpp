@@ -61,7 +61,7 @@ std::string WallpaperManager::saveCurrent() const {
 		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to copy file: " + current.string() + " to " + dest.string());
 		return "Failed to save wallpaper: " + m_fs.getLastError();
 	}
-	return "Wallpaper successfully saved";
+	return "Wallpaper uccessfully saved";
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {
