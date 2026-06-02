@@ -3,7 +3,8 @@
 build.py — Cross-platform build wrapper for Rwal
 Usage:
   python build.py [--clean] [--mode tui|cli|all] [--preset <name>]
-
+    
+  --help or -h — Show this help
   --clean — Remove the build directory and rebuild
 
 Modes (Linux only):
@@ -38,7 +39,10 @@ def reload_from_registry(var_name):
 
 def main():
     is_windows = platform.system() == "Windows"
-
+    # Handle --help
+    if "--help" in sys.argv or "-h" in sys.argv:
+        print(__doc__)
+        sys.exit(0)
     # Handle --clean
     if "--clean" in sys.argv:
         build_dir = "build"
