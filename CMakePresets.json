@@ -9,10 +9,11 @@
       "binaryDir": "${sourceDir}/build/${presetName}",
 	  "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
+		"CMAKE_BUILD_TYPE": "Release",
         "BUILD_TUI": "OFF",
         "BUILD_CLI": "ON",
         "RWAL_FORCE_DE": "Windows",
-        "CMAKE_PREFIX_PATH": "$env{QTDIR}"
+		"VCPKG_TRIPLET": "x64-windows"
       }
     },
     {
