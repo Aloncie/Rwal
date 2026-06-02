@@ -24,10 +24,10 @@ class CurlWrapper {
     nlohmann::json j;
 	Logs& m_logs;
 	IFileSystem& m_fs;
-
-    void clearning();
-    void generateUniqueSuffix(std::string& filename);
-    std::string getFilenameFromUrl(const std::string& image_url);
+protected:
+    virtual void clearning();
+    virtual void generateUniqueSuffix(std::string& filename);
+    virtual std::string getFilenameFromUrl(const std::string& image_url);
 public:
 	CurlWrapper(Logs& logs, IFileSystem& fs);
 	virtual ~CurlWrapper();

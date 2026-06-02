@@ -9,8 +9,7 @@ using ::testing::Return;
 
 class MockConfigReader : public IConfigReader {
 public:
-	using IConfigReader::IConfigReader;
-	MockConfigReader() = default;
+	MockConfigReader(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {}
 	~MockConfigReader() override = default;
 
     MOCK_METHOD(nlohmann::json&, all, (), (override));
@@ -18,7 +17,6 @@ public:
     MOCK_METHOD(nlohmann::json, getImpl, (const std::string& key), (override));
     MOCK_METHOD(bool, setImpl, (const std::string& key, const nlohmann::json& value), (override));
 	
-	explicit MockConfigReader(Logs& logs) : IConfigReader(logs) {}
     // Helper to inject test data
     void setSearchKeywords(const std::vector<std::string>& keywords) {
 		nlohmann::json searchJson = {

@@ -24,7 +24,6 @@ private:
     void getConfigFileData();
 	fs::path getConfigPath();
 
-	IFileSystem& m_fs;
 protected:
     nlohmann::json getImpl(const std::string& key) override {
         if (m_data.contains(nlohmann::json::json_pointer(key))) {
