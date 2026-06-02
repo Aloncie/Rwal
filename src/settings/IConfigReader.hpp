@@ -1,5 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
+#include "internal/filesystem/IFileSystem.hpp"
 
 #include <nlohmann/json.hpp>
 #include <string>
@@ -10,9 +11,10 @@ namespace mod = rwal::logs::modules;
 class IConfigReader {
 protected:
 	Logs& m_logs;
+	IFileSystem& m_fs;
 public:
 	virtual ~IConfigReader() = default;
-	explicit IConfigReader(Logs& logs) : m_logs(logs) {}
+	IConfigReader(Logs& logs, IFileSystem& fs) : m_logs(logs), m_fs(fs) {}
 	template<typename G>
 	G get(const std::string& key) {
 		try {

@@ -6,9 +6,12 @@
 #include "internal/utils/vector_utils.hpp"
 
 #include <fstream>
+#include <filesystem>
 
+namespace fs = std::filesystem;
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
+
 #ifndef _WIN32
 	#include <curses.h>
 #endif

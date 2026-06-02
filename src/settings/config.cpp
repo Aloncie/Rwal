@@ -15,7 +15,7 @@ fs::path Config::getConfigPath(){
 	return configPath;
 }
 
-Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs), m_fs(fs) {
+Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
     configPath = getConfigPath();
     initValidators();
 	getConfigFileData();
