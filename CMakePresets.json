@@ -4,24 +4,48 @@
     {
       "name": "windows-release",
       "displayName": "Windows Release (Ninja)",
-      "description": "Windows CLI build with Qt6 via QTDIR, vcpkg for curl/json",
+      "description": "Windows CLI build with vcpkg for curl/json",
       "generator": "Ninja",
       "architecture": "x64",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
         "BUILD_TUI": "OFF",
+        "BUILD_CLI": "ON",
         "RWAL_FORCE_DE": "Windows",
         "CMAKE_PREFIX_PATH": "$env{QTDIR}"
       }
     },
     {
       "name": "linux-release",
-      "displayName": "Linux Release (Ninja)",
-      "description": "Linux TUI+CLI build with Qt6 via QTDIR",
+      "displayName": "Linux Release — TUI+CLI (default)",
+      "description": "Linux build with both TUI and CLI",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
-        "CMAKE_PREFIX_PATH": "$env{QTDIR}"
+        "BUILD_TUI": "ON",
+        "BUILD_CLI": "ON"
+      }
+    },
+    {
+      "name": "linux-release-tui",
+      "displayName": "Linux Release — TUI only",
+      "description": "Linux build with TUI only (no CLI)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TUI": "ON",
+        "BUILD_CLI": "OFF"
+      }
+    },
+    {
+      "name": "linux-release-cli",
+      "displayName": "Linux Release — CLI only",
+      "description": "Linux build with CLI only (no TUI)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TUI": "OFF",
+        "BUILD_CLI": "ON"
       }
     }
   ],
@@ -34,6 +58,16 @@
     {
       "name": "linux-release",
       "configurePreset": "linux-release",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-release-tui",
+      "configurePreset": "linux-release-tui",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-release-cli",
+      "configurePreset": "linux-release-cli",
       "configuration": "Release"
     }
   ]
