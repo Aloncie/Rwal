@@ -41,12 +41,12 @@ def main():
 
     # Handle --clean
     if "--clean" in sys.argv:
-    build_dir = "build"
-    if os.path.exists(build_dir):
-        print(f"\033[33m[CLEAN]\033[0m Removing {build_dir}/")
-        shutil.rmtree(build_dir)
-    # Don't exit — continue to build after cleaning
-    sys.argv.remove("--clean")  # remove it so preset parsing still works
+        build_dir = "build"
+        if os.path.exists(build_dir):
+            print(f"\033[33m[CLEAN]\033[0m Removing {build_dir}/")
+            shutil.rmtree(build_dir)
+        # Don't exit — continue to build after cleaning
+        sys.argv.remove("--clean")  # remove it so preset parsing still works
 
     # --- Windows path ---
     if is_windows:
