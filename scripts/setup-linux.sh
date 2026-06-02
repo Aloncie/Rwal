@@ -50,27 +50,11 @@ check_json()    { pkg-config --exists nlohmann_json 2>/dev/null || [ -f /usr/inc
 check_ncurses() { pkg-config --exists ncurses 2>/dev/null || [ -f /usr/include/ncurses.h ] || [ -f /usr/include/ncurses/ncurses.h ]; }
 check_glib2()   { pkg-config --exists glib-2.0 2>/dev/null; }
 
-check_qt6() {
-    if ! command -v cmake >/dev/null 2>&1; then return 1; fi
-    local tmpdir
-    tmpdir=$(mktemp -d)
-    cat > "$tmpdir/CMakeLists.txt" <<'EOF'
-cmake_minimum_required(VERSION 3.16)
-project(Qt6Check)
-find_package(Qt6 REQUIRED COMPONENTS Core)
-EOF
-    cmake -S "$tmpdir" -B "$tmpdir/build" -DCMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH:-}" &>/dev/null
-    local ret=$?
-    rm -rf "$tmpdir"
-    return $ret
-}
-
 # --- Map Functional Tools to System Names Explicitly ---
 declare -A TOOLS_SATISFIED
 TOOLS_SATISFIED[git]=1;     check_git     || TOOLS_SATISFIED[git]=0
 TOOLS_SATISFIED[gxx]=1;     check_gxx     || TOOLS_SATISFIED[gxx]=0
 TOOLS_SATISFIED[cmake]=1;   check_cmake   || TOOLS_SATISFIED[cmake]=0
-TOOLS_SATISFIED[qt6]=1;     check_qt6     || TOOLS_SATISFIED[qt6]=0
 TOOLS_SATISFIED[curl]=1;    check_curl    || TOOLS_SATISFIED[curl]=0
 TOOLS_SATISFIED[json]=1;    check_json    || TOOLS_SATISFIED[json]=0
 TOOLS_SATISFIED[ncurses]=1; check_ncurses || TOOLS_SATISFIED[ncurses]=0
@@ -89,7 +73,6 @@ case "$OS_ID" in
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("g++")
-        [ ${TOOLS_SATISFIED[qt6]} -eq 0 ]     && MISSING_PKGS+=("qtbase6-dev")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("libcurl4-openssl-dev")
         [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("libnlohmann-json-dev")
         [ ${TOOLS_SATISFIED[ncurses]} -eq 0 ] && MISSING_PKGS+=("libncurses5-dev")
@@ -118,7 +101,6 @@ case "$OS_ID" in
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("gcc-c++")
-        [ ${TOOLS_SATISFIED[qt6]} -eq 0 ]     && MISSING_PKGS+=("qt6-qtbase-devel")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("libcurl-devel")
         [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann-json-devel")
         [ ${TOOLS_SATISFIED[ncurses]} -eq 0 ] && MISSING_PKGS+=("ncurses-devel")
@@ -146,7 +128,6 @@ case "$OS_ID" in
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("gcc")
-        [ ${TOOLS_SATISFIED[qt6]} -eq 0 ]     && MISSING_PKGS+=("qt6-base")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("curl")
         [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann-json")
         [ ${TOOLS_SATISFIED[ncurses]} -eq 0 ] && MISSING_PKGS+=("ncurses")
@@ -165,7 +146,6 @@ case "$OS_ID" in
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("gcc-c++")
-        [ ${TOOLS_SATISFIED[qt6]} -eq 0 ]     && MISSING_PKGS+=("libqt6-qtbase-devel")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("libcurl-devel")
         [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann-json-devel")
         [ ${TOOLS_SATISFIED[ncurses]} -eq 0 ] && MISSING_PKGS+=("ncurses-devel")
