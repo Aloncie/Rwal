@@ -72,6 +72,16 @@ bool NativeFileSystem::copyFile(const fs::path& current, const fs::path& dest) c
 	return true;
 }
 
+bool NativeFileSystem::rename(const fs::path& oldPath, const fs::path& newPath) {
+	std::error_code ec;
+	fs::rename(oldPath, newPath, ec);
+    if (ec) {
+        m_LastError = "Failed to rename: " + ec.message();
+        return false;
+    }
+    return true;
+}
+
 std::vector<fs::path> NativeFileSystem::listDirectory(const fs::path& path, const std::string& prefix) const {
     std::vector<fs::path> result;
     std::error_code ec;

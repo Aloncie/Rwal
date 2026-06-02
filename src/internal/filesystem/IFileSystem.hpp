@@ -29,6 +29,7 @@ public:
 	virtual bool remove(const fs::path& path) = 0;
 	virtual bool isRegularFile(const fs::path& path) const = 0;
 	virtual std::optional<fs::file_time_type> getLastModifiedTime(const fs::path& path) const = 0;
+	virtual bool rename(const fs::path& oldPath, const fs::path& newPath) = 0;
 
 	// OS specific methods
 	virtual fs::path getAppLocalDataLocation() const = 0;
