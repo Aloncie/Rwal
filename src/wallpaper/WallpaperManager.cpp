@@ -61,13 +61,13 @@ std::string WallpaperManager::saveCurrent() const {
 		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Failed to copy file: " + current.string() + " to " + dest.string());
 		return "Failed to save wallpaper: " + m_fs.getLastError();
 	}
-	return "Wallpaper saved to: " + dest.string();
+	return "Wallpaper successfully saved";
 }
 
 fs::path WallpaperManager::getCurrentWallpaperPath() const {
     fs::path dir = m_fs.getAppLocalDataLocation() / ORGANIZATION_NAME / APP_NAME / rwal::constants::dirs::DOWNLOADS_DIR;
 	m_logs.writeLogs(lvl::Info, mod::Wallpaper, "Trying to get wallpaper from: " + dir.string());
-    if (!fs::exists(dir)){
+    if (!m_fs.exists(dir)) {
 		m_logs.writeLogs(lvl::Error, mod::Wallpaper, "Downloads directory doesn't exist: " + dir.string());
 		return "";
 	}
