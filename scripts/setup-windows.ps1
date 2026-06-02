@@ -19,11 +19,10 @@ Options:
   -Help          Show this help message
 
 What this script does:
-  1. Checks for Git, CMake, Qt6, vcpkg and C++ compiler.
+  1. Checks for Git, CMake, vcpkg and C++ compiler.
   2. Installs missing tools via winget (or shows manual URLs)
   3. Bootstraps vcpkg for C++ libraries
   4. Installs nlohmann-json and curl via vcpkg
-  5. Verifies Qt6 installation (shows installer URL if missing)
 "@
     exit 0
 }
@@ -364,122 +363,7 @@ if (-not $SkipVcpkg) {
     Write-Warning "Skipping vcpkg package installation. You'll need to provide nlohmann-json and curl manually."
 }
 
-# ============================================================
-# 7. Check for Qt6
-# ============================================================
 
-$QtBinPath = $null
-
-# Step 0: Fast check of the QTDIR environment variable
-$qtEnv = [Environment]::GetEnvironmentVariable("QTDIR", "User")
-if (-not $qtEnv) {
-    $qtEnv = [Environment]::GetEnvironmentVariable("QTDIR", "Machine")
-}
-
-# If the environment variable exists and points to a valid path, use it
-if ($qtEnv -and (Test-Path $qtEnv)) {
-    Write-Success "Qt6 found via QTDIR variable: $qtEnv"
-    $QtBinPath = $qtEnv
-} 
-else {
-    # If the variable is missing or invalid, start the smart automated search
-    Write-Warning "QTDIR environment variable is not configured. Searching for Qt..."
-    Write-Info "This may take a moment..."
-
-    $foundPaths = [System.Collections.Generic.List[string]]::new()
-
-    # --- Step 1: Find Qt6 via Windows Uninstaller (Official Installer Registry) ---
-    $regPaths = @(
-        "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*",
-        "HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*",
-        "HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"
-    )
-
-    foreach ($reg in $regPaths) {
-        if (Test-Path (Split-Path $reg)) {
-            $apps = Get-ItemProperty -Path $reg -ErrorAction SilentlyContinue | 
-                    Where-Object { $_.DisplayName -like "*Qt*" -or $_.Publisher -like "*The Qt Company*" }
-            
-            foreach ($app in $apps) {
-                if ($app.InstallLocation -and (Test-Path $app.InstallLocation)) {
-                    $foundPaths.Add($app.InstallLocation)
-                }
-            }
-        }
-    }
-
-    # --- Step 2: Check standard installation folders ---
-    $commonDirs = @("C:\Qt", "D:\Qt", "E:\Qt", "$env:ProgramFiles\Qt", "$env:ProgramFiles(x86)\Qt")
-    foreach ($dir in $commonDirs) {
-        if (Test-Path $dir) {
-            $foundPaths.Add($dir)
-        }
-    }
-
-    # Remove duplicates from root paths
-    $uniqueRootPaths = $foundPaths | Select-Object -Unique
-
-    # Search for qmake.exe inside the detected root directories (Fast, limited depth)
-    $finalPaths = [System.Collections.Generic.List[string]]::new()
-    foreach ($root in $uniqueRootPaths) {
-        Get-ChildItem -Path $root -Filter "qmake.exe" -Recurse -Depth 4 -ErrorAction SilentlyContinue | ForEach-Object {
-            # Validate it's Qt6, not Qt5
-            $qmakePath = $_.FullName
-            $qtVersion = & $qmakePath -query QT_VERSION 2>$null
-            if ($qtVersion -and $qtVersion.StartsWith("6.")) {
-                $finalPaths.Add($_.DirectoryName)
-            }
-        }
-    }
-
-    # --- Step 3: Deep scan (Last resort for custom/portable extractions) ---
-    if ($finalPaths.Count -eq 0) {
-        Write-Warning "Qt6 was not found in standard locations. A full disk scan is starting..."
-        Write-Warning "This may take several minutes. Press Ctrl+C to skip."
-        
-        # Detect all local hard drives (C:, D:, etc.)
-        $disks = Get-CimInstance -ClassName Win32_LogicalDisk | Where-Object { $_.DriveType -eq 3 } | Select-Object -ExpandProperty DeviceID
-        
-        foreach ($disk in $disks) {
-            $diskPath = $disk + "\"
-            Write-Info "Scanning $diskPath..."
-            # Recursively scan for qmake.exe, skipping heavy OS folders for performance
-            Get-ChildItem -Path $diskPath -Filter "qmake.exe" -Recurse -ErrorAction SilentlyContinue | 
-                Where-Object { $_.FullName -notlike "*\Windows\*" -and $_.FullName -notlike "*\$Recycle.Bin\*" } |
-                ForEach-Object {
-                    $qmakePath = $_.FullName
-                    $qtVersion = & $qmakePath -query QT_VERSION 2>$null
-                    if ($qtVersion -and $qtVersion.StartsWith("6.")) {
-                        $finalPaths.Add($_.DirectoryName)
-                    }
-                }
-        }
-    }
-
-    # Extract unique final binary directories
-    $uniqueQtPaths = $finalPaths | Select-Object -Unique
-
-    if ($uniqueQtPaths) {
-        # Select the first detected valid path for execution
-        $QtBinPath = $uniqueQtPaths[0]
-        Write-Success "Qt6 automatically located at: $QtBinPath"
-    }
-}
-
-# Final verification and environment setup
-if (-not $QtBinPath) {
-    Write-Warning "Qt6 was not found on this computer."
-    Write-Host "  Please install Qt6 manually:" -ForegroundColor Cyan
-    Write-Host "    - Qt Online Installer: https://qt.io" -ForegroundColor Cyan
-    Write-Host "    - Component Choice: Select Qt 6 with MinGW or MSVC toolchains" -ForegroundColor Cyan
-    Write-Host "  After installation, set the QTDIR variable or leave it in the default C:\Qt directory." -ForegroundColor Cyan
-} else {
-    # Set QTDIR for this session and permanently
-    [Environment]::SetEnvironmentVariable("QTDIR", $QtBinPath, "User")
-    $env:QTDIR = $QtBinPath
-    Write-Success "QTDIR set to: $QtBinPath"
-    Write-Host "Proceeding using path: $QtBinPath" -ForegroundColor Gray
-}
 
 # ============================================================
 # 7. Summary
@@ -493,16 +377,11 @@ Write-Host @"
 
 Write-Host "Next steps:"
 Write-Host "  1. Restart your terminal"
-Write-Host "  2. Build Rwal:"
-Write-Host "     cmake --preset windows-release"
-Write-Host "     cmake --build build/windows-release --preset windows-release"
+Write-Host "  2. Build Rwal via build.py"
 Write-Host ""
 Write-Host "Note: TUI is disabled on Windows, only CLI is supported."
 
 if (-not $hasCompiler) {
     Write-Warning "No C++ compiler found. Install one before building."
-}
-if (-not $QtBinPath) {
-    Write-Warning "Qt6 not found. Install Qt6 and re-run this script."
 }
 
