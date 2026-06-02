@@ -24,9 +24,15 @@ bool AppController::handleStdin() {
             resp = m_navigator.processInput(input, m_tui);
             if (resp.needQuit) return false;  // signal the loop to stop
         }
+		m_navigator.printCurrentMenu();
     }
 
-    m_navigator.printCurrentMenu();
+    // Redraw the menu after any keystroke that leaves input inactive.
+    // This covers both menu navigation AND input completion (Enter).
+    if (!m_tui.isInputActive()) {
+        m_navigator.printCurrentMenu();
+    }
+
     if (!resp.Message.empty()) {
         m_tui.showMessage(resp.Message);
     }
