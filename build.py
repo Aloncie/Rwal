@@ -4,6 +4,8 @@ build.py — Cross-platform build wrapper for Rwal
 Usage:
   python build.py [--clean] [--mode tui|cli|all] [--preset <name>]
 
+  --clean — Remove the build directory and rebuild
+
 Modes (Linux only):
   all   — TUI + CLI combined (default)
   tui   — TUI only
@@ -39,13 +41,12 @@ def main():
 
     # Handle --clean
     if "--clean" in sys.argv:
-        build_dir = "build"
-        if os.path.exists(build_dir):
-            print(f"\033[33m[CLEAN]\033[0m Removing {build_dir}/")
-            shutil.rmtree(build_dir)
-        else:
-            print(f"\033[33m[CLEAN]\033[0m {build_dir}/ not found, nothing to clean")
-        sys.exit(0)
+    build_dir = "build"
+    if os.path.exists(build_dir):
+        print(f"\033[33m[CLEAN]\033[0m Removing {build_dir}/")
+        shutil.rmtree(build_dir)
+    # Don't exit — continue to build after cleaning
+    sys.argv.remove("--clean")  # remove it so preset parsing still works
 
     # --- Windows path ---
     if is_windows:
