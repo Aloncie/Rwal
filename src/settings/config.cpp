@@ -5,7 +5,7 @@ namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
 fs::path Config::getConfigPath(){
-	fs::path configPath = m_fs.getConfigLocation() / ORGANIZATION_NAME / APP_NAME / "config.json";
+	configPath = m_fs.getConfigLocation() / ORGANIZATION_NAME / APP_NAME / "config.json";
 
 	if (!m_fs.exists(configPath.parent_path())) {
 		m_logs.writeLogs(lvl::Info, mod::Config, "Config directory not found, creating it");
@@ -22,7 +22,7 @@ Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs), m_fs(fs) {
 }
 
 void Config::getConfigFileData(){
-	if (std::filesystem::exists(configPath)) {
+	if (m_fs.exists(configPath)) {
         std::ifstream file(configPath);
         if (file.is_open()) {
             try {
@@ -69,7 +69,7 @@ void Config::saveToFile(){
     std::ofstream file(tmp);
     file << m_data.dump(2);
     file.close();
-    std::filesystem::rename(tmp, configPath);  // replacement
+    m_fs.rename(tmp, configPath);  // replacement
 }
 
 void Config::initValidators(){

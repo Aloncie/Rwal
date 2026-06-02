@@ -16,7 +16,7 @@ class Config : public IConfigReader {
 private:
     nlohmann::json m_data;
     std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
-    std::string configPath;
+	fs::path configPath;
 
     void saveToFile();
     void initValidators();

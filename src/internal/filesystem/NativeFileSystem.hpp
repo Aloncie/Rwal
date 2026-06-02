@@ -20,6 +20,7 @@ public:
 	bool copyFile(const fs::path& current, const fs::path& dest) const override;
 	std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix = "") const override;
 	bool remove(const fs::path& path) override;
+	bool rename(const fs::path& oldPath, const fs::path& newPath) override;
 	// Returns false if the file isn't regular or error
 	bool isRegularFile(const fs::path& path) const override;
 	// Methods these can return std::nullopt
