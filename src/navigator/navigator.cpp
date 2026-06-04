@@ -33,7 +33,7 @@ void Navigator::printCurrentMenu() {
 }
 
 MenuResponse Navigator::processInput(std::string& input, TUIManager& ui) {
-    if (!m_currentMenu) return {"", false, false, ""};
+    if (!m_currentMenu) return {""};
 
     MenuResponse resp = m_currentMenu->handleInput(input);
 

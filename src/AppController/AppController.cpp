@@ -3,8 +3,26 @@
 
 #include <ncurses.h>
 
-AppController::AppController(Navigator& nav, TUIManager& tui)
-    : m_navigator(nav), m_tui(tui)
+AppController::AppController(
+    Navigator& nav,
+    TUIManager& tui,
+    WallpaperManager& wallpapermanager,
+    IWallpaperSetter& env,
+    NetworkManager& netmanager,
+    Keywords& keywords,
+    std::jthread& wallpaperThread,
+    std::atomic<bool>& refreshDone,
+    std::string& refreshError
+)
+    : m_navigator(nav)
+    , m_tui(tui)
+    , m_wallpapermanager(wallpapermanager)
+    , m_env(env)
+    , m_netmanager(netmanager)
+    , m_keywords(keywords)
+    , m_wallpaperThread(wallpaperThread)
+    , m_refreshDone(refreshDone)
+    , m_refreshError(refreshError)
 {
     m_navigator.printCurrentMenu();
 }
@@ -22,7 +40,8 @@ bool AppController::handleStdin() {
         if (validChoices.find(inputChar) != std::string::npos) {
             std::string input(1, static_cast<char>(ch));
             resp = m_navigator.processInput(input, m_tui);
-            if (resp.needQuit) return false;  // signal the loop to stop
+            if (resp.needQuit) return false;  // signal the loop to shutdown
+			if (resp.needRefreshWallpaper) launchRefreshWallpaper();
         }
 		m_navigator.printCurrentMenu();
     }
@@ -37,5 +56,30 @@ bool AppController::handleStdin() {
         m_tui.showMessage(resp.Message);
     }
     return true;  // keep going
+}
+
+void AppController::launchRefreshWallpaper() {
+	if (m_wallpaperThread.joinable()) {
+		m_wallpaperThread.join();
+	}
+
+    m_wallpaperThread = std::jthread([this] {
+		auto error = m_wallpapermanager.refresh(m_env, m_netmanager, m_keywords, &m_tui);
+		if (error.has_value()) {
+			m_refreshError = error.value();
+		} else {
+			m_refreshError.clear();
+		}
+        m_refreshDone = true;
+    });
+}
+
+void AppController::checkRefreshDone() {
+    if (m_refreshDone.exchange(false)) {
+		if (!m_refreshError.empty()) {
+            m_tui.showMessage(m_refreshError);
+        }
+		m_navigator.printCurrentMenu();
+    }
 }
 

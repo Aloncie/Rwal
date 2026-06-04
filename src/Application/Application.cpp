@@ -82,12 +82,24 @@ int Application::run(int argc, char* argv[]) {
 
     navigator.start("main");
 
-    AppController controller(navigator, tuim);
     logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in normal mode");
+
+	std::jthread wallpaperThread;
+	std::atomic<bool> refreshDone(false);
+	std::string refreshError;
+
+    AppController controller(navigator, tuim, wm, *env, netmanager, keywords, wallpaperThread, refreshDone, refreshError);
+
 	while (controller.handleStdin()) {
+		controller.checkRefreshDone();
 		// small sleep to avoid CPU usage
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
+	
+	if (wallpaperThread.joinable()) {
+		wallpaperThread.join();
+	}
+
     tuim.shutdownUI();
     return 0;
 #endif

@@ -14,9 +14,10 @@
 
 struct MenuResponse {
     std::string nextMenu;
-    bool IsWrongInput;
-    bool needQuit;
-    std::string Message;
+	std::string Message = "";
+    bool IsWrongInput = false;
+    bool needQuit = false;
+	bool needRefreshWallpaper = false;
 };
 
 class Menu {
