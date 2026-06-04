@@ -25,22 +25,18 @@ std::vector<std::string> MainMenu::getLines() {
 }
 MenuResponse MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
-		std::thread([this] {
-			auto error = m_wm.refresh(m_env, m_netmanager, m_keywords, &m_uim);
-			if (error.has_value()) m_uim.showMessage(error.value());
-    	}).detach();
-    	return {"", false, false, ""};
+    	return {"", "", false, false, true};
     } else if (input == "2") {
         std::string message = m_wm.saveCurrent();
-        return {"", false, false, message};
+        return {"", message};
     } else if (input == "3") {
-        return {MenuId::KEYWORDS, false, false};
+        return {MenuId::KEYWORDS};
     } else if (input == "4") {
-        return {MenuId::SETTINGS, false, false};
+        return {MenuId::SETTINGS};
     } else if (input == "q") {
-        return {"", false, true};
+        return {"", "", false, true};
     } else {
-        return {"", true, false};
+        return {""};
     }
 }
 // ========== SettingsMenu ==========
@@ -60,14 +56,14 @@ std::vector<std::string> SettingsMenu::getLines() {
 
 MenuResponse SettingsMenu::handleInput(const std::string& input) {
     if (input == "1") {
-        return {MenuId::SCHEDULER, false, false};
+        return {MenuId::SCHEDULER};
     } else if (input == "2") {
         // Space for path logic
-        return {"", false, false};
+        return {""};
     } else if (input == "q") {
-        return {MenuId::MAIN, false, false};
+        return {MenuId::MAIN};
     } else {
-        return {"", true, false};
+        return {"", "", true};
     }
 }
 
@@ -99,7 +95,7 @@ MenuResponse KeywordsMenu::handleInput(const std::string& input) {
             keywords.push_back(keyword);
             m_config.set("/search/keywords", keywords);
         });
-        return {"", false, false, "Write new keyword: "};
+        return {"", "Write new keyword: "};
     } else if (input == "r") {
         m_uim.requestInput([this](std::string indexStr) {
 			int display_index = std::stoi(indexStr);
@@ -113,15 +109,15 @@ MenuResponse KeywordsMenu::handleInput(const std::string& input) {
 			}
         });
 
-        return {"", false, false, "Enter index to remove: "};
+        return {"", "Enter index to remove: "};
     } else if (input == "m") {
         m_keywords.editKeywords(m_uim);
         m_config.reload();
-        return {"", false, false};
+        return {""};
     } else if (input == "q") {
-        return {MenuId::MAIN, false, false};
+        return {MenuId::MAIN};
     } else {
-        return {"", true, false};
+        return {"", "", true};
     }
 }
 
@@ -139,15 +135,15 @@ std::vector<std::string> SchedulerMenu::getLines() {
 MenuResponse SchedulerMenu::handleInput(const std::string& input) {
     if (input == "h") {
 		std::string result = m_scheduler.set("hourly");
-        return {MenuId::SETTINGS, false, false, result};
+        return {MenuId::SETTINGS, result};
     } else if (input == "d") {
 		std::string result = m_scheduler.set("daily");
-        return {MenuId::SETTINGS, false, false, result};
+        return {MenuId::SETTINGS, result};
     } else if (input == "n") {
 		std::string result = m_scheduler.set("None");
-        return {MenuId::SETTINGS, false, false, result};
+        return {MenuId::SETTINGS, result};
     } else {
-        return {"", true, false};
+        return {"", "", true};
     }
 }
 
