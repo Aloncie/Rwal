@@ -62,8 +62,8 @@ private:
 public:
     WindowsSystemScheduler(Logs& logs, IFileSystem& fs);
 	~WindowsSystemScheduler() override = default;
-	rwal::system::Scheduler::TaskSchedulerType get() const override;
-	std::string set(rwal::system::Scheduler::TaskSchedulerType type) override;
+	std::optional<TaskSchedulerType> get() const override;
+	std::string set(TaskSchedulerType type) override;
 protected:
 	bool create() override;
 	bool reload() override;
