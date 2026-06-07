@@ -12,8 +12,7 @@
 		"CMAKE_BUILD_TYPE": "Release",
         "BUILD_TUI": "OFF",
         "BUILD_CLI": "ON",
-        "RWAL_FORCE_DE": "Windows",
-		"VCPKG_TRIPLET": "x64-windows"
+        "RWAL_FORCE_DE": "Windows"
       }
     },
     {
