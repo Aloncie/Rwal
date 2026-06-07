@@ -12,9 +12,9 @@ std::unique_ptr<ISystemScheduler> createPlatformScheduler(Logs& logs, IFileSyste
 #if defined(__linux__)
     return std::make_unique<LinuxSystemScheduler>(logs, fs);
 #elif defined(_WIN32)
-	return std::make_unique<WindowsSystemScheduler>(logs);
+	return std::make_unique<WindowsSystemScheduler>(logs, fs);
 #else
-	return std::make_unique<NullSystemScheduler>(logs);
+	return std::make_unique<NullSystemScheduler>(logs, fs);
 #endif
 }
 
