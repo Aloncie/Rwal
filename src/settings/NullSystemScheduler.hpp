@@ -1,13 +1,11 @@
 #pragma once
-
+#include "ISystemScheduler.hpp"
 #include "logs/logs.hpp"
 #include <string>
 
 class NullSystemScheduler : public ISystemScheduler {
-private:
-	Logs& m_logs;
 public:
-	explicit NullSystemScheduler(Logs& logs) : m_logs(logs) {}
+	NullSystemScheduler(Logs& logs, IFileSystem& fs) : ISystemScheduler(logs, fs) {}
 
     std::string set(const std::string& value) override {
 		m_logs.writeLogs(lvl::Info, mod::Config, "Cannot set schedule: no scheduler available");
