@@ -7,9 +7,6 @@
 #include <taskschd.h>
 #include <comdef.h>
 
-#pragma comment(lib, "taskschd.lib")
-#pragma comment(lib, "comsuppw.lib")
-
 // Use smart pointers for COM to avoid memory leaks in class and methods variables.
 //
 // Don't use memory management manually(Release() method) because it can cause memory leak or crash app.
