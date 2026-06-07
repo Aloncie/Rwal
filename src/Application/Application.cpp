@@ -40,6 +40,7 @@ int Application::run(int argc, char* argv[]) {
     CurlWrapper curl(logs, *fs);
     NetworkManager netmanager(curl, config, logs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
+	std::unique_ptr<ISystemScheduler> scheduler = createPlatformScheduler(logs, *fs);
     WallpaperManager wm(logs, *fs);
 
 #if RWAL_USE_CLI
@@ -53,7 +54,7 @@ int Application::run(int argc, char* argv[]) {
     }
 	
 	if (hasCliOptions) {
-		CLI cli(*fs, config, netmanager, logs);
+		CLI cli(*fs, config, netmanager, logs, *scheduler);
 		cli.parse(argc, argv);
 		return cli.execute();
 	}

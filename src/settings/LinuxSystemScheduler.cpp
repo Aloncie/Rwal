@@ -122,18 +122,18 @@ bool LinuxSystemScheduler::disable() const {
 	return true;
 }
 
-std::string LinuxSystemScheduler::get() const {
+std::optional<TaskSchedulerType> LinuxSystemScheduler::get() const {
 	m_logs.writeLogs(lvl::Debug, mod::Scheduler, "Try to check timer status");
 	
 	bool enabled = status();
 	if (!enabled) {
 		m_logs.writeLogs(lvl::Info, mod::Scheduler, "Timer isn't active");
-		return "None";
+		return TaskSchedulerType::None;
 	}
 
 	if (!m_fs.exists(m_timerFile)){
 		m_logs.writeLogs(lvl::Error, mod::Scheduler, "Timer file doesn't exist");
-		return "Not found";
+		return std::nullopt;
 	}
 
 	std::string line;
@@ -144,22 +144,20 @@ std::string LinuxSystemScheduler::get() const {
 			if (line.starts_with("OnCalendar=")) {
 				line.erase(0,line.find("=")+1);
 				m_logs.writeLogs(lvl::Info, mod::Scheduler, "Successful reading. Data: " + line);
-				return line;
+				return rwal::system::Scheduler::toType(line);
 			}
 		}
 	}
 	m_logs.writeLogs(lvl::Warning, mod::Scheduler, "Can't read timer file");
-	return "Not found";
+	return std::nullopt;
 }
 
-std::string LinuxSystemScheduler::set(const std::string& value) {
+std::string LinuxSystemScheduler::set(TaskSchedulerType type) {
 	m_logs.writeLogs(lvl::Debug, mod::Scheduler, "Try to edit timer");
 
 	const std::string failedLog = "Failed set timer. More info in logs.";	
 
-	if (!create()) return failedLog;
-
-	if (value == "None") {
+	if (type == TaskSchedulerType::None) {
 		m_logs.writeLogs(lvl::Debug, mod::Scheduler, "Try to disable timer");
 		if (status()){
 			bool disabled = disable();
@@ -183,6 +181,12 @@ std::string LinuxSystemScheduler::set(const std::string& value) {
 	std::string line;
 	bool found = false;
 	
+	auto typeStr = rwal::system::Scheduler::toString(type);
+	if (!typeStr.has_value()){
+		m_logs.writeLogs(lvl::Error, mod::Scheduler, "Failed to get type string");
+		return failedLog;
+	}
+
 	if (!in_file.is_open()) {
 		m_logs.writeLogs(lvl::Error, mod::Scheduler, "Failed to open rwal.timer to read");
 		return failedLog;
@@ -192,7 +196,7 @@ std::string LinuxSystemScheduler::set(const std::string& value) {
 			lines.push_back(line);
 		} else {
 			found = true;
-			lines.push_back("OnCalendar=" + value);
+			lines.push_back("OnCalendar=" + typeStr.value());
 		}
 	}
 
@@ -222,3 +226,4 @@ std::string LinuxSystemScheduler::set(const std::string& value) {
 	m_logs.writeLogs(lvl::Error, mod::Scheduler, "Failed to activate schedule. Status: " + std::to_string(status()));
 	return "Failed to activate schedule. More info in logs.";
 }
+

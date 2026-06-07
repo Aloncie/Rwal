@@ -1,16 +1,24 @@
 #pragma once
+#include "internal/filesystem/IFileSystem.hpp"
+#include "SchedulerTypes.hpp"
+#include "logs/logs.hpp"
 
 #include <optional>
 #include <string>
 
+using rwal::system::Scheduler::TaskSchedulerType;
+
 class ISystemScheduler {
 public:
-	ISystemScheduler() = default;
+	ISystemScheduler(Logs& logs, IFileSystem& fs) : m_logs(logs), m_fs(fs) {};
 	virtual ~ISystemScheduler() = default;
 	// return string for answer user, get value	
-	virtual std::string set(const std::string& value) = 0;
-	virtual std::string get() const = 0;
+	virtual std::string set(TaskSchedulerType type) = 0;
+	virtual std::optional<TaskSchedulerType> get() const = 0;
 protected:
+	Logs& m_logs;
+	IFileSystem& m_fs;
+
 	// another methods can be bool only for answer:
 	// "How did you do this operation? Success or failure?"
 	virtual bool create() = 0;

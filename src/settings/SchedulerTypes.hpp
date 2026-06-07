@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include <algorithm>
+#include <cctype>
+#include <optional>
 
 namespace rwal::system::Scheduler {
 	// TaskSchedulerType defines the type of task scheduler
@@ -11,18 +14,22 @@ namespace rwal::system::Scheduler {
 		Daily
 	};
 
-	inline std::string toString(TaskSchedulerType type) {
+	inline std::optional<std::string> toString(TaskSchedulerType type) {
 		switch (type) {
-			case TaskSchedulerType::None: return "(n)one";
-			case TaskSchedulerType::Hourly: return "(h)ourly";
-			case TaskSchedulerType::Daily: return "(d)aily";
-			default: return "unknown";
+			case TaskSchedulerType::None: return "none";
+			case TaskSchedulerType::Hourly: return "hourly";
+			case TaskSchedulerType::Daily: return "daily";
+			default: return std::nullopt;
 		}
 	}
-	inline TaskSchedulerType toType(const std::string& str) {
+	inline std::optional<TaskSchedulerType> toType(std::string& str) {
+		std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) {
+			return std::tolower(c);
+		});
         if (str == "hourly") return TaskSchedulerType::Hourly;
         if (str == "daily") return TaskSchedulerType::Daily;
-        return TaskSchedulerType::None;
+        if (str == "none") return TaskSchedulerType::None;
+		return std::nullopt;
     }
 }
 

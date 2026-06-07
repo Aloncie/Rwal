@@ -5,7 +5,7 @@
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
-WindowsSystemScheduler::WindowsSystemScheduler(Logs& logs) : m_logs(logs){
+WindowsSystemScheduler::WindowsSystemScheduler(Logs& logs, IFileSystem& fs) : ISystemScheduler(logs, fs) {
 	HRESULT hr = m_comguard.initResult();
 	if (FAILED(hr)) {
 		m_logs.writeLogs(lvl::Error, mod::Scheduler, "Failed to initialize COM");
@@ -191,27 +191,25 @@ bool WindowsSystemScheduler::disable() const {
 	return true;
 }
 
-std::string WindowsSystemScheduler::get() const {
-	using rwal::system::Scheduler::TaskSchedulerType;
+std::optional<TaskSchedulerType> WindowsSystemScheduler::get() const {
 	m_logs.writeLogs(lvl::Debug, mod::Scheduler, "Try to get task schedule");
-	auto TaskType = TaskSchedulerType::None;
 
 	// Check for the disabled task before any other actions.
 	bool enabled = status();
 	if (!enabled){
 		m_logs.writeLogs(lvl::Info, mod::Scheduler, "Task isn't active");
-		return "None";
+		return TaskSchedulerType::None;
 	}
 
 	auto triggersInput = getTaskTriggers();
-	if (triggersInput == std::nullopt) return "Error";
+	if (triggersInput == std::nullopt) return std::nullopt;
 	ITriggerCollectionPtr pTriggers = triggersInput.value();
 
     long count = 0;
     HRESULT hr = pTriggers->get_Count(&count);
 	if (FAILED(hr)){
         m_logs.writeLogs(lvl::Error, mod::Scheduler, "Failed to get trigger count");
-        return "Error";
+        return std::nullopt;
     }
 	
     if (count > 0) {
@@ -219,38 +217,37 @@ std::string WindowsSystemScheduler::get() const {
         hr = pTriggers->get_Item(1, &pTrigger);
 		if (FAILED(hr)){
 			m_logs.writeLogs(lvl::Error, mod::Scheduler, "Failed to get trigger");
-			return "Error";
+			return std::nullopt;
 		}
 
         TASK_TRIGGER_TYPE2 type;
         hr = pTrigger->get_Type(&type);
 		if (FAILED(hr)){
 			m_logs.writeLogs(lvl::Error, mod::Scheduler, "Failed to get trigger type");
-			return "Error";
+			return std::nullopt;
 		}
 
 		// There are only 3 types of triggers now so using if-else is good approach.
 		// It will has more elegant solution later when this logic will be duplicated in another place or become hard mountain
         if (type == TASK_TRIGGER_DAILY) {
 			m_logs.writeLogs(lvl::Info, mod::Scheduler, "Daily trigger found");
-			TaskType = TaskSchedulerType::Daily;
+			return TaskSchedulerType::Daily;
 		}
         else if (type == TASK_TRIGGER_TIME) {
 			m_logs.writeLogs(lvl::Info, mod::Scheduler, "Hourly trigger found");
-			TaskType = TaskSchedulerType::Hourly;
+			return TaskSchedulerType::Hourly;
 		} else {
 			m_logs.writeLogs(lvl::Info, mod::Scheduler, "Unknown trigger type");
-			return "Unknown";
+			return std::nullopt;
 		}
     } else{
 		m_logs.writeLogs(lvl::Info, mod::Scheduler, "No triggers found");
-		return "Not found";
+		return std::nullopt;
 	}
-    return rwal::system::Scheduler::toString(TaskType);
+    return TaskSchedulerType::None;
 }
 
-std::string WindowsSystemScheduler::set(const std::string& value) {
-	using rwal::system::Scheduler::TaskSchedulerType;
+std::string WindowsSystemScheduler::set(TaskSchedulerType type) {
 
 	const std::string failedLog = "Failed set task. More info in logs.";
 	m_logs.writeLogs(lvl::Debug, mod::Scheduler, "Try to set task");
@@ -276,8 +273,6 @@ std::string WindowsSystemScheduler::set(const std::string& value) {
 		return failedLog;
 	}
 	
-	TaskSchedulerType type = rwal::system::Scheduler::toType(value);
-
 	// There are only 3 types of triggers now so using if-else is good approach.
 	// It will has more elegant solution later 
 	// when this logic will be duplicated in another place or become hard mountain

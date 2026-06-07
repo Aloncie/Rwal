@@ -1,6 +1,6 @@
 #pragma once
-#include "logs/logs.hpp"
 #include "ISystemScheduler.hpp"
+#include "SchedulerTypes.hpp"
 
 #include <optional>
 #include <string>
@@ -55,17 +55,15 @@ private:
 	// Class smart pointers for COM interfaces.
 	ITaskServicePtr m_pService;
 	ITaskFolderPtr m_pFolder;
-
-	Logs& m_logs;
 	
 	// use optional for these methods to separate 'no data' from 'failure'
 	std::optional<ITriggerCollectionPtr> getTaskTriggers() const;
 	std::optional<ITaskDefinitionPtr> getTaskDefinition() const;
 public:
-    explicit WindowsSystemScheduler(Logs& logs);
+    WindowsSystemScheduler(Logs& logs, IFileSystem& fs);
 	~WindowsSystemScheduler() override = default;
-	std::string get() const override;
-	std::string set(const std::string& value) override;
+	rwal::system::Scheduler::TaskSchedulerType get() const override;
+	std::string set(rwal::system::Scheduler::TaskSchedulerType type) override;
 protected:
 	bool create() override;
 	bool reload() override;
@@ -73,3 +71,4 @@ protected:
 	bool disable() const override;
 	bool status() const override;
 };
+
