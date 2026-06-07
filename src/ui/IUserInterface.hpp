@@ -13,3 +13,4 @@ public:
 	virtual bool prepareForExternalCommand() = 0;
 	virtual bool refresh() = 0;
 };
+
