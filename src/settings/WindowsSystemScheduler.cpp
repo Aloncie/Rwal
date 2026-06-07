@@ -1,6 +1,8 @@
+#define INITGUID
 #include "WindowsSystemScheduler.hpp"
 #include "internal/AppConstants.hpp"
-#include "SchedulerTypes.hpp"
+
+#include <initguid.h>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
