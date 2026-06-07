@@ -39,6 +39,8 @@ MenuResponse MainMenu::handleInput(const std::string& input) {
         return {""};
     }
 }
+
+using rwal::system::Scheduler::toString;
 // ========== SettingsMenu ==========
 SettingsMenu::SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs) : m_scheduler(scheduler), m_wm(wm), m_uim(ui), m_fs(fs) {}
 
@@ -47,7 +49,7 @@ std::vector<std::string> SettingsMenu::getLines() {
 	if (pathStr.empty()) pathStr = "Not found";
 	return {
         "--- Settings ---", 
-		"1) Scheduler: " + m_scheduler.get(),
+		"1) Scheduler: " + toString(m_scheduler.get().value()).value_or("Error"),
         "2) Wallpapers's path: " + pathStr,
 		"q) Back",
         ""  // Empty line for spacing
@@ -121,26 +123,28 @@ MenuResponse KeywordsMenu::handleInput(const std::string& input) {
     }
 }
 
+
+using rwal::system::Scheduler::TaskSchedulerType;
+
 // ========== Scheduler Menu ==========
 SchedulerMenu::SchedulerMenu(ISystemScheduler& scheduler) : m_scheduler(scheduler) {}
 
 std::vector<std::string> SchedulerMenu::getLines() {
-	using namespace rwal::system::Scheduler;
     return {
-		toString(TaskSchedulerType::None), toString(TaskSchedulerType::Hourly), toString(TaskSchedulerType::Daily),
+		toString(TaskSchedulerType::None).value(), toString(TaskSchedulerType::Hourly).value(), toString(TaskSchedulerType::Daily).value(),
         ""  // Empty line for spacing
     };
 }
 
 MenuResponse SchedulerMenu::handleInput(const std::string& input) {
     if (input == "h") {
-		std::string result = m_scheduler.set("hourly");
+		std::string result = m_scheduler.set(TaskSchedulerType::Hourly);
         return {MenuId::SETTINGS, result};
     } else if (input == "d") {
-		std::string result = m_scheduler.set("daily");
+		std::string result = m_scheduler.set(TaskSchedulerType::Daily);
         return {MenuId::SETTINGS, result};
     } else if (input == "n") {
-		std::string result = m_scheduler.set("None");
+		std::string result = m_scheduler.set(TaskSchedulerType::None);
         return {MenuId::SETTINGS, result};
     } else {
         return {"", "", true};
