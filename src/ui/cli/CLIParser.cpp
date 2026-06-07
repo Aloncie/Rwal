@@ -21,6 +21,7 @@ void CLI::parse(int argc, char* argv[]) {
 		{"--clear-logs", [&] { m_opts.clearLogs = true; }},
 		{"-k",           [&] { m_opts.showKeywords = true; }},
 		{"--keywords",   [&] { m_opts.showKeywords = true; }},
+		{"--scheduler", [&] { m_opts.showScheduler = true; }},
 	};
 
 	for (int i = 1; i < argc; ++i) {
@@ -33,6 +34,8 @@ void CLI::parse(int argc, char* argv[]) {
 			m_opts.addKeywords = argv[++i];
 		} else if (arg == "--remove-keywords" && i + 1 < argc) {
 			m_opts.removeKeywords = argv[++i];
+		} else if (arg == "--set-scheduler" && i + 1 < argc) {
+			m_opts.setScheduler = argv[++i];
 		} else {
 			// Boolean flags
 			auto it = flagMap.find(arg);

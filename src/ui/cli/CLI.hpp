@@ -3,6 +3,7 @@
 #include "internal/filesystem/IFileSystem.hpp"
 #include "net/NetworkManager.hpp"
 #include "logs/logs.hpp"
+#include "settings/ISystemScheduler.hpp"
 
 #include <optional>
 #include <string>
@@ -18,10 +19,12 @@ private:
 		bool showLogs = false;
 		bool clearLogs = false;
 		bool showKeywords = false;
+		bool showScheduler = false;
 		
 		std::optional<std::string> setKeywords;
 		std::optional<std::string> addKeywords;
 		std::optional<std::string> removeKeywords;
+		std::optional<std::string> setScheduler;
 	};
 	
 	Options m_opts;
@@ -31,6 +34,7 @@ private:
 		Config& config;
 		NetworkManager& netmanager;
 		Logs& logs;
+		ISystemScheduler& scheduler;
 	};
 	
 	Dependencies m_deps;
@@ -47,11 +51,13 @@ private:
 	int handleSetKeywords();
 	int handleRemoveKeywords();
 	int handleAddKeywords();
-	
+	int handleSetScheduler();
+	int handleScheduler();
+
 	// Helper functions
 	std::string getBinaryLocation();
 public:
-	CLI(IFileSystem& fs, Config& config, NetworkManager& nm, Logs& logs) : m_deps{fs, config, nm, logs} {}
+	CLI(IFileSystem& fs, Config& config, NetworkManager& nm, Logs& logs, ISystemScheduler& scheduler) : m_deps{fs, config, nm, logs, scheduler} {}
 	~CLI() = default;
 	void parse(int argc, char* argv[]);
 	int execute();
