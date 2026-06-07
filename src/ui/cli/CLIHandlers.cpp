@@ -46,9 +46,11 @@ Options:
  --log                      Show latest logs
  --clear-logs          	    Clear log file
  -k,  --keywords            Show keywords
+ --scheduler                Show scheduler
  --set-keywords <kw>        Set keywords (comma-separated, e.g.: nature,ocean,town)
  --add-keywords <kw>        Add keywords (comma-separated)
  --remove-keywords <kw>     Remove keywords (comma-separated)
+ --set-scheduler <sched>    Set scheduler (now available: daily, hourly, none)
 	)" << std::endl;
 	return 0;
 }
@@ -197,6 +199,34 @@ int CLI::handleChange() {
     return 0;
 }
 
+int CLI::handleScheduler() {
+	m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for show scheduler");
+	auto gettingType = m_deps.scheduler.get();
+	if (!gettingType.has_value()){
+		std::cerr << "Failed to get scheduler. More info in logs" << std::endl;
+	} else {
+		std::string typeStr = rwal::system::Scheduler::toString(gettingType.value()).value_or("Unknown type");
+		std::cout << "Current scheduler: " << typeStr << std::endl;
+	}
+	return 0;
+}
+
+int CLI::handleSetScheduler() {
+	m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for set scheduler");
+	auto inputType = rwal::system::Scheduler::toType(m_opts.setScheduler.value());
+	if (!inputType.has_value()){
+		std::cerr << "Invalid scheduler type. Please provide valid type." << std::endl;
+	} else {
+		std::string answer = m_deps.scheduler.set(inputType.value());
+		if (answer == "Failed to set task. More info in logs."){
+			std::cerr << "Function of setting scheduler was failed. More info in logs" << std::endl;
+		} else {
+			std::cout << answer << std::endl;
+		}
+	}
+	return 0;
+}
+
 // ---------------------------------------------------------------------
 // Public execute function
 // ---------------------------------------------------------------------
@@ -209,6 +239,7 @@ int CLI::execute() {
     if (m_opts.showKeywords) return handleKeywords();
 	if (m_opts.saveWallpaper) return handleSave();
     if (m_opts.changeWallpaper) return handleChange();
+	if (m_opts.showScheduler) return handleScheduler();
 
     if (m_opts.setKeywords.has_value()) 
         return handleSetKeywords();
@@ -216,6 +247,8 @@ int CLI::execute() {
         return handleAddKeywords();
     if (m_opts.removeKeywords.has_value()) 
         return handleRemoveKeywords();
+	if (m_opts.setScheduler.has_value())
+		return handleSetScheduler();
        
     // No CLI action – TUI mode will be run by caller
     return 0;
