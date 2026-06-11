@@ -54,7 +54,7 @@ void CurlWrapper::getRequest(const std::string& url) {
 			m_logs.writeLogs(lvl::Error, mod::Network, "Error HTTP code: " + std::to_string(http_code));
             return;
         }
-		m_logs.writeLogs(lvl::Info, mod::Network, "Successful request");
+		m_logs.writeLogs(lvl::Info, mod::Network, "Successful request to URL: " + url);
 
         try {
             j = nlohmann::json::parse(buffer);
