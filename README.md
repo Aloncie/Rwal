@@ -60,10 +60,10 @@ The build process generates the binary inside the `build/<OS>-release/` director
 *Contains both TUI and CLI functionality. This is the default recommended build.*
 ```bash
 # Launch interactive terminal UI
-./build/linux-release/rwal --tui
+./build/linux-release/rwal
 
-# Run as a silent background daemon
-./build/linux-release/rwal --daemon
+# Run --help option via console interface
+./build/linux-release/rwal --help
 ```
 
 ### 2. Standalone Modes (Lightweight)
@@ -75,7 +75,7 @@ The build process generates the binary inside the `build/<OS>-release/` director
   ```
 * **`rwal-cli`** — Pure command-line tool for automation.
   ```bash
-  ./build/linux-release/rwal-cli --daemon
+  ./build/linux-release/rwal-cli --change
   ```
 
 ---
