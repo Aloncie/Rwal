@@ -17,13 +17,6 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 
 ---
 
-**[<kbd> <br> Install <br> </kbd>][Install]** 
-**[<kbd> <br> Quick Start <br> </kbd>][Quick Start]** 
-**[<kbd> <br> Configure <br> </kbd>][Configure]** 
-**[<kbd> <br> Contribute <br> </kbd>][Contribute]**
-
----
-
 </div>
 
 # ✨ Features
@@ -48,6 +41,115 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 
 </div>
 
+# 💦 Installation
+You need use **two** python scripts to install Rwal for any OS & distribution from [here](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md):
+
+``` bash
+git clone https://github.com/Aloncie/Rwal.git       # clone repository
+
+cd Rwal
+
+python setup.py    # download dependencies
+python build.py    # build the binary
+```
+
+# 🌀 Usage
+The build process generates the binary inside the `build/<OS>-release/` directory (where `<OS>` is `linux` or `windows`). Depending on your build configuration, you will get one of three executable flavors:
+
+### 1. Unified Mode (`rwal`)
+*Contains both TUI and CLI functionality. This is the default recommended build.*
+```bash
+# Launch interactive terminal UI
+./build/linux-release/rwal --tui
+
+# Run as a silent background daemon
+./build/linux-release/rwal --daemon
+```
+
+### 2. Standalone Modes (Lightweight)
+*If you built specific tailored versions instead of the unified binary:*
+
+* **`rwal-tui`** — Dedicated interactive interface.
+  ```bash
+  ./build/linux-release/rwal-tui
+  ```
+* **`rwal-cli`** — Pure command-line tool for automation.
+  ```bash
+  ./build/linux-release/rwal-cli --daemon
+  ```
+
+---
+
+<details>
+<summary>🪟 <b>Windows Users Click Here</b></summary>
+
+On Windows, use the `.exe` extension and your specific shell syntax inside the `windows-preset` folder:
+```powershell
+# Unified mode example in PowerShell
+.\build\windows-release\rwal.exe --tui
+```
+</details>
+
+# ⚙️ Configuration
+
+By default, **Rwal** looks for `config.json` in the following system directories:
+* **Linux:** `~/.config/Aloncie/Rwal/config.json`
+* **Windows:** `%APPDATA%\Aloncie\Rwal\config.json`
+
+### Example `config.json`
+
+*Config will be create for the startup if it doesn't exist. You don't need create it manually.*
+
+```json
+{
+    "search": {
+        "keywords": [
+            "anime",
+            "nature",
+            "town",
+            "ocean",
+            "car",
+            "art",
+            "city",
+            "architecture"
+        ],
+        "res": "1920x1080",
+        "sorting": "random"
+    },
+    "services": {
+        "wallhaven": {
+            "apikey": "apikey="
+        }
+    },
+    "settings": {
+        "cursor-visibility": "true"
+    }
+}
+```
+
+### 📋 Configuration Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `search.keywords` | Array | `[]` | List of tags used to filter and fetch wallpapers. |
+| `search.res` | String | `"1920x1080"`| Target image resolution (e.g., `"2560x1440"`). |
+| `search.sorting` | String | `"random"` | API sorting method: `"random"`, `"relevance"`, `"views"`, `"date"`, `"toplist"`, `"favorites"`. |
+| `services.wallhaven.apikey`| String | `""` | *(Optional)* Your Wallhaven API key to bypass rate limits(~45 per minute) and access NSFW/Sketchy content. |
+| `settings.cursor_visibility`| Boolean| `true` | Toggles the visibility of the terminal cursor inside the TUI mode. |
+
+
+#### ❗WARNING❗:
+**API Settings (`base_url` & `param_names`):** These parameters are pre-configured for the official Wallhaven API. **Do not modify them** unless you are setting up a custom API mirror. Changing these values incorrectly will break the wallpaper search and network requests.
+
+
+<details>
+<summary>🛠️ <b>Advanced: Custom API Parameter Mapping</b></summary>
+
+If you want to tweak internal API endpoints or use a custom mirror, the utility fallback structure uses these pre-mapped fields under the hood:
+* `base_url`: `https://wallhaven.cc`
+* Query mapping handles parameters (`q`, `resolutions`, `sorting`) automatically based on your search settings.
+</details>
+
 # 🛡️ Maintenance
 
 - **Security:** Please see our [Security Policy][Security].
@@ -65,11 +167,6 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 <div align="center">
 Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 </div>
-
-[Install]: https://github.com/Aloncie/Rwal/blob/main/docs/Installation.md
-[Quick Start]: https://github.com/Aloncie/Rwal/blob/main/docs/Usage.md
-[Configure]: https://github.com/Aloncie/Rwal/blob/main/docs/Configuration.md
-[Contribute]: https://github.com/Aloncie/Rwal/blob/main/docs/Roadmap.md
 
 [Workflow]: https://github.com/Aloncie/Rwal/actions
 [Version]: https://img.shields.io/badge/version-alpha-blue
