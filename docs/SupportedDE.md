@@ -27,7 +27,7 @@ Rwal use auto-detect system for know DE to build only needly sources. This gives
 - takes up less space
 
 You can use special flag ```-DRWAL_FORCE_DE=```, If Rwal incorrect detect your DE. Flag command supports any writing case.
-Example: ```-DRWAL_FORCE_DE=KDE``` or ```-DRWAL_FORCE_DE=kde```
+Example: ```-DRWAL_FORCE_DE=kde``` or ```-DRWAL_FORCE_DE=HYPRLAND```
 
 [See more about configuration flags](https://github.com/Aloncie/Rwal/blob/refactorKnownIssues/docs/Installation.md#-build-configuration-flags).
 
@@ -62,23 +62,16 @@ src/wallpaper/
 | **GnomeSetter** | Fedora 40+, Ubuntu 24.04+, Arch Linux (GNOME) |
 | **KdeSetter** | Arch Linux (KDE)|
 | **HyprlandSetter** | not tested |
-| **WindowsSetter** | not tested |
+| **WindowsSetter** | Windows 11 25H2 |
 
 > **Are there problems with one of DE?**
 > **[Report an issue](https://github.com/Aloncie/Rwal/issues)**
 
 ---
 
-## 🚧 Limitations & Future Work
-
-*   **No runtime DE switching** – the binary is tied to one DE at compile time.
-*   **Multi‑monitor** is handled by the underlying desktop API.
-*   **Wayland/X11** – GNOME and KDE setters work under both; Hyprland is Wayland‑only.
-
 <div align="center">
 
 ### Rwal – one build, one desktop, reliable wallpaper switching. 🐧
 
 </div>
-
 
