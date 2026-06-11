@@ -1,5 +1,6 @@
 #pragma once
 #include "logs/logs.hpp"
+#include "internal/filesystem/IFileSystem.hpp"
 
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
@@ -9,30 +10,30 @@
 
 namespace fs = std::filesystem;
 
+struct CurlDeleter {
+	void operator()(CURL* curl) const { curl_easy_cleanup(curl); }
+};
+
 static size_t callback(void* contents, size_t size, size_t nmemb, void* userp);
 
 class CurlWrapper {
-private:
-    using CurlPtr = std::unique_ptr<CURL, void (*)(CURL*)>;
-    CurlPtr curl;
+    std::unique_ptr<CURL, CurlDeleter> curl;
+
     long http_code = 0;
     std::string page, buffer;
     nlohmann::json j;
-
-    void clearning();
-    void generateUniqueSuffix(std::string& filename);
-    std::string call_Image(const std::string& image_url);
-	
 	Logs& m_logs;
+	IFileSystem& m_fs;
+protected:
+    virtual void clearning();
+    virtual void generateUniqueSuffix(std::string& filename);
+    virtual std::string getFilenameFromUrl(const std::string& image_url);
 public:
-    CurlWrapper(Logs& logs);
-    virtual void getRequest(std::string url);
-    virtual std::string getData(std::string paragraph, std::string str);
+	CurlWrapper(Logs& logs, IFileSystem& fs);
+	virtual ~CurlWrapper();
+	
+    virtual void getRequest(const std::string& url);
+    virtual std::string getData(const std::string& paragraph, const std::string& str);
     virtual std::optional<fs::path> downloadImage(const std::string& image_url);
-
-    struct CurlDeleter {
-        void operator()(CURL* curl) const { curl_easy_cleanup(curl); }
-    };
-	virtual ~CurlWrapper() = default;
 };
 

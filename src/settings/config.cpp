@@ -1,50 +1,47 @@
 #include "config.hpp"
+#include "AppConfig.h"
 
-#include <QDir>
-#include <QCoreApplication>
-#include <QStandardPaths>
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
 
-std::string Config::getConfigPath(){
-	QString configDir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+fs::path Config::getConfigPath(){
+	configPath = m_fs.getConfigLocation() / ORGANIZATION_NAME / APP_NAME / "config.json";
 
-	QDir dir;
+	if (!m_fs.exists(configPath.parent_path())) {
+		m_logs.writeLogs(lvl::Info, mod::Config, "Config directory not found, creating it");
+		m_fs.createDirectories(configPath.parent_path());
+	}
 
-	if (!dir.exists(configDir))
-		dir.mkpath(configDir);
-
-	return ((configDir + "/config.json").toStdString());
+	return configPath;
 }
 
-Config::Config(Logs& logs) : IConfigReader(logs) {
+Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
     configPath = getConfigPath();
     initValidators();
-
-    watcher = new QFileSystemWatcher(this);
-    watcher->addPath(QString::fromStdString(configPath));
-    
-	loadConfig();
-    connect(watcher, &QFileSystemWatcher::fileChanged, this, &Config::loadConfig);
+	getConfigFileData();
 }
 
-void Config::loadConfig(){
-	if (std::filesystem::exists(configPath)) {
+void Config::getConfigFileData(){
+	if (m_fs.exists(configPath)) {
         std::ifstream file(configPath);
         if (file.is_open()) {
             try {
-                data = nlohmann::json::parse(file);
-                m_logs.writeLogs("Config loaded/reloaded: " + configPath);
+                m_data = nlohmann::json::parse(file);
+                m_logs.writeLogs(lvl::Info, mod::Config, "Config loaded/reloaded: " + configPath.string());
             } catch (nlohmann::json::parse_error& e) {
-                m_logs.writeLogs("JSON Parse Error: " + std::string(e.what()));
+                m_logs.writeLogs(lvl::Error, mod::Config, "JSON Parse Error: " + std::string(e.what()));
             }
         }
     } else {	
-		data = {
+		m_data = {
    			{"services", {
         		{"wallhaven", {
-            		{"apikey", "apikey="},
+            		{"apikey", ""},
             		{"base_url", "https://wallhaven.cc/api/v1/search"},
             		{"param_names", {
-                		{"query", "?q="},
+                		{"query", "?q"},
+						{"page", "page"},
+						{"apikey", "apikey"},
                 		{"sorting", "sorting"},
                 		{"res", "resolutions"}
             	}}
@@ -54,24 +51,25 @@ void Config::loadConfig(){
         		{"keywords", {}},
         		{"sorting", "random"},
         		{"res", "1920x1080"},
-				{"random_page", "true"}
+				{"random_page", true}
 
     		}},
 			{"settings", {
-				{"cursor-visibility", "true"}
+				// Planned implementation
+				{"cursor-visibility", true}
 			}}
 		};
-		saveConfig();
+		saveToFile();
 	};		
-
-	if (watcher && watcher->files().isEmpty()) {
-        watcher->addPath(QString::fromStdString(configPath));
-    }
 }
 
-void Config::saveConfig(){
-		std::ofstream file(configPath);
-		file << data.dump(4);
+void Config::saveToFile(){
+	// Use temporary file to avoid data loss
+	auto tmp = getConfigPath().string() + ".tmp";
+    std::ofstream file(tmp);
+    file << m_data.dump(2);
+    file.close();
+    m_fs.rename(tmp, configPath);  // replacement
 }
 
 void Config::initValidators(){
@@ -81,15 +79,27 @@ void Config::initValidators(){
 	auto is_not_empty_array = [](const nlohmann::json& j){
 		return j.is_array() && !j.empty();
 	};
+	auto is_not_empty_bool = [](const nlohmann::json& j){
+        return j.is_boolean();
+    };
+	auto is_not_empty_object = [](const nlohmann::json& j){
+        return (j.is_object() || j.is_array()) && !j.empty();
+    };
 
-
-	validators["/timer"] = [is_not_empty_string](const nlohmann::json& j){
-		if (!is_not_empty_string(j)) return false;
-		char x = j.get<std::string>().back();
-		return (x == 'm' || x == 'h');
-	};
 	validators["/search/keywords"] = is_not_empty_array;
-   	validators["api/wallhaven_api_key"] = is_not_empty_string;
+	validators["/services/wallhaven/apikey"] = is_not_empty_string;
+	validators["/search/sorting"] = is_not_empty_string;
+    validators["/search/res"] = is_not_empty_string;
+    validators["/settings/cursor-visibility"] = is_not_empty_bool;
+	validators["/search/random_page"] = is_not_empty_bool;
+	validators["/services/wallhaven/base_url"] = is_not_empty_string;
+	validators["/services/wallhaven/param_names/query"] = is_not_empty_string;
+    validators["/services/wallhaven/param_names/sorting"] = is_not_empty_string;
+    validators["/services/wallhaven/param_names/res"] = is_not_empty_string;
+	validators["/services/wallhaven/param_names"] = is_not_empty_array;
+	validators["/services/wallhaven"] = is_not_empty_object;
+	validators["/search"] = is_not_empty_object;
+	validators["/services"] = is_not_empty_object;
+    validators["/"] = is_not_empty_object;
 }
-
 

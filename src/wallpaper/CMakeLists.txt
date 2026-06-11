@@ -15,7 +15,7 @@ set(RWAL_FORCE_DE "" CACHE STRING "Force a specific desktop environment (GNOME, 
 if(NOT RWAL_FORCE_DE STREQUAL "")
     string(TOUPPER "${RWAL_FORCE_DE}" FORCE_DE_UPPER)
     
-    if(FORCE_DE_UPPER MATCHES "GNOME|KDE|HYPRLAND")
+	if(FORCE_DE_UPPER MATCHES "GNOME|KDE|HYPRLAND|WINDOWS")
         set(CURRENT_DE ${FORCE_DE_UPPER})
         message(STATUS "Using forced desktop environment: ${CURRENT_DE}")
     else()
@@ -31,42 +31,49 @@ if(RWAL_FORCE_DE STREQUAL "")
     message(STATUS "Auto-detected desktop environment: ${CURRENT_DE}")
 endif()
 
-# Add platform-specific sources and definitions based on the detected desktop environment
-if(UNIX AND NOT APPLE)
-    if(CURRENT_DE MATCHES "GNOME")
-        find_package(PkgConfig REQUIRED)
-        pkg_check_modules(GIO REQUIRED gio-2.0)
-        list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
-        add_definitions(-DRWAL_USE_GNOME)
-        message(STATUS "Using GNOME wallpaper setter")
-        
-    elseif(CURRENT_DE MATCHES "KDE")
-        find_package(Qt5 COMPONENTS DBus REQUIRED)
-        list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
-        add_definitions(-DRWAL_USE_KDE)
-        message(STATUS "Using KDE wallpaper setter")
-        
-    elseif(CURRENT_DE MATCHES "HYPRLAND")
+if(CURRENT_DE MATCHES "GNOME")
+	find_package(PkgConfig REQUIRED)
+	pkg_check_modules(GIO REQUIRED gio-2.0)
+	list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
+	add_definitions(-DRWAL_USE_GNOME)
+	message(STATUS "Using GNOME wallpaper setter")
+	
+elseif(CURRENT_DE MATCHES "KDE")
+	list(APPEND SETTERS_SOURCES platforms/KdeSetter.cpp)
+	add_definitions(-DRWAL_USE_KDE)
+	message(STATUS "Using KDE wallpaper setter")
+	
+elseif(CURRENT_DE MATCHES "HYPRLAND")
+    find_program(HYPRPAPER_EXECUTABLE hyprpaper)
+    find_program(HYPRCTL_EXECUTABLE hyprctl)
+
+    if (HYPRPAPER_EXECUTABLE OR HYPRCTL_EXECUTABLE)
         list(APPEND SETTERS_SOURCES platforms/HyprlandSetter.cpp)
-		find_program(HYPRPAPER_EXECUTABLE hyprpaper)
-		find_program(HYPRCTL_EXECUTABLE hyprctl)
         add_definitions(-DRWAL_USE_HYPRLAND)
-        message(STATUS "Using Hyprland wallpaper setter")
-        
+        message(STATUS "Using Hyprland wallpaper setter (Found: ${HYPRPAPER_EXECUTABLE} ${HYPRCTL_EXECUTABLE})")
     else()
-        message(STATUS "No supported DE detected ('${CURRENT_DE}'). Using fallback setter.")
-        message(STATUS "  (To force a specific DE, use: cmake .. -DRWAL_FORCE_DE=GNOME|KDE|Hyprland)")
-    endif()
+        message(FATAL_ERROR "Hyprland selected but neither 'hyprpaper' nor 'hyprctl' were found! Cannot compile.")
+endif()
+
+elseif(CURRENT_DE MATCHES "WINDOWS")
+	list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
+	add_definitions(-DRWAL_USE_WINDOWS)
+	message(STATUS "Using Windows wallpaper setter")
+else()
+	message(STATUS "No supported DE detected ('${CURRENT_DE}'). Using fallback setter.")
+	message(STATUS "(To force a specific DE, use: cmake .. -DRWAL_FORCE_DE=GNOME|KDE|Hyprland)")
+
 endif()
 
 # Add the library target for the wallpaper setters
 add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
-target_compile_definitions(wallpaper_lib PRIVATE QT_NO_KEYWORDS)
+target_link_libraries(wallpaper_lib PUBLIC CURL::libcurl nlohmann_json::nlohmann_json)
 
 target_include_directories(wallpaper_lib PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src
+	${CMAKE_BINARY_DIR}/generated
 )
 
 # Platform-specific libraries if needed
@@ -75,10 +82,7 @@ if(CURRENT_DE MATCHES "GNOME")
     target_link_libraries(wallpaper_lib PRIVATE ${GIO_LIBRARIES})
 endif()
 
-if(CURRENT_DE MATCHES "KDE")
-    target_link_libraries(wallpaper_lib PRIVATE Qt5::DBus)
+if (CURRENT_DE MATCHES "WINDOWS")
+	target_link_libraries(wallpaper_lib PRIVATE user32 shell32 ws2_32)
 endif()
-
-target_link_libraries(wallpaper_lib PRIVATE Qt5::Core)
-
 

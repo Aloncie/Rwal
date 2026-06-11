@@ -3,20 +3,20 @@
 #include "mocks/MockLogs.hpp"
 #include "mocks/MockKeywords.hpp"
 #include "mocks/MockNetworkManager.hpp"
-#include "mocks/MockUIManager.hpp"
+#include "mocks/MockTUIManager.hpp"
 #include "mocks/MockConfigReader.hpp"
 #include "mocks/MockFileSystem.hpp"
 #include "mocks/MockCurlWrapper.hpp"
-#include "internal/GlobalConstans.hpp"
+#include "internal/AppConstants.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include <memory>
 #include <filesystem>
-#include <QCoreApplication>
 
 using ::testing::Return;
 using ::testing::_;
+using ::testing::Invoke;
 using ::testing::NiceMock;
 
 namespace fs = std::filesystem;
@@ -29,21 +29,21 @@ protected:
 	std::shared_ptr<testing::NiceMock<MockNetworkManager>> mockNetworkManager;
 	std::shared_ptr<testing::NiceMock<MockConfigReader>> mockConfigReader;
 	std::shared_ptr<testing::NiceMock<MockFileSystem>> mockFileSystem;
-	std::shared_ptr<testing::NiceMock<MockUIManager>> mockUIManager;
+	std::shared_ptr<testing::NiceMock<MockTUIManager>> mockTUIManager;
 	std::shared_ptr<testing::NiceMock<MockCurlWrapper>> mockCurlWrapper;
 	std::unique_ptr<WallpaperManager> wallpaperManager;
 	fs::path temp_dir;
 
 
 	void SetUp() override {
-		mockLogs = std::make_shared<testing::NiceMock<MockLogs>>();
-		mockCurlWrapper = std::make_shared<testing::NiceMock<MockCurlWrapper>>(*mockLogs);
+		mockFileSystem = std::make_shared<testing::NiceMock<MockFileSystem>>();
+		mockLogs = std::make_shared<testing::NiceMock<MockLogs>>(*mockFileSystem);
+		mockCurlWrapper = std::make_shared<testing::NiceMock<MockCurlWrapper>>(*mockLogs, *mockFileSystem);
 		mockSetter = std::make_shared<testing::NiceMock<MockIWallpaperSetter>>();
 		mockConfigReader = std::make_shared<testing::NiceMock<MockConfigReader>>(*mockLogs);
-		mockKeywords = std::make_shared<testing::NiceMock<MockKeywords>>(*mockConfigReader, *mockLogs);
+		mockKeywords = std::make_shared<testing::NiceMock<MockKeywords>>(*mockConfigReader, *mockLogs, *mockFileSystem);
 		mockNetworkManager = std::make_shared<testing::NiceMock<MockNetworkManager>>(*mockCurlWrapper, *mockConfigReader, *mockLogs);
-		mockUIManager = std::make_shared<testing::NiceMock<MockUIManager>>();
-		mockFileSystem = std::make_shared<testing::NiceMock<MockFileSystem>>();
+		mockTUIManager = std::make_shared<testing::NiceMock<MockTUIManager>>();
 		wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
 
 		temp_dir = fs::temp_directory_path() / "wallpaper_manager_test";
@@ -57,7 +57,7 @@ protected:
 	fs::path createFakeWallpaper(const std::string& filename) {
 		fs::path filePath = temp_dir / filename;
 		std::ofstream file(filePath);
-		file << "test wallpaper content";
+		file << "Fake wallpaper content for rwal tests";
 		file.close();
 		return filePath;
 	}
@@ -100,7 +100,7 @@ TEST_F(WallpaperManagerTest, Refresh_SetWallpaperFails) {
 TEST_F(WallpaperManagerTest, Refresh_LogsFetchImageFails) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(std::nullopt));
-	ON_CALL(*mockLogs, writeLogs("Failed to fetch image")).WillByDefault(testing::Invoke([this](std::string_view message) {
+	ON_CALL(*mockLogs, writeLogs(_, _, "Failed to fetch image")).WillByDefault(Invoke([this](std::string_view, std::string_view, std::string_view message) {
 		mockLogs->lastLogMessage = message;
 	}));
 	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
@@ -113,7 +113,7 @@ TEST_F(WallpaperManagerTest, Refresh_LogsSetWallpaperFails) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(fakeWallpaper));
 	EXPECT_CALL(*mockSetter, setWallpaper(fakeWallpaper)).WillOnce(Return(false));
-    ON_CALL(*mockLogs, writeLogs(testing::_)).WillByDefault(testing::Invoke([this](std::string_view msg) {
+    ON_CALL(*mockLogs, writeLogs(_, _, _)).WillByDefault(Invoke([this](std::string_view, std::string_view, std::string_view msg) {
 		mockLogs->lastLogMessage = msg;
 	}));	
 	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
@@ -126,8 +126,8 @@ TEST_F(WallpaperManagerTest, Refresh_LogsSetWallpaperSuccess) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(fakeWallpaper));
 	EXPECT_CALL(*mockSetter, setWallpaper(fakeWallpaper)).WillOnce(Return(true));
-	ON_CALL(*mockLogs, writeLogs(testing::_))
-		.WillByDefault(testing::Invoke([this](std::string_view msg) {
+	ON_CALL(*mockLogs, writeLogs(_, _, _))
+		.WillByDefault(Invoke([this](std::string_view, std::string_view, std::string_view msg) {
 			mockLogs->lastLogMessage = msg;
     }));
 	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
@@ -140,7 +140,7 @@ TEST_F(WallpaperManagerTest, Refresh_LogsSetWallpaperPath) {
 	EXPECT_CALL(*mockKeywords, SilentGetKeyword()).WillOnce(Return("test_keyword"));
 	EXPECT_CALL(*mockNetworkManager, fetchImage("test_keyword")).WillOnce(Return(fakeWallpaper));
 	EXPECT_CALL(*mockSetter, setWallpaper(fakeWallpaper)).WillOnce(Return(true));
-	ON_CALL(*mockLogs, writeLogs(testing::_)) .WillByDefault(testing::Invoke([this](std::string_view msg) {
+	ON_CALL(*mockLogs, writeLogs(_, _, _)) .WillByDefault(Invoke([this](std::string_view, std::string_view, std::string_view msg) {
 			mockLogs->lastLogMessage = msg;
     }));
 	wallpaperManager = std::make_unique<WallpaperManager>(*mockLogs, *mockFileSystem);
@@ -159,10 +159,9 @@ TEST_F(WallpaperManagerTest, SaveCurrent_ReturnsSuccess) {
 
     EXPECT_CALL(*mockFileSystem, getAppLocalDataLocation()).WillOnce(Return(downloadsDir));
     EXPECT_CALL(*mockFileSystem, exists(downloadsDir)).WillOnce(Return(true));
-    EXPECT_CALL(*mockFileSystem, listDirectory(downloadsDir, rwal::wallpaper::FILE_PREFIX)).WillOnce(Return(std::vector<fs::path>{fakeWallpaper}));
+    EXPECT_CALL(*mockFileSystem, listDirectory(downloadsDir, rwal::constants::wallpaper::FILE_PREFIX.data())).WillOnce(Return(std::vector<fs::path>{fakeWallpaper}));
 
     EXPECT_CALL(*mockFileSystem, getPicturesLocation()).WillOnce(Return(picturesDir));
-    EXPECT_CALL(*mockFileSystem, getApplicationName()).WillOnce(Return("rwal"));
 	EXPECT_CALL(*mockFileSystem, exists(rwalDir)).WillOnce(Return(false));
     EXPECT_CALL(*mockFileSystem, createDirectories(rwalDir)).WillOnce(Return(true));
 

@@ -1,24 +1,43 @@
 #include "logs.hpp"
+#include "AppConfig.h"
 
-#include <filesystem>
-#include <fstream>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <QTime>
-#include <QStandardPaths>
-#include <unistd.h>
-#include <pwd.h>
+#ifndef _WIN32
+	#include <unistd.h>
+	#include <sys/stat.h>
+	#include <pwd.h>
+#endif
+
 #include <deque>
+#include <chrono>
+#include <format>
 
-Logs::Logs() {
-	logs_path = fs::path(QStandardPaths::writableLocation(QStandardPaths::CacheLocation).toStdString()) / "logs.txt";
-    std::filesystem::create_directories(logs_path.parent_path());
-    if (fs::exists(logs_path)) {
-        const std::uintmax_t fileSize = fs::file_size(logs_path);
-        const std::uintmax_t limit_size = 1024 * 1024;
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
 
-        if (fileSize > limit_size){
-			writeLogs("Logs file size (" + std::to_string(fileSize) + " bytes) exceeds the limit (" + std::to_string(limit_size) + " bytes). Try to refresh logs.");
+Logs::Logs(IFileSystem& fs) : m_fs(fs) {
+	logs_path = m_fs.getTempLocation() / ORGANIZATION_NAME / APP_NAME / "logs.txt";
+	if (!m_fs.exists(logs_path.parent_path())) {
+		writeLogs(lvl::Info, mod::Logs, "Logs directory not found, creating it");
+		m_fs.createDirectories(logs_path);
+	}
+    if (m_fs.exists(logs_path)) {
+		auto input = m_fs.getFileSize(logs_path);
+
+		uintmax_t fileSize = 0;
+		const uintmax_t limit_size = 1024 * 1024; // 1 MB
+
+		if (input == std::nullopt){
+			writeLogs(lvl::Error, mod::Logs, "Failed to get logs file size: " + m_fs.getLastError());
+			writeLogs(lvl::Info, mod::Logs, "Try to refresh logs to avoid possible memory filling");
+			// input == std::nullopt is meaning that file doesn't exist or error occurred
+			// So we can try to refresh logs to avoid possible memory filling
+			refresh();
+			return;
+		}
+        fileSize = input.value();
+
+        if (fileSize >= limit_size){
+			writeLogs(lvl::Warning, mod::Logs, "Logs file size (" + std::to_string(fileSize) + " bytes) exceeds the limit (" + std::to_string(limit_size) + " bytes). Try to refresh logs.");
 			refresh();
 		}
     }
@@ -26,32 +45,45 @@ Logs::Logs() {
 };
 
 std::string Logs::getCurrentTime() const {
-	QTime currentTime = QTime::currentTime();
-	return currentTime.toString("HH:mm:ss").toStdString();
+    auto now = std::chrono::system_clock::now();
+
+	// Get time
+    auto local_time = std::chrono::current_zone()->to_local(now);
+
+	// Hard round to seconds
+    auto local_seconds = std::chrono::time_point_cast<std::chrono::seconds>(local_time);
+	
+	// Return formatted string
+    return std::format("[{:%F | %T}]", local_seconds);
 }
 
-void Logs::writeLogs(std::string_view message){
+void Logs::writeLogs(std::string_view type, std::string_view module, std::string_view message){
     if (f.is_open()) {
-        f << getCurrentTime() << " " << message << std::endl;
+        f << getCurrentTime() << type << module << " " << message << "\n";
+		
+		if (type == lvl::Fatal){
+			f.flush();
+		}
     }
 }
 
 bool Logs::refresh() {
     try {
         if (fs::remove(logs_path)){
-            writeLogs("Successful deleting old logs");
+            writeLogs(lvl::Info, mod::Logs, "Successful deleting old logs");
 			return true;
 		}
 		return false;
     } catch (const std::exception& e) {
-        writeLogs("Failed to refresh logs: " + std::string(e.what()));
+        writeLogs(lvl::Error, mod::Logs, "Failed to refresh logs: " + std::string(e.what()));
     }
 
     std::ofstream f(logs_path, std::ios::out);
     f.close();
 
+#ifndef _WIN32
     if (chmod(logs_path.c_str(), 0644) != 0) {
-        writeLogs("Failed to change mod of logs\n Try to fix it yourself");
+        writeLogs(lvl::Error, mod::Logs, "Failed to change mod of logs\n Try to fix it yourself");
 		return false;
     }
     if (geteuid() == 0) {
@@ -60,12 +92,13 @@ bool Logs::refresh() {
             struct passwd* pw = getpwnam(sudo_user);
             if (pw) {
                 if (chown(logs_path.c_str(), pw->pw_uid, pw->pw_gid) != 0) {
-                    writeLogs("Failed to change owner of logs\n Try to fix it yourself");
+                    writeLogs(lvl::Error, mod::Logs, "Failed to change owner of logs\n Try to fix it yourself");
 					return false;
                 }
             }
         }
     }
+#endif
 	return true;
 }
 

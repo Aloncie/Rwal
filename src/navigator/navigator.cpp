@@ -1,9 +1,10 @@
 #include "navigator.hpp"
 #include "logs/logs.hpp"
 
-#include <QCoreApplication>
 #include <ncurses.h>
 
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
 void Navigator::registerMenu(const std::string& name, std::unique_ptr<Menu> menu) {
     m_menus[name] = std::move(menu);
 }
@@ -18,7 +19,7 @@ void Navigator::start(const std::string InitialMenu) {
         m_currentMenu = it->second.get();
         printCurrentMenu();
     } else {
-        m_logs.writeLogs("Failed InitialMenu in Navigator::start: " + InitialMenu);
+        m_logs.writeLogs(lvl::Error, mod::Navigator, "Failed InitialMenu in Navigator::start: " + InitialMenu);
     }
 }
 
@@ -31,14 +32,12 @@ void Navigator::printCurrentMenu() {
     }
 }
 
-MenuResponce Navigator::processInput(std::string& input, TUIManager& uimanager) {
-    if (!m_currentMenu) return {"", false, false, ""};
+MenuResponse Navigator::processInput(std::string& input, TUIManager& ui) {
+    if (!m_currentMenu) return {""};
 
-    MenuResponce resp = m_currentMenu->handleInput(input);
+    MenuResponse resp = m_currentMenu->handleInput(input);
 
-    if (resp.needQuit) QCoreApplication::quit();
-
-    if (resp.IsWrongInput) uimanager.showMessage("Invalid choice: " + input);
+    if (resp.IsWrongInput) ui.showMessage("Invalid choice: " + input);
 
     if (!resp.nextMenu.empty()) {
         auto it = m_menus.find(resp.nextMenu);
