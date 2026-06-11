@@ -39,7 +39,7 @@ void Config::getConfigFileData(){
             		{"apikey", ""},
             		{"base_url", "https://wallhaven.cc/api/v1/search"},
             		{"param_names", {
-                		{"query", "?q"},
+                		{"query", "q"},
 						{"page", "page"},
 						{"apikey", "apikey"},
                 		{"sorting", "sorting"},
