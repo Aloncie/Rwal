@@ -138,7 +138,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
 | `search.res` | String | `"1920x1080"`| Target image resolution (e.g., `"2560x1440"`). |
 | `search.sorting` | String | `"random"` | API sorting method: `"random"`, `"relevance"`, `"views"`, `"date"`, `"toplist"`, `"favorites"`. |
 | `services.wallhaven.apikey`| String | `""` | *(Optional)* Your Wallhaven API key to bypass rate limits(~45 per minute) and access NSFW/Sketchy content. |
-| `settings.cursor_visibility`| Boolean| `true` | Toggles the visibility of the terminal cursor inside the TUI mode. |
+| `settings.cursor-visibility`| Boolean| `true` | Toggles the visibility of the terminal cursor inside the TUI mode. |
 
 
 #### ❗WARNING❗:
