@@ -172,7 +172,7 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 </div>
 
 [Workflow]: https://github.com/Aloncie/Rwal/actions
-[Version]: https://img.shields.io/badge/version-alpha-blue
+[Version]: https://img.shields.io/badge/version-beta-yellow
 [License]: https://github.com/Aloncie/Rwal/blob/main/LICENSE
 [Security]: https://github.com/Aloncie/Rwal/blob/main/SECURITY.md
 [Roadmap]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
