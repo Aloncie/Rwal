@@ -186,7 +186,7 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 [nlohmann/json]: https://github.com/nlohmann/json
 
 [Badge Workflow]: https://github.com/Aloncie/Rwal/actions/workflows/release.yml/badge.svg
-[Badge Version]: https://img.shields.io/badge/version-alpha-darkblue?style=flat-square
+[Badge Version]: https://img.shields.io/badge/version-beta-orange?style=flat-square
 [Badge License]: https://img.shields.io/badge/license-MIT-gold?style=flat-square
 [Badge Platform]: https://img.shields.io/badge/platform-linux%20%20-lightgrey?style=flat-square
 [Badge Language]: https://img.shields.io/github/languages/top/Aloncie/Rwal?style=flat-square
