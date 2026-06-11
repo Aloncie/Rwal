@@ -86,8 +86,11 @@ The build process generates the binary inside the `build/<OS>-release/` director
 On Windows, use the `.exe` extension and your specific shell syntax inside the `windows-preset` folder:
 ```powershell
 # Unified mode example in PowerShell
-.\build\windows-release\rwal.exe --tui
+.\build\windows-release\rwal-cli.exe --help
 ```
+
+Also, you can use **only** CLI version on Windows.
+
 </details>
 
 # ⚙️ Configuration
