@@ -7,16 +7,15 @@
 ## 🚀 Phase 1 – Cross‑Platform & Core Stability
 
 - [x] **Abstract wallpaper setting** – Create `IWallpaperSetter` interface with implementations for KDE, GNOME and etc.
-- [ ] **Offline fallback** – Maintain a local cache of recently downloaded wallpapers; if offline, pick a random cached image.
-- [ ] **Configuration enhancements** – Allow user to specify cache size, preferred image types, and fallback behaviour.
-- [ ] **Unit tests** – Add tests for critical modules: keyword parsing, menu navigation, file operations. Use GoogleTest or Qt Test.
+- [x] **Unit tests** – Add tests for critical modules: keyword parsing, menu navigation, file operations. Use GoogleTest.
+- [x] **Beta release**
 
 ## 🎨 Phase 2 – GUI & Addication functional
 
+- [ ] **Offline fallback** – Maintain a local cache of recently downloaded wallpapers; if offline, pick a random cached image.
+- [ ] **Configuration enhancements** – Allow user to specify cache size, preferred image types, and fallback behaviour.
 - [ ] **Basic GUI mode** – Develop a simple Qt Widgets interface (non‑QML) for users who prefer a window. Keep CLI as first‑class citizen.
-- [ ] **System tray integration** – Allow quick wallpaper refresh and mode switching from tray icon.
-- [ ] **History browser** – GUI to view and restore previously used wallpapers.
-- [ ] **Beta release**
+- [ ] **History browser** – Allow view history of previously selected wallpapers.
 
 ## 🧪 Phase 3 – Testing & Release
 
