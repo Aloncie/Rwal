@@ -1,19 +1,35 @@
 #include "env_utils.hpp"
-#include <sys/wait.h>
-#include <unistd.h>
+#include "internal/AppConstants.hpp"
+
 #include <cstdlib>
-#include <string>
+#include <array>
+#include <cstdio>
+
+#ifdef _WIN32
+	#include <Windows.h>
+	#include <shellapi.h>
+#else
+	#include <sys/wait.h>
+	#include <unistd.h>
+#endif
 
 namespace rwal::platform::executor {
-    void open_editor(fs::path& path) {
+    void open_editor(const fs::path& path) {
+#ifdef _WIN32
+		std::wstring widePath = path.wstring();
+		SHELLEXECUTEINFOW sei = { sizeof(sei) };
+		sei.lpFile = widePath.c_str();
+		sei.nShow = SW_SHOWNORMAL;
+		sei.fMask = SEE_MASK_FLAG_NO_UI;
+		ShellExecuteExW(&sei);
+#else
         const char* editor_env = std::getenv("EDITOR");
         std::string editor = (editor_env) ? editor_env : "nano";
         std::string path_str = path.string();
 
         pid_t pid = fork();
 
-        if (pid == -1)
-            return;
+        if (pid == -1)	return;
 
         if (pid == 0) {
 			if (std::system("stty sane") != 0) {}
@@ -24,7 +40,38 @@ namespace rwal::platform::executor {
         } else {
             int status;
             waitpid(pid, &status, 0);
-        }
+		}
+#endif
     }
+}
+
+namespace rwal::systemd{
+	int exec(const std::string& command) {
+#ifdef _WIN32
+		FILE* pipe = _popen(command.c_str(), "r");
+#else
+		FILE* pipe = popen(command.c_str(), "r");
+#endif
+		if (!pipe) return -1;
+
+		// Drain the output
+		std::array<char, 256> buffer;
+		while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {}
+
+#ifdef _WIN32
+		int status = _pclose(pipe);
+#else
+		int status = pclose(pipe);
+#endif
+
+		if (status == -1) return -1;
+
+#ifdef _WIN32
+		return status;  // Windows: status IS the exit code
+#else
+		if (WIFEXITED(status)) return WEXITSTATUS(status);
+		return -1;  // process terminated abnormally
+#endif
+	}
 }
 

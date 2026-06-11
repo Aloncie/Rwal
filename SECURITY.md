@@ -29,7 +29,7 @@ I take security seriously. If you discover a security issue in Rwal, please repo
    
 2. Open a public GitHub issue
 
-3. Write to Aloncie@proton.me
+3. Write to [e-mail](mailto:Aloncie@proton.me)
    
 ### What to Include
 
@@ -53,3 +53,4 @@ Rwal is in **active development**, and I'm currently focusing on:
 - 📦 Safe handling of external data (Wallhaven API)
 
 Your help in making Rwal more secure is greatly appreciated. Thank you! 🙏
+

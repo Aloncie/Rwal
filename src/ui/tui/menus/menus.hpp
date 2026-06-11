@@ -1,83 +1,87 @@
 #pragma once
 #include "keywords/keywords.hpp"
 #include "settings/settings.hpp"
+#include "settings/ISystemScheduler.hpp"
 #include "settings/IConfigReader.hpp"
-#include "ui/tui/TUIManager.hpp"
+#include "ui/IUserInterface.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 #include "IWallpaperSetter.hpp"
 #include "net/NetworkManager.hpp"
+#include "internal/filesystem/IFileSystem.hpp"
 
 #include <string>
 #include <vector>
 
-struct MenuResponce {
+struct MenuResponse {
     std::string nextMenu;
-    bool IsWrongInput;
-    bool needQuit;
-    std::string Message;
+	std::string Message = "";
+    bool IsWrongInput = false;
+    bool needQuit = false;
+	bool needRefreshWallpaper = false;
 };
 
 class Menu {
 public:
     virtual ~Menu() = default;
     virtual std::vector<std::string> getLines() = 0;
-    virtual MenuResponce handleInput(const std::string& input) = 0;
+    virtual MenuResponse handleInput(const std::string& input) = 0;
     virtual const std::string& getValidChoices() const = 0;
 };
 
 class MainMenu : public Menu {
 private:
-    TUIManager& m_uim;
+    IUserInterface& m_uim;
     Keywords& m_keywords;
     WallpaperManager& m_wm;
 	IWallpaperSetter& m_env;
-	NetworkManager& m_nm;
+	NetworkManager& m_netmanager;
     inline static const std::string m_validChoices = "1234q";
 
 public:
-    MainMenu(TUIManager& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& nm);
+    MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& netmanager);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
 class SettingsMenu : public Menu {
 private:
-    Timer& m_timer;
+    ISystemScheduler& m_scheduler;
     WallpaperManager& m_wm;
-	TUIManager& m_uim;
+	IUserInterface& m_uim;
+	IFileSystem& m_fs;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(Timer& timer, WallpaperManager& wm, TUIManager& ui);
+    SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
 class KeywordsMenu : public Menu {
 private:
     Keywords& m_keywords;
-    TUIManager& m_uim;
+    IUserInterface& m_uim;
 	IConfigReader& m_config;
     inline static const std::string m_validChoices = "armq";
 
 public:
-    KeywordsMenu(Keywords& keywords, TUIManager& ui, IConfigReader& config);
+    KeywordsMenu(Keywords& keywords, IUserInterface& ui, IConfigReader& config);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 
-class TimerMenu : public Menu {
+class SchedulerMenu : public Menu {
 private:
-    Timer& m_timer;
+    ISystemScheduler& m_scheduler;
     inline static const std::string m_validChoices = "nhd";
 
 public:
-    TimerMenu(Timer& timer);
+    SchedulerMenu(ISystemScheduler& scheduler);
     std::vector<std::string> getLines() override;
-    MenuResponce handleInput(const std::string& input) override;
+    MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
 

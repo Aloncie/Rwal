@@ -1,80 +1,65 @@
 #include "LinuxFileSystem.hpp"
 
-#include <QStandardPaths>
-#include <QCoreApplication>
-#include <system_error>
+#include <cstdlib>
+#include <unistd.h>
+#include <limits.h>
 
-bool LinuxFileSystem::createDirectories(const fs::path& path) {
-	std::error_code ec;
-	fs::create_directories(path, ec);
-	if (ec) {
-		m_LastError = "Failed to create directories: " + ec.message();
-		return false;
-	}
-	return true;
-}
-
-bool LinuxFileSystem::exists(const fs::path& path) const {
-	std::error_code ec;
-	bool result = fs::exists(path, ec);
-	if (ec) {
-		m_LastError = "Failed to check existence: " + ec.message();
-		return false;
-	}
-	return result;
-}
-
-bool LinuxFileSystem::removeAll(const fs::path& path) {
-	std::error_code ec;
-	fs::remove_all(path, ec);
-	if (ec) {
-		m_LastError = "Failed to remove: " + ec.message();
-		return false;
-	}
-	return true;
-}
-
-bool LinuxFileSystem::copyFile(const fs::path& current, const fs::path& dest) const {
-	std::error_code ec;
-	fs::copy_file(current, dest, fs::copy_options::overwrite_existing, ec);
-	if (ec) {
-		m_LastError = "Failed to copy file: " + ec.message();
-		return false;
-	}
-	return true;
-}
-
-std::vector<fs::path> LinuxFileSystem::listDirectory(const fs::path& path, const std::string& prefix) const {
-	std::vector<fs::path> result;
-	std::error_code ec;
-	for (const auto& entry : fs::directory_iterator(path, ec)) {
-		if (ec) {
-			m_LastError = "Failed to list directory: " + ec.message();
-			return {};
-		}
-		if (entry.is_regular_file() && entry.path().filename().string().starts_with(prefix) == 0) {
-			result.push_back(entry.path());
-		}
-	}
-	return result;
-}
+// Question: Why fallback value instead of std::optional?
+//
+// The contract is: "I will always give you a usable path." 
+// current_path() guarantees that. No optional, no error propagation, no caller burden.
 
 fs::path LinuxFileSystem::getAppLocalDataLocation() const {
-	return QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation).toStdString();
+    if (const char* xdg = std::getenv("XDG_DATA_HOME")) {
+        return fs::path(xdg);
+	}
+    if (const char* home = std::getenv("HOME")) {
+        return fs::path(home) / ".local" / "share";
+	}
+	// Fallback value
+    return fs::current_path() / ".local" / "share";
 }
 
 fs::path LinuxFileSystem::getPicturesLocation() const {
-	return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation).toStdString();
-
-}
-std::string LinuxFileSystem::getApplicationName() const {
-	return QCoreApplication::applicationName().toStdString();
-}
-
-std::string LinuxFileSystem::getLastError() const {
-	return m_LastError;
+    if (const char* home = std::getenv("HOME")) {
+        return fs::path(home) / "Pictures";
+	}
+	// Fallback value
+    return fs::current_path() / "Pictures";
 }
 
-void LinuxFileSystem::clearError() const {
-	m_LastError.clear();
+fs::path LinuxFileSystem::getTempLocation() const {
+	if (const char* tmp = std::getenv("TMPDIR")) {
+		return fs::path(tmp);
+	}
+	// Fallback value
+    return fs::current_path() / "tmp";
 }
+
+fs::path LinuxFileSystem::getConfigLocation() const {
+    if (const char* home = std::getenv("HOME")) {
+        return fs::path(home) / ".config";
+    }
+    // Fallback value
+    return fs::current_path() / ".config";
+}
+
+fs::path LinuxFileSystem::getSchedulerLocation() const {
+    if (const char* home = std::getenv("HOME")) {
+        return fs::path(home) / ".config/systemd/user";
+    }
+    // Fallback value
+    return fs::current_path() / ".config/systemd/user";
+}
+
+fs::path LinuxFileSystem::getBinaryLocation() const {
+	char buffer[PATH_MAX];
+	ssize_t len = readlink("/proc/self/exe", buffer, sizeof(buffer));
+	if (len != -1) {
+		buffer[len] = '\0';
+        return fs::path(buffer);
+    }
+    // Fallback value
+	return fs::current_path() / "rwal";
+}
+

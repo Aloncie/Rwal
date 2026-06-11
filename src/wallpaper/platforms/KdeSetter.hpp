@@ -10,7 +10,8 @@ class KdeSetter : public IWallpaperSetter {
 private:
 	Logs& m_logs;
 public:
-	KdeSetter(Logs& logs) : m_logs(logs) {}
+	explicit KdeSetter(Logs& logs) : m_logs(logs) {}
+	~KdeSetter() override = default;
 	bool setWallpaper(const fs::path& path) override;
 };
 

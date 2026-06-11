@@ -2,35 +2,85 @@
 #include "logs/logs.hpp"
 #include <unistd.h>
 
-AppController::AppController(Navigator* nav, TUIManager& ui, QObject* parent)
-    : QObject(parent), m_navigator(nav), m_ui(ui) {
-    m_notifier = new QSocketNotifier(STDIN_FILENO, QSocketNotifier::Read, this);
-    connect(m_notifier, &QSocketNotifier::activated, this, &AppController::handleStdin);
-    m_navigator->printCurrentMenu();
+#include <ncurses.h>
+
+AppController::AppController(
+    Navigator& nav,
+    TUIManager& tui,
+    WallpaperManager& wallpapermanager,
+    IWallpaperSetter& env,
+    NetworkManager& netmanager,
+    Keywords& keywords,
+    std::jthread& wallpaperThread,
+    std::atomic<bool>& refreshDone,
+    std::string& refreshError
+)
+    : m_navigator(nav)
+    , m_tui(tui)
+    , m_wallpapermanager(wallpapermanager)
+    , m_env(env)
+    , m_netmanager(netmanager)
+    , m_keywords(keywords)
+    , m_wallpaperThread(wallpaperThread)
+    , m_refreshDone(refreshDone)
+    , m_refreshError(refreshError)
+{
+    m_navigator.printCurrentMenu();
 }
 
-void AppController::handleStdin() {
+bool AppController::handleStdin() {
     int ch = getch();
-    if (ch == ERR) return;
+    if (ch == ERR) return true;  // no input, keep going
 
-    MenuResponce resp;
-    if (m_ui.isInputActive()) {
-        m_ui.processInputChar(ch);
+    MenuResponse resp;
+    if (m_tui.isInputActive()) {
+        m_tui.processInputChar(ch);
     } else {
-        const std::string validChoices = m_navigator->getCurrentValidChoices();
+        const std::string validChoices = m_navigator.getCurrentValidChoices();
         char inputChar = static_cast<char>(ch);
         if (validChoices.find(inputChar) != std::string::npos) {
             std::string input(1, static_cast<char>(ch));
-            resp = m_navigator->processInput(input, m_ui);
-            if (resp.needQuit) return;
+            resp = m_navigator.processInput(input, m_tui);
+            if (resp.needQuit) return false;  // signal the loop to shutdown
+			if (resp.needRefreshWallpaper) launchRefreshWallpaper();
         }
+		m_navigator.printCurrentMenu();
     }
 
-    while (getch() != ERR);
+    // Redraw the menu after any keystroke that leaves input inactive.
+    // This covers both menu navigation AND input completion (Enter).
+    if (!m_tui.isInputActive()) {
+        m_navigator.printCurrentMenu();
+    }
 
-    m_navigator->printCurrentMenu();
     if (!resp.Message.empty()) {
-        m_ui.showMessage(resp.Message);
+        m_tui.showMessage(resp.Message);
+    }
+    return true;  // keep going
+}
+
+void AppController::launchRefreshWallpaper() {
+	if (m_wallpaperThread.joinable()) {
+		m_wallpaperThread.join();
+	}
+
+    m_wallpaperThread = std::jthread([this] {
+		auto error = m_wallpapermanager.refresh(m_env, m_netmanager, m_keywords, &m_tui);
+		if (error.has_value()) {
+			m_refreshError = error.value();
+		} else {
+			m_refreshError.clear();
+		}
+        m_refreshDone = true;
+    });
+}
+
+void AppController::checkRefreshDone() {
+    if (m_refreshDone.exchange(false)) {
+		if (!m_refreshError.empty()) {
+            m_tui.showMessage(m_refreshError);
+        }
+		m_navigator.printCurrentMenu();
     }
 }
 

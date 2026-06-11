@@ -1,0 +1,74 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "windows-release",
+      "displayName": "Windows Release (Ninja)",
+      "description": "Windows CLI build with vcpkg for curl/json",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+	  "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+		"CMAKE_BUILD_TYPE": "Release",
+        "BUILD_TUI": "OFF",
+        "BUILD_CLI": "ON",
+        "RWAL_FORCE_DE": "Windows"
+      }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release — TUI+CLI (default)",
+      "description": "Linux build with both TUI and CLI",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TUI": "ON",
+        "BUILD_CLI": "ON"
+      }
+    },
+    {
+      "name": "linux-release-tui",
+      "displayName": "Linux Release — TUI only",
+      "description": "Linux build with TUI only (no CLI)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TUI": "ON",
+        "BUILD_CLI": "OFF"
+      }
+    },
+    {
+      "name": "linux-release-cli",
+      "displayName": "Linux Release — CLI only",
+      "description": "Linux build with CLI only (no TUI)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TUI": "OFF",
+        "BUILD_CLI": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-release-tui",
+      "configurePreset": "linux-release-tui",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-release-cli",
+      "configurePreset": "linux-release-cli",
+      "configuration": "Release"
+    }
+  ]
+}

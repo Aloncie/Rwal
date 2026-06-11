@@ -1,92 +1,149 @@
+#define NOMINMAX // Must be before any Windows headers
 #include "NetworkManager.hpp"
+
+#ifdef _WIN32
+    #include <winsock2.h>
+    #include <ws2tcpip.h>
+#else
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+    #include <unistd.h>
+    #include <format>
+#endif
+
 #include "funcs/funcs.hpp"
+#include <algorithm>
+#include <format>
 
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
 
+#define PLANNED_LOCAL_FETCH
+
+#ifndef _WIN32
 struct SocketGuard{
-	int fd;
-	SocketGuard(int s) : fd(s){}
-	~SocketGuard(){
-		if (fd != -1)
-			close(fd);
-	}
+    int fd;
+    SocketGuard(int s) : fd(s) {}
+    ~SocketGuard() {
+        if (fd != -1)
+            close(fd);
+    }
 };
+#endif
 
 bool NetworkManager::isAvailable() {
-   	m_logs.writeLogs("Try to check internet connection");
+    m_logs.writeLogs(lvl::Debug, mod::Network, "Try to check internet connection");
 
+#ifdef _WIN32
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
+        m_logs.writeLogs(lvl::Error, mod::Network, "WSAStartup failed");
+        return false;
+    }
+    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock == INVALID_SOCKET) {
+        m_logs.writeLogs(lvl::Error, mod::Network, "Socket creation failed");
+        WSACleanup();
+        return false;
+    }
+    sockaddr_in server{};
+    server.sin_family = AF_INET;
+    server.sin_port = htons(53);
+    inet_pton(AF_INET, "8.8.8.8", &server.sin_addr);
+    int timeout = 3000;
+    setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof(timeout));
+    int result = connect(sock, (sockaddr*)&server, sizeof(server));
+    bool connected = (result == 0);
+    closesocket(sock);
+    WSACleanup();
+    if (connected) {
+        m_logs.writeLogs(lvl::Info, mod::Network, "Internet check: SUCCESS");
+        return true;
+    } else {
+        m_logs.writeLogs(lvl::Warning, mod::Network, "Internet check: FAILED");
+        return false;
+    }
+#else
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == -1) {
-        m_logs.writeLogs("Socket creation failed");
+        m_logs.writeLogs(lvl::Error, mod::Network, "Socket creation failed");
         return false;
     }
-
     SocketGuard guard(sock); 
-
     sockaddr_in server{}; server.sin_family = AF_INET;
     server.sin_port = htons(53);
-    
     if (inet_pton(AF_INET, "8.8.8.8", &server.sin_addr) <= 0) {
-        m_logs.writeLogs("IP conversion failed");
+        m_logs.writeLogs(lvl::Error, mod::Network, "IP conversion failed");
         return false;
     }
-
     timeval tv{.tv_sec = 3, .tv_usec = 0};
     setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
-
     if (connect(sock, reinterpret_cast<sockaddr*>(&server), sizeof(server)) == 0) {
-        m_logs.writeLogs("Internet check: SUCCESS");
+        m_logs.writeLogs(lvl::Info, mod::Network, "Internet check: SUCCESS");
         return true;
     }
-
-    m_logs.writeLogs("Internet check: FAILED (No connection to 8.8.8.8:53)");
+    PLANNED_LOCAL_FETCH
+    m_logs.writeLogs(lvl::Warning, mod::Network, "Internet check: FAILED (No connection to 8.8.8.8:53)");
     return false;
+#endif
 }
 
-std::string NetworkManager::craftUrl(std::string keyword,std::optional<std::string> page){
-	try {
-		auto& cfg = m_config.all();
+std::string NetworkManager::craftUrl(std::string_view keyword, const std::optional<std::string>& page) {
+    try {
+        auto& cfg = m_config.all();
+        auto& wh = cfg["services"]["wallhaven"];
+        auto& search = cfg["search"];
+		auto& p_names = wh["param_names"];
 
-		auto& wh = cfg["services"]["wallhaven"];
-		auto& search = cfg["search"];
+        std::vector<std::string> params;
+		
+		auto add_param = [&](std::string_view name, std::string_view value) {
+			params.push_back(std::format("{}={}", name, value));
+		};
+		// Must-have parametr
+        add_param(p_names["query"].get<std::string>(), keyword);        
+        if (page) {
+			add_param(p_names["page"].get<std::string>(), *page);
+        }
+        
+		add_param(p_names["sorting"].get<std::string>(), search["sorting"].get<std::string>());
+		add_param(p_names["res"].get<std::string>(), search["res"].get<std::string>());
+        
+        if (!wh["apikey"].get<std::string>().empty()) {
+			add_param(p_names["apikey"].get<std::string>(), wh["apikey"].get<std::string>());
+        }
 
-		std::string url = wh["base_url"].get<std::string>();
-		url += wh["param_names"]["query"].get<std::string>() + keyword;
-		if (page.has_value()) url += "&page=" + *page;
-		url += "&" + wh["param_names"]["sorting"].get<std::string>() + "=" + search["sorting"].get<std::string>();
-		url += "&" + wh["param_names"]["res"].get<std::string>() + "=" + search["res"].get<std::string>();
-		url += "&" + wh["apikey"].get<std::string>();
-
-		return url;
-	} catch (std::exception& e){
-		m_logs.writeLogs("Failed craft url: " + std::string(e.what()));
-		return "";
-	}
+        std::string url = wh["base_url"].get<std::string>() + "?";
+        for (size_t i = 0; i < params.size(); ++i) {
+            url += (i > 0 ? "&" : "") + params[i];
+        }
+        return url;
+    } catch (std::exception& e) {
+        m_logs.writeLogs(lvl::Error, mod::Network, "Failed craft url: " + std::string(e.what()));
+        return "";
+    }
 }
-
-std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
+std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 	int last_page;
 	std::string url;
 
 	if (!isAvailable()){
 		return std::nullopt;
 	}
-
+	
 	m_curl.getRequest(craftUrl(keyword));
-	auto search = m_config.getImpl("/search");
+	auto search = m_config.get<nlohmann::json>("/search");
 	if (search.is_null()) {
-		m_logs.writeLogs("Search config is missing");
+		m_logs.writeLogs(lvl::Warning, mod::Network, "Search config is missing");
 		return std::nullopt;
 	}
 	else if (!search.contains("random_page") || search["random_page"].get<bool>() == false) {
-		m_logs.writeLogs("Fetch image from first page");
+		m_logs.writeLogs(lvl::Debug, mod::Network, "Fetch image from first page");
 		url = m_curl.getData("data","path");
 	}
 	else if (search.contains("random_page") && search["random_page"].get<bool>() == true) {
-		m_logs.writeLogs("Fetch image from random page");
+		m_logs.writeLogs(lvl::Debug, mod::Network, "Fetch image from random page");
 	
 		std::string pageCount =	m_curl.getData("meta","last_page");
 		
@@ -94,7 +151,7 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 			last_page = std::stoi(pageCount);
 		} catch(std::exception& e){
 
-			m_logs.writeLogs("Failed to stoi pageCount: " + std::string(e.what()));
+			m_logs.writeLogs(lvl::Error, mod::Network, "Failed to stoi pageCount: " + std::string(e.what()));
 			last_page = 1;
 		}
 
@@ -104,16 +161,21 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string keyword) {
 		try {
 			m_curl.getRequest(craftUrl(keyword, page));
 		} catch (std::exception& e){
-			m_logs.writeLogs("CURL error: " + std::string(e.what()));
+			m_logs.writeLogs(lvl::Error, mod::Network, "CURL error: " + std::string(e.what()));
 			return std::nullopt;
 		}
 
 		url = m_curl.getData("data","path");
 
 	}
-
+	else {
+		PLANNED_LOCAL_FETCH
+		m_logs.writeLogs(lvl::Warning, mod::Network, "Search config contains invalid value");
+        return std::nullopt;
+	}
 	if (url.empty()) {
-		m_logs.writeLogs("No image URL found in response");
+		PLANNED_LOCAL_FETCH
+		m_logs.writeLogs(lvl::Warning, mod::Network, "No image URL found in response");
 		return std::nullopt;
 	}
 
