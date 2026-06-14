@@ -38,7 +38,7 @@ int Application::run(int argc, char* argv[]) {
 	Config config(logs, *fs);
     Keywords keywords(config, logs, *fs);
     CurlWrapper curl(logs, *fs);
-    NetworkManager netmanager(curl, config, logs);
+    NetworkManager netmanager(curl, config, logs, *fs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
 	std::unique_ptr<ISystemScheduler> scheduler = createPlatformScheduler(logs, *fs);
     WallpaperManager wm(logs, *fs);

@@ -192,7 +192,7 @@ int CLI::handleChange() {
 	m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in change mode");
     Keywords keywords(m_deps.config, m_deps.logs, m_deps.fs);
     auto curl = std::make_unique<CurlWrapper>(m_deps.logs, m_deps.fs);
-    NetworkManager m_netmanager(*curl, m_deps.config, m_deps.logs);
+    NetworkManager m_netmanager(*curl, m_deps.config, m_deps.logs, m_deps.fs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(m_deps.logs);
     WallpaperManager wm(m_deps.logs, m_deps.fs);
     wm.refresh(*env, m_netmanager, keywords, nullptr, "change");

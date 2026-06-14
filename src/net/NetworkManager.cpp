@@ -1,5 +1,7 @@
 #define NOMINMAX // Must be before any Windows headers
 #include "NetworkManager.hpp"
+#include "AppConfig.h"
+#include "funcs/funcs.hpp"
 
 #ifdef _WIN32
     #include <winsock2.h>
@@ -12,14 +14,12 @@
     #include <format>
 #endif
 
-#include "funcs/funcs.hpp"
 #include <algorithm>
 #include <format>
+#include <vector>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
-
-#define PLANNED_LOCAL_FETCH
 
 #ifndef _WIN32
 struct SocketGuard{
@@ -83,7 +83,6 @@ bool NetworkManager::isAvailable() {
         m_logs.writeLogs(lvl::Info, mod::Network, "Internet check: SUCCESS");
         return true;
     }
-    PLANNED_LOCAL_FETCH
     m_logs.writeLogs(lvl::Warning, mod::Network, "Internet check: FAILED (No connection to 8.8.8.8:53)");
     return false;
 #endif
@@ -129,7 +128,37 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 	std::string url;
 
 	if (!isAvailable()){
-		return std::nullopt;
+		m_logs.writeLogs(lvl::Info, mod::Network, "Network isn't available, using local wallpapers.");
+		fs::path pictures_path = m_fs.getPicturesLocation() / APP_NAME;
+		std::string error = m_fs.getLastError();
+		if (error != "") {
+			m_logs.writeLogs(lvl::Error, mod::Network, "Failed to get pictures directory: " + error);
+			return std::nullopt;
+		} 
+
+		bool exists = m_fs.existsDirectory(pictures_path);
+		error = m_fs.getLastError();
+		if (!exists){
+			m_logs.writeLogs(lvl::Error, mod::Network, "Pictures directory doesn't exist");
+			return std::nullopt;
+		} else if (error != "") {
+			m_logs.writeLogs(lvl::Error, mod::Network, "Failed to get wallpapers path: " + error);
+			return std::nullopt;
+		}
+
+		std::vector<fs::path> wallpapers = m_fs.listDirectory(pictures_path, "wallpaper");
+		error = m_fs.getLastError();
+		if (error != "") {
+			m_logs.writeLogs(lvl::Error, mod::Network, "Failed to get wallpapers list: " + error);
+			return std::nullopt;
+		}
+
+		// random() take any number from 1 to N 
+		// so we need to keep wallpapers.size() without -1 and then minus 1 to get the index
+		// without it we can't get null element
+		int num = random(wallpapers.size()); 
+
+		return wallpapers[num-1];	
 	}
 	
 	m_curl.getRequest(craftUrl(keyword));
@@ -169,12 +198,10 @@ std::optional<fs::path> NetworkManager::fetchImage(std::string_view keyword) {
 
 	}
 	else {
-		PLANNED_LOCAL_FETCH
 		m_logs.writeLogs(lvl::Warning, mod::Network, "Search config contains invalid value");
         return std::nullopt;
 	}
 	if (url.empty()) {
-		PLANNED_LOCAL_FETCH
 		m_logs.writeLogs(lvl::Warning, mod::Network, "No image URL found in response");
 		return std::nullopt;
 	}
