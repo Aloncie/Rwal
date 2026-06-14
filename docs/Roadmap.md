@@ -12,7 +12,7 @@
 
 ## 🎨 Phase 2 – GUI & Addication functional
 
-- [ ] **Offline fallback** – Maintain a local cache of recently downloaded wallpapers; if offline, pick a random cached image.
+- [x] **Offline fetching image** – Fetch wallpapers from local storage if network is unavailable.
 - [ ] **Configuration enhancements** – Allow user to specify cache size, preferred image types, and fallback behaviour.
 - [ ] **Basic GUI mode** – Develop a simple Qt Widgets interface (non‑QML) for users who prefer a window. Keep CLI as first‑class citizen.
 - [ ] **History browser** – Allow view history of previously selected wallpapers.
