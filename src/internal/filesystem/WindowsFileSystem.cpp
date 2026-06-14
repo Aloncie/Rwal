@@ -50,7 +50,7 @@ fs::path WindowsFileSystem::getBinaryLocation() const {
     // Fallback value
 	// I don't know how should I correct impelemt this now, but I must give a value.
 	wchar_t buffer[MAX_PATH];
-    GetModuleFileName(NULL, buffer, MAX_PATH);
+    GetModuleFileNameW(NULL, buffer, MAX_PATH);
     return fs::path(buffer);
 }
 

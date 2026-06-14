@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libncurses-dev \
     nlohmann-json3-dev \
     libglib2.0-dev \
-    rpm
+    rpm \
+	file
 
 WORKDIR /app
 
