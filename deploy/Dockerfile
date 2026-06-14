@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcurl4-openssl-dev \
     libncurses-dev \
     nlohmann-json3-dev \
-    libglib2.0-dev
+    libglib2.0-dev \
+    rpm
 
 WORKDIR /app
 
