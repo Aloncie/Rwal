@@ -33,10 +33,10 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 
 <div align="center">
 
-### Interactive Mode
+### Terminal
 ![Interactive Preview][PreviewA]
 
-### Change Mode
+### Command Line
 ![Daemon Preview][PreviewB]
 
 </div>
