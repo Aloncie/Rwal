@@ -11,7 +11,7 @@
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& netmanager) : m_uim(uim), m_keywords(keywords), m_wm(wm), m_env(env), m_netmanager(netmanager) {};
+MainMenu::MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wmanager, IWallpaperSetter& env, NetworkManager& netmanager) : m_uim(uim), m_keywords(keywords), m_wmanager(wmanager), m_env(env), m_netmanager(netmanager) {};
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -27,7 +27,7 @@ MenuResponse MainMenu::handleInput(const std::string& input) {
 	if (input == "1") {
     	return {"", "", false, false, true};
     } else if (input == "2") {
-        std::string message = m_wm.saveCurrent();
+        std::string message = m_wmanager.saveCurrent();
         return {"", message};
     } else if (input == "3") {
         return {MenuId::KEYWORDS};
@@ -42,7 +42,7 @@ MenuResponse MainMenu::handleInput(const std::string& input) {
 
 using rwal::system::Scheduler::toString;
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs) : m_scheduler(scheduler), m_wm(wm), m_uim(ui), m_fs(fs) {}
+SettingsMenu::SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wmanager, IUserInterface& ui, IFileSystem& fs) : m_scheduler(scheduler), m_wmanager(wmanager), m_uim(ui), m_fs(fs) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
 	std::string pathStr = (m_fs.getPicturesLocation() / APP_NAME).string();
