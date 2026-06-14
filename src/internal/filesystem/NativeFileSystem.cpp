@@ -133,5 +133,6 @@ std::string NativeFileSystem::getLastError() const {
 }
 
 void NativeFileSystem::clearError() const {
-	m_LastError.clear();
+	m_LastError.clear(); // == m_LastError = "";
 }
+
