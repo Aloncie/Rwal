@@ -1,0 +1,1 @@
+Rwal is a lightweight, cross-platform wallpaper utility designed for speed and flexibility. It bridges the gap between a rich, interactive ncurses interface and a silent daemon for automation.

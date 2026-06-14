@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(Rwal VERSION 0.7 LANGUAGES CXX)
+project(Rwal VERSION 0.7.1 LANGUAGES CXX)
 
 # -------------------------------------------------------------------
 # Options
@@ -153,11 +153,13 @@ endif()
 set(CPACK_PACKAGE_NAME "rwal")
 set(CPACK_PACKAGE_VENDOR "Aloncie")
 set(CPACK_PACKAGE_CONTACT "Aloncie@proton.me")
-set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}-alpha")
+set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}-beta")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Wallpaper manager for Windows, KDE, GNOME and Hyprland")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cmake/description-full.txt")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Aloncie <Aloncie@proton.me>")
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+set(CPACK_RPM_PACKAGE_DESCRIPTION "Wallpaper manager for Windows, KDE, GNOME and Hyprland")
 set(CPACK_GENERATOR "DEB;RPM;TGZ;ZIP")
 include(CPack)
 
