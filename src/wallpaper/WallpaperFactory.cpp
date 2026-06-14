@@ -2,29 +2,51 @@
 #include "platforms/FallbackSetter.hpp"
 #include "IWallpaperSetter.hpp"
 
-#include <memory>
-
-#ifdef RWAL_USE_KDE
+#ifdef _WIN32
+    #include "platforms/WindowsSetter.hpp"
+#else
     #include "platforms/KdeSetter.hpp"
-#elif defined(RWAL_USE_GNOME)
-    #include "platforms/GnomeSetter.hpp"
-#elif defined(RWAL_USE_HYPRLAND)
+    #ifdef GIO_FOUND
+        #include "platforms/GnomeSetter.hpp"
+    #endif
     #include "platforms/HyprlandSetter.hpp"
-#elif defined(RWAL_USE_WINDOWS)
-	#include "platforms/WindowsSetter.hpp"
 #endif
 
-std::unique_ptr<IWallpaperSetter> createWallpaperSetter(Logs& m_logs) {
-#ifdef RWAL_USE_KDE
-    return std::make_unique<KdeSetter>(m_logs);
-#elif defined(RWAL_USE_GNOME)
-    return std::make_unique<GnomeSetter>(m_logs);
-#elif defined(RWAL_USE_HYPRLAND)
-    return std::make_unique<HyprlandSetter>(m_logs);
-#elif defined(RWAL_USE_WINDOWS)
-	return std::make_unique<WindowsSetter>(m_logs);
+#include <memory>
+#include <string>
+#include <cstdlib>
+
+namespace lvl = rwal::logs::types;
+namespace mod = rwal::logs::modules;
+
+std::unique_ptr<IWallpaperSetter> createWallpaperSetter(Logs& logs) {
+#ifdef _WIN32
+    return std::make_unique<WindowsSetter>(logs);
 #else
-    return std::make_unique<FallbackSetter>(m_logs);
+    const char* xdg = std::getenv("XDG_CURRENT_DESKTOP");
+    std::string desktop = xdg ? xdg : "";
+
+    if (desktop.find("GNOME") != std::string::npos) {
+        #ifdef GIO_FOUND
+		logs.writeLogs(lvl::Info, mod::Wallpaper, "GNOMESetter was chosen, GIO was found.");
+        return std::make_unique<GnomeSetter>(logs);
+        #else
+		logs.writeLogs(lvl::Info, mod::Wallpaper, "GNOMESetter was chosen, but GIO was not found. FallbackSetter will be used.");
+        return std::make_unique<FallbackSetter>(logs);
+        #endif
+    }
+    else if (desktop.find("KDE") != std::string::npos) {
+		logs.writeLogs(lvl::Info, mod::Wallpaper, "KDESetter was chosen.");
+        return std::make_unique<KdeSetter>(logs);
+    }
+    else if (std::getenv("HYPRLAND_INSTANCE_SIGNATURE")) {
+		logs.writeLogs(lvl::Info, mod::Wallpaper, "HyprlandSetter was chosen.");
+        return std::make_unique<HyprlandSetter>(logs);
+    }
+    else {
+		logs.writeLogs(lvl::Info, mod::Wallpaper, "No setter was chosen. FallbackSetter will be used.");
+        return std::make_unique<FallbackSetter>(logs);
+    }
 #endif
 }
 

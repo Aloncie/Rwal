@@ -9,44 +9,73 @@ permissions:
   contents: write
 
 jobs:
-  build-and-release:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           submodules: recursive
 
-      - name: Install Dependencies
+      - name: Build in Docker
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            cmake \
-            g++ \
-            libcurl4-openssl-dev \
-            nlohmann-json3-dev \
-            libncurses5-dev \
-            libncursesw5-dev \
-            rpm \
-            dpkg \
-            clang-format
-
-      - name: Configure and Build
-        run: |
-          cmake -B build -DCMAKE_BUILD_TYPE=Release
-          cmake --build build -j$(nproc)
+          docker build -t rwal-builder -f deploy/Dockerfile .
+          docker run --rm -v $(pwd)/build:/app/build rwal-builder
 
       - name: Package with CPack
         run: |
           cd build
           cpack -G "DEB;RPM;TGZ"
 
-      - name: Create Release and Upload Assets
-        uses: softprops/action-gh-release@v1
+      - name: Upload Linux artifacts
+        uses: actions/upload-artifact@v4
         with:
-          files: |
+          name: linux-packages
+          path: |
             build/rwal-*.deb
             build/rwal-*.rpm
             build/rwal-*.tar.gz
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Setup dependencies
+        run: python setup.py
+
+      - name: Build
+        run: python build.py
+
+      - name: Package ZIP
+        run: |
+          cd build/windows-release
+          7z a rwal-windows.zip rwal.exe
+        shell: bash
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-package
+          path: |
+            build/windows-release/rwal-windows.zip
+            build/windows-release/rwal.exe
+
+  release:
+    needs: [build-linux, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create Release and Upload All Assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/linux-packages/*
+            artifacts/windows-package/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

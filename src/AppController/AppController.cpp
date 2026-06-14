@@ -7,7 +7,7 @@
 AppController::AppController(
     Navigator& nav,
     TUIManager& tui,
-    WallpaperManager& wallpapermanager,
+    WallpaperManager& wmanager,
     IWallpaperSetter& env,
     NetworkManager& netmanager,
     Keywords& keywords,
@@ -17,7 +17,7 @@ AppController::AppController(
 )
     : m_navigator(nav)
     , m_tui(tui)
-    , m_wallpapermanager(wallpapermanager)
+    , m_wmanager(wmanager)
     , m_env(env)
     , m_netmanager(netmanager)
     , m_keywords(keywords)
@@ -65,7 +65,7 @@ void AppController::launchRefreshWallpaper() {
 	}
 
     m_wallpaperThread = std::jthread([this] {
-		auto error = m_wallpapermanager.refresh(m_env, m_netmanager, m_keywords, &m_tui);
+		auto error = m_wmanager.refresh(m_env, m_netmanager, m_keywords, &m_tui);
 		if (error.has_value()) {
 			m_refreshError = error.value();
 		} else {

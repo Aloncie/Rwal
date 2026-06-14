@@ -12,10 +12,10 @@ fi
 mkdir -p build && cd build
 
 echo "⚙️ Configuring with CMake..."
-cmake .. -DCMAKE_BUILD_TYPE=Debug
+cmake .. -DCMAKE_BUILD_TYPE=Release -G Ninja
 
 echo "🏗️ Building..."
-make -j$(nproc)
+ninja -j$(nproc)
 
 echo "✅ Build complete!"
 

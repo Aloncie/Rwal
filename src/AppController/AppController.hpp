@@ -15,7 +15,7 @@ public:
     AppController(
 		Navigator& nav, 
 		TUIManager& tui, 
-		WallpaperManager& wallpapermanager, 
+		WallpaperManager& wmanager, 
 		IWallpaperSetter& env, 
 		NetworkManager& netmanager, 
 		Keywords& keywords, 
@@ -31,7 +31,7 @@ public:
 private:
     Navigator& m_navigator;
 	TUIManager& m_tui;
-	WallpaperManager& m_wallpapermanager;
+	WallpaperManager& m_wmanager;
 	IWallpaperSetter& m_env;
 	NetworkManager& m_netmanager;
 	Keywords& m_keywords;

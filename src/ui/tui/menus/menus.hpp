@@ -32,13 +32,13 @@ class MainMenu : public Menu {
 private:
     IUserInterface& m_uim;
     Keywords& m_keywords;
-    WallpaperManager& m_wm;
+    WallpaperManager& m_wmanager;
 	IWallpaperSetter& m_env;
 	NetworkManager& m_netmanager;
     inline static const std::string m_validChoices = "1234q";
 
 public:
-    MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wm, IWallpaperSetter& env, NetworkManager& netmanager);
+    MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wmanager, IWallpaperSetter& env, NetworkManager& netmanager);
     std::vector<std::string> getLines() override;
     MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -47,13 +47,13 @@ public:
 class SettingsMenu : public Menu {
 private:
     ISystemScheduler& m_scheduler;
-    WallpaperManager& m_wm;
+    WallpaperManager& m_wmanager;
 	IUserInterface& m_uim;
 	IFileSystem& m_fs;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wm, IUserInterface& ui, IFileSystem& fs);
+    SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wmanager, IUserInterface& ui, IFileSystem& fs);
     std::vector<std::string> getLines() override;
     MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }

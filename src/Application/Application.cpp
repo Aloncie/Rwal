@@ -36,13 +36,10 @@ int Application::run(int argc, char* argv[]) {
     std::unique_ptr<IFileSystem> fs = createPlatformFileSystem();
 	Logs logs(*fs);
 	Config config(logs, *fs);
-    Keywords keywords(config, logs, *fs);
-    CurlWrapper curl(logs, *fs);
-    NetworkManager netmanager(curl, config, logs);
-    std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
+	CurlWrapper curl(logs, *fs);
+    NetworkManager netmanager(curl, config, logs, *fs);
 	std::unique_ptr<ISystemScheduler> scheduler = createPlatformScheduler(logs, *fs);
-    WallpaperManager wm(logs, *fs);
-
+	
 #if RWAL_USE_CLI
     bool hasCliOptions = false;
     for (int i = 1; i < argc; ++i) {
@@ -61,6 +58,10 @@ int Application::run(int argc, char* argv[]) {
 #endif
 // two different if-endif because file can be TUI and CLI in the one binary
 #if RWAL_USE_TUI
+	Keywords keywords(config, logs, *fs);
+    std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
+    WallpaperManager wm(logs, *fs);
+
 	if (argc > 1) { 
 		std::cerr << "Error: Rwal TUI mode doesn't support flags yet. \nPlease run without arguments to start TUI." << std::endl;
 		return 1;
