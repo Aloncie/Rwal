@@ -7,6 +7,7 @@
 #include "AppConfig.h"
 
 #include <iostream>
+#include <windows.h>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
