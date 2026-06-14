@@ -1,6 +1,7 @@
 #include "WindowsFileSystem.hpp"
 
 #include <cstdlib>
+#include <windows.h>
 
 // Question: Why fallback value instead of std::optional?
 //
@@ -48,5 +49,8 @@ fs::path WindowsFileSystem::getSchedulerLocation() const {
 fs::path WindowsFileSystem::getBinaryLocation() const {
     // Fallback value
 	// I don't know how should I correct impelemt this now, but I must give a value.
-    return fs::current_path() / "rwal";
+	wchar_t buffer[MAX_PATH];
+    GetModuleFileName(NULL, buffer, MAX_PATH);
+    return fs::path(buffer);
 }
+
