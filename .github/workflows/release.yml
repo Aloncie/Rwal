@@ -50,7 +50,7 @@ jobs:
       - name: Package ZIP
         run: |
           cd build/windows-release
-          7z a rwal-windows.zip rwal.exe
+          7z a rwal-windows.zip rwal-cli.exe
         shell: bash
 
       - name: Upload Windows artifact
@@ -58,8 +58,8 @@ jobs:
         with:
           name: windows-package
           path: |
-            build/windows-release/rwal-windows.zip
-            build/windows-release/rwal.exe
+            build/windows-release/rwal-windows-cli.zip
+            build/windows-release/rwal-cli.exe
 
   release:
     needs: [build-linux, build-windows]
