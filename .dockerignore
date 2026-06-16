@@ -1,3 +1,43 @@
-*.md
+# Git
 .git
-/build
+.gitignore
+.gitattributes
+.gitmodules
+
+# GitHub
+.github
+
+# CI/CD
+.obsidian
+
+# Documentation
+docs
+
+# Build artifacts
+build
+build.py
+setup.py
+
+# Python cache
+__pycache__
+*.pyc
+
+# IDE / Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Tests
+tests
+third_party
+
+# Docker
+deploy
+.dockerignore
+docker-compose.yml
+
