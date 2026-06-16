@@ -11,13 +11,11 @@
 
 Rwal is a **mood‑management tool**. It doesn't just set pretty pictures – it manages the visual context of your desktop.
 
-- **Modern C++:** Leveraging Qt, threading, and modern memory management (RAII, smart pointers like `std::unique_ptr`).
-- **Hybrid execution:** Two modes – interactive configuration (**Core**) and silent daemon‑like operation (**Change**).
-
 Unlike heavy all‑in‑one tools (like Wallpaper Engine), Rwal aims to be:
 1. **Lightweight** – written in C++, minimal RAM usage (no Electron/JS).
 2. **Smart** – search by tags, filters, color, resolution.
 3. **Modular** – clear separation of concerns.
+4. **Modern:** Standard library, threading, and modern memory management in C++20 (RAII, smart pointers like `std::unique_ptr`).
 
 ---
 
@@ -26,11 +24,10 @@ Unlike heavy all‑in‑one tools (like Wallpaper Engine), Rwal aims to be:
 Rwal is evolving to support three interaction tiers:
 * **Command Line Interface (CLI):** Built for speed, scripting, and headless environments.
 * **Terminal Interface (TUI):** The minimalistic, console‑only interface for quick, manual control.
-* **Graphical User Interface (GUI):** (Planned) Ideal for visual configuration and ease of use.
 
 ---
 
-## 👾 Modes of Operation
+## 👾 Modes of Operation (refreshing)
 
 ### Core Mode
 Full interactive terminal UI (TUI). The user can:
@@ -40,7 +37,7 @@ Full interactive terminal UI (TUI). The user can:
 - Save the current wallpaper to `~/Pictures/rwal`
 
 ### Change Mode
-Maximum reliability, minimal feedback. Designed for cron/systemd timers.
+CLI flag. Maximum reliability, minimal feedback. Designed for cron/systemd timers.
 - Takes a random keyword from the config.
 - If no keywords, falls back to defaults.
 - If offline, uses a previously downloaded image.
