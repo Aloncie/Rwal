@@ -123,6 +123,7 @@ endif()
 # Testing
 # -------------------------------------------------------------------
 if(BUILD_TESTING)
+	message(STATUS "Building tests")
     if(NOT EXISTS "${PROJECT_SOURCE_DIR}/third_party/googletest/CMakeLists.txt")
         message(FATAL_ERROR "GoogleTest submodule missing. Run: git submodule update --init --recursive")
     endif()
