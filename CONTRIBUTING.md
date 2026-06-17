@@ -27,7 +27,7 @@ Rwal is a small project, so the rules are simple.
 
 - Fork the repository and create a feature branch.
 - Follow the existing code style: C++20, RAII, smart pointers, dependency injection through interfaces.
-- Format your code with the project's `.clang-format` (if present) or keep the style consistent with surrounding code.
+- Verify formatting after changes: pre-commit will format your code automatically on commit, but you should review the modified files before re-staging them.
 - Write tests for new functionality and make sure they pass:
   ```bash
   python build.py --test
