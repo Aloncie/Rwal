@@ -1,45 +1,46 @@
 #include "Application.hpp"
+
+#include "AppConfig.h"
+#include "internal/filesystem/FileSystemFactory.hpp"
+#include "internal/utils/string_utils.hpp"
 #include "keywords/keywords.hpp"
 #include "logs/logs.hpp"
 #include "net/CurlWrapper.hpp"
 #include "net/NetworkManager.hpp"
+#include "settings/ISystemScheduler.hpp"
+#include "settings/SchedulerFactory.hpp"
 #include "settings/config.hpp"
 #include "settings/settings.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"
 #include "wallpaper/WallpaperManager.hpp"
-#include "internal/filesystem/FileSystemFactory.hpp"
-#include "AppConfig.h"
-#include "settings/ISystemScheduler.hpp"
-#include "settings/SchedulerFactory.hpp"
-#include "internal/utils/string_utils.hpp"
 
 #if RWAL_USE_TUI
-	#include "ui/tui/TUIManager.hpp"
-	#include "navigator/navigator.hpp"
-	#include "AppController/AppController.hpp"
-	#include "ui/tui/menus/menus.hpp"
+#include "AppController/AppController.hpp"
+#include "navigator/navigator.hpp"
+#include "ui/tui/TUIManager.hpp"
+#include "ui/tui/menus/menus.hpp"
 #endif
 
 #if RWAL_USE_CLI
-	#include "ui/cli/CLI.hpp"
+#include "ui/cli/CLI.hpp"
 #endif
 
+#include <iostream>
 #include <memory>
 #include <thread>
-#include <iostream>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
 int Application::run(int argc, char* argv[]) {
     std::unique_ptr<IFileSystem> fs = createPlatformFileSystem();
-	Logs logs(*fs);
-	Config config(logs, *fs);
-	CurlWrapper curl(logs, *fs);
+    Logs logs(*fs);
+    Config config(logs, *fs);
+    CurlWrapper curl(logs, *fs);
     NetworkManager netmanager(curl, config, logs, *fs);
-	std::unique_ptr<ISystemScheduler> scheduler = createPlatformScheduler(logs, *fs);
-	
+    std::unique_ptr<ISystemScheduler> scheduler = createPlatformScheduler(logs, *fs);
+
 #if RWAL_USE_CLI
     bool hasCliOptions = false;
     for (int i = 1; i < argc; ++i) {
@@ -49,25 +50,27 @@ int Application::run(int argc, char* argv[]) {
             break;
         }
     }
-	
-	if (hasCliOptions) {
-		CLI cli(*fs, config, netmanager, logs, *scheduler);
-		cli.parse(argc, argv);
-		return cli.execute();
-	}
+
+    if (hasCliOptions) {
+        CLI cli(*fs, config, netmanager, logs, *scheduler);
+        cli.parse(argc, argv);
+        return cli.execute();
+    }
 #endif
 // two different if-endif because file can be TUI and CLI in the one binary
 #if RWAL_USE_TUI
-	Keywords keywords(config, logs, *fs);
+    Keywords keywords(config, logs, *fs);
     std::unique_ptr<IWallpaperSetter> env = createWallpaperSetter(logs);
     WallpaperManager wm(logs, *fs);
 
-	if (argc > 1) { 
-		std::cerr << "Error: Rwal TUI mode doesn't support flags yet. \nPlease run without arguments to start TUI." << std::endl;
-		return 1;
-	}
+    if (argc > 1) {
+        std::cerr << "Error: Rwal TUI mode doesn't support flags yet. \nPlease run without "
+                     "arguments to start TUI."
+                  << std::endl;
+        return 1;
+    }
     TUIManager tuim;
-	std::unique_ptr<ISystemScheduler> schedule = createPlatformScheduler(logs, *fs);
+    std::unique_ptr<ISystemScheduler> schedule = createPlatformScheduler(logs, *fs);
 
     tuim.initUI();
 
@@ -86,30 +89,32 @@ int Application::run(int argc, char* argv[]) {
 
     logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in normal mode");
 
-	std::jthread wallpaperThread;
-	std::atomic<bool> refreshDone(false);
-	std::string refreshError;
+    std::jthread wallpaperThread;
+    std::atomic<bool> refreshDone(false);
+    std::string refreshError;
 
-    AppController controller(navigator, tuim, wm, *env, netmanager, keywords, wallpaperThread, refreshDone, refreshError);
+    AppController controller(
+        navigator, tuim, wm, *env, netmanager, keywords, wallpaperThread, refreshDone,
+        refreshError);
 
-	while (controller.handleStdin()) {
-		controller.checkRefreshDone();
-		// small sleep to avoid CPU usage
-		std::this_thread::sleep_for(std::chrono::milliseconds(10));
-	}
-	
-	if (wallpaperThread.joinable()) {
-		wallpaperThread.join();
-	}
+    while (controller.handleStdin()) {
+        controller.checkRefreshDone();
+        // small sleep to avoid CPU usage
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
+
+    if (wallpaperThread.joinable()) {
+        wallpaperThread.join();
+    }
 
     tuim.shutdownUI();
     return 0;
 #endif
-	std::cout << R"(Failed to start Rwal, this binary doesn't touch TUI and CLI.
+    std::cout << R"(Failed to start Rwal, this binary doesn't touch TUI and CLI.
 		Try to use these flags: 
 		For TUI support -DRWAL_USE_TUI=ON 
 		For CLI support -DRWAL_USE_CLI=ON 
-		You can also use both flags.)" << std::endl;
-	return 1;
+		You can also use both flags.)"
+              << std::endl;
+    return 1;
 }
-

@@ -1,9 +1,8 @@
 #pragma once
 
 // planned implementation
-class AppSettings{
+class AppSettings {
 public:
-	bool isCurcorVisible() const;
-	void switchCursorVisiable();
+    bool isCurcorVisible() const;
+    void switchCursorVisiable();
 };
-

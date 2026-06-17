@@ -1,23 +1,23 @@
 #pragma once
+#include "IWallpaperSetter.hpp"
+#include "internal/filesystem/IFileSystem.hpp"
 #include "keywords/keywords.hpp"
-#include "settings/settings.hpp"
-#include "settings/ISystemScheduler.hpp"
+#include "net/NetworkManager.hpp"
 #include "settings/IConfigReader.hpp"
+#include "settings/ISystemScheduler.hpp"
+#include "settings/settings.hpp"
 #include "ui/IUserInterface.hpp"
 #include "wallpaper/WallpaperManager.hpp"
-#include "IWallpaperSetter.hpp"
-#include "net/NetworkManager.hpp"
-#include "internal/filesystem/IFileSystem.hpp"
 
 #include <string>
 #include <vector>
 
 struct MenuResponse {
     std::string nextMenu;
-	std::string Message = "";
+    std::string Message = "";
     bool IsWrongInput = false;
     bool needQuit = false;
-	bool needRefreshWallpaper = false;
+    bool needRefreshWallpaper = false;
 };
 
 class Menu {
@@ -33,12 +33,14 @@ private:
     IUserInterface& m_uim;
     Keywords& m_keywords;
     WallpaperManager& m_wmanager;
-	IWallpaperSetter& m_env;
-	NetworkManager& m_netmanager;
+    IWallpaperSetter& m_env;
+    NetworkManager& m_netmanager;
     inline static const std::string m_validChoices = "1234q";
 
 public:
-    MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wmanager, IWallpaperSetter& env, NetworkManager& netmanager);
+    MainMenu(
+        IUserInterface& uim, Keywords& keywords, WallpaperManager& wmanager, IWallpaperSetter& env,
+        NetworkManager& netmanager);
     std::vector<std::string> getLines() override;
     MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -48,12 +50,14 @@ class SettingsMenu : public Menu {
 private:
     ISystemScheduler& m_scheduler;
     WallpaperManager& m_wmanager;
-	IUserInterface& m_uim;
-	IFileSystem& m_fs;
+    IUserInterface& m_uim;
+    IFileSystem& m_fs;
     inline static const std::string m_validChoices = "12q";
 
 public:
-    SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wmanager, IUserInterface& ui, IFileSystem& fs);
+    SettingsMenu(
+        ISystemScheduler& scheduler, WallpaperManager& wmanager, IUserInterface& ui,
+        IFileSystem& fs);
     std::vector<std::string> getLines() override;
     MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
@@ -63,7 +67,7 @@ class KeywordsMenu : public Menu {
 private:
     Keywords& m_keywords;
     IUserInterface& m_uim;
-	IConfigReader& m_config;
+    IConfigReader& m_config;
     inline static const std::string m_validChoices = "armq";
 
 public:
@@ -84,4 +88,3 @@ public:
     MenuResponse handleInput(const std::string& input) override;
     const std::string& getValidChoices() const override { return m_validChoices; }
 };
-

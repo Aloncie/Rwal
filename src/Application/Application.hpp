@@ -6,4 +6,3 @@ public:
     ~Application() = default;
     int run(int argc, char* argv[]);
 };
-

@@ -1,14 +1,14 @@
 #pragma once
-#include "logs/logs.hpp"
 #include "IConfigReader.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
+#include "logs/logs.hpp"
 
-#include <functional>
-#include <nlohmann/json.hpp>
-#include <string>
-#include <map>
-#include <stdexcept>
 #include <filesystem>
+#include <functional>
+#include <map>
+#include <nlohmann/json.hpp>
+#include <stdexcept>
+#include <string>
 
 namespace fs = std::filesystem;
 
@@ -16,13 +16,13 @@ class Config : public IConfigReader {
 private:
     nlohmann::json m_data;
     std::map<std::string, std::function<bool(const nlohmann::json&)>> validators;
-	fs::path configPath;
+    fs::path configPath;
 
     void saveToFile();
     void initValidators();
-	
+
     void getConfigFileData();
-	fs::path getConfigPath();
+    fs::path getConfigPath();
 
 protected:
     nlohmann::json getImpl(const std::string& key) override {
@@ -48,4 +48,3 @@ public:
 
     nlohmann::json& all() override { return m_data; }
 };
-

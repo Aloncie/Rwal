@@ -1,13 +1,11 @@
 #pragma once
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 namespace rwal::utils::vector {
-    template<typename T>
-    inline void add_unique(std::vector<T>& v, const T& element) {
-        if (std::find(v.begin(), v.end(), element) == v.end()) {
-            v.push_back(element);
-        }
+template <typename T> inline void add_unique(std::vector<T>& v, const T& element) {
+    if (std::find(v.begin(), v.end(), element) == v.end()) {
+        v.push_back(element);
     }
 }
-
+} // namespace rwal::utils::vector

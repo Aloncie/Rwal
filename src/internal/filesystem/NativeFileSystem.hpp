@@ -3,39 +3,41 @@
 
 namespace fs = std::filesystem;
 
-class NativeFileSystem : public IFileSystem{
+class NativeFileSystem : public IFileSystem {
 private:
-	mutable std::string m_LastError = "";
-protected:
-	void clearError() const override;
-public:
-	NativeFileSystem() = default;
-	~NativeFileSystem() override = default;
-	
-	// Methods with cross-platform implementations, <filesystem> library
-	bool exists(const fs::path& path) const override;
-	bool existsDirectory(const fs::path& path) const override;
-	bool createDirectories(const fs::path& path) override;
-	bool removeAll(const fs::path& path) override;
-	bool copyFile(const fs::path& current, const fs::path& dest) const override;
-	std::vector<fs::path> listDirectory(const fs::path& path, const std::string& prefix = "") const override;
-	bool remove(const fs::path& path) override;
-	bool rename(const fs::path& oldPath, const fs::path& newPath) override;
-	// Returns false if the file isn't regular or error
-	bool isRegularFile(const fs::path& path) const override;
-	// Methods these can return std::nullopt
-	std::optional<fs::file_time_type> getLastModifiedTime(const fs::path& path) const override;
-	std::optional<uintmax_t> getFileSize(const fs::path& path) const override;
-	
-	// Os specific methods, will be implemented by <OS>FileSystem classes
-	fs::path getAppLocalDataLocation() const override = 0;
-	fs::path getPicturesLocation() const override = 0;
-	fs::path getTempLocation() const override = 0;
-	fs::path getConfigLocation() const override = 0;
-	fs::path getSchedulerLocation() const override = 0;
-	fs::path getBinaryLocation() const override = 0;
-	
-	// Handle errors
-	std::string getLastError() const override;
-};
+    mutable std::string m_LastError = "";
 
+protected:
+    void clearError() const override;
+
+public:
+    NativeFileSystem() = default;
+    ~NativeFileSystem() override = default;
+
+    // Methods with cross-platform implementations, <filesystem> library
+    bool exists(const fs::path& path) const override;
+    bool existsDirectory(const fs::path& path) const override;
+    bool createDirectories(const fs::path& path) override;
+    bool removeAll(const fs::path& path) override;
+    bool copyFile(const fs::path& current, const fs::path& dest) const override;
+    std::vector<fs::path>
+    listDirectory(const fs::path& path, const std::string& prefix = "") const override;
+    bool remove(const fs::path& path) override;
+    bool rename(const fs::path& oldPath, const fs::path& newPath) override;
+    // Returns false if the file isn't regular or error
+    bool isRegularFile(const fs::path& path) const override;
+    // Methods these can return std::nullopt
+    std::optional<fs::file_time_type> getLastModifiedTime(const fs::path& path) const override;
+    std::optional<uintmax_t> getFileSize(const fs::path& path) const override;
+
+    // Os specific methods, will be implemented by <OS>FileSystem classes
+    fs::path getAppLocalDataLocation() const override = 0;
+    fs::path getPicturesLocation() const override = 0;
+    fs::path getTempLocation() const override = 0;
+    fs::path getConfigLocation() const override = 0;
+    fs::path getSchedulerLocation() const override = 0;
+    fs::path getBinaryLocation() const override = 0;
+
+    // Handle errors
+    std::string getLastError() const override;
+};

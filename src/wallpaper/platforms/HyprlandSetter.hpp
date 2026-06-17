@@ -1,16 +1,16 @@
 #pragma once
-#include "wallpaper/IWallpaperSetter.hpp"
 #include "logs/logs.hpp"
+#include "wallpaper/IWallpaperSetter.hpp"
 
-#include <string>
 #include <filesystem>
+#include <string>
 
 class HyprlandSetter : public IWallpaperSetter {
 private:
-	Logs& m_logs;
+    Logs& m_logs;
+
 public:
-	HyprlandSetter(Logs& logs);
+    HyprlandSetter(Logs& logs);
     bool setWallpaper(const fs::path& path) override;
     ~HyprlandSetter() override = default;
 };
-

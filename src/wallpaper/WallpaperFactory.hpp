@@ -5,4 +5,3 @@
 #include <memory>
 
 std::unique_ptr<IWallpaperSetter> createWallpaperSetter(Logs& logs);
-

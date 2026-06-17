@@ -1,4 +1,5 @@
 #include "navigator.hpp"
+
 #include "logs/logs.hpp"
 
 #include <ncurses.h>
@@ -19,7 +20,8 @@ void Navigator::start(const std::string InitialMenu) {
         m_currentMenu = it->second.get();
         printCurrentMenu();
     } else {
-        m_logs.writeLogs(lvl::Error, mod::Navigator, "Failed InitialMenu in Navigator::start: " + InitialMenu);
+        m_logs.writeLogs(
+            lvl::Error, mod::Navigator, "Failed InitialMenu in Navigator::start: " + InitialMenu);
     }
 }
 
@@ -27,17 +29,20 @@ void Navigator::printCurrentMenu() {
     if (m_currentMenu) {
         clear();
         int row = 0;
-        for (const auto& line : m_currentMenu->getLines()) mvprintw(row++, 0, "%s", line.c_str());
+        for (const auto& line : m_currentMenu->getLines())
+            mvprintw(row++, 0, "%s", line.c_str());
         refresh();
     }
 }
 
 MenuResponse Navigator::processInput(std::string& input, TUIManager& ui) {
-    if (!m_currentMenu) return {""};
+    if (!m_currentMenu)
+        return {""};
 
     MenuResponse resp = m_currentMenu->handleInput(input);
 
-    if (resp.IsWrongInput) ui.showMessage("Invalid choice: " + input);
+    if (resp.IsWrongInput)
+        ui.showMessage("Invalid choice: " + input);
 
     if (!resp.nextMenu.empty()) {
         auto it = m_menus.find(resp.nextMenu);
@@ -48,4 +53,3 @@ MenuResponse Navigator::processInput(std::string& input, TUIManager& ui) {
 
     return resp;
 }
-

@@ -7,17 +7,21 @@ namespace mod = rwal::logs::modules;
 bool GnomeSetter::setWallpaper(const fs::path& path) {
     if (std::getenv("XDG_CURRENT_DESKTOP") == nullptr ||
         std::string(std::getenv("XDG_CURRENT_DESKTOP")).find("GNOME") == std::string::npos) {
-        m_logs.writeLogs(lvl::Debug, mod::Wallpaper, "Skipping GnomeSetter: XDG_CURRENT_DESKTOP does not indicate GNOME.");
+        m_logs.writeLogs(
+            lvl::Debug, mod::Wallpaper,
+            "Skipping GnomeSetter: XDG_CURRENT_DESKTOP does not indicate GNOME.");
         return false;
     }
     if (!g_file_test(path.c_str(), G_FILE_TEST_EXISTS)) {
-        m_logs.writeLogs(lvl::Error, mod::Wallpaper, "GnomeSetter: File does not exist - " + path.string());
+        m_logs.writeLogs(
+            lvl::Error, mod::Wallpaper, "GnomeSetter: File does not exist - " + path.string());
         return false;
     }
     GFile* file = g_file_new_for_path(path.c_str());
 
     if (!file) {
-        m_logs.writeLogs(lvl::Error, mod::Wallpaper, "GnomeSetter: Failed to create GFile from path");
+        m_logs.writeLogs(
+            lvl::Error, mod::Wallpaper, "GnomeSetter: Failed to create GFile from path");
         return false;
     }
 
@@ -41,4 +45,3 @@ GnomeSetter::GnomeSetter(Logs& logs) : m_logs(logs) {
     g_type_init();
 #endif
 }
-

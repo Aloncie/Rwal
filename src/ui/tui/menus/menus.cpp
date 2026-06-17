@@ -1,9 +1,10 @@
 #include "menus.hpp"
+
+#include "AppConfig.h"
 #include "internal/utils/string_utils.hpp"
 #include "menu_ids.hpp"
-#include "settings/config.hpp"
 #include "settings/SchedulerTypes.hpp"
-#include "AppConfig.h"
+#include "settings/config.hpp"
 
 #include <memory>
 #include <thread>
@@ -11,7 +12,11 @@
 namespace MenuId = rwal::ui::MenuId;
 
 // ========== MainMenu ==========
-MainMenu::MainMenu(IUserInterface& uim, Keywords& keywords, WallpaperManager& wmanager, IWallpaperSetter& env, NetworkManager& netmanager) : m_uim(uim), m_keywords(keywords), m_wmanager(wmanager), m_env(env), m_netmanager(netmanager) {};
+MainMenu::MainMenu(
+    IUserInterface& uim, Keywords& keywords, WallpaperManager& wmanager, IWallpaperSetter& env,
+    NetworkManager& netmanager)
+    : m_uim(uim), m_keywords(keywords), m_wmanager(wmanager), m_env(env), m_netmanager(netmanager) {
+      };
 std::vector<std::string> MainMenu::getLines() {
     return {
         "--- Main Menu ---",
@@ -20,12 +25,12 @@ std::vector<std::string> MainMenu::getLines() {
         "3) Keywords",
         "4) Settings",
         "q) Quit",
-        ""  // Empty line for spacing
+        "" // Empty line for spacing
     };
 }
 MenuResponse MainMenu::handleInput(const std::string& input) {
-	if (input == "1") {
-    	return {"", "", false, false, true};
+    if (input == "1") {
+        return {"", "", false, false, true};
     } else if (input == "2") {
         std::string message = m_wmanager.saveCurrent();
         return {"", message};
@@ -42,17 +47,19 @@ MenuResponse MainMenu::handleInput(const std::string& input) {
 
 using rwal::system::Scheduler::toString;
 // ========== SettingsMenu ==========
-SettingsMenu::SettingsMenu(ISystemScheduler& scheduler, WallpaperManager& wmanager, IUserInterface& ui, IFileSystem& fs) : m_scheduler(scheduler), m_wmanager(wmanager), m_uim(ui), m_fs(fs) {}
+SettingsMenu::SettingsMenu(
+    ISystemScheduler& scheduler, WallpaperManager& wmanager, IUserInterface& ui, IFileSystem& fs)
+    : m_scheduler(scheduler), m_wmanager(wmanager), m_uim(ui), m_fs(fs) {}
 
 std::vector<std::string> SettingsMenu::getLines() {
-	std::string pathStr = (m_fs.getPicturesLocation() / APP_NAME).string();
-	if (pathStr.empty()) pathStr = "Not found";
-	return {
-        "--- Settings ---", 
-		"1) Scheduler: " + toString(m_scheduler.get().value()).value_or("Error"),
-        "2) Wallpapers's path: " + pathStr,
-		"q) Back",
-        ""  // Empty line for spacing
+    std::string pathStr = (m_fs.getPicturesLocation() / APP_NAME).string();
+    if (pathStr.empty())
+        pathStr = "Not found";
+    return {
+        "--- Settings ---",
+        "1) Scheduler: " + toString(m_scheduler.get().value()).value_or("Error"),
+        "2) Wallpapers's path: " + pathStr, "q) Back",
+        "" // Empty line for spacing
     };
 }
 
@@ -75,7 +82,7 @@ KeywordsMenu::KeywordsMenu(Keywords& keywords, IUserInterface& ui, IConfigReader
 
 std::vector<std::string> KeywordsMenu::getLines() {
     std::vector<std::string> lines = {"--- Keywords Editor ---"};
-	auto keywords = m_keywords.loadKeywordsFromConfig();
+    auto keywords = m_keywords.loadKeywordsFromConfig();
 
     if (keywords.empty()) {
         lines.push_back("None");
@@ -85,14 +92,14 @@ std::vector<std::string> KeywordsMenu::getLines() {
         }
     }
     lines.push_back("a) Add | r) Remove | m) Manual(editor) | q) Back");
-    lines.push_back("");  // Empty line for spacing
+    lines.push_back(""); // Empty line for spacing
     return lines;
 }
 
 MenuResponse KeywordsMenu::handleInput(const std::string& input) {
     if (input == "a") {
         m_uim.requestInput([this](std::string keyword) {
-			auto keywords = m_keywords.loadKeywordsFromConfig();
+            auto keywords = m_keywords.loadKeywordsFromConfig();
             rwal::utils::string::format(keyword);
             keywords.push_back(keyword);
             m_config.set("/search/keywords", keywords);
@@ -100,15 +107,15 @@ MenuResponse KeywordsMenu::handleInput(const std::string& input) {
         return {"", "Write new keyword: "};
     } else if (input == "r") {
         m_uim.requestInput([this](std::string indexStr) {
-			int display_index = std::stoi(indexStr);
-			auto keywords = m_keywords.loadKeywordsFromConfig();
-			if (display_index >= 1) {
-				int real_index = display_index - 1;
-				if (real_index < (int)keywords.size()) {
-					keywords.erase(keywords.begin() + real_index);
-					m_config.set("/search/keywords", keywords);
-				}
-			}
+            int display_index = std::stoi(indexStr);
+            auto keywords = m_keywords.loadKeywordsFromConfig();
+            if (display_index >= 1) {
+                int real_index = display_index - 1;
+                if (real_index < (int)keywords.size()) {
+                    keywords.erase(keywords.begin() + real_index);
+                    m_config.set("/search/keywords", keywords);
+                }
+            }
         });
 
         return {"", "Enter index to remove: "};
@@ -123,7 +130,6 @@ MenuResponse KeywordsMenu::handleInput(const std::string& input) {
     }
 }
 
-
 using rwal::system::Scheduler::TaskSchedulerType;
 
 // ========== Scheduler Menu ==========
@@ -131,23 +137,23 @@ SchedulerMenu::SchedulerMenu(ISystemScheduler& scheduler) : m_scheduler(schedule
 
 std::vector<std::string> SchedulerMenu::getLines() {
     return {
-		toString(TaskSchedulerType::None).value(), toString(TaskSchedulerType::Hourly).value(), toString(TaskSchedulerType::Daily).value(),
-        ""  // Empty line for spacing
+        toString(TaskSchedulerType::None).value(), toString(TaskSchedulerType::Hourly).value(),
+        toString(TaskSchedulerType::Daily).value(),
+        "" // Empty line for spacing
     };
 }
 
 MenuResponse SchedulerMenu::handleInput(const std::string& input) {
     if (input == "h") {
-		std::string result = m_scheduler.set(TaskSchedulerType::Hourly);
+        std::string result = m_scheduler.set(TaskSchedulerType::Hourly);
         return {MenuId::SETTINGS, result};
     } else if (input == "d") {
-		std::string result = m_scheduler.set(TaskSchedulerType::Daily);
+        std::string result = m_scheduler.set(TaskSchedulerType::Daily);
         return {MenuId::SETTINGS, result};
     } else if (input == "n") {
-		std::string result = m_scheduler.set(TaskSchedulerType::None);
+        std::string result = m_scheduler.set(TaskSchedulerType::None);
         return {MenuId::SETTINGS, result};
     } else {
         return {"", "", true};
     }
 }
-
