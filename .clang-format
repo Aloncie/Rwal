@@ -31,14 +31,11 @@ SpaceBeforeParens: ControlStatements
 SpacesInContainerLiterals: false
 
 # Sort includes
-SortIncludes: CaseSensitive
+SortIncludes: true
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: '^"'
     Priority: 1
-    SortPriority: 1
   - Regex: '^<'
     Priority: 2
-    SortPriority: 2
-    EmptyLinesBefore: 1
 
