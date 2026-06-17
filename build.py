@@ -2,10 +2,11 @@
 """
 build.py — Cross-platform build wrapper for Rwal
 Usage:
-  python build.py [--clean] [--mode tui|cli|all] [--preset <name>]
-    
+  python build.py [--clean] [--mode tui|cli|all] [--preset <name>] [--test]
+
   --help or -h — Show this help
   --clean — Remove the build directory and rebuild
+  --test  — Build with testing enabled (sets -DBUILD_TESTING=ON)
 
 Modes (Linux only):
   all   — TUI + CLI combined (default)
@@ -39,26 +40,45 @@ def reload_from_registry(var_name):
 
 def main():
     is_windows = platform.system() == "Windows"
-    # Handle --help
-    if "--help" in sys.argv or "-h" in sys.argv:
-        print(__doc__)
-        sys.exit(0)
-    # Handle --clean
-    if "--clean" in sys.argv:
+
+    # Separate boolean flags
+    clean_flag = False
+    test_flag = False
+
+    # Collect remaining args for mode/preset processing
+    args = sys.argv[1:]
+
+    # Process flags
+    for a in sys.argv[1:]:
+        if a in ("--help", "-h"):
+            print(__doc__)
+            sys.exit(0)
+        elif a == "--clean":
+            clean_flag = True
+        elif a == "--test":
+            test_flag = True
+
+    # Remove flags from args so we can parse positional options
+    args = [a for a in args if a not in ("--clean", "--test")]
+
+    if clean_flag:
         build_dir = "build"
         if os.path.exists(build_dir):
             print(f"\033[33m[CLEAN]\033[0m Removing {build_dir}/")
             shutil.rmtree(build_dir)
-        # Don't exit — continue to build after cleaning
-        sys.argv.remove("--clean")  # remove it so preset parsing still works
+
+    # Extra CMake arguments
+    cmake_extra = ""
+    if test_flag:
+        cmake_extra += " -DBUILD_TESTING=ON"
 
     # --- Windows path ---
     if is_windows:
         preset = "windows-release"
-        if "--preset" in sys.argv:
-            idx = sys.argv.index("--preset")
-            if idx + 1 < len(sys.argv):
-                preset = sys.argv[idx + 1]
+        if "--preset" in args:
+            idx = args.index("--preset")
+            if idx + 1 < len(args):
+                preset = args[idx + 1]
 
         print("\033[35m=== Rwal Build — Windows ===\033[0m")
 
@@ -69,17 +89,17 @@ def main():
         os.environ["VCPKG_ROOT"] = vcpkg_root
         print(f"\033[36m[INFO]\033[0m VCPKG_ROOT = {vcpkg_root}")
 
-        run(f"cmake --preset {preset}")
+        run(f"cmake --preset {preset} {cmake_extra}")
         run(f"cmake --build build/{preset} --preset {preset}")
         print("\033[32m[SUCCESS]\033[0m Build complete.")
         return
 
     # --- Linux path ---
     mode = "all"
-    if "--mode" in sys.argv:
-        idx = sys.argv.index("--mode")
-        if idx + 1 < len(sys.argv):
-            mode = sys.argv[idx + 1]
+    if "--mode" in args:
+        idx = args.index("--mode")
+        if idx + 1 < len(args):
+            mode = args[idx + 1]
 
     preset_map = {
         "all": "linux-release",
@@ -90,7 +110,7 @@ def main():
 
     print(f"\033[35m=== Rwal Build — Linux ({mode.upper()}) ===\033[0m")
 
-    run(f"cmake --preset {preset}")
+    run(f"cmake --preset {preset} {cmake_extra}")
     run(f"cmake --build build/{preset}")
     print("\033[32m[SUCCESS]\033[0m Build complete.")
 
