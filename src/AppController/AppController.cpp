@@ -1,4 +1,5 @@
 #include "AppController.hpp"
+
 #include "logs/logs.hpp"
 
 #include <ncurses.h>
