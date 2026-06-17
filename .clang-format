@@ -1,0 +1,44 @@
+BasedOnStyle: LLVM
+Standard: c++20
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+InsertNewlineAtEOF: true
+
+BreakBeforeBraces: Attach 
+
+# Indentation and alignment
+AccessModifierOffset: -4
+AlignEscapedNewlines: Left
+AlignAfterOpenBracket: AlwaysBreak
+ContinuationIndentWidth: 4
+
+# Init in constructor
+ConstructorInitializerIndentWidth: 4
+PackConstructorInitializers: NextLine
+
+# Short constructs
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortBlocksOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+
+# Pointer and reference alignment
+PointerAlignment: Left
+ReferenceAlignment: Left
+SpaceBeforeParens: ControlStatements
+SpacesInContainerLiterals: false
+
+# Sort includes
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^"'
+    Priority: 1
+    SortPriority: 1
+  - Regex: '^<'
+    Priority: 2
+    SortPriority: 2
+    EmptyLinesBefore: 1
+
