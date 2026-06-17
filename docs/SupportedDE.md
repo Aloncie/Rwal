@@ -1,6 +1,6 @@
 # 🖥️ Supported Desktop Environments
 
-Rwal supports multiple desktop environments through compile‑time‑selected adapters.  
+Rwal supports multiple desktop environments through runtime-time-selected setter.  
 The following setters are implemented and maintained.
 
 ---
@@ -20,21 +20,8 @@ The following setters are implemented and maintained.
 
 ---
 
-## 🔧 Build Configuration
-
-Rwal use auto-detect system for know DE to build only needly sources. This gives:
-- more faster building
-- takes up less space
-
-You can use special flag ```-DRWAL_FORCE_DE=```, If Rwal incorrect detect your DE. Flag command supports any writing case.
-Example: ```-DRWAL_FORCE_DE=kde``` or ```-DRWAL_FORCE_DE=HYPRLAND```
-
-[See more about configuration flags](https://github.com/Aloncie/Rwal/blob/refactorKnownIssues/docs/Installation.md#-build-configuration-flags).
-
 ## 🐧 Runtime Behaviour
-
-*   **The compiled setter is used unconditionally** – no runtime auto‑detection across different DEs.
-*   **Environment Mismatch:** If you run a GNOME‑built binary on KDE, it will likely fail. (The `GnomeSetter` checks `XDG_CURRENT_DESKTOP` and may reject the environment, returning `false`).
+*   **Binary has multiple setters** – the setter is selected at runtime based on the detected DE.
 *   **Sanity Checks:** Each setter performs its own validation (environment variables, required tools, file existence) and logs failures.
 
 --- 
@@ -43,7 +30,7 @@ Example: ```-DRWAL_FORCE_DE=kde``` or ```-DRWAL_FORCE_DE=HYPRLAND```
 
 ```text
 src/wallpaper/
-├── CMakeLists.txt                # Main logic
+├── CMakeLists.txt                # CMake logic
 ├── IWallpaperSetter.hpp          # Interface
 ├── WallpaperFactory.cpp          # Conditional inclusion logic
 ├── platforms/
@@ -71,7 +58,6 @@ src/wallpaper/
 
 <div align="center">
 
-### Rwal – one build, one desktop, reliable wallpaper switching. 🐧
+### Rwal – one build, any desktop, reliable wallpaper switching. 🐧
 
 </div>
-
