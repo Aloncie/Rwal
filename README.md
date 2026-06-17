@@ -12,8 +12,7 @@
 
 <br>
 
-**Rwal** is a lightweight, cross-platform wallpaper utility designed for speed and flexibility. 
-It bridges the gap between a rich, interactive **ncurses** interface and a silent **daemon** for automation.
+**Rwal** is a lightweight, cross-platform wallpaper utility written in C++20, designed for **speed** and **flexibility**. It bridges the gap between a rich, interactive terminal user interface (TUI) via ncurses and a fast command-line interface (CLI).
 
 ---
 
@@ -21,8 +20,8 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 
 # ✨ Features
 
-- **Interactive TUI** – Navigate, tag, and preview wallpapers without leaving the terminal.
-- **Silent Daemon Mode** – Efficient background rotation ideal for cron or systemd.
+- **Interactive TUI** – Navigate, tag, and manage wallpapers without leaving the terminal.
+- **Command Line Interface** – Customize config, manage wallpaper from the command line with ease.
 - **Hot‑Reload** – Configuration updates instantly without restarting the service.
 - **Modern C++20** – Built for performance with a clean, modular codebase.
 - **Smart Keyword Logic** – Advanced wallpaper selection based on user-defined tags.
@@ -41,17 +40,41 @@ It bridges the gap between a rich, interactive **ncurses** interface and a silen
 
 </div>
 
-# 💦 Installation
-You need use **two** python scripts to install Rwal for any OS & distribution from [here](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md):
+# 📦 Installation
 
-``` bash
-git clone https://github.com/Aloncie/Rwal.git       # clone repository
+## 1. Download the Pre-compiled Binary (Recommended for Users)
+This is the easiest method if you just want to use Rwal. Binaries support any Desktop Environment listed [here](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md).
 
+**Drawbacks:**
+You won't have the development environment set up, so you won't be able to easily modify the source code or contribute to the project.
+
+> **Question:** How do I get updates?
+> **Answer:** You will need to download the new version manually from the releases page.
+
+👉 [Download the latest release](https://github.com/Aloncie/Rwal/releases/latest)
+
+---
+
+## 2. Build from Source (Recommended for Contributors)
+You can install Rwal on any supported OS and distribution using our Python scripts:
+
+```bash
+# Clone the repository
+git clone https://github.com/Aloncie/Rwal.git
 cd Rwal
 
-python setup.py    # download dependencies
-python build.py    # build the binary
+# Install dependencies and build the binary
+python3 setup.py
+python3 build.py
 ```
+
+**Drawbacks:**
+You need to install development dependencies on your local machine.
+
+> **Question:** How do I get updates?
+> **Answer:** It depends on how you use the repository:
+> * **As a User:** Simply run `git pull` to fetch the latest changes.
+> * **As a Contributor:** If you have local changes, use `git fetch origin` followed by `git rebase origin/develop` to keep your git history clean and avoid merge conflicts.
 
 # 🌀 Usage
 The build process generates the binary inside the `build/<OS>-release/` directory (where `<OS>` is `linux` or `windows`). Depending on your build configuration, you will get one of three executable flavors:
@@ -138,7 +161,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
 | `search.res` | String | `"1920x1080"`| Target image resolution (e.g., `"2560x1440"`). |
 | `search.sorting` | String | `"random"` | API sorting method: `"random"`, `"relevance"`, `"views"`, `"date"`, `"toplist"`, `"favorites"`. |
 | `services.wallhaven.apikey`| String | `""` | *(Optional)* Your Wallhaven API key to bypass rate limits(~45 per minute) and access NSFW/Sketchy content. |
-| `settings.cursor-visibility`| Boolean| `true` | Toggles the visibility of the terminal cursor inside the TUI mode. |
+| `settings.cursor-visibility`| Boolean| `true` | Toggles the visibility of the terminal cursor inside the TUI mode. (It doesn't work now) |
 
 
 #### ❗WARNING❗:
