@@ -26,7 +26,7 @@
 - **Modern C++20** – Built for performance with a clean, modular codebase.
 - **Smart Keyword Logic** – Advanced wallpaper selection based on user-defined tags.
 - **Scheduler Integration** – Native support for timers and automated rotations.
-- **Cross-DE Support** – Works seamlessly for every DE from [here](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md).
+- **Cross-DE Support** – Works seamlessly for every Desktop Environment from [here](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md).
 
 # 👁️‍🗨️ Previews
 
@@ -42,14 +42,13 @@
 
 # 📦 Installation
 
-## 1. Download the Pre-compiled Binary (Recommended for Users)
+## 1. Download the Pre-compiled Binary (Recommend for Users)
 This is the easiest method if you just want to use Rwal. Binaries support any Desktop Environment listed [here](https://github.com/Aloncie/Rwal/blob/main/docs/SupportedDE.md).
 
-**Drawbacks:**
-You won't have the development environment set up, so you won't be able to easily modify the source code or contribute to the project.
+**Drawbacks:** You won't have the development environment set up, so you won't be able to easily modify the source code or contribute to the project.
 
-> **Question:** How do I get updates?
-> **Answer:** You will need to download the new version manually from the releases page.
+### How can you get updates❔
+You will need to download the new version manually from the releases page.
 
 👉 [Download the latest release](https://github.com/Aloncie/Rwal/releases/latest)
 
@@ -68,13 +67,13 @@ python3 setup.py
 python3 build.py
 ```
 
-**Drawbacks:**
-You need to install development dependencies on your local machine.
+**Drawbacks:** You need to install development dependencies on your local machine.
 
-> **Question:** How do I get updates?
-> **Answer:** It depends on how you use the repository:
-> * **As a User:** Simply run `git pull` to fetch the latest changes.
-> * **As a Contributor:** If you have local changes, use `git fetch origin` followed by `git rebase origin/develop` to keep your git history clean and avoid merge conflicts.
+### How can you get updates❔
+It depends on how you use the repository:
+
+- **As a User:** Simply run `git pull` to fetch the latest changes.
+- **As a Contributor:** If you have local changes, use `git fetch origin` followed by `git rebase origin/develop` to keep your git history clean and avoid merge conflicts.
 
 # 🌀 Usage
 The build process generates the binary inside the `build/<OS>-release/` directory (where `<OS>` is `linux` or `windows`). Depending on your build configuration, you will get one of three executable flavors:
