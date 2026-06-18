@@ -1,7 +1,3 @@
-# Let's build Rwal together
-
-Super happy to see you here!
-
 # Contributing to Rwal
 
 Rwal is a small project, so the rules are simple.
