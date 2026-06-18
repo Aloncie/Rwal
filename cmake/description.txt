@@ -1,1 +1,1 @@
-Wallpaper manager for Windows, KDE, GNOME and Hyprland
+Wallpaper manager for Windows, KDE, GNOME and Hyprland.
