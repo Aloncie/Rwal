@@ -6,6 +6,15 @@
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
 
+bool KdeSetter::isAvailable() const {
+    return (
+        std::system("which dbus-send >/dev/null 2>&1") == 0 &&
+        std::system(
+            "dbus-send --print-reply --dest=org.kde.plasmashell "
+            "/PlasmaShell org.freedesktop.DBus.Peer.Ping "
+            "2>/dev/null >/dev/null") == 0);
+}
+
 bool KdeSetter::setWallpaper(const fs::path& path) {
     std::string cmd = "dbus-send --session --dest=org.kde.plasmashell --type=method_call "
                       "/PlasmaShell org.kde.PlasmaShell.evaluateScript "

@@ -28,15 +28,8 @@ std::unique_ptr<IWallpaperSetter> createWallpaperSetter(Logs& logs) {
     std::string desktop = xdg ? xdg : "";
 
     if (desktop.find("GNOME") != std::string::npos) {
-#ifdef GIO_FOUND
-        logs.writeLogs(lvl::Info, mod::Wallpaper, "GNOMESetter was chosen, GIO was found.");
+        logs.writeLogs(lvl::Info, mod::Wallpaper, "GnomeSetter was chosen.");
         return std::make_unique<GnomeSetter>(logs);
-#else
-        logs.writeLogs(
-            lvl::Info, mod::Wallpaper,
-            "GNOMESetter was chosen, but GIO was not found. FallbackSetter will be used.");
-        return std::make_unique<FallbackSetter>(logs);
-#endif
     } else if (desktop.find("KDE") != std::string::npos) {
         logs.writeLogs(lvl::Info, mod::Wallpaper, "KDESetter was chosen.");
         return std::make_unique<KdeSetter>(logs);

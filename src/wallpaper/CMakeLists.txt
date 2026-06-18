@@ -9,29 +9,15 @@ set(SETTERS_SOURCES
     ${PROJECT_SOURCE_DIR}/src/net/CurlWrapper.cpp
 )
 
-# GnomeSetter only for Unix where there is gio
-if(UNIX AND NOT APPLE)
-    find_package(PkgConfig REQUIRED)
-    pkg_check_modules(GIO gio-2.0)
-    if(GIO_FOUND)
-        list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
-        message(STATUS "GNOME setter enabled (GIO found)")
-    else()
-        message(STATUS "GIO not found – GNOME setter disabled")
-    endif()
-endif()
-
-# WindowsSetter only for Windows
 if(WIN32)
     list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
 endif()
 
 add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
-if(GIO_FOUND)
-    target_compile_definitions(wallpaper_lib PRIVATE GIO_FOUND=1)
-    target_include_directories(wallpaper_lib PRIVATE ${GIO_INCLUDE_DIRS})
-    target_link_libraries(wallpaper_lib PRIVATE ${GIO_LIBRARIES})
+# dlopen/dlsym for GnomeSetter (dinamicly link gio lib)
+if(UNIX AND NOT APPLE)
+    target_link_libraries(wallpaper_lib PRIVATE ${CMAKE_DL_LIBS})
 endif()
 
 if(WIN32)
@@ -44,4 +30,3 @@ target_include_directories(wallpaper_lib PUBLIC
     ${PROJECT_SOURCE_DIR}/src
     ${CMAKE_BINARY_DIR}/generated
 )
-

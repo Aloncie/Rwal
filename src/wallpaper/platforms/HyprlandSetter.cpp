@@ -1,6 +1,7 @@
 #include "HyprlandSetter.hpp"
 
 #include <cstdlib>
+#include <string>
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;
@@ -10,6 +11,12 @@ HyprlandSetter::HyprlandSetter(Logs& logs) : m_logs(logs) {}
 static bool hasTool(const std::string& tool) {
     std::string cmd = "which " + tool + " > /dev/null 2>&1";
     return (std::system(cmd.c_str()) == 0);
+}
+
+bool HyprlandSetter::isAvailable() const {
+    if (!std::getenv("HYPRLAND_INSTANCE_SIGNATURE"))
+        return false;
+    return (hasTool("hyprpaper") && hasTool("hyprctl")) || hasTool("swww");
 }
 
 bool HyprlandSetter::setWallpaper(const fs::path& path) {
