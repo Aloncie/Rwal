@@ -12,6 +12,7 @@ private:
 
 public:
     bool setWallpaper(const fs::path& path) override;
+    bool isAvailable() const override { return true; }
     explicit WindowsSetter(Logs& logs) : m_logs(logs) {}
     ~WindowsSetter() override = default;
 };

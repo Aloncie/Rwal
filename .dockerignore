@@ -37,7 +37,7 @@ tests
 third_party
 
 # Docker
-deploy
+deploy/docker-compose.yml
 .dockerignore
-docker-compose.yml
-
+!deploy/Dockerfile
+!deploy/docker-entrypoint.sh
