@@ -4,6 +4,7 @@ set(SETTERS_SOURCES
     PathResolver.cpp
     platforms/FallbackSetter.cpp
     platforms/KdeSetter.cpp
+	platforms/GnomeSetter.cpp
     platforms/HyprlandSetter.cpp
     ${PROJECT_SOURCE_DIR}/src/net/NetworkManager.cpp
     ${PROJECT_SOURCE_DIR}/src/net/CurlWrapper.cpp
