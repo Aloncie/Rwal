@@ -72,7 +72,7 @@ python3 build.py
 ### How can you get updates❔
 It depends on how you use the repository:
 
-- **As a User:** Simply run `git pull` to fetch the latest changes.
+- **As a User:** Simply run `git pull origin main` to fetch the latest changes.
 - **As a Contributor:** If you have local changes, use `git fetch origin` followed by `git rebase origin/develop` to keep your git history clean and avoid merge conflicts.
 
 # 🌀 Usage
