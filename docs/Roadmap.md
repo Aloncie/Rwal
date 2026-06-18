@@ -1,6 +1,6 @@
 # 🗺️ Rwal – Future Development Roadmap
 
-**Vision:** A cross‑platform, user‑friendly wallpaper manager with CLI and TUI, intelligent offline handling, and a robust testing suite.
+**Vision:** A lightweight, cross‑platform, user‑friendly wallpaper manager with CLI and TUI, intelligent offline handling, and a robust testing suite.
 
 ---
 
@@ -14,13 +14,14 @@
 
 - [x] **Offline fetching image** – Fetch wallpapers from local storage if network is unavailable.
 - [x] **Packaging** – Provide native packages (deb, rpm, exe, dmg).
-- [ ] **Configuration enhancements** – Allow user to specify cache size, preferred image types, and fallback behaviour.
+- [ ] **Config validator** - Create a config validator that checks for syntax errors and compatibility with the config schema.
+- [ ] **Release 1.0 version** – First production release.
+
+## 🧪 Phase 3 – Advanced Features & Testing
+
 - [ ] **History browser** – Allow view history of previously selected wallpapers.
-
-## 🧪 Phase 3 – Testing & Release
-
+- [ ] **Configuration enhancements** – Allow user to specify cache size, preferred image types, and fallback behaviour.
 - [ ] **Integration tests** – Simulate network failures, missing config, etc.
-- [ ] **Stable 1.0** – First production release.
 
 ---
 
