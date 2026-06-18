@@ -84,7 +84,7 @@ The build process generates the binary inside the `build/<OS>-release/` director
 # Launch interactive terminal UI
 ./build/linux-release/rwal
 
-# Run --help option via console interface
+# Run --help option via command line interface
 ./build/linux-release/rwal --help
 ```
 
@@ -111,7 +111,7 @@ On Windows, use the `.exe` extension and your specific shell syntax inside the `
 .\build\windows-release\rwal-cli.exe --help
 ```
 
-Also, you can use **only** CLI version on Windows.
+**Important:** you can use **only** CLI version on Windows. Rwal doesn't support TUI on Windows. If you want to use TUI — [open the discussion](https://github.com/Aloncie/Rwal/discussions/new/choose).
 
 </details>
 
@@ -127,28 +127,36 @@ By default, **Rwal** looks for `config.json` in the following system directories
 
 ```json
 {
-    "search": {
-        "keywords": [
-            "anime",
-            "nature",
-            "town",
-            "ocean",
-            "car",
-            "art",
-            "city",
-            "architecture"
-        ],
-        "res": "1920x1080",
-        "sorting": "random"
-    },
-    "services": {
-        "wallhaven": {
-            "apikey": "apikey="
-        }
-    },
-    "settings": {
-        "cursor-visibility": "true"
+  "search": {
+    "keywords": [
+      "nature",
+      "town",
+      "ocean",
+      "car",
+      "art",
+      "city",
+      "anime"
+    ],
+    "random_page": true,
+    "res": "1920x1080",
+    "sorting": "random"
+  },
+  "services": {
+    "wallhaven": {
+      "apikey": "",
+      "base_url": "https://wallhaven.cc/api/v1/search",
+      "param_names": {
+        "apikey": "apikey",
+        "page": "page",
+        "query": "q",
+        "res": "resolutions",
+        "sorting": "sorting"
+      }
     }
+  },
+  "settings": {
+    "cursor-visibility": "true"
+  }
 }
 ```
 
@@ -160,7 +168,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
 | `search.res` | String | `"1920x1080"`| Target image resolution (e.g., `"2560x1440"`). |
 | `search.sorting` | String | `"random"` | API sorting method: `"random"`, `"relevance"`, `"views"`, `"date"`, `"toplist"`, `"favorites"`. |
 | `services.wallhaven.apikey`| String | `""` | *(Optional)* Your Wallhaven API key to bypass rate limits(~45 per minute) and access NSFW/Sketchy content. |
-| `settings.cursor-visibility`| Boolean| `true` | Toggles the visibility of the terminal cursor inside the TUI mode. (It doesn't work now) |
+| `settings.cursor-visibility`| Boolean| `true` | *(Not available now)* Toggles the visibility of the terminal cursor inside the TUI mode.|
 
 
 #### ❗WARNING❗:
