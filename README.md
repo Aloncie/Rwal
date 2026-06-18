@@ -12,7 +12,7 @@
 
 <br>
 
-**Rwal** is a lightweight, cross-platform wallpaper utility written in C++20, designed for **speed** and **flexibility**. It bridges the gap between a rich, interactive terminal user interface (TUI) via ncurses and a fast command-line interface (CLI).
+**Rwal** is a lightweight, cross-platform wallpaper manager written in C++20, designed for **speed** and **flexibility**. It bridges the gap between a rich, interactive terminal user interface (TUI) via ncurses and a fast command-line interface (CLI).
 
 ---
 
