@@ -6,11 +6,9 @@
 #ifdef _WIN32
 #include "platforms/WindowsSetter.hpp"
 #else
-#include "platforms/KdeSetter.hpp"
-#ifdef GIO_FOUND
 #include "platforms/GnomeSetter.hpp"
-#endif
 #include "platforms/HyprlandSetter.hpp"
+#include "platforms/KdeSetter.hpp"
 #endif
 
 #include <cstdlib>
