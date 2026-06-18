@@ -4,11 +4,14 @@ set(SETTERS_SOURCES
     PathResolver.cpp
     platforms/FallbackSetter.cpp
     platforms/KdeSetter.cpp
-	platforms/GnomeSetter.cpp
     platforms/HyprlandSetter.cpp
     ${PROJECT_SOURCE_DIR}/src/net/NetworkManager.cpp
     ${PROJECT_SOURCE_DIR}/src/net/CurlWrapper.cpp
 )
+
+if(NOT WIN32)
+    list(APPEND SETTERS_SOURCES platforms/GnomeSetter.cpp)
+endif()
 
 if(WIN32)
     list(APPEND SETTERS_SOURCES platforms/WindowsSetter.cpp)
@@ -16,7 +19,7 @@ endif()
 
 add_library(wallpaper_lib STATIC ${SETTERS_SOURCES})
 
-# dlopen/dlsym for GnomeSetter (dinamicly link gio lib)
+# dlopen/dlsym for GnomeSetter (dynamic link gio lib)
 if(UNIX AND NOT APPLE)
     target_link_libraries(wallpaper_lib PRIVATE ${CMAKE_DL_LIBS})
 endif()
