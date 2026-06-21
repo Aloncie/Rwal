@@ -33,10 +33,10 @@
 <div align="center">
 
 ### Terminal
-![Interactive Preview][PreviewA]
+![Interactive Preview][PreviewTUI]
 
 ### Command Line
-![Daemon Preview][PreviewB]
+![Daemon Preview][PreviewCLI]
 
 </div>
 
@@ -208,8 +208,8 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 [Roadmap]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
 [Survey]: https://forms.gle/JCewzzEUwPGxx7cY7
 
-[PreviewA]: https://github.com/user-attachments/assets/9de86ea7-a8f6-4b4b-8098-25ccc14520bb
-[PreviewB]: https://github.com/user-attachments/assets/c01c9cea-cbe5-4ddd-8f00-f4731b461fb6
+[PreviewTUI]: https://github.com/Aloncie/Rwal/blob/develop/assets/PreviewTUI.gif
+[PreviewCLI]: https://github.com/Aloncie/Rwal/blob/develop/assets/PreviewCLI.gif
 
 [libcurl]: https://curl.se/libcurl/
 [ncurses]: https://invisible-island.net/ncurses/
