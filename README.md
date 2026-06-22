@@ -203,9 +203,9 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 
 [Workflow]: https://github.com/Aloncie/Rwal/actions
 [Version]: https://img.shields.io/badge/version-beta-yellow
-[License]: https://github.com/Aloncie/Rwal/blob/main/LICENSE
+[License]: https://github.com/Aloncie/Rwal/blob/main/LICENSE.txt
 [Security]: https://github.com/Aloncie/Rwal/blob/main/SECURITY.md
-[Roadmap]: https://github.com/Aloncie/Rwal/blob/main/docs/ROADMAP.md
+[Roadmap]: https://github.com/Aloncie/Rwal/blob/main/docs/Roadmap.md
 [Survey]: https://forms.gle/JCewzzEUwPGxx7cY7
 
 [PreviewTUI]: https://github.com/Aloncie/Rwal/blob/develop/assets/PreviewTUI.gif
