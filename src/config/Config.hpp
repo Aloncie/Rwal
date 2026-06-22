@@ -20,11 +20,9 @@ private:
     fs::path configPath;
 
     void saveToFile();
-    void initValidators();
 
     void getConfigFileData();
     fs::path getConfigPath();
-
 protected:
     nlohmann::json getImpl(const std::string& key) override {
         if (m_data.contains(nlohmann::json::json_pointer(key))) {

@@ -18,7 +18,32 @@ fs::path Config::getConfigPath() {
 
 Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
     configPath = getConfigPath();
-    initValidators();
+
+    // Init validators
+    using namespace rwal::config::validators;
+
+    // --- User settings (warnings) ---
+    m_validator.add("/search/keywords", {isArray, nonEmptyArray});
+    m_validator.add("/search/sorting", {isString, nonEmptyString, isValidSorting});
+    m_validator.add("/search/resolutions", {isString, nonEmptyString, isValidResolution});
+    m_validator.add("/settings/cursor-visibility", {isBool});
+    m_validator.add("/search/random_page", {isBool});
+
+    // --- Wallhaven service: critical infrastructure (hard checks) ---
+    m_validator.add("/services/wallhaven/base_url",
+                    {isString, isValidUrl, isExactString("https://wallhaven.cc/api/v1/search")});
+    m_validator.add("/services/wallhaven/apikey",
+                    {isString}); // may be empty
+    m_validator.add("/services/wallhaven/param_names",
+                    {isObject, isValidWallhavenParamNames});
+
+    // Parents objects (just type check)
+    m_validator.add("/search", {isObject});
+    m_validator.add("/services", {isObject});
+    m_validator.add("/services/wallhaven", {isObject});
+    m_validator.add("/", {isObject});
+
+    // Load config data
     getConfigFileData();
 }
 
@@ -52,7 +77,7 @@ void Config::getConfigFileData() {
 
              }},
             {"settings",
-             {{"cursor-visibility", true}}}}; // Planned implementation
+             {{"cursor-visibility", true}}}};
         saveToFile();
     };
 }
@@ -64,30 +89,5 @@ void Config::saveToFile() {
     file << m_data.dump(2);
     file.close();
     m_fs.rename(tmp, configPath); // replacement
-}
-
-void Config::initValidators() {
-    using namespace rwal::config::validators;
-
-    // --- User settings (warnings) ---
-    m_validator.add("/search/keywords", {isArray, nonEmptyArray});
-    m_validator.add("/search/sorting", {isString, nonEmptyString, isValidSorting});
-    m_validator.add("/search/resolutions", {isString, nonEmptyString, isValidResolution});
-    m_validator.add("/settings/cursor-visibility", {isBool});
-    m_validator.add("/search/random_page", {isBool});
-
-    // --- Wallhaven service: critical infrastructure (hard checks) ---
-    m_validator.add("/services/wallhaven/base_url",
-                    {isString, isValidUrl, isExactString("https://wallhaven.cc/api/v1/search")});
-    m_validator.add("/services/wallhaven/apikey",
-                    {isString}); // may be empty
-    m_validator.add("/services/wallhaven/param_names",
-                    {isObject, isValidWallhavenParamNames});
-
-    // Parents objects (just type check)
-    m_validator.add("/search", {isObject});
-    m_validator.add("/services", {isObject});
-    m_validator.add("/services/wallhaven", {isObject});
-    m_validator.add("/", {isObject});
 }
 
