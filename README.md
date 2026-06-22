@@ -179,7 +179,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
 <summary>🛠️ <b>Advanced: Custom API Parameter Mapping</b></summary>
 
 If you want to tweak internal API endpoints or use a custom mirror, the utility fallback structure uses these pre-mapped fields under the hood:
-* `base_url`: `https://wallhaven.cc`
+* `base_url`: `https://wallhaven.cc/api/v1/search`
 * Query mapping handles parameters (`q`, `page`, `apikey`, `resolutions`, `sorting`) automatically based on your search settings.
 </details>
 
