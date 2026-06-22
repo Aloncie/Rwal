@@ -1,10 +1,10 @@
 #include "Menus.hpp"
 
 #include "AppConfig.h"
-#include "internal/utils/StringUtils.hpp"
 #include "MenuIDs.hpp"
-#include "settings/SchedulerTypes.hpp"
 #include "config/Config.hpp"
+#include "internal/utils/StringUtils.hpp"
+#include "settings/SchedulerTypes.hpp"
 
 #include <memory>
 #include <thread>

@@ -30,12 +30,11 @@ Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
     m_validator.add("/search/random_page", {isBool});
 
     // --- Wallhaven service: critical infrastructure (hard checks) ---
-    m_validator.add("/services/wallhaven/base_url",
-                    {isString, isValidUrl, isExactString("https://wallhaven.cc/api/v1/search")});
-    m_validator.add("/services/wallhaven/apikey",
-                    {isString}); // may be empty
-    m_validator.add("/services/wallhaven/param_names",
-                    {isObject, isValidWallhavenParamNames});
+    m_validator.add(
+        "/services/wallhaven/base_url",
+        {isString, isValidUrl, isExactString("https://wallhaven.cc/api/v1/search")});
+    m_validator.add("/services/wallhaven/apikey", {isString}); // may be empty
+    m_validator.add("/services/wallhaven/param_names", {isObject, isValidWallhavenParamNames});
 
     // Parents objects (just type check)
     m_validator.add("/search", {isObject});
@@ -73,11 +72,13 @@ void Config::getConfigFileData() {
                   {"sorting", "sorting"},
                   {"resolutions", "resolutions"}}}}}}},
             {"search",
-             {{"keywords", {}}, {"sorting", "random"}, {"resolutions", "1920x1080"}, {"random_page", true}
+             {{"keywords", {}},
+              {"sorting", "random"},
+              {"resolutions", "1920x1080"},
+              {"random_page", true}
 
              }},
-            {"settings",
-             {{"cursor-visibility", true}}}};
+            {"settings", {{"cursor-visibility", true}}}};
         saveToFile();
     };
 }
@@ -90,4 +91,3 @@ void Config::saveToFile() {
     file.close();
     m_fs.rename(tmp, configPath); // replacement
 }
-

@@ -1,6 +1,7 @@
 #pragma once
-#include <gmock/gmock.h>
 #include "ui/IUserInterface.hpp"
+
+#include <gmock/gmock.h>
 
 class MockTUIManager : public IUserInterface {
 public:
@@ -11,8 +12,9 @@ public:
     MOCK_METHOD(bool, prepareForExternalCommand, (), (override));
     MOCK_METHOD(bool, refresh, (), (override));
 
-    void requestInput(std::function<void(std::string)> callback,
-                      std::optional<std::string> message = std::nullopt) override {
+    void requestInput(
+        std::function<void(std::string)> callback,
+        std::optional<std::string> message = std::nullopt) override {
         lastStringCallback_ = callback;
         if (message) {
             lastMessage_ = *message;

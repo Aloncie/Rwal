@@ -44,4 +44,3 @@ services:
     environment: *common-env
     stdin_open: true
     tty: true
-

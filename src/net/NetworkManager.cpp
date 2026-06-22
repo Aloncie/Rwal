@@ -112,8 +112,9 @@ NetworkManager::craftUrl(std::string_view keyword, const std::optional<std::stri
             add_param(p_names["page"].get<std::string>(), *page);
         }
         add_param(p_names["sorting"].get<std::string>(), search["sorting"].get<std::string>());
-        add_param(p_names["resolutions"].get<std::string>(), search["resolutions"].get<std::string>());
-        
+        add_param(
+            p_names["resolutions"].get<std::string>(), search["resolutions"].get<std::string>());
+
         // Optional parametrs
         if (!wh["apikey"].get<std::string>().empty()) {
             add_param(p_names["apikey"].get<std::string>(), wh["apikey"].get<std::string>());

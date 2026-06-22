@@ -1,5 +1,6 @@
-#include <gtest/gtest.h>
 #include "internal/utils/string_utils.hpp"
+
+#include <gtest/gtest.h>
 
 TEST(StringUtilsTest, FormatRemovesWhitespace) {
     std::string input = "  testing message  ";
@@ -13,4 +14,3 @@ TEST(StringUtilsTest, SplitRemovesWhitespace) {
     std::vector<std::string> expected = {"testing", "message"};
     EXPECT_EQ(result, expected);
 }
-

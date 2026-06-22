@@ -1,8 +1,8 @@
 #pragma once
 #include "IConfigReader.hpp"
+#include "ValidatorRegistry.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
 #include "logs/Logs.hpp"
-#include "ValidatorRegistry.hpp"
 
 #include <filesystem>
 #include <functional>
@@ -23,6 +23,7 @@ private:
 
     void getConfigFileData();
     fs::path getConfigPath();
+
 protected:
     nlohmann::json getImpl(const std::string& key) override {
         if (m_data.contains(nlohmann::json::json_pointer(key))) {
@@ -37,7 +38,8 @@ protected:
         auto error = m_validator.validate(key, value);
 
         if (error) {
-            m_logs.writeLogs(lvl::Warning, mod::Config, "Validation failed for key: " + key + ": " + *error);
+            m_logs.writeLogs(
+                lvl::Warning, mod::Config, "Validation failed for key: " + key + ": " + *error);
             return false;
         }
 

@@ -1,22 +1,27 @@
 #pragma once
-#include <gmock/gmock.h>
 #include "net/NetworkManager.hpp"
 
-using ::testing::Return;
+#include <gmock/gmock.h>
+
 using ::testing::_;
+using ::testing::Return;
 using ::testing::ReturnRef;
 
 class MockNetworkManager : public NetworkManager {
 public:
-	using NetworkManager::NetworkManager;
-	
-	MockNetworkManager(CurlWrapper& curl, IConfigReader& config, Logs& logs) : NetworkManager(curl, config, logs) {}
+    using NetworkManager::NetworkManager;
 
-    MOCK_METHOD(std::optional<std::filesystem::path>, fetchImage, (std::string_view keyword),(override));
+    MockNetworkManager(CurlWrapper& curl, IConfigReader& config, Logs& logs)
+        : NetworkManager(curl, config, logs) {}
+
+    MOCK_METHOD(
+        std::optional<std::filesystem::path>, fetchImage, (std::string_view keyword), (override));
     MOCK_METHOD(bool, isAvailable, (), (override));
-    MOCK_METHOD(std::string, craftUrl, (std::string_view keyword, const std::optional<std::string>& page),(override));
+    MOCK_METHOD(
+        std::string, craftUrl, (std::string_view keyword, const std::optional<std::string>& page),
+        (override));
 
-	~MockNetworkManager() override = default;
+    ~MockNetworkManager() override = default;
     // Helper to set up successful fetch
     void setSuccessfulFetch(fs::path path) {
         ON_CALL(*this, isAvailable()).WillByDefault(Return(true));
@@ -32,4 +37,3 @@ public:
     // Helper to set up offline mode
     void setOffline() { ON_CALL(*this, isAvailable()).WillByDefault(Return(false)); }
 };
-

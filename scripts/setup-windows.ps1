@@ -384,4 +384,3 @@ Write-Host "Note: TUI is disabled on Windows, only CLI is supported."
 if (-not $hasCompiler) {
     Write-Warning "No C++ compiler found. Install one before building."
 }
-

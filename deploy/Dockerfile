@@ -18,4 +18,3 @@ WORKDIR /app
 COPY . .
 
 ENTRYPOINT ["./deploy/docker-entrypoint.sh"]
-

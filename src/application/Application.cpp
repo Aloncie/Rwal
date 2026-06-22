@@ -1,6 +1,7 @@
 #include "Application.hpp"
 
 #include "AppConfig.h"
+#include "config/Config.hpp"
 #include "internal/filesystem/FileSystemFactory.hpp"
 #include "internal/utils/StringUtils.hpp"
 #include "keywords/Keywords.hpp"
@@ -9,7 +10,6 @@
 #include "net/NetworkManager.hpp"
 #include "settings/ISystemScheduler.hpp"
 #include "settings/SchedulerFactory.hpp"
-#include "config/Config.hpp"
 #include "settings/Settings.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"

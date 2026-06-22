@@ -1,10 +1,10 @@
 #pragma once
+#include <functional>
+#include <map>
 #include <nlohmann/json.hpp>
 #include <optional>
-#include <string>
 #include <set>
-#include <map>
-#include <functional>
+#include <string>
 
 // Validators must follow division of responsibility rule.
 // They can't perform multiple checks at the same time.
@@ -18,41 +18,46 @@ using Validator = std::function<std::optional<std::string>(const json&)>;
 
 // ====== Type checkers ======
 inline std::optional<std::string> isString(const json& j) {
-    if (!j.is_string()) return "must be a string";
+    if (!j.is_string())
+        return "must be a string";
     return std::nullopt;
 }
 
 inline std::optional<std::string> isBool(const json& j) {
-    if (!j.is_boolean()) return "must be a boolean";
+    if (!j.is_boolean())
+        return "must be a boolean";
     return std::nullopt;
 }
 
 inline std::optional<std::string> isArray(const json& j) {
-    if (!j.is_array()) return "must be an array";
+    if (!j.is_array())
+        return "must be an array";
     return std::nullopt;
 }
 
 inline std::optional<std::string> isObject(const json& j) {
-    if (!j.is_object()) return "must be an object";
+    if (!j.is_object())
+        return "must be an object";
     return std::nullopt;
 }
 
 // ====== Emppty checkers (type already checked) ======
 inline std::optional<std::string> nonEmptyString(const json& j) {
-    if (j.get<std::string>().empty()) return "string must not be empty";
+    if (j.get<std::string>().empty())
+        return "string must not be empty";
     return std::nullopt;
 }
 
 inline std::optional<std::string> nonEmptyArray(const json& j) {
-    if (j.empty()) return "array must not be empty";
+    if (j.empty())
+        return "array must not be empty";
     return std::nullopt;
 }
 
 // ====== Valid values checkers ======
 inline std::optional<std::string> isValidSorting(const json& j) {
-    static const std::set<std::string> valid = {
-        "random", "toplist", "date_added", "views", "favorites", "relewards"
-    };
+    static const std::set<std::string> valid = {"random", "toplist",   "date_added",
+                                                "views",  "favorites", "relewards"};
     if (valid.find(j.get<std::string>()) == valid.end())
         return "invalid sorting method: " + j.get<std::string>();
     return std::nullopt;
@@ -60,7 +65,8 @@ inline std::optional<std::string> isValidSorting(const json& j) {
 
 inline std::optional<std::string> isValidResolution(const json& j) {
     const std::string& s = j.get<std::string>();
-    if (s.empty()) return "resolution must not be empty";
+    if (s.empty())
+        return "resolution must not be empty";
     for (char c : s) {
         if (!isdigit(c) && c != 'x' && c != 'X')
             return "resolution contains invalid characters";
@@ -87,10 +93,7 @@ inline Validator isExactString(const std::string& expected) {
 // ====== Wallhaven param_names checker ======
 inline std::optional<std::string> isValidWallhavenParamNames(const json& j) {
     static const std::map<std::string, std::string> required = {
-        {"apikey", "apikey"},
-        {"page", "page"},
-        {"query", "q"},
-        {"sorting", "sorting"},
+        {"apikey", "apikey"},           {"page", "page"}, {"query", "q"}, {"sorting", "sorting"},
         {"resolutions", "resolutions"},
     };
 
@@ -105,5 +108,4 @@ inline std::optional<std::string> isValidWallhavenParamNames(const json& j) {
     return std::nullopt;
 }
 
-}
-
+} // namespace rwal::config::validators

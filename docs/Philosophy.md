@@ -54,4 +54,3 @@ The project is built with clear separation of responsibilities.
 1. **Singleton (Transitioning):** `Config` and `Logs` are currently managed as single instances. The codebase is moving toward **Dependency Injection** for better testability.
 2. **Observer:** `QFileSystemWatcher` watches `config.json`; changes trigger hot‑reload of configuration.
 3. **Abstraction:** Interfaces `IUserInterface` and `IWallpaperSetter` decouple core logic from platform‑specific UI and desktop environment code.
-

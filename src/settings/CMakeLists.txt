@@ -15,4 +15,3 @@ else()
 	target_sources(scheduler-lib PRIVATE NullSystemScheduler.cpp)
 	message(STATUS "Unknown system. Using Null system scheduler")
 endif()
-

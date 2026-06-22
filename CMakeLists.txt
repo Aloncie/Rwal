@@ -163,4 +163,3 @@ set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 set(CPACK_RPM_PACKAGE_DESCRIPTION "Wallpaper manager for Windows, KDE, GNOME and Hyprland")
 set(CPACK_GENERATOR "DEB;RPM;TGZ;ZIP")
 include(CPack)
-

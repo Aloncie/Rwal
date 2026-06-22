@@ -1,9 +1,10 @@
 #pragma once
 #include "Validators.hpp"
-#include <string>
-#include <vector>
+
 #include <map>
 #include <optional>
+#include <string>
+#include <vector>
 
 class ValidatorRegistry {
 public:
@@ -13,14 +14,16 @@ public:
         registry_[path] = std::move(validators);
     }
 
-    std::optional<std::string> validate(const std::string& path,
-                                        const nlohmann::json& value) const {
+    std::optional<std::string>
+    validate(const std::string& path, const nlohmann::json& value) const {
         auto it = registry_.find(path);
-        if (it == registry_.end()) return std::nullopt; // not rules
+        if (it == registry_.end())
+            return std::nullopt; // not rules
 
         for (const auto& validator : it->second) {
             auto error = validator(value);
-            if (error) return error;
+            if (error)
+                return error;
         }
         return std::nullopt;
     }

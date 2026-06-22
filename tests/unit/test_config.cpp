@@ -1,14 +1,14 @@
-#include "settings/config.hpp"
-#include "mocks/MockLogs.hpp"
 #include "mocks/MockFileSystem.hpp"
+#include "mocks/MockLogs.hpp"
+#include "settings/config.hpp"
 
-#include <memory>
 #include <gtest/gtest.h>
+#include <memory>
 #include <nlohmann/json.hpp>
 
 using ::testing::_;
-using ::testing::Return;
 using ::testing::Invoke;
+using ::testing::Return;
 
 class ConfigTest : public ::testing::Test {
 protected:
@@ -17,7 +17,7 @@ protected:
     std::unique_ptr<Config> config;
 
     void SetUp() override {
-		mockFileSystem = std::make_shared<MockFileSystem>();
+        mockFileSystem = std::make_shared<MockFileSystem>();
         mockLogs = std::make_shared<MockLogs>(*mockFileSystem);
         config = std::make_unique<Config>(*mockLogs, *mockFileSystem);
     }

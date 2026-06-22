@@ -53,4 +53,3 @@ Rwal is in **active development**, and I'm currently focusing on:
 - 📦 Safe handling of external data (Wallhaven API)
 
 Your help in making Rwal more secure is greatly appreciated. Thank you! 🙏
-
