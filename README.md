@@ -123,7 +123,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
 
 ### Example `config.json`
 
-*Config will be create for the startup if it doesn't exist. You don't need create it manually.*
+**Important:** Config will be create for the startup if it doesn't exist. You don't need create it manually.
 
 ```json
 {
