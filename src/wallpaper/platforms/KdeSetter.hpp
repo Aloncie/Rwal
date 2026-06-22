@@ -1,5 +1,5 @@
 #pragma once
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
 
 class KdeSetter : public IWallpaperSetter {

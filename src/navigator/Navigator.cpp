@@ -1,6 +1,6 @@
-#include "navigator.hpp"
+#include "Navigator.hpp"
 
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 
 #include <ncurses.h>
 

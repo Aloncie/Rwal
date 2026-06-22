@@ -1,6 +1,6 @@
 #include "FallbackSetter.hpp"
 
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 
 namespace lvl = rwal::logs::types;
 namespace mod = rwal::logs::modules;

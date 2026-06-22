@@ -2,7 +2,7 @@
 #include "NetworkManager.hpp"
 
 #include "AppConfig.h"
-#include "funcs/funcs.hpp"
+#include "funcs/Funcs.hpp"
 
 #ifdef _WIN32
 #include <winsock2.h>
@@ -94,6 +94,7 @@ bool NetworkManager::isAvailable() {
 std::string
 NetworkManager::craftUrl(std::string_view keyword, const std::optional<std::string>& page) {
     try {
+        // Get config objects
         auto& cfg = m_config.all();
         auto& wh = cfg["services"]["wallhaven"];
         auto& search = cfg["search"];
@@ -104,15 +105,16 @@ NetworkManager::craftUrl(std::string_view keyword, const std::optional<std::stri
         auto add_param = [&](std::string_view name, std::string_view value) {
             params.push_back(std::format("{}={}", name, value));
         };
-        // Must-have parametr
+
+        // Must-have parametrs
         add_param(p_names["query"].get<std::string>(), keyword);
         if (page) {
             add_param(p_names["page"].get<std::string>(), *page);
         }
-
         add_param(p_names["sorting"].get<std::string>(), search["sorting"].get<std::string>());
-        add_param(p_names["res"].get<std::string>(), search["res"].get<std::string>());
-
+        add_param(p_names["resolutions"].get<std::string>(), search["resolutions"].get<std::string>());
+        
+        // Optional parametrs
         if (!wh["apikey"].get<std::string>().empty()) {
             add_param(p_names["apikey"].get<std::string>(), wh["apikey"].get<std::string>());
         }

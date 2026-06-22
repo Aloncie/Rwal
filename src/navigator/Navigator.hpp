@@ -1,7 +1,7 @@
 #pragma once
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 #include "ui/tui/TUIManager.hpp"
-#include "ui/tui/menus/menus.hpp"
+#include "ui/tui/menus/Menus.hpp"
 
 #include <map>
 #include <memory>

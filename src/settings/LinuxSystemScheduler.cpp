@@ -1,6 +1,6 @@
 #include "LinuxSystemScheduler.hpp"
 
-#include "internal/platform/env_utils.hpp"
+#include "internal/platform/EnvUtils.hpp"
 
 #include <exception>
 #include <fstream>

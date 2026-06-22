@@ -1,11 +1,11 @@
 #pragma once
 #include "IWallpaperSetter.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
-#include "keywords/keywords.hpp"
+#include "keywords/Keywords.hpp"
 #include "net/NetworkManager.hpp"
-#include "settings/IConfigReader.hpp"
+#include "config/IConfigReader.hpp"
 #include "settings/ISystemScheduler.hpp"
-#include "settings/settings.hpp"
+#include "settings/Settings.hpp"
 #include "ui/IUserInterface.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 

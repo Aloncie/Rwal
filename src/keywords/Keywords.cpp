@@ -1,10 +1,10 @@
-#include "keywords.hpp"
+#include "Keywords.hpp"
 
-#include "funcs/funcs.hpp"
-#include "internal/platform/env_utils.hpp"
-#include "internal/utils/string_utils.hpp"
-#include "internal/utils/vector_utils.hpp"
-#include "logs/logs.hpp"
+#include "funcs/Funcs.hpp"
+#include "internal/platform/EnvUtils.hpp"
+#include "internal/utils/StringUtils.hpp"
+#include "internal/utils/VectorUtils.hpp"
+#include "logs/Logs.hpp"
 
 #include <filesystem>
 #include <fstream>

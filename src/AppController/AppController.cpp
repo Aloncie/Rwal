@@ -1,6 +1,6 @@
 #include "AppController.hpp"
 
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 
 #include <ncurses.h>
 #include <unistd.h>

@@ -2,7 +2,7 @@
 
 #include "IWallpaperSetter.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
-#include "keywords/keywords.hpp"
+#include "keywords/Keywords.hpp"
 #include "net/NetworkManager.hpp"
 #include "ui/IUserInterface.hpp"
 

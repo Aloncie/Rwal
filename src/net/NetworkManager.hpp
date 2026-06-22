@@ -1,8 +1,8 @@
 #pragma once
 #include "CurlWrapper.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
-#include "logs/logs.hpp"
-#include "settings/IConfigReader.hpp"
+#include "logs/Logs.hpp"
+#include "config/IConfigReader.hpp"
 
 #include <filesystem>
 #include <nlohmann/json.hpp>

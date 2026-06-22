@@ -3,7 +3,7 @@
 #include "AppConfig.h"
 #include "PathResolver.hpp"
 #include "internal/AppConstants.hpp"
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 #include "net/NetworkManager.hpp"
 
 #include <filesystem>

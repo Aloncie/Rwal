@@ -2,24 +2,24 @@
 
 #include "AppConfig.h"
 #include "internal/filesystem/FileSystemFactory.hpp"
-#include "internal/utils/string_utils.hpp"
-#include "keywords/keywords.hpp"
-#include "logs/logs.hpp"
+#include "internal/utils/StringUtils.hpp"
+#include "keywords/Keywords.hpp"
+#include "logs/Logs.hpp"
 #include "net/CurlWrapper.hpp"
 #include "net/NetworkManager.hpp"
 #include "settings/ISystemScheduler.hpp"
 #include "settings/SchedulerFactory.hpp"
-#include "settings/config.hpp"
-#include "settings/settings.hpp"
+#include "config/Config.hpp"
+#include "settings/Settings.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperFactory.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 
 #if RWAL_USE_TUI
 #include "AppController/AppController.hpp"
-#include "navigator/navigator.hpp"
+#include "navigator/Navigator.hpp"
 #include "ui/tui/TUIManager.hpp"
-#include "ui/tui/menus/menus.hpp"
+#include "ui/tui/menus/Menus.hpp"
 #endif
 
 #if RWAL_USE_CLI

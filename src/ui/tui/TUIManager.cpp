@@ -1,6 +1,6 @@
 #include "TUIManager.hpp"
 
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 
 #include <algorithm>
 #include <cctype>

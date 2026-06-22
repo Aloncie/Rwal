@@ -1,6 +1,6 @@
 #pragma once
 #include "internal/filesystem/IFileSystem.hpp"
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 
 #include <curl/curl.h>
 #include <filesystem>

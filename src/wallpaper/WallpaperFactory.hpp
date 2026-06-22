@@ -1,6 +1,6 @@
 #pragma once
 #include "IWallpaperSetter.hpp"
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 
 #include <memory>
 

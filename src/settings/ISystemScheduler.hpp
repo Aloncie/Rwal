@@ -1,7 +1,7 @@
 #pragma once
 #include "SchedulerTypes.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 
 #include <optional>
 #include <string>

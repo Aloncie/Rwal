@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(Rwal VERSION 0.7.1 LANGUAGES CXX)
+project(Rwal VERSION 0.7.2 LANGUAGES CXX)
 
 # -------------------------------------------------------------------
 # Options
@@ -49,13 +49,13 @@ add_subdirectory(src/wallpaper)
 add_subdirectory(src/internal/filesystem)
 add_subdirectory(src/settings)
 add_library(rwal-core STATIC
-    src/funcs/funcs.cpp
-    src/internal/platform/env_utils.cpp
-    src/internal/utils/string_utils.cpp
-    src/keywords/keywords.cpp
-    src/logs/logs.cpp
-	src/settings/settings.cpp
-	src/settings/config.cpp
+    src/funcs/Funcs.cpp
+    src/internal/platform/EnvUtils.cpp
+    src/internal/utils/StringUtils.cpp
+    src/keywords/Keywords.cpp
+    src/logs/Logs.cpp
+    src/settings/Settings.cpp
+    src/config/Config.cpp
     src/internal/filesystem/FileSystemFactory.cpp
 )
 
@@ -78,13 +78,13 @@ target_link_libraries(rwal-core PUBLIC
 # -------------------------------------------------------------------
 if (BUILD_TUI AND NOT WIN32 AND BUILD_CLI)
     find_package(Curses REQUIRED)
-    add_executable(rwal src/main.cpp src/Application/Application.cpp)
+    add_executable(rwal src/main.cpp src/application/Application.cpp)
     target_link_libraries(rwal PRIVATE rwal-core ${CURSES_LIBRARIES})
     target_sources(rwal PRIVATE
         src/ui/tui/TUIManager.cpp
         src/AppController/AppController.cpp
-        src/navigator/navigator.cpp
-        src/ui/tui/menus/menus.cpp
+        src/navigator/Navigator.cpp
+        src/ui/tui/menus/Menus.cpp
 		src/ui/cli/CLIParser.cpp
 		src/ui/cli/CLIHandlers.cpp
     )
@@ -93,7 +93,7 @@ if (BUILD_TUI AND NOT WIN32 AND BUILD_CLI)
     message(STATUS "Building combined rwal (TUI + CLI)")
 
 elseif (BUILD_CLI)
-    add_executable(rwal-cli src/ui/cli/main_cli.cpp src/Application/Application.cpp)
+    add_executable(rwal-cli src/ui/cli/main_cli.cpp src/application/Application.cpp)
     target_link_libraries(rwal-cli PRIVATE rwal-core)
     target_sources(rwal-cli PRIVATE
 		src/ui/cli/CLIParser.cpp
@@ -104,13 +104,13 @@ elseif (BUILD_CLI)
     message(STATUS "Building CLI-only executable (rwal-cli)")
 elseif (BUILD_TUI AND NOT WIN32)
     find_package(Curses REQUIRED)
-    add_executable(rwal-tui src/ui/tui/main_tui.cpp src/Application/Application.cpp)
+    add_executable(rwal-tui src/ui/tui/main_tui.cpp src/application/Application.cpp)
     target_link_libraries(rwal-tui PRIVATE rwal-core ${CURSES_LIBRARIES})
     target_sources(rwal-tui PRIVATE
         src/ui/tui/TUIManager.cpp
         src/AppController/AppController.cpp
-        src/navigator/navigator.cpp
-        src/ui/tui/menus/menus.cpp
+        src/navigator/Navigator.cpp
+        src/ui/tui/menus/Menus.cpp
     )
     target_compile_definitions(rwal-tui PRIVATE RWAL_USE_TUI=1)
     install(TARGETS rwal-tui RUNTIME DESTINATION bin)

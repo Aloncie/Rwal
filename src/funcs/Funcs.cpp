@@ -1,4 +1,4 @@
-#include "funcs.hpp"
+#include "Funcs.hpp"
 
 #include <ctime>
 #include <random>

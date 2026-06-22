@@ -138,7 +138,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
       "anime"
     ],
     "random_page": true,
-    "res": "1920x1080",
+    "resolutions": "1920x1080",
     "sorting": "random"
   },
   "services": {
@@ -149,7 +149,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
         "apikey": "apikey",
         "page": "page",
         "query": "q",
-        "res": "resolutions",
+        "resolutions": "resolutions",
         "sorting": "sorting"
       }
     }
@@ -165,7 +165,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `search.keywords` | Array | `[]` | List of tags used to filter and fetch wallpapers. |
-| `search.res` | String | `"1920x1080"`| Target image resolution (e.g., `"2560x1440"`). |
+| `search.resolutions` | String | `"1920x1080"`| Target image resolution (e.g., `"2560x1440"`). |
 | `search.sorting` | String | `"random"` | API sorting method: `"random"`, `"relevance"`, `"views"`, `"date"`, `"toplist"`, `"favorites"`. |
 | `services.wallhaven.apikey`| String | `""` | *(Optional)* Your Wallhaven API key to bypass rate limits(~45 per minute) and access NSFW/Sketchy content. |
 | `settings.cursor-visibility`| Boolean| `true` | *(Not available now)* Toggles the visibility of the terminal cursor inside the TUI mode.|

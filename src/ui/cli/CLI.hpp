@@ -1,9 +1,9 @@
 #pragma once
 #include "internal/filesystem/IFileSystem.hpp"
-#include "logs/logs.hpp"
+#include "logs/Logs.hpp"
 #include "net/NetworkManager.hpp"
 #include "settings/ISystemScheduler.hpp"
-#include "settings/config.hpp"
+#include "config/Config.hpp"
 
 #include <optional>
 #include <string>

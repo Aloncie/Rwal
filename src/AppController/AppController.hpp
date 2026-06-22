@@ -1,9 +1,9 @@
 #pragma once
-#include "keywords/keywords.hpp"
-#include "navigator/navigator.hpp"
+#include "keywords/Keywords.hpp"
+#include "navigator/Navigator.hpp"
 #include "net/NetworkManager.hpp"
 #include "ui/tui/TUIManager.hpp"
-#include "ui/tui/menus/menus.hpp"
+#include "ui/tui/menus/Menus.hpp"
 #include "wallpaper/IWallpaperSetter.hpp"
 #include "wallpaper/WallpaperManager.hpp"
 

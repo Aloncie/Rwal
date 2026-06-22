@@ -1,8 +1,8 @@
 #pragma once
 
 #include "internal/filesystem/IFileSystem.hpp"
-#include "logs/logs.hpp"
-#include "settings/IConfigReader.hpp"
+#include "logs/Logs.hpp"
+#include "config/IConfigReader.hpp"
 #include "ui/IUserInterface.hpp"
 
 #include <functional>

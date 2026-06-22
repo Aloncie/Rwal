@@ -1,4 +1,4 @@
-#include "config.hpp"
+#include "Config.hpp"
 
 #include "AppConfig.h"
 
@@ -46,14 +46,13 @@ void Config::getConfigFileData() {
                   {"page", "page"},
                   {"apikey", "apikey"},
                   {"sorting", "sorting"},
-                  {"res", "resolutions"}}}}}}},
+                  {"resolutions", "resolutions"}}}}}}},
             {"search",
-             {{"keywords", {}}, {"sorting", "random"}, {"res", "1920x1080"}, {"random_page", true}
+             {{"keywords", {}}, {"sorting", "random"}, {"resolutions", "1920x1080"}, {"random_page", true}
 
              }},
             {"settings",
-             {// Planned implementation
-              {"cursor-visibility", true}}}};
+             {{"cursor-visibility", true}}}}; // Planned implementation
         saveToFile();
     };
 }
@@ -68,28 +67,27 @@ void Config::saveToFile() {
 }
 
 void Config::initValidators() {
-    auto is_not_empty_string = [](const nlohmann::json& j) {
-        return j.is_string() && !j.get<std::string>().empty();
-    };
-    auto is_not_empty_array = [](const nlohmann::json& j) { return j.is_array() && !j.empty(); };
-    auto is_not_empty_bool = [](const nlohmann::json& j) { return j.is_boolean(); };
-    auto is_not_empty_object = [](const nlohmann::json& j) {
-        return (j.is_object() || j.is_array()) && !j.empty();
-    };
+    using namespace rwal::config::validators;
 
-    validators["/search/keywords"] = is_not_empty_array;
-    validators["/services/wallhaven/apikey"] = is_not_empty_string;
-    validators["/search/sorting"] = is_not_empty_string;
-    validators["/search/res"] = is_not_empty_string;
-    validators["/settings/cursor-visibility"] = is_not_empty_bool;
-    validators["/search/random_page"] = is_not_empty_bool;
-    validators["/services/wallhaven/base_url"] = is_not_empty_string;
-    validators["/services/wallhaven/param_names/query"] = is_not_empty_string;
-    validators["/services/wallhaven/param_names/sorting"] = is_not_empty_string;
-    validators["/services/wallhaven/param_names/res"] = is_not_empty_string;
-    validators["/services/wallhaven/param_names"] = is_not_empty_array;
-    validators["/services/wallhaven"] = is_not_empty_object;
-    validators["/search"] = is_not_empty_object;
-    validators["/services"] = is_not_empty_object;
-    validators["/"] = is_not_empty_object;
+    // --- User settings (warnings) ---
+    m_validator.add("/search/keywords", {isArray, nonEmptyArray});
+    m_validator.add("/search/sorting", {isString, nonEmptyString, isValidSorting});
+    m_validator.add("/search/resolutions", {isString, nonEmptyString, isValidResolution});
+    m_validator.add("/settings/cursor-visibility", {isBool});
+    m_validator.add("/search/random_page", {isBool});
+
+    // --- Wallhaven service: critical infrastructure (hard checks) ---
+    m_validator.add("/services/wallhaven/base_url",
+                    {isString, isValidUrl, isExactString("https://wallhaven.cc/api/v1/search")});
+    m_validator.add("/services/wallhaven/apikey",
+                    {isString}); // may be empty
+    m_validator.add("/services/wallhaven/param_names",
+                    {isObject, isValidWallhavenParamNames});
+
+    // Parents objects (just type check)
+    m_validator.add("/search", {isObject});
+    m_validator.add("/services", {isObject});
+    m_validator.add("/services/wallhaven", {isObject});
+    m_validator.add("/", {isObject});
 }
+
