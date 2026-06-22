@@ -38,3 +38,9 @@ IncludeCategories:
     Priority: 1
   - Regex: '^<'
     Priority: 2
+
+# Restrict transfer function return type in declaration
+AlwaysBreakAfterReturnType: None
+
+# Restrict transfer function return type in definition
+AlwaysBreakAfterDefinitionReturnType: None
