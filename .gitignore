@@ -74,6 +74,7 @@ Thumbs.db
 *.rpm
 *.zip
 *.tar.gz
+*.directory
 
 # another
 .cache/

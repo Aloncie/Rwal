@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 2.14)
 
 project(Rwal VERSION 0.7.2 LANGUAGES CXX)
 

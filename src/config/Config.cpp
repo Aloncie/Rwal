@@ -44,6 +44,19 @@ Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
 
     // Load config data
     getConfigFileData();
+
+    m_logs.writeLogs(
+        lvl::Info, mod::Config,
+        "Validating config data on startup. Broken config will be replaced with default");
+    // Validate config m_data
+    for (auto& [key, value] : m_data.items()) {
+        auto error = m_validator.validate(key, value);
+        if (error) {
+            m_logs.writeLogs(
+                lvl::Warning, mod::Config, "Validation failed for key: " + key + ": " + *error);
+            m_refactorerData[key] = m_defaultData[key];
+        }
+    }
 }
 
 void Config::getConfigFileData() {
@@ -57,28 +70,11 @@ void Config::getConfigFileData() {
             } catch (nlohmann::json::parse_error& e) {
                 m_logs.writeLogs(
                     lvl::Error, mod::Config, "JSON Parse Error: " + std::string(e.what()));
+                m_data = m_defaultData;
             }
         }
     } else {
-        m_data = {
-            {"services",
-             {{"wallhaven",
-               {{"apikey", ""},
-                {"base_url", "https://wallhaven.cc/api/v1/search"},
-                {"param_names",
-                 {{"query", "q"},
-                  {"page", "page"},
-                  {"apikey", "apikey"},
-                  {"sorting", "sorting"},
-                  {"resolutions", "resolutions"}}}}}}},
-            {"search",
-             {{"keywords", {}},
-              {"sorting", "random"},
-              {"resolutions", "1920x1080"},
-              {"random_page", true}
-
-             }},
-            {"settings", {{"cursor-visibility", true}}}};
+        m_data = m_defaultData;
         saveToFile();
     };
 }
