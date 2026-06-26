@@ -5,7 +5,7 @@ The following setters are implemented and maintained.
 
 ---
 
-## ✅ Officially Supported (compile‑time selectable)
+## ✅ Officially Supported (runtime‑time selectable)
 
 | Desktop Environment | Setter Class | Detection / Dependencies | Notes |
 |---------------------|--------------|--------------------------|-------|
