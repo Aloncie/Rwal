@@ -48,6 +48,8 @@ Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
     m_logs.writeLogs(
         lvl::Info, mod::Config,
         "Validating config data on startup. Broken config will be replaced with default");
+
+    validateAndTakeCorrectData();
 }
 
 void Config::getConfigFileData() {
@@ -105,15 +107,15 @@ void Config::validateAndTakeCorrectData() {
     // Validate config m_data, guarantees use valid data in app
     // if validation failed, replace app version data with default but don't touch file on disk
     for (const auto& path : m_validator.paths()) {
-        auto* jp = nlohmann::json::json_pointer(path);
+        auto jp = nlohmann::json::json_pointer(path);
         if (m_data.contains(jp)) {
             auto error = m_validator.validate(path, m_data[jp]);
             if (error) {
-                m_data[jp] = m_defaults[jp]; // replace with default
+                m_data[jp] = m_defaultData[jp]; // replace with default
                 m_corrections.push_back(path + ": " + *error + " (reset to default)");
             }
-        } else if (m_defaults.contains(jp)) {
-            m_data[jp] = m_defaults[jp]; // missing key, add from defaults
+        } else if (m_defaultData.contains(jp)) {
+            m_data[jp] = m_defaultData[jp]; // missing key, add from defaults
             m_corrections.push_back(path + ": missing, added default");
         }
     }

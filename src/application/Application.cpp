@@ -41,7 +41,18 @@ int Application::run(int argc, char* argv[]) {
     NetworkManager netmanager(curl, config, logs, *fs);
     std::unique_ptr<ISystemScheduler> scheduler = createPlatformScheduler(logs, *fs);
 
+    const auto& corrections = config.getCorrections();
 #if RWAL_USE_CLI
+    // Show config corrections if there are
+    if (!corrections.empty()) {
+        std::cerr << "Warning: " << corrections.size()
+                  << " configuration field(s) were invalid and temporarily fixed:\n";
+        for (const auto& c : corrections) {
+            std::cerr << "  " << c << "\n";
+        }
+        std::cerr << "Run 'rwal --fix-config' to save these corrections.\n\n";
+    }
+
     bool hasCliOptions = false;
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
@@ -96,6 +107,15 @@ int Application::run(int argc, char* argv[]) {
     AppController controller(
         navigator, tuim, wm, *env, netmanager, keywords, wallpaperThread, refreshDone,
         refreshError);
+
+    // Show config corrections if there are
+    if (!corrections.empty()) {
+        std::string msg = "Config had " + std::to_string(corrections.size()) +
+                          " error(s). Fix them with 'rwal --fix-config'";
+        // Be careful, must be after tuim.initUI()
+        logs.writeLogs(lvl::Warning, mod::Core, msg);
+        tuim.showMessage(msg);
+    }
 
     while (controller.handleStdin()) {
         controller.checkRefreshDone();

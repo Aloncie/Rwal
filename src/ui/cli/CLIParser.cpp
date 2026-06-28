@@ -23,6 +23,9 @@ void CLI::parse(int argc, char* argv[]) {
         {"-k", [&] { m_opts.showKeywords = true; }},
         {"--keywords", [&] { m_opts.showKeywords = true; }},
         {"--scheduler", [&] { m_opts.showScheduler = true; }},
+        {"--fix-config", [&] { m_opts.fixConfig = true; }},
+        {"--config-status", [&] { m_opts.showConfigStatus = true; }},
+        {"--edit-config", [&] { m_opts.editConfig = true; }},
     };
 
     for (int i = 1; i < argc; ++i) {

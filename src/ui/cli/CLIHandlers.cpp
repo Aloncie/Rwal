@@ -1,5 +1,6 @@
 #include "AppConfig.h"
 #include "CLI.hpp"
+#include "internal/platform/EnvUtils.hpp"
 #include "internal/utils/StringUtils.hpp"
 #include "keywords/Keywords.hpp"
 #include "net/CurlWrapper.hpp"
@@ -55,6 +56,9 @@ Options:
  --add-keywords <kw>        Add keywords (comma-separated)
  --remove-keywords <kw>     Remove keywords (comma-separated)
  --set-scheduler <sched>    Set scheduler (now available: daily, hourly, none)
+ --fix-config               Fix config file if it's broken
+ --config-status            Show config status
+ --edit-config              Edit config file
 	)" << std::endl;
     return 0;
 }
@@ -239,6 +243,39 @@ int CLI::handleSetScheduler() {
     return 0;
 }
 
+int CLI::handleFixConfig() {
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for fix config");
+    if (m_deps.config.saveCorrectedConfig()) {
+        std::cout << "Config was fixed successfully." << std::endl;
+        m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config was fixed successfully.");
+        return 0;
+    }
+    std::cerr << "Failed to fix config. More info in logs." << std::endl;
+    m_deps.logs.writeLogs(lvl::Error, mod::Config, "Failed to fix config. More info in logs.");
+    return 1;
+}
+
+int CLI::handleShowConfigStatus() {
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for show config status");
+    m_deps.config.validateAndTakeCorrectData();
+    auto corrections = m_deps.config.getCorrections();
+    if (corrections.empty()) {
+        std::cout << "Config is valid." << std::endl;
+        m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config is valid.");
+        return 0;
+    }
+    std::cout << "Config has " << corrections.size() << " error(s)." << std::endl;
+    m_deps.logs.writeLogs(
+        lvl::Info, mod::Config, "Config has " + std::to_string(corrections.size()));
+    return 1;
+}
+
+int CLI::handleEditConfig() {
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for edit config");
+    rwal::platform::executor::open_editor(m_deps.config.getConfigPath());
+    return 0;
+}
+
 // ---------------------------------------------------------------------
 // Public execute function
 // ---------------------------------------------------------------------
@@ -261,6 +298,12 @@ int CLI::execute() {
         return handleChange();
     if (m_opts.showScheduler)
         return handleScheduler();
+    if (m_opts.fixConfig)
+        return handleFixConfig();
+    if (m_opts.showConfigStatus)
+        return handleShowConfigStatus();
+    if (m_opts.editConfig)
+        return handleEditConfig();
 
     if (m_opts.setKeywords.has_value())
         return handleSetKeywords();

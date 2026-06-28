@@ -20,6 +20,9 @@ private:
         bool clearLogs = false;
         bool showKeywords = false;
         bool showScheduler = false;
+        bool fixConfig = false;
+        bool showConfigStatus = false;
+        bool editConfig = false;
 
         std::optional<std::string> setKeywords;
         std::optional<std::string> addKeywords;
@@ -53,6 +56,9 @@ private:
     int handleAddKeywords();
     int handleSetScheduler();
     int handleScheduler();
+    int handleFixConfig();
+    int handleShowConfigStatus();
+    int handleEditConfig();
 
     // Helper functions
     std::string getBinaryLocation();
