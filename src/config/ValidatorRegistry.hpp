@@ -27,6 +27,12 @@ public:
         }
         return std::nullopt;
     }
+    std::vector<std::string> paths() const {
+        std::vector<std::string> result;
+        for (const auto& [path, _] : registry_)
+            result.push_back(path);
+        return result;
+    }
 
 private:
     std::map<std::string, std::vector<Validator>> registry_;

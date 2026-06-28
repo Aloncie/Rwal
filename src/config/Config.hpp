@@ -10,12 +10,13 @@
 #include <nlohmann/json.hpp>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace fs = std::filesystem;
 
 class Config : public IConfigReader {
 private:
-    // Default data
+    // Default data, broken fields will be replaced via this
     nlohmann::json m_defaultData =
                        {"services",
                         {{"wallhaven",
@@ -41,6 +42,9 @@ private:
     }
 };
 
+// Erorrs from validation
+std::vector<std::string> m_corrections;
+
 // Data from real file
 nlohmann::json m_data;
 
@@ -51,7 +55,14 @@ nlohmann::json m_refactoredData;
 ValidatorRegistry m_validator;
 fs::path configPath;
 
-void saveToFile();
+// Save original data to file on disk
+// Need for write configuration updates without fixing broken parts
+// We don't should directly fix config if user don't ask us to do it
+// For example, if user messed up and paste keywords in param_names and we can't remove them
+//
+// Rwal has user-friendly position — we will take data, refactor it and use in app.
+// Don't write refactored data to file on disk, fix file data if user don't ask us to do it
+bool saveToFile();
 
 void getConfigFileData();
 fs::path getConfigPath();
@@ -88,18 +99,27 @@ bool setImpl(const std::string& key, const nlohmann::json& value) override {
 
     // rewrite data on disk even if validation failed
     m_data[nlohmann::json::json_pointer(key)] = value;
-    saveToFile();
-    return true;
+    if (saveToFile())
+        return true;
+    return false;
 }
 
 public:
 Config(Logs& logs, IFileSystem& fs);
 void reload() override {
+    m_corrections.clear();
     getConfigFileData();
+    validateAndTakeCorrectData();
 }
 
 nlohmann::json& all() override {
     return m_data;
 }
 }
+
+// Two different save methods, one for corrected data and one for original m_data
+// Merge methods in one is overkill because one is private and the other is public
+// I think it's better to have two different simple save methods
+bool saveCorrectedConfig();
+
 ;

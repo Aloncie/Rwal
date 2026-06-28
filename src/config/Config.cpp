@@ -48,15 +48,6 @@ Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
     m_logs.writeLogs(
         lvl::Info, mod::Config,
         "Validating config data on startup. Broken config will be replaced with default");
-    // Validate config m_data
-    for (auto& [key, value] : m_data.items()) {
-        auto error = m_validator.validate(key, value);
-        if (error) {
-            m_logs.writeLogs(
-                lvl::Warning, mod::Config, "Validation failed for key: " + key + ": " + *error);
-            m_refactoredData[key] = m_defaultData[key];
-        }
-    }
 }
 
 void Config::getConfigFileData() {
@@ -79,11 +70,58 @@ void Config::getConfigFileData() {
     };
 }
 
-void Config::saveToFile() {
+bool Config::saveToFile() {
     // Use temporary file to avoid data loss
-    auto tmp = getConfigPath().string() + ".tmp";
-    std::ofstream file(tmp);
-    file << m_data.dump(2);
-    file.close();
-    m_fs.rename(tmp, configPath); // replacement
+    try {
+        auto tmp = getConfigPath().string() + ".tmp";
+        std::ofstream file(tmp);
+        file << m_data.dump(2);
+        file.close();
+        m_fs.rename(tmp, configPath); // replacement
+        return true;
+    } catch (const std::exception& e) {
+        m_logs.writeLogs(lvl::Error, mod::Config, "Error saving config: " + std::string(e.what()));
+        return false;
+    }
+}
+
+bool Config::saveCorrectedConfig() {
+    // Use temporary file to avoid data loss
+    try {
+        auto tmp = getConfigPath().string() + ".tmp";
+        std::ofstream file(tmp);
+        file << m_refactoredData.dump(2);
+        file.close();
+        m_fs.rename(tmp, configPath); // replacement
+        return true;
+    } catch (const std::exception& e) {
+        m_logs.writeLogs(
+            lvl::Error, mod::Config, "Error saving corrected config: " + std::string(e.what()));
+        return false;
+    }
+}
+
+void Config::validateAndTakeCorrectData() {
+    // Validate config m_data, guarantees use valid data in app
+    // if validation failed, replace app version data with default but don't touch file on disk
+    for (const auto& path : m_validator.paths()) {
+        auto* jp = nlohmann::json::json_pointer(path);
+        if (m_data.contains(jp)) {
+            auto error = m_validator.validate(path, m_data[jp]);
+            if (error) {
+                m_data[jp] = m_defaults[jp]; // replace with default
+                m_corrections.push_back(path + ": " + *error + " (reset to default)");
+            }
+        } else if (m_defaults.contains(jp)) {
+            m_data[jp] = m_defaults[jp]; // missing key, add from defaults
+            m_corrections.push_back(path + ": missing, added default");
+        }
+    }
+    if (!m_corrections.empty()) {
+        m_logs.writeLogs(
+            lvl::Warning, mod::Config,
+            "Config had " + std::to_string(m_corrections.size()) +
+                " errors; using corrected values.");
+        // Don't save file automatically
+    }
 }
