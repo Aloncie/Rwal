@@ -155,7 +155,7 @@ By default, **Rwal** looks for `config.json` in the following system directories
     }
   },
   "settings": {
-    "cursor-visibility": "true"
+    "cursor-visibility": true
   }
 }
 ```
