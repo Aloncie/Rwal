@@ -46,7 +46,7 @@ nlohmann::json m_data;
 
 // We will not touch data from real file to save it
 // But we will use refactored version of internal if something is broken
-nlohmann::json m_refactorerData;
+nlohmann::json m_refactoredData;
 
 ValidatorRegistry m_validator;
 fs::path configPath;
@@ -58,8 +58,8 @@ fs::path getConfigPath();
 
 protected:
 nlohmann::json getImpl(const std::string& key) override {
-    if (m_refactorerData.contains(nlohmann::json::json_pointer(key))) {
-        return m_refactorerData[nlohmann::json::json_pointer(key)];
+    if (m_refactoredData.contains(nlohmann::json::json_pointer(key))) {
+        return m_refactoredData[nlohmann::json::json_pointer(key)];
     }
 
     if (m_data.contains(nlohmann::json::json_pointer(key))) {
@@ -82,8 +82,8 @@ bool setImpl(const std::string& key, const nlohmann::json& value) override {
     // Update refactored data but don't save it on disk
     // if refactorerData is null, it means that original data isn't broken
     // We don't need to refactoredData
-    if (!m_refactorerData.is_null()) {
-        m_refactorerData[nlohmann::json::json_pointer(key)] = value;
+    if (!m_refactoredData.is_null()) {
+        m_refactoredData[nlohmann::json::json_pointer(key)] = value;
     }
 
     // rewrite data on disk even if validation failed

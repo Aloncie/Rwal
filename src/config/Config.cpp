@@ -54,7 +54,7 @@ Config::Config(Logs& logs, IFileSystem& fs) : IConfigReader(logs, fs) {
         if (error) {
             m_logs.writeLogs(
                 lvl::Warning, mod::Config, "Validation failed for key: " + key + ": " + *error);
-            m_refactorerData[key] = m_defaultData[key];
+            m_refactoredData[key] = m_defaultData[key];
         }
     }
 }
