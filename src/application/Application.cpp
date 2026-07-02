@@ -43,15 +43,6 @@ int Application::run(int argc, char* argv[]) {
 
     const auto& corrections = config.getCorrections();
 #if RWAL_USE_CLI
-    // Show config corrections if there are
-    if (!corrections.empty()) {
-        std::cerr << "Warning: " << corrections.size()
-                  << " configuration field(s) were invalid and temporarily fixed:\n";
-        for (const auto& c : corrections) {
-            std::cerr << "  " << c << "\n";
-        }
-        std::cerr << "Run 'rwal --fix-config' to save these corrections.\n\n";
-    }
 
     bool hasCliOptions = false;
     for (int i = 1; i < argc; ++i) {
@@ -60,6 +51,16 @@ int Application::run(int argc, char* argv[]) {
             hasCliOptions = true;
             break;
         }
+    }
+
+    // Show config corrections, check for --fix-config flag
+    if (!corrections.empty() && argc > 1 && std::string(argv[1]) != "--fix-config") {
+        std::cerr << "Warning: " << corrections.size()
+                  << " configuration field(s) were invalid and temporarily fixed:\n";
+        for (const auto& c : corrections) {
+            std::cerr << "  " << c << "\n";
+        }
+        std::cerr << "Run 'rwal --fix-config' to save these corrections.\n\n";
     }
 
     if (hasCliOptions) {
@@ -78,7 +79,7 @@ int Application::run(int argc, char* argv[]) {
         std::cerr << "Error: Rwal TUI mode doesn't support flags yet. \nPlease run without "
                      "arguments to start TUI."
                   << std::endl;
-        return 1;
+        return 0;
     }
     TUIManager tuim;
     std::unique_ptr<ISystemScheduler> schedule = createPlatformScheduler(logs, *fs);
@@ -132,9 +133,9 @@ int Application::run(int argc, char* argv[]) {
 #endif
     std::cout << R"(Failed to start Rwal, this binary doesn't touch TUI and CLI.
 		Try to use these flags: 
-		For TUI support -DRWAL_USE_TUI=ON 
-		For CLI support -DRWAL_USE_CLI=ON 
-		You can also use both flags.)"
+		For TUI support --tui 
+		For CLI support --cli 
+		You can also --all to use both modes.)"
               << std::endl;
     return 1;
 }

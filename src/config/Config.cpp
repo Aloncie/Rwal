@@ -104,18 +104,19 @@ bool Config::saveCorrectedConfig() {
 }
 
 void Config::validateAndTakeCorrectData() {
+    m_refactoredData = m_data;
     // Validate config m_data, guarantees use valid data in app
     // if validation failed, replace app version data with default but don't touch file on disk
     for (const auto& path : m_validator.paths()) {
         auto jp = nlohmann::json::json_pointer(path);
-        if (m_data.contains(jp)) {
+        if (m_refactoredData.contains(jp)) {
             auto error = m_validator.validate(path, m_data[jp]);
             if (error) {
-                m_data[jp] = m_defaultData[jp]; // replace with default
+                m_refactoredData[jp] = m_defaultData[jp]; // replace with default
                 m_corrections.push_back(path + ": " + *error + " (reset to default)");
             }
         } else if (m_defaultData.contains(jp)) {
-            m_data[jp] = m_defaultData[jp]; // missing key, add from defaults
+            m_refactoredData[jp] = m_defaultData[jp]; // missing key, add from defaults
             m_corrections.push_back(path + ": missing, added default");
         }
     }
@@ -125,5 +126,7 @@ void Config::validateAndTakeCorrectData() {
             "Config had " + std::to_string(m_corrections.size()) +
                 " errors; using corrected values.");
         // Don't save file automatically
+    } else {
+        m_refactoredData = nlohmann::json(); // reset refactored data
     }
 }

@@ -196,7 +196,7 @@ int CLI::handleRemoveKeywords() {
 }
 
 int CLI::handleSave() {
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for save current wallpaper");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to save current wallpaper");
     WallpaperManager wm(m_deps.logs, m_deps.fs);
     std::string message = wm.saveCurrent();
     m_deps.logs.writeLogs(lvl::Info, mod::Wallpaper, message);
@@ -204,7 +204,7 @@ int CLI::handleSave() {
 }
 
 int CLI::handleChange() {
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start in change mode");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to change wallpaper");
     Keywords keywords(m_deps.config, m_deps.logs, m_deps.fs);
     auto curl = std::make_unique<CurlWrapper>(m_deps.logs, m_deps.fs);
     NetworkManager m_netmanager(*curl, m_deps.config, m_deps.logs, m_deps.fs);
@@ -215,7 +215,7 @@ int CLI::handleChange() {
 }
 
 int CLI::handleScheduler() {
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for show scheduler");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to show scheduler");
     auto gettingType = m_deps.scheduler.get();
     if (!gettingType.has_value()) {
         std::cerr << "Failed to get scheduler. More info in logs" << std::endl;
@@ -228,7 +228,7 @@ int CLI::handleScheduler() {
 }
 
 int CLI::handleSetScheduler() {
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for set scheduler");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to set scheduler");
     auto inputType = rwal::system::Scheduler::toType(m_opts.setScheduler.value());
     if (!inputType.has_value()) {
         std::cerr << "Invalid scheduler type. Please provide valid type." << std::endl;
@@ -244,7 +244,7 @@ int CLI::handleSetScheduler() {
 }
 
 int CLI::handleFixConfig() {
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for fix config");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to fix config");
     if (m_deps.config.saveCorrectedConfig()) {
         std::cout << "Config was fixed successfully." << std::endl;
         m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config was fixed successfully.");
@@ -256,7 +256,7 @@ int CLI::handleFixConfig() {
 }
 
 int CLI::handleShowConfigStatus() {
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for show config status");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to show config status");
     m_deps.config.validateAndTakeCorrectData();
     auto corrections = m_deps.config.getCorrections();
     if (corrections.empty()) {
@@ -271,7 +271,7 @@ int CLI::handleShowConfigStatus() {
 }
 
 int CLI::handleEditConfig() {
-    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal's start for edit config");
+    m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to edit config");
     rwal::platform::executor::open_editor(m_deps.config.getConfigPath());
     return 0;
 }
