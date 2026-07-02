@@ -1,6 +1,7 @@
 #pragma once
 #include "IConfigReader.hpp"
 #include "ValidatorRegistry.hpp"
+#include "internal/AppConstants.hpp"
 #include "internal/filesystem/IFileSystem.hpp"
 #include "logs/Logs.hpp"
 
@@ -8,8 +9,7 @@
 #include <functional>
 #include <map>
 #include <nlohmann/json.hpp>
-#include <stdexcept>
-#include <string>
+#include <stdexcept> #include <string>
 #include <vector>
 
 namespace fs = std::filesystem;
@@ -29,7 +29,7 @@ private:
               {"sorting", "sorting"},
               {"resolutions", "resolutions"}}}}}}},
         {"search",
-         {{"keywords", {}},
+         {{"keywords", rwal::constants::variables::default_keywords},
           {"sorting", "random"},
           {"resolutions", "1920x1080"},
           {"random_page", true}

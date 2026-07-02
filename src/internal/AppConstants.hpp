@@ -38,4 +38,17 @@ inline constexpr std::string_view DEFAULT_EXT = ".jpg";
 namespace systemd {
 inline constexpr std::string_view SUPPRESS_OUTPUT = " >/dev/null 2>&1";
 }
+
+namespace variables {
+inlint constexpr std::vector<std::string> default_keywords = {
+    "nature",  "landscape", "abstract", "space",   "architecture", "animals",
+    "anime",   "cars",      "city",     "people",  "portrait",     "flowers",
+    "night",   "water",     "trees",    "forest",  "mountains",    "beach",
+    "desert",  "ocean",     "lake",     "river",   "ski",          "snow",
+    "summer",  "winter",    "sunset",   "sunrise", "dusk",         "dawn",
+    "morning", "afternoon", "evening",  "night",   "dusk",         "dawn",
+
+};
+}
+
 } // namespace rwal::constants

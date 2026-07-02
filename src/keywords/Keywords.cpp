@@ -1,6 +1,7 @@
 #include "Keywords.hpp"
 
 #include "funcs/Funcs.hpp"
+#include "internal/AppConstants.hpp"
 #include "internal/platform/EnvUtils.hpp"
 #include "internal/utils/StringUtils.hpp"
 #include "internal/utils/VectorUtils.hpp"
@@ -45,8 +46,7 @@ std::string Keywords::SilentGetKeyword() {
 
 void Keywords::Default(std::vector<std::string>& keywords) const {
     m_logs.writeLogs(lvl::Info, mod::Keywords, "Use default keywords.");
-    keywords = {"nature",       "landscape", "abstract", "space",
-                "architecture", "animals",   "anime",    "cars"};
+    keywords = rwal::constants::variables::default_keywords;
 }
 
 void Keywords::promptForKeywords(
