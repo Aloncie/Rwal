@@ -2,6 +2,7 @@
 
 #include <string>
 #include <string_view>
+#include <vector>
 
 namespace rwal::constants {
 
@@ -35,12 +36,12 @@ inline constexpr int SUFFIX_LENGTH = 6;
 inline constexpr std::string_view DEFAULT_EXT = ".jpg";
 } // namespace wallpaper
 
-namespace systemd {
+namespace system {
 inline constexpr std::string_view SUPPRESS_OUTPUT = " >/dev/null 2>&1";
 }
 
 namespace variables {
-inlint constexpr std::vector<std::string> default_keywords = {
+inline const std::vector<std::string> default_keywords = {
     "nature",  "landscape", "abstract", "space",   "architecture", "animals",
     "anime",   "cars",      "city",     "people",  "portrait",     "flowers",
     "night",   "water",     "trees",    "forest",  "mountains",    "beach",

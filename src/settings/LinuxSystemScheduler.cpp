@@ -122,7 +122,7 @@ bool LinuxSystemScheduler::disable() const {
     try {
         rwal::systemd::exec(
             "systemctl --user disable --now " + std::string(rwal::constants::files::TIMER_FILE) +
-            std::string(rwal::constants::systemd::SUPPRESS_OUTPUT));
+            std::string(rwal::constants::system::SUPPRESS_OUTPUT));
     } catch (const std::exception& e) {
         m_logs.writeLogs(
             lvl::Error, mod::Scheduler, "Failed to disable daemon: " + std::string(e.what()));
@@ -232,7 +232,7 @@ std::string LinuxSystemScheduler::set(TaskSchedulerType type) {
 
     rwal::systemd::exec(
         "systemctl --user unmask " + std::string(rwal::constants::files::TIMER_FILE) +
-        std::string(rwal::constants::systemd::SUPPRESS_OUTPUT));
+        std::string(rwal::constants::system::SUPPRESS_OUTPUT));
     reload();
     start();
     if (status()) {
