@@ -62,8 +62,11 @@ void Config::getConfigFileData() {
                     lvl::Info, mod::Config, "Config loaded/reloaded: " + configPath.string());
             } catch (nlohmann::json::parse_error& e) {
                 m_logs.writeLogs(
-                    lvl::Error, mod::Config, "JSON Parse Error: " + std::string(e.what()));
+                    lvl::Error, mod::Config,
+                    "JSON Parse Error: " + std::string(e.what()) + ". Use default config data");
                 m_data = m_defaultData;
+                m_refactoredData = m_defaultData;
+                m_parseError = true;
             }
         }
     } else {
@@ -88,13 +91,29 @@ bool Config::saveToFile() {
 }
 
 bool Config::saveCorrectedConfig() {
-    // Use temporary file to avoid data loss
     try {
-        auto tmp = getConfigPath().string() + ".tmp";
+        // Create backup of the original broken file
+        if (m_fs.exists(configPath)) {
+            m_fs.copyFile(configPath, fs::path(configPath.string() + ".bak"));
+        }
+
+        auto tmp = configPath.string() + ".tmp";
         std::ofstream file(tmp);
-        file << m_refactoredData.dump(2);
+        if (m_parseError) {
+            file << m_defaultData.dump(2); // unparseable - use defaults
+            m_logs.writeLogs(
+                lvl::Info, mod::Config,
+                "Config was unparseable. Writing defaults. Original backed up to .bak");
+            m_parseError = false;
+        } else {
+            file << m_refactoredData.dump(2); // semantic errors - use corrected
+            m_logs.writeLogs(
+                lvl::Info, mod::Config, "Config corrected and saved. Original backed up to .bak");
+        }
         file.close();
-        m_fs.rename(tmp, configPath); // replacement
+        m_fs.rename(tmp, configPath);
+
+        reload();
         return true;
     } catch (const std::exception& e) {
         m_logs.writeLogs(

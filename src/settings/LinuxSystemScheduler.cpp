@@ -13,6 +13,16 @@ namespace mod = rwal::logs::modules;
 using namespace rwal::systemd;
 
 bool LinuxSystemScheduler::create() {
+    // Ensure the systemd user directory exists
+    if (!m_fs.exists(m_serviceFile.parent_path())) {
+        if (!m_fs.createDirectories(m_serviceFile.parent_path())) {
+            m_logs.writeLogs(
+                lvl::Error, mod::Scheduler,
+                "Failed to create systemd user directory: " + m_serviceFile.parent_path().string());
+            return false;
+        }
+    }
+
     if (!m_fs.exists(m_serviceFile)) {
         bool success = createService();
         if (!success) {
@@ -179,12 +189,13 @@ std::string LinuxSystemScheduler::set(TaskSchedulerType type) {
         return "Already disabled";
     }
 
-    if (!m_fs.exists(m_serviceFile)) {
-        m_logs.writeLogs(lvl::Error, mod::Scheduler, "Service file doesn't exist");
-        return failedLog;
-    } else if (!m_fs.exists(m_timerFile)) {
-        m_logs.writeLogs(lvl::Error, mod::Scheduler, "Timer file doesn't exist");
-        return failedLog;
+    if (!m_fs.exists(m_serviceFile) || !m_fs.exists(m_timerFile)) {
+        m_logs.writeLogs(
+            lvl::Error, mod::Scheduler,
+            "There is/are Service or/and Timer file(s). Try to create it");
+        if (!create()) {
+            return failedLog;
+        }
     }
 
     std::ifstream in_file(m_timerFile);

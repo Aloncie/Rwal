@@ -9,7 +9,8 @@
 #include <functional>
 #include <map>
 #include <nlohmann/json.hpp>
-#include <stdexcept> #include <string>
+#include <stdexcept>
+#include <string>
 #include <vector>
 
 namespace fs = std::filesystem;
@@ -37,10 +38,10 @@ private:
          }},
         {"settings", {{"cursor-visibility", true}}}};
 
-    // Erorrs from validation
-    std::vector<std::string> m_corrections;
-
-    // Data from real file
+    // Errors
+    std::vector<std::string> m_corrections; // on validation
+    bool m_parseError = false;              // on parsing
+                                            // Data from real file
     nlohmann::json m_data;
 
     // We will not touch data from real file to save it
@@ -118,4 +119,5 @@ public:
     fs::path getConfigPath();
 
     void validateAndTakeCorrectData();
+    bool parseError() { return m_parseError; }
 };

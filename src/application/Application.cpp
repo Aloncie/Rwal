@@ -54,13 +54,19 @@ int Application::run(int argc, char* argv[]) {
     }
 
     // Show config corrections, check for --fix-config flag
-    if (!corrections.empty() && argc > 1 && std::string(argv[1]) != "--fix-config") {
-        std::cerr << "Warning: " << corrections.size()
-                  << " configuration field(s) were invalid and temporarily fixed:\n";
-        for (const auto& c : corrections) {
-            std::cerr << "  " << c << "\n";
+    if (argc > 1 && std::string(argv[1]) != "--fix-config") {
+        if (!corrections.empty()) {
+            std::cerr << "Warning: " << corrections.size()
+                      << " configuration field(s) were invalid and temporarily fixed:\n";
+            for (const auto& c : corrections) {
+                std::cerr << "  " << c << "\n";
+            }
+            std::cerr << "Run 'rwal --fix-config' to save these corrections." << std::endl;
+        } else if (config.parseError()) {
+            std::cerr << "Warning: Config file is broken(unparseable). \nRun 'rwal --fix-config' "
+                         "to fix it."
+                      << std::endl;
         }
-        std::cerr << "Run 'rwal --fix-config' to save these corrections.\n\n";
     }
 
     if (hasCliOptions) {
@@ -111,8 +117,15 @@ int Application::run(int argc, char* argv[]) {
 
     // Show config corrections if there are
     if (!corrections.empty()) {
-        std::string msg = "Config had " + std::to_string(corrections.size()) +
-                          " error(s). Fix them with 'rwal --fix-config'";
+        std::string msg =
+            "Config had " + std::to_string(corrections.size()) +
+            " error(s). Fix them with 'rwal --fix-config'. Rwal will work normally anyway. ";
+        // Be careful, must be after tuim.initUI()
+        logs.writeLogs(lvl::Warning, mod::Core, msg);
+        tuim.showMessage(msg);
+    } else if (config.parseError()) {
+        std::string msg = "Config file is broken(unparseable). Fix it with 'rwal --fix-config'. "
+                          "Rwal will work normally anyway. ";
         // Be careful, must be after tuim.initUI()
         logs.writeLogs(lvl::Warning, mod::Core, msg);
         tuim.showMessage(msg);

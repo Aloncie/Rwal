@@ -257,17 +257,23 @@ int CLI::handleFixConfig() {
 
 int CLI::handleShowConfigStatus() {
     m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to show config status");
-    m_deps.config.validateAndTakeCorrectData();
-    auto corrections = m_deps.config.getCorrections();
-    if (corrections.empty()) {
-        std::cout << "Config is valid." << std::endl;
-        m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config is valid.");
-        return 0;
+    if (m_deps.config.parseError()) {
+        std::cerr << "Config file is broken(unparseable). \nUse --fix-config to fix it."
+                  << std::endl;
+    } else {
+        m_deps.config.validateAndTakeCorrectData();
+        auto corrections = m_deps.config.getCorrections();
+        if (corrections.empty()) {
+            std::cout << "Config is valid." << std::endl;
+            m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config is valid.");
+        } else {
+            std::cout << "Config has " << corrections.size()
+                      << " error(s). \n Use --fix-config to fix it." << std::endl;
+            m_deps.logs.writeLogs(
+                lvl::Info, mod::Config, "Config has " + std::to_string(corrections.size()));
+        }
     }
-    std::cout << "Config has " << corrections.size() << " error(s)." << std::endl;
-    m_deps.logs.writeLogs(
-        lvl::Info, mod::Config, "Config has " + std::to_string(corrections.size()));
-    return 1;
+    return 0;
 }
 
 int CLI::handleEditConfig() {
