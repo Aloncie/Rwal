@@ -208,8 +208,8 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 [Roadmap]: https://github.com/Aloncie/Rwal/blob/main/docs/Roadmap.md
 [Survey]: https://forms.gle/JCewzzEUwPGxx7cY7
 
-[PreviewTUI]: https://github.com/Aloncie/Rwal/blob/develop/assets/PreviewTUI.gif
-[PreviewCLI]: https://github.com/Aloncie/Rwal/blob/develop/assets/PreviewCLI.gif
+[PreviewTUI]: https://github.com/Aloncie/Rwal/blob/main/assets/PreviewTUI.gif
+[PreviewCLI]: https://github.com/Aloncie/Rwal/blob/main/assets/PreviewCLI.gif
 
 [libcurl]: https://curl.se/libcurl/
 [ncurses]: https://invisible-island.net/ncurses/
@@ -218,6 +218,5 @@ Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
 [Badge Workflow]: https://github.com/Aloncie/Rwal/actions/workflows/release.yml/badge.svg
 [Badge Version]: https://img.shields.io/badge/version-beta-orange?style=flat-square
 [Badge License]: https://img.shields.io/badge/license-MIT-gold?style=flat-square
-[Badge Platform]: https://img.shields.io/badge/platform-linux%20%20-lightgrey?style=flat-square
 [Badge Language]: https://img.shields.io/github/languages/top/Aloncie/Rwal?style=flat-square
 [Badge Hi Mom]: https://img.shields.io/badge/Hi-mom!-ff69b4?style=flat-square
