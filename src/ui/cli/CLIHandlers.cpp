@@ -40,7 +40,7 @@ int CLI::handleHelp() {
     std::string usage = getBinaryLocation() + " [options]";
     std::cout << "Usage: " << usage;
     std::cout << R"(
-Rwal - cross-platform wallpaper utility
+Rwal - lightweight cross-platform wallpaper manager
 
 Options:
  -h,  --help                Show this help message
