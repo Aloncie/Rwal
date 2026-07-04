@@ -47,6 +47,7 @@ valgrind*
 *.suo
 *.sln
 *.workspace
+.directory
 
 # ==================== #
 # OS generated files   #
