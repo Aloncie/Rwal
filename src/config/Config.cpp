@@ -105,10 +105,15 @@ bool Config::saveCorrectedConfig() {
                 lvl::Info, mod::Config,
                 "Config was unparseable. Writing defaults. Original backed up to .bak");
             m_parseError = false;
-        } else {
+        } else if (!m_refactoredData.is_null()) {
             file << m_refactoredData.dump(2); // semantic errors - use corrected
             m_logs.writeLogs(
                 lvl::Info, mod::Config, "Config corrected and saved. Original backed up to .bak");
+        } else {
+            file << m_defaultData.dump(2); // no data - use defaults
+            m_logs.writeLogs(
+                lvl::Info, mod::Config,
+                "Config was empty. Writing defaults. Original backed up to .bak");
         }
         file.close();
         m_fs.rename(tmp, configPath);

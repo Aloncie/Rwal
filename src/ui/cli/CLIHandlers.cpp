@@ -245,13 +245,33 @@ int CLI::handleSetScheduler() {
 
 int CLI::handleFixConfig() {
     m_deps.logs.writeLogs(lvl::Info, mod::Core, "Rwal started to fix config");
-    if (m_deps.config.saveCorrectedConfig()) {
-        std::cout << "Config was fixed successfully." << std::endl;
-        m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config was fixed successfully.");
+    if (m_deps.config.parseError()) {
+        std::cerr >> "Config parsing error. Config will be fixed to default values. You can find "
+                     "previous config as .bak file in config directory."
+                         << std::endl;
+        m_deps.logs.writeLogs(lvl::Error, mod::Config, "Config parsing error. More info in logs.");
+        if (m_deps.config.saveCorrectedConfig()) {
+            std::cout << "Config was fixed successfully." << std::endl;
+            m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config was fixed successfully.");
+            return 0;
+        }
+        std::cerr << "Failed to fix config. More info in logs." << std::endl;
+        m_deps.logs.writeLogs(lvl::Error, mod::Config, "Failed to fix config. More info in logs.");
         return 0;
     }
-    std::cerr << "Failed to fix config. More info in logs." << std::endl;
-    m_deps.logs.writeLogs(lvl::Error, mod::Config, "Failed to fix config. More info in logs.");
+    m_deps.config.validateAndTakeCorrectData();
+    auto corrections = m_deps.config.getCorrections();
+    if (!corrections.empty()) {
+        if (m_deps.config.saveCorrectedConfig()) {
+            std::cout << "Config was fixed successfully." << std::endl;
+            m_deps.logs.writeLogs(lvl::Info, mod::Config, "Config was fixed successfully.");
+            return 0;
+        }
+        std::cerr << "Failed to fix config. More info in logs." << std::endl;
+        m_deps.logs.writeLogs(lvl::Error, mod::Config, "Failed to fix config. More info in logs.");
+        return 0;
+    }
+    std::cout << "Config is valid. No corrections needed." << std::endl;
     return 1;
 }
 
