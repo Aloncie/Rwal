@@ -18,6 +18,7 @@
 
 </div>
 
+> **Project status: beta (v0.7.2), development is on pause.** The core functionality works, but some bugs remain. I cannot maintain the project actively right now, so updates and replies may take a long time. Pull requests are welcome, but reviews will be slow. Last code release: v0.7.2-beta (June 2026).
 # ✨ Features
 
 - **Interactive TUI** – Navigate, tag, and manage wallpapers without leaving the terminal.
