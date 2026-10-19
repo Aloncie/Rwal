@@ -200,6 +200,8 @@ If you want to tweak internal API endpoints or use a custom mirror, the utility 
 
 <div align="center">
 Made with ❤️ and a lot of ☕ by <b>Aloncie</b>
+<br>
+<a href="https://www.youtube.com/@Aloncie">YouTube</a> · <a href="https://www.linkedin.com/in/aloncie/">LinkedIn</a>
 </div>
 
 [Workflow]: https://github.com/Aloncie/Rwal/actions
