@@ -64,7 +64,7 @@ git clone https://github.com/Aloncie/Rwal.git
 cd Rwal
 
 # Install dependencies and build the binary
-python3 setup.py
+sudo python3 setup.py
 python3 build.py
 ```
 
