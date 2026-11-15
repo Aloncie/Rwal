@@ -45,10 +45,11 @@ echo "-----------------------"
 check_git()     { command -v git >/dev/null 2>&1; }
 check_gxx()     { command -v g++ >/dev/null 2>&1; }
 check_cmake()   { command -v cmake >/dev/null 2>&1; }
-check_curl()    { command -v curl >/dev/null 2>&1 || pkg-config --exists libcurl 2>/dev/null; }
+check_curl()    { pkg-config --exists libcurl 2>/dev/null || [ -f /usr/include/curl/curl.h ] || [ -f /usr/include/x86_64-linux-gnu/curl/curl.h ]; }
 check_json()    { pkg-config --exists nlohmann_json 2>/dev/null || [ -f /usr/include/nlohmann/json.hpp ] || [ -f /usr/local/include/nlohmann/json.hpp ]; }
 check_ncurses() { pkg-config --exists ncurses 2>/dev/null || [ -f /usr/include/ncurses.h ] || [ -f /usr/include/ncurses/ncurses.h ]; }
 check_glib2()   { pkg-config --exists glib-2.0 2>/dev/null; }
+check_ninja()   { command -v ninja >/dev/null 2>&1 || command -v ninja-build >/dev/null 2>&1; }
 
 # --- Map Functional Tools to System Names Explicitly ---
 declare -A TOOLS_SATISFIED
@@ -59,6 +60,7 @@ TOOLS_SATISFIED[curl]=1;    check_curl    || TOOLS_SATISFIED[curl]=0
 TOOLS_SATISFIED[json]=1;    check_json    || TOOLS_SATISFIED[json]=0
 TOOLS_SATISFIED[ncurses]=1; check_ncurses || TOOLS_SATISFIED[ncurses]=0
 TOOLS_SATISFIED[glib2]=1;   check_glib2   || TOOLS_SATISFIED[glib2]=0
+TOOLS_SATISFIED[ninja]=1;   check_ninja   || TOOLS_SATISFIED[ninja]=0
 
 # --- Distro-Specific Matrix Resolution ---
 MISSING_PKGS=()
@@ -72,10 +74,11 @@ case "$OS_ID" in
 
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
+        [ ${TOOLS_SATISFIED[ninja]} -eq 0 ]   && MISSING_PKGS+=("ninja-build")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("g++")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("libcurl4-openssl-dev")
-        [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("libnlohmann-json-dev")
-        [ ${TOOLS_SATISFIED[ncurses]} -eq 0 ] && MISSING_PKGS+=("libncurses5-dev")
+        [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann-json3-dev")
+        [ ${TOOLS_SATISFIED[ncurses]} -eq 0 ] && MISSING_PKGS+=("libncurses-dev")
         [[ "$DE" == "GNOME" ]] && [ ${TOOLS_SATISFIED[glib2]} -eq 0 ] && MISSING_PKGS+=("libglib2.0-dev")
         
         # --- Handle Hyprland Wallpaper Requirements Safely ---
@@ -100,6 +103,7 @@ case "$OS_ID" in
 
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
+        [ ${TOOLS_SATISFIED[ninja]} -eq 0 ]   && MISSING_PKGS+=("ninja-build")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("gcc-c++")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("libcurl-devel")
         [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann-json-devel")
@@ -127,6 +131,7 @@ case "$OS_ID" in
 
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
+        [ ${TOOLS_SATISFIED[ninja]} -eq 0 ]   && MISSING_PKGS+=("ninja")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("gcc")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("curl")
         [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann-json")
@@ -145,9 +150,10 @@ case "$OS_ID" in
 
         [ ${TOOLS_SATISFIED[git]} -eq 0 ]     && MISSING_PKGS+=("git")
         [ ${TOOLS_SATISFIED[cmake]} -eq 0 ]   && MISSING_PKGS+=("cmake")
+        [ ${TOOLS_SATISFIED[ninja]} -eq 0 ]   && MISSING_PKGS+=("ninja")
         [ ${TOOLS_SATISFIED[gxx]} -eq 0 ]     && MISSING_PKGS+=("gcc-c++")
         [ ${TOOLS_SATISFIED[curl]} -eq 0 ]    && MISSING_PKGS+=("libcurl-devel")
-        [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann-json-devel")
+        [ ${TOOLS_SATISFIED[json]} -eq 0 ]    && MISSING_PKGS+=("nlohmann_json-devel")
         [ ${TOOLS_SATISFIED[ncurses]} -eq 0 ] && MISSING_PKGS+=("ncurses-devel")
         [[ "$DE" == "GNOME" ]] && [ ${TOOLS_SATISFIED[glib2]} -eq 0 ] && MISSING_PKGS+=("glib2-devel")
         
@@ -193,7 +199,7 @@ if [ ${#MISSING_PKGS[@]} -gt 0 ]; then
         echo ""
         echo "-----------------------"
         echo "STATUS: FAILED"
-        echo "[ERROR] The installation routine exited unexpectedly. Verify connections or mirror flags."
+        echo "[ERROR] Package installation failed (exit code $INSTALL_STATUS). See the package manager output above for the real cause (e.g. disk space, another package manager running, network)."
         exit 1
     fi
 else
